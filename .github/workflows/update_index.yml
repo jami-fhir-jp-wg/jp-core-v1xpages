@@ -1,0 +1,34 @@
+name: UpdateIndex
+
+on:
+  push:
+    branches: [ pages ]
+  pull_request:
+    branches: [ pages ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['3.0']
+    steps:
+
+    - name: Checkout Implementation Guide
+      uses: actions/checkout@v2
+
+    - name: Execute Update Script 
+      run: |
+        ruby resources/updateIndex.rb
+    
+    - name: Commit files
+      run: |
+        git config --local user.email "fhirjp-robot@github.com"
+        git config --local user.name "HL7 Japan Github Action"
+        git add .
+        git commit -m "Update landing page index.html"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: pages
