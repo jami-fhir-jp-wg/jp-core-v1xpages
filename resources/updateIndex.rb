@@ -1,6 +1,8 @@
 # index.html更新プログラム
 require 'yaml'
 require 'fileutils'
+require 'date'
+require 'time'
 
 index_src = 'resources/index.org'   #コピー元index.html
 index_dest = 'index.html'           #コピー先index.html
@@ -17,7 +19,12 @@ p 'フォルダより_index.ymlを検索'
 for im in Dir.glob('./*/*/_index.yml')
     File.open(im) do |f|
         h = YAML.load(f)
-        content << (populate_html(im.sub('_index.yml',''), h[0]['name'], h[4]['branch'], h[1]['version'], h[2]['description'],h[3]['last_published'].to_s))
+        if(h[3]['last_published']!=nil)
+            date = DateTime.parse(h[3]['last_published']).new_offset('+09:00').to_s
+        else
+            date = ''
+        end
+        content << (populate_html(im.sub('_index.yml',''), h[0]['name'], h[4]['branch'], h[1]['version'], h[2]['description'],date))
     end
 end
 
