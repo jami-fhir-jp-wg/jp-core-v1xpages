@@ -10,7 +10,7 @@ index_dest = 'index.html'           #コピー先index.html
 
 # テーブル列を作成
 def populate_html( fName, hash, published, warn)
-    return '<tr><td>{name}<br/>({version})<br/><label class="{group}">{group}</label></td><td>{branch}</td><td>{published}</td><td>{user}</td><td><a href="{fName}index.html">ページ</a></td><td><a href="{fName}qa.min.html">警告</a>　<a href="{fName}qa.html">全体</a><br/>{warn}</td></tr>'
+    return '<tr><td>{name}<br/>({version})<br/><label class="{group}">{group}</label></td><td>{branch}</td><td>{published}</td><td>{user}</td><td><a href="{fName}index.html">実装ガイド</a><br/><a href="{fName}qa.min.html">警告</a>　<a href="{fName}qa.html">ＱＡ</a><br/>{warn}</td></tr>'
     .gsub(/{fName}/, fName)
     .gsub(/{name}/, hash['name'])
     .gsub(/{version}/, hash['version'].to_s)
@@ -57,12 +57,17 @@ for im in Dir.glob('./*/*/_index.yml').concat(Dir.glob('./*/*/*/_index.yml'))
 end
 
 content = ''
-count = 0
+first = true
+prcount = 0
 infos.sort_by {|v| v["date"]}.reverse.each do |i|
     if(i['json']['group']=="pullrequest")
-        count = count + 1
+        prcount = prcount + 1
     end
-    if(i['json']['group']!="pullrequest" || count <= 5)
+    if(i['json']['group']!="pullrequest" || prcount <= 5)
+        if(first)
+            first=false
+            i['date'] =  i['date'] + '<label class="new">new</label>'
+        end
         content << (populate_html(i['file'], i['json'] , i['date'], i['qa'])) + "\n"
     end
 end
