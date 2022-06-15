@@ -8,9 +8,19 @@ require 'time'
 index_src = 'resources/index.org'   #コピー元index.html
 index_dest = 'index.html'           #コピー先index.html
 
+# pull request link
+def getpullrequestlink(url)
+    if(url=='')
+        return ''
+    else
+        return "<a href='" + url + "' ><img src='resources/img/gitpullrequest.svg' width=30px height=30px /></a> "
+    end
+end
+
+
 # テーブル列を作成
 def populate_html( fName, hash, published, warn)
-    return '<tr><td>{name}<br/>({version})<br/><label class="{group}">{group}</label></td><td>{branch}</td><td>{published}</td><td>{user}</td><td><a href="{fName}index.html">実装ガイド</a><br/><a href="{fName}qa.min.html">警告</a>　<a href="{fName}qa.html">ＱＡ</a><br/>{warn}</td></tr>'
+    return '<tr><td>{name}<br/>({version})<br/><label class="{group}">{group}</label></td><td>{pullrequest_link}{branch}</td><td>{published}</td><td>{user}</td><td><a href="{fName}index.html">実装ガイド</a><br/><a href="{fName}qa.min.html">警告</a>　<a href="{fName}qa.html">ＱＡ</a><br/>{warn}</td></tr>'
     .gsub(/{fName}/, fName)
     .gsub(/{name}/, hash['name'])
     .gsub(/{version}/, hash['version'].to_s)
@@ -19,6 +29,7 @@ def populate_html( fName, hash, published, warn)
     .gsub(/{published}/, published)
     .gsub(/{user}/, hash['actor'])
     .gsub(/{warn}/, warn)
+    .gsub(/{pullrequest_link}/, getpullrequestlink(hash['pullrequest_url'].to_s))
 end
 
 # 発行日を取得
