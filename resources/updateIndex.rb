@@ -13,14 +13,14 @@ def getpullrequestlink(url)
     if(url=='')
         return ''
     else
-        return "<a href='" + url + "' ><img src='resources/img/gitpullrequest.svg' width=30px height=30px /></a> "
+        return "<a href='" + url + "' ><img src='resources/img/gitpullrequest.svg'/></a> "
     end
 end
 
 
 # テーブル列を作成
 def populate_html( fName, hash, published, warn)
-    return '<tr><td>{name}<br/>({version})<br/><label class="{group}">{group}</label></td><td>{pullrequest_link}{branch}</td><td>{published}</td><td>{user}</td><td><a href="{fName}index.html">実装ガイド</a><br/><a href="{fName}qa.min.html">警告</a>　<a href="{fName}qa.html">ＱＡ</a><br/>{warn}</td></tr>'
+    return '<tr><td>{name}<br/>({version})<br/><label class="{group}">{group}</label></td><td>{pullrequest_link}{branch}</td><td>{published}</td><td>{user}</td><td><a href="{fName}index.html"><img src="resources/img/guidance.svg"/>実装ガイド</a><br/><a href="{fName}qa.min.html"><img src="resources/img/alert.svg"/>警告</a>　<a href="{fName}qa.html"><img src="resources/img/check.svg"/>ＱＡ</a><br/>{warn}</td></tr>'
     .gsub(/{fName}/, fName)
     .gsub(/{name}/, hash['name'])
     .gsub(/{version}/, hash['version'].to_s)
