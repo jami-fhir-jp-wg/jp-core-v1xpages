@@ -853,6 +853,15 @@
        fhir:index 15;
        fhir:Element.id [ fhir:value "MedicationDispense.medication[x]" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.medication[x]" ];
+       fhir:ElementDefinition.slicing [
+         fhir:ElementDefinition.slicing.discriminator [
+           fhir:index 0;
+           fhir:ElementDefinition.slicing.discriminator.type [ fhir:value "type" ];
+           fhir:ElementDefinition.slicing.discriminator.path [ fhir:value "$this" ]
+         ];
+         fhir:ElementDefinition.slicing.ordered [ fhir:value "false"^^xsd:boolean ];
+         fhir:ElementDefinition.slicing.rules [ fhir:value "closed" ]
+       ];
        fhir:ElementDefinition.short [ fhir:value "What medication was supplied　医薬品" ];
        fhir:ElementDefinition.definition [ fhir:value "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.\r\n\r\n投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。" ];
        fhir:ElementDefinition.comment [ fhir:value "If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource.\r\n\r\n【JP-CORE】\r\nひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。\r\n\r\n厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。\r\n\rなお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。\r\n\rひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。\rただし、ひとつの処方薬を複数のコードで繰り返し記述する場合には、それらのコードが指し示す処方薬、医療材料は当然同一でなければならない。\rまた、処方を発行した医療機関内でのデータ利用のために、医療機関固有コード体系によるコード（ハウスコード、ローカルコード）の記述を含めてもよいが、その場合でも上述したいずれかの標準コードを同時に記述することが必要である。" ];
@@ -866,6 +875,14 @@
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.type.code [ fhir:value "CodeableConcept" ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.type.code [ fhir:value "Reference" ];
+         fhir:ElementDefinition.type.targetProfile [
+           fhir:value "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Medication";
+           fhir:index 0;
+           fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Medication>
+         ]
        ];
        fhir:ElementDefinition.constraint [
          fhir:index 0;
@@ -1014,22 +1031,22 @@
        ]
      ], [
        fhir:index 18;
-       fhir:Element.id [ fhir:value "MedicationDispense.medication[x].coding" ];
-       fhir:ElementDefinition.path [ fhir:value "MedicationDispense.medication[x].coding" ];
-       fhir:ElementDefinition.short [ fhir:value "Code defined by a terminology system コード集で定義された医薬品コード" ];
-       fhir:ElementDefinition.definition [ fhir:value "A reference to a code defined by a terminology system.\r\n\r\nコード集で定義された医薬品コードへの情報" ];
-       fhir:ElementDefinition.comment [ fhir:value "Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true.\r\n【JP-CORE】" ];
-       fhir:ElementDefinition.requirements [ fhir:value "Allows for alternative encodings within a code system, and translations to other code systems." ];
-       fhir:ElementDefinition.min [ fhir:value "1"^^xsd:nonNegativeInteger ];
-       fhir:ElementDefinition.max [ fhir:value "*" ];
+       fhir:Element.id [ fhir:value "MedicationDispense.medication[x]:medicationCodeableConcept" ];
+       fhir:ElementDefinition.path [ fhir:value "MedicationDispense.medication[x]" ];
+       fhir:ElementDefinition.sliceName [ fhir:value "medicationCodeableConcept" ];
+       fhir:ElementDefinition.short [ fhir:value "What medication was supplied" ];
+       fhir:ElementDefinition.definition [ fhir:value "Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications." ];
+       fhir:ElementDefinition.comment [ fhir:value "If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource." ];
+       fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
+       fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.base.path [ fhir:value "CodeableConcept.coding" ];
-         fhir:ElementDefinition.base.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
-         fhir:ElementDefinition.base.max [ fhir:value "*" ]
+         fhir:ElementDefinition.base.path [ fhir:value "MedicationDispense.medication[x]" ];
+         fhir:ElementDefinition.base.min [ fhir:value "1"^^xsd:nonNegativeInteger ];
+         fhir:ElementDefinition.base.max [ fhir:value "1" ]
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.type.code [ fhir:value "Coding" ]
+         fhir:ElementDefinition.type.code [ fhir:value "CodeableConcept" ]
        ];
        fhir:ElementDefinition.constraint [
          fhir:index 0;
@@ -1045,23 +1062,44 @@
        ];
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ];
        fhir:ElementDefinition.isSummary [ fhir:value "true"^^xsd:boolean ];
+       fhir:ElementDefinition.binding [
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName" ];
+           fhir:Extension.valueString [ fhir:value "MedicationCode" ]
+         ];
+         fhir:ElementDefinition.binding.strength [ fhir:value "example" ];
+         fhir:ElementDefinition.binding.description [ fhir:value "A coded concept identifying which substance or product can be dispensed." ];
+         fhir:ElementDefinition.binding.valueSet [
+           fhir:value "http://hl7.org/fhir/ValueSet/medication-codes";
+           fhir:link <http://hl7.org/fhir/ValueSet/medication-codes>
+         ]
+       ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
-         fhir:ElementDefinition.mapping.identity [ fhir:value "v2" ];
-         fhir:ElementDefinition.mapping.map [ fhir:value "C*E.1-8, C*E.10-22" ]
+         fhir:ElementDefinition.mapping.identity [ fhir:value "workflow" ];
+         fhir:ElementDefinition.mapping.map [ fhir:value "Event.code" ]
        ], [
          fhir:index 1;
-         fhir:ElementDefinition.mapping.identity [ fhir:value "rim" ];
-         fhir:ElementDefinition.mapping.map [ fhir:value "union(., ./translation)" ]
+         fhir:ElementDefinition.mapping.identity [ fhir:value "w5" ];
+         fhir:ElementDefinition.mapping.map [ fhir:value "FiveWs.what[x]" ]
        ], [
          fhir:index 2;
-         fhir:ElementDefinition.mapping.identity [ fhir:value "orim" ];
-         fhir:ElementDefinition.mapping.map [ fhir:value "fhir:CodeableConcept.coding rdfs:subPropertyOf dt:CD.coding" ]
+         fhir:ElementDefinition.mapping.identity [ fhir:value "v2" ];
+         fhir:ElementDefinition.mapping.map [ fhir:value "RXD-2-Dispense/Give Code" ]
+       ], [
+         fhir:index 3;
+         fhir:ElementDefinition.mapping.identity [ fhir:value "rim" ];
+         fhir:ElementDefinition.mapping.map [ fhir:value ".participation[typeCode=PRD].role" ]
+       ], [
+         fhir:index 4;
+         fhir:ElementDefinition.mapping.identity [ fhir:value "rx-dispense-rmim" ];
+         fhir:ElementDefinition.mapping.map [ fhir:value "CombinedMedicationRequest.component1.AdministrationRequest.consumable" ]
        ]
      ], [
        fhir:index 19;
-       fhir:Element.id [ fhir:value "MedicationDispense.medication[x].coding.id" ];
-       fhir:ElementDefinition.path [ fhir:value "MedicationDispense.medication[x].coding.id" ];
+       fhir:Element.id [ fhir:value "MedicationDispense.medication[x]:medicationCodeableConcept.id" ];
+       fhir:ElementDefinition.path [ fhir:value "MedicationDispense.medication[x].id" ];
        fhir:ElementDefinition.representation [
          fhir:value "xmlAttr";
          fhir:index 0
@@ -1093,8 +1131,8 @@
        ]
      ], [
        fhir:index 20;
-       fhir:Element.id [ fhir:value "MedicationDispense.medication[x].coding.extension" ];
-       fhir:ElementDefinition.path [ fhir:value "MedicationDispense.medication[x].coding.extension" ];
+       fhir:Element.id [ fhir:value "MedicationDispense.medication[x]:medicationCodeableConcept.extension" ];
+       fhir:ElementDefinition.path [ fhir:value "MedicationDispense.medication[x].extension" ];
        fhir:ElementDefinition.slicing [
          fhir:ElementDefinition.slicing.discriminator [
            fhir:index 0;
@@ -1157,7 +1195,150 @@
        ]
      ], [
        fhir:index 21;
-       fhir:Element.id [ fhir:value "MedicationDispense.medication[x].coding.system" ];
+       fhir:Element.id [ fhir:value "MedicationDispense.medication[x]:medicationCodeableConcept.coding" ];
+       fhir:ElementDefinition.path [ fhir:value "MedicationDispense.medication[x].coding" ];
+       fhir:ElementDefinition.short [ fhir:value "Code defined by a terminology system コード集で定義された医薬品コード" ];
+       fhir:ElementDefinition.definition [ fhir:value "A reference to a code defined by a terminology system.\r\n\r\nコード集で定義された医薬品コードへの情報" ];
+       fhir:ElementDefinition.comment [ fhir:value "Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true.\r\n【JP-CORE】" ];
+       fhir:ElementDefinition.requirements [ fhir:value "Allows for alternative encodings within a code system, and translations to other code systems." ];
+       fhir:ElementDefinition.min [ fhir:value "1"^^xsd:nonNegativeInteger ];
+       fhir:ElementDefinition.max [ fhir:value "*" ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.base.path [ fhir:value "CodeableConcept.coding" ];
+         fhir:ElementDefinition.base.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
+         fhir:ElementDefinition.base.max [ fhir:value "*" ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.type.code [ fhir:value "Coding" ]
+       ];
+       fhir:ElementDefinition.constraint [
+         fhir:index 0;
+         fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
+         fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
+         fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
+         fhir:ElementDefinition.constraint.source [
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element";
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ];
+       fhir:ElementDefinition.isSummary [ fhir:value "true"^^xsd:boolean ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.mapping.identity [ fhir:value "v2" ];
+         fhir:ElementDefinition.mapping.map [ fhir:value "C*E.1-8, C*E.10-22" ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.mapping.identity [ fhir:value "rim" ];
+         fhir:ElementDefinition.mapping.map [ fhir:value "union(., ./translation)" ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.mapping.identity [ fhir:value "orim" ];
+         fhir:ElementDefinition.mapping.map [ fhir:value "fhir:CodeableConcept.coding rdfs:subPropertyOf dt:CD.coding" ]
+       ]
+     ], [
+       fhir:index 22;
+       fhir:Element.id [ fhir:value "MedicationDispense.medication[x]:medicationCodeableConcept.coding.id" ];
+       fhir:ElementDefinition.path [ fhir:value "MedicationDispense.medication[x].coding.id" ];
+       fhir:ElementDefinition.representation [
+         fhir:value "xmlAttr";
+         fhir:index 0
+       ];
+       fhir:ElementDefinition.short [ fhir:value "Unique id for inter-element referencing" ];
+       fhir:ElementDefinition.definition [ fhir:value "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
+       fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
+       fhir:ElementDefinition.max [ fhir:value "1" ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.base.path [ fhir:value "Element.id" ];
+         fhir:ElementDefinition.base.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
+         fhir:ElementDefinition.base.max [ fhir:value "1" ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type" ];
+           fhir:Extension.valueUrl [ fhir:value "string" ]
+         ];
+         fhir:ElementDefinition.type.code [ fhir:value "http://hl7.org/fhirpath/System.String" ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ];
+       fhir:ElementDefinition.isSummary [ fhir:value "false"^^xsd:boolean ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.mapping.identity [ fhir:value "rim" ];
+         fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
+       ]
+     ], [
+       fhir:index 23;
+       fhir:Element.id [ fhir:value "MedicationDispense.medication[x]:medicationCodeableConcept.coding.extension" ];
+       fhir:ElementDefinition.path [ fhir:value "MedicationDispense.medication[x].coding.extension" ];
+       fhir:ElementDefinition.slicing [
+         fhir:ElementDefinition.slicing.discriminator [
+           fhir:index 0;
+           fhir:ElementDefinition.slicing.discriminator.type [ fhir:value "value" ];
+           fhir:ElementDefinition.slicing.discriminator.path [ fhir:value "url" ]
+         ];
+         fhir:ElementDefinition.slicing.description [ fhir:value "Extensions are always sliced by (at least) url" ];
+         fhir:ElementDefinition.slicing.rules [ fhir:value "open" ]
+       ];
+       fhir:ElementDefinition.short [ fhir:value "Additional content defined by implementations" ];
+       fhir:ElementDefinition.definition [ fhir:value "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
+       fhir:ElementDefinition.comment [ fhir:value "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
+       fhir:ElementDefinition.alias [
+         fhir:value "extensions";
+         fhir:index 0
+       ], [
+         fhir:value "user content";
+         fhir:index 1
+       ];
+       fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
+       fhir:ElementDefinition.max [ fhir:value "*" ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.base.path [ fhir:value "Element.extension" ];
+         fhir:ElementDefinition.base.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
+         fhir:ElementDefinition.base.max [ fhir:value "*" ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.type.code [ fhir:value "Extension" ]
+       ];
+       fhir:ElementDefinition.constraint [
+         fhir:index 0;
+         fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
+         fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
+         fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
+         fhir:ElementDefinition.constraint.source [
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element";
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
+         fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
+         fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
+         fhir:ElementDefinition.constraint.source [
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension";
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension>
+         ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ];
+       fhir:ElementDefinition.isSummary [ fhir:value "false"^^xsd:boolean ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.mapping.identity [ fhir:value "rim" ];
+         fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
+       ]
+     ], [
+       fhir:index 24;
+       fhir:Element.id [ fhir:value "MedicationDispense.medication[x]:medicationCodeableConcept.coding.system" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.medication[x].coding.system" ];
        fhir:ElementDefinition.short [ fhir:value "Identity of the terminology system" ];
        fhir:ElementDefinition.definition [ fhir:value "The identification of the code system that defines the meaning of the symbol in the code." ];
@@ -1202,8 +1383,8 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "fhir:Coding.system rdfs:subPropertyOf dt:CDCoding.codeSystem" ]
        ]
      ], [
-       fhir:index 22;
-       fhir:Element.id [ fhir:value "MedicationDispense.medication[x].coding.version" ];
+       fhir:index 25;
+       fhir:Element.id [ fhir:value "MedicationDispense.medication[x]:medicationCodeableConcept.coding.version" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.medication[x].coding.version" ];
        fhir:ElementDefinition.short [ fhir:value "Version of the system - if relevant" ];
        fhir:ElementDefinition.definition [ fhir:value "The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured, and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged." ];
@@ -1247,8 +1428,8 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "fhir:Coding.version rdfs:subPropertyOf dt:CDCoding.codeSystemVersion" ]
        ]
      ], [
-       fhir:index 23;
-       fhir:Element.id [ fhir:value "MedicationDispense.medication[x].coding.code" ];
+       fhir:index 26;
+       fhir:Element.id [ fhir:value "MedicationDispense.medication[x]:medicationCodeableConcept.coding.code" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.medication[x].coding.code" ];
        fhir:ElementDefinition.short [ fhir:value "Symbol in syntax defined by the system" ];
        fhir:ElementDefinition.definition [ fhir:value "A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)." ];
@@ -1292,8 +1473,8 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "fhir:Coding.code rdfs:subPropertyOf dt:CDCoding.code" ]
        ]
      ], [
-       fhir:index 24;
-       fhir:Element.id [ fhir:value "MedicationDispense.medication[x].coding.display" ];
+       fhir:index 27;
+       fhir:Element.id [ fhir:value "MedicationDispense.medication[x]:medicationCodeableConcept.coding.display" ];
        fhir:Element.extension [
          fhir:index 0;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable" ];
@@ -1342,8 +1523,8 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "fhir:Coding.display rdfs:subPropertyOf dt:CDCoding.displayName" ]
        ]
      ], [
-       fhir:index 25;
-       fhir:Element.id [ fhir:value "MedicationDispense.medication[x].coding.userSelected" ];
+       fhir:index 28;
+       fhir:Element.id [ fhir:value "MedicationDispense.medication[x]:medicationCodeableConcept.coding.userSelected" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.medication[x].coding.userSelected" ];
        fhir:ElementDefinition.short [ fhir:value "If this coding was chosen directly by the user" ];
        fhir:ElementDefinition.definition [ fhir:value "Indicates that this coding was chosen by a user directly - e.g. off a pick list of available items (codes or displays)." ];
@@ -1388,8 +1569,8 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\\#true a [     fhir:source \"true\";     fhir:target dt:CDCoding.codingRationale\\#O   ]" ]
        ]
      ], [
-       fhir:index 26;
-       fhir:Element.id [ fhir:value "MedicationDispense.medication[x].text" ];
+       fhir:index 29;
+       fhir:Element.id [ fhir:value "MedicationDispense.medication[x]:medicationCodeableConcept.text" ];
        fhir:Element.extension [
          fhir:index 0;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable" ];
@@ -1439,7 +1620,66 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "fhir:CodeableConcept.text rdfs:subPropertyOf dt:CD.originalText" ]
        ]
      ], [
-       fhir:index 27;
+       fhir:index 30;
+       fhir:Element.id [ fhir:value "MedicationDispense.medication[x]:medicationReference" ];
+       fhir:ElementDefinition.path [ fhir:value "MedicationDispense.medication[x]" ];
+       fhir:ElementDefinition.sliceName [ fhir:value "medicationReference" ];
+       fhir:ElementDefinition.short [ fhir:value "What medication was supplied" ];
+       fhir:ElementDefinition.definition [ fhir:value "Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications." ];
+       fhir:ElementDefinition.comment [ fhir:value "If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource." ];
+       fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
+       fhir:ElementDefinition.max [ fhir:value "1" ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.base.path [ fhir:value "MedicationDispense.medication[x]" ];
+         fhir:ElementDefinition.base.min [ fhir:value "1"^^xsd:nonNegativeInteger ];
+         fhir:ElementDefinition.base.max [ fhir:value "1" ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.type.code [ fhir:value "Reference" ];
+         fhir:ElementDefinition.type.targetProfile [
+           fhir:value "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Medication";
+           fhir:index 0;
+           fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Medication>
+         ]
+       ];
+       fhir:ElementDefinition.constraint [
+         fhir:index 0;
+         fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
+         fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
+         fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
+         fhir:ElementDefinition.constraint.source [
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element";
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ];
+       fhir:ElementDefinition.isSummary [ fhir:value "true"^^xsd:boolean ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.mapping.identity [ fhir:value "workflow" ];
+         fhir:ElementDefinition.mapping.map [ fhir:value "Event.code" ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.mapping.identity [ fhir:value "w5" ];
+         fhir:ElementDefinition.mapping.map [ fhir:value "FiveWs.what[x]" ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.mapping.identity [ fhir:value "v2" ];
+         fhir:ElementDefinition.mapping.map [ fhir:value "RXD-2-Dispense/Give Code" ]
+       ], [
+         fhir:index 3;
+         fhir:ElementDefinition.mapping.identity [ fhir:value "rim" ];
+         fhir:ElementDefinition.mapping.map [ fhir:value ".participation[typeCode=PRD].role" ]
+       ], [
+         fhir:index 4;
+         fhir:ElementDefinition.mapping.identity [ fhir:value "rx-dispense-rmim" ];
+         fhir:ElementDefinition.mapping.map [ fhir:value "CombinedMedicationRequest.component1.AdministrationRequest.consumable" ]
+       ]
+     ], [
+       fhir:index 31;
        fhir:Element.id [ fhir:value "MedicationDispense.subject" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.subject" ];
        fhir:ElementDefinition.short [ fhir:value "Who received medication　投与対象患者" ];
@@ -1497,7 +1737,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "FiveWs.subject" ]
        ]
      ], [
-       fhir:index 28;
+       fhir:index 32;
        fhir:Element.id [ fhir:value "MedicationDispense.context" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.context" ];
        fhir:ElementDefinition.short [ fhir:value "Encounter / Episode associated with event　調剤ベントに関連するエンカウンターやエピソード" ];
@@ -1547,7 +1787,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN, code=\"type of encounter or episode\"]" ]
        ]
      ], [
-       fhir:index 29;
+       fhir:index 33;
        fhir:Element.id [ fhir:value "MedicationDispense.supportingInformation" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.supportingInformation" ];
        fhir:ElementDefinition.short [ fhir:value "Information that supports the dispensing of the medication　薬の調剤をサポートする情報" ];
@@ -1593,7 +1833,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]" ]
        ]
      ], [
-       fhir:index 30;
+       fhir:index 34;
        fhir:Element.id [ fhir:value "MedicationDispense.performer" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.performer" ];
        fhir:ElementDefinition.short [ fhir:value "Who performed event　調剤を実施した人" ];
@@ -1633,7 +1873,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".participation[typeCode=PRF]" ]
        ]
      ], [
-       fhir:index 31;
+       fhir:index 35;
        fhir:Element.id [ fhir:value "MedicationDispense.performer.id" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.performer.id" ];
        fhir:ElementDefinition.representation [
@@ -1666,7 +1906,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 32;
+       fhir:index 36;
        fhir:Element.id [ fhir:value "MedicationDispense.performer.extension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.performer.extension" ];
        fhir:ElementDefinition.short [ fhir:value "Additional content defined by implementations" ];
@@ -1721,7 +1961,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 33;
+       fhir:index 37;
        fhir:Element.id [ fhir:value "MedicationDispense.performer.modifierExtension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.performer.modifierExtension" ];
        fhir:ElementDefinition.short [ fhir:value "Extensions that cannot be ignored even if unrecognized" ];
@@ -1781,7 +2021,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "N/A" ]
        ]
      ], [
-       fhir:index 34;
+       fhir:index 38;
        fhir:Element.id [ fhir:value "MedicationDispense.performer.function" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.performer.function" ];
        fhir:ElementDefinition.short [ fhir:value "Who performed the dispense and what they did" ];
@@ -1831,7 +2071,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "participation[typeCode=PRF].functionCode" ]
        ]
      ], [
-       fhir:index 35;
+       fhir:index 39;
        fhir:Element.id [ fhir:value "MedicationDispense.performer.actor" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.performer.actor" ];
        fhir:ElementDefinition.short [ fhir:value "Individual who was performing" ];
@@ -1896,7 +2136,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".role" ]
        ]
      ], [
-       fhir:index 36;
+       fhir:index 40;
        fhir:Element.id [ fhir:value "MedicationDispense.location" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.location" ];
        fhir:ElementDefinition.short [ fhir:value "Where the dispense occurred　調剤実施場所" ];
@@ -1938,7 +2178,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".participation[typeCode=LOC].role" ]
        ]
      ], [
-       fhir:index 37;
+       fhir:index 41;
        fhir:Element.id [ fhir:value "MedicationDispense.authorizingPrescription" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.authorizingPrescription" ];
        fhir:ElementDefinition.short [ fhir:value "Medication order that authorizes the dispense　調剤を正当化する元の処方オーダ" ];
@@ -1992,7 +2232,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "CombinedMedicationDispense.inFulfillmentOf" ]
        ]
      ], [
-       fhir:index 38;
+       fhir:index 42;
        fhir:Element.id [ fhir:value "MedicationDispense.type" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.type" ];
        fhir:ElementDefinition.short [ fhir:value "Trial fill, partial fill, emergency fill, etc." ];
@@ -2050,7 +2290,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "CombinedMedicationDispense.SupplyEvent.code" ]
        ]
      ], [
-       fhir:index 39;
+       fhir:index 43;
        fhir:Element.id [ fhir:value "MedicationDispense.quantity" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.quantity" ];
        fhir:ElementDefinition.short [ fhir:value "払い出される薬剤の量" ];
@@ -2100,7 +2340,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "CombinedMedicationDispense.SupplyEvent.quantity" ]
        ]
      ], [
-       fhir:index 40;
+       fhir:index 44;
        fhir:Element.id [ fhir:value "MedicationDispense.quantity.id" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.quantity.id" ];
        fhir:ElementDefinition.representation [
@@ -2133,7 +2373,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 41;
+       fhir:index 45;
        fhir:Element.id [ fhir:value "MedicationDispense.quantity.extension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.quantity.extension" ];
        fhir:ElementDefinition.slicing [
@@ -2197,7 +2437,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 42;
+       fhir:index 46;
        fhir:Element.id [ fhir:value "MedicationDispense.quantity.value" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.quantity.value" ];
        fhir:ElementDefinition.short [ fhir:value "Numerical value (with implicit precision)" ];
@@ -2239,7 +2479,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "PQ.value, CO.value, MO.value, IVL.high or IVL.low depending on the value" ]
        ]
      ], [
-       fhir:index 43;
+       fhir:index 47;
        fhir:Element.id [ fhir:value "MedicationDispense.quantity.comparator" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.quantity.comparator" ];
        fhir:ElementDefinition.short [ fhir:value "< | <= | >= | > - how to understand the value" ];
@@ -2295,7 +2535,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "IVL properties" ]
        ]
      ], [
-       fhir:index 44;
+       fhir:index 48;
        fhir:Element.id [ fhir:value "MedicationDispense.quantity.unit" ];
        fhir:Element.extension [
          fhir:index 0;
@@ -2341,7 +2581,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "PQ.unit" ]
        ]
      ], [
-       fhir:index 45;
+       fhir:index 49;
        fhir:Element.id [ fhir:value "MedicationDispense.quantity.system" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.quantity.system" ];
        fhir:ElementDefinition.short [ fhir:value "System that defines coded unit form" ];
@@ -2386,7 +2626,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "CO.codeSystem, PQ.translation.codeSystem" ]
        ]
      ], [
-       fhir:index 46;
+       fhir:index 50;
        fhir:Element.id [ fhir:value "MedicationDispense.quantity.code" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.quantity.code" ];
        fhir:ElementDefinition.short [ fhir:value "単位についてのコード形式" ];
@@ -2428,7 +2668,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "PQ.code, MO.currency, PQ.translation.code" ]
        ]
      ], [
-       fhir:index 47;
+       fhir:index 51;
        fhir:Element.id [ fhir:value "MedicationDispense.daysSupply" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.daysSupply" ];
        fhir:ElementDefinition.short [ fhir:value "Amount of medication expressed as a timing amount　　タイミングとして表される投薬量" ];
@@ -2474,7 +2714,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "effectiveUseTime" ]
        ]
      ], [
-       fhir:index 48;
+       fhir:index 52;
        fhir:Element.id [ fhir:value "MedicationDispense.whenPrepared" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.whenPrepared" ];
        fhir:ElementDefinition.short [ fhir:value "When product was packaged and reviewed　調剤がパッケージ化され、レビューされた日時" ];
@@ -2518,7 +2758,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "CombinedMedicationDispense.SupplyEvent.effectiveTime" ]
        ]
      ], [
-       fhir:index 49;
+       fhir:index 53;
        fhir:Element.id [ fhir:value "MedicationDispense.whenHandedOver" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.whenHandedOver" ];
        fhir:ElementDefinition.short [ fhir:value "Medication order that authorizes the dispense　払い出された日時" ];
@@ -2566,7 +2806,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "CombinedMedicationDispense.SupplyEvent.effectiveTime" ]
        ]
      ], [
-       fhir:index 50;
+       fhir:index 54;
        fhir:Element.id [ fhir:value "MedicationDispense.destination" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.destination" ];
        fhir:ElementDefinition.short [ fhir:value "Where the medication was sent　薬が送られた場所" ];
@@ -2616,7 +2856,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "CombinedMedicationDispense.SupplyEvent.destination" ]
        ]
      ], [
-       fhir:index 51;
+       fhir:index 55;
        fhir:Element.id [ fhir:value "MedicationDispense.receiver" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.receiver" ];
        fhir:ElementDefinition.short [ fhir:value "Who collected the medication　 薬を受け取った人" ];
@@ -2666,7 +2906,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "CombinedMedicationDispense.SupplyEvent.receiver" ]
        ]
      ], [
-       fhir:index 52;
+       fhir:index 56;
        fhir:Element.id [ fhir:value "MedicationDispense.note" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.note" ];
        fhir:ElementDefinition.short [ fhir:value "Information about the dispense　調剤に関する備考" ];
@@ -2711,7 +2951,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".inboundRelationship[typeCode=SUBJ]/source[classCode=ACT,moodCode=EVN]" ]
        ]
      ], [
-       fhir:index 53;
+       fhir:index 57;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction" ];
        fhir:ElementDefinition.short [ fhir:value "How the medication is to be used by the patient or administered by the caregiver　薬が患者によってどのように使用されるか、または介護者によってどのように投与されるか" ];
@@ -2748,7 +2988,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".outboundRelationship[typeCode=COMP].target[classCode=SBADM, moodCode=INT]" ]
        ]
      ], [
-       fhir:index 54;
+       fhir:index 58;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.id" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.id" ];
        fhir:ElementDefinition.representation [
@@ -2781,7 +3021,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 55;
+       fhir:index 59;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.extension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.extension" ];
        fhir:ElementDefinition.slicing [
@@ -2845,7 +3085,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 56;
+       fhir:index 60;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.extension:UsageDuration" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.extension" ];
        fhir:ElementDefinition.sliceName [ fhir:value "UsageDuration" ];
@@ -2893,7 +3133,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ];
        fhir:ElementDefinition.isSummary [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 57;
+       fhir:index 61;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.extension:PeriodOfUse" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.extension" ];
        fhir:ElementDefinition.sliceName [ fhir:value "PeriodOfUse" ];
@@ -2941,7 +3181,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ];
        fhir:ElementDefinition.isSummary [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 58;
+       fhir:index 62;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.extension:Line" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.extension" ];
        fhir:ElementDefinition.sliceName [ fhir:value "Line" ];
@@ -2989,7 +3229,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ];
        fhir:ElementDefinition.isSummary [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 59;
+       fhir:index 63;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.extension:Device" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.extension" ];
        fhir:ElementDefinition.sliceName [ fhir:value "Device" ];
@@ -3037,7 +3277,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ];
        fhir:ElementDefinition.isSummary [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 60;
+       fhir:index 64;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.modifierExtension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.modifierExtension" ];
        fhir:ElementDefinition.short [ fhir:value "Extensions that cannot be ignored even if unrecognized" ];
@@ -3097,7 +3337,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "N/A" ]
        ]
      ], [
-       fhir:index 61;
+       fhir:index 65;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.sequence" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.sequence" ];
        fhir:ElementDefinition.short [ fhir:value "The order of the dosage instructions　投与量の指示の順序" ];
@@ -3138,7 +3378,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".text" ]
        ]
      ], [
-       fhir:index 62;
+       fhir:index 66;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.text" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.text" ];
        fhir:ElementDefinition.short [ fhir:value "Free text dosage instructions e.g. SIG　  フリーテキストの投与方法の説明　SIG:用法" ];
@@ -3179,7 +3419,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".text" ]
        ]
      ], [
-       fhir:index 63;
+       fhir:index 67;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.additionalInstruction" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.additionalInstruction" ];
        fhir:ElementDefinition.short [ fhir:value "Supplemental instruction or warnings to the patient - e.g. \"with meals\", \"may cause drowsiness\"　患者への補足的な指示または警告-例： 「食事と一緒に」、「眠気を引き起こす可能性があります」" ];
@@ -3234,7 +3474,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".text" ]
        ]
      ], [
-       fhir:index 64;
+       fhir:index 68;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.patientInstruction" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.patientInstruction" ];
        fhir:ElementDefinition.short [ fhir:value "Patient or consumer oriented instructions　患者または消費者向けの指示" ];
@@ -3274,7 +3514,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".text" ]
        ]
      ], [
-       fhir:index 65;
+       fhir:index 69;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing" ];
        fhir:ElementDefinition.short [ fhir:value "When medication should be administered　投与日時" ];
@@ -3312,7 +3552,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".effectiveTime" ]
        ]
      ], [
-       fhir:index 66;
+       fhir:index 70;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.id" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.id" ];
        fhir:ElementDefinition.representation [
@@ -3345,7 +3585,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 67;
+       fhir:index 71;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.extension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.extension" ];
        fhir:ElementDefinition.slicing [
@@ -3409,7 +3649,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 68;
+       fhir:index 72;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.modifierExtension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.modifierExtension" ];
        fhir:ElementDefinition.short [ fhir:value "Extensions that cannot be ignored even if unrecognized" ];
@@ -3469,7 +3709,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "N/A" ]
        ]
      ], [
-       fhir:index 69;
+       fhir:index 73;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.event" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.event" ];
        fhir:ElementDefinition.short [ fhir:value "When the event occurs" ];
@@ -3506,7 +3746,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "QLIST<TS>" ]
        ]
      ], [
-       fhir:index 70;
+       fhir:index 74;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat" ];
        fhir:ElementDefinition.short [ fhir:value "When the event is to occur" ];
@@ -3642,7 +3882,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "Implies PIVL or EIVL" ]
        ]
      ], [
-       fhir:index 71;
+       fhir:index 75;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.id" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.id" ];
        fhir:ElementDefinition.representation [
@@ -3675,7 +3915,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 72;
+       fhir:index 76;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.extension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.extension" ];
        fhir:ElementDefinition.slicing [
@@ -3739,7 +3979,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 73;
+       fhir:index 77;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.bounds[x]" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.bounds[x]" ];
        fhir:ElementDefinition.short [ fhir:value "Length/Range of lengths, or (Start and/or end) limits" ];
@@ -3781,7 +4021,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "IVL(TS) used in a QSI" ]
        ]
      ], [
-       fhir:index 74;
+       fhir:index 78;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.count" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.count" ];
        fhir:ElementDefinition.short [ fhir:value "Number of times to repeat" ];
@@ -3819,7 +4059,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "PIVL.count" ]
        ]
      ], [
-       fhir:index 75;
+       fhir:index 79;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.countMax" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.countMax" ];
        fhir:ElementDefinition.short [ fhir:value "Maximum number of times to repeat" ];
@@ -3855,7 +4095,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "PIVL.count" ]
        ]
      ], [
-       fhir:index 76;
+       fhir:index 80;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.duration" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.duration" ];
        fhir:ElementDefinition.short [ fhir:value "How long when it happens" ];
@@ -3893,7 +4133,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "PIVL.phase" ]
        ]
      ], [
-       fhir:index 77;
+       fhir:index 81;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.durationMax" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.durationMax" ];
        fhir:ElementDefinition.short [ fhir:value "How long when it happens (Max)" ];
@@ -3931,7 +4171,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "PIVL.phase" ]
        ]
      ], [
-       fhir:index 78;
+       fhir:index 82;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.durationUnit" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.durationUnit" ];
        fhir:ElementDefinition.short [ fhir:value "s | min | h | d | wk | mo | a - unit of time (UCUM)" ];
@@ -3980,7 +4220,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "PIVL.phase.unit" ]
        ]
      ], [
-       fhir:index 79;
+       fhir:index 83;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.frequency" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.frequency" ];
        fhir:ElementDefinition.short [ fhir:value "Event occurs frequency times per period" ];
@@ -4017,7 +4257,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "PIVL.phase" ]
        ]
      ], [
-       fhir:index 80;
+       fhir:index 84;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.frequencyMax" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.frequencyMax" ];
        fhir:ElementDefinition.short [ fhir:value "Event occurs up to frequencyMax times per period" ];
@@ -4053,7 +4293,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "PIVL.phase" ]
        ]
      ], [
-       fhir:index 81;
+       fhir:index 85;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.period" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.period" ];
        fhir:ElementDefinition.short [ fhir:value "Event occurs frequency times per period" ];
@@ -4089,7 +4329,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "PIVL.phase" ]
        ]
      ], [
-       fhir:index 82;
+       fhir:index 86;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.periodMax" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.periodMax" ];
        fhir:ElementDefinition.short [ fhir:value "Upper limit of period (3-4 hours)" ];
@@ -4125,7 +4365,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "PIVL.phase" ]
        ]
      ], [
-       fhir:index 83;
+       fhir:index 87;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.periodUnit" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.periodUnit" ];
        fhir:ElementDefinition.short [ fhir:value "s | min | h | d | wk | mo | a - unit of time (UCUM)" ];
@@ -4174,7 +4414,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "PIVL.phase.unit" ]
        ]
      ], [
-       fhir:index 84;
+       fhir:index 88;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.dayOfWeek" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.dayOfWeek" ];
        fhir:ElementDefinition.short [ fhir:value "mon | tue | wed | thu | fri | sat | sun" ];
@@ -4223,7 +4463,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 85;
+       fhir:index 89;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.timeOfDay" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.timeOfDay" ];
        fhir:ElementDefinition.short [ fhir:value "Time of day for action" ];
@@ -4260,7 +4500,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 86;
+       fhir:index 90;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.when" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.when" ];
        fhir:ElementDefinition.short [ fhir:value "Code for time period of occurrence" ];
@@ -4311,7 +4551,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "EIVL.event" ]
        ]
      ], [
-       fhir:index 87;
+       fhir:index 91;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.offset" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.repeat.offset" ];
        fhir:ElementDefinition.short [ fhir:value "Minutes from event (before or after)" ];
@@ -4347,7 +4587,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "EIVL.offset" ]
        ]
      ], [
-       fhir:index 88;
+       fhir:index 92;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.code" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.code" ];
        fhir:ElementDefinition.short [ fhir:value "BID | TID | QID | AM | PM | QD | QOD | +" ];
@@ -4397,7 +4637,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "QSC.code" ]
        ]
      ], [
-       fhir:index 89;
+       fhir:index 93;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.code.id" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.code.id" ];
        fhir:ElementDefinition.representation [
@@ -4430,7 +4670,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 90;
+       fhir:index 94;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.code.extension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.code.extension" ];
        fhir:ElementDefinition.slicing [
@@ -4494,7 +4734,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 91;
+       fhir:index 95;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.code.coding" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.code.coding" ];
        fhir:ElementDefinition.short [ fhir:value "Code defined by a terminology system" ];
@@ -4540,7 +4780,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "fhir:CodeableConcept.coding rdfs:subPropertyOf dt:CD.coding" ]
        ]
      ], [
-       fhir:index 92;
+       fhir:index 96;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.code.coding.id" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.code.coding.id" ];
        fhir:ElementDefinition.representation [
@@ -4573,7 +4813,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 93;
+       fhir:index 97;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.code.coding.extension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.code.coding.extension" ];
        fhir:ElementDefinition.slicing [
@@ -4637,7 +4877,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 94;
+       fhir:index 98;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.code.coding.system" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.code.coding.system" ];
        fhir:ElementDefinition.short [ fhir:value "Identity of the terminology system" ];
@@ -4683,7 +4923,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "fhir:Coding.system rdfs:subPropertyOf dt:CDCoding.codeSystem" ]
        ]
      ], [
-       fhir:index 95;
+       fhir:index 99;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.code.coding.version" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.code.coding.version" ];
        fhir:ElementDefinition.short [ fhir:value "Version of the system - if relevant" ];
@@ -4728,7 +4968,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "fhir:Coding.version rdfs:subPropertyOf dt:CDCoding.codeSystemVersion" ]
        ]
      ], [
-       fhir:index 96;
+       fhir:index 100;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.code.coding.code" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.code.coding.code" ];
        fhir:ElementDefinition.short [ fhir:value "Symbol in syntax defined by the system" ];
@@ -4773,7 +5013,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "fhir:Coding.code rdfs:subPropertyOf dt:CDCoding.code" ]
        ]
      ], [
-       fhir:index 97;
+       fhir:index 101;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.code.coding.display" ];
        fhir:Element.extension [
          fhir:index 0;
@@ -4823,7 +5063,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "fhir:Coding.display rdfs:subPropertyOf dt:CDCoding.displayName" ]
        ]
      ], [
-       fhir:index 98;
+       fhir:index 102;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.code.coding.userSelected" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.timing.code.coding.userSelected" ];
        fhir:ElementDefinition.short [ fhir:value "If this coding was chosen directly by the user" ];
@@ -4869,7 +5109,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\\#true a [     fhir:source \"true\";     fhir:target dt:CDCoding.codingRationale\\#O   ]" ]
        ]
      ], [
-       fhir:index 99;
+       fhir:index 103;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.timing.code.text" ];
        fhir:Element.extension [
          fhir:index 0;
@@ -4920,7 +5160,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "fhir:CodeableConcept.text rdfs:subPropertyOf dt:CD.originalText" ]
        ]
      ], [
-       fhir:index 100;
+       fhir:index 104;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.asNeeded[x]" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.asNeeded[x]" ];
        fhir:ElementDefinition.short [ fhir:value "Take \"as needed\" (for x)　「必要に応じて」（xの場合）" ];
@@ -4977,7 +5217,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".outboundRelationship[typeCode=PRCN].target[classCode=OBS, moodCode=EVN, code=\"as needed\"].value=boolean or codable concept" ]
        ]
      ], [
-       fhir:index 101;
+       fhir:index 105;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.site" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.site" ];
        fhir:ElementDefinition.short [ fhir:value "Body site to administer to　投与部位" ];
@@ -5032,7 +5272,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".approachSiteCode" ]
        ]
      ], [
-       fhir:index 102;
+       fhir:index 106;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.route" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.route" ];
        fhir:ElementDefinition.short [ fhir:value "How drug should enter body　薬が身体に入る経路" ];
@@ -5087,7 +5327,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".routeCode" ]
        ]
      ], [
-       fhir:index 103;
+       fhir:index 107;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.method" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.method" ];
        fhir:ElementDefinition.short [ fhir:value "Technique for administering medication　投与手技" ];
@@ -5142,7 +5382,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".doseQuantity" ]
        ]
      ], [
-       fhir:index 104;
+       fhir:index 108;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.doseAndRate" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.doseAndRate" ];
        fhir:ElementDefinition.short [ fhir:value "Amount of medication administered" ];
@@ -5178,7 +5418,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "TQ1-2" ]
        ]
      ], [
-       fhir:index 105;
+       fhir:index 109;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.doseAndRate.id" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.doseAndRate.id" ];
        fhir:ElementDefinition.representation [
@@ -5211,7 +5451,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 106;
+       fhir:index 110;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.doseAndRate.extension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.doseAndRate.extension" ];
        fhir:ElementDefinition.slicing [
@@ -5275,7 +5515,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 107;
+       fhir:index 111;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.doseAndRate.type" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.doseAndRate.type" ];
        fhir:ElementDefinition.short [ fhir:value "The kind of dose or rate specified" ];
@@ -5325,7 +5565,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "RXO-21; RXE-23" ]
        ]
      ], [
-       fhir:index 108;
+       fhir:index 112;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.doseAndRate.dose[x]" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.doseAndRate.dose[x]" ];
        fhir:ElementDefinition.short [ fhir:value "Amount of medication per dose" ];
@@ -5375,7 +5615,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".doseQuantity" ]
        ]
      ], [
-       fhir:index 109;
+       fhir:index 113;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.doseAndRate.rate[x]" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.doseAndRate.rate[x]" ];
        fhir:ElementDefinition.short [ fhir:value "Amount of medication per unit of time" ];
@@ -5428,7 +5668,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".rateQuantity" ]
        ]
      ], [
-       fhir:index 110;
+       fhir:index 114;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.maxDosePerPeriod" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.maxDosePerPeriod" ];
        fhir:ElementDefinition.short [ fhir:value "Upper limit on medication per unit of time" ];
@@ -5470,7 +5710,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".maxDoseQuantity" ]
        ]
      ], [
-       fhir:index 111;
+       fhir:index 115;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.maxDosePerAdministration" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.maxDosePerAdministration" ];
        fhir:ElementDefinition.short [ fhir:value "Upper limit on medication per administration" ];
@@ -5513,7 +5753,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "not supported" ]
        ]
      ], [
-       fhir:index 112;
+       fhir:index 116;
        fhir:Element.id [ fhir:value "MedicationDispense.dosageInstruction.maxDosePerLifetime" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.dosageInstruction.maxDosePerLifetime" ];
        fhir:ElementDefinition.short [ fhir:value "Upper limit on medication per lifetime of the patient" ];
@@ -5555,7 +5795,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "not supported" ]
        ]
      ], [
-       fhir:index 113;
+       fhir:index 117;
        fhir:Element.id [ fhir:value "MedicationDispense.substitution" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.substitution" ];
        fhir:ElementDefinition.short [ fhir:value "Whether a substitution was performed on the dispense　調剤で置換が実行されたかどうか。" ];
@@ -5595,7 +5835,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "CombinedMedicationDispense.substitutionMade" ]
        ]
      ], [
-       fhir:index 114;
+       fhir:index 118;
        fhir:Element.id [ fhir:value "MedicationDispense.substitution.id" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.substitution.id" ];
        fhir:ElementDefinition.representation [
@@ -5628,7 +5868,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 115;
+       fhir:index 119;
        fhir:Element.id [ fhir:value "MedicationDispense.substitution.extension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.substitution.extension" ];
        fhir:ElementDefinition.short [ fhir:value "Additional content defined by implementations" ];
@@ -5683,7 +5923,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "n/a" ]
        ]
      ], [
-       fhir:index 116;
+       fhir:index 120;
        fhir:Element.id [ fhir:value "MedicationDispense.substitution.modifierExtension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.substitution.modifierExtension" ];
        fhir:ElementDefinition.short [ fhir:value "Extensions that cannot be ignored even if unrecognized" ];
@@ -5743,7 +5983,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "N/A" ]
        ]
      ], [
-       fhir:index 117;
+       fhir:index 121;
        fhir:Element.id [ fhir:value "MedicationDispense.substitution.wasSubstituted" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.substitution.wasSubstituted" ];
        fhir:ElementDefinition.short [ fhir:value "Whether a substitution was or was not performed on the dispense　調剤で置換が実行されたか、あるいはされていないかを'true'または'false'で表す。" ];
@@ -5779,7 +6019,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".actionNegationInd" ]
        ]
      ], [
-       fhir:index 118;
+       fhir:index 122;
        fhir:Element.id [ fhir:value "MedicationDispense.substitution.type" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.substitution.type" ];
        fhir:ElementDefinition.short [ fhir:value "Code signifying whether a different drug was dispensed from what was prescribed　処方されたものとは異なる薬が調剤されたかどうかを示すコード" ];
@@ -5837,7 +6077,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "CombinedMedicationDispense.substitutionMade.code" ]
        ]
      ], [
-       fhir:index 119;
+       fhir:index 123;
        fhir:Element.id [ fhir:value "MedicationDispense.substitution.reason" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.substitution.reason" ];
        fhir:ElementDefinition.short [ fhir:value "Why was substitution made　置換が実施された理由" ];
@@ -5891,7 +6131,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "CombinedMedicationDispense.substitutionMade.reasonCode" ]
        ]
      ], [
-       fhir:index 120;
+       fhir:index 124;
        fhir:Element.id [ fhir:value "MedicationDispense.substitution.responsibleParty" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.substitution.responsibleParty" ];
        fhir:ElementDefinition.short [ fhir:value "Who is responsible for the substitution　置換責任者" ];
@@ -5941,7 +6181,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value "CombinedMedicationDispense.substitutionMade.ResponsibleParty" ]
        ]
      ], [
-       fhir:index 121;
+       fhir:index 125;
        fhir:Element.id [ fhir:value "MedicationDispense.detectedIssue" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.detectedIssue" ];
        fhir:ElementDefinition.short [ fhir:value "Clinical issue with action アクションを伴う臨床的問題" ];
@@ -5993,7 +6233,7 @@
          fhir:ElementDefinition.mapping.map [ fhir:value ".inboundRelationship[typeCode=SUBJ]/source[classCode=ALRT,moodCode=EVN].value" ]
        ]
      ], [
-       fhir:index 122;
+       fhir:index 126;
        fhir:Element.id [ fhir:value "MedicationDispense.eventHistory" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationDispense.eventHistory" ];
        fhir:ElementDefinition.short [ fhir:value "A list of relevant lifecycle events　関連するライフサイクルイベントのリスト" ];

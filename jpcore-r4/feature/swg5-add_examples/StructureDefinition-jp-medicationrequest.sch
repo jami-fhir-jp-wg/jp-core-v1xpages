@@ -181,7 +181,8 @@
   <sch:pattern>
     <sch:title>MedicationRequest.medication[x] 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:medication[x]">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -189,12 +190,14 @@
     <sch:rule context="f:MedicationRequest/f:medication[x]/f:extension">
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
       <sch:assert test="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])">Must have either extensions or value[x], not both</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
+      <sch:assert test="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])">Must have either extensions or value[x], not both</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>MedicationRequest.medication[x].coding 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:medication[x]/f:coding">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -207,37 +210,37 @@
   <sch:pattern>
     <sch:title>MedicationRequest.medication[x].coding.system 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:medication[x]/f:coding/f:system">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>MedicationRequest.medication[x].coding.version 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:medication[x]/f:coding/f:version">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>MedicationRequest.medication[x].coding.code 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:medication[x]/f:coding/f:code">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>MedicationRequest.medication[x].coding.display 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:medication[x]/f:coding/f:display">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>MedicationRequest.medication[x].coding.userSelected 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:medication[x]/f:coding/f:userSelected">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>MedicationRequest.medication[x].text 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:medication[x]/f:text">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -539,6 +542,13 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
+    <sch:title>MedicationRequest.dosageInstruction.timing.repeat.bounds[x] 1</sch:title>
+    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:timing/f:repeat/f:bounds[x]">
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
     <sch:title>f:MedicationRequest/f:dosageInstruction/f:timing/f:repeat/f:bounds[x] 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:timing/f:repeat/f:bounds[x]">
       <sch:assert test="count(f:id) &lt;= 0">id: maximum cardinality of 'id' is 0</sch:assert>
@@ -547,12 +557,6 @@
       <sch:assert test="count(f:unit) &gt;= 1">unit: minimum cardinality of 'unit' is 1</sch:assert>
       <sch:assert test="count(f:system) &gt;= 1">system: minimum cardinality of 'system' is 1</sch:assert>
       <sch:assert test="count(f:code) &gt;= 1">code: minimum cardinality of 'code' is 1</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.timing.repeat.bounds[x] 1</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:timing/f:repeat/f:bounds[x]">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -565,31 +569,31 @@
   <sch:pattern>
     <sch:title>MedicationRequest.dosageInstruction.timing.repeat.bounds[x].value 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:timing/f:repeat/f:bounds[x]/f:value">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>MedicationRequest.dosageInstruction.timing.repeat.bounds[x].comparator 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:timing/f:repeat/f:bounds[x]/f:comparator">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>MedicationRequest.dosageInstruction.timing.repeat.bounds[x].unit 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:timing/f:repeat/f:bounds[x]/f:unit">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>MedicationRequest.dosageInstruction.timing.repeat.bounds[x].system 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:timing/f:repeat/f:bounds[x]/f:system">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>MedicationRequest.dosageInstruction.timing.repeat.bounds[x].code 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:timing/f:repeat/f:bounds[x]/f:code">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
