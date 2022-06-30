@@ -34,7 +34,7 @@ user content","",0,*,"","Y","","Extension {[]} {[]}
 
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
-"MedicationRequest.identifier","MedicationRequest.identifier","","","",0,*,"","","","Identifier {[]} {[]}
+"MedicationRequest.identifier","MedicationRequest.identifier","","","",2,*,"","","","Identifier {[]} {[]}
 ","外部から参照されるID","このインスタンスが外部から参照されるために使われるIDである。処方箋全体としてのIDとしては使用しない。
 処方箋内で同一の用法をまとめて表記されるRp番号はこのIdentifier elementの別スライスで表現する。それ以外に任意のIDを付与してもよい。
 このIDは業務手順によって定められた処方オーダーに対して、直接的なURL参照が適切でない場合も含めて関連付けるために使われる。この業務手順のIDは実施者によって割り当てられたものであり、リソースが更新されたりサーバからサーバに転送されたとしても固定のものとして存続する。","これは業務IDであって、リソースに対するIDではない。","","","","","","","","",,,,,"","value:system}
@@ -68,7 +68,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "MedicationRequest.identifier:RequestIdentifier.assigner","MedicationRequest.identifier.assigner","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization]]}
 ","Organization that issued id (may be just text)","Organization that issued/manages the identifier.","The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.","","","","","","","","",,,,,"",,,,"Identifier.assigner",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper","CX.4 / (CX.4,CX.9,CX.10)"
-"MedicationRequest.identifier:RpNumber","MedicationRequest.identifier","RpNumber","","",1,1,"","","","Identifier {[]} {[]}
+"MedicationRequest.identifier:RpNumber","MedicationRequest.identifier","RpNumber","","",1,*,"","","","Identifier {[]} {[]}
 ","処方箋内部の剤グループとしてのRp番号","処方箋内で同一用法の薬剤を慣用的にまとめて、Rpに番号をつけて剤グループとして一括指定されることがある。このスライスでは剤グループに対して割り振られたRp番号を記録する。","剤グループに複数の薬剤が含まれる場合、このグループ内の薬剤には同じRp番号が割り振られる。","","","","","","","","",,,,,"",,,,"MedicationRequest.identifier",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Request.identifier","Message/Header/PrescriberOrderNumber",".id","FiveWs.identifier","ORC-2-Placer Order Number / ORC-3-Filler Order Number"
 "MedicationRequest.identifier:RpNumber.id","MedicationRequest.identifier.id","","","",0,1,"","","","string {[]} {[]}
@@ -96,7 +96,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "MedicationRequest.identifier:RpNumber.assigner","MedicationRequest.identifier.assigner","","","",0,0,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization]]}
 ","Organization that issued id (may be just text)","Organization that issued/manages the identifier.","The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.","","","","","","","","",,,,,"",,,,"Identifier.assigner",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper","CX.4 / (CX.4,CX.9,CX.10)"
-"MedicationRequest.identifier:OrderInRp","MedicationRequest.identifier","OrderInRp","","",1,1,"","","","Identifier {[]} {[]}
+"MedicationRequest.identifier:OrderInRp","MedicationRequest.identifier","OrderInRp","","",1,*,"","","","Identifier {[]} {[]}
 ","【JP-CORE】同一RP番号（剤グループ）での薬剤の表記順","【JP-CORE】同一剤グループでの薬剤を表記する際の順番。XML形式と異なりJSON形式の場合、表記順は項目の順序を意味しない。したがって、薬剤の記載順を別に規定する必要があるためIDを用いて表現する。","【JP-CORE】同一剤グループ内での薬剤の順番を1から順の番号で示す。","","","","","","","","",,,,,"",,,,"MedicationRequest.identifier",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Request.identifier","Message/Header/PrescriberOrderNumber",".id","FiveWs.identifier","ORC-2-Placer Order Number / ORC-3-Filler Order Number"
 "MedicationRequest.identifier:OrderInRp.id","MedicationRequest.identifier.id","","","",0,1,"","","","string {[]} {[]}
