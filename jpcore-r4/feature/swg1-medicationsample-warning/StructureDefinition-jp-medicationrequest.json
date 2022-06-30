@@ -546,7 +546,7 @@
         "short": "外部から参照されるID",
         "definition": "このインスタンスが外部から参照されるために使われるIDである。処方箋全体としてのIDとしては使用しない。\r\n処方箋内で同一の用法をまとめて表記されるRp番号はこのIdentifier elementの別スライスで表現する。それ以外に任意のIDを付与してもよい。\r\nこのIDは業務手順によって定められた処方オーダーに対して、直接的なURL参照が適切でない場合も含めて関連付けるために使われる。この業務手順のIDは実施者によって割り当てられたものであり、リソースが更新されたりサーバからサーバに転送されたとしても固定のものとして存続する。",
         "comment": "これは業務IDであって、リソースに対するIDではない。",
-        "min": 2,
+        "min": 0,
         "max": "*",
         "base": {
           "path": "MedicationRequest.identifier",
@@ -601,7 +601,7 @@
         "definition": "薬剤をオーダーする単位としての処方箋に対するID。MedicationRequestは単一の薬剤でインスタンスが作成されるが、それの集合としての処方箋のID。",
         "comment": "This is a business identifier, not a resource identifier.",
         "min": 0,
-        "max": "*",
+        "max": "1",
         "base": {
           "path": "MedicationRequest.identifier",
           "min": 0,
@@ -1055,8 +1055,8 @@
         "short": "処方箋内部の剤グループとしてのRp番号",
         "definition": "処方箋内で同一用法の薬剤を慣用的にまとめて、Rpに番号をつけて剤グループとして一括指定されることがある。このスライスでは剤グループに対して割り振られたRp番号を記録する。",
         "comment": "剤グループに複数の薬剤が含まれる場合、このグループ内の薬剤には同じRp番号が割り振られる。",
-        "min": 1,
-        "max": "*",
+        "min": 0,
+        "max": "1",
         "base": {
           "path": "MedicationRequest.identifier",
           "min": 0,
@@ -1510,8 +1510,8 @@
         "short": "【JP-CORE】同一RP番号（剤グループ）での薬剤の表記順",
         "definition": "【JP-CORE】同一剤グループでの薬剤を表記する際の順番。XML形式と異なりJSON形式の場合、表記順は項目の順序を意味しない。したがって、薬剤の記載順を別に規定する必要があるためIDを用いて表現する。",
         "comment": "【JP-CORE】同一剤グループ内での薬剤の順番を1から順の番号で示す。",
-        "min": 1,
-        "max": "*",
+        "min": 0,
+        "max": "1",
         "base": {
           "path": "MedicationRequest.identifier",
           "min": 0,
