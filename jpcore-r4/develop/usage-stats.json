@@ -250,6 +250,27 @@
         "string",
         "boolean"
       ]
+    },
+    {
+      "url": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_CertificatedDate",
+      "title": "CertificatedDate",
+      "types": [
+        "date"
+      ]
+    },
+    {
+      "url": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_ManufacturedDate",
+      "title": "ManufacturedDate",
+      "types": [
+        "date"
+      ]
+    },
+    {
+      "url": "https://jpfhir.jp/fhir/StructureDefinition/JP_Immunization_DueDateOfNextDose",
+      "title": "DueDateOfNectDose",
+      "types": [
+        "date"
+      ]
     }
   ],
   "profiles": {
@@ -307,6 +328,12 @@
       {
         "url": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Radiology",
         "title": "JP Core ImagingStudy Radiology Profile"
+      }
+    ],
+    "Immunization": [
+      {
+        "url": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization",
+        "title": "JP Core Immunization Profile"
       }
     ],
     "Location": [
@@ -417,6 +444,11 @@
     ]
   },
   "usage": {
+    "http://hl7.org/fhir/StructureDefinition/bodySite": [
+      "MedicationAdministration.dosage.site",
+      "MedicationDispense.dosageInstruction.site",
+      "MedicationRequest.dosageInstruction.site"
+    ],
     "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation": [
       "CapabilityStatement.rest.interaction",
       "CapabilityStatement.rest.resource",
@@ -451,7 +483,8 @@
     ],
     "http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation": [
       "HumanName",
-      "Patient.name"
+      "Patient.name",
+      "Practitioner.name"
     ],
     "http://hl7.org/fhir/StructureDefinition/patient-birthPlace": [
       "Patient"
@@ -554,10 +587,14 @@
       "MedicationRequest.dosageInstruction"
     ],
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_IngredientStrength_StrengthType": [
-      "Medication.ingredient.strength"
+      "Medication.ingredient.strength",
+      "MedicationDispense.contained.ingredient.strength",
+      "MedicationRequest.contained.ingredient.strength"
     ],
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_Ingredient_DrugNo": [
-      "Medication.ingredient"
+      "Medication.ingredient",
+      "MedicationDispense.contained.ingredient",
+      "MedicationRequest.contained.ingredient"
     ],
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Observation_BodySite_BodySitePosition": [
       "Observation.bodySite"
@@ -573,6 +610,15 @@
     ],
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Patient_Race": [
       "Patient"
+    ],
+    "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_CertificatedDate": [
+      "Immunization"
+    ],
+    "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_ManufacturedDate": [
+      "Immunization"
+    ],
+    "https://jpfhir.jp/fhir/StructureDefinition/JP_Immunization_DueDateOfNextDose": [
+      "Immunization"
     ]
   }
 }

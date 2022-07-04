@@ -204,6 +204,8 @@
     <sch:title>MedicationRequest.medication[x] 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:medication[x]">
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -592,7 +594,6 @@
     <sch:title>f:MedicationRequest/f:dosageInstruction/f:timing/f:repeat</sch:title>
     <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:timing/f:repeat">
       <sch:assert test="count(f:id) &lt;= 1">id: maximum cardinality of 'id' is 1</sch:assert>
-      <sch:assert test="count(f:bounds[x]) &lt;= 1">bounds[x]: maximum cardinality of 'bounds[x]' is 1</sch:assert>
       <sch:assert test="count(f:count) &lt;= 1">count: maximum cardinality of 'count' is 1</sch:assert>
       <sch:assert test="count(f:countMax) &lt;= 1">countMax: maximum cardinality of 'countMax' is 1</sch:assert>
       <sch:assert test="count(f:duration) &lt;= 1">duration: maximum cardinality of 'duration' is 1</sch:assert>
@@ -629,6 +630,13 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
+    <sch:title>MedicationRequest.dosageInstruction.timing.repeat.bounds[x] 1</sch:title>
+    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:timing/f:repeat/f:bounds[x]">
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
     <sch:title>f:MedicationRequest/f:dosageInstruction/f:timing/f:repeat/f:bounds[x] 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:timing/f:repeat/f:bounds[x]">
       <sch:assert test="count(f:id) &lt;= 0">id: maximum cardinality of 'id' is 0</sch:assert>
@@ -641,12 +649,6 @@
       <sch:assert test="count(f:system) &lt;= 1">system: maximum cardinality of 'system' is 1</sch:assert>
       <sch:assert test="count(f:code) &gt;= 1">code: minimum cardinality of 'code' is 1</sch:assert>
       <sch:assert test="count(f:code) &lt;= 1">code: maximum cardinality of 'code' is 1</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.timing.repeat.bounds[x] 1</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:timing/f:repeat/f:bounds[x]">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
