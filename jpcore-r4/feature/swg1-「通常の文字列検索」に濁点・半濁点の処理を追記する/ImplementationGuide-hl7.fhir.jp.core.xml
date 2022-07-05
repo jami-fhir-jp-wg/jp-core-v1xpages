@@ -286,6 +286,14 @@
         <valueString value="special-url"/>
       </extension>
       <extension url="value">
+        <valueString value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="special-url"/>
+      </extension>
+      <extension url="value">
         <valueString value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location"/>
       </extension>
     </extension>
@@ -471,6 +479,30 @@
       </extension>
       <extension url="value">
         <valueString value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSymbol"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_CertificatedDate"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="https://jpfhir.jp/fhir/StructureDefinition/JP_Immunization_DueDateOfNextDose"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_ManufacturedDate"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -1007,6 +1039,17 @@
         <valueString value="StructureDefinition:resource"/>
       </extension>
       <reference>
+        <reference value="StructureDefinition/jp-immunization"/>
+      </reference>
+      <name value="JP Core Immunization Profile"/>
+      <description value="このProfileはImmunizationリソースに対して日本での予防接種データを送受信するための成約を加えてものである。"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
         <reference value="StructureDefinition/jp-location"/>
       </reference>
       <name value="JP Core Location Profile"/>
@@ -1264,6 +1307,39 @@
       </reference>
       <name value="JP Core Coverage InsuredPersonSymbol Extension"/>
       <description value="健康保険における被保険者証記号を示す拡張"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/jp-immunization-certificateddate"/>
+      </reference>
+      <name value="CertificatedDate"/>
+      <description value="検定年月日"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/jp-immunization-duedateofnextdose"/>
+      </reference>
+      <name value="DueDateOfNectDose"/>
+      <description value="次回摂取予定日"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/jp-immunization-manufactureddate"/>
+      </reference>
+      <name value="ManufacturedDate"/>
+      <description value="製造年月日"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1917,6 +1993,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Coverage"/>
+      </extension>
+      <reference>
+        <reference value="Coverage/jp-coverage-example-1"/>
+      </reference>
+      <name value="JP Core Coverage 健康保険証"/>
+      <description value="健康保険証"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Coverage"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="SearchParameter"/>
       </extension>
       <reference>
@@ -1947,6 +2034,193 @@
       <name value="jp-coverage-insuredpersonsymbol-sp"/>
       <description value="CoverageリソースのInsuredPersonSymbol(健康保険における被保険者証記号)に関する検索を定義します。"/>
       <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Immunization"/>
+      </extension>
+      <reference>
+        <reference value="Immunization/jp-immunization-example-1"/>
+      </reference>
+      <name value="JP Immunization 新型コロナワクチン接種"/>
+      <description value="新型コロナワクチン接種"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Location"/>
+      </extension>
+      <reference>
+        <reference value="Location/jp-location-example-ope"/>
+      </reference>
+      <name value="JP Location 手術室"/>
+      <description value="手術室"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Location"/>
+      </extension>
+      <reference>
+        <reference value="Location/jp-location-example-ward"/>
+      </reference>
+      <name value="JP Location 病棟"/>
+      <description value="JP Location 病棟の例"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Medication"/>
+      </extension>
+      <reference>
+        <reference value="Medication/jp-medication-example-1"/>
+      </reference>
+      <name value="JP_Medication ホリゾン注射液"/>
+      <description value="ホリゾン注射液"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Medication"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Medication"/>
+      </extension>
+      <reference>
+        <reference value="Medication/jp-medication-example-2"/>
+      </reference>
+      <name value="JP_Medication ソリタ－＋アドナ注"/>
+      <description value="ソリタ－＋アドナ注"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Medication"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationAdministration"/>
+      </extension>
+      <reference>
+        <reference value="MedicationAdministration/jp-medicationadministration-example-1"/>
+      </reference>
+      <name value="JP MedicationAdministration 投薬実施"/>
+      <description value="投薬実施"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationAdministration"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationAdministration"/>
+      </extension>
+      <reference>
+        <reference value="MedicationAdministration/jp-medicationadministration-example-2"/>
+      </reference>
+      <name value="JP MedicationAdministration 投薬中止"/>
+      <description value="投薬中止"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationAdministration"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationAdministration"/>
+      </extension>
+      <reference>
+        <reference value="MedicationAdministration/jp-medicationadministration-injection-example-1"/>
+      </reference>
+      <name value="JP MedicationAdministration Injection ワンショット静脈注射（実施）"/>
+      <description value="ワンショット静脈注射（実施）"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationAdministration_Injection"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationAdministration"/>
+      </extension>
+      <reference>
+        <reference value="MedicationAdministration/jp-medicationadministration-injection-example-2"/>
+      </reference>
+      <name value="JP MedicationAdministration Injection 点滴注射（実施）"/>
+      <description value="点滴注射（実施）"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationAdministration_Injection"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationDispense"/>
+      </extension>
+      <reference>
+        <reference value="MedicationDispense/jp-medicationdispense-example-1"/>
+      </reference>
+      <name value="JP MedicationDispense 内服薬調剤実施"/>
+      <description value="内服薬調剤実施"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationDispense"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationDispense"/>
+      </extension>
+      <reference>
+        <reference value="MedicationDispense/jp-medicationdispense-injection-example-1"/>
+      </reference>
+      <name value="JP MedicationDispense Injection 注射薬調剤実施"/>
+      <description value="注射薬調剤実施"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationDispense_Injection"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationRequest"/>
+      </extension>
+      <reference>
+        <reference value="MedicationRequest/jp-medicationrequest-example-1"/>
+      </reference>
+      <name value="JP MedicationRequest 内服処方1"/>
+      <description value="内服処方1"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRequest"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationRequest"/>
+      </extension>
+      <reference>
+        <reference value="MedicationRequest/jp-medicationrequest-example-2"/>
+      </reference>
+      <name value="JP MedicationRequest 内服処方2"/>
+      <description value="内服処方2"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRequest"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationRequest"/>
+      </extension>
+      <reference>
+        <reference value="MedicationRequest/jp-medicationrequest-injection-example-1"/>
+      </reference>
+      <name value="JP MedicationRequest Injection ワンショット静脈注射"/>
+      <description value="ホリゾン注射液１０ｍｇ１アンプルを左腕に静脈注射"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRequest_Injection"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationRequest"/>
+      </extension>
+      <reference>
+        <reference value="MedicationRequest/jp-medicationrequest-injection-example-2"/>
+      </reference>
+      <name value="JP MedicationRequest Injection 点滴注射"/>
+      <description value="点滴注射"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRequest_Injection"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/jp-organization-example-clinic"/>
+      </reference>
+      <name value="JP Core Organization クリニック"/>
+      <description value="クリニック"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/jp-organization-example-payer"/>
+      </reference>
+      <name value="JP Core Organization ひまわり健康保険組合"/>
+      <description value="ひまわり健康保険組合"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -2024,6 +2298,50 @@
       <name value="jp-patient-kanjiname-sp"/>
       <description value="PatientリソースのKanjiName(漢字名称)に関する検索を定義します。"/>
       <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Practitioner"/>
+      </extension>
+      <reference>
+        <reference value="Practitioner/jp-practionner-example-female-1"/>
+      </reference>
+      <name value="JP Practionner 医師女性１"/>
+      <description value="医師女性"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Practitioner"/>
+      </extension>
+      <reference>
+        <reference value="Practitioner/jp-practionner-example-female-2"/>
+      </reference>
+      <name value="JP Practionner 看護師女性１"/>
+      <description value="看護師女性"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Practitioner"/>
+      </extension>
+      <reference>
+        <reference value="Practitioner/jp-practionner-example-male-1"/>
+      </reference>
+      <name value="JP Practionner 医師男性１"/>
+      <description value="医師男性"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Practitioner"/>
+      </extension>
+      <reference>
+        <reference value="Practitioner/jp-practionner-example-male-2"/>
+      </reference>
+      <name value="JP Practionner 看護師男性１"/>
+      <description value="看護師男性"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
