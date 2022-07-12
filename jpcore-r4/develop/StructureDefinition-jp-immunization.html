@@ -305,6 +305,54 @@
 
 
 
+<div style="display:inline-block" markdown="1">
+
+<p>このプロファイルはワクチン接種情報をImmunizationリソースを使用して表現する。
+以下、このプロファイルのImmunizationリソースを「JP Core Immunizationリソース」と呼ぶ。</p>
+
+<p>ワクチン接種のFHIR仕様に関しては、先行事例としてはデジタル庁が公開している新型コロナワクチン接種証明書アプリがあるが、スマートフォンでQRコードとして表示できるデータサイズに納めるため、記述されている情報は極めて限定的である。そこで、国内で利用されているそれ以外のワクチン接種関係の文書やAPIなども参考にして記述すべき項目の洗い出しや記述方法の検討を行った。具体的には、母子手帳、Yellow Card、 市町村長が有する接種記録（予防接種台帳）、ワクチン接種記録システム（VRS）、マイナポータル自己情報取得APIを参考にした。既存のImmunizationの要素で記述できない項目については、新たに拡張を定義した。</p>
+
+<h3 id="背景および想定シナリオ">背景および想定シナリオ</h3>
+<p>本プロファイルは、以下のようなユースケースを想定している。</p>
+
+<ul>
+  <li>新型コロナワクチン接種の記録を各自治体から政府に報告する</li>
+  <li>マイナポータルから自分自身のワクチン接種の記録を取得する</li>
+  <li>個人の各種ワクチン接種の記録をPHRに記録する</li>
+</ul>
+
+<h3 id="スコープ">スコープ</h3>
+<h4 id="対象">対象</h4>
+<p>このプロファイルの対象は各種ワクチンの接種情報を電子的に連携するためのメッセージを記述することである。</p>
+
+<h4 id="対象としないこと">対象としないこと</h4>
+<p>このプロファイルはワクチン以外の一般的な注射薬剤については対象としない。一般的な注射薬剤は、JP Core MedicationRequest Injectionプロファイルで記述することとする。</p>
+
+<h2 id="関連するプロファイル">関連するプロファイル</h2>
+<p>JP Core Immunizationリソースは、以下のリソースから直接参照される。</p>
+
+<ul>
+  <li>特になし</li>
+</ul>
+
+<p>JP Core Immunizationリソースは、以下のリソースを直接参照する。</p>
+
+<ul>
+  <li>JP Core Patientリソース</li>
+  <li>JP Core Encounterリソース</li>
+  <li>JP Core Practitionerリソース</li>
+  <li>JP Core PractitionerRoleリソース</li>
+  <li>JP Core Organizationリソース</li>
+  <li>JP Core Locationリソース</li>
+  <li>JP Core Conditionリソース</li>
+</ul>
+
+
+</div>
+
+
+
+
 <p><b>Usage:</b></p>
 <ul>
  <li>Examples for this Resource Profile: <a href="Immunization-jp-immunization-example-1.html">Immunization/jp-immunization-example-1</a></li>
@@ -999,6 +1047,639 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <!-- insert notes if present -->
 
 
+<!-- <h3>Notes:</h3> -->
+
+
+<div style="display:inline-block" markdown="1">
+
+<h3 id="必須要素">必須要素</h3>
+<p>次のデータ項目は必須（データが存在しなければならない）、あるいは、データが送信システムに存在する場合はサポートされなければならないことを意味する。（Must Support）。</p>
+
+<p>JP Core Immunization リソースは、次の要素を持たなければならない。</p>
+
+<ul>
+  <li>status</li>
+  <li>vaccineCode</li>
+  <li>patient</li>
+  <li>occurrence[x]</li>
+</ul>
+
+<p>JP Core Immunizationリソースは、次の要素をサポートしなければならない。</p>
+
+<h3 id="extensions定義">Extensions定義</h3>
+<p>JP Core Immunization リソースで使用される拡張は次の通りである。</p>
+
+<h4 id="jp-core-immunization独自で追加されたextension">JP Core Immunization独自で追加されたExtension</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>拡張</th>
+      <th>説明</th>
+      <th>URL</th>
+      <th>値の型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ExpectedNextDoseDate</td>
+      <td>次回接種予定日</td>
+      <td>http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_ExpectedNextDoseDate</td>
+      <td>dateTime</td>
+    </tr>
+    <tr>
+      <td>ManufacturedDate</td>
+      <td>製造年月日</td>
+      <td>http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_ManufacturedDate</td>
+      <td>dateTime</td>
+    </tr>
+    <tr>
+      <td>TestDate</td>
+      <td>検定年月日</td>
+      <td>http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_TestDate</td>
+      <td>dateTime</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="既存のextensionの利用">既存のExtensionの利用</h4>
+
+<p>既存のExtensionの利用は特にない。</p>
+
+<h3 id="用語定義">用語定義</h3>
+<p>HL7 FHIRの基底規格では、ワクチンコードとして CVX コードが使われているが、日本ではHOTコードやYJコードで一通り使用されているワクチンが定義されているため、国内で利用する際の用語集としては HOTコードとYJコードを採用した。それ以外の用語集の利用を妨げるものではない。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>分類</th>
+      <th>名称</th>
+      <th>URI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ワクチン</td>
+      <td>HOT9</td>
+      <td>urn:oid:1.2.392.200119.4.403.1</td>
+    </tr>
+    <tr>
+      <td>ワクチン</td>
+      <td>HOT13</td>
+      <td>urn:oid:1.2.392.100495.20.2.75</td>
+    </tr>
+    <tr>
+      <td>ワクチン</td>
+      <td>YJコード</td>
+      <td>urn:oid:1.2.392.100495.20.1.73</td>
+    </tr>
+    <tr>
+      <td>対象疾患</td>
+      <td>MEDIS標準病名マスター病名交換用コード</td>
+      <td>urn:oid:1.2.392.200119.4.101.6</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>JP Core Immunizationリソースの各要素のバインディングは以下の通りである。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Path</th>
+      <th>定義</th>
+      <th>バインディング強度</th>
+      <th>バリューセット</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Immunization.status</td>
+      <td>オーダーの現在の状態を示すコード</td>
+      <td>required</td>
+      <td>http://hl7.org/fhir/ValueSet/immunization-status</td>
+    </tr>
+    <tr>
+      <td>Immunization.vaccineCode</td>
+      <td>ワクチンの識別情報</td>
+      <td>prefered</td>
+      <td>HOT9,HOT13,YJコード</td>
+    </tr>
+    <tr>
+      <td>Immunization.site</td>
+      <td>接種部位</td>
+      <td>prefered</td>
+      <td>JAMI処方・注射オーダ標準用法規格(外用部位コード)</td>
+    </tr>
+    <tr>
+      <td>Immunization.route</td>
+      <td>接種経路</td>
+      <td>prefered</td>
+      <td>HL7 V2(使用者定義表0162)</td>
+    </tr>
+    <tr>
+      <td>Immunization.doseQuantity.code</td>
+      <td>接種量単位</td>
+      <td>prefered</td>
+      <td>UCUM</td>
+    </tr>
+    <tr>
+      <td>Immunization.protocolApplied.targetDisease</td>
+      <td>ワクチン対象疾患</td>
+      <td>prefered</td>
+      <td>MEDIS標準病名マスター病名交換用コード</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="制約一覧">制約一覧</h3>
+<p>JP Core Immunization リソースは、以下の制約を満たさなければならない。</p>
+
+<h3 id="項目の追加">項目の追加</h3>
+<p>参考にしたワクチン関係の文書やAPIで扱われている項目に合わせ、以下の項目を追加した。</p>
+
+<ul>
+  <li>次回接種予定日（拡張「JP_Immunization_ExpectedNextDoseDate」を使用）</li>
+  <li>製造年月日（拡張「JP_Immunization_ManufacturedDate」を使用）</li>
+  <li>検定年月日（拡張「JP_Immunization_TestDate」を使用）</li>
+</ul>
+
+<h2 id="利用方法">利用方法</h2>
+
+<h3 id="interaction一覧">Interaction一覧</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>コンフォーマンス</th>
+      <th>インタラクション</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SHALL（必須）</td>
+      <td>search-type、read</td>
+    </tr>
+    <tr>
+      <td>SHOULD（推奨）</td>
+      <td>vread、history-instance</td>
+    </tr>
+    <tr>
+      <td>MAY（利用可能）</td>
+      <td>create、update、patch、delete、history-type</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="search-parameter一覧">Search Parameter一覧</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>コンフォーマンス</th>
+      <th>パラメータ</th>
+      <th>型</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SHALL</td>
+      <td>identifier</td>
+      <td>token</td>
+      <td>GET [base]/Immunization?identifier=http://myhospital.com/fhir/immunization|1234567890</td>
+    </tr>
+    <tr>
+      <td>SHOULD</td>
+      <td>patient</td>
+      <td>reference</td>
+      <td>GET [base]/Immunization?patient=123456</td>
+    </tr>
+    <tr>
+      <td>SHOULD</td>
+      <td>patient,date</td>
+      <td>referenece,date</td>
+      <td>GET [base]/Immunization?patient=123456&amp;date=eq2013-01-14</td>
+    </tr>
+    <tr>
+      <td>MAY</td>
+      <td>date,lot-number</td>
+      <td>date,string</td>
+      <td>GET [base]/Immunization?date=eq2013-01-14</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="必須検索パラメータ">必須検索パラメータ</h5>
+
+<p>次の検索パラメータは必須でサポートされなければならない。</p>
+
+<ol>
+  <li>
+    <p>identifier 検索パラメータを使用して、オーダーIDなどの識別子によるMedicationReuqestの検索をサポートしなければならない（SHALL）。</p>
+
+    <div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET [base]/Immunization?identifier={system|}[code]
+</span></code></pre></div>    </div>
+
+    <p>例：</p>
+
+    <div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET [base]/Immunization?identifier=http://myhospital.com/fhir/medication\|1234567890
+</span></code></pre></div>    </div>
+
+    <p>指定された識別子に一致するImmunizationリソースを含むBundleを検索する。</p>
+  </li>
+</ol>
+
+<h5 id="推奨検索パラメータ">推奨検索パラメータ</h5>
+
+<p>次の検索パラメータをサポートすることが望ましい。</p>
+
+<ol>
+  <li>
+    <p>patient 検索パラメータを使用して、患者のリファレンス情報によるImmunizationの検索をサポートすることが望ましい（SHOULD）。</p>
+
+    <div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET [base]/Immunization?patient=[id]
+GET [base]/Immunization?patient=[url]
+</span></code></pre></div>    </div>
+
+    <p>例：</p>
+
+    <div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET [base]/Immunization?patient=123456
+</span></code></pre></div>    </div>
+
+    <p>リソースIDが123456の患者のImmunizationリソースを含むBundleを検索する。</p>
+  </li>
+  <li>
+    <p>patient,date 検索パラメータを使用して、患者のリファレンス情報と接種日によるImmunizationの検索をサポートすることが望ましい（SHOULD）。</p>
+
+    <div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET [base]/Immunization?patient=[id]&amp;date=[date]
+GET [base]/Immunization?patient=[url]&amp;date=[date]
+</span></code></pre></div>    </div>
+
+    <p>例：</p>
+
+    <div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET [base]/Immunization?patient=123456&amp;date=eq2013-01-14
+</span></code></pre></div>    </div>
+
+    <p>リソースIDが123456の患者の2013-01-14に服用するImmunizationリソースを含むBundleを検索する。</p>
+  </li>
+</ol>
+
+<h4 id="operation一覧">Operation一覧</h4>
+
+<p>JP Immunization リソースに対して使用される操作は次の通りである。</p>
+
+<ul>
+  <li>
+    <p>$everything：[base]/Immunization/[id]/$everything</p>
+
+    <ul>
+      <li>この操作が呼び出された特定のImmunizationに関連する全ての情報を返す。</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="operation-詳細">Operation 詳細</h4>
+
+<h5 id="everything-操作">$everything 操作</h5>
+
+<p>この操作は、この操作が呼び出された特定のImmunizationリソースに関連する全ての情報を返す。応答は “searchset” タイプのBundleリソースである。サーバは、少なくとも、識別されたImmunizationコンパートメントに含まれる全てのリソースと、それらから参照されるすべてのリソースを返すことが望ましい。</p>
+
+<p>この操作の公式なURLは以下である。</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">http://hl7.jp/fhir/OperationDefinition/Immunization-everything
+</span></code></pre></div></div>
+
+<p>URL: [base]/Immunization/[id]/$everything</p>
+
+<p>本操作は、べき等な操作である。</p>
+
+<h6 id="入力パラメータ">入力パラメータ</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>多重度</th>
+      <th>型</th>
+      <th>バインディング</th>
+      <th>プロファイル</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>start</td>
+      <td>0..1</td>
+      <td>date</td>
+      <td> </td>
+      <td> </td>
+      <td>特定の日付範囲で提供されたケアに関連する全ての記録を意味する。開始日が指定されていない場合、終了日以前のすべてのレコードが対象に含まれる。</td>
+    </tr>
+    <tr>
+      <td>end</td>
+      <td>0..1</td>
+      <td>date</td>
+      <td> </td>
+      <td> </td>
+      <td>特定の日付範囲で提供されたケアに関連する全ての記録を意味する。終了日が指定されていない場合、開始日以降のすべてのレコードが対象に含まれる。</td>
+    </tr>
+    <tr>
+      <td>_since</td>
+      <td>0..1</td>
+      <td>instant</td>
+      <td> </td>
+      <td> </td>
+      <td>指定された日時以降に更新されたリソースのみが応答に含まれる。</td>
+    </tr>
+    <tr>
+      <td>_type</td>
+      <td>0..*</td>
+      <td>code</td>
+      <td> </td>
+      <td> </td>
+      <td>応答に含むFHIRリソース型を、カンマ区切りで指定する。指定されない場合は、サーバは全てのリソース型を対象とする。</td>
+    </tr>
+    <tr>
+      <td>_count</td>
+      <td>0..1</td>
+      <td>integer</td>
+      <td> </td>
+      <td> </td>
+      <td>Bundleの1ページに含まれるリソース件数を指定。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h6 id="出力パラメータ">出力パラメータ</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>多重度</th>
+      <th>型</th>
+      <th>バインディング</th>
+      <th>プロファイル</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>return</td>
+      <td>1..1</td>
+      <td>Bundle</td>
+      <td> </td>
+      <td> </td>
+      <td>バンドルのタイプは”searchset”である。この操作の結果は、リソースとして直接返される。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h6 id="例">例</h6>
+
+<p>リクエスト：単一のImmunizationに関連する全てのリソースを取得する。</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET [base]/Immunization/1234567890/$everything
+[some headers]
+</span></code></pre></div></div>
+
+<p>レスポンス：指定されたImmunizationに関連する全てのリソースを返す。</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="s">[other headers]</span>
+
+{
+  "resourceType": "Bundle",
+  "id": "example",
+  "meta": {
+    "lastUpdated": "2014-08-18T01:43:33Z"
+  },
+  "type": "searchset",
+  "entry": [
+    {
+      "fullUrl": "http://example.org/fhir/Immunization/1234567890",
+      "resource": {
+        "resourceType": "Immunization",
+
+　　　　　・・・
+
+　　　 },
+    }
+  ]
+}  
+</code></pre></div></div>
+
+<h3 id="サンプル">サンプル</h3>
+<p>. ワクチン接種例1</p>
+
+<h4 id="ワクチン接種メッセージ作成例">ワクチン接種メッセージ作成例</h4>
+<p>具体的な内服処方箋の作成例について、上記のサンプルのそれぞれについて解説する。</p>
+
+<h5 id="ワクチン接種例１">ワクチン接種例１</h5>
+<p>このワクチン接種例では下記の内容をFHIRで表現する場合について解説する。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+
+<p>ワクチン接種の上記部分をFHIR R4で記述する場合以下のようになる。</p>
+<details>
+<summary><b>FHIRでのワクチン接種例一部抜粋(クリックで展開)</b></summary>
+<div>
+
+```json
+```
+</div>
+</details>
+
+<h3 id="サンプル-1">サンプル</h3>
+
+<h2 id="注意事項">注意事項</h2>
+
+<h3 id="記述の単位について">記述の単位について</h3>
+<p>Immunizationはワクチンを vaccineCodeとして1つまでしか持つことしかできないので、ワクチン単位でImmunizationリソースを作成する。</p>
+
+<h3 id="ワクチンの種類や製剤名の記述方法について">ワクチンの種類や製剤名の記述方法について</h3>
+<p>ワクチンの種類や製剤名は Immunization.vaccineCode要素にCodeableConcept型で記述する。ワクチンを識別するコードは、HOTコード（HOT13を推奨）ないしYJコードを使用する。</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"vaccineCode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"coding"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.2.75"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1820201040101"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"インフルエンザHAワクチン「第一三共」1mL"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="接種年月日の記述方法について">接種年月日の記述方法について</h3>
+<p>ワクチンを接種した日は Immunization.occurrenceDateTime要素にdateTime型で記述する。日付での記述が難しい場合は、Immunization.occurrenceString要素にテキストで記述してもよい。</p>
+
+<p>Immunization.occurrenceDateTime要素を使用した例：</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"occurrenceDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-02"</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Immunization.occurrenceString要素を使用した例：</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"occurrenceString"</span><span class="p">:</span><span class="w"> </span><span class="s2">"６才頃"</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="記録日時の記述方法について">記録日時の記述方法について</h3>
+<p>ワクチン接種の情報を記録した日時は Immunization.recorded要素にdateTime型で記述する。</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"recorded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-02T10:45:23+09:00"</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="接種場所の記述方法について">接種場所の記述方法について</h3>
+<p>ワクチンの接種場所は Immunization.location要素にReference型でLocationリソースの参照情報を記述する。</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Location/1234"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="製造会社の記述方法について">製造会社の記述方法について</h3>
+<p>ワクチンの製造会社は Immunization.manufacturer要素にReference型でOrganizationリソースの参照情報を記述する。</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"manufacturer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Organization/1234"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="ワクチンのロット番号の記述方法について">ワクチンのロット番号の記述方法について</h3>
+<p>ワクチンのロット番号は Immunization.lotNumber要素にstring型で記述する。</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"lotNumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"FF3620"</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="接種部位の記述方法について">接種部位の記述方法について</h3>
+<p>ワクチンの接種部位は Immunization.site要素に CodeableConcept型で記述する。部位を識別するコードにはJAMI処方・注射オーダ標準用法規格(外用部位コード) を推奨する</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"site"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"coding"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200250.2.2.20.32"</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"74L"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"左上腕"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="摂取量の記述方法について">摂取量の記述方法について</h3>
+<p>ワクチンの接種量は Immunization.doseQuantity要素にSimpleQuantity型で記述する。全体の容量をUCUM(“http://unitsofmeasure.org”)を使用してmL単位で指定する。</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"doseQuantity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://unitsofmeasure.org"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mL"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="接種実施者の記述方法について">接種実施者の記述方法について</h3>
+<p>ワクチンの接種実施者 Immunization.performer.actor要素にReference型でPractitionerリソースの参照情報を記述する。Immunization.performer.functionにはValueSet “http://hl7.org/fhir/ValueSet/immunization-function”から”AP” (Administering Provider)を指定する。</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"performer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"function"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/v2-0443"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AP"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Administering Provider"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"actor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Practitioner/1234"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="接種を行わなかった理由の記述方法について">接種を行わなかった理由の記述方法について</h3>
+<p>ワクチン接種を行わなかった理由を記述したい場合は、Immunization.reasonCode要素にCodeableConcept型で記述する。適当な標準コードが整備されていないため、ローカルコードを定義するか、CodeableConcept.text要素にテキストとして記述する。</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"reasonCode"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37.5℃以上の発熱があったため。"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="予防接種の種類効果のある疾患の記述方法について">予防接種の種類、効果のある疾患の記述方法について</h3>
+<p>ワクチン接種により感染や重症化を予防できる疾患（記録によっては「予防接種の種類」と呼ばれることもある）は、Immunization.protocolApplied.targetDisease要素にCodeableConcept型で記述する。使用する用語集としては、「診療情報提供書HL7FHIR記述仕様 第1版」などでも採用されている
+MEDIS標準病名マスターの病名交換用コード(“urn:oid:1.2.392.200119.4.101.6”)を推奨する。</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"protocolApplied"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"targetDisease"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200119.4.101.6"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES0L"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"インフルエンザ"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w"> 
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="ワクチン接種の回数の記述方法について">ワクチン接種の回数の記述方法について</h3>
+<p>ワクチン接種の回数はImmunization.protocolApplied.doseNumberPositiveInt要素にpositiveInt型で記述する。</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"protocolApplied"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"doseNumberPositiveInt"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="次回接種予定日の記述方法について">次回接種予定日の記述方法について</h3>
+<p>次回のワクチン接種予定日は既存のImmunization要素では記述ができないため、Immunizationリソースに対する拡張「ExpectedNextDoseDate」を使用してdateTime型で記述する。extension.urlには”http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_ExpectedNextDoseDate”を指定する。</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_ExpectedNextDoseDate"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"valueDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-02"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="製造年月日検定年月日">製造年月日、検定年月日</h3>
+<p>ワクチンの製造年月日、検定年月日はいずれも既存のImmunization要素では記述ができないため、Immunizationリソースに対する拡張「ManufacturedDate」「TestDate」をそれぞれ使用してdateTime型で記述する。extension.urlにはそれぞれ”http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_ManufacturedDate”、”http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_TestDate”を指定する。</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_ManufacturedDate"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"valueDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-14"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_TestDate"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"valueDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-18"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="その他参考文献リンク等">その他、参考文献・リンク等</h2>
+<ol>
+  <li>HL7, FHIR Immunization Resource, http://hl7.org/fhir/Immunization.html</li>
+  <li>母子手帳（厚生労働省令，P51), https://www.mhlw.go.jp/content/000622161.pdf</li>
+  <li>ワクチン接種記録システム(VRS), https://cio.go.jp/sites/default/files/uploads/documents/vrs_announcement_210430a_att1.pdf</li>
+  <li>予防接種台帳, https://www.mhlw.go.jp/content/10906000/000588379.pdf</li>
+  <li>マイナポータル, https://myna.go.jp/html/api/selfinfo/R4-6/B-084_R4-6.xlsx</li>
+  <li>新型コロナワクチン接種証明書アプリ, https://www.digital.go.jp/policies/vaccinecert/faq_06</li>
+  <li>Mike Henderson, 日本HL7協会監修、「HL7メッセージ交換」、第2版、インナービジョン社、2013年</li>
+  <li>一般社団法人医療情報システム開発センター, 医薬品HOT コードマスター, http://www2.medis.or.jp/hcode/</li>
+  <li>日本医療情報学会、SS-MIX2仕様書・ガイドライン, http://www.jami.jp/jamistd/ssmix2.php</li>
+</ol>
+
+
+</div>
+
+
 
 
 </div>
@@ -1047,7 +1728,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jul 8, 2022 08:06+0000">2022-07-08</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jul 12, 2022 21:24+0000">2022-07-12</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
