@@ -50,9 +50,9 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Encounter.statusHistory","Encounter.statusHistory","","","",0,*,"","","","BackboneElement {[]} {[]}
 ","List of past encounter statuses / 過去のEncouterのステータス一覧","The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.
 
-ステータス履歴(status History)は、リソースの歴史的なバージョンを読み込んだり、サーバーに保存させたりすることなく、Encouterリソースがステータス履歴を含むことを可能にします。","The current status is always found in the current version of the resource, not the status history.
+ステータス履歴(status History)は、リソースの歴史的なバージョンを読み込んだり、サーバーに保存させたりすることなく、Encouterリソースがステータス履歴を含むことを可能にする。","The current status is always found in the current version of the resource, not the status history.
 
-現在のステータスは、ステータスの履歴ではなく、常にリソースの現在のバージョンにあります。","","","","","","","","",,,,,"",,,,"Encounter.statusHistory",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+現在のステータスは、ステータスの履歴ではなく、常にリソースの現在のバージョンにある。","","","","","","","","",,,,,"",,,,"Encounter.statusHistory",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","n/a"
 "Encounter.statusHistory.id","Encounter.statusHistory.id","","","",0,1,"","","","string {[]} {[]}
 ","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
@@ -84,19 +84,19 @@ FHIR 文字列のサイズは 1MB を超えてはならないことに注意し�
 Period is not used for a duration (a measure of elapsed time). See [Duration](datatypes.html#Duration).
 
 
-これは期間ではありません-これは時間の尺度（別のタイプ）ですが、時間の固定値で発生する期間です。 期間は時間の範囲を指定します。 使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、または範囲から1つの値が適用されるか（たとえば、「これら2回の間に患者に与える」）を指定します。 期間が必要な場合は、タイプをInterval | Durationとして指定します。","","","","","","","","",,,,,"",,,,"Encounter.statusHistory.period",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+これは期間ではない-これは時間の尺度（別のタイプ）ですが、時間の固定値で発生する期間です。 期間は時間の範囲を指定する。 使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、または範囲から1つの値が適用されるか（たとえば、「これら2回の間に患者に与える」）を指定する。 期間が必要な場合は、タイプをInterval | Durationとして指定する。","","","","","","","","",,,,,"",,,,"Encounter.statusHistory.period",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","n/a"
 "Encounter.class","Encounter.class","","","",1,1,"","","Y","Coding {[]} {[]}
 ","Classification of patient encounter / 患者とのEncouterの分類","Concepts representing classification of patient encounter such as ambulatory (outpatient), inpatient, emergency, home health or others due to local variations.
 
 外来（外来）、入院、救急、在宅医療、その他の地域差による患者Encouterの分類を表す概念。","Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.
 
-コードは列挙やコードリストの中で非常にカジュアルに定義されることもあれば、SNOMED CTのような非常にフォーマルな定義まであります - 詳細はHL7 v3コア・プリンシプルを参照してください。","","","","","","","","",,"extensible","Classification of the encounter.","http://terminology.hl7.org/ValueSet/v3-ActEncounterCode","",,,,"Encounter.class",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+コードは列挙やコードリストの中で非常にカジュアルに定義されることもあれば、SNOMED CTのような非常にフォーマルな定義まである。 - 詳細はHL7 v3コア・プリンシプルを参照すること。","","","","","","","","",,"extensible","Classification of the encounter.","http://terminology.hl7.org/ValueSet/v3-ActEncounterCode","",,,,"Encounter.class",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".inboundRelationship[typeCode=SUBJ].source[classCode=LIST].code","FiveWs.class","PV1-2"
 "Encounter.classHistory","Encounter.classHistory","","","",0,*,"","","","BackboneElement {[]} {[]}
 ","List of past encounter classes / 過去のEncouter classのリスト","The class history permits the tracking of the encounters transitions without needing to go  through the resource history.  This would be used for a case where an admission starts of as an emergency encounter, then transitions into an inpatient scenario. Doing this and not restarting a new encounter ensures that any lab/diagnostic results can more easily follow the patient and not require re-processing and not get lost or cancelled during a kind of discharge from emergency to inpatient.
 
-クラスの履歴は、リソースの履歴を経由することなく、Encouterの遷移を追跡することを可能にします。これは、入院患者が緊急時にEncouterした後、入院患者のシナリオに移行する場合に使用されます。このようにして、新しいEncouterを再開しないようにすることで、検査/診断結果がより簡単に患者を追跡することができ、再処理を必要とせず、救急から入院への退院の際に紛失したりキャンセルされたりすることがないことを保証します。","","","","","","","","","",,,,,"",,,,"Encounter.classHistory",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+クラスの履歴は、リソースの履歴を経由することなく、Encouterの遷移を追跡することを可能にする。これは、入院患者が緊急時にEncouterした後、入院患者のシナリオに移行する場合に使用される。このようにして、新しいEncouterを再開しないようにすることで、検査/診断結果がより簡単に患者を追跡することができ、再処理を必要とせず、救急から入院への退院の際に紛失したりキャンセルされたりすることがないことを保証する。","","","","","","","","","",,,,,"",,,,"Encounter.classHistory",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","n/a"
 "Encounter.classHistory.id","Encounter.classHistory.id","","","",0,1,"","","","string {[]} {[]}
 ","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
@@ -117,7 +117,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 入院｜外来｜外来｜救急＋。","Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.
 
 
-コードは列挙やコードリストの中で非常にカジュアルに定義されることもあれば、SNOMED CTのような非常にフォーマルな定義まであります - 詳細はHL7 v3コア・プリンシプルを参照してください。","","","","","","","","",,"extensible","Classification of the encounter.","http://terminology.hl7.org/ValueSet/v3-ActEncounterCode","",,,,"Encounter.classHistory.class",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+コードは列挙やコードリストの中で非常にカジュアルに定義されることもあれば、SNOMED CTのような非常にフォーマルな定義まである- 詳細はHL7 v3コア・プリンシプルを参照すること。","","","","","","","","",,"extensible","Classification of the encounter.","http://terminology.hl7.org/ValueSet/v3-ActEncounterCode","",,,,"Encounter.classHistory.class",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","n/a"
 "Encounter.classHistory.period","Encounter.classHistory.period","","","",1,1,"","","","Period {[]} {[]}
 ","The time that the episode was in the specified class / 指定されたクラスにエピソードがあった時間","The time that the episode was in the specified class.
@@ -128,7 +128,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 Period is not used for a duration (a measure of elapsed time). See [Duration](datatypes.html#Duration).
 
 
-これは期間ではありません-これは時間の尺度（別のタイプ）ですが、時間の固定値で発生する期間です。 期間は時間の範囲を指定します。 使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、または範囲から1つの値が適用されるか（たとえば、「これら2回の間に患者に与える」）を指定します。 期間が必要な場合は、タイプをInterval | Durationとして指定します。","","","","","","","","",,,,,"",,,,"Encounter.classHistory.period",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+これは期間ではない-これは時間の尺度（別のタイプ）ですが、時間の固定値で発生する期間です。 期間は時間の範囲を指定する。 使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、または範囲から1つの値が適用されるか（たとえば、「これら2回の間に患者に与える」）を指定する。 期間が必要な場合は、タイプをInterval | Durationとして指定する。","","","","","","","","",,,,,"",,,,"Encounter.classHistory.period",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","n/a"
 "Encounter.type","Encounter.type","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
 ","Specific type of encounter / Encouterの具体的なタイプ","Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation).
@@ -145,9 +145,9 @@ Encouterをさらに分類する方法はいろいろあるので、この要素
 すべてのターミノロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。","","","","","","","","",,"example","Broad categorization of the service that is to be provided.","http://hl7.org/fhir/ValueSet/service-type","",,,,"Encounter.serviceType",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.code","n/a","PV1-10"
 "Encounter.priority","Encounter.priority","","","",0,1,"","","","CodeableConcept {[]} {[]}
-","Indicates the urgency of the encounter / このEncounterの緊急性を示します","Indicates the urgency of the encounter.
+","Indicates the urgency of the encounter / このEncounterの緊急性を示す。","Indicates the urgency of the encounter.
 
-このEncounterの緊急性を示します。","Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.
+このEncounterの緊急性を示す。","Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.
 
 すべてのターミノロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。","","","","","","","","",,"example","Indicates the urgency of the encounter.","http://terminology.hl7.org/ValueSet/v3-ActPriority","",,,,"Encounter.priority",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".priorityCode","FiveWs.grade","PV2-25"
@@ -162,7 +162,7 @@ Encouterをさらに分類する方法はいろいろあるので、この要素
 "Encounter.episodeOfCare","Encounter.episodeOfCare","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/EpisodeOfCare]]}
 ","Episode(s) of care that this encounter should be recorded against / このEncounterが記録されるべきケアのエピソード","Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).
 
-特定のEncounterをケアの特定のエピソードの一部として分類する必要がある場合は、このフィールドを使用する必要があります。この関連付けにより、政府の報告、問題追跡、一般的な問題を介した関連付けなど、特定の目的のために関連するエンカウンターをグループ化することが容易になります。これらは通常、ケアのエピソードの後に​​作成され、ケアのエピソードを編集して別のエンカウンターを追加するのではなく、エントリ時にグループ化されるため、関連付けはエンカウンターに記録されます（ケアのエピソードは数年にわたる場合があります）。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+特定のEncounterをケアの特定のエピソードの一部として分類する必要がある場合は、このフィールドを使用する必要がある。この関連付けにより、政府の報告、問題追跡、一般的な問題を介した関連付けなど、特定の目的のために関連するエンカウンターをグループ化することが容易になる。これらは通常、ケアのエピソードの後に​​作成され、ケアのエピソードを編集して別のエンカウンターを追加するのではなく、エントリ時にグループ化されるため、関連付けはエンカウンターに記録される（ケアのエピソードは数年にわたる場合がある）。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","","","","","","","","",,,,,"",,,,"Encounter.episodeOfCare",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.context","n/a","FiveWs.context","PV1-54, PV1-53"
@@ -198,13 +198,13 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 このエンカウンターにおける参加者の役割。","The participant type indicates how an individual participates in an encounter. It includes non-practitioner participants, and for practitioners this is to describe the action type in the context of this encounter (e.g. Admitting Dr, Attending Dr, Translator, Consulting Dr). This is different to the practitioner roles which are functional roles, derived from terms of employment, education, licensing, etc.
 
 
-参加者タイプは、個人がEncounterにどのように参加するかを示します。これには、開業医以外の参加者が含まれます。開業医の場合、これは、このEncounterのコンテキストでのアクションタイプを説明することです（例：入院医師、出席医師、翻訳者、コンサルティング医師）。これは、雇用、教育、ライセンスなどの条件から派生した機能的な役割である開業医の役割とは異なります。","","","","","","","","",,"extensible","Role of participant in encounter.","http://hl7.org/fhir/ValueSet/encounter-participant-type","",,,,"Encounter.participant.type",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+参加者タイプは、個人がEncounterにどのように参加するかを示す。これには、開業医以外の参加者が含まれる。開業医の場合、これは、このEncounterのコンテキストでのアクションタイプを説明することです（例：入院医師、出席医師、翻訳者、コンサルティング医師）。これは、雇用、教育、ライセンスなどの条件から派生した機能的な役割である開業医の役割とは異なる。","","","","","","","","",,"extensible","Role of participant in encounter.","http://hl7.org/fhir/ValueSet/encounter-participant-type","",,,,"Encounter.participant.type",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.performer.function",".functionCode","ROL-3 (or maybe PRT-4)"
 "Encounter.participant.period","Encounter.participant.period","","","",0,1,"","","","Period {[]} {[]}
 ","Period of time during the encounter that the participant participated / この参加者が参加したEncounterの中での期間","The period of time that the specified participant participated in the encounter. These can overlap or be sub-sets of the overall encounter's period.
 
 
-指定された参加者がEncounterに参加した期間。これらは重複することも、Encounter全体の期間のサブセットになることもあります。","","","","","","","","","",,,,,"",,,,"Encounter.participant.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+指定された参加者がEncounterに参加した期間。これらは重複することも、Encounter全体の期間のサブセットになることもある。","","","","","","","","","",,,,,"",,,,"Encounter.participant.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".time","ROL-5, ROL-6 (or maybe PRT-5)"
 "Encounter.participant.individual","Encounter.participant.individual","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson]]}
 ","Persons involved in the encounter other than the patient / 患者以外のこのEncounterに関わった人","Persons involved in the encounter other than the patient.
@@ -229,7 +229,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Encounter.length","Encounter.length","","","",0,1,"","","","Duration {[]} {[]}
 ","Quantity of time the encounter lasted (less time absent) / Encounterが続いた時間の量（欠席時間が少ない）","Quantity of time the encounter lasted. This excludes the time during leaves of absence.
 
-このエンカウンターが続いた時間。これは休職中の時間を除外します。","May differ from the time the Encounter.period lasted because of leave of absence.
+このエンカウンターが続いた時間。これは休職中の時間を除外する。","May differ from the time the Encounter.period lasted because of leave of absence.
 
 休職のため、Encounter.periodが続いた時間とは異なる場合がある。","","","","","","","","",,,,,"",,,,"Encounter.length",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.occurrence[x]",".lengthOfStayQuantity","(PV1-45 less PV1-44) iff ( (PV1-44 not empty) and (PV1-45 not empty) ); units in minutes"
@@ -245,7 +245,7 @@ Admission diagnosis","",0,*,"","","Y","CodeableConcept {[]} {[]}
 Admission diagnosis","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common], CanonicalType[http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation]]}
 ","Reason the encounter takes place (reference)　エンカウンターがあった理由","Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.
 
-コードとして表現されたエンカウンターが起こった理由。入院の場合、これはコード化されたコード化された入院時診断に使用できます。","For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis).
+コードとして表現されたエンカウンターが起こった理由。入院の場合、これはコード化されたコード化された入院時診断に使用できる。","For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis).
 
 どれが主たる診断であったかを知る必要があるシステムでは、これらは標準のエクステンションであるprimaryDiagnosis（フラグではなくシーケンス値、1 = 主たる診断）でマークされる。","","","","","","","","",,,,,"",,,,"Encounter.reasonReference",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.reasonCode",".reasonCode","FiveWs.why[x]","EVN-4 / PV2-3 (note: PV2-3 is nominally constrained to inpatient admissions; HL7 v2 makes no vocabulary suggestions for PV2-3; would not expect PV2 segment or PV2-3 to be in use in all implementations )"
@@ -274,7 +274,7 @@ discharge diagnosisindication","",1,1,"","","Y","Reference {[]} {[CanonicalType[
 受診理由（他のリソースからの情報を使用して指定されたもの）。入院の場合、これは入院診断名である。表現方法は通常、状態（evidence.detailで参照されている他のリソースを使用）、または処置である。","For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis).
 
 
-どちらが一次診断であったかを知る必要があるシステムでは、これらは標準のエクステンションであるprimaryDiagnosis（フラグではなくシーケンス値、1 = 一次診断）でマークされます。","","","","","","","","",,,,,"",,,,"Encounter.diagnosis.condition",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+どちらが一次診断であったかを知る必要があるシステムでは、これらは標準のエクステンションであるprimaryDiagnosis（フラグではなくシーケンス値、1 = 一次診断）でマークされる。","","","","","","","","",,,,,"",,,,"Encounter.diagnosis.condition",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.reasonReference",".outboundRelationship[typeCode=RSON].target","FiveWs.why[x]","Resources that would commonly referenced at Encounter.indication would be Condition and/or Procedure. These most closely align with DG1/PRB and PR1 respectively."
 "Encounter.diagnosis.use","Encounter.diagnosis.use","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","Role that this diagnosis has within the encounter (e.g. admission, billing, discharge …) / この診断名がある受診機会において持っている役割（例えば、入院、請求、退院...）","Role that this diagnosis has within the encounter (e.g. admission, billing, discharge …).
@@ -300,7 +300,7 @@ discharge diagnosisindication","",1,1,"","","Y","Reference {[]} {[CanonicalType[
 
 医療機関への入院に関する詳細","An Encounter may cover more than just the inpatient stay. Contexts such as outpatients, community clinics, and aged care facilities are also included.The duration recorded in the period of this encounter covers the entire scope of this hospitalization record.
 
-Encounterは、入院患者の滞在の記録だけではない。外来患者、地域の診療所、高齢者施設などのコンテクストも含まれます。
+Encounterは、入院患者の滞在の記録だけではない。外来患者、地域の診療所、高齢者施設などのコンテクストも含まれる。
 このEncouterの期間に記録された時間区間は、この入院記録の全範囲をカバーしている。","","","","","","","","",,,,,"",,,,"Encounter.hospitalization",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".outboundRelationship[typeCode=COMP].target[classCode=ENC, moodCode=EVN]"
 "Encounter.hospitalization.id","Encounter.hospitalization.id","","","",0,1,"","","","string {[]} {[]}
@@ -328,7 +328,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 患者が入院する前に来院した場所/組織","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 
-参照は実際のFHIRリソースへの参照でなければならず、解決可能でなければなりません。解決は URL からの検索、またはリソースタイプによって、絶対参照を正規の URL として扱い、ローカルのレジストリ/リポジトリで検索することで行うことができます。","","","","","","","","",,,,,"",,,,"Encounter.hospitalization.origin",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+参照は実際のFHIRリソースへの参照でなければならず、解決可能でなければならない。解決は URL からの検索、またはリソースタイプによって、絶対参照を正規の URL として扱い、ローカルのレジストリ/リポジトリで検索することで行うことができる。","","","","","","","","",,,,,"",,,,"Encounter.hospitalization.origin",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".participation[typeCode=ORG].role"
 "Encounter.hospitalization.admitSource","Encounter.hospitalization.admitSource","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","From where patient was admitted (physician referral, transfer)/患者がどこから入院したか（医師の紹介、転院）","From where patient was admitted (physician referral, transfer).
@@ -341,7 +341,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。","","","","","","","","",,"preferred","From where the patient was admitted.","http://hl7.org/fhir/ValueSet/encounter-admit-source","",,,,"Encounter.hospitalization.admitSource",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".admissionReferralSourceCode","PV1-14"
 "Encounter.hospitalization.reAdmission","Encounter.hospitalization.reAdmission","","","",0,1,"","","","CodeableConcept {[]} {[]}
-","The type of hospital re-admission that has occurred (if any). If the value is absent, then this is not identified as a readmission / 発生した病院の再入院のタイプ（もしあれば）。値がない場合、これは再入院として識別されません。","Whether this hospitalization is a readmission and why if known.
+","The type of hospital re-admission that has occurred (if any). If the value is absent, then this is not identified as a readmission / 発生した病院の再入院のタイプ（もしあれば）。値がない場合、これは再入院として識別されない。","Whether this hospitalization is a readmission and why if known.
 
 
 この入院が再入院であるかどうかと、わかっている場合はその理由。","Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.
@@ -356,10 +356,10 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 患者から報告された食事の好み","For example, a patient may request both a dairy-free and nut-free diet preference (not mutually exclusive).
 
 
-例えば、患者は、乳製品を含まない食事とナッツ類を含まない食事の両方を希望することができます（相互に排他的ではありません）。","Used to track patient's diet restrictions and/or preference. For a complete description of the nutrition needs of a patient during their stay, one should use the nutritionOrder resource which links to Encounter.
+例えば、患者は、乳製品を含まない食事とナッツ類を含まない食事の両方を希望することができる（相互に排他的ではない）。","Used to track patient's diet restrictions and/or preference. For a complete description of the nutrition needs of a patient during their stay, one should use the nutritionOrder resource which links to Encounter.
 
 
-患者の食事制限および／または好み・嗜好を追跡するために使用される。滞在中の患者の栄養ニーズの完全な説明については、EncounterにリンクしているnutritionOrderリソースを使用する必要があります。","","","","","","","",,"example","Medical, cultural or ethical food preferences to help with catering requirements.","http://hl7.org/fhir/ValueSet/encounter-diet","",,,,"Encounter.hospitalization.dietPreference",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+患者の食事制限および／または好み・嗜好を追跡するために使用される。滞在中の患者の栄養ニーズの完全な説明については、EncounterにリンクしているnutritionOrderリソースを使用する必要がある。","","","","","","","",,"example","Medical, cultural or ethical food preferences to help with catering requirements.","http://hl7.org/fhir/ValueSet/encounter-diet","",,,,"Encounter.hospitalization.dietPreference",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".outboundRelationship[typeCode=COMP].target[classCode=SBADM, moodCode=EVN, code=""diet""]","PV1-38"
 "Encounter.hospitalization.specialCourtesy","Encounter.hospitalization.specialCourtesy","","","",0,*,"","","","CodeableConcept {[]} {[]}
 ","Special courtesies (VIP, board member) / 特別待遇(VIP、役員)","Special courtesies (VIP, board member).
@@ -386,7 +386,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 患者が退院する場所・機関","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 
-参照は実際のFHIRリソースへの参照でなければならず、解決可能でなければなりません。解決は URL からの検索、またはリソースタイプによって、絶対参照を正規の URL として扱い、ローカルのレジストリ/リポジトリで検索することで行うことができます。","","","","","","","","",,,,,"",,,,"Encounter.hospitalization.destination",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+参照は実際のFHIRリソースへの参照でなければならず、解決可能でなければなりません。解決は URL からの検索、またはリソースタイプによって、絶対参照を正規の URL として扱い、ローカルのレジストリ/リポジトリで検索することで行うことができる。","","","","","","","","",,,,,"",,,,"Encounter.hospitalization.destination",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".participation[typeCode=DST]","PV1-37"
 "Encounter.hospitalization.dischargeDisposition","Encounter.hospitalization.dischargeDisposition","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","Category or kind of location after discharge / 退院後の場所の区分や種類。","Category or kind of location after discharge.
@@ -423,7 +423,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 Encounterの舞台となる場所。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 
-参照は実際のFHIRリソースへの参照でなければならず、解決可能でなければなりません。解決は URL からの検索、またはリソースタイプによって、絶対参照を正規の URL として扱い、ローカルのレジストリ/リポジトリで検索することで行うことができます。","","","","","","","","",,,,,"",,,,"Encounter.location.location",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+参照は実際のFHIRリソースへの参照でなければならず、解決可能でなければならない。解決は URL からの検索、またはリソースタイプによって、絶対参照を正規の URL として扱い、ローカルのレジストリ/リポジトリで検索することで行うことができる。","","","","","","","","",,,,,"",,,,"Encounter.location.location",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.location",".role","FiveWs.where[x]","PV1-3 / PV1-6 / PV1-11 / PV1-42 / PV1-43"
 "Encounter.location.status","Encounter.location.status","","","",0,1,"","","","code {[]} {[]}
 ","planned | active | reserved | completed","The status of the participants' presence at the specified location during the period specified. If the participant is no longer at the location, then the period will have an end date/time.
@@ -432,21 +432,21 @@ Encounterの舞台となる場所。","References SHALL be a reference to an act
 指定された期間中の指定された場所での参加者の存在状況。参加者がその場所にいなくなった場合、その期間は終了日時を持つ。","When the patient is no longer active at a location, then the period end date is entered, and the status may be changed to completed.
 
 
-患者がその場所で活動しなくなった場合、期間終了日が入力され、ステータスが完了した状態に変更されることがあります","","","","","","","","",,"required","The status of the location.","http://hl7.org/fhir/ValueSet/encounter-location-status|4.0.1","",,,,"Encounter.location.status",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+患者がその場所で活動しなくなった場合、期間終了日が入力され、ステータスが完了した状態に変更されることがある","","","","","","","","",,"required","The status of the location.","http://hl7.org/fhir/ValueSet/encounter-location-status|4.0.1","",,,,"Encounter.location.status",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".role.statusCode"
 "Encounter.location.physicalType","Encounter.location.physicalType","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","The physical type of the location (usually the level in the location hierachy - bed room ward etc.) / 場所の物理的なタイプ（通常は場所の階層のレベル - ベッド・病室・病棟など）","This will be used to specify the required levels (bed/ward/room/etc.) desired to be recorded to simplify either messaging or query.
 
 
-これは、メッセージングまたはクエリのいずれかを簡素化するために記録したい必要なレベル（ベッド/ワード/ルーム/その他）を指定するために使用されます。","This information is de-normalized from the Location resource to support the easier understanding of the encounter resource and processing in messaging or query.
+これは、メッセージングまたはクエリのいずれかを簡素化するために記録したい必要なレベル（ベッド/ワード/ルーム/その他）を指定するために使用される。","This information is de-normalized from the Location resource to support the easier understanding of the encounter resource and processing in messaging or query.
 
 There may be many levels in the hierachy, and this may only pic specific levels that are required for a specific usage scenario.
 
 
 
-この情報は、メッセージングやクエリでのEncouterリソースの理解や処理を容易にするために、Locationリソースから非正規化されています。
+この情報は、メッセージングやクエリでのEncouterリソースの理解や処理を容易にするために、Locationリソースから非正規化されている。
 
-階層には多くのレベルがあり、これは特定の使用シナリオに必要とされる特定のレベルのみをピックすることができます。","","","","","","","","",,"example","Physical form of the location.","http://hl7.org/fhir/ValueSet/location-physical-type","",,,,"Encounter.location.physicalType",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+階層には多くのレベルがあり、これは特定の使用シナリオに必要とされる特定のレベルのみをピックすることができる。","","","","","","","","",,"example","Physical form of the location.","http://hl7.org/fhir/ValueSet/location-physical-type","",,,,"Encounter.location.physicalType",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
 "Encounter.location.period","Encounter.location.period","","","",0,1,"","","","Period {[]} {[]}
 ","Time period during which the patient was present at the location / 患者がその場所にいた期間","Time period during which the patient was present at the location.
@@ -457,7 +457,7 @@ There may be many levels in the hierachy, and this may only pic specific levels 
 Period is not used for a duration (a measure of elapsed time). See [Duration](datatypes.html#Duration).
 
 
-期間は時間の範囲を指定します; 使用のコンテキストは、範囲全体が適用されるかどうかを指定します (例: ""患者はこの時間範囲の病院の入院患者でした"" )。または、範囲から1つの値が適用されます（例：「この2回の間に患者に与える」）。
+期間は時間の範囲を指定する。 使用のコンテキストは、範囲全体が適用されるかどうかを指定する (例: ""患者はこの時間範囲の病院の入院患者でした"" )。または、範囲から1つの値が適用される（例：「この2回の間に患者に与える」）。
 
 期間は、期間(経過時間の尺度)には使用されません。Duration](datatypes.html#Duration)を参照のこと。","","","","","","","","",,,,,"",,,,"Encounter.location.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".time"

@@ -181,7 +181,7 @@ FHIRデータ型仕様に従って、以下の内容を採用する。
 ・漢字氏名、カナ氏名の区別は、iso21090-EN-representation を使用する。
 ・漢字、カナの指定がない場合やローマ字名の場合などはデフォルトスライスが適用される。","Need to be able to track the patient by multiple names. Examples are your official name and a partner name.
 
-複数の名前で患者を追跡できる必要があります。例としては、正式名とパートナー名があります。","","","","","","","",,,,,"",,,,"Patient.name",0,*,"ele-1
+複数の名前で患者を追跡できる必要がある。例としては、正式名とパートナー名がある。","","","","","","","",,,,,"",,,,"Patient.name",0,*,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","n/a","EN (actually, PN)","XPN"
 "Patient.telecom","Patient.telecom","","","",0,*,"","","Y","ContactPoint {[]} {[]}
@@ -189,9 +189,9 @@ FHIRデータ型仕様に従って、以下の内容を採用する。
 
 個人に連絡するための連絡先の詳細（電話番号や電子メールアドレスなど）。","A Patient may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and also to help with identification. The address might not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner's phone).
 
-患者は、さまざまな用途または適用期間違いで連絡先を複数の方法を持っている場合があります。緊急時連絡先として、また身元確認を支援するためのオプションが必要になる場合があります。患者当人に直接連絡できない場合がありますが、患者を代理できる別の関係者（自宅の電話、またはペットの所有者の電話）を設定する場合もあります。","People have (primary) ways to contact them in some way such as phone, email.
+患者は、さまざまな用途または適用期間違いで連絡先を複数の方法を持っている場合がある。緊急時連絡先として、また身元確認を支援するためのオプションが必要になる場合がある。患者当人に直接連絡できない場合があるが、患者を代理できる別の関係者（自宅の電話、またはペットの所有者の電話）を設定する場合もある。","People have (primary) ways to contact them in some way such as phone, email.
 
-人々は、電話、電子メールなどの何らかの方法で彼らに連絡する（プライマリ）方法を持っています。","","","","","","","",,,,,"",,,,"Patient.telecom",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+人々は、電話、電子メールなどの何らかの方法で彼らに連絡する（プライマリ）方法を持っている。","","","","","","","",,,,,"",,,,"Patient.telecom",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","telecom",".telecom","PID-13, PID-14, PID-40"
 "Patient.telecom.id","Patient.telecom.id","","","",0,1,"","","","string {[]} {[]}
 ","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
@@ -213,7 +213,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
  pager : ポケットベル 
 
- url : 電話、ファックス、ポケットベル、または電子メールアドレスではなく、URLとして表される連絡先。これは、Webサイト、ブログ、Skype、Twitter、Facebookなどのさまざまな機関または個人の連絡先を対象としています。電子メールアドレスには使用しないでください。
+ url : 電話、ファックス、ポケットベル、または電子メールアドレスではなく、URLとして表される連絡先。これは、Webサイト、ブログ、Skype、Twitter、Facebookなどのさまざまな機関または個人の連絡先を対象としている。電子メールアドレスには使用しないでください。
 
  sms : SMSメッセージの送信に使用できる連絡先（携帯電話、一部の固定電話など）
 
@@ -419,14 +419,14 @@ UNK 不明","Most, if not all systems capture it.","","","","","","","",,"extens
 ","player[classCode=PSN]/maritalStatusCode",".patient.maritalStatusCode","PID-16"
 "Patient.multipleBirth[x]","Patient.multipleBirth[x]","","","",0,1,"","","","boolean {[]} {[]}
 integer {[]} {[]}","Whether patient is part of a multiple birth　患者が多胎出産の一人かどうか。","Indicates whether the patient is part of a multiple (boolean) or indicates the actual birth order (integer).
-患者が多胎児の一人であるか（boolean）、実際の出生順位（integer）であるかを示します。","Where the valueInteger is provided, the number is the birth number in the sequence. E.g. The middle birth in triplets would be valueInteger=2 and the third born would have valueInteger=3 If a boolean value was provided for this triplets example, then all 3 patient records would have valueBoolean=true (the ordering is not indicated).
+患者が多胎児の一人であるか（boolean）、実際の出生順位（integer）であるかを示す。","Where the valueInteger is provided, the number is the birth number in the sequence. E.g. The middle birth in triplets would be valueInteger=2 and the third born would have valueInteger=3 If a boolean value was provided for this triplets example, then all 3 patient records would have valueBoolean=true (the ordering is not indicated).
 
 multipleBirthBoolean　または　multipleBirthInteger　のどちらかに値が入る
 multipleBirthBoolean : 多胎出産時かどうか。
-３つ子の例にbooleanが指定された場合、3つの患者レコードすべてがvalueBoolean = trueになります（順序は示されない）
+３つ子の例にbooleanが指定された場合、3つの患者レコードすべてがvalueBoolean = trueになる（順序は示されない）
 multipleBirthInteger : 多胎出産時の出生順位。
 たとえば、３つ子の２番目の生まれはvalueInteger = 2で、3番目の生まれはvalueInteger = 3になる。","For disambiguation of multiple-birth children, especially relevant where the care provider doesn't meet the patient, such as labs.
-多産児の曖昧性解消、特にラボなど、医療提供者が患者に会わない場合に関連します。","","","","","","","",,,,,"",,,,"Patient.multipleBirth[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+多産児の曖昧性解消、特にラボなど、医療提供者が患者に会わない場合に関連する。","","","","","","","",,,,,"",,,,"Patient.multipleBirth[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","player[classCode=PSN|ANM and determinerCode=INSTANCE]/multipleBirthInd,  player[classCode=PSN|ANM and determinerCode=INSTANCE]/multipleBirthOrderNumber","n/a","PID-24 (bool), PID-25 (integer)"
 "Patient.photo","Patient.photo","","","",0,*,"","","","Attachment {[]} {[]}
 ","Image of the patient　患者の画像","Image of the patient.
@@ -437,19 +437,19 @@ multipleBirthInteger : 多胎出産時の出生順位。
 
 ガイドライン：
 臨床写真ではなく、身分証明写真を使用してください。
-寸法をサムネイルに制限します。
+寸法をサムネイルに制限する。
 リソースの更新を容易にするため、バイト数を少なくしてください。","Many EHR systems have the capability to capture an image of the patient. Fits with newer social media usage too.
 
-多くのEHRシステムには、患者の画像をキャプチャする機能があります。より新しいソーシャルメディアの使用にも適合します。","","","","","","","",,,,,"",,,,"Patient.photo",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+多くのEHRシステムには、患者の画像をキャプチャする機能がある。より新しいソーシャルメディアの使用にも適合する。","","","","","","","",,,,,"",,,,"Patient.photo",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","player[classCode=PSN|ANM and determinerCode=INSTANCE]/desc","n/a","OBX-5 - needs a profile"
 "Patient.contact","Patient.contact","","","",0,*,"","","","BackboneElement {[]} {[]}
 ","A contact party (e.g. guardian, partner, friend) for the patient　患者の連絡先者（例：保護者、パートナー、友人）。","A contact party (e.g. guardian, partner, friend) for the patient.
 
 患者の連絡先者（例：保護者、パートナー、友人）。","Contact covers all kinds of contact parties: family members, business contacts, guardians, caregivers. Not applicable to register pedigree and family ties beyond use of having contact.
 
-連絡先には、家族、取引先、保護者、介護者など、あらゆる種類の連絡先が含まれます。連絡先として使用しない親戚や家族を登録するためには適用されません。","Need to track people you can contact about the patient.
+連絡先には、家族、取引先、保護者、介護者など、あらゆる種類の連絡先が含まれる。連絡先として使用しない親戚や家族を登録するためには適用されない。","Need to track people you can contact about the patient.
 
-患者について連絡できる人を確認する必要があります。","","","","","","","",,,,,"",,,,"Patient.contact",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+患者について連絡できる人を確認する必要がある。","","","","","","","",,,,,"",,,,"Patient.contact",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 pat-1:SHALL at least contain a contact's details or a reference to an organization {name.exists() or telecom.exists() or address.exists() or organization.exists()}","player[classCode=PSN|ANM and determinerCode=INSTANCE]/scopedRole[classCode=CON]","n/a"
 "Patient.contact.id","Patient.contact.id","","","",0,1,"","","","string {[]} {[]}
 ","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
@@ -484,23 +484,23 @@ S 州政府機関
 
 U 不明","Used to determine which contact person is the most relevant to approach, depending on circumstances.
 
-状況に応じて、アプローチするのに最適な関係者を決定するために使用されます。","","","","","","","",,"extensible","The nature of the relationship between a patient and a contact person for that patient.","http://hl7.org/fhir/ValueSet/patient-contactrelationship","",,,,"Patient.contact.relationship",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+状況に応じて、アプローチするのに最適な関係者を決定するために使用される。","","","","","","","",,"extensible","The nature of the relationship between a patient and a contact person for that patient.","http://hl7.org/fhir/ValueSet/patient-contactrelationship","",,,,"Patient.contact.relationship",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","code","n/a","NK1-7, NK1-3"
 "Patient.contact.name","Patient.contact.name","","","",0,1,"","","","HumanName {[]} {[]}
 ","A name associated with the contact person","A name associated with the contact person.
 
 連絡先に登録された名前。","","Contact persons need to be identified by name, but it is uncommon to need details about multiple other names for that contact person.
 
-連絡先は名前で識別する必要がありますが、その連絡先に複数の名前が必要になることはまれです。","","","","","","","",,,,,"",,,,"Patient.contact.name",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+連絡先は名前で識別する必要があるが、その連絡先に複数の名前が必要になることはまれである。","","","","","","","",,,,,"",,,,"Patient.contact.name",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","name","n/a","NK1-2"
 "Patient.contact.telecom","Patient.contact.telecom","","","",0,*,"","","","ContactPoint {[]} {[]}
 ","A contact detail for the person","A contact detail for the person, e.g. a telephone number or an email address.
 
 連絡先に登録された連絡方法（電話番号やメールアドレスなど）。","Contact may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification.
 
-連絡先には、さまざまな用途または適用期間で連絡を取るための複数の方法があります。その人に緊急に連絡する際の連絡先を確認する必要があります。","People have (primary) ways to contact them in some way such as phone, email.
+連絡先には、さまざまな用途または適用期間で連絡を取るための複数の方法がある。その人に緊急に連絡する際の連絡先を確認する必要がある。","People have (primary) ways to contact them in some way such as phone, email.
 
-電話、電子メールなどの（優先する）連絡方法を確認する必要があります。","","","","","","","",,,,,"",,,,"Patient.contact.telecom",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+電話、電子メールなどの（優先する）連絡方法を確認する必要がある。","","","","","","","",,,,,"",,,,"Patient.contact.telecom",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","telecom","n/a","NK1-5, NK1-6, NK1-40"
 "Patient.contact.address","Patient.contact.address","","","",0,1,"","","","Address {[]} {[]}
 ","Address for the contact person","Address for the contact person.
@@ -510,7 +510,7 @@ U 不明","Used to determine which contact person is the most relevant to approa
 "Patient.contact.gender","Patient.contact.gender","","","",0,1,"","","","code {[]} {[]}
 ","male | female | other | unknown","Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes.
 管理上の性別-連絡先担当者が管理および記録管理のために持っていると考えられる性別。","","Needed to address the person correctly.
-その人に正しく話しかけるために必要です。","","","","","","","",,"required","The gender of a person used for administrative purposes.","http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1","",,,,"Patient.contact.gender",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+その人に正しく話しかけるために必要である。","","","","","","","",,"required","The gender of a person used for administrative purposes.","http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1","",,,,"Patient.contact.gender",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender","n/a","NK1-15"
 "Patient.contact.organization","Patient.contact.organization","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
 ","Organization that is associated with the contact","Organization on behalf of which the contact is acting or for which the contact is working.
@@ -526,8 +526,8 @@ U 不明","Used to determine which contact person is the most relevant to approa
 "Patient.communication","Patient.communication","","","",0,*,"","","","BackboneElement {[]} {[]}
 ","A language which may be used to communicate with the patient about his or her health　彼または彼女の健康について患者と会話する際に使用する言語","A language which may be used to communicate with the patient about his or her health.
 彼または彼女の健康について患者と会話する際に使用する言語。","If no language is specified, this *implies* that the default local language is spoken.  If you need to convey proficiency for multiple modes, then you need multiple Patient.Communication associations.   For animals, language is not a relevant field, and should be absent from the instance. If the Patient does not speak the default local language, then the Interpreter Required Standard can be used to explicitly declare that an interpreter is required.
-言語が指定されていない場合、デフォルトのローカル言語が話されていることを意味します。 複数のモードの習熟度を伝える必要がある場合は、複数のPatient.Communicationアソシエーションが必要です。 動物の場合、言語は関連するフィールドではないため、インスタンスから除外する必要があります。 患者がデフォルトの現地言語を話さない場合、通訳者が必要であることを明示的に宣言するために、通訳者必須基準を使用できます。","If a patient does not speak the local language, interpreters may be required, so languages spoken and proficiency are important things to keep track of both for patient and other persons of interest.
-患者が現地の言語を話さない場合、通訳が必要になる場合があるため、話せる言語と習熟度は、患者と関心のある他の人の両方にとって注意すべき重要な事項です。","","","","","","","",,,,,"",,,,"Patient.communication",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+言語が指定されていない場合、デフォルトのローカル言語が話されていることを意味する。 複数のモードの習熟度を伝える必要がある場合は、複数のPatient.Communicationアソシエーションが必要である。 動物の場合、言語は関連するフィールドではないため、インスタンスから除外する必要がある。 患者がデフォルトの現地言語を話さない場合、通訳者が必要であることを明示的に宣言するために、通訳者必須基準を使用できる。","If a patient does not speak the local language, interpreters may be required, so languages spoken and proficiency are important things to keep track of both for patient and other persons of interest.
+患者が現地の言語を話さない場合、通訳が必要になる場合があるため、話せる言語と習熟度は、患者と関心のある他の人の両方にとって注意すべき重要な事項である。","","","","","","","",,,,,"",,,,"Patient.communication",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","LanguageCommunication","patient.languageCommunication"
 "Patient.communication.id","Patient.communication.id","","","",0,1,"","","","string {[]} {[]}
 ","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
@@ -543,7 +543,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "Patient.communication.language","Patient.communication.language","","","",1,1,"","","","CodeableConcept {[]} {[]}
 ","The language which can be used to communicate with the patient about his or her health","The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. ""en"" for English, or ""en-US"" for American English versus ""en-EN"" for England English.
-ISO-639-1 alpha 2コード小文字で言語を、また、オプションとしてハイフンとISO-3166-1 alpha 2コード大文字を続けて地域を表します。たとえば、英語の場合は「en」、アメリカ英語の場合は「en-US」、イギリス英語の場合は「en-EN」です。","The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.
+ISO-639-1 alpha 2コード小文字で言語を、また、オプションとしてハイフンとISO-3166-1 alpha 2コード大文字を続けて地域を表す。たとえば、英語の場合は「en」、アメリカ英語の場合は「en-US」、イギリス英語の場合は「en-EN」である。","The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.
 
 
 患者とコミュニケーションするときに使用できる言語をValueSet(CommonLanguages)より選択する。
@@ -558,17 +558,17 @@ ja 日本語
 
 ko 韓国語
 など","Most systems in multilingual countries will want to convey language. Not all systems actually need the regional dialect.
-多言語の国のほとんどのシステムは、言語を伝えたいでしょう。 すべてのシステムが実際に地域の方言を必要とするわけではありません。","","","","","","","",,"preferred","A human language.","http://hl7.org/fhir/ValueSet/languages","",,,,"Patient.communication.language",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+多言語の国のほとんどのシステムは、言語を伝えたいと考えられる。 すべてのシステムが実際に地域の方言を必要とするわけではない。","","","","","","","",,"preferred","A human language.","http://hl7.org/fhir/ValueSet/languages","",,,,"Patient.communication.language",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","player[classCode=PSN|ANM and determinerCode=INSTANCE]/languageCommunication/code",".languageCode","PID-15, LAN-2"
 "Patient.communication.preferred","Patient.communication.preferred","","","",0,1,"","","","boolean {[]} {[]}
 ","Language preference indicator","Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).
 
-患者がこの言語を優先するかどうかを示します（他の言語よりも特定レベルまで習得している）。","This language is specifically identified for communicating healthcare information.
+患者がこの言語を優先するかどうかを示す（他の言語よりも特定レベルまで習得している）。","This language is specifically identified for communicating healthcare information.
 
-この言語は、医療情報を伝えるために特に識別されます。
-患者がこの言語を習得している場合はtrue、そうでなければfalseを設定します。","People that master multiple languages up to certain level may prefer one or more, i.e. feel more confident in communicating in a particular language making other languages sort of a fall back method.
+この言語は、医療情報を伝えるために特に識別される。
+患者がこの言語を習得している場合はtrue、そうでなければfalseを設定する。","People that master multiple languages up to certain level may prefer one or more, i.e. feel more confident in communicating in a particular language making other languages sort of a fall back method.
 
-特定のレベルまで複数の言語を習得している人は、複数の言語を選択する可能性があります。つまり、特定の言語でのコミュニケーションに自信を持ち、他の言語を一種の備えとしています。","","","","","","","",,,,,"",,,,"Patient.communication.preferred",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+特定のレベルまで複数の言語を習得している人は、複数の言語を選択する可能性がある。つまり、特定の言語でのコミュニケーションに自信を持ち、他の言語を一種の備えとしている。","","","","","","","",,,,,"",,,,"Patient.communication.preferred",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","preferenceInd",".preferenceInd","PID-15"
 "Patient.generalPractitioner","Patient.generalPractitioner","","careProvider
 ","",0,*,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole]]}
@@ -579,16 +579,16 @@ Multiple GPs may be recorded against the patient for various reasons, such as a 
 Jurisdictions may decide that they can profile this down to 1 if desired, or 1 per type.
 
 ----以下の翻訳は検討中の内容を含む----
-これはプライマリケア提供者(GPを含む)である場合もあれば、コミュニティ/障害を持つ患者指定のケアマネージャーである場合もあります。ケアチームの記録には使用されません。これらは、ケアプランまたはEpisodeOfCareリソースにリンクされるCareTeamリソースに含まれている必要があります。複数のGPは、学期中の大学GPと共にリストされた家庭GPなどの学生や、「フライイン/フライアウト」労働者など、さまざまな理由で患者に対して記録される場合があります。また、医学的問題を認識し続けるために家庭GPに含まれています。
-管轄区域は、必要に応じてこれを1、またはタイプごとに1にプロファイルできると決定する場合があります。","","","","","","","","",,,,,"",,,,"Patient.generalPractitioner",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+これはプライマリケア提供者(GPを含む)である場合もあれば、コミュニティ/障害を持つ患者指定のケアマネージャーである場合もある。ケアチームの記録には使用されない。これらは、ケアプランまたはEpisodeOfCareリソースにリンクされるCareTeamリソースに含まれている必要がある。複数のGPは、学期中の大学GPと共にリストされた家庭GPなどの学生や、「フライイン/フライアウト」労働者など、さまざまな理由で患者に対して記録される場合がある。また、医学的問題を認識し続けるために家庭GPに含まれる。
+管轄区域は、必要に応じてこれを1、またはタイプごとに1にプロファイルできると決定する場合がある。","","","","","","","","",,,,,"",,,,"Patient.generalPractitioner",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","subjectOf.CareEvent.performer.AssignedEntity","n/a","PD1-4"
 "Patient.managingOrganization","Patient.managingOrganization","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
 ","Organization that is the custodian of the patient record　患者記録の管理者である組織","Organization that is the custodian of the patient record.
 患者記録の管理者である組織。","There is only one managing organization for a specific patient record. Other organizations will have their own Patient record, and may use the Link property to join the records together (or a Person resource which can include confidence ratings for the association).
 
-特定の患者記録を管理する組織は1つだけです。他の組織には独自の患者レコードがあり、Linkプロパティを使用してレコードを結合する場合があります（または、関連付けの信頼性評価を含めることができる個人リソース）","Need to know who recognizes this patient record, manages and updates it.
+特定の患者記録を管理する組織は1つだけである。他の組織には独自の患者レコードがあり、Linkプロパティを使用してレコードを結合する場合がある（または、関連付けの信頼性評価を含めることができる個人リソース）","Need to know who recognizes this patient record, manages and updates it.
 
-この患者記録を誰が認識し、管理し、更新するかを知る必要があります。","","","","","","","",,,,,"",,,,"Patient.managingOrganization",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+この患者記録を誰が認識し、管理し、更新するかを知る必要がある。","","","","","","","",,,,,"",,,,"Patient.managingOrganization",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","scoper",".providerOrganization"
 "Patient.link","Patient.link","","","",0,*,"","Y","Y","BackboneElement {[]} {[]}
 ","Link to another patient resource that concerns the same actual person　事実上の同一患者をリンクする別のPatientリソース","Link to another patient resource that concerns the same actual patient.
@@ -599,7 +599,7 @@ Jurisdictions may decide that they can profile this down to 1 if desired, or 1 p
 
 * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and 
 * Distribution of patient information across multiple servers
-複数のユースケースがあります：
+複数のユースケースがある。
 ・事務的なエラーのため、一貫して人間を特定することが困難であり患者の記録が重複している。
 ・複数のサーバーにわたり患者情報が配布されている。","","","","","","","",,,,,"",,,,"Patient.link",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","outboundLink","n/a"
@@ -620,7 +620,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
 リンクが参照する他の患者リソース。","Referencing a RelatedPerson here removes the need to use a Person record to associate a Patient and RelatedPerson as the same individual.
 
-ここでRelatedPersonを参照すると、Personレコードを使用して患者とRelatedPersonを同じ個人として関連付ける必要がなくなります。","","","","","","","","",,,,,"",,,,"Patient.link.other",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ここでRelatedPersonを参照すると、Personレコードを使用して患者とRelatedPersonを同じ個人として関連付ける必要がなくなる。","","","","","","","","",,,,,"",,,,"Patient.link.other",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","id","n/a","PID-3, MRG-1"
 "Patient.link.type","Patient.link.type","","","",1,1,"","","Y","code {[]} {[]}
 ","replaced-by | replaces | refer | seealso","The type of link between this patient resource and another patient resource.
@@ -631,9 +631,9 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
 replaced-by　このリンクを含む患者リソースは使用しないでください。
 
-replaces　　　このリンクを含む患者リソースは、現在アクティブな患者レコードです。
+replaces　　　このリンクを含む患者リソースは、現在アクティブな患者レコードである。
 
-refer　　　　このリンクを含む患者リソースは使用中であり、有効ですが、患者に関する主な情報源とは見なされていません。
+refer　　　　このリンクを含む患者リソースは使用中であり、有効であるが、患者に関する主な情報源とは見なされていない。
 
-seealso　　このリンクを含む患者リソースは使用中で有効ですが、同じ人物に関するデータが含まれていることがわかっている別の患者リソースを指しています。","","","","","","","","",,"required","The type of link between this patient resource and another patient resource.","http://hl7.org/fhir/ValueSet/link-type|4.0.1","",,,,"Patient.link.type",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+seealso　　このリンクを含む患者リソースは使用中で有効であるが、同じ人物に関するデータが含まれていることがわかっている別の患者リソースを指す。","","","","","","","","",,"required","The type of link between this patient resource and another patient resource.","http://hl7.org/fhir/ValueSet/link-type|4.0.1","",,,,"Patient.link.type",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","typeCode","n/a"
