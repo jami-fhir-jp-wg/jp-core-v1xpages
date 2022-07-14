@@ -66,8 +66,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Patient.identifier","Patient.identifier","","","",1,*,"","","Y","Identifier {[]} {[]}
 ","An identifier for this patient","An identifier for this patient.
 
-この患者の識別子。","【JP_CORE】
-IDの名前空間を表す Patient.identifier.system と ID値そのものを表す Patient.identifier.value の組み合わせとして表現する。
+この患者の識別子。","IDの名前空間を表す Patient.identifier.system と ID値そのものを表す Patient.identifier.value の組み合わせとして表現する。
 Patient.identifier.system には、
 　urn:oid:1.2.392.100495.20.3.51.医療機関識別OID番号
 を使用する。
@@ -145,7 +144,7 @@ Period is not used for a duration (a measure of elapsed time). See [Duration](da
 
 IDが使われていた/使われている期間。","","","","","","","","",,,,,"",,,,"Identifier.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Role.effectiveTime or implied by context","CX.7 + CX.8"
-"Patient.identifier.assigner","Patient.identifier.assigner","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization]]}
+"Patient.identifier.assigner","Patient.identifier.assigner","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
 ","Organization that issued id (may be just text)","Organization that issued/manages the identifier.","The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.
 
 IDを発行した組織（テキストのみでも可）","","","","","","","","",,,,,"",,,,"Identifier.assigner",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
@@ -158,40 +157,28 @@ It is often used to filter patient lists to exclude inactive patients
 
 Deceased patients may also be marked as inactive for the same reasons, but may be active for some time after death.
 
-この患者記録がアクティブに使用されているかどうか。多くのシステムは、このプロパティを使用して、組織のビジネスルールに基づいて一定期間見られなかった患者など、非現在の患者としてマークします。
+この患者記録がアクティブに使用されているかどうか。多くのシステムは、このプロパティを使用して、組織のビジネスルールに基づいて一定期間見られなかった患者など、非現在の患者としてマークする。
 
-非アクティブな患者を除外するために患者リストをフィルタリングするためによく使用されます
+非アクティブな患者を除外するために患者リストをフィルタリングするためによく使用される。
 
-死亡した患者は、同じ理由で不活性とマークされる場合がありますが、死後しばらくは活性である場合があります。","If a record is inactive, and linked to an active record, then future patient/record updates should occur on the other patient.
+死亡した患者は、同じ理由で不活性とマークされる場合があるが、死後しばらくは活性である場合がある。","If a record is inactive, and linked to an active record, then future patient/record updates should occur on the other patient.
 
 この患者の記録が有効かどうか
 誤って患者を登録して削除したい場合などにfalseにする","Need to be able to mark a patient record as not to be used because it was created in error.
 
-患者レコードが誤って作成された場合のため、使用されないレコードとしてマークできる必要があります。","","This resource is generally assumed to be active if no value is provided for the active element","","","","","",,,,,"",,,,"Patient.active",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+患者レコードが誤って作成された場合のため、使用されないレコードとしてマークできる必要がある。","","This resource is generally assumed to be active if no value is provided for the active element","","","","","",,,,,"",,,,"Patient.active",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","statusCode","n/a","FiveWs.status"
 "Patient.name","Patient.name","","","",0,*,"","","","HumanName {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_HumanName]]} {[]}
 ","Name of a human - parts and usage　人の名前情報、その一部分と使い方","A name associated with the individual.
 
 個人に関連付けられた名前。","Names may be changed, or repudiated, or people may have different names in different contexts. Names may be divided into parts of different type that have variable significance depending on context, though the division into parts does not always matter. With personal names, the different parts might or might not be imbued with some implicit meaning; various cultures associate different importance with the name parts and the degree to which systems must care about name parts around the world varies widely.
-
-患者は、用途や適用期間が異なる複数の名前を持つ場合があります。動物の場合、名前は人間によって割り当てられて使用され、同じパターンを持つという意味で「HumanName」です。
-
---------SWG3 コメント-----------
-
-FHIRデータ型仕様に従って、以下の案とした。
-
+患者は、用途や適用期間が異なる複数の名前を持つ場合がある。動物の場合、名前は人間によって割り当てられて使用され、同じパターンを持つという意味で「HumanName」を使用する。
+FHIRデータ型仕様に従って、以下の内容を採用する。
 ・姓名分割できる場合は、名前パート HumanName.familyとHumanName.givenに指定する。
-
 ・ミドルネームがある場合は、given に指定する（givenは繰り返し可能）
-
 ・姓名に分割できない場合は、HumanName.text にフルネームを指定する。
-
 ・各名前パートとtext は、両方存在してもよい。
-
-　※診療文書構造化記述規約等では、姓に指定するとなっていた。
-
 ・漢字氏名、カナ氏名の区別は、iso21090-EN-representation を使用する。
-
 ・漢字、カナの指定がない場合やローマ字名の場合などはデフォルトスライスが適用される。","Need to be able to track the patient by multiple names. Examples are your official name and a partner name.
 
 複数の名前で患者を追跡できる必要があります。例としては、正式名とパートナー名があります。","","","","","","","",,,,,"",,,,"Patient.name",0,*,"ele-1
@@ -402,8 +389,8 @@ ISO 3166の2文字または3文字のコード
 日本であれば、jp　または　jpn","","","","","","","","",,,,,"",,,,"Address.country",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","AD.part[parttype = CNT]","XAD.6"
 "Patient.address.period","Patient.address.period","","","",0,1,"","","Y","Period {[]} {[]}
-","Time period when address was/is in use　住所が使用されていた\（いる）期間","Time period when address was/is in use.
-住所が使用されていた\（いる）期間","A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. ""the patient was an inpatient of the hospital for this time range"") or one value from the range applies (e.g. ""give to the patient between these two times"").
+","Time period when address was/is in use　住所が使用されていた（いる）期間","Time period when address was/is in use.
+住所が使用されていた（いる）期間","A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. ""the patient was an inpatient of the hospital for this time range"") or one value from the range applies (e.g. ""give to the patient between these two times"").
 Period is not used for a duration (a measure of elapsed time). See [Duration](datatypes.html#Duration).
 
 住所が使用されていた/されている期間。
@@ -525,7 +512,7 @@ U 不明","Used to determine which contact person is the most relevant to approa
 管理上の性別-連絡先担当者が管理および記録管理のために持っていると考えられる性別。","","Needed to address the person correctly.
 その人に正しく話しかけるために必要です。","","","","","","","",,"required","The gender of a person used for administrative purposes.","http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1","",,,,"Patient.contact.gender",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender","n/a","NK1-15"
-"Patient.contact.organization","Patient.contact.organization","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization]]}
+"Patient.contact.organization","Patient.contact.organization","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
 ","Organization that is associated with the contact","Organization on behalf of which the contact is acting or for which the contact is working.
 連絡先が主として活動する、または勤務している組織。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
@@ -584,7 +571,7 @@ ko 韓国語
 特定のレベルまで複数の言語を習得している人は、複数の言語を選択する可能性があります。つまり、特定の言語でのコミュニケーションに自信を持ち、他の言語を一種の備えとしています。","","","","","","","",,,,,"",,,,"Patient.communication.preferred",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","preferenceInd",".preferenceInd","PID-15"
 "Patient.generalPractitioner","Patient.generalPractitioner","","careProvider
-","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization], CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole]]}
+","",0,*,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole]]}
 ","Patient's nominated primary care provider　患者が指名するケア提供者。","Patient's nominated care provider.
 患者が指名するケア提供者。","This may be the primary care provider (in a GP context), or it may be a patient nominated care manager in a community/disability setting, or even organization that will provide people to perform the care provider roles.  It is not to be used to record Care Teams, these should be in a CareTeam resource that may be linked to the CarePlan or EpisodeOfCare resources.
 Multiple GPs may be recorded against the patient for various reasons, such as a student that has his home GP listed along with the GP at university during the school semesters, or a ""fly-in/fly-out"" worker that has the onsite GP also included with his home GP to remain aware of medical issues.
@@ -595,7 +582,7 @@ Jurisdictions may decide that they can profile this down to 1 if desired, or 1 p
 これはプライマリケア提供者(GPを含む)である場合もあれば、コミュニティ/障害を持つ患者指定のケアマネージャーである場合もあります。ケアチームの記録には使用されません。これらは、ケアプランまたはEpisodeOfCareリソースにリンクされるCareTeamリソースに含まれている必要があります。複数のGPは、学期中の大学GPと共にリストされた家庭GPなどの学生や、「フライイン/フライアウト」労働者など、さまざまな理由で患者に対して記録される場合があります。また、医学的問題を認識し続けるために家庭GPに含まれています。
 管轄区域は、必要に応じてこれを1、またはタイプごとに1にプロファイルできると決定する場合があります。","","","","","","","","",,,,,"",,,,"Patient.generalPractitioner",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","subjectOf.CareEvent.performer.AssignedEntity","n/a","PD1-4"
-"Patient.managingOrganization","Patient.managingOrganization","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization]]}
+"Patient.managingOrganization","Patient.managingOrganization","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
 ","Organization that is the custodian of the patient record　患者記録の管理者である組織","Organization that is the custodian of the patient record.
 患者記録の管理者である組織。","There is only one managing organization for a specific patient record. Other organizations will have their own Patient record, and may use the Link property to join the records together (or a Person resource which can include confidence ratings for the association).
 
@@ -628,7 +615,7 @@ user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
 
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
-"Patient.link.other","Patient.link.other","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson]]}
+"Patient.link.other","Patient.link.other","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson]]}
 ","The other patient or related person resource that the link refers to","The other patient resource that the link refers to.
 
 リンクが参照する他の患者リソース。","Referencing a RelatedPerson here removes the need to use a Person record to associate a Patient and RelatedPerson as the same individual.

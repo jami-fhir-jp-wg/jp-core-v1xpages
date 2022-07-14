@@ -2283,182 +2283,183 @@ GET [base]/MedicationDispense?patient=[url]&amp;whenhandedover=[date]
 </code></pre></div></div>
 
 <h3 id="サンプル">サンプル</h3>
+<p>下記の内容の処方に従って調剤する例をFHIRで表現する場合のサンプルを示す。</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rp1 ムコダイン錠２５０ｍｇ１錠（  １日３錠)
 　　１日３回朝昼夕食後３日分
 </code></pre></div></div>
 
-<pre><code class="language-JSON">{
-    "resourceType": "MedicationDispense",
-    "extension": [
-        {
-            "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationRequest_DosageInstruction_UsageDuration",
-            "valueDuration": {
-                "value": 3,
-                "unit": "日",
-                "system": "http://unitsofmeasure.org",
-                "code": "d"
-            }
-        }
-    ],
-    "identifier": [ 
-        {
-            "system": "http://www.sample.com/fhir/medication-dispense",
-            "value": "1234567890"
-        },
-        {
-            "system": "urn:oid:1.2.392.100495.20.3.81",
-            "value": "1"
-        },
-        {
-            "system": "urn:oid:1.2.392.100495.20.3.82",
-            "value": "1"
-        } 
-    ],
-    "status" : "completed",
-    "category" : {
-        "coding":  [
-            {
-                "system": "http://terminology.hl7.org/CodeSystem/v2-0482",
-                "code": "I",
-                "display": "入院オーダ"
-            }
-        ]
-    },
-    "medicationCodeableConcept": {
-        "coding":  [
-            {
-                "system": "urn:oid:1.2.392.200119.4.403.1",
-                "code": "103835401",
-                "display": "ムコダイン錠２５０ｍｇ"
-            }
-        ]
-    },
-    "subject" : {
-        "reference" : "Patient/1234567890"
-    },
-    "performer" : [
-        {
-            "function" : {
-                "coding" : [
-                    {
-                        "code" : "packager",
-                        "system" : "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function",
-                        "display" : "Packager"
-                    }
-                ]
-            },
-            "actor" : {
-                "reference" : "Practitioner/01234567"
-            }
-        }
-    ],
-    "quantity": {
-        "value": 9,
-        "unit": "錠",
-        "system": "urn:oid:1.2.392.100495.20.2.101",
-        "code": "TAB"
-    },
-    "whenPrepared" : "2021-10-07T10:47:19+09:00",
-    "whenHandedOver" : "2021-10-07T10:55:23+09:00",
-    "destination" : {
-        "reference" : "Location/12A"
-    },
-    "note" : [
-        {
-            "text" : "後発品へ変更可能か依頼医のＡ医師に確認したところ、患者の希望により不可との回答あり。"
-        }
-    ],
-    "dosageInstruction":  [
-        {
-            "timing": {
-                "code":  {
-             "coding":  [
-                 {
-                     "system": "urn:oid:1.2.392.200250.2.2.20.20",
-                     "code": "1013044400000000",
-                     "display": "内服・経口・１日３回朝昼夕食後"
-                 }
-                    ]
-         }
-            },
-            "route": {
-                "coding": [
-                    {
-                        "system": "urn:oid:2.16.840.1.113883.3.1937.777.10.5.162",
-                        "code": "PO",
-                        "display": "口"
-                    }
-                ]
-            },
-            "method": {
-                "coding": [
-                    {
-                        "system": "urn:oid:1.2.392.200250.2.2.20.40",
-                        "code": "10",
-                        "display": "経口"
-                    }
-                ]
-            },
-            "doseAndRate":  [
-                {
-                    "type": {
-                        "coding":  [
-                            {
-                                "system": "urn:oid:1.2.392.100495.20.2.22",
-                                "code": "1",
-                                "display": "製剤量"
-                            }
-                        ]
-                    },
-                    "doseQuantity": {
-                        "value": 1,
-                        "unit": "錠",
-                        "system": "urn:oid:1.2.392.100495.20.2.101",
-                        "code": "TAB"
-                    },
-                    "rateRatio": {
-                        "numerator": {
-                            "value": 3,
-                            "unit": "錠",
-                            "system": "urn:oid:1.2.392.100495.20.2.101",
-                            "code": "TAB"
-                        },
-                        "denominator": {
-                            "value": 1,
-                            "unit": "日",
-                            "system": "http://unitsofmeasure.org",
-                            "code": "d"
-                        }
-                    }
-                }
-            ]
-        }
-    ],
-    "substitution" : {
-        "wasSubstituted" : true,
-        "type" : {
-            "coding" : [
-                {
-                    "code" : "G",
-                    "system" : "http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution",
-                    "display" : "generic composition"
-                }
-            ]
-        },
-        "reason": [
-            {
-                "coding" : [
-                    {
-                        "code" : "RR",
-                        "system" : "http://terminology.hl7.org/CodeSystem/v3-ActReason",
-                        "display" : "regulatory requirement"
-                    }
-                ]
-            }
-        ]
-    }
-}
-</code></pre>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicationDispense"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jp-medicationdispense-example-1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationDispense"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"generated"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"div"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div xmlns=</span><span class="se">\"</span><span class="s2">http://www.w3.org/1999/xhtml</span><span class="se">\"</span><span class="s2">&gt;&lt;p&gt;&lt;b&gt;Generated Narrative&lt;/b&gt;&lt;/p&gt;&lt;div style=</span><span class="se">\"</span><span class="s2">display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%</span><span class="se">\"</span><span class="s2">&gt;&lt;p style=</span><span class="se">\"</span><span class="s2">margin-bottom: 0px</span><span class="se">\"</span><span class="s2">&gt;Resource </span><span class="se">\"</span><span class="s2">jp-medicationdispense-example-1</span><span class="se">\"</span><span class="s2"> &lt;/p&gt;&lt;p style=</span><span class="se">\"</span><span class="s2">margin-bottom: 0px</span><span class="se">\"</span><span class="s2">&gt;Profile: &lt;a href=</span><span class="se">\"</span><span class="s2">StructureDefinition-jp-medicationdispense.html</span><span class="se">\"</span><span class="s2">&gt;JP Core MedicationDispense Profile&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: id: 1234567890, id: 1, id: 1&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: completed&lt;/p&gt;&lt;p&gt;&lt;b&gt;category&lt;/b&gt;: Inpatient Order &lt;span style=</span><span class="se">\"</span><span class="s2">background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki</span><span class="se">\"</span><span class="s2">&gt; (&lt;a href=</span><span class="se">\"</span><span class="s2">http://terminology.hl7.org/3.1.0/CodeSystem-v2-0482.html</span><span class="se">\"</span><span class="s2">&gt;orderType&lt;/a&gt;#I)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;medication&lt;/b&gt;: ムコダイン錠２５０ｍｇ &lt;span style=</span><span class="se">\"</span><span class="s2">background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki</span><span class="se">\"</span><span class="s2">&gt; (unknown#103835401)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;subject&lt;/b&gt;: &lt;a href=</span><span class="se">\"</span><span class="s2">Patient-jp-patient-example-1.html</span><span class="se">\"</span><span class="s2">&gt;Patient/jp-patient-example-1&lt;/a&gt; </span><span class="se">\"</span><span class="s2"> 山田</span><span class="se">\"</span><span class="s2">&lt;/p&gt;&lt;h3&gt;Performers&lt;/h3&gt;&lt;table class=</span><span class="se">\"</span><span class="s2">grid</span><span class="se">\"</span><span class="s2">&gt;&lt;tr&gt;&lt;td&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Function&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Actor&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;td&gt;Packager &lt;span style=</span><span class="se">\"</span><span class="s2">background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki</span><span class="se">\"</span><span class="s2">&gt; (&lt;a href=</span><span class="se">\"</span><span class="s2">http://terminology.hl7.org/3.1.0/CodeSystem-medicationdispense-performer-function.html</span><span class="se">\"</span><span class="s2">&gt;MedicationDispense Performer Function Codes&lt;/a&gt;#packager)&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;a href=</span><span class="se">\"</span><span class="s2">Practitioner-jp-practionner-example-male-1.html</span><span class="se">\"</span><span class="s2">&gt;Practitioner/jp-practionner-example-male-1&lt;/a&gt; </span><span class="se">\"</span><span class="s2"> 大阪</span><span class="se">\"</span><span class="s2">&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;b&gt;quantity&lt;/b&gt;: 9 錠&lt;span style=</span><span class="se">\"</span><span class="s2">background: LightGoldenRodYellow</span><span class="se">\"</span><span class="s2">&gt; (Details: urn:oid:1.2.392.100495.20.2.101 code TAB = 'TAB')&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;whenPrepared&lt;/b&gt;: 2021-10-07 10:47:19+0900&lt;/p&gt;&lt;p&gt;&lt;b&gt;whenHandedOver&lt;/b&gt;: 2021-10-07 10:55:23+0900&lt;/p&gt;&lt;p&gt;&lt;b&gt;destination&lt;/b&gt;: &lt;a href=</span><span class="se">\"</span><span class="s2">Location-jp-location-example-ward.html</span><span class="se">\"</span><span class="s2">&gt;Location/jp-location-example-ward&lt;/a&gt; </span><span class="se">\"</span><span class="s2">09A病棟 021病室 4ベッド</span><span class="se">\"</span><span class="s2">&lt;/p&gt;&lt;p&gt;&lt;b&gt;note&lt;/b&gt;: 後発品へ変更可能か依頼医のＡ医師に確認したところ、患者の希望により不可との回答あり。&lt;/p&gt;&lt;h3&gt;Substitutions&lt;/h3&gt;&lt;table class=</span><span class="se">\"</span><span class="s2">grid</span><span class="se">\"</span><span class="s2">&gt;&lt;tr&gt;&lt;td&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;WasSubstituted&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Type&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Reason&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;generic composition &lt;span style=</span><span class="se">\"</span><span class="s2">background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki</span><span class="se">\"</span><span class="s2">&gt; (&lt;a href=</span><span class="se">\"</span><span class="s2">http://terminology.hl7.org/3.1.0/CodeSystem-v3-substanceAdminSubstitution.html</span><span class="se">\"</span><span class="s2">&gt;Substance Admin Substitution&lt;/a&gt;#G)&lt;/span&gt;&lt;/td&gt;&lt;td&gt;regulatory requirement &lt;span style=</span><span class="se">\"</span><span class="s2">background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki</span><span class="se">\"</span><span class="s2">&gt; (&lt;a href=</span><span class="se">\"</span><span class="s2">http://terminology.hl7.org/3.1.0/CodeSystem-v3-ActReason.html</span><span class="se">\"</span><span class="s2">&gt;ActReason&lt;/a&gt;#RR)&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.sample.com/fhir/medication-dispense"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.3.81"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.3.82"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/v2-0482"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inpatient Order"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"medicationCodeableConcept"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200119.4.403.1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103835401"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ムコダイン錠２５０ｍｇ"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient/jp-patient-example-1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"performer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"function"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"packager"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Packager"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"actor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Practitioner/jp-practionner-example-male-1"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"錠"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.2.101"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAB"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"whenPrepared"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-07T10:47:19+09:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"whenHandedOver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-07T10:55:23+09:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Location/jp-location-example-ward"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"note"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"後発品へ変更可能か依頼医のＡ医師に確認したところ、患者の希望により不可との回答あり。"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"dosageInstruction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"内服・経口・１日３回朝昼夕食後"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"timing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200250.2.2.20.20"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1013044400000000"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"内服・経口・１日３回朝昼夕食後"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"route"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:2.16.840.1.113883.3.1937.777.10.5.162"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PO"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"口"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200250.2.2.20.40"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"経口"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"doseAndRate"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.2.22"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"製剤量"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"doseQuantity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"錠"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.2.101"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAB"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"rateRatio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"numerator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"錠"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.2.101"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAB"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"denominator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"日"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://unitsofmeasure.org"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"substitution"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"wasSubstituted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"generic composition"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/v3-ActReason"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RR"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"regulatory requirement"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
 
 <h2 id="注意事項">注意事項</h2>
 
@@ -2677,7 +2678,7 @@ https://github.com/Acedia-Belphegor/hl7v2-to-fhir/</li>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jul 14, 2022 01:49+0000">2022-07-14</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jul 14, 2022 04:10+0000">2022-07-14</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
