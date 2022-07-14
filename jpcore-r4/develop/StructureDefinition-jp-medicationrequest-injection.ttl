@@ -4807,8 +4807,8 @@
        fhir:index 92;
        fhir:Element.id [ fhir:value "MedicationRequest.dosageInstruction.additionalInstruction" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationRequest.dosageInstruction.additionalInstruction" ];
-       fhir:ElementDefinition.short [ fhir:value "患者に対する補足指示や注意。たとえば、「食事と一緒に」「眠くなることがあります」" ];
-       fhir:ElementDefinition.definition [ fhir:value "どのように薬剤を内服するかについての患者への補足指示（たとえば、「食事と一緒に」や「30分から1時間前に内服」）や薬剤についての注意書き（たとえば、「眠くなることがあります」や「日光や紫外線が皮膚にあたららないようにすること」）" ];
+       fhir:ElementDefinition.short [ fhir:value "患者に対する補足指示や注意。たとえば、「食事と一緒に」「眠くなることがある」" ];
+       fhir:ElementDefinition.definition [ fhir:value "どのように薬剤を内服するかについての患者への補足指示（たとえば、「食事と一緒に」や「30分から1時間前に内服」）や薬剤についての注意書き（たとえば、「眠くなることがある」や「日光や紫外線が皮膚にあたららないようにすること」）" ];
        fhir:ElementDefinition.comment [ fhir:value "薬剤投与や調剤についての情報（たとえば、「腹膜内ポートに可能な限り迅速に注入」や「薬剤Xの直後に」）であり、dosage.textにも複製されるべきである。" ];
        fhir:ElementDefinition.requirements [ fhir:value "補足指示はコード化されるように意図されているが、コードがない場合はエレメントはテキストだけで表現することができる。たとえば、「大量の水で服用する」という指示はコード化されていることもあれば、されていないことおある。" ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
@@ -6888,7 +6888,7 @@
        fhir:Element.id [ fhir:value "MedicationRequest.dosageInstruction.timing.code" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationRequest.dosageInstruction.timing.code" ];
        fhir:ElementDefinition.short [ fhir:value "BID | TID | QID | AM | PM | QD | QOD | +" ];
-       fhir:ElementDefinition.definition [ fhir:value "スケジュール上のタイミングを表すコード（あるいはcode.text内のテキスト）。BID(1日2回)のようなコードはどこにでもあるが、多くの医療機関は付加的なコードを定義している。もし、コードが示されていれば、構造化されたタイミングで完全に示されたデータであると解釈され、コードまたはTimingを解釈するためのデータであると解釈される。しかし、例外的に.repeat.bounds（コードは含まれません)はコードを上書きして適用される。" ];
+       fhir:ElementDefinition.definition [ fhir:value "スケジュール上のタイミングを表すコード（あるいはcode.text内のテキスト）。BID(1日2回)のようなコードはどこにでもあるが、多くの医療機関は付加的なコードを定義している。もし、コードが示されていれば、構造化されたタイミングで完全に示されたデータであると解釈され、コードまたはTimingを解釈するためのデータであると解釈される。しかし、例外的に.repeat.bounds（コードは含まれない)はコードを上書きして適用される。" ];
        fhir:ElementDefinition.comment [ fhir:value "BIDなどは「施設特有の時間」として定義される。たとえば、施設がBIDを「つねに朝7時と夕方6時」であると指定することがある。この指定が不適切であれば、BIDというコードは使うべきではない。その代わり、HL7が定義したBIDのコードではなく、その施設特有のコードで明示的に示すべきであり、構造化された表現を使うべきである（この場合、2回のイベントの時刻を指定する必要がある）。" ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
@@ -9867,7 +9867,7 @@
        fhir:ElementDefinition.path [ fhir:value "MedicationRequest.dosageInstruction.doseAndRate.dose[x]" ];
        fhir:ElementDefinition.short [ fhir:value "1回投与量" ];
        fhir:ElementDefinition.definition [ fhir:value "1回投与量" ];
-       fhir:ElementDefinition.comment [ fhir:value "この量は指定された薬剤の量を指定するものであって、各有効成分の量を指定するものではない。各成分の量はMedication resourceで伝えることができる。たとえば、有効成分が375mgである錠剤を1錠投与することを伝えたい場合、Medication resourceを利用して、XYZ成分が375mg含有しているという錠剤であることを文書化することができる。あるいは1回投与量が375mgであることを伝えるのであれば、Medication resourceをつかって単にそれが錠剤であることを示せばよい。もし、ドーパミンの静注を例に挙げて、400mgのドーパミンを500mlの注射溶液に混ぜて使うことを伝えたいのであれば、それをすべてMedication resourceで伝えることができる。もし、投与について即時に伝達することを意図していない（たとえば投与速度が示されていたり、投与時期に範囲があるような場合）のであれば、たとえば1回500mlを4時間以上かけて投与する予定を伝える場合にもMecication resourceで伝えることができます。" ];
+       fhir:ElementDefinition.comment [ fhir:value "この量は指定された薬剤の量を指定するものであって、各有効成分の量を指定するものではない。各成分の量はMedication resourceで伝えることができる。たとえば、有効成分が375mgである錠剤を1錠投与することを伝えたい場合、Medication resourceを利用して、XYZ成分が375mg含有しているという錠剤であることを文書化することができる。あるいは1回投与量が375mgであることを伝えるのであれば、Medication resourceをつかって単にそれが錠剤であることを示せばよい。もし、ドーパミンの静注を例に挙げて、400mgのドーパミンを500mlの注射溶液に混ぜて使うことを伝えたいのであれば、それをすべてMedication resourceで伝えることができる。もし、投与について即時に伝達することを意図していない（たとえば投与速度が示されていたり、投与時期に範囲があるような場合）のであれば、たとえば1回500mlを4時間以上かけて投与する予定を伝える場合にもMecication resourceで伝えることができる。" ];
        fhir:ElementDefinition.requirements [ fhir:value "The amount of therapeutic or other substance given at one administration event." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];

@@ -1314,7 +1314,7 @@
         "path": "Patient.telecom.system",
         "short": "phone | fax | email | pager | url | sms | other",
         "definition": "Telecommunications form for contact point - what communications system is required to make use of the contact.",
-        "comment": "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n\r\n患者の連絡先の種別をValueSet(ContactPointSystem)より選択する。\r\n\r\n phone : 電話 \r\n\r\n fax :  Fax \r\n\r\n email : 電子メール \r\n\r\n pager : ポケットベル \r\n\r\n url : 電話、ファックス、ポケットベル、または電子メールアドレスではなく、URLとして表される連絡先。これは、Webサイト、ブログ、Skype、Twitter、Facebookなどのさまざまな機関または個人の連絡先を対象としている。電子メールアドレスには使用しないでください。\r\n\r\n sms : SMSメッセージの送信に使用できる連絡先（携帯電話、一部の固定電話など）\r\n\r\n other : 電話、Fax、ポケットベル、または電子メールアドレスではなく、URLとして表現できない連絡先。例：内部メールアドレス。これは、URLとして表現できる連絡先（Skype、Twitter、Facebookなど）には使用しないでください。",
+        "comment": "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n\r\n患者の連絡先の種別をValueSet(ContactPointSystem)より選択する。\r\n\r\n phone : 電話 \r\n\r\n fax :  Fax \r\n\r\n email : 電子メール \r\n\r\n pager : ポケットベル \r\n\r\n url : 電話、ファックス、ポケットベル、または電子メールアドレスではなく、URLとして表される連絡先。これは、Webサイト、ブログ、Skype、Twitter、Facebookなどのさまざまな機関または個人の連絡先を対象としている。電子メールアドレスには使用しないこと。\r\n\r\n sms : SMSメッセージの送信に使用できる連絡先（携帯電話、一部の固定電話など）\r\n\r\n other : 電話、Fax、ポケットベル、または電子メールアドレスではなく、URLとして表現できない連絡先。例：内部メールアドレス。これは、URLとして表現できる連絡先（Skype、Twitter、Facebookなど）には使用しないこと。",
         "min": 0,
         "max": "1",
         "base": {
@@ -2531,7 +2531,7 @@
         "path": "Patient.photo",
         "short": "Image of the patient　患者の画像",
         "definition": "Image of the patient.\r\n患者の画像。",
-        "comment": "Guidelines:\n* Use id photos, not clinical photos.\n* Limit dimensions to thumbnail.\n* Keep byte count low to ease resource updates\r\n\r\nガイドライン：\r\n臨床写真ではなく、身分証明写真を使用してください。\r\n寸法をサムネイルに制限する。\r\nリソースの更新を容易にするため、バイト数を少なくしてください。",
+        "comment": "Guidelines:\n* Use id photos, not clinical photos.\n* Limit dimensions to thumbnail.\n* Keep byte count low to ease resource updates\r\n\r\nガイドライン：\r\n臨床写真ではなく、身分証明写真を使用すること。\r\n寸法をサムネイルに制限する。\r\nリソースの更新を容易にするため、バイト数を少なくすること。",
         "requirements": "Many EHR systems have the capability to capture an image of the patient. Fits with newer social media usage too.\r\n\r\n多くのEHRシステムには、患者の画像をキャプチャする機能がある。より新しいソーシャルメディアの使用にも適合する。",
         "min": 0,
         "max": "*",
@@ -3501,7 +3501,7 @@
         "path": "Patient.link",
         "short": "Link to another patient resource that concerns the same actual person　事実上の同一患者をリンクする別のPatientリソース",
         "definition": "Link to another patient resource that concerns the same actual patient.\r\n\r\n事実上の同一患者をリンクする別のPatientリソース。",
-        "comment": "There is no assumption that linked patient records have mutual links.\r\n\r\nリンクされた患者記録に相互リンクがあるという仮定はありません。",
+        "comment": "There is no assumption that linked patient records have mutual links.\r\n\r\nリンクされた患者記録に相互リンクがあるという仮定はない。",
         "requirements": "There are multiple use cases:   \n\n* Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and \n* Distribution of patient information across multiple servers\r\n複数のユースケースがある。\n・事務的なエラーのため、一貫して人間を特定することが困難であり患者の記録が重複している。\n・複数のサーバーにわたり患者情報が配布されている。",
         "min": 0,
         "max": "*",
@@ -3735,7 +3735,7 @@
         "path": "Patient.link.type",
         "short": "replaced-by | replaces | refer | seealso",
         "definition": "The type of link between this patient resource and another patient resource.\r\n\r\nこの患者リソースと別の患者リソース間のリンクのタイプ。",
-        "comment": "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n\r\nこの患者リソースと別の患者リソース間のリンクのタイプをValueSet(LinkType)より選択する。\r\n\r\nreplaced-by　このリンクを含む患者リソースは使用しないでください。\r\n\r\nreplaces　　　このリンクを含む患者リソースは、現在アクティブな患者レコードである。\r\n\r\nrefer　　　　このリンクを含む患者リソースは使用中であり、有効であるが、患者に関する主な情報源とは見なされていない。\r\n\r\nseealso　　このリンクを含む患者リソースは使用中で有効であるが、同じ人物に関するデータが含まれていることがわかっている別の患者リソースを指す。",
+        "comment": "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n\r\nこの患者リソースと別の患者リソース間のリンクのタイプをValueSet(LinkType)より選択する。\r\n\r\nreplaced-by　このリンクを含む患者リソースは使用しないこと。\r\n\r\nreplaces　　　このリンクを含む患者リソースは、現在アクティブな患者レコードである。\r\n\r\nrefer　　　　このリンクを含む患者リソースは使用中であり、有効であるが、患者に関する主な情報源とは見なされていない。\r\n\r\nseealso　　このリンクを含む患者リソースは使用中で有効であるが、同じ人物に関するデータが含まれていることがわかっている別の患者リソースを指す。",
         "min": 1,
         "max": "1",
         "base": {
@@ -3941,7 +3941,7 @@
       {
         "id": "Patient.telecom.system",
         "path": "Patient.telecom.system",
-        "comment": "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n\r\n患者の連絡先の種別をValueSet(ContactPointSystem)より選択する。\r\n\r\n phone : 電話 \r\n\r\n fax :  Fax \r\n\r\n email : 電子メール \r\n\r\n pager : ポケットベル \r\n\r\n url : 電話、ファックス、ポケットベル、または電子メールアドレスではなく、URLとして表される連絡先。これは、Webサイト、ブログ、Skype、Twitter、Facebookなどのさまざまな機関または個人の連絡先を対象としている。電子メールアドレスには使用しないでください。\r\n\r\n sms : SMSメッセージの送信に使用できる連絡先（携帯電話、一部の固定電話など）\r\n\r\n other : 電話、Fax、ポケットベル、または電子メールアドレスではなく、URLとして表現できない連絡先。例：内部メールアドレス。これは、URLとして表現できる連絡先（Skype、Twitter、Facebookなど）には使用しないでください。"
+        "comment": "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n\r\n患者の連絡先の種別をValueSet(ContactPointSystem)より選択する。\r\n\r\n phone : 電話 \r\n\r\n fax :  Fax \r\n\r\n email : 電子メール \r\n\r\n pager : ポケットベル \r\n\r\n url : 電話、ファックス、ポケットベル、または電子メールアドレスではなく、URLとして表される連絡先。これは、Webサイト、ブログ、Skype、Twitter、Facebookなどのさまざまな機関または個人の連絡先を対象としている。電子メールアドレスには使用しないこと。\r\n\r\n sms : SMSメッセージの送信に使用できる連絡先（携帯電話、一部の固定電話など）\r\n\r\n other : 電話、Fax、ポケットベル、または電子メールアドレスではなく、URLとして表現できない連絡先。例：内部メールアドレス。これは、URLとして表現できる連絡先（Skype、Twitter、Facebookなど）には使用しないこと。"
       },
       {
         "id": "Patient.telecom.value",
@@ -4075,7 +4075,7 @@
         "path": "Patient.photo",
         "short": "Image of the patient　患者の画像",
         "definition": "Image of the patient.\r\n患者の画像。",
-        "comment": "Guidelines:\n* Use id photos, not clinical photos.\n* Limit dimensions to thumbnail.\n* Keep byte count low to ease resource updates\r\n\r\nガイドライン：\r\n臨床写真ではなく、身分証明写真を使用してください。\r\n寸法をサムネイルに制限する。\r\nリソースの更新を容易にするため、バイト数を少なくしてください。",
+        "comment": "Guidelines:\n* Use id photos, not clinical photos.\n* Limit dimensions to thumbnail.\n* Keep byte count low to ease resource updates\r\n\r\nガイドライン：\r\n臨床写真ではなく、身分証明写真を使用すること。\r\n寸法をサムネイルに制限する。\r\nリソースの更新を容易にするため、バイト数を少なくすること。",
         "requirements": "Many EHR systems have the capability to capture an image of the patient. Fits with newer social media usage too.\r\n\r\n多くのEHRシステムには、患者の画像をキャプチャする機能がある。より新しいソーシャルメディアの使用にも適合する。"
       },
       {
@@ -4197,7 +4197,7 @@
         "path": "Patient.link",
         "short": "Link to another patient resource that concerns the same actual person　事実上の同一患者をリンクする別のPatientリソース",
         "definition": "Link to another patient resource that concerns the same actual patient.\r\n\r\n事実上の同一患者をリンクする別のPatientリソース。",
-        "comment": "There is no assumption that linked patient records have mutual links.\r\n\r\nリンクされた患者記録に相互リンクがあるという仮定はありません。",
+        "comment": "There is no assumption that linked patient records have mutual links.\r\n\r\nリンクされた患者記録に相互リンクがあるという仮定はない。",
         "requirements": "There are multiple use cases:   \n\n* Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and \n* Distribution of patient information across multiple servers\r\n複数のユースケースがある。\n・事務的なエラーのため、一貫して人間を特定することが困難であり患者の記録が重複している。\n・複数のサーバーにわたり患者情報が配布されている。",
         "isModifierReason": "This element is labeled as a modifier because it might not be the main Patient resource, and the referenced patient should be used instead of this Patient record. This is when the link.type value is 'replaced-by'  この要素は、メインのPatientリソースではない可能性があるため、修飾子としてラベル付けされ、このPatientレコードの代わりに参照された患者を使用する必要がある。link.type値が 'replaced-by'の場合"
       },
@@ -4226,7 +4226,7 @@
         "id": "Patient.link.type",
         "path": "Patient.link.type",
         "definition": "The type of link between this patient resource and another patient resource.\r\n\r\nこの患者リソースと別の患者リソース間のリンクのタイプ。",
-        "comment": "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n\r\nこの患者リソースと別の患者リソース間のリンクのタイプをValueSet(LinkType)より選択する。\r\n\r\nreplaced-by　このリンクを含む患者リソースは使用しないでください。\r\n\r\nreplaces　　　このリンクを含む患者リソースは、現在アクティブな患者レコードである。\r\n\r\nrefer　　　　このリンクを含む患者リソースは使用中であり、有効であるが、患者に関する主な情報源とは見なされていない。\r\n\r\nseealso　　このリンクを含む患者リソースは使用中で有効であるが、同じ人物に関するデータが含まれていることがわかっている別の患者リソースを指す。"
+        "comment": "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n\r\nこの患者リソースと別の患者リソース間のリンクのタイプをValueSet(LinkType)より選択する。\r\n\r\nreplaced-by　このリンクを含む患者リソースは使用しないこと。\r\n\r\nreplaces　　　このリンクを含む患者リソースは、現在アクティブな患者レコードである。\r\n\r\nrefer　　　　このリンクを含む患者リソースは使用中であり、有効であるが、患者に関する主な情報源とは見なされていない。\r\n\r\nseealso　　このリンクを含む患者リソースは使用中で有効であるが、同じ人物に関するデータが含まれていることがわかっている別の患者リソースを指す。"
       }
     ]
   }
