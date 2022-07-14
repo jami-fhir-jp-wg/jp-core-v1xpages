@@ -62,7 +62,6 @@ ImagingStudyの現在のステータス","Unknown does not represent ""other"" -
 
 コードは、列挙型またはコードリストで、SNOMED CTなどの非常に正式な定義まで、非常にカジュアルに定義できる。詳細については、HL7v3コア原則を参照のこと。
 
-【JP-CORE】
 ・モダリティのコードを設定。<br/>
 ・Seriesの階層の(0008,0060)を集約する、または(0008,0060)　と　(0008, 0061) のOR。但し、重複する値は1つにまとめて表現。<br/>","","","","","","","","",,"extensible","Type of acquired data in the instance.","http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html","",,,,"ImagingStudy.modality",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".code","(0008,0061)","FiveWs.class"
@@ -73,7 +72,6 @@ ImagingStudyの現在のステータス","Unknown does not represent ""other"" -
 
 QAファントムはデバイスで記録できる。複数の被験者（マウスなど）をグループで記録できる。
 
-【JP-CORE】
 ・患者(Patient)リソースを参照。<br/>
 ・DICOMタグ値を参照する場合は、tag mappingの通りグループ0010（患者情報に関連する情報を扱うグループ）を参照。<br/>
 ・不明患者は、空もしくは不明を指すPatientリソースを参照。<br/>","","","","","","","","",,,,,"",,,,"ImagingStudy.subject",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
@@ -85,7 +83,6 @@ QAファントムはデバイスで記録できる。複数の被験者（マウ
 
 これは通常、イベントが発生したエンカウンターですが、一部のイベントは、エンカウンターの正式な完了の前または後に開始される場合があり、それでもそのエンカウンターのコンテキストに関連付けられています（例：入院前の検査）
 
-【JP-CORE】
 受付を示すEncounterリソースを参照。
 （補足：訪問診療では医療者が患者と会った事を指す）","","","","","","","","",,,,,"",,,,"ImagingStudy.encounter",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.encounter","inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]","FiveWs.context"
@@ -93,8 +90,7 @@ QAファントムはデバイスで記録できる。複数の被験者（マウ
 StudyTime","",0,1,"","","Y","dateTime {[]} {[]}
 ","When the study was started　スタディの開始時期","Date and time the study started.
 
-スタディーの開始日時","【JP-CORE】
-検査開始日時　もしくは　撮影装置へ患者情報が届いた/入力した日時。","","","","","","<valueDateTime xmlns=""http://hl7.org/fhir"" value=""2011-01-01T11:01:20+03:00""/>","","",,,,,"",,,,"ImagingStudy.started",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+スタディーの開始日時","検査開始日時　もしくは　撮影装置へ患者情報が届いた/入力した日時。","","","","","","<valueDateTime xmlns=""http://hl7.org/fhir"" value=""2011-01-01T11:01:20+03:00""/>","","",,,,,"",,,,"ImagingStudy.started",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.occurrence[x]",".effectiveTime","(0008,0020)+(0008,0030)","FiveWs.init"
 "ImagingStudy.basedOn","ImagingStudy.basedOn","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/CarePlan], CanonicalType[http://hl7.org/fhir/StructureDefinition/ServiceRequest], CanonicalType[http://hl7.org/fhir/StructureDefinition/Appointment], CanonicalType[http://hl7.org/fhir/StructureDefinition/AppointmentResponse], CanonicalType[http://hl7.org/fhir/StructureDefinition/Task]]}
 ","Request fulfilled　実施された依頼","A list of the diagnostic requests that resulted in this imaging study being performed.
@@ -103,7 +99,6 @@ StudyTime","",0,1,"","","Y","dateTime {[]} {[]}
 
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要があります（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
 
-【JP-CORE】
 依頼元のServiceRequestを紐付ける。","To support grouped procedures (one imaging study supporting multiple ordered procedures, e.g. chest/abdomen/pelvis CT).","","","","","","","",,,,,"",,,,"ImagingStudy.basedOn",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.basedOn",".outboundRelationship[typeCode=FLFS].target[classCode=DGIMG, moodCode=RQO]","(0032,1064)","FiveWs.cause"
 "ImagingStudy.referrer","ImagingStudy.referrer","","ReferringPhysiciansName
@@ -114,7 +109,6 @@ StudyTime","",0,1,"","","Y","dateTime {[]} {[]}
 
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要があります（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
 
-【JP-CORE】
 依頼医師。必須ではない（ServiceRequestから参照できるため）。","","","","","","","","",,,,,"",,,,"ImagingStudy.referrer",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".outboundRelationship[typeCode=FLFS].target[classCode=DGIMG, moodCode=RQO].participation[typeCode=AUT].role","(0008,0090)+(0008,0096)","FiveWs.cause"
 "ImagingStudy.interpreter","ImagingStudy.interpreter","","Name of Physician(s) Reading Study
@@ -125,7 +119,6 @@ StudyTime","",0,1,"","","Y","dateTime {[]} {[]}
 
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要があります（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
 
-【JP-CORE】
 読影医","","","","","","","","",,,,,"",,,,"ImagingStudy.interpreter",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".participation[typeCode=PRF].role","(0008,1060)","FiveWs.witness"
 "ImagingStudy.endpoint","ImagingStudy.endpoint","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Endpoint]]}
@@ -135,7 +128,6 @@ StudyTime","",0,1,"","","Y","dateTime {[]} {[]}
 
 典型的なエンドポイントタイプには、RESTful APIを使用してネイティブまたはレンダリング（JPG、PNGなど）形式でDICOMインスタンスを取得するために使用されるDICOMWADO-RSが含まれる。 DICOMWADO-URI。HTTPクエリベースのアプローチを使用することを除いて、ネイティブインスタンスまたはレンダリングされたインスタンスを同様に取得できる。 DICOM QIDO-RS。実際のインスタンスを取得せずに、DICOM情報のRESTfulクエリを可能にする。またはIHEInvoke Image Display（IID）。これは、イメージングWebビューアの標準的な呼び出しを提供する。
 
-【JP-CORE】
 DICOMのリソース位置を指定。基本的には1つ。","Access methods for viewing (e.g., IHE’s IID profile) or retrieving (e.g., DICOM’s WADO-URI and WADO-RS) the study or the study’s series or instances. The study-level baseLocation applies to each series in the study, unless overridden in series by a series-level baseLocation of the same type.","","","","","","","",,,,,"",,,,"ImagingStudy.endpoint",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Not supported"
 "ImagingStudy.numberOfSeries","ImagingStudy.numberOfSeries","","NumberOfStudyRelatedSeries
@@ -145,7 +137,6 @@ DICOMのリソース位置を指定。基本的には1つ。","Access methods fo
 調査のシリーズ数。指定されたこの値は、リソースの可用性、セキュリティ、またはその他の要因により、このリソースに含まれる一連の要素の数よりも大きい場合がある。系列要素が存在する場合、この要素が存在する必要がある。","32 bit number; for values larger than this, use decimal
 32ビット数;これより大きい値の場合は、10進数を使用する。
 
-【JP-CORE】
 シリーズの数","","","","","","","","",,,,,"",,,,"ImagingStudy.numberOfSeries",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".outboundRelationship[typeCode=COMP, subsetCode=SUMM].target[classCode=OBSSER, moodCode=EVN].repeatNumber","(0020,1206)"
 "ImagingStudy.numberOfInstances","ImagingStudy.numberOfInstances","","NumberOfStudyRelatedInstances
@@ -155,7 +146,6 @@ DICOMのリソース位置を指定。基本的には1つ。","Access methods fo
 スタディーの中のSOPインスタンスの数。指定されたこの値は、リソースの可用性、セキュリティ、またはその他の要因により、このリソースに含まれるインスタンス要素の数よりも大きい場合がある。インスタンス要素が存在する場合は、この要素が存在する必要がある。","32 bit number; for values larger than this, use decimal
 32ビット数;これより大きい値の場合は、10進数を使用する。
 
-【JP-CORE】
 イメージ（インスタンス）の数。","","","","","","","","",,,,,"",,,,"ImagingStudy.numberOfInstances",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".outboundRelationship[typeCode=COMP, subsetCode=SUMM].target[classCode=DGIMG, moodCode=EVN].repeatNumber","(0020,1208)"
 "ImagingStudy.procedureReference","ImagingStudy.procedureReference","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Procedure]]}
@@ -165,7 +155,6 @@ DICOMのリソース位置を指定。基本的には1つ。","Access methods fo
 
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要があります（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
 
-【JP-CORE】
 進捗状況に関するProcedureリソースを参照。","","","","","","","","",,,,,"",,,,"ImagingStudy.procedureReference",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.partOf",".outboundRelationship[typeCode=COMP].target[classCode=PROC, moodCode=EVN]","(0008,1032)"
 "ImagingStudy.procedureCode","ImagingStudy.procedureCode","","ProcedureCodeSequence
@@ -176,7 +165,6 @@ DICOMのリソース位置を指定。基本的には1つ。","Access methods fo
 
 すべてのターミノロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係と調整前後の関係を管理するための独自の構造を提供する必要がある。
 
-【JP-CORE】
 エラーコードなどを記載","","","","","","","","",,"extensible","The performed procedure type.","http://www.rsna.org/RadLex_Playbook.aspx","",,,,"ImagingStudy.procedureCode",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.code",".outboundRelationship[typeCode=COMP].target[classCode=PROC, moodCode=EVN]","(0008,1032)"
 "ImagingStudy.location","ImagingStudy.location","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Location]]}
@@ -186,7 +174,6 @@ ImagingStudyが実行された主要な物理的な場所。","References SHALL 
 
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要があります（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
 
-【JP-CORE】
 撮影室を示すLocationリソースを参照。","Ties the event to where the records are likely kept and provides context around the event occurrence (e.g. if it occurred inside or outside a dedicated healthcare setting).","","","","","","","",,,,,"",,,,"ImagingStudy.location",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.location",".participation[typeCode=LOC].role","(0008,1040) | (0040,0243)","FiveWs.where[x]","EVN.7"
 "ImagingStudy.reasonCode","ImagingStudy.reasonCode","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
@@ -196,8 +183,7 @@ ImagingStudyが要求された理由を示す臨床状態の説明。","Not all 
 
 すべてのターミノロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係と調整前後の関係を管理するための独自の構造を提供する必要がある。
 
-【JP-CORE】
-未使用","","","","","","","","",,"example","The reason for the study.","http://hl7.org/fhir/ValueSet/procedure-reason","",,,,"ImagingStudy.reasonCode",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+JP Coreでは未使用","","","","","","","","",,"example","The reason for the study.","http://hl7.org/fhir/ValueSet/procedure-reason","",,,,"ImagingStudy.reasonCode",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.reasonCode",".reasonCode","(0040,1002)","FiveWs.why[x]"
 "ImagingStudy.reasonReference","ImagingStudy.reasonReference","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Condition], CanonicalType[http://hl7.org/fhir/StructureDefinition/Observation], CanonicalType[http://hl7.org/fhir/StructureDefinition/Media], CanonicalType[http://hl7.org/fhir/StructureDefinition/DiagnosticReport], CanonicalType[http://hl7.org/fhir/StructureDefinition/DocumentReference]]}
 ","Why was study performed　スタディーが実施された理由","Indicates another resource whose existence justifies this Study.
@@ -206,7 +192,6 @@ ImagingStudyが要求された理由を示す臨床状態の説明。","Not all 
 
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要があります（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
 
-【JP-CORE】
 実施理由が書かれたDiagnosticReportリソースを参照。","","","","","","","","",,,,,"",,,,"ImagingStudy.reasonReference",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.reasonReference",".outboundRelationship[typeCode=RSON].target","FiveWs.why[x]","EVN.4 or by domain"
 "ImagingStudy.note","ImagingStudy.note","","","",0,*,"","","Y","Annotation {[]} {[]}
@@ -217,7 +202,6 @@ ImagingStudyが要求された理由を示す臨床状態の説明。","Not all 
 構造化された注釈（アノテーション）を持たないシステムの場合、作成者や時間なしで単一の注釈を簡単に伝達できる。情報を変更する可能性があるため、この要素をナラティブに含める必要がある場合があります。 
 *注釈は、計算機処理れきる「変更」情報を伝達するために使用されるべきではない*。 （ユーザーの行動を強制することはほとんど不可能であるため、これはSHOULDです）。
 
-【JP-CORE】
 コメント（Annotation型による記述）","","","","","","","","",,,,,"",,,,"ImagingStudy.note",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.note","unknown"
 "ImagingStudy.description","ImagingStudy.description","","StudyDescription
@@ -228,14 +212,12 @@ ImagingStudyが要求された理由を示す臨床状態の説明。","Not all 
 
 FHIR文字列のサイズは1MBを超えてはならないことに注意。
 
-【JP-CORE】
 検査に関するフリーコメント。","","","","","","","","",,,,,"",,,,"ImagingStudy.description",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".text","(0008,1030)"
 "ImagingStudy.series","ImagingStudy.series","","","",0,*,"","","Y","BackboneElement {[]} {[]}
 ","Each study has one or more series of instances　個々のスタディーはインスタンスの１以上のシリーズを有する。","Each study has one or more series of images or other content.
 
-個々のスタディーは画像か他の内容の１以上のシリーズを有する。","【JP-CORE】
-シリーズ（大まかな画像のグループ）","","","","","","","","",,,,,"",,,,"ImagingStudy.series",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+個々のスタディーは画像か他の内容の１以上のシリーズを有する。","シリーズ（大まかな画像のグループ）","","","","","","","","",,,,,"",,,,"ImagingStudy.series",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".outboundRelationship[typeCode=COMP].target[classCode=OBSSER, moodCode=EVN]"
 "ImagingStudy.series.id","ImagingStudy.series.id","","","",0,1,"","","","string {[]} {[]}
 ","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
@@ -256,7 +238,6 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 そのシリーズにrタイするDICOMシリーズインスタンスUID","See [DICOM PS3.3 C.7.3](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html).
 [DICOM PS3.3 C.7.3]（http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html）を参照。
 
-【JP-CORE】
 study階層のidentifierと同じ概念。(0020,000E)にseries固有のUIDが付与される。","DICOM Series Instance UID.","","","","","<valueId xmlns=""http://hl7.org/fhir"" value=""2.16.124.113543.6003.2588828330.45298.17418.2723805630""/>","","",,,,,"",,,,"ImagingStudy.series.uid",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".id","(0020,000E)"
 "ImagingStudy.series.number","ImagingStudy.series.number","","SeriesNumber
@@ -266,7 +247,6 @@ study階層のidentifierと同じ概念。(0020,000E)にseries固有のUIDが付
 このシリーズの数値型識別子","32 bit number; for values larger than this, use decimal
 32ビット数;これより大きい値の場合は、10進数を使用する。
 
-【JP-CORE】
 上記UIDとは別に、ユーザー（または装置）が自由に決められる番号。","","","","","","<valueUnsignedInt xmlns=""http://hl7.org/fhir"" value=""3""/>","","",,,,,"",,,,"ImagingStudy.series.number",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".inboundRelationship[type=COMP, source[classCode=COMPOSITION, moodCode=EVN]].sequenceNumber","(0020,0011)"
 "ImagingStudy.series.modality","ImagingStudy.series.modality","","Modality
@@ -277,7 +257,6 @@ study階層のidentifierと同じ概念。(0020,000E)にseries固有のUIDが付
 
 コードは、列挙型またはコードリストで、SNOMED CTなどの非常に正式な定義まで、非常に柔軟に定義できる。詳細については、HL7v3コア原則を参照。
 
-【JP-CORE】
 当該シリーズのモダリティコード。1シリーズ1モダリティ（1つのシリーズの中に複数のモダリティが混在することはない）。
 <br/>
 （参照先）<br/>
@@ -292,7 +271,6 @@ http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html
 
 FHIR文字列のサイズは1MBを超えてはならないことに注意。
 
-【JP-CORE】
 シリーズごとにつけられるフリーコメント。","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""CT Surview 180""/>","","",,,,,"",,,,"ImagingStudy.series.description",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".text","(0008,103E)"
 "ImagingStudy.series.numberOfInstances","ImagingStudy.series.numberOfInstances","","NumberOfSeriesRelatedInstances
@@ -303,7 +281,6 @@ FHIR文字列のサイズは1MBを超えてはならないことに注意。
 
 32ビット数;これより大きい値の場合は、10進数を使用する。
 
-【JP-CORE】
 シリーズに含まれる画像枚数","","","","","","","","",,,,,"",,,,"ImagingStudy.series.numberOfInstances",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".outboundRelationship[typeCode=COMP, subsetCode=SUMM].target[classCode=DGIMG, moodCode=EVN].repeatNumber","(0020,1209)"
 "ImagingStudy.series.endpoint","ImagingStudy.series.endpoint","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Endpoint]]}
@@ -313,7 +290,6 @@ FHIR文字列のサイズは1MBを超えてはならないことに注意。
 
 典型的なエンドポイントタイプには、RESTful APIを使用してネイティブまたはレンダリング（JPG、PNGなど）形式でDICOMインスタンスを取得するために使用されるDICOMWADO-RSが含まれる。 DICOMWADO-URI。HTTPクエリベースのアプローチを使用することを除いて、ネイティブインスタンスまたはレンダリングされたインスタンスを同様に取得できる。 DICOM QIDO-RSは、実際のインスタンスを取得せずにDICOM情報のRESTfulクエリを可能にする。
 
-【JP-CORE】
 study階層のendpointと同じ。DICOMのリソース位置を指定。基本的には1つ。","Access methods for retrieving (e.g., DICOM’s WADO-URI and WADO-RS) the series or the series’ instances. A baseLocation specified at the series level has precedence over a baseLocation of the same type specified at the study level.","","","","","","","",,,,,"",,,,"ImagingStudy.series.endpoint",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Not supported"
 "ImagingStudy.series.bodySite","ImagingStudy.series.bodySite","","BodyPartExamined
@@ -325,7 +301,6 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 
 コードは、列挙型またはコードリストで、SNOMED CTなどの非常に正式な定義まで、非常に柔軟に定義できる。詳細については、HL7v3コア原則を参照。
 
-【JP-CORE】
 どの部位の検査なのかを示す。フリーではなく、DICOM定義書の中で示される語句しか使えない。","","","","","","","","",,"example","Codes describing anatomical locations. May include laterality.","http://hl7.org/fhir/ValueSet/body-site","",,,,"ImagingStudy.series.bodySite",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".targetSiteCode","(0018,0015)"
 "ImagingStudy.series.laterality","ImagingStudy.series.laterality","","","",0,1,"","","Y","Coding {[]} {[]}
@@ -336,8 +311,7 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 
 コードは、列挙型またはコードリストで、SNOMED CTなどの非常に正式な定義まで、非常に柔軟に定義できる。詳細については、HL7v3コア原則を参照。
 
-【JP-CORE】
-左右などを示す。フリーではなく、DICOM定義書の中で示される語句しか使えない。","","","","","","","","",,"example","Codes describing body site laterality (left, right, etc.).","http://hl7.org/fhir/ValueSet/bodysite-laterality","",,,,"ImagingStudy.series.laterality",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+JP Coreでは左右などを示す。フリーではなく、DICOM定義書の中で示される語句しか使えない。","","","","","","","","",,"example","Codes describing body site laterality (left, right, etc.).","http://hl7.org/fhir/ValueSet/bodysite-laterality","",,,,"ImagingStudy.series.laterality",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".targetSiteCode","(0020,0060)"
 "ImagingStudy.series.specimen","ImagingStudy.series.specimen","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Specimen]]}
 ","Specimen imaged　画像検査をした検体","The specimen imaged, e.g., for whole slide imaging of a biopsy.
@@ -355,8 +329,7 @@ UIDは別のtagが存在するので、ユーザー側で自由に付与して�
 "ImagingStudy.series.started","ImagingStudy.series.started","","","",0,1,"","","Y","dateTime {[]} {[]}
 ","When the series started　シリーズの開始時期","The date and time the series was started.
 
-シリーズの開始日付、日時。","【JP-CORE】
-シリーズ単位での開始時刻。最初にシリーズを取得 or 定義した時刻。","","","","","","","","",,,,,"",,,,"ImagingStudy.series.started",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+シリーズの開始日付、日時。","シリーズ単位での開始時刻。最初にシリーズを取得 or 定義した時刻。","","","","","","","","",,,,,"",,,,"ImagingStudy.series.started",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".effectiveTime","(0008,0021) + (0008,0031)"
 "ImagingStudy.series.performer","ImagingStudy.series.performer","","PerformingPhysicianName
 OperatorName","",0,*,"","","Y","BackboneElement {[]} {[]}
@@ -398,8 +371,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "ImagingStudy.series.instance","ImagingStudy.series.instance","","","",0,*,"","","","BackboneElement {[]} {[]}
 ","A single SOP instance from the series　シリーズからの単一SOPインスタンス","A single SOP instance within the series, e.g. an image, or presentation state.
 
-ひとつの画像、またはプレゼンテーションの状態など、シリーズ内の単一のSOPインスタンス。","【JP-CORE】
-インスタンス（画像）単位の情報","","","","","","","","",,,,,"",,,,"ImagingStudy.series.instance",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ひとつの画像、またはプレゼンテーションの状態など、シリーズ内の単一のSOPインスタンス。","インスタンス（画像）単位の情報","","","","","","","","",,,,,"",,,,"ImagingStudy.series.instance",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".outboundRelationship[typeCode=COMP].target[classCode=DGIMG, moodCode=EVN]"
 "ImagingStudy.series.instance.id","ImagingStudy.series.instance.id","","","",0,1,"","","","string {[]} {[]}
 ","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
