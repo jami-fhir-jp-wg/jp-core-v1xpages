@@ -3206,202 +3206,257 @@ GET [base]/MedicationRequest?patient=[url]&amp;authoredon=[date]
 </code></pre></div></div>
 
 <h3 id="サンプル">サンプル</h3>
-
-<h4 id="処方例１">処方例１</h4>
-<details>
-<summary><b>ホリゾン注射液１０ｍｇ１アンプルを左腕に静脈注射(クリックで展開)</b></summary>
-<div>
-
-```json
-{
-    "resourceType": "MedicationRequest",
-    "contained": [{
-            "resourceType": "Medication",
-            "id": "medication1",
-            "ingredient": [{
-                "extension": [{
-                    "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_Ingredient_DrugNo",
-                    "valueInteger": 1
-                }],
-                "itemCodeableConcept": {
-                    "coding": [{
-                        "system": "urn:oid:1.2.392.100495.20.2.74",
-                        "code": "100558502",
-                        "display": "ホリゾン注射液１０ｍｇ"
-                    }]
-                },
-                "strength": {
-                    "extension": [{
-                        "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_Strength_StrengthType",
-                        "valueCodeableConcept": {
-                            "coding": [{
-                                "system": "urn:oid:1.2.392.100495.20.2.22",
-                                "code": "1",
-                                "display": "製剤量"
-                            }]
-                        }
-                    }],
-                    "numerator": {
-                        "value": 1,
-                        "unit": "アンプル",
-                        "system": "urn:oid:1.2.392.100495.20.2.101",
-                        "code": "AMP"
-                    },
-                    "denominator": {
-                        "value": 1,
-                        "unit": "回",
-                        "system": "urn:oid:1.2.392.100495.20.2.101",
-                        "code": "KAI"
-                    }
-                }
-            }]
-        },
-        {
-            "resourceType": "BodyStructure",
-            "id": "bodystructure1",
-            "location": {
-                "coding": [{
-                    "system": "http://terminology.hl7.org/CodeSystem/v2-0550",
-                    "code": "ARM",
-                    "display": "腕"
-                }]
-            },
-            "locationQualifier": [{
-                "coding": [{
-                    "system": "http://terminology.hl7.org/CodeSystem/v2-0495",
-                    "code": "L",
-                    "display": "左"
-                }]
-            }],
-            "patient": {
-                "reference": "urn:uuid:79965040-5c95-4ce5-b8f7-efe606c364b4",
-                "type": "Patient"
-            }
-        },
-        {
-            "resourceType": "Device",
-            "id": "device1",
-            "type": {
-                "coding": [{
-                    "system": "http://jpfhir.jp/medication/99ILL",
-                    "code": "01",
-                    "display": "シリンジ"
-                }]
-            }
-        }
-    ],
-    "identifier": [{
-            "system": "urn:oid:1.2.392.100495.20.3.11",
-            "value": "123456789012345"
-        },
-        {
-            "system": "urn:oid:1.2.392.100495.20.3.81",
-            "value": "123456789012345_01_001"
-        }
-    ],
-    "status": "active",
-    "intent": "order",
-    "category": [{
-            "coding": [{
-                "system": "http://terminology.hl7.org/CodeSystem/v2-0482",
-                "code": "I",
-                "display": "入院患者オーダ"
-            }]
-        },
-        {
-            "coding": [{
-                "system": "http://jpfhir.jp/Common/CodeSystem/merit9-category",
-                "code": "IHP",
-                "display": "入院処方"
-            }]
-        },
-        {
-            "coding": [{
-                "system": "http://jpfhir.jp/Common/CodeSystem/JHSI0001",
-                "code": "FTP",
-                "display": "定時処方"
-            }]
-        }
-    ],
-    "medicationReference": {
-        "reference": "#medication1",
-        "type": "Medication"
-    },
-    "subject": {
-        "reference": "urn:uuid:79965040-5c95-4ce5-b8f7-efe606c364b4",
-        "type": "Patient"
-    },
-    "authoredOn": "2016-07-01",
-    "requester": {
-        "reference": "urn:uuid:b598aedf-28fb-406a-b38e-250d3e92ac60",
-        "type": "PractitionerRole"
-    },
-    "insurance": [{
-        "reference": "urn:uuid:df0ebf6d-e527-49d4-bce2-0885045a7afd",
-        "type": "Coverage"
-    }],
-    "dosageInstruction": [{
-        "extension": [{
-            "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationRequest_DosageInstruction_Device",
-            "valueReference": {
-                "reference": "#device1",
-                "type": "Device"
-            }
-        }],
-        "additionalInstruction": [{
-            "coding": [{
-                "system": "urn:oid:1.2.392.200250.2.2.20.45",
-                "code": "1",
-                "display": "ワンショット"
-            }]
-        }],
-        "timing": {
-            "repeat": {
-                "boundsPeriod": {
-                    "start": "2016-07-01T10:00:00+09:00"
-                }
-            }
-        },
-        "site": {
-            "extension": [{
-                "url": "http://hl7.org/fhir/StructureDefinition/bodySite",
-                "valueReference": {
-                    "reference": "#bodystructure1",
-                    "type": "BodyStructure"
-                }
-            }]
-        },
-        "route": {
-            "coding": [{
-                "system": "urn:oid:2.16.840.1.113883.3.1937.777.10.5.162",
-                "code": "IV",
-                "display": "静脈内"
-            }]
-        },
-        "method": {
-            "coding": [{
-                "system": "urn:oid:1.2.392.200250.2.2.20.40",
-                "code": "30",
-                "display": "静脈注射"
-            }]
-        },
-        "doseAndRate": [{
-            "doseQuantity": {
-                "value": 2.0,
-                "unit": "mL",
-                "system": "http://unitsofmeasure.org",
-                "code": "mL"
-            }
-        }]
-    }]
-}
-```
-
-</div>
-</details>
-
-<h4 id="処方例２">処方例２</h4>
-<p><a href="https://simplifier.net/jpcore/a97c3c13-ac3c-412a-a9fb-2237a17138b8/~json">処方例２</a></p>
+<p>ホリゾン注射液１０ｍｇ１アンプルを左腕に静脈注射する処方例をFHIRで表現する場合のサンプルを示す。</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicationRequest"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jp-medicationrequest-injection-example-1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRequest_Injection"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"generated"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"div"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div xmlns=</span><span class="se">\"</span><span class="s2">http://www.w3.org/1999/xhtml</span><span class="se">\"</span><span class="s2">&gt;&lt;p&gt;&lt;b&gt;Generated Narrative&lt;/b&gt;&lt;/p&gt;&lt;div style=</span><span class="se">\"</span><span class="s2">display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%</span><span class="se">\"</span><span class="s2">&gt;&lt;p style=</span><span class="se">\"</span><span class="s2">margin-bottom: 0px</span><span class="se">\"</span><span class="s2">&gt;Resource </span><span class="se">\"</span><span class="s2">jp-medicationrequest-injection-example-1</span><span class="se">\"</span><span class="s2"> &lt;/p&gt;&lt;p style=</span><span class="se">\"</span><span class="s2">margin-bottom: 0px</span><span class="se">\"</span><span class="s2">&gt;Profile: &lt;a href=</span><span class="se">\"</span><span class="s2">StructureDefinition-jp-medicationrequest-injection.html</span><span class="se">\"</span><span class="s2">&gt;JP Core MedicationRequest Injection Profile&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: id: 1, id: 2, id: 1234567890.1.1&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: active&lt;/p&gt;&lt;p&gt;&lt;b&gt;intent&lt;/b&gt;: order&lt;/p&gt;&lt;p&gt;&lt;b&gt;category&lt;/b&gt;: Inpatient Order &lt;span style=</span><span class="se">\"</span><span class="s2">background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki</span><span class="se">\"</span><span class="s2">&gt; (&lt;a href=</span><span class="se">\"</span><span class="s2">http://terminology.hl7.org/3.1.0/CodeSystem-v2-0482.html</span><span class="se">\"</span><span class="s2">&gt;orderType&lt;/a&gt;#I)&lt;/span&gt;, 入院処方 &lt;span style=</span><span class="se">\"</span><span class="s2">background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki</span><span class="se">\"</span><span class="s2">&gt; (merit9-category#IHP)&lt;/span&gt;, 定時処方 &lt;span style=</span><span class="se">\"</span><span class="s2">background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki</span><span class="se">\"</span><span class="s2">&gt; (JHSI0001#FTP)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;medication&lt;/b&gt;: &lt;a name=</span><span class="se">\"</span><span class="s2">jp-medicationrequest-injection-medication-example-1</span><span class="se">\"</span><span class="s2">&gt; &lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;div style=</span><span class="se">\"</span><span class="s2">display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%</span><span class="se">\"</span><span class="s2">&gt;&lt;p style=</span><span class="se">\"</span><span class="s2">margin-bottom: 0px</span><span class="se">\"</span><span class="s2">&gt;Resource </span><span class="se">\"</span><span class="s2">jp-medicationrequest-injection-medication-example-1</span><span class="se">\"</span><span class="s2"> &lt;/p&gt;&lt;p style=</span><span class="se">\"</span><span class="s2">margin-bottom: 0px</span><span class="se">\"</span><span class="s2">&gt;Profile: &lt;a href=</span><span class="se">\"</span><span class="s2">StructureDefinition-jp-medication.html</span><span class="se">\"</span><span class="s2">&gt;JP Core Medication Profile&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: active&lt;/p&gt;&lt;h3&gt;Ingredients&lt;/h3&gt;&lt;table class=</span><span class="se">\"</span><span class="s2">grid</span><span class="se">\"</span><span class="s2">&gt;&lt;tr&gt;&lt;td&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Extension&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Item[x]&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Strength&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;ホリゾン注射液１０ｍｇ &lt;span style=</span><span class="se">\"</span><span class="s2">background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki</span><span class="se">\"</span><span class="s2">&gt; (unknown#100558502)&lt;/span&gt;&lt;/td&gt;&lt;td&gt;1 アンプル&lt;span style=</span><span class="se">\"</span><span class="s2">background: LightGoldenRodYellow</span><span class="se">\"</span><span class="s2">&gt; (Details: urn:oid:1.2.392.100495.20.2.101 code AMP = 'AMP')&lt;/span&gt;/1 回&lt;span style=</span><span class="se">\"</span><span class="s2">background: LightGoldenRodYellow</span><span class="se">\"</span><span class="s2">&gt; (Details: urn:oid:1.2.392.100495.20.2.101 code KAI = 'KAI')&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;b&gt;subject&lt;/b&gt;: &lt;a href=</span><span class="se">\"</span><span class="s2">Patient-jp-patient-example-1.html</span><span class="se">\"</span><span class="s2">&gt;Patient/jp-patient-example-1&lt;/a&gt; </span><span class="se">\"</span><span class="s2"> 山田</span><span class="se">\"</span><span class="s2">&lt;/p&gt;&lt;p&gt;&lt;b&gt;authoredOn&lt;/b&gt;: 2016-07-01 09:28:17+0900&lt;/p&gt;&lt;p&gt;&lt;b&gt;requester&lt;/b&gt;: &lt;a href=</span><span class="se">\"</span><span class="s2">Practitioner-jp-practionner-example-female-1.html</span><span class="se">\"</span><span class="s2">&gt;Practitioner/jp-practionner-example-female-1&lt;/a&gt; </span><span class="se">\"</span><span class="s2"> 東京</span><span class="se">\"</span><span class="s2">&lt;/p&gt;&lt;p&gt;&lt;b&gt;insurance&lt;/b&gt;: &lt;a href=</span><span class="se">\"</span><span class="s2">Coverage-jp-coverage-example-1.html</span><span class="se">\"</span><span class="s2">&gt;Coverage/jp-coverage-example-1&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"contained"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Medication"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jp-medicationrequest-injection-medication-example-1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"http://jpfhir.jp/fhir/core/StructureDefinition/JP_Medication"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ingredient"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_Ingredient_DrugNo"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"valueInteger"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"itemCodeableConcept"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.2.74"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100558502"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ホリゾン注射液１０ｍｇ"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"strength"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_IngredientStrength_StrengthType"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"valueCodeableConcept"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.2.22"</span><span class="p">,</span><span class="w">
+                      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                      </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"製剤量"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                  </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"numerator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"アンプル"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.2.101"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMP"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"denominator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"回"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.2.101"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KAI"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BodyStructure"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jp-medicationrequest-injection-bodystructure-example-1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/v2-0550"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARM"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Arm"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"locationQualifier"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/v2-0495"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"L"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Left"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient/jp-patient-example-1"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Device"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jp-medicationrequest-injection-device-example-1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/medication/99ILL"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"シリンジ"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.3.81"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.3.82"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/Common/IdSystem/resourceInstance-identifier"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890.1.1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/v2-0482"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inpatient Order"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/Common/CodeSystem/merit9-category"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IHP"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"入院処方"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/Common/CodeSystem/JHSI0001"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FTP"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"定時処方"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"medicationReference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#jp-medicationrequest-injection-medication-example-1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient/jp-patient-example-1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"authoredOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-01T09:28:17+09:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"requester"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Practitioner/jp-practionner-example-female-1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"insurance"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Coverage/jp-coverage-example-1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"dosageInstruction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationRequest_DosageInstruction_Device"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"valueReference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#jp-medicationrequest-injection-device-example-1"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ワンショット 静脈注射 静脈内 左腕"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"additionalInstruction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200250.2.2.20.22"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ワンショット"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"timing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"boundsPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-01T10:00:00+09:00"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"site"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://hl7.org/fhir/StructureDefinition/bodySite"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"valueReference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#jp-medicationrequest-injection-bodystructure-example-1"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"route"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/ePrescription/CodeSystem/route-codes"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IV"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"静脈内"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200250.2.2.20.40"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"静脈注射"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"doseAndRate"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.2.22"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"doseQuantity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mL"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.2.101"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mL"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
 
 <h2 id="注意事項">注意事項</h2>
 
@@ -4023,7 +4078,7 @@ HL7 V2の使用者定義表0164 投薬装置を使用してもよい。</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 13, 2022 12:06+0000">2022-07-13</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jul 14, 2022 03:43+0000">2022-07-14</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
