@@ -125,14 +125,14 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","Organization that issued id (may be just text)","Organization that issued/manages the identifier.","The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.","","","","","","","","",,,,,"",,,,"Identifier.assigner",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper","CX.4 / (CX.4,CX.9,CX.10)"
 "MedicationRequest.status","MedicationRequest.status","","","",1,1,"","Y","Y","code {[]} {[]}
-","active | on-hold | cancelled | completed | entered-in-error | stopped | draft | unknown","JP coreでは""active""に固定される。
+","active | on-hold | cancelled | completed | entered-in-error | stopped | draft | unknown","JP Coreでは""active""に固定される。
 オーダーの現在の状態を示すコード。一般的には active か completed の状態であるだろう。","このエレメントはmodifierとされている。StatusとはこのResourceが現在妥当な状態ではないことも示すからである。","","","","","","","","",,"required","A coded concept specifying the state of the prescribing event. Describes the lifecycle of the prescription.","http://hl7.org/fhir/ValueSet/medicationrequest-status|4.0.1","",,,,"MedicationRequest.status",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Request.status","no mapping",".statusCode","FiveWs.status"
 "MedicationRequest.statusReason","MedicationRequest.statusReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","現状の理由","現在のステータスの理由","一般的には「保留(suspended)」や「中止(cancelled)」といった例外的状態を示すために持ちいられる。MedicationRequestオーダーが発生した理由についてはreaseonCodeに記載され、この項目は用いられない。","","","","","","","","",,"example","Identifies the reasons for a given status.","http://hl7.org/fhir/ValueSet/medicationrequest-status-reason","",,,,"MedicationRequest.statusReason",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Request.statusReason",".inboundRelationship[typeCode=SUBJ].source[classCode=CACT, moodCode=EVN].reasonCOde"
 "MedicationRequest.intent","MedicationRequest.intent","","","",1,1,"","Y","Y","code {[]} {[]}
-","proposal | plan | order | original-order | reflex-order | filler-order | instance-order | option","JP coreでは ""order"" に固定される。
+","proposal | plan | order | original-order | reflex-order | filler-order | instance-order | option","JP Coreでは ""order"" に固定される。
 投薬リクエストの意図 が提案(proposal)、計画(plan)、あるいは他の要求によるものかを示す。","処方をオーダーする場合、MedicationRequestのどの段階でオーダーしたのかについて、この項目を指定することが期待される。たとえば、proposalであれば患者、関係者、医師あるいは機器からの提案として作成される。""plan""であれば、医師、患者、関係者そして機器からの提案として生成される。""original-order""は医師にしか作成できない。
 
 instance-orderはリクエストあるいはオーダーをインスタンス化する段階であり、MedicationAdministrationレコードにも使われる。
