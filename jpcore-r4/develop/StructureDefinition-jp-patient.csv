@@ -2,30 +2,30 @@
 "Patient","Patient","","SubjectOfCare Client Resident
 ","",0,*,"","","","","Information about an individual or animal receiving health care services　医療サービスを受けている個人または動物に関する情報","Demographics and other administrative information about an individual or animal receiving care or other health-related services.
 
-ケアまたはその他の健康関連サービスを受けている個人または動物に関する人口統計およびその他の管理情報。","","","","","","","","","",,,,,"",,,,"Patient",0,*,"","dom-2:If the resource is contained in another resource, it SHALL NOT contain nested Resources {contained.contained.empty()}
-dom-3:If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:If a resource is contained in another resource, it SHALL NOT have a security label {contained.meta.security.empty()}dom-6:A resource should have narrative for robust management {text.`div`.exists()}","Entity. Role, or Act","Patient[classCode=PAT]","ClinicalDocument.recordTarget.patientRole"
+ケアまたはその他の健康関連サービスを受けている個人または動物に関する人口統計およびその他の管理情報。","","","","","","","","","",,,,,"",,,,"Patient",0,*,"","dom-2:リソースが別のリソースに含まれている場合、ネストされたリソースを含めてはなりません / If the resource is contained in another resource, it SHALL NOT contain nested Resources {contained.contained.empty()}
+dom-3:リソースが別のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含有リソースを参照するものとします / If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:リソースが別のリソースに含まれている場合、meta.versionidまたはmeta.lastupdatedを持たないものとします / If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:別のリソースにリソースが含まれている場合、セキュリティラベルはありません / If a resource is contained in another resource, it SHALL NOT have a security label {contained.meta.security.empty()}dom-6:リソースには、堅牢な管理のための叙述(Narative)が必要です / A resource should have narrative for robust management {text.`div`.exists()}","Entity. Role, or Act","Patient[classCode=PAT]","ClinicalDocument.recordTarget.patientRole"
 "Patient.id","Patient.id","","","",0,1,"","","Y","string {[]} {[]}
-","Logical id of this artifact","The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.","The only time that a resource does not have an id is when it is being submitted to the server using a create operation.","","","","","","","","",,,,,"",,,,"Resource.id",0,1,"",""
+","このアーティファクトの論理ID / Logical id of this artifact","リソースのURLで使用されるリソースの論理ID。割り当てられたら、この値は変更されません。 / The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.","リソースにIDがないのは、IDが作成操作を使用してサーバーに送信されている場合です。 / The only time that a resource does not have an id is when it is being submitted to the server using a create operation.","","","","","","","","",,,,,"",,,,"Resource.id",0,1,"",""
 "Patient.meta","Patient.meta","","","",0,1,"","","Y","Meta {[]} {[]}
-","Metadata about the resource","The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.","","","","","","","","","",,,,,"",,,,"Resource.meta",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","リソースに関するメタデータ / Metadata about the resource","リソースに関するメタデータ。これは、インフラストラクチャによって維持されるコンテンツです。コンテンツの変更は、常にリソースのバージョンの変更に関連付けられているとは限りません。 / The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.","","","","","","","","","",,,,,"",,,,"Resource.meta",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
 "Patient.implicitRules","Patient.implicitRules","","","",0,1,"","Y","Y","uri {[]} {[]}
-","A set of rules under which this content was created","A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.","Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element. Often, when used, the URL is a reference to an implementation guide that defines these special rules as part of it's narrative along with other profiles, value sets, etc.","","","","","","","","",,,,,"",,,,"Resource.implicitRules",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","このコンテンツが作成されたルールのセット / A set of rules under which this content was created","リソースが構築されたときに従った一連のルールへの参照。コンテンツの処理時に理解する必要があります。多くの場合、これは他のプロファイルなどとともに特別なルールを定義する実装ガイドへの参照です。 / A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.","このルールセットを主張することは、コンテンツが限られた取引パートナーのセットによってのみ理解されることを制限します。これにより、本質的に長期的にデータの有用性が制限されます。ただし、既存の健康エコシステムは非常に破壊されており、一般的に計算可能な意味でデータを定義、収集、交換する準備ができていません。可能な限り、実装者や仕様ライターはこの要素の使用を避ける必要があります。多くの場合、使用する場合、URLは、これらの特別なルールを他のプロファイル、バリューセットなどとともに叙述(Narative)の一部として定義する実装ガイドへの参照です。 / Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element. Often, when used, the URL is a reference to an implementation guide that defines these special rules as part of it's narrative along with other profiles, value sets, etc.","","","","","","","","",,,,,"",,,,"Resource.implicitRules",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
 "Patient.language","Patient.language","","","",0,1,"","","","code {[]} {[]}
-","Language of the resource content","The base language in which the resource is written.","Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource. Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).","","","","","","","","",,"preferred","A human language.","http://hl7.org/fhir/ValueSet/languages","",,,,"Resource.language",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","リソースコンテンツの言語 / Language of the resource content","リソースが書かれている基本言語。 / The base language in which the resource is written.","言語は、インデックス作成とアクセシビリティをサポートするために提供されます（通常、テキストから音声までのサービスなどのサービスが言語タグを使用します）。叙述(Narative)のHTML言語タグは、叙述(Narative)に適用されます。リソース上の言語タグを使用して、リソース内のデータから生成された他のプレゼンテーションの言語を指定できます。すべてのコンテンツが基本言語である必要はありません。リソース。言語は、叙述(Narative)に自動的に適用されると想定されるべきではありません。言語が指定されている場合、HTMLのDIV要素にも指定されている場合（XML：LangとHTML Lang属性の関係については、HTML5のルールを参照してください）。 / Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource. Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).","","","","","","","","",,"preferred","人間の言語。 / A human language.","http://hl7.org/fhir/ValueSet/languages","",,,,"Resource.language",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
 "Patient.text","Patient.text","","narrative
 htmlxhtmldisplay","",0,1,"","","","Narrative {[]} {[]}
-","Text summary of the resource, for human interpretation","A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it ""clinically safe"" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.","Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative. In some cases, a resource may only have text with little or no additional discrete data (as long as all minOccurs=1 elements are satisfied).  This may be necessary for data from legacy systems where information is captured as a ""text blob"" or where text is additionally entered raw or narrated and encoded information is added later.","","","","","","","","",,,,,"",,,,"DomainResource.text",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","人間の解釈のためのリソースのテキスト概要 / Text summary of the resource, for human interpretation","リソースの概要を含み、人間へのリソースの内容を表すために使用できる人間の読み取り可能な叙述(Narative)。叙述(Narative)はすべての構造化されたデータをエンコードする必要はありませんが、人間が叙述(Narative)を読むだけで「臨床的に安全」にするために十分な詳細を含める必要があります。リソースの定義は、臨床的安全を確保するために、叙述(Narative)で表現するコンテンツを定義する場合があります。 / A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it ""clinically safe"" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.","含まれるリソースには叙述(Narative)がありません。含まれていないリソースには叙述(Narative)が必要です。場合によっては、リソースには、追加の個別のデータがほとんどまたはまったくないテキストのみがあります（すべてのMinoccur = 1要素が満たされている限り）。これは、情報がtext blob (バイナリー ラージ オブジェクト)としてキャプチャされるレガシーシステムからのデータ、またはテキストが生またはナレーションされ、エンコードされた情報が後で追加される場合に必要になる場合があります。 / Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative. In some cases, a resource may only have text with little or no additional discrete data (as long as all minOccurs=1 elements are satisfied).  This may be necessary for data from legacy systems where information is captured as a ""text blob"" or where text is additionally entered raw or narrated and encoded information is added later.","","","","","","","","",,,,,"",,,,"DomainResource.text",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Act.text?"
 "Patient.contained","Patient.contained","","inline resources
 anonymous resourcescontained resources","",0,*,"","","","Resource {[]} {[]}
-","Contained, inline Resources","These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.","This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again. Contained resources may have profiles and tags In their meta elements, but SHALL NOT have security labels.","","","","","","","","",,,,,"",,,,"DomainResource.contained",0,*,"","","N/A"
+","インラインリソースが含まれています / Contained, inline Resources","これらのリソースには、それらを含むリソースを除いて独立した存在はありません - 独立して特定することはできず、独自の独立したトランザクションスコープを持つこともできません。 / These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.","識別が失われると、コンテンツを適切に識別できる場合は、これを行うべきではありません。含まれるリソースには、メタ要素にプロファイルとタグがある場合がありますが、セキュリティラベルはありません。 / This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again. Contained resources may have profiles and tags In their meta elements, but SHALL NOT have security labels.","","","","","","","","",,,,,"",,,,"DomainResource.contained",0,*,"","","N/A"
 "Patient.extension","Patient.extension","","","",0,*,"","","","Extension {[]} {[]}
 ","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
-","",,"open","DomainResource.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+","",,"open","DomainResource.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Patient.extension:religion","Patient.extension","religion","","",0,*,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/patient-religion]]} {[]}
 ","患者の宗教","The patient's professed religious affiliations.
 患者の公言された宗教的所属。","患者の宗教をValueSet(v3.ReligiousAffiliation)より選択する。輸血や食事で考慮が必要な場合がある。
@@ -35,13 +35,13 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 1023 イスラム教
 
 など","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Patient.extension:birthPlace","Patient.extension","birthPlace","","",0,1,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/patient-birthPlace]]} {[]}
 ","患者の生誕地。","The registered place of birth of the patient. A sytem may use the address.text if they don't store the birthPlace address in discrete elements.
 患者の登録された出生地。システムは、birthPlaceアドレスを個別の要素に格納しない場合、address.textを使用してよい。","患者の生誕地をAddress型で表現する","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Patient.extension:race","Patient.extension","race","","",0,*,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Patient_Race]]} {[]}
 ","患者の人種。","Optional Extension Element - found in all resources.
 オプションの拡張要素-すべてのリソースで使用できる。","患者の人種をValueSet(Race)より選択する。
@@ -55,16 +55,18 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 2112-1 ドイツ人
 
 など","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Patient.modifierExtension","Patient.modifierExtension","","extensions
 user content","",0,*,"","Y","","Extension {[]} {[]}
-","Extensions that cannot be ignored","May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+","無視できない拡張機能 / Extensions that cannot be ignored","リソースの基本的な定義の一部ではなく、それを含む要素の理解および/または含有要素の子孫の理解を変更するために使用される場合があります。通常、修飾子要素は否定または資格を提供します。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義することが許可されていますが、拡張機能の定義の一部として満たされる一連の要件があります。アプリケーションの処理リソースは、修飾子拡張機能をチェックする必要があります。
 
-Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
+モディファイア拡張は、リソースまたはdomainResource上の要素の意味を変更してはなりません（修飾軸自体の意味を変更することはできません）。 / May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","修飾子拡張機能により、安全に無視できる大部分の拡張機能と明確に区別できるように、安全に無視できない拡張機能が可能になります。これにより、実装者が拡張の存在を禁止する必要性を排除することにより、相互運用性が促進されます。詳細については、[修飾子拡張の定義]（拡張性.html＃modifierextension）を参照してください。 / Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "Patient.identifier","Patient.identifier","","","",1,*,"","","Y","Identifier {[]} {[]}
-","An identifier for this patient","An identifier for this patient.
+","この患者の識別子 / An identifier for this patient","An identifier for this patient.
 
 この患者の識別子。","IDの名前空間を表す Patient.identifier.system と ID値そのものを表す Patient.identifier.value の組み合わせとして表現する。
 Patient.identifier.system には、
@@ -79,17 +81,17 @@ Patient.identifier.system には、
 
 地域医療連携ネットワークの地域患者IDを指定する場合も同様に、地域患者IDを識別する名前空間（IHE ITI PIX等で使用されるOID等）を system に使用することができる。","Patients are almost always assigned specific numerical identifiers.
 
-ほとんどの場合、患者には特定の数値識別子が割り当てられる。","","","","","","","",,,,,"",,,,"Patient.identifier",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ほとんどの場合、患者には特定の数値識別子が割り当てられる。","","","","","","","",,,,,"",,,,"Patient.identifier",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","id",".id","FiveWs.identifier","PID-3"
 "Patient.identifier.id","Patient.identifier.id","","","",0,1,"","","","string {[]} {[]}
-","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+","要素間参照のための一意のID / Unique id for inter-element referencing","リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
 "Patient.identifier.extension","Patient.identifier.extension","","extensions
 user content","",0,*,"","","","Extension {[]} {[]}
-","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
-","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+","実装で定義された追加のコンテンツ / Additional content defined by implementations","要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
+","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
 "Patient.identifier.use","Patient.identifier.use","","","",0,1,"","Y","Y","code {[]} {[]}
-","usual | official | temp | secondary | old (If known)","The purpose of this identifier.","Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.
+","通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)","この識別子の目的。 / The purpose of this identifier.","Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.
 
 IDの種別をValueSet(IdentifierUse)より選択する。
 
@@ -101,10 +103,10 @@ temp　　一時的
 
 secondary　二次利用
 
-old　過去の識別子","Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.","","","","","","","",,"required","Identifies the purpose for this identifier, if known .","http://hl7.org/fhir/ValueSet/identifier-use|4.0.1","",,,,"Identifier.use",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+old　過去の識別子","特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.","","","","","","","",,"required","既知の場合、この識別子の目的を識別します。 / Identifies the purpose for this identifier, if known .","http://hl7.org/fhir/ValueSet/identifier-use|4.0.1","",,,,"Identifier.use",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Role.code or implied by context","N/A"
 "Patient.identifier.type","Patient.identifier.type","","","",0,1,"","","Y","CodeableConcept {[]} {[]}
-","Description of identifier","A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.","This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type.
+","識別子の説明 / Description of identifier","特定の目的に使用する識別子を決定するために使用できる識別子のコード化されたタイプ。 / A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.","This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type.
 
 IDの種別をValueSet(Identifier Type Codes)より選択する。
 
@@ -116,10 +118,10 @@ BRN 血統登録番号
 
 MR カルテ番号
 
-など","Allows users to make use of identifiers when the identifier system is not known.","","","","","","","",,"extensible","A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.","http://hl7.org/fhir/ValueSet/identifier-type","",,,,"Identifier.type",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+など","識別子システムが不明な場合、ユーザーは識別子を使用できます。 / Allows users to make use of identifiers when the identifier system is not known.","","","","","","","",,"extensible","特定の目的に使用する識別子を決定するために使用できる識別子のコード化されたタイプ。 / A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.","http://hl7.org/fhir/ValueSet/identifier-type","",,,,"Identifier.type",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Role.code or implied by context","CX.5"
 "Patient.identifier.system","Patient.identifier.system","","","",0,1,"","","Y","uri {[]} {[]}
-","The namespace for the identifier value","Establishes the namespace for the value - that is, a URL that describes a set values that are unique.","Identifier.system is always case sensitive.
+","識別子値の名前空間 / The namespace for the identifier value","値の名前空間、つまり一意のセット値を記述するURLを確立します。 / Establishes the namespace for the value - that is, a URL that describes a set values that are unique.","Identifier.system is always case sensitive.
 
 IDの名前空間を表す。
 医療機関固有の患者ID（カルテNo）を表現する場合、system には、患者IDの発行者である医療機関を識別するuriを指定する。
@@ -130,27 +132,27 @@ IDの名前空間を表す。
 
 例：医療機関コード「1312345670」の場合「1.2.392.200119.6.102.11312345670」
 
-Patient.identifier.system は、uri 型のため、実際にインスタンスに設定される値は、上記の例であれば urn:oid:1.2.392.200119.6.102.11312345670 とする。","There are many sets  of identifiers.  To perform matching of two identifiers, we need to know what set we're dealing with. The system identifies a particular set of unique identifiers.","","","","","<valueUri xmlns=""http://hl7.org/fhir"" value=""http://www.acme.com/identifiers/patient""/>","","",,,,,"",,,,"Identifier.system",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+Patient.identifier.system は、uri 型のため、実際にインスタンスに設定される値は、上記の例であれば urn:oid:1.2.392.200119.6.102.11312345670 とする。","識別子のセットがたくさんあります。2つの識別子を一致させるには、どのセットを扱っているかを知る必要があります。システムは、特定の一意の識別子セットを識別します。 / There are many sets  of identifiers.  To perform matching of two identifiers, we need to know what set we're dealing with. The system identifies a particular set of unique identifiers.","","","","","<valueUri xmlns=""http://hl7.org/fhir"" value=""http://www.acme.com/identifiers/patient""/>","","",,,,,"",,,,"Identifier.system",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","II.root or Role.id.root","CX.4 / EI-2-4"
 "Patient.identifier.value","Patient.identifier.value","","","",1,1,"","","Y","string {[]} {[]}
-","The value that is unique","The portion of the identifier typically relevant to the user and which is unique within the context of the system.","If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value's primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html). Identifier.value is to be treated as case sensitive unless knowledge of the Identifier.system allows the processer to be confident that non-case-sensitive processing is safe.
+","一意の値 / The value that is unique","通常、識別子の部分はユーザーに関連し、システムのコンテキスト内で一意のユーザーに関連しています。 / The portion of the identifier typically relevant to the user and which is unique within the context of the system.","If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value's primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html). Identifier.value is to be treated as case sensitive unless knowledge of the Identifier.system allows the processer to be confident that non-case-sensitive processing is safe.
 
-患者を一意的に識別するID(例えば、患者IDやカルテ番号など)を設定。","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""123456""/>","","",,,,,"",,,,"Identifier.value",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+患者を一意的に識別するID(例えば、患者IDやカルテ番号など)を設定。","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""123456""/>","","",,,,,"",,,,"Identifier.value",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)","CX.1 / EI.1"
 "Patient.identifier.period","Patient.identifier.period","","","",0,1,"","","Y","Period {[]} {[]}
-","Time period when id is/was valid for use","Time period during which identifier is/was valid for use.","A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. ""the patient was an inpatient of the hospital for this time range"") or one value from the range applies (e.g. ""give to the patient between these two times"").
+","IDが使用に有効だった時間期間 / Time period when id is/was valid for use","識別子が使用される/有効な期間。 / Time period during which identifier is/was valid for use.","A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. ""the patient was an inpatient of the hospital for this time range"") or one value from the range applies (e.g. ""give to the patient between these two times"").
 
 Period is not used for a duration (a measure of elapsed time). See [Duration](datatypes.html#Duration).
 
-IDが使われていた/使われている期間。","","","","","","","","",,,,,"",,,,"Identifier.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+IDが使われていた/使われている期間。","","","","","","","","",,,,,"",,,,"Identifier.period",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Role.effectiveTime or implied by context","CX.7 + CX.8"
 "Patient.identifier.assigner","Patient.identifier.assigner","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
-","Organization that issued id (may be just text)","Organization that issued/manages the identifier.","The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.
+","IDを発行した組織（単なるテキストである可能性があります） / Organization that issued id (may be just text)","識別子を発行/管理する組織。 / Organization that issued/manages the identifier.","The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.
 
-IDを発行した組織（テキストのみでも可）","","","","","","","","",,,,,"",,,,"Identifier.assigner",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+IDを発行した組織（テキストのみでも可）","","","","","","","","",,,,,"",,,,"Identifier.assigner",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper","CX.4 / (CX.4,CX.9,CX.10)"
 "Patient.active","Patient.active","","","",0,1,"","Y","Y","boolean {[]} {[]}
-","Whether this patient's record is in active use","Whether this patient record is in active use. 
+","この患者の記録が積極的に使用されているかどうか / Whether this patient's record is in active use","Whether this patient record is in active use. 
 Many systems use this property to mark as non-current patients, such as those that have not been seen for a period of time based on an organization's business rules.
 
 It is often used to filter patient lists to exclude inactive patients
@@ -166,7 +168,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
 この患者の記録が有効かどうか
 誤って患者を登録して削除したい場合などにfalseにする","Need to be able to mark a patient record as not to be used because it was created in error.
 
-患者レコードが誤って作成された場合のため、使用されないレコードとしてマークできる必要がある。","","This resource is generally assumed to be active if no value is provided for the active element","","","","","",,,,,"",,,,"Patient.active",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+患者レコードが誤って作成された場合のため、使用されないレコードとしてマークできる必要がある。","","このリソースは、アクティブな要素の値が提供されていない場合、一般にアクティブであると想定されています / This resource is generally assumed to be active if no value is provided for the active element","","","","","",,,,,"",,,,"Patient.active",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","statusCode","n/a","FiveWs.status"
 "Patient.name","Patient.name","","","",0,*,"","","","HumanName {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_HumanName]]} {[]}
 ","Name of a human - parts and usage　人の名前情報、その一部分と使い方","A name associated with the individual.
@@ -182,7 +184,7 @@ FHIRデータ型仕様に従って、以下の内容を採用する。
 ・漢字、カナの指定がない場合やローマ字名の場合などはデフォルトスライスが適用される。","Need to be able to track the patient by multiple names. Examples are your official name and a partner name.
 
 複数の名前で患者を追跡できる必要がある。例としては、正式名とパートナー名がある。","","","","","","","",,,,,"",,,,"Patient.name",0,*,"ele-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","n/a","EN (actually, PN)","XPN"
 "Patient.telecom","Patient.telecom","","","",0,*,"","","Y","ContactPoint {[]} {[]}
 ","A contact detail for the individual　個人に連絡するための連絡先の詳細","A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted.
@@ -191,17 +193,17 @@ FHIRデータ型仕様に従って、以下の内容を採用する。
 
 患者は、さまざまな用途または適用期間違いで連絡先を複数の方法を持っている場合がある。緊急時連絡先として、また身元確認を支援するためのオプションが必要になる場合がある。患者当人に直接連絡できない場合があるが、患者を代理できる別の関係者（自宅の電話、またはペットの所有者の電話）を設定する場合もある。","People have (primary) ways to contact them in some way such as phone, email.
 
-人々は、電話、電子メールなどの何らかの方法で彼らに連絡する（プライマリ）方法を持っている。","","","","","","","",,,,,"",,,,"Patient.telecom",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+人々は、電話、電子メールなどの何らかの方法で彼らに連絡する（プライマリ）方法を持っている。","","","","","","","",,,,,"",,,,"Patient.telecom",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","telecom",".telecom","PID-13, PID-14, PID-40"
 "Patient.telecom.id","Patient.telecom.id","","","",0,1,"","","","string {[]} {[]}
-","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+","要素間参照のための一意のID / Unique id for inter-element referencing","リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
 "Patient.telecom.extension","Patient.telecom.extension","","extensions
 user content","",0,*,"","","","Extension {[]} {[]}
-","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
-","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+","実装で定義された追加のコンテンツ / Additional content defined by implementations","要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
+","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
 "Patient.telecom.system","Patient.telecom.system","","","",0,1,"","","Y","code {[]} {[]}
-","phone | fax | email | pager | url | sms | other","Telecommunications form for contact point - what communications system is required to make use of the contact.","Note that FHIR strings SHALL NOT exceed 1MB in size
+","電話|ファックス|メール|ポケットベル|url |SMS |他の / phone | fax | email | pager | url | sms | other","接触点の通信フォーム - 連絡先を利用するために必要な通信システム。 / Telecommunications form for contact point - what communications system is required to make use of the contact.","Note that FHIR strings SHALL NOT exceed 1MB in size
 
 患者の連絡先の種別をValueSet(ContactPointSystem)より選択する。
 
@@ -217,16 +219,16 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
  sms : SMSメッセージの送信に使用できる連絡先（携帯電話、一部の固定電話など）
 
- other : 電話、Fax、ポケットベル、または電子メールアドレスではなく、URLとして表現できない連絡先。例：内部メールアドレス。これは、URLとして表現できる連絡先（Skype、Twitter、Facebookなど）には使用しないこと。","","","","","","","","",,"required","Telecommunications form for contact point.","http://hl7.org/fhir/ValueSet/contact-point-system|4.0.1","",,,,"ContactPoint.system",0,1,"cpt-2
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ other : 電話、Fax、ポケットベル、または電子メールアドレスではなく、URLとして表現できない連絡先。例：内部メールアドレス。これは、URLとして表現できる連絡先（Skype、Twitter、Facebookなど）には使用しないこと。","","","","","","","","",,"required","接触点の通信フォーム。 / Telecommunications form for contact point.","http://hl7.org/fhir/ValueSet/contact-point-system|4.0.1","",,,,"ContactPoint.system",0,1,"cpt-2
+","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","./scheme","XTN.3"
 "Patient.telecom.value","Patient.telecom.value","","","",0,1,"","","Y","string {[]} {[]}
-","The actual contact point details","The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).","Additional text data such as phone extension numbers, or notes about use of the contact are sometimes included in the value.
+","実際の接触点の詳細 / The actual contact point details","実際の連絡先ポイントの詳細は、指定された通信システム（つまり、電話番号またはメールアドレス）にとって意味のある形式です。 / The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).","Additional text data such as phone extension numbers, or notes about use of the contact are sometimes included in the value.
 
-連絡先の番号やメールアドレス","Need to support legacy numbers that are not in a tightly controlled format.","","","","","","","",,,,,"",,,,"ContactPoint.value",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+連絡先の番号やメールアドレス","厳密に制御された形式ではないレガシー番号をサポートする必要があります。 / Need to support legacy numbers that are not in a tightly controlled format.","","","","","","","",,,,,"",,,,"ContactPoint.value",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","./url","XTN.1 (or XTN.12)"
 "Patient.telecom.use","Patient.telecom.use","","","",0,1,"","Y","Y","code {[]} {[]}
-","home | work | temp | old | mobile - purpose of this contact point","Identifies the purpose for the contact point.","Applications can assume that a contact is current unless it explicitly says that it is temporary or old.
+","ホーム|作業|温度|古い|モバイル - この接触点の目的 / home | work | temp | old | mobile - purpose of this contact point","接触点の目的を特定します。 / Identifies the purpose for the contact point.","Applications can assume that a contact is current unless it explicitly says that it is temporary or old.
 
 患者の連絡先の種別をValueSet(ContactPointUse)より選択する。
 
@@ -238,29 +240,29 @@ temp 一時的
 
 old 以前の
 
-mobile モバイル機器","Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose.","","","","","","","",,"required","Use of contact point.","http://hl7.org/fhir/ValueSet/contact-point-use|4.0.1","",,,,"ContactPoint.use",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+mobile モバイル機器","人がこの連絡先を使用する方法を追跡する必要があるため、ユーザーは自分の目的に適したものを選択できます。 / Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose.","","","","","","","",,"required","コンタクトポイントの使用。 / Use of contact point.","http://hl7.org/fhir/ValueSet/contact-point-use|4.0.1","",,,,"ContactPoint.use",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","unique(./use)","XTN.2 - but often indicated by field"
 "Patient.telecom.rank","Patient.telecom.rank","","","",0,1,"","","Y","positiveInt {[]} {[]}
-","Specify preferred order of use (1 = highest)","Specifies a preferred order in which to use a set of contacts. ContactPoints with lower rank values are more preferred than those with higher rank values.","Note that rank does not necessarily follow the order in which the contacts are represented in the instance.
+","優先順序を指定する（1 =最高） / Specify preferred order of use (1 = highest)","連絡先のセットを使用する優先順序を指定します。ランク値が低いコンタクトポイントは、ランク値が高いコンタクトポイントよりも優先されます。 / Specifies a preferred order in which to use a set of contacts. ContactPoints with lower rank values are more preferred than those with higher rank values.","Note that rank does not necessarily follow the order in which the contacts are represented in the instance.
 
-連絡先の使用順序（1 = 最高）","","","","","","","","",,,,,"",,,,"ContactPoint.rank",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+連絡先の使用順序（1 = 最高）","","","","","","","","",,,,,"",,,,"ContactPoint.rank",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","n/a","n/a"
 "Patient.telecom.period","Patient.telecom.period","","","",0,1,"","","Y","Period {[]} {[]}
-","Time period when the contact point was/is in use","Time period when the contact point was/is in use.","A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. ""the patient was an inpatient of the hospital for this time range"") or one value from the range applies (e.g. ""give to the patient between these two times"").
+","接触点が使用されていた時間期間 / Time period when the contact point was/is in use","接触点が使用されていた期間/使用されています。 / Time period when the contact point was/is in use.","A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. ""the patient was an inpatient of the hospital for this time range"") or one value from the range applies (e.g. ""give to the patient between these two times"").
 
 Period is not used for a duration (a measure of elapsed time). See [Duration](datatypes.html#Duration).
 
-連絡先が使用されていた/されている期間","","","","","","","","",,,,,"",,,,"ContactPoint.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+連絡先が使用されていた/されている期間","","","","","","","","",,,,,"",,,,"ContactPoint.period",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","./usablePeriod[type=""IVL<TS>""]","N/A"
 "Patient.gender","Patient.gender","","","",0,1,"","","Y","code {[]} {[]}
-","male | female | other | unknown","Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.
+","男性|女性|その他|わからない / male | female | other | unknown","Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.
 管理上の性別-患者が管理および記録管理の目的で持つと見なされる性別。","The gender might not match the biological sex as determined by genetics or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than male and female, though the vast majority of systems and contexts only support male and female.  Systems providing decision support or enforcing business rules should ideally do this on the basis of Observations dealing with the specific sex or gender aspect of interest (anatomical, chromosomal, social, etc.)  However, because these observations are infrequently recorded, defaulting to the administrative gender is common practice.  Where such defaulting occurs, rule enforcement should allow for the variation between administrative and biological, chromosomal and other gender aspects.  For example, an alert about a hysterectomy on a male should be handled as a warning or overridable error, not a ""hard"" error.  See the Patient Gender and Sex section for additional information about communicating patient gender and sex.
 
 患者の性別をValueSet(AdministrativeGender)より選択する。
 male 男性
 female 女性
 other その他
-unknown 不明","Needed for identification of the individual, in combination with (at least) name and birth date.","","","","","","","",,"required","The gender of a person used for administrative purposes.","http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1","",,,,"Patient.gender",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+unknown 不明","（少なくとも）名前と生年月日と組み合わせて、個人の識別に必要です。 / Needed for identification of the individual, in combination with (at least) name and birth date.","","","","","","","",,"required","管理目的で使用される人の性別。 / The gender of a person used for administrative purposes.","http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1","",,,,"Patient.gender",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender",".patient.administrativeGenderCode","PID-8"
 "Patient.birthDate","Patient.birthDate","","","",0,1,"","","Y","date {[]} {[]}
 ","The date of birth for the individual　個人の生年月日","The date of birth for the individual.
@@ -268,7 +270,7 @@ unknown 不明","Needed for identification of the individual, in combination wit
 実際の生年月日が不明な場合は、少なくとも推定年を推測として提供する必要があり、時間が必要な場合（出産/乳児ケアシステムなど）に使用できる標準の拡張extension「patient-birthTime」がある。
 
 患者の生年月日をYYYY-MM-DD形式で入れる
-例：1945-08-23","Age of the individual drives many clinical processes.","","","","","","","",,,,,"",,,,"Patient.birthDate",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+例：1945-08-23","個人の年齢は、多くの臨床プロセスを推進します。 / Age of the individual drives many clinical processes.","","","","","","","",,,,,"",,,,"Patient.birthDate",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","player[classCode=PSN|ANM and determinerCode=INSTANCE]/birthTime",".patient.birthTime","PID-7","21112-8"
 "Patient.deceased[x]","Patient.deceased[x]","","","",0,1,"","Y","Y","boolean {[]} {[]}
 dateTime {[]} {[]}","Indicates if the individual is deceased or not　個人が死亡しているかどうかを示す","Indicates if the individual is deceased or not.
@@ -278,7 +280,7 @@ dateTime {[]} {[]}","Indicates if the individual is deceased or not　個人が�
 患者が死亡しているかどうかを示す
 deceasedBoolean　または　deceasedDateTime　のどちらかに値が入る
 deceasedBoolean : true(死亡) / false(生存)
-deceasedDateTime : 患者の死亡日時","The fact that a patient is deceased influences the clinical process. Also, in human communication and relation management it is necessary to know whether the person is alive.","","","","","","","",,,,,"",,,,"Patient.deceased[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+deceasedDateTime : 患者の死亡日時","患者が亡くなったという事実は、臨床プロセスに影響を与えます。また、人間のコミュニケーションと関係管理において、その人が生きているかどうかを知る必要があります。 / The fact that a patient is deceased influences the clinical process. Also, in human communication and relation management it is necessary to know whether the person is alive.","","","","","","","",,,,,"",,,,"Patient.deceased[x]",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","player[classCode=PSN|ANM and determinerCode=INSTANCE]/deceasedInd, player[classCode=PSN|ANM and determinerCode=INSTANCE]/deceasedTime","n/a","PID-30  (bool) and PID-29 (datetime)"
 "Patient.address","Patient.address","","","",0,*,"","","Y","Address {[]} {[]}
 ","An address for the individual　個人の住所","An address for the individual.
@@ -290,15 +292,15 @@ FHIRデータ型仕様に従って、以下の案とした。
 ・住所が構造化されている場合、住所パート Address.contry、Address.postalcode、Address.state、Address.city、Address.line に分割して記載する。
 ・住所が構造化されていない場合は、Address.text に記述する。
 ・各住所パートとtext は、両方存在してもよい。
-※診療文書構造化記述規約等では、streetAddressLine (FHIRではlineに対応) に指定するとなっていた。","May need to keep track of patient addresses for contacting, billing or reporting requirements and also to help with identification.","","","","","","","",,,,,"",,,,"Patient.address",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+※診療文書構造化記述規約等では、streetAddressLine (FHIRではlineに対応) に指定するとなっていた。","連絡、請求、報告の要件のために患者の住所を追跡し、識別を支援する必要がある場合があります。 / May need to keep track of patient addresses for contacting, billing or reporting requirements and also to help with identification.","","","","","","","",,,,,"",,,,"Patient.address",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","addr",".addr","PID-11"
 "Patient.address.id","Patient.address.id","","","",0,1,"","","","string {[]} {[]}
-","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+","要素間参照のための一意のID / Unique id for inter-element referencing","リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
 "Patient.address.extension","Patient.address.extension","","extensions
 user content","",0,*,"","","","Extension {[]} {[]}
-","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
-","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+","実装で定義された追加のコンテンツ / Additional content defined by implementations","要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
+","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
 "Patient.address.use","Patient.address.use","","","",0,1,"","Y","Y","code {[]} {[]}
 ","home | work | temp | old | billing - purpose of this address　住所の用途","The purpose of this address.
 住所の用途","Applications can assume that an address is current unless it explicitly says that it is temporary or old.
@@ -309,10 +311,10 @@ home   自宅
 work   職場
 temp   一時的
 old   以前の
-billing   請求書、インボイス、領収書などの送付用","Allows an appropriate address to be chosen from a list of many.","","","","","<valueCode xmlns=""http://hl7.org/fhir"" value=""home""/>","","",,"required","The use of an address.","http://hl7.org/fhir/ValueSet/address-use|4.0.1","",,,,"Address.use",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+billing   請求書、インボイス、領収書などの送付用","多くのリストから適切なアドレスを選択できるようにします。 / Allows an appropriate address to be chosen from a list of many.","","","","","<valueCode xmlns=""http://hl7.org/fhir"" value=""home""/>","","",,"required","アドレスの使用。 / The use of an address.","http://hl7.org/fhir/ValueSet/address-use|4.0.1","",,,,"Address.use",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","unique(./use)","XAD.7"
 "Patient.address.type","Patient.address.type","","","",0,1,"","","Y","code {[]} {[]}
-","postal | physical | both","Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.
+","郵便|物理|両方 / postal | physical | both","Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.
 
 住所（訪問できる住所）と郵送先住所（私書箱や気付住所など）を区別する。ほとんどのアドレスは両方。","The definition of Address states that ""address is intended to describe postal addresses, not physical locations"". However, many applications track whether an address has a dual purpose of being a location that can be visited as well as being a valid delivery destination, and Postal addresses are often used as proxies for physical locations (also see the [Location](location.html#) resource).
 
@@ -322,7 +324,7 @@ postal　　　郵送先 - 私書箱、気付の住所
 
 physical　　訪れることのできる物理的な住所。
 
-both　　　　postalとphysicalの両方","","","","","","<valueCode xmlns=""http://hl7.org/fhir"" value=""both""/>","","",,"required","The type of an address (physical / postal).","http://hl7.org/fhir/ValueSet/address-type|4.0.1","",,,,"Address.type",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+both　　　　postalとphysicalの両方","","","","","","<valueCode xmlns=""http://hl7.org/fhir"" value=""both""/>","","",,"required","アドレスのタイプ（物理 /郵便）。 / The type of an address (physical / postal).","http://hl7.org/fhir/ValueSet/address-type|4.0.1","",,,,"Address.type",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","unique(./use)","XAD.18"
 "Patient.address.text","Patient.address.text","","","",0,1,"","","Y","string {[]} {[]}
 ","Text representation of the address　住所のテキスト表現","Specifies the entire address as it should be displayed e.g. on a postal label. This may be provided instead of or as well as the specific parts.
@@ -333,7 +335,7 @@ both　　　　postalとphysicalの両方","","","","","","<valueCode xmlns=""h
 住所を(都道府県や市町村などに)分離して管理していない場合は、textに入れる。
 住所を(都道府県や市町村などに)分離して管理している場合でも、まとめてtextに入れること。
 郵便番号は含めない。
-例：東京都文京区本郷7-3-1","A renderable, unencoded form.","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""137 Nowhere Street, Erewhon 9132""/>","","",,,,,"",,,,"Address.text",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+例：東京都文京区本郷7-3-1","レンダリング可能で、不コード化されていないフォーム。 / A renderable, unencoded form.","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""137 Nowhere Street, Erewhon 9132""/>","","",,,,,"",,,,"Address.text",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","./formatted","XAD.1 + XAD.2 + XAD.3 + XAD.4 + XAD.5 + XAD.6"
 "Patient.address.line","Patient.address.line","","","",0,*,"","","Y","string {[]} {[]}
 ","Street name, number, direction & P.O. Box etc.ストリート名や番地など","This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information.
@@ -346,7 +348,7 @@ state要素とcity要素で表現しなかったそのあとの住所部分を�
 
 例：本郷7-3-1
 例：大字石神９７６
-例：藤崎町大字藤崎字西村1-2 春山荘201号室","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""137 Nowhere Street""/>","","",,,,,"",,,,"Address.line",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+例：藤崎町大字藤崎字西村1-2 春山荘201号室","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""137 Nowhere Street""/>","","",,,,,"",,,,"Address.line",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","AD.part[parttype = AL]","XAD.1 + XAD.2 (note: XAD.1 and XAD.2 have different meanings for a company address than for a person address)"
 "Patient.address.city","Patient.address.city","","Municpality
 ","",0,1,"","","Y","string {[]} {[]}
@@ -355,13 +357,13 @@ state要素とcity要素で表現しなかったそのあとの住所部分を�
 １MBを超えないこと。
 【JPO-CORE】
 郡市区町村部分だけを「郡」「市」「区」「町」「村」などの文字を含めて設定する。
-例：文京区","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""Erewhon""/>","","",,,,,"",,,,"Address.city",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+例：文京区","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""Erewhon""/>","","",,,,,"",,,,"Address.city",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","AD.part[parttype = CTY]","XAD.3"
 "Patient.address.district","Patient.address.district","","County
 ","",0,1,"","","Y","string {[]} {[]}
-","District name (aka county)","The name of the administrative area (county).","District is sometimes known as county, but in some regions 'county' is used in place of city (municipality), so county name should be conveyed in city instead.
+","地区名（別名郡） / District name (aka county)","管理エリア（郡）の名前。 / The name of the administrative area (county).","District is sometimes known as county, but in some regions 'county' is used in place of city (municipality), so county name should be conveyed in city instead.
 【JPO-CORE】
-日本の住所では使用しない。","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""Madison""/>","","",,,,,"",,,,"Address.district",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+日本の住所では使用しない。","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""Madison""/>","","",,,,,"",,,,"Address.district",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","AD.part[parttype = CNT | CPA]","XAD.9"
 "Patient.address.state","Patient.address.state","","Province
 Territory","",0,1,"","","Y","string {[]} {[]}
@@ -369,14 +371,14 @@ Territory","",0,1,"","","Y","string {[]} {[]}
 国の主権が制限されている国のサブユニット。日本の場合、都道府県名。","Note that FHIR strings SHALL NOT exceed 1MB in size
 １MBを超えないこと。
 都道府県名。「都」「道」「府」「県」のそれぞれの文字を含める。
-例：東京都","","","","","","","","",,,,,"",,,,"Address.state",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+例：東京都","","","","","","","","",,,,,"",,,,"Address.state",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","AD.part[parttype = STA]","XAD.4"
 "Patient.address.postalCode","Patient.address.postalCode","","Zip
 ","",0,1,"","","Y","string {[]} {[]}
-","Postal code for area","A postal code designating a region defined by the postal service.","Note that FHIR strings SHALL NOT exceed 1MB in size
+","エリアの郵便番号 / Postal code for area","郵便サービスによって定義された地域を指定する郵便番号。 / A postal code designating a region defined by the postal service.","Note that FHIR strings SHALL NOT exceed 1MB in size
 １MBを超えないこと。
 郵便番号。日本の郵便番号の場合には3桁数字とハイフン1文字と4桁数字からなる半角８文字、または最初の3桁だけの3文字のいずれかとする。
-例：113-8655","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""9132""/>","","",,,,,"",,,,"Address.postalCode",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+例：113-8655","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""9132""/>","","",,,,,"",,,,"Address.postalCode",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","AD.part[parttype = ZIP]","XAD.5"
 "Patient.address.country","Patient.address.country","","","",0,1,"","","Y","string {[]} {[]}
 ","Country (e.g. can be ISO 3166 2 or 3 letter code)国名またはISO 3166コード","Country - a nation as commonly understood or generally accepted.
@@ -384,7 +386,7 @@ Territory","",0,1,"","","Y","string {[]} {[]}
 ISO 3166 3文字コードは、人間が読める国名の代わりに使用する。
 
 ISO 3166の2文字または3文字のコード
-日本であれば、jp　または　jpn","","","","","","","","",,,,,"",,,,"Address.country",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+日本であれば、jp　または　jpn","","","","","","","","",,,,,"",,,,"Address.country",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","AD.part[parttype = CNT]","XAD.6"
 "Patient.address.period","Patient.address.period","","","",0,1,"","","Y","Period {[]} {[]}
 ","Time period when address was/is in use　住所が使用されていた（いる）期間","Time period when address was/is in use.
@@ -393,10 +395,10 @@ Period is not used for a duration (a measure of elapsed time). See [Duration](da
 
 住所が使用されていた/されている期間。
 期間は時間の範囲を指定する。使用状況はその期間全体に適用されるか、範囲から1つの値が適用される。
-期間は、時間間隔（経過時間の測定値）には使用されない。","Allows addresses to be placed in historical context.","","","","","<valuePeriod xmlns=""http://hl7.org/fhir"">
+期間は、時間間隔（経過時間の測定値）には使用されない。","アドレスを歴史的な文脈に配置できるようにします。 / Allows addresses to be placed in historical context.","","","","","<valuePeriod xmlns=""http://hl7.org/fhir"">
   <start value=""2010-03-23""/>
   <end value=""2010-07-01""/>
-</valuePeriod>","","",,,,,"",,,,"Address.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+</valuePeriod>","","",,,,,"",,,,"Address.period",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","./usablePeriod[type=""IVL<TS>""]","XAD.12 / XAD.13 + XAD.14"
 "Patient.maritalStatus","Patient.maritalStatus","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","Marital (civil) status of a patient　患者の婚姻（市民）状態","This field contains a patient's most recent marital (civil) status.
@@ -413,7 +415,7 @@ S 生涯独身・非婚
 T 同棲
 U 未婚
 W 未亡人
-UNK 不明","Most, if not all systems capture it.","","","","","","","",,"extensible","The domestic partnership status of a person.","http://hl7.org/fhir/ValueSet/marital-status","",,,,"Patient.maritalStatus",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+UNK 不明","ほとんどの場合、すべてではないにしても、それをキャプチャします。 / Most, if not all systems capture it.","","","","","","","",,"extensible","人の国内パートナーシップの状況。 / The domestic partnership status of a person.","http://hl7.org/fhir/ValueSet/marital-status","",,,,"Patient.maritalStatus",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","player[classCode=PSN]/maritalStatusCode",".patient.maritalStatusCode","PID-16"
 "Patient.multipleBirth[x]","Patient.multipleBirth[x]","","","",0,1,"","","","boolean {[]} {[]}
 integer {[]} {[]}","Whether patient is part of a multiple birth　患者が多胎出産の一人かどうか。","Indicates whether the patient is part of a multiple (boolean) or indicates the actual birth order (integer).
@@ -424,7 +426,7 @@ multipleBirthBoolean : 多胎出産時かどうか。
 ３つ子の例にbooleanが指定された場合、3つの患者レコードすべてがvalueBoolean = trueになる（順序は示されない）
 multipleBirthInteger : 多胎出産時の出生順位。
 たとえば、３つ子の２番目の生まれはvalueInteger = 2で、3番目の生まれはvalueInteger = 3になる。","For disambiguation of multiple-birth children, especially relevant where the care provider doesn't meet the patient, such as labs.
-多産児の曖昧性解消、特にラボなど、医療提供者が患者に会わない場合に関連する。","","","","","","","",,,,,"",,,,"Patient.multipleBirth[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+多産児の曖昧性解消、特にラボなど、医療提供者が患者に会わない場合に関連する。","","","","","","","",,,,,"",,,,"Patient.multipleBirth[x]",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","player[classCode=PSN|ANM and determinerCode=INSTANCE]/multipleBirthInd,  player[classCode=PSN|ANM and determinerCode=INSTANCE]/multipleBirthOrderNumber","n/a","PID-24 (bool), PID-25 (integer)"
 "Patient.photo","Patient.photo","","","",0,*,"","","","Attachment {[]} {[]}
 ","Image of the patient　患者の画像","Image of the patient.
@@ -438,7 +440,7 @@ multipleBirthInteger : 多胎出産時の出生順位。
 寸法をサムネイルに制限する。
 リソースの更新を容易にするため、バイト数を少なくすること。","Many EHR systems have the capability to capture an image of the patient. Fits with newer social media usage too.
 
-多くのEHRシステムには、患者の画像をキャプチャする機能がある。より新しいソーシャルメディアの使用にも適合する。","","","","","","","",,,,,"",,,,"Patient.photo",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+多くのEHRシステムには、患者の画像をキャプチャする機能がある。より新しいソーシャルメディアの使用にも適合する。","","","","","","","",,,,,"",,,,"Patient.photo",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","player[classCode=PSN|ANM and determinerCode=INSTANCE]/desc","n/a","OBX-5 - needs a profile"
 "Patient.contact","Patient.contact","","","",0,*,"","","","BackboneElement {[]} {[]}
 ","A contact party (e.g. guardian, partner, friend) for the patient　患者の連絡先者（例：保護者、パートナー、友人）。","A contact party (e.g. guardian, partner, friend) for the patient.
@@ -447,22 +449,24 @@ multipleBirthInteger : 多胎出産時の出生順位。
 
 連絡先には、家族、取引先、保護者、介護者など、あらゆる種類の連絡先が含まれる。連絡先として使用しない親戚や家族を登録するためには適用されない。","Need to track people you can contact about the patient.
 
-患者について連絡できる人を確認する必要がある。","","","","","","","",,,,,"",,,,"Patient.contact",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-pat-1:SHALL at least contain a contact's details or a reference to an organization {name.exists() or telecom.exists() or address.exists() or organization.exists()}","player[classCode=PSN|ANM and determinerCode=INSTANCE]/scopedRole[classCode=CON]","n/a"
+患者について連絡できる人を確認する必要がある。","","","","","","","",,,,,"",,,,"Patient.contact",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+pat-1:少なくとも連絡先の詳細または組織への参照を含めるものとする / SHALL at least contain a contact's details or a reference to an organization {name.exists() or telecom.exists() or address.exists() or organization.exists()}","player[classCode=PSN|ANM and determinerCode=INSTANCE]/scopedRole[classCode=CON]","n/a"
 "Patient.contact.id","Patient.contact.id","","","",0,1,"","","","string {[]} {[]}
-","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+","要素間参照のための一意のID / Unique id for inter-element referencing","リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
 "Patient.contact.extension","Patient.contact.extension","","extensions
 user content","",0,*,"","","","Extension {[]} {[]}
-","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+","実装で定義された追加のコンテンツ / Additional content defined by implementations","要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
 "Patient.contact.modifierExtension","Patient.contact.modifierExtension","","extensions
 user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
-","Extensions that cannot be ignored even if unrecognized","May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+","認識されていなくても無視できない拡張機能 / Extensions that cannot be ignored even if unrecognized","要素の基本的な定義の一部ではなく、それが含まれている要素の理解、および/または含まれる要素の子孫の理解を変更するために使用される場合があります。通常、修飾子要素は否定または資格を提供します。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。アプリケーションの処理リソースは、修飾子拡張機能をチェックする必要があります。
 
-Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
+モディファイア拡張は、リソースまたはdomainResource上の要素の意味を変更してはなりません（修飾軸自体の意味を変更することはできません）。 / May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","修飾子拡張機能により、安全に無視できる大部分の拡張機能と明確に区別できるように、安全に無視できない拡張機能が可能になります。これにより、実装者が拡張の存在を禁止する必要性を排除することにより、相互運用性が促進されます。詳細については、[修飾子拡張の定義]（拡張性.html＃modifierextension）を参照してください。 / Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "Patient.contact.relationship","Patient.contact.relationship","","","",0,*,"","","","CodeableConcept {[]} {[]}
-","The kind of relationship","The nature of the relationship between the patient and the contact person.
+","関係の種類 / The kind of relationship","The nature of the relationship between the patient and the contact person.
 
 患者と連絡先の関係性。","Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.
 
@@ -482,65 +486,67 @@ S 州政府機関
 
 U 不明","Used to determine which contact person is the most relevant to approach, depending on circumstances.
 
-状況に応じて、アプローチするのに最適な関係者を決定するために使用される。","","","","","","","",,"extensible","The nature of the relationship between a patient and a contact person for that patient.","http://hl7.org/fhir/ValueSet/patient-contactrelationship","",,,,"Patient.contact.relationship",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+状況に応じて、アプローチするのに最適な関係者を決定するために使用される。","","","","","","","",,"extensible","その患者の患者と接触者との関係の性質。 / The nature of the relationship between a patient and a contact person for that patient.","http://hl7.org/fhir/ValueSet/patient-contactrelationship","",,,,"Patient.contact.relationship",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","code","n/a","NK1-7, NK1-3"
 "Patient.contact.name","Patient.contact.name","","","",0,1,"","","","HumanName {[]} {[]}
-","A name associated with the contact person","A name associated with the contact person.
+","連絡先に関連付けられた名前 / A name associated with the contact person","A name associated with the contact person.
 
 連絡先に登録された名前。","","Contact persons need to be identified by name, but it is uncommon to need details about multiple other names for that contact person.
 
-連絡先は名前で識別する必要があるが、その連絡先に複数の名前が必要になることはまれである。","","","","","","","",,,,,"",,,,"Patient.contact.name",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+連絡先は名前で識別する必要があるが、その連絡先に複数の名前が必要になることはまれである。","","","","","","","",,,,,"",,,,"Patient.contact.name",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","name","n/a","NK1-2"
 "Patient.contact.telecom","Patient.contact.telecom","","","",0,*,"","","","ContactPoint {[]} {[]}
-","A contact detail for the person","A contact detail for the person, e.g. a telephone number or an email address.
+","人の連絡先の詳細 / A contact detail for the person","A contact detail for the person, e.g. a telephone number or an email address.
 
 連絡先に登録された連絡方法（電話番号やメールアドレスなど）。","Contact may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification.
 
 連絡先には、さまざまな用途または適用期間で連絡を取るための複数の方法がある。その人に緊急に連絡する際の連絡先を確認する必要がある。","People have (primary) ways to contact them in some way such as phone, email.
 
-電話、電子メールなどの（優先する）連絡方法を確認する必要がある。","","","","","","","",,,,,"",,,,"Patient.contact.telecom",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+電話、電子メールなどの（優先する）連絡方法を確認する必要がある。","","","","","","","",,,,,"",,,,"Patient.contact.telecom",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","telecom","n/a","NK1-5, NK1-6, NK1-40"
 "Patient.contact.address","Patient.contact.address","","","",0,1,"","","","Address {[]} {[]}
-","Address for the contact person","Address for the contact person.
+","連絡先の住所 / Address for the contact person","Address for the contact person.
 連絡先の住所。","","Need to keep track where the contact person can be contacted per postal mail or visited.
-郵送ないし訪問により連絡を取ることができるよう注意する必要があるため。","","","","","","","",,,,,"",,,,"Patient.contact.address",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+郵送ないし訪問により連絡を取ることができるよう注意する必要があるため。","","","","","","","",,,,,"",,,,"Patient.contact.address",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","addr","n/a","NK1-4"
 "Patient.contact.gender","Patient.contact.gender","","","",0,1,"","","","code {[]} {[]}
-","male | female | other | unknown","Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes.
+","男性|女性|その他|わからない / male | female | other | unknown","Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes.
 管理上の性別-連絡先担当者が管理および記録管理のために持っていると考えられる性別。","","Needed to address the person correctly.
-その人に正しく話しかけるために必要である。","","","","","","","",,"required","The gender of a person used for administrative purposes.","http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1","",,,,"Patient.contact.gender",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+その人に正しく話しかけるために必要である。","","","","","","","",,"required","管理目的で使用される人の性別。 / The gender of a person used for administrative purposes.","http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1","",,,,"Patient.contact.gender",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender","n/a","NK1-15"
 "Patient.contact.organization","Patient.contact.organization","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
-","Organization that is associated with the contact","Organization on behalf of which the contact is acting or for which the contact is working.
+","連絡先に関連する組織 / Organization that is associated with the contact","Organization on behalf of which the contact is acting or for which the contact is working.
 連絡先が主として活動する、または勤務している組織。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
-連絡先に関連する組織","For guardians or business related contacts, the organization is relevant.","","","","","","","",,,,,"",,,,"Patient.contact.organization",0,1,"pat-1
-","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+連絡先に関連する組織","保護者またはビジネス関連の連絡先については、組織が関連しています。 / For guardians or business related contacts, the organization is relevant.","","","","","","","",,,,,"",,,,"Patient.contact.organization",0,1,"pat-1
+","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","scoper","n/a","NK1-13, NK1-30, NK1-31, NK1-32, NK1-41"
 "Patient.contact.period","Patient.contact.period","","","",0,1,"","","","Period {[]} {[]}
-","The period during which this contact person or organization is valid to be contacted relating to this patient","The period during which this contact person or organization is valid to be contacted relating to this patient.
-この患者に関連して、この連絡担当者または組織に連絡することが有効な期間。","","","","","","","","","",,,,,"",,,,"Patient.contact.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","この患者に関連するこの連絡先または組織が連絡するのが有効な期間 / The period during which this contact person or organization is valid to be contacted relating to this patient","The period during which this contact person or organization is valid to be contacted relating to this patient.
+この患者に関連して、この連絡担当者または組織に連絡することが有効な期間。","","","","","","","","","",,,,,"",,,,"Patient.contact.period",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","effectiveTime","n/a"
 "Patient.communication","Patient.communication","","","",0,*,"","","","BackboneElement {[]} {[]}
 ","A language which may be used to communicate with the patient about his or her health　彼または彼女の健康について患者と会話する際に使用する言語","A language which may be used to communicate with the patient about his or her health.
 彼または彼女の健康について患者と会話する際に使用する言語。","If no language is specified, this *implies* that the default local language is spoken.  If you need to convey proficiency for multiple modes, then you need multiple Patient.Communication associations.   For animals, language is not a relevant field, and should be absent from the instance. If the Patient does not speak the default local language, then the Interpreter Required Standard can be used to explicitly declare that an interpreter is required.
 言語が指定されていない場合、デフォルトのローカル言語が話されていることを意味する。 複数のモードの習熟度を伝える必要がある場合は、複数のPatient.Communicationアソシエーションが必要である。 動物の場合、言語は関連するフィールドではないため、インスタンスから除外する必要がある。 患者がデフォルトの現地言語を話さない場合、通訳者が必要であることを明示的に宣言するために、通訳者必須基準を使用できる。","If a patient does not speak the local language, interpreters may be required, so languages spoken and proficiency are important things to keep track of both for patient and other persons of interest.
-患者が現地の言語を話さない場合、通訳が必要になる場合があるため、話せる言語と習熟度は、患者と関心のある他の人の両方にとって注意すべき重要な事項である。","","","","","","","",,,,,"",,,,"Patient.communication",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+患者が現地の言語を話さない場合、通訳が必要になる場合があるため、話せる言語と習熟度は、患者と関心のある他の人の両方にとって注意すべき重要な事項である。","","","","","","","",,,,,"",,,,"Patient.communication",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","LanguageCommunication","patient.languageCommunication"
 "Patient.communication.id","Patient.communication.id","","","",0,1,"","","","string {[]} {[]}
-","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+","要素間参照のための一意のID / Unique id for inter-element referencing","リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
 "Patient.communication.extension","Patient.communication.extension","","extensions
 user content","",0,*,"","","","Extension {[]} {[]}
-","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+","実装で定義された追加のコンテンツ / Additional content defined by implementations","要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
 "Patient.communication.modifierExtension","Patient.communication.modifierExtension","","extensions
 user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
-","Extensions that cannot be ignored even if unrecognized","May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+","認識されていなくても無視できない拡張機能 / Extensions that cannot be ignored even if unrecognized","要素の基本的な定義の一部ではなく、それが含まれている要素の理解、および/または含まれる要素の子孫の理解を変更するために使用される場合があります。通常、修飾子要素は否定または資格を提供します。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。アプリケーションの処理リソースは、修飾子拡張機能をチェックする必要があります。
 
-Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
+モディファイア拡張は、リソースまたはdomainResource上の要素の意味を変更してはなりません（修飾軸自体の意味を変更することはできません）。 / May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","修飾子拡張機能により、安全に無視できる大部分の拡張機能と明確に区別できるように、安全に無視できない拡張機能が可能になります。これにより、実装者が拡張の存在を禁止する必要性を排除することにより、相互運用性が促進されます。詳細については、[修飾子拡張の定義]（拡張性.html＃modifierextension）を参照してください。 / Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "Patient.communication.language","Patient.communication.language","","","",1,1,"","","","CodeableConcept {[]} {[]}
-","The language which can be used to communicate with the patient about his or her health","The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. ""en"" for English, or ""en-US"" for American English versus ""en-EN"" for England English.
+","患者と自分の健康についてコミュニケーションをとるために使用できる言語 / The language which can be used to communicate with the patient about his or her health","The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. ""en"" for English, or ""en-US"" for American English versus ""en-EN"" for England English.
 ISO-639-1 alpha 2コード小文字で言語を、また、オプションとしてハイフンとISO-3166-1 alpha 2コード大文字を続けて地域を表す。たとえば、英語の場合は「en」、アメリカ英語の場合は「en-US」、イギリス英語の場合は「en-EN」である。","The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.
 
 
@@ -556,17 +562,17 @@ ja 日本語
 
 ko 韓国語
 など","Most systems in multilingual countries will want to convey language. Not all systems actually need the regional dialect.
-多言語の国のほとんどのシステムは、言語を伝えたいと考えられる。 すべてのシステムが実際に地域の方言を必要とするわけではない。","","","","","","","",,"preferred","A human language.","http://hl7.org/fhir/ValueSet/languages","",,,,"Patient.communication.language",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+多言語の国のほとんどのシステムは、言語を伝えたいと考えられる。 すべてのシステムが実際に地域の方言を必要とするわけではない。","","","","","","","",,"preferred","人間の言語。 / A human language.","http://hl7.org/fhir/ValueSet/languages","",,,,"Patient.communication.language",1,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","player[classCode=PSN|ANM and determinerCode=INSTANCE]/languageCommunication/code",".languageCode","PID-15, LAN-2"
 "Patient.communication.preferred","Patient.communication.preferred","","","",0,1,"","","","boolean {[]} {[]}
-","Language preference indicator","Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).
+","言語選好インジケーター / Language preference indicator","Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).
 
 患者がこの言語を優先するかどうかを示す（他の言語よりも特定レベルまで習得している）。","This language is specifically identified for communicating healthcare information.
 
 この言語は、医療情報を伝えるために特に識別される。
 患者がこの言語を習得している場合はtrue、そうでなければfalseを設定する。","People that master multiple languages up to certain level may prefer one or more, i.e. feel more confident in communicating in a particular language making other languages sort of a fall back method.
 
-特定のレベルまで複数の言語を習得している人は、複数の言語を選択する可能性がある。つまり、特定の言語でのコミュニケーションに自信を持ち、他の言語を一種の備えとしている。","","","","","","","",,,,,"",,,,"Patient.communication.preferred",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+特定のレベルまで複数の言語を習得している人は、複数の言語を選択する可能性がある。つまり、特定の言語でのコミュニケーションに自信を持ち、他の言語を一種の備えとしている。","","","","","","","",,,,,"",,,,"Patient.communication.preferred",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","preferenceInd",".preferenceInd","PID-15"
 "Patient.generalPractitioner","Patient.generalPractitioner","","careProvider
 ","",0,*,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole]]}
@@ -578,7 +584,7 @@ Jurisdictions may decide that they can profile this down to 1 if desired, or 1 p
 
 ----以下の翻訳は検討中の内容を含む----
 これはプライマリケア提供者(GPを含む)である場合もあれば、コミュニティ/障害を持つ患者指定のケアマネージャーである場合もある。ケアチームの記録には使用されない。これらは、ケアプランまたはEpisodeOfCareリソースにリンクされるCareTeamリソースに含まれている必要がある。複数のGPは、学期中の大学GPと共にリストされた家庭GPなどの学生や、「フライイン/フライアウト」労働者など、さまざまな理由で患者に対して記録される場合がある。また、医学的問題を認識し続けるために家庭GPに含まれる。
-管轄区域は、必要に応じてこれを1、またはタイプごとに1にプロファイルできると決定する場合がある。","","","","","","","","",,,,,"",,,,"Patient.generalPractitioner",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+管轄区域は、必要に応じてこれを1、またはタイプごとに1にプロファイルできると決定する場合がある。","","","","","","","","",,,,,"",,,,"Patient.generalPractitioner",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","subjectOf.CareEvent.performer.AssignedEntity","n/a","PD1-4"
 "Patient.managingOrganization","Patient.managingOrganization","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
 ","Organization that is the custodian of the patient record　患者記録の管理者である組織","Organization that is the custodian of the patient record.
@@ -586,7 +592,7 @@ Jurisdictions may decide that they can profile this down to 1 if desired, or 1 p
 
 特定の患者記録を管理する組織は1つだけである。他の組織には独自の患者レコードがあり、Linkプロパティを使用してレコードを結合する場合がある（または、関連付けの信頼性評価を含めることができる個人リソース）","Need to know who recognizes this patient record, manages and updates it.
 
-この患者記録を誰が認識し、管理し、更新するかを知る必要がある。","","","","","","","",,,,,"",,,,"Patient.managingOrganization",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+この患者記録を誰が認識し、管理し、更新するかを知る必要がある。","","","","","","","",,,,,"",,,,"Patient.managingOrganization",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","scoper",".providerOrganization"
 "Patient.link","Patient.link","","","",0,*,"","Y","Y","BackboneElement {[]} {[]}
 ","Link to another patient resource that concerns the same actual person　事実上の同一患者をリンクする別のPatientリソース","Link to another patient resource that concerns the same actual patient.
@@ -599,29 +605,31 @@ Jurisdictions may decide that they can profile this down to 1 if desired, or 1 p
 * Distribution of patient information across multiple servers
 複数のユースケースがある。
 ・事務的なエラーのため、一貫して人間を特定することが困難であり患者の記録が重複している。
-・複数のサーバーにわたり患者情報が配布されている。","","","","","","","",,,,,"",,,,"Patient.link",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+・複数のサーバーにわたり患者情報が配布されている。","","","","","","","",,,,,"",,,,"Patient.link",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","outboundLink","n/a"
 "Patient.link.id","Patient.link.id","","","",0,1,"","","","string {[]} {[]}
-","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+","要素間参照のための一意のID / Unique id for inter-element referencing","リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
 "Patient.link.extension","Patient.link.extension","","extensions
 user content","",0,*,"","","","Extension {[]} {[]}
-","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+","実装で定義された追加のコンテンツ / Additional content defined by implementations","要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
 "Patient.link.modifierExtension","Patient.link.modifierExtension","","extensions
 user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
-","Extensions that cannot be ignored even if unrecognized","May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+","認識されていなくても無視できない拡張機能 / Extensions that cannot be ignored even if unrecognized","要素の基本的な定義の一部ではなく、それが含まれている要素の理解、および/または含まれる要素の子孫の理解を変更するために使用される場合があります。通常、修飾子要素は否定または資格を提供します。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。アプリケーションの処理リソースは、修飾子拡張機能をチェックする必要があります。
 
-Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
+モディファイア拡張は、リソースまたはdomainResource上の要素の意味を変更してはなりません（修飾軸自体の意味を変更することはできません）。 / May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","修飾子拡張機能により、安全に無視できる大部分の拡張機能と明確に区別できるように、安全に無視できない拡張機能が可能になります。これにより、実装者が拡張の存在を禁止する必要性を排除することにより、相互運用性が促進されます。詳細については、[修飾子拡張の定義]（拡張性.html＃modifierextension）を参照してください。 / Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "Patient.link.other","Patient.link.other","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson]]}
-","The other patient or related person resource that the link refers to","The other patient resource that the link refers to.
+","リンクが指す他の患者または関連者のリソース / The other patient or related person resource that the link refers to","The other patient resource that the link refers to.
 
 リンクが参照する他の患者リソース。","Referencing a RelatedPerson here removes the need to use a Person record to associate a Patient and RelatedPerson as the same individual.
 
-ここでRelatedPersonを参照すると、Personレコードを使用して患者とRelatedPersonを同じ個人として関連付ける必要がなくなる。","","","","","","","","",,,,,"",,,,"Patient.link.other",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ここでRelatedPersonを参照すると、Personレコードを使用して患者とRelatedPersonを同じ個人として関連付ける必要がなくなる。","","","","","","","","",,,,,"",,,,"Patient.link.other",1,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","id","n/a","PID-3, MRG-1"
 "Patient.link.type","Patient.link.type","","","",1,1,"","","Y","code {[]} {[]}
-","replaced-by | replaces | refer | seealso","The type of link between this patient resource and another patient resource.
+","交換|交換|参照|seealso / replaced-by | replaces | refer | seealso","The type of link between this patient resource and another patient resource.
 
 この患者リソースと別の患者リソース間のリンクのタイプ。","Note that FHIR strings SHALL NOT exceed 1MB in size
 
@@ -633,5 +641,5 @@ replaces　　　このリンクを含む患者リソースは、現在アクテ
 
 refer　　　　このリンクを含む患者リソースは使用中であり、有効であるが、患者に関する主な情報源とは見なされていない。
 
-seealso　　このリンクを含む患者リソースは使用中で有効であるが、同じ人物に関するデータが含まれていることがわかっている別の患者リソースを指す。","","","","","","","","",,"required","The type of link between this patient resource and another patient resource.","http://hl7.org/fhir/ValueSet/link-type|4.0.1","",,,,"Patient.link.type",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+seealso　　このリンクを含む患者リソースは使用中で有効であるが、同じ人物に関するデータが含まれていることがわかっている別の患者リソースを指す。","","","","","","","","",,"required","この患者リソースと別の患者リソースとの間のリンクのタイプ。 / The type of link between this patient resource and another patient resource.","http://hl7.org/fhir/ValueSet/link-type|4.0.1","",,,,"Patient.link.type",1,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","typeCode","n/a"

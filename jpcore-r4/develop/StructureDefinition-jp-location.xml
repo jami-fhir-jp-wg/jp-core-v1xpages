@@ -151,7 +151,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="dom-2"/>
         <severity value="error"/>
-        <human value="If the resource is contained in another resource, it SHALL NOT contain nested Resources"/>
+        <human value="リソースが別のリソースに含まれている場合、ネストされたリソースを含めてはなりません / If the resource is contained in another resource, it SHALL NOT contain nested Resources"/>
         <expression value="contained.contained.empty()"/>
         <xpath value="not(parent::f:contained and f:contained)"/>
         <source value="http://hl7.org/fhir/StructureDefinition/DomainResource"/>
@@ -159,7 +159,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="dom-3"/>
         <severity value="error"/>
-        <human value="If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource"/>
+        <human value="リソースが別のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含有リソースを参照するものとします / If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource"/>
         <expression value="contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()"/>
         <xpath value="not(exists(for $id in f:contained/*/f:id/@value return $contained[not(parent::*/descendant::f:reference/@value=concat('#', $contained/*/id/@value) or descendant::f:reference[@value='#'])]))"/>
         <source value="http://hl7.org/fhir/StructureDefinition/DomainResource"/>
@@ -167,7 +167,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="dom-4"/>
         <severity value="error"/>
-        <human value="If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated"/>
+        <human value="リソースが別のリソースに含まれている場合、meta.versionidまたはmeta.lastupdatedを持たないものとします / If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated"/>
         <expression value="contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()"/>
         <xpath value="not(exists(f:contained/*/f:meta/f:versionId)) and not(exists(f:contained/*/f:meta/f:lastUpdated))"/>
         <source value="http://hl7.org/fhir/StructureDefinition/DomainResource"/>
@@ -175,7 +175,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="dom-5"/>
         <severity value="error"/>
-        <human value="If a resource is contained in another resource, it SHALL NOT have a security label"/>
+        <human value="別のリソースにリソースが含まれている場合、セキュリティラベルはありません / If a resource is contained in another resource, it SHALL NOT have a security label"/>
         <expression value="contained.meta.security.empty()"/>
         <xpath value="not(exists(f:contained/*/f:meta/f:security))"/>
         <source value="http://hl7.org/fhir/StructureDefinition/DomainResource"/>
@@ -185,11 +185,11 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
           <valueBoolean value="true"/>
         </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation">
-          <valueMarkdown value="When a resource has no narrative, only systems that fully understand the data can display the resource to a human safely. Including a human readable representation in the resource makes for a much more robust eco-system and cheaper handling of resources by intermediary systems. Some ecosystems restrict distribution of resources to only those systems that do fully understand the resources, and as a consequence implementers may believe that the narrative is superfluous. However experience shows that such eco-systems often open up to new participants over time."/>
+          <valueMarkdown value="リソースに叙述(Narative)がない場合、データを完全に理解するシステムのみがリソースを人間に安全に表示できます。リソースに人間の読み取り可能な表現を含めることは、はるかに堅牢なエコシステムと、仲介システムによるリソースのより安価な取り扱いになります。一部のエコシステムは、リソースの分布をリソースを完全に理解しているシステムのみに制限しており、その結果、実装者は叙述(Narative)が余計であると信じるかもしれません。しかし、経験によると、そのようなエコシステムは、多くの場合、時間の経過とともに新しい参加者に開かれています。 / When a resource has no narrative, only systems that fully understand the data can display the resource to a human safely. Including a human readable representation in the resource makes for a much more robust eco-system and cheaper handling of resources by intermediary systems. Some ecosystems restrict distribution of resources to only those systems that do fully understand the resources, and as a consequence implementers may believe that the narrative is superfluous. However experience shows that such eco-systems often open up to new participants over time."/>
         </extension>
         <key value="dom-6"/>
         <severity value="warning"/>
-        <human value="A resource should have narrative for robust management"/>
+        <human value="リソースには、堅牢な管理のための叙述(Narative)が必要です / A resource should have narrative for robust management"/>
         <expression value="text.`div`.exists()"/>
         <xpath value="exists(f:text/h:div)"/>
         <source value="http://hl7.org/fhir/StructureDefinition/DomainResource"/>
@@ -207,9 +207,9 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
     </element>
     <element id="Location.id">
       <path value="Location.id"/>
-      <short value="Logical id of this artifact"/>
-      <definition value="The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."/>
-      <comment value="The only time that a resource does not have an id is when it is being submitted to the server using a create operation."/>
+      <short value="このアーティファクトの論理ID / Logical id of this artifact"/>
+      <definition value="リソースのURLで使用されるリソースの論理ID。割り当てられたら、この値は変更されません。 / The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."/>
+      <comment value="リソースにIDがないのは、IDが作成操作を使用してサーバーに送信されている場合です。 / The only time that a resource does not have an id is when it is being submitted to the server using a create operation."/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -228,8 +228,8 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
     </element>
     <element id="Location.meta">
       <path value="Location.meta"/>
-      <short value="Metadata about the resource"/>
-      <definition value="The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."/>
+      <short value="リソースに関するメタデータ / Metadata about the resource"/>
+      <definition value="リソースに関するメタデータ。これは、インフラストラクチャによって維持されるコンテンツです。コンテンツの変更は、常にリソースのバージョンの変更に関連付けられているとは限りません。 / The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -243,7 +243,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -253,9 +253,9 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
     </element>
     <element id="Location.implicitRules">
       <path value="Location.implicitRules"/>
-      <short value="A set of rules under which this content was created"/>
-      <definition value="A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."/>
-      <comment value="Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element. Often, when used, the URL is a reference to an implementation guide that defines these special rules as part of it's narrative along with other profiles, value sets, etc."/>
+      <short value="このコンテンツが作成されたルールのセット / A set of rules under which this content was created"/>
+      <definition value="リソースが構築されたときに従った一連のルールへの参照。コンテンツの処理時に理解する必要があります。多くの場合、これは他のプロファイルなどとともに特別なルールを定義する実装ガイドへの参照です。 / A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."/>
+      <comment value="このルールセットを主張することは、コンテンツが限られた取引パートナーのセットによってのみ理解されることを制限します。これにより、本質的に長期的にデータの有用性が制限されます。ただし、既存の健康エコシステムは非常に破壊されており、一般的に計算可能な意味でデータを定義、収集、交換する準備ができていません。可能な限り、実装者や仕様ライターはこの要素の使用を避ける必要があります。多くの場合、使用する場合、URLは、これらの特別なルールを他のプロファイル、バリューセットなどとともに叙述(Narative)の一部として定義する実装ガイドへの参照です。 / Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element. Often, when used, the URL is a reference to an implementation guide that defines these special rules as part of it's narrative along with other profiles, value sets, etc."/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -269,20 +269,20 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
       <isModifier value="true"/>
-      <isModifierReason value="This element is labeled as a modifier because the implicit rules may provide additional knowledge about the resource that modifies it's meaning or interpretation"/>
+      <isModifierReason value="暗黙のルールは、意味または解釈を変更するリソースに関する追加の知識を提供する可能性があるため、この要素は修飾子としてラベル付けされています。 / This element is labeled as a modifier because the implicit rules may provide additional knowledge about the resource that modifies it's meaning or interpretation"/>
       <isSummary value="true"/>
     </element>
     <element id="Location.language">
       <path value="Location.language"/>
-      <short value="Language of the resource content"/>
-      <definition value="The base language in which the resource is written."/>
-      <comment value="Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource. Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute)."/>
+      <short value="リソースコンテンツの言語 / Language of the resource content"/>
+      <definition value="リソースが書かれている基本言語。 / The base language in which the resource is written."/>
+      <comment value="言語は、インデックス作成とアクセシビリティをサポートするために提供されます（通常、テキストから音声までのサービスなどのサービスが言語タグを使用します）。叙述(Narative)のHTML言語タグは、叙述(Narative)に適用されます。リソース上の言語タグを使用して、リソース内のデータから生成された他のプレゼンテーションの言語を指定できます。すべてのコンテンツが基本言語である必要はありません。リソース。言語は、叙述(Narative)に自動的に適用されると想定されるべきではありません。言語が指定されている場合、HTMLのDIV要素にも指定されている場合（XML：LangとHTML Lang属性の関係については、HTML5のルールを参照してください）。 / Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource. Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute)."/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -296,7 +296,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -314,15 +314,15 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
           <valueBoolean value="true"/>
         </extension>
         <strength value="preferred"/>
-        <description value="A human language."/>
+        <description value="人間の言語。 / A human language."/>
         <valueSet value="http://hl7.org/fhir/ValueSet/languages"/>
       </binding>
     </element>
     <element id="Location.text">
       <path value="Location.text"/>
-      <short value="Text summary of the resource, for human interpretation"/>
-      <definition value="A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it &quot;clinically safe&quot; for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety."/>
-      <comment value="Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative. In some cases, a resource may only have text with little or no additional discrete data (as long as all minOccurs=1 elements are satisfied).  This may be necessary for data from legacy systems where information is captured as a &quot;text blob&quot; or where text is additionally entered raw or narrated and encoded information is added later."/>
+      <short value="人間の解釈のためのリソースのテキスト概要 / Text summary of the resource, for human interpretation"/>
+      <definition value="リソースの概要を含み、人間へのリソースの内容を表すために使用できる人間の読み取り可能な叙述(Narative)。叙述(Narative)はすべての構造化されたデータをエンコードする必要はありませんが、人間が叙述(Narative)を読むだけで「臨床的に安全」にするために十分な詳細を含める必要があります。リソースの定義は、臨床的安全を確保するために、叙述(Narative)で表現するコンテンツを定義する場合があります。 / A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it &quot;clinically safe&quot; for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety."/>
+      <comment value="含まれるリソースには叙述(Narative)がありません。含まれていないリソースには叙述(Narative)が必要です。場合によっては、リソースには、追加の個別のデータがほとんどまたはまったくないテキストのみがあります（すべてのMinoccur = 1要素が満たされている限り）。これは、情報がtext blob (バイナリー ラージ オブジェクト)としてキャプチャされるレガシーシステムからのデータ、またはテキストが生またはナレーションされ、エンコードされた情報が後で追加される場合に必要になる場合があります。 / Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative. In some cases, a resource may only have text with little or no additional discrete data (as long as all minOccurs=1 elements are satisfied).  This may be necessary for data from legacy systems where information is captured as a &quot;text blob&quot; or where text is additionally entered raw or narrated and encoded information is added later."/>
       <alias value="narrative"/>
       <alias value="html"/>
       <alias value="xhtml"/>
@@ -340,7 +340,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -354,9 +354,9 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
     </element>
     <element id="Location.contained">
       <path value="Location.contained"/>
-      <short value="Contained, inline Resources"/>
-      <definition value="These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."/>
-      <comment value="This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again. Contained resources may have profiles and tags In their meta elements, but SHALL NOT have security labels."/>
+      <short value="インラインリソースが含まれています / Contained, inline Resources"/>
+      <definition value="これらのリソースには、それらを含むリソースを除いて独立した存在はありません - 独立して特定することはできず、独自の独立したトランザクションスコープを持つこともできません。 / These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."/>
+      <comment value="識別が失われると、コンテンツを適切に識別できる場合は、これを行うべきではありません。含まれるリソースには、メタ要素にプロファイルとタグがある場合がありますが、セキュリティラベルはありません。 / This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again. Contained resources may have profiles and tags In their meta elements, but SHALL NOT have security labels."/>
       <alias value="inline resources"/>
       <alias value="anonymous resources"/>
       <alias value="contained resources"/>
@@ -379,9 +379,9 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
     </element>
     <element id="Location.extension">
       <path value="Location.extension"/>
-      <short value="Additional content defined by implementations"/>
-      <definition value="May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
-      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
+      <short value="実装で定義された追加のコンテンツ / Additional content defined by implementations"/>
+      <definition value="リソースの基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
+      <comment value="拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
       <alias value="extensions"/>
       <alias value="user content"/>
       <min value="0"/>
@@ -397,7 +397,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -405,7 +405,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ext-1"/>
         <severity value="error"/>
-        <human value="Must have either extensions or value[x], not both"/>
+        <human value="両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
@@ -419,10 +419,10 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
     </element>
     <element id="Location.modifierExtension">
       <path value="Location.modifierExtension"/>
-      <short value="Extensions that cannot be ignored"/>
-      <definition value="May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.&#xA;&#xA;Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."/>
-      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
-      <requirements value="Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension)."/>
+      <short value="無視できない拡張機能 / Extensions that cannot be ignored"/>
+      <definition value="リソースの基本的な定義の一部ではなく、それを含む要素の理解および/または含有要素の子孫の理解を変更するために使用される場合があります。通常、修飾子要素は否定または資格を提供します。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義することが許可されていますが、拡張機能の定義の一部として満たされる一連の要件があります。アプリケーションの処理リソースは、修飾子拡張機能をチェックする必要があります。&#xA;&#xA;モディファイア拡張は、リソースまたはdomainResource上の要素の意味を変更してはなりません（修飾軸自体の意味を変更することはできません）。 / May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.&#xA;&#xA;Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."/>
+      <comment value="拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
+      <requirements value="修飾子拡張機能により、安全に無視できる大部分の拡張機能と明確に区別できるように、安全に無視できない拡張機能が可能になります。これにより、実装者が拡張の存在を禁止する必要性を排除することにより、相互運用性が促進されます。詳細については、[修飾子拡張の定義]（拡張性.html＃modifierextension）を参照してください。 / Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension)."/>
       <alias value="extensions"/>
       <alias value="user content"/>
       <min value="0"/>
@@ -438,7 +438,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -446,13 +446,13 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ext-1"/>
         <severity value="error"/>
-        <human value="Must have either extensions or value[x], not both"/>
+        <human value="両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
       </constraint>
       <isModifier value="true"/>
-      <isModifierReason value="Modifier extensions are expected to modify the meaning or interpretation of the resource that contains them"/>
+      <isModifierReason value="モディファイア拡張は、それらを含むリソースの意味または解釈を変更することが期待されています / Modifier extensions are expected to modify the meaning or interpretation of the resource that contains them"/>
       <isSummary value="false"/>
       <mapping>
         <identity value="rim"/>
@@ -477,7 +477,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -511,20 +511,20 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
       <isModifier value="true"/>
-      <isModifierReason value="This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid"/>
+      <isModifierReason value="この要素には、ステータスが現在有効ではないとマークするコードが含まれているため、修飾子としてラベル付けされています。 / This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid"/>
       <isSummary value="true"/>
       <binding>
         <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
           <valueString value="LocationStatus"/>
         </extension>
         <strength value="required"/>
-        <description value="Indicates whether the location is still in use."/>
+        <description value="場所がまだ使用されているかどうかを示します。 / Indicates whether the location is still in use."/>
         <valueSet value="http://hl7.org/fhir/ValueSet/location-status|4.0.1"/>
       </binding>
       <mapping>
@@ -554,7 +554,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -566,7 +566,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
           <valueString value="OperationalStatus"/>
         </extension>
         <strength value="preferred"/>
-        <description value="The operational status if the location (where typically a bed/room)."/>
+        <description value="場所（通常はベッド/部屋）の場合の運用ステータス。 / The operational status if the location (where typically a bed/room)."/>
         <valueSet value="http://terminology.hl7.org/ValueSet/v2-0116"/>
       </binding>
       <mapping>
@@ -596,7 +596,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -627,7 +627,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -658,7 +658,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -689,7 +689,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -701,7 +701,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
           <valueString value="LocationMode"/>
         </extension>
         <strength value="required"/>
-        <description value="Indicates whether a resource instance represents a specific location or a class of locations."/>
+        <description value="リソースインスタンスが特定の場所または場所のクラスを表すかどうかを示します。 / Indicates whether a resource instance represents a specific location or a class of locations."/>
         <valueSet value="http://hl7.org/fhir/ValueSet/location-mode|4.0.1"/>
       </binding>
       <mapping>
@@ -731,7 +731,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -743,7 +743,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
           <valueString value="LocationType"/>
         </extension>
         <strength value="extensible"/>
-        <description value="Indicates the type of function performed at the location."/>
+        <description value="場所で実行される機能のタイプを示します。 / Indicates the type of function performed at the location."/>
         <valueSet value="http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType"/>
       </binding>
       <mapping>
@@ -772,7 +772,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -803,7 +803,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -834,7 +834,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -846,7 +846,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
           <valueString value="PhysicalType"/>
         </extension>
         <strength value="example"/>
-        <description value="Physical form of the location."/>
+        <description value="場所の物理的な形。 / Physical form of the location."/>
         <valueSet value="http://hl7.org/fhir/ValueSet/location-physical-type"/>
       </binding>
       <mapping>
@@ -876,7 +876,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -891,8 +891,8 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
     <element id="Location.position.id">
       <path value="Location.position.id"/>
       <representation value="xmlAttr"/>
-      <short value="Unique id for inter-element referencing"/>
-      <definition value="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."/>
+      <short value="要素間参照のための一意のID / Unique id for inter-element referencing"/>
+      <definition value="リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -915,9 +915,9 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
     </element>
     <element id="Location.position.extension">
       <path value="Location.position.extension"/>
-      <short value="Additional content defined by implementations"/>
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
-      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
+      <short value="実装で定義された追加のコンテンツ / Additional content defined by implementations"/>
+      <definition value="要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
+      <comment value="拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
       <alias value="extensions"/>
       <alias value="user content"/>
       <min value="0"/>
@@ -933,7 +933,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -941,7 +941,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ext-1"/>
         <severity value="error"/>
-        <human value="Must have either extensions or value[x], not both"/>
+        <human value="両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
@@ -955,10 +955,10 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
     </element>
     <element id="Location.position.modifierExtension">
       <path value="Location.position.modifierExtension"/>
-      <short value="Extensions that cannot be ignored even if unrecognized"/>
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.&#xA;&#xA;Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."/>
-      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
-      <requirements value="Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension)."/>
+      <short value="認識されていなくても無視できない拡張機能 / Extensions that cannot be ignored even if unrecognized"/>
+      <definition value="要素の基本的な定義の一部ではなく、それが含まれている要素の理解、および/または含まれる要素の子孫の理解を変更するために使用される場合があります。通常、修飾子要素は否定または資格を提供します。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。アプリケーションの処理リソースは、修飾子拡張機能をチェックする必要があります。&#xA;&#xA;モディファイア拡張は、リソースまたはdomainResource上の要素の意味を変更してはなりません（修飾軸自体の意味を変更することはできません）。 / May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.&#xA;&#xA;Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."/>
+      <comment value="拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
+      <requirements value="修飾子拡張機能により、安全に無視できる大部分の拡張機能と明確に区別できるように、安全に無視できない拡張機能が可能になります。これにより、実装者が拡張の存在を禁止する必要性を排除することにより、相互運用性が促進されます。詳細については、[修飾子拡張の定義]（拡張性.html＃modifierextension）を参照してください。 / Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension)."/>
       <alias value="extensions"/>
       <alias value="user content"/>
       <alias value="modifiers"/>
@@ -975,7 +975,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -983,13 +983,13 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ext-1"/>
         <severity value="error"/>
-        <human value="Must have either extensions or value[x], not both"/>
+        <human value="両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
       </constraint>
       <isModifier value="true"/>
-      <isModifierReason value="Modifier extensions are expected to modify the meaning or interpretation of the element that contains them"/>
+      <isModifierReason value="修飾子拡張は、それらを含む要素の意味または解釈を変更することが期待されています / Modifier extensions are expected to modify the meaning or interpretation of the element that contains them"/>
       <isSummary value="true"/>
       <mapping>
         <identity value="rim"/>
@@ -1014,7 +1014,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -1044,7 +1044,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -1074,7 +1074,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -1106,7 +1106,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -1141,7 +1141,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -1171,7 +1171,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -1186,8 +1186,8 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
     <element id="Location.hoursOfOperation.id">
       <path value="Location.hoursOfOperation.id"/>
       <representation value="xmlAttr"/>
-      <short value="Unique id for inter-element referencing"/>
-      <definition value="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."/>
+      <short value="要素間参照のための一意のID / Unique id for inter-element referencing"/>
+      <definition value="リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1210,9 +1210,9 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
     </element>
     <element id="Location.hoursOfOperation.extension">
       <path value="Location.hoursOfOperation.extension"/>
-      <short value="Additional content defined by implementations"/>
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
-      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
+      <short value="実装で定義された追加のコンテンツ / Additional content defined by implementations"/>
+      <definition value="要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
+      <comment value="拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
       <alias value="extensions"/>
       <alias value="user content"/>
       <min value="0"/>
@@ -1228,7 +1228,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -1236,7 +1236,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ext-1"/>
         <severity value="error"/>
-        <human value="Must have either extensions or value[x], not both"/>
+        <human value="両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
@@ -1250,10 +1250,10 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
     </element>
     <element id="Location.hoursOfOperation.modifierExtension">
       <path value="Location.hoursOfOperation.modifierExtension"/>
-      <short value="Extensions that cannot be ignored even if unrecognized"/>
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.&#xA;&#xA;Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."/>
-      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
-      <requirements value="Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension)."/>
+      <short value="認識されていなくても無視できない拡張機能 / Extensions that cannot be ignored even if unrecognized"/>
+      <definition value="要素の基本的な定義の一部ではなく、それが含まれている要素の理解、および/または含まれる要素の子孫の理解を変更するために使用される場合があります。通常、修飾子要素は否定または資格を提供します。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。アプリケーションの処理リソースは、修飾子拡張機能をチェックする必要があります。&#xA;&#xA;モディファイア拡張は、リソースまたはdomainResource上の要素の意味を変更してはなりません（修飾軸自体の意味を変更することはできません）。 / May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.&#xA;&#xA;Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."/>
+      <comment value="拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
+      <requirements value="修飾子拡張機能により、安全に無視できる大部分の拡張機能と明確に区別できるように、安全に無視できない拡張機能が可能になります。これにより、実装者が拡張の存在を禁止する必要性を排除することにより、相互運用性が促進されます。詳細については、[修飾子拡張の定義]（拡張性.html＃modifierextension）を参照してください。 / Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension)."/>
       <alias value="extensions"/>
       <alias value="user content"/>
       <alias value="modifiers"/>
@@ -1270,7 +1270,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -1278,13 +1278,13 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ext-1"/>
         <severity value="error"/>
-        <human value="Must have either extensions or value[x], not both"/>
+        <human value="両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
       </constraint>
       <isModifier value="true"/>
-      <isModifierReason value="Modifier extensions are expected to modify the meaning or interpretation of the element that contains them"/>
+      <isModifierReason value="修飾子拡張は、それらを含む要素の意味または解釈を変更することが期待されています / Modifier extensions are expected to modify the meaning or interpretation of the element that contains them"/>
       <isSummary value="true"/>
       <mapping>
         <identity value="rim"/>
@@ -1309,7 +1309,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -1321,7 +1321,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
           <valueString value="DaysOfWeek"/>
         </extension>
         <strength value="required"/>
-        <description value="The days of the week."/>
+        <description value="曜日。 / The days of the week."/>
         <valueSet value="http://hl7.org/fhir/ValueSet/days-of-week|4.0.1"/>
       </binding>
       <mapping>
@@ -1346,7 +1346,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -1375,7 +1375,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -1404,7 +1404,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -1433,7 +1433,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -1465,7 +1465,7 @@ WGS84 データム（KML で使用されている座標系と同じ）を用い�
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>

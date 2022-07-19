@@ -92,7 +92,7 @@
        fhir:Element.id [ fhir:value "MedicationAdministration" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration" ];
        fhir:ElementDefinition.short [ fhir:value "患者への注射薬剤投与記録" ];
-       fhir:ElementDefinition.definition [ fhir:value "Describes the event of a patient consuming or otherwise being administered a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.  Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner." ];
+       fhir:ElementDefinition.definition [ fhir:value "患者が薬を消費したり、投与されたりするイベントについて説明します。これは、タブレットを飲み込むのと同じくらい簡単かもしれませんし、長期にわたる注入かもしれません。関連リソースは、このイベントを認可された処方箋と、患者と医療実務家の特定のEncounterに結び付けます。 / Describes the event of a patient consuming or otherwise being administered a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.  Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "*" ];
        fhir:ElementDefinition.base [
@@ -104,7 +104,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "dom-2" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "If the resource is contained in another resource, it SHALL NOT contain nested Resources" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "リソースが別のリソースに含まれている場合、ネストされたリソースを含めてはなりません / If the resource is contained in another resource, it SHALL NOT contain nested Resources" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "contained.contained.empty()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "not(parent::f:contained and f:contained)" ];
          fhir:ElementDefinition.constraint.source [
@@ -115,7 +115,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "dom-3" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "リソースが別のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含有リソースを参照するものとします / If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "not(exists(for $id in f:contained/*/f:id/@value return $contained[not(parent::*/descendant::f:reference/@value=concat('#', $contained/*/id/@value) or descendant::f:reference[@value='#'])]))" ];
          fhir:ElementDefinition.constraint.source [
@@ -126,7 +126,7 @@
          fhir:index 2;
          fhir:ElementDefinition.constraint.key [ fhir:value "dom-4" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "リソースが別のリソースに含まれている場合、meta.versionidまたはmeta.lastupdatedを持たないものとします / If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "not(exists(f:contained/*/f:meta/f:versionId)) and not(exists(f:contained/*/f:meta/f:lastUpdated))" ];
          fhir:ElementDefinition.constraint.source [
@@ -137,7 +137,7 @@
          fhir:index 3;
          fhir:ElementDefinition.constraint.key [ fhir:value "dom-5" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "If a resource is contained in another resource, it SHALL NOT have a security label" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "別のリソースにリソースが含まれている場合、セキュリティラベルはありません / If a resource is contained in another resource, it SHALL NOT have a security label" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "contained.meta.security.empty()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "not(exists(f:contained/*/f:meta/f:security))" ];
          fhir:ElementDefinition.constraint.source [
@@ -153,11 +153,11 @@
          ], [
            fhir:index 1;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation" ];
-           fhir:Extension.valueMarkdown [ fhir:value "When a resource has no narrative, only systems that fully understand the data can display the resource to a human safely. Including a human readable representation in the resource makes for a much more robust eco-system and cheaper handling of resources by intermediary systems. Some ecosystems restrict distribution of resources to only those systems that do fully understand the resources, and as a consequence implementers may believe that the narrative is superfluous. However experience shows that such eco-systems often open up to new participants over time." ]
+           fhir:Extension.valueMarkdown [ fhir:value "リソースに叙述(Narative)がない場合、データを完全に理解するシステムのみがリソースを人間に安全に表示できます。リソースに人間の読み取り可能な表現を含めることは、はるかに堅牢なエコシステムと、仲介システムによるリソースのより安価な取り扱いになります。一部のエコシステムは、リソースの分布をリソースを完全に理解しているシステムのみに制限しており、その結果、実装者は叙述(Narative)が余計であると信じるかもしれません。しかし、経験によると、そのようなエコシステムは、多くの場合、時間の経過とともに新しい参加者に開かれています。 / When a resource has no narrative, only systems that fully understand the data can display the resource to a human safely. Including a human readable representation in the resource makes for a much more robust eco-system and cheaper handling of resources by intermediary systems. Some ecosystems restrict distribution of resources to only those systems that do fully understand the resources, and as a consequence implementers may believe that the narrative is superfluous. However experience shows that such eco-systems often open up to new participants over time." ]
          ];
          fhir:ElementDefinition.constraint.key [ fhir:value "dom-6" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "warning" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "A resource should have narrative for robust management" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "リソースには、堅牢な管理のための叙述(Narative)が必要です / A resource should have narrative for robust management" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "text.`div`.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:text/h:div)" ];
          fhir:ElementDefinition.constraint.source [
@@ -184,9 +184,9 @@
        fhir:index 1;
        fhir:Element.id [ fhir:value "MedicationAdministration.id" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.id" ];
-       fhir:ElementDefinition.short [ fhir:value "Logical id of this artifact" ];
-       fhir:ElementDefinition.definition [ fhir:value "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes." ];
-       fhir:ElementDefinition.comment [ fhir:value "The only time that a resource does not have an id is when it is being submitted to the server using a create operation." ];
+       fhir:ElementDefinition.short [ fhir:value "このアーティファクトの論理ID / Logical id of this artifact" ];
+       fhir:ElementDefinition.definition [ fhir:value "リソースのURLで使用されるリソースの論理ID。割り当てられたら、この値は変更されません。 / The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes." ];
+       fhir:ElementDefinition.comment [ fhir:value "リソースにIDがないのは、IDが作成操作を使用してサーバーに送信されている場合です。 / The only time that a resource does not have an id is when it is being submitted to the server using a create operation." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -209,8 +209,8 @@
        fhir:index 2;
        fhir:Element.id [ fhir:value "MedicationAdministration.meta" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.meta" ];
-       fhir:ElementDefinition.short [ fhir:value "Metadata about the resource" ];
-       fhir:ElementDefinition.definition [ fhir:value "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource." ];
+       fhir:ElementDefinition.short [ fhir:value "リソースに関するメタデータ / Metadata about the resource" ];
+       fhir:ElementDefinition.definition [ fhir:value "リソースに関するメタデータ。これは、インフラストラクチャによって維持されるコンテンツです。コンテンツの変更は、常にリソースのバージョンの変更に関連付けられているとは限りません。 / The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -226,7 +226,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -240,9 +240,9 @@
        fhir:index 3;
        fhir:Element.id [ fhir:value "MedicationAdministration.implicitRules" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.implicitRules" ];
-       fhir:ElementDefinition.short [ fhir:value "A set of rules under which this content was created" ];
-       fhir:ElementDefinition.definition [ fhir:value "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc." ];
-       fhir:ElementDefinition.comment [ fhir:value "Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element. Often, when used, the URL is a reference to an implementation guide that defines these special rules as part of it's narrative along with other profiles, value sets, etc." ];
+       fhir:ElementDefinition.short [ fhir:value "このコンテンツが作成されたルールのセット / A set of rules under which this content was created" ];
+       fhir:ElementDefinition.definition [ fhir:value "リソースが構築されたときに従った一連のルールへの参照。コンテンツの処理時に理解する必要があります。多くの場合、これは他のプロファイルなどとともに特別なルールを定義する実装ガイドへの参照です。 / A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc." ];
+       fhir:ElementDefinition.comment [ fhir:value "このルールセットを主張することは、コンテンツが限られた取引パートナーのセットによってのみ理解されることを制限します。これにより、本質的に長期的にデータの有用性が制限されます。ただし、既存の健康エコシステムは非常に破壊されており、一般的に計算可能な意味でデータを定義、収集、交換する準備ができていません。可能な限り、実装者や仕様ライターはこの要素の使用を避ける必要があります。多くの場合、使用する場合、URLは、これらの特別なルールを他のプロファイル、バリューセットなどとともに叙述(Narative)の一部として定義する実装ガイドへの参照です。 / Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element. Often, when used, the URL is a reference to an implementation guide that defines these special rules as part of it's narrative along with other profiles, value sets, etc." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -258,7 +258,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -267,15 +267,15 @@
          ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value "true"^^xsd:boolean ];
-       fhir:ElementDefinition.isModifierReason [ fhir:value "This element is labeled as a modifier because the implicit rules may provide additional knowledge about the resource that modifies it's meaning or interpretation" ];
+       fhir:ElementDefinition.isModifierReason [ fhir:value "暗黙のルールは、意味または解釈を変更するリソースに関する追加の知識を提供する可能性があるため、この要素は修飾子としてラベル付けされています。 / This element is labeled as a modifier because the implicit rules may provide additional knowledge about the resource that modifies it's meaning or interpretation" ];
        fhir:ElementDefinition.isSummary [ fhir:value "true"^^xsd:boolean ]
      ], [
        fhir:index 4;
        fhir:Element.id [ fhir:value "MedicationAdministration.language" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.language" ];
-       fhir:ElementDefinition.short [ fhir:value "Language of the resource content" ];
-       fhir:ElementDefinition.definition [ fhir:value "The base language in which the resource is written." ];
-       fhir:ElementDefinition.comment [ fhir:value "Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource. Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute)." ];
+       fhir:ElementDefinition.short [ fhir:value "リソースコンテンツの言語 / Language of the resource content" ];
+       fhir:ElementDefinition.definition [ fhir:value "リソースが書かれている基本言語。 / The base language in which the resource is written." ];
+       fhir:ElementDefinition.comment [ fhir:value "言語は、インデックス作成とアクセシビリティをサポートするために提供されます（通常、テキストから音声までのサービスなどのサービスが言語タグを使用します）。叙述(Narative)のHTML言語タグは、叙述(Narative)に適用されます。リソース上の言語タグを使用して、リソース内のデータから生成された他のプレゼンテーションの言語を指定できます。すべてのコンテンツが基本言語である必要はありません。リソース。言語は、叙述(Narative)に自動的に適用されると想定されるべきではありません。言語が指定されている場合、HTMLのDIV要素にも指定されている場合（XML：LangとHTML Lang属性の関係については、HTML5のルールを参照してください）。 / Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource. Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute)." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -291,7 +291,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -319,7 +319,7 @@
            fhir:Extension.valueBoolean [ fhir:value "true"^^xsd:boolean ]
          ];
          fhir:ElementDefinition.binding.strength [ fhir:value "preferred" ];
-         fhir:ElementDefinition.binding.description [ fhir:value "A human language." ];
+         fhir:ElementDefinition.binding.description [ fhir:value "人間の言語。 / A human language." ];
          fhir:ElementDefinition.binding.valueSet [
            fhir:value "http://hl7.org/fhir/ValueSet/languages";
            fhir:link <http://hl7.org/fhir/ValueSet/languages>
@@ -329,9 +329,9 @@
        fhir:index 5;
        fhir:Element.id [ fhir:value "MedicationAdministration.text" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.text" ];
-       fhir:ElementDefinition.short [ fhir:value "Text summary of the resource, for human interpretation" ];
-       fhir:ElementDefinition.definition [ fhir:value "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety." ];
-       fhir:ElementDefinition.comment [ fhir:value "Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative. In some cases, a resource may only have text with little or no additional discrete data (as long as all minOccurs=1 elements are satisfied).  This may be necessary for data from legacy systems where information is captured as a \"text blob\" or where text is additionally entered raw or narrated and encoded information is added later." ];
+       fhir:ElementDefinition.short [ fhir:value "人間の解釈のためのリソースのテキスト概要 / Text summary of the resource, for human interpretation" ];
+       fhir:ElementDefinition.definition [ fhir:value "リソースの概要を含み、人間へのリソースの内容を表すために使用できる人間の読み取り可能な叙述(Narative)。叙述(Narative)はすべての構造化されたデータをエンコードする必要はありませんが、人間が叙述(Narative)を読むだけで「臨床的に安全」にするために十分な詳細を含める必要があります。リソースの定義は、臨床的安全を確保するために、叙述(Narative)で表現するコンテンツを定義する場合があります。 / A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety." ];
+       fhir:ElementDefinition.comment [ fhir:value "含まれるリソースには叙述(Narative)がありません。含まれていないリソースには叙述(Narative)が必要です。場合によっては、リソースには、追加の個別のデータがほとんどまたはまったくないテキストのみがあります（すべてのMinoccur = 1要素が満たされている限り）。これは、情報がtext blob (バイナリー ラージ オブジェクト)としてキャプチャされるレガシーシステムからのデータ、またはテキストが生またはナレーションされ、エンコードされた情報が後で追加される場合に必要になる場合があります。 / Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative. In some cases, a resource may only have text with little or no additional discrete data (as long as all minOccurs=1 elements are satisfied).  This may be necessary for data from legacy systems where information is captured as a \"text blob\" or where text is additionally entered raw or narrated and encoded information is added later." ];
        fhir:ElementDefinition.alias [
          fhir:value "narrative";
          fhir:index 0
@@ -360,7 +360,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -379,9 +379,9 @@
        fhir:index 6;
        fhir:Element.id [ fhir:value "MedicationAdministration.contained" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.contained" ];
-       fhir:ElementDefinition.short [ fhir:value "Contained, inline Resources" ];
-       fhir:ElementDefinition.definition [ fhir:value "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope." ];
-       fhir:ElementDefinition.comment [ fhir:value "This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again. Contained resources may have profiles and tags In their meta elements, but SHALL NOT have security labels." ];
+       fhir:ElementDefinition.short [ fhir:value "インラインリソースが含まれています / Contained, inline Resources" ];
+       fhir:ElementDefinition.definition [ fhir:value "これらのリソースには、それらを含むリソースを除いて独立した存在はありません - 独立して特定することはできず、独自の独立したトランザクションスコープを持つこともできません。 / These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope." ];
+       fhir:ElementDefinition.comment [ fhir:value "識別が失われると、コンテンツを適切に識別できる場合は、これを行うべきではありません。含まれるリソースには、メタ要素にプロファイルとタグがある場合がありますが、セキュリティラベルはありません。 / This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again. Contained resources may have profiles and tags In their meta elements, but SHALL NOT have security labels." ];
        fhir:ElementDefinition.alias [
          fhir:value "inline resources";
          fhir:index 0
@@ -440,7 +440,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -451,7 +451,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -492,7 +492,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -503,7 +503,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" ];
          fhir:ElementDefinition.constraint.source [
@@ -543,7 +543,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -554,7 +554,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" ];
          fhir:ElementDefinition.constraint.source [
@@ -594,7 +594,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -605,7 +605,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" ];
          fhir:ElementDefinition.constraint.source [
@@ -645,7 +645,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -656,7 +656,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" ];
          fhir:ElementDefinition.constraint.source [
@@ -692,7 +692,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -703,7 +703,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -717,10 +717,10 @@
        fhir:index 13;
        fhir:Element.id [ fhir:value "MedicationAdministration.modifierExtension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.modifierExtension" ];
-       fhir:ElementDefinition.short [ fhir:value "Extensions that cannot be ignored" ];
-       fhir:ElementDefinition.definition [ fhir:value "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)." ];
-       fhir:ElementDefinition.comment [ fhir:value "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
-       fhir:ElementDefinition.requirements [ fhir:value "Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension)." ];
+       fhir:ElementDefinition.short [ fhir:value "無視できない拡張機能 / Extensions that cannot be ignored" ];
+       fhir:ElementDefinition.definition [ fhir:value "リソースの基本的な定義の一部ではなく、それを含む要素の理解および/または含有要素の子孫の理解を変更するために使用される場合があります。通常、修飾子要素は否定または資格を提供します。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義することが許可されていますが、拡張機能の定義の一部として満たされる一連の要件があります。アプリケーションの処理リソースは、修飾子拡張機能をチェックする必要があります。\n\nモディファイア拡張は、リソースまたはdomainResource上の要素の意味を変更してはなりません（修飾軸自体の意味を変更することはできません）。 / May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)." ];
+       fhir:ElementDefinition.comment [ fhir:value "拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
+       fhir:ElementDefinition.requirements [ fhir:value "修飾子拡張機能により、安全に無視できる大部分の拡張機能と明確に区別できるように、安全に無視できない拡張機能が可能になります。これにより、実装者が拡張の存在を禁止する必要性を排除することにより、相互運用性が促進されます。詳細については、[修飾子拡張の定義]（拡張性.html＃modifierextension）を参照してください。 / Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension)." ];
        fhir:ElementDefinition.alias [
          fhir:value "extensions";
          fhir:index 0
@@ -743,7 +743,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -754,7 +754,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -763,7 +763,7 @@
          ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value "true"^^xsd:boolean ];
-       fhir:ElementDefinition.isModifierReason [ fhir:value "Modifier extensions are expected to modify the meaning or interpretation of the resource that contains them" ];
+       fhir:ElementDefinition.isModifierReason [ fhir:value "モディファイア拡張は、それらを含むリソースの意味または解釈を変更することが期待されています / Modifier extensions are expected to modify the meaning or interpretation of the resource that contains them" ];
        fhir:ElementDefinition.isSummary [ fhir:value "false"^^xsd:boolean ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -776,7 +776,7 @@
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.identifier" ];
        fhir:ElementDefinition.short [ fhir:value "External identifier 外部識別子" ];
        fhir:ElementDefinition.definition [ fhir:value "Identifiers associated with this Medication Administration that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate. They are business identifiers assigned to this resource by the performer or other systems and remain constant as the resource is updated and propagates from server to server.\r\n\r\nビジネスプロセスによって定義され、リソース自体への直接URL参照が適切でない場合にそれを参照するために使用される、この投薬管理に関連付けられた識別子。これらは、実行者または他のシステムによってこのリソースに割り当てられたビジネスIDであり、リソースが更新されてサーバーからサーバーに伝播される間、一定のままである。" ];
-       fhir:ElementDefinition.comment [ fhir:value "This is a business identifier, not a resource identifier." ];
+       fhir:ElementDefinition.comment [ fhir:value "これはビジネス識別子であり、リソース識別子ではありません。 / This is a business identifier, not a resource identifier." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "*" ];
        fhir:ElementDefinition.base [
@@ -792,7 +792,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -836,7 +836,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -885,7 +885,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -910,7 +910,7 @@
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.status" ];
        fhir:ElementDefinition.short [ fhir:value "completed | stopped" ];
        fhir:ElementDefinition.definition [ fhir:value "Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions, it is possible for an administration to be started but not completed or it may be paused while some other process is under way.\r\n\r\n通常、管理が完了したことを示すように設定される。輸液などの長期にわたる投与では、投与を開始しても完了しない場合や、他のプロセスの進行中に一時停止する場合がある。\r\n\r\n【JP-CORE】　completed or stopped に限定される。" ];
-       fhir:ElementDefinition.comment [ fhir:value "This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid." ];
+       fhir:ElementDefinition.comment [ fhir:value "この要素は、リソースを現在有効ではないとマークするコードが含まれているため、修飾子としてラベル付けされています。 / This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid." ];
        fhir:ElementDefinition.min [ fhir:value "1"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -926,7 +926,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -935,7 +935,7 @@
          ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value "true"^^xsd:boolean ];
-       fhir:ElementDefinition.isModifierReason [ fhir:value "This element is labelled as a modifier because it is a status element that contains status entered-in-error which means that the resource should not be treated as valid" ];
+       fhir:ElementDefinition.isModifierReason [ fhir:value "この要素は、リソースを有効として扱うべきではないことを意味するステータスに入力されたステータスを含むステータス要素であるため、修飾子としてラベル付けされています。 / This element is labelled as a modifier because it is a status element that contains status entered-in-error which means that the resource should not be treated as valid" ];
        fhir:ElementDefinition.isSummary [ fhir:value "true"^^xsd:boolean ];
        fhir:ElementDefinition.binding [
          fhir:ElementDefinition.binding.strength [ fhir:value "required" ];
@@ -984,7 +984,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1001,7 +1001,7 @@
            fhir:Extension.valueString [ fhir:value "MedicationAdministrationNegationReason" ]
          ];
          fhir:ElementDefinition.binding.strength [ fhir:value "example" ];
-         fhir:ElementDefinition.binding.description [ fhir:value "A set of codes indicating the reason why the MedicationAdministration is negated." ];
+         fhir:ElementDefinition.binding.description [ fhir:value "薬剤管理が否定される理由を示す一連のコード。 / A set of codes indicating the reason why the MedicationAdministration is negated." ];
          fhir:ElementDefinition.binding.valueSet [
            fhir:value "http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes";
            fhir:link <http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes>
@@ -1041,7 +1041,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1058,7 +1058,7 @@
            fhir:Extension.valueString [ fhir:value "MedicationAdministrationCategory" ]
          ];
          fhir:ElementDefinition.binding.strength [ fhir:value "preferred" ];
-         fhir:ElementDefinition.binding.description [ fhir:value "A coded concept describing where the medication administered is expected to occur." ];
+         fhir:ElementDefinition.binding.description [ fhir:value "投与された場所が発生すると予想されるコード化された概念。 / A coded concept describing where the medication administered is expected to occur." ];
          fhir:ElementDefinition.binding.valueSet [
            fhir:value "http://hl7.org/fhir/ValueSet/medication-admin-category";
            fhir:link <http://hl7.org/fhir/ValueSet/medication-admin-category>
@@ -1082,9 +1082,9 @@
          fhir:ElementDefinition.slicing.ordered [ fhir:value "false"^^xsd:boolean ];
          fhir:ElementDefinition.slicing.rules [ fhir:value "closed" ]
        ];
-       fhir:ElementDefinition.short [ fhir:value "What was administered" ];
-       fhir:ElementDefinition.definition [ fhir:value "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications." ];
-       fhir:ElementDefinition.comment [ fhir:value "If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource." ];
+       fhir:ElementDefinition.short [ fhir:value "管理されたもの / What was administered" ];
+       fhir:ElementDefinition.definition [ fhir:value "投与された薬を特定します。これは、薬物の詳細を表すリソースへのリンクか、既知の薬物のリストから薬を識別するコードを運ぶ単純な属性です。 / Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications." ];
+       fhir:ElementDefinition.comment [ fhir:value "コードのみが指定されている場合、特定の製品のコードである必要があります。より多くの情報が必要な場合は、投薬リソースの使用をお勧めします。たとえば、フォームまたはロット番号が必要な場合は、投薬リソースを参照する必要があります。 / If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource." ];
        fhir:ElementDefinition.min [ fhir:value "1"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -1103,7 +1103,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1120,7 +1120,7 @@
            fhir:Extension.valueString [ fhir:value "MedicationCode" ]
          ];
          fhir:ElementDefinition.binding.strength [ fhir:value "example" ];
-         fhir:ElementDefinition.binding.description [ fhir:value "Codes identifying substance or product that can be administered." ];
+         fhir:ElementDefinition.binding.description [ fhir:value "管理できる物質または製品を識別するコード。 / Codes identifying substance or product that can be administered." ];
          fhir:ElementDefinition.binding.valueSet [
            fhir:value "http://hl7.org/fhir/ValueSet/medication-codes";
            fhir:link <http://hl7.org/fhir/ValueSet/medication-codes>
@@ -1148,9 +1148,9 @@
        fhir:Element.id [ fhir:value "MedicationAdministration.medication[x]:medicationCodeableConcept" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.medication[x]" ];
        fhir:ElementDefinition.sliceName [ fhir:value "medicationCodeableConcept" ];
-       fhir:ElementDefinition.short [ fhir:value "What was administered" ];
-       fhir:ElementDefinition.definition [ fhir:value "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications." ];
-       fhir:ElementDefinition.comment [ fhir:value "If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource." ];
+       fhir:ElementDefinition.short [ fhir:value "管理されたもの / What was administered" ];
+       fhir:ElementDefinition.definition [ fhir:value "投与された薬を特定します。これは、薬物の詳細を表すリソースへのリンクか、既知の薬物のリストから薬を識別するコードを運ぶ単純な属性です。 / Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications." ];
+       fhir:ElementDefinition.comment [ fhir:value "コードのみが指定されている場合、特定の製品のコードである必要があります。より多くの情報が必要な場合は、投薬リソースの使用をお勧めします。たとえば、フォームまたはロット番号が必要な場合は、投薬リソースを参照する必要があります。 / If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -1166,7 +1166,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1214,8 +1214,8 @@
          fhir:value "xmlAttr";
          fhir:index 0
        ];
-       fhir:ElementDefinition.short [ fhir:value "Unique id for inter-element referencing" ];
-       fhir:ElementDefinition.definition [ fhir:value "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
+       fhir:ElementDefinition.short [ fhir:value "要素間参照のための一意のID / Unique id for inter-element referencing" ];
+       fhir:ElementDefinition.definition [ fhir:value "リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -1252,9 +1252,9 @@
          fhir:ElementDefinition.slicing.description [ fhir:value "Extensions are always sliced by (at least) url" ];
          fhir:ElementDefinition.slicing.rules [ fhir:value "open" ]
        ];
-       fhir:ElementDefinition.short [ fhir:value "Additional content defined by implementations" ];
-       fhir:ElementDefinition.definition [ fhir:value "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
-       fhir:ElementDefinition.comment [ fhir:value "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
+       fhir:ElementDefinition.short [ fhir:value "実装で定義された追加のコンテンツ / Additional content defined by implementations" ];
+       fhir:ElementDefinition.definition [ fhir:value "要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
+       fhir:ElementDefinition.comment [ fhir:value "拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
        fhir:ElementDefinition.alias [
          fhir:value "extensions";
          fhir:index 0
@@ -1277,7 +1277,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1288,7 +1288,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -1310,7 +1310,7 @@
        fhir:ElementDefinition.short [ fhir:value "Code defined by a terminology system コード集で定義された医薬品コード" ];
        fhir:ElementDefinition.definition [ fhir:value "A reference to a code defined by a terminology system.\r\n\r\nコード集で定義された医薬品コードへの情報" ];
        fhir:ElementDefinition.comment [ fhir:value "Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true.\r\n" ];
-       fhir:ElementDefinition.requirements [ fhir:value "Allows for alternative encodings within a code system, and translations to other code systems." ];
+       fhir:ElementDefinition.requirements [ fhir:value "コードシステム内の代替エンコーディング、および他のコードシステムへの翻訳が可能になります。 / Allows for alternative encodings within a code system, and translations to other code systems." ];
        fhir:ElementDefinition.min [ fhir:value "1"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "*" ];
        fhir:ElementDefinition.base [
@@ -1326,7 +1326,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1357,8 +1357,8 @@
          fhir:value "xmlAttr";
          fhir:index 0
        ];
-       fhir:ElementDefinition.short [ fhir:value "Unique id for inter-element referencing" ];
-       fhir:ElementDefinition.definition [ fhir:value "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
+       fhir:ElementDefinition.short [ fhir:value "要素間参照のための一意のID / Unique id for inter-element referencing" ];
+       fhir:ElementDefinition.definition [ fhir:value "リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -1395,9 +1395,9 @@
          fhir:ElementDefinition.slicing.description [ fhir:value "Extensions are always sliced by (at least) url" ];
          fhir:ElementDefinition.slicing.rules [ fhir:value "open" ]
        ];
-       fhir:ElementDefinition.short [ fhir:value "Additional content defined by implementations" ];
-       fhir:ElementDefinition.definition [ fhir:value "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
-       fhir:ElementDefinition.comment [ fhir:value "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
+       fhir:ElementDefinition.short [ fhir:value "実装で定義された追加のコンテンツ / Additional content defined by implementations" ];
+       fhir:ElementDefinition.definition [ fhir:value "要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
+       fhir:ElementDefinition.comment [ fhir:value "拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
        fhir:ElementDefinition.alias [
          fhir:value "extensions";
          fhir:index 0
@@ -1420,7 +1420,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1431,7 +1431,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -1450,10 +1450,10 @@
        fhir:index 27;
        fhir:Element.id [ fhir:value "MedicationAdministration.medication[x]:medicationCodeableConcept.coding.system" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.medication[x].coding.system" ];
-       fhir:ElementDefinition.short [ fhir:value "Identity of the terminology system" ];
-       fhir:ElementDefinition.definition [ fhir:value "The identification of the code system that defines the meaning of the symbol in the code." ];
-       fhir:ElementDefinition.comment [ fhir:value "The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should reference to some definition that establishes the system clearly and unambiguously." ];
-       fhir:ElementDefinition.requirements [ fhir:value "Need to be unambiguous about the source of the definition of the symbol." ];
+       fhir:ElementDefinition.short [ fhir:value "用語システムのアイデンティティ / Identity of the terminology system" ];
+       fhir:ElementDefinition.definition [ fhir:value "コード内のシンボルの意味を定義するコードシステムの識別。 / The identification of the code system that defines the meaning of the symbol in the code." ];
+       fhir:ElementDefinition.comment [ fhir:value "uriは、oid（urn：oid：...）またはuuid（urn：uuid：...）である場合があります。OIDとUUIDは、HL7 OIDレジストリへの参照となります。それ以外の場合、URIは、FHIRの特別なURIを定義したHL7のリストから来るか、システムを明確かつ明確に確立する定義を参照する必要があります。 / The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should reference to some definition that establishes the system clearly and unambiguously." ];
+       fhir:ElementDefinition.requirements [ fhir:value "シンボルの定義のソースについて明確である必要があります。 / Need to be unambiguous about the source of the definition of the symbol." ];
        fhir:ElementDefinition.min [ fhir:value "1"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -1469,7 +1469,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1496,9 +1496,9 @@
        fhir:index 28;
        fhir:Element.id [ fhir:value "MedicationAdministration.medication[x]:medicationCodeableConcept.coding.version" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.medication[x].coding.version" ];
-       fhir:ElementDefinition.short [ fhir:value "Version of the system - if relevant" ];
-       fhir:ElementDefinition.definition [ fhir:value "The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured, and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged." ];
-       fhir:ElementDefinition.comment [ fhir:value "Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date." ];
+       fhir:ElementDefinition.short [ fhir:value "システムのバージョン - 関連する場合 / Version of the system - if relevant" ];
+       fhir:ElementDefinition.definition [ fhir:value "このコードを選択するときに使用されたコードシステムのバージョン。コードの意味がバージョン全体で一貫しているため、適切にメンテナンスしたコードシステムでは報告されたバージョンを必要としないことに注意してください。ただし、これは一貫して保証することはできず、意味が一貫していることが保証されていない場合、バージョンを交換する必要があります。 / The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured, and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged." ];
+       fhir:ElementDefinition.comment [ fhir:value "用語がコードシステムバージョンを識別するために使用する文字列を明確に定義していない場合、推奨は、そのバージョンがバージョンの日付として公式に公開された日付（FHIR日付形式で表現）を使用することです。 / Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -1514,7 +1514,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1541,9 +1541,9 @@
        fhir:index 29;
        fhir:Element.id [ fhir:value "MedicationAdministration.medication[x]:medicationCodeableConcept.coding.code" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.medication[x].coding.code" ];
-       fhir:ElementDefinition.short [ fhir:value "Symbol in syntax defined by the system" ];
-       fhir:ElementDefinition.definition [ fhir:value "A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)." ];
-       fhir:ElementDefinition.requirements [ fhir:value "Need to refer to a particular code in the system." ];
+       fhir:ElementDefinition.short [ fhir:value "システムによって定義された構文のシンボル / Symbol in syntax defined by the system" ];
+       fhir:ElementDefinition.definition [ fhir:value "システムによって定義された構文のシンボル。シンボルは、定義されたコードまたはコーディングシステムによって定義された構文の式（例：調整後）である場合があります。 / A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)." ];
+       fhir:ElementDefinition.requirements [ fhir:value "システム内の特定のコードを参照する必要があります。 / Need to refer to a particular code in the system." ];
        fhir:ElementDefinition.min [ fhir:value "1"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -1559,7 +1559,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1591,9 +1591,9 @@
          fhir:Extension.valueBoolean [ fhir:value "true"^^xsd:boolean ]
        ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.medication[x].coding.display" ];
-       fhir:ElementDefinition.short [ fhir:value "Representation defined by the system" ];
-       fhir:ElementDefinition.definition [ fhir:value "A representation of the meaning of the code in the system, following the rules of the system." ];
-       fhir:ElementDefinition.requirements [ fhir:value "Need to be able to carry a human-readable meaning of the code for readers that do not know  the system." ];
+       fhir:ElementDefinition.short [ fhir:value "システムによって定義された表現 / Representation defined by the system" ];
+       fhir:ElementDefinition.definition [ fhir:value "システムのルールに従って、システム内のコードの意味の表現。 / A representation of the meaning of the code in the system, following the rules of the system." ];
+       fhir:ElementDefinition.requirements [ fhir:value "システムを知らない読者のために、コードの人間の読み取り可能な意味を持ち込むことができる必要があります。 / Need to be able to carry a human-readable meaning of the code for readers that do not know  the system." ];
        fhir:ElementDefinition.min [ fhir:value "1"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -1609,7 +1609,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1636,10 +1636,10 @@
        fhir:index 31;
        fhir:Element.id [ fhir:value "MedicationAdministration.medication[x]:medicationCodeableConcept.coding.userSelected" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.medication[x].coding.userSelected" ];
-       fhir:ElementDefinition.short [ fhir:value "If this coding was chosen directly by the user" ];
-       fhir:ElementDefinition.definition [ fhir:value "Indicates that this coding was chosen by a user directly - e.g. off a pick list of available items (codes or displays)." ];
-       fhir:ElementDefinition.comment [ fhir:value "Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely." ];
-       fhir:ElementDefinition.requirements [ fhir:value "This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing." ];
+       fhir:ElementDefinition.short [ fhir:value "このコーディングがユーザーによって直接選択された場合 / If this coding was chosen directly by the user" ];
+       fhir:ElementDefinition.definition [ fhir:value "このコーディングがユーザーによって直接選択されたことを示します。利用可能なアイテムのピックリスト（コードまたはディスプレイ）。 / Indicates that this coding was chosen by a user directly - e.g. off a pick list of available items (codes or displays)." ];
+       fhir:ElementDefinition.comment [ fhir:value "一連の代替案の中で、直接選択されたコードが新しい翻訳の最も適切な出発点です。この要素の使用とその結果をより完全に明確にするためには、「直接選択された」ことについては曖昧さがあり、取引パートナー契約が必要になる場合があります。 / Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely." ];
+       fhir:ElementDefinition.requirements [ fhir:value "これは、臨床安全基準として特定されています - この正確なシステム/コードペアは、いくつかのルールまたは言語処理に基づいてシステムによって推測されるのではなく、明示的に選択されたことです。 / This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -1655,7 +1655,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1687,10 +1687,10 @@
          fhir:Extension.valueBoolean [ fhir:value "true"^^xsd:boolean ]
        ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.medication[x].text" ];
-       fhir:ElementDefinition.short [ fhir:value "Plain text representation of the concept" ];
-       fhir:ElementDefinition.definition [ fhir:value "A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user." ];
-       fhir:ElementDefinition.comment [ fhir:value "Very often the text is the same as a displayName of one of the codings." ];
-       fhir:ElementDefinition.requirements [ fhir:value "The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source." ];
+       fhir:ElementDefinition.short [ fhir:value "コンセプトの単純なテキスト表現 / Plain text representation of the concept" ];
+       fhir:ElementDefinition.definition [ fhir:value "データを入力したユーザー、および/またはユーザーの意図された意味を表すユーザーによって見られる/選択/発言された概念の人間の言語表現。 / A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user." ];
+       fhir:ElementDefinition.comment [ fhir:value "多くの場合、テキストはコーディングの1つの表示名と同じです。 / Very often the text is the same as a displayName of one of the codings." ];
+       fhir:ElementDefinition.requirements [ fhir:value "用語からのコードは、それらを使用する人間のすべてのニュアンスを使用して、常に正しい意味をキャプチャするとは限りません。または、適切なコードがまったくない場合があります。これらの場合、テキストはソースの完全な意味をキャプチャするために使用されます。 / The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -1706,7 +1706,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1734,9 +1734,9 @@
        fhir:Element.id [ fhir:value "MedicationAdministration.medication[x]:medicationReference" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.medication[x]" ];
        fhir:ElementDefinition.sliceName [ fhir:value "medicationReference" ];
-       fhir:ElementDefinition.short [ fhir:value "What was administered" ];
-       fhir:ElementDefinition.definition [ fhir:value "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications." ];
-       fhir:ElementDefinition.comment [ fhir:value "If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource." ];
+       fhir:ElementDefinition.short [ fhir:value "管理されたもの / What was administered" ];
+       fhir:ElementDefinition.definition [ fhir:value "投与された薬を特定します。これは、薬物の詳細を表すリソースへのリンクか、既知の薬物のリストから薬を識別するコードを運ぶ単純な属性です。 / Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications." ];
+       fhir:ElementDefinition.comment [ fhir:value "コードのみが指定されている場合、特定の製品のコードである必要があります。より多くの情報が必要な場合は、投薬リソースの使用をお勧めします。たとえば、フォームまたはロット番号が必要な場合は、投薬リソースを参照する必要があります。 / If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -1757,7 +1757,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1815,7 +1815,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1854,8 +1854,8 @@
          fhir:value "xmlAttr";
          fhir:index 0
        ];
-       fhir:ElementDefinition.short [ fhir:value "Unique id for inter-element referencing" ];
-       fhir:ElementDefinition.definition [ fhir:value "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
+       fhir:ElementDefinition.short [ fhir:value "要素間参照のための一意のID / Unique id for inter-element referencing" ];
+       fhir:ElementDefinition.definition [ fhir:value "リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -1892,9 +1892,9 @@
          fhir:ElementDefinition.slicing.description [ fhir:value "Extensions are always sliced by (at least) url" ];
          fhir:ElementDefinition.slicing.rules [ fhir:value "open" ]
        ];
-       fhir:ElementDefinition.short [ fhir:value "Additional content defined by implementations" ];
-       fhir:ElementDefinition.definition [ fhir:value "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
-       fhir:ElementDefinition.comment [ fhir:value "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
+       fhir:ElementDefinition.short [ fhir:value "実装で定義された追加のコンテンツ / Additional content defined by implementations" ];
+       fhir:ElementDefinition.definition [ fhir:value "要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
+       fhir:ElementDefinition.comment [ fhir:value "拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
        fhir:ElementDefinition.alias [
          fhir:value "extensions";
          fhir:index 0
@@ -1917,7 +1917,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1928,7 +1928,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -1949,7 +1949,7 @@
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.subject.reference" ];
        fhir:ElementDefinition.short [ fhir:value "Literal reference, Relative, internal or absolute URL　リテラル参照、相対、内部、または絶対URL" ];
        fhir:ElementDefinition.definition [ fhir:value "A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources.\r\n\r\n他のリソースが見つかった場合そのいリソース箇所への参照。参照は相対参照である場合がある。その場合、参照はサービスベースURLに相対的であるか、リソースが見つかった場所を解決する絶対URL。参照はバージョン固有である場合とそうでない場合がある。参照がFHIR　RESTfulサーバーを参照していない場合は、バージョン固有であると見なす必要がある。内部フラグメント参照（「＃」で始まる）は、含まれているリソースを参照する。" ];
-       fhir:ElementDefinition.comment [ fhir:value "Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use when trading across closed eco-system boundaries.   Absolute URLs do not need to point to a FHIR RESTful server, though this is the preferred approach. If the URL conforms to the structure \"/[type]/[id]\" then it should be assumed that the reference is to a FHIR RESTful server." ];
+       fhir:ElementDefinition.comment [ fhir:value "絶対URLを使用すると、クラウド/Webコンテキストに適した安定したスケーラブルなアプローチが提供されますが、相対的/論理的な参照を使用すると、閉じたエコシステムの境界を横切る際に使用するのに適した柔軟なアプローチが提供されます。絶対URLは、FHIR Restfulサーバーを指す必要はありませんが、これは好ましいアプローチです。URLが構造 \"/[type]/[id]\"に適合している場合、参照がFHIR Restfulサーバーへの参照であると想定する必要があります。 / Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use when trading across closed eco-system boundaries.   Absolute URLs do not need to point to a FHIR RESTful server, though this is the preferred approach. If the URL conforms to the structure \"/[type]/[id]\" then it should be assumed that the reference is to a FHIR RESTful server." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -1969,7 +1969,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -1990,7 +1990,7 @@
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.subject.type" ];
        fhir:ElementDefinition.short [ fhir:value "Type the reference refers to (e.g. \"Patient\")　参照リソースのタイプ" ];
        fhir:ElementDefinition.definition [ fhir:value "The expected type of the target of the reference. If both Reference.type and Reference.reference are populated and Reference.reference is a FHIR URL, both SHALL be consistent.\n\nThe type is the Canonical URL of Resource Definition that is the type this reference refers to. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition/ e.g. \"Patient\" is a reference to http://hl7.org/fhir/StructureDefinition/Patient. Absolute URLs are only allowed for logical models (and can only be used in references in logical models, not resources).\r\n\r\n参照のターゲットの予想されるタイプ。 Reference.typeとReference.referenceの両方が入力され、Reference.referenceがFHIR URLである場合、両方が一貫している必要がある。\r\nタイプは、この参照が参照するタイプであるリソース定義の正規URLである。参照は、http：//hl7.org/fhir/StructureDefinition/に関連するURLとなる。例： 「患者」リソースの場合は、http://hl7.org/fhir/StructureDefinition/Patient　となる。絶対URLは、論理モデルでのみ許可される（また、論理モデルの参照でのみ使用でき、リソースでは使用できない）。" ];
-       fhir:ElementDefinition.comment [ fhir:value "This element is used to indicate the type of  the target of the reference. This may be used which ever of the other elements are populated (or not). In some cases, the type of the target may be determined by inspection of the reference (e.g. a RESTful URL) or by resolving the target of the reference; if both the type and a reference is provided, the reference SHALL resolve to a resource of the same type as that specified." ];
+       fhir:ElementDefinition.comment [ fhir:value "この要素は、参照のターゲットのタイプを示すために使用されます。これは、他の要素の中で存在する（またはそうでない）使用される場合があります。場合によっては、ターゲットのタイプは、参照の検査（例：RESTFUL URL）または参照のターゲットを解決することによって決定される場合があります。タイプと参照の両方が提供されている場合、参照は指定したものと同じタイプのリソースに解決するものとします。 / This element is used to indicate the type of  the target of the reference. This may be used which ever of the other elements are populated (or not). In some cases, the type of the target may be determined by inspection of the reference (e.g. a RESTful URL) or by resolving the target of the reference; if both the type and a reference is provided, the reference SHALL resolve to a resource of the same type as that specified." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -2006,7 +2006,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2023,7 +2023,7 @@
            fhir:Extension.valueString [ fhir:value "FHIRResourceTypeExt" ]
          ];
          fhir:ElementDefinition.binding.strength [ fhir:value "extensible" ];
-         fhir:ElementDefinition.binding.description [ fhir:value "Aa resource (or, for logical models, the URI of the logical model)." ];
+         fhir:ElementDefinition.binding.description [ fhir:value "AAリソース（または、論理モデルの場合、論理モデルのURI）。 / Aa resource (or, for logical models, the URI of the logical model)." ];
          fhir:ElementDefinition.binding.valueSet [
            fhir:value "http://hl7.org/fhir/ValueSet/resource-types";
            fhir:link <http://hl7.org/fhir/ValueSet/resource-types>
@@ -2056,7 +2056,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2098,7 +2098,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2144,7 +2144,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2198,7 +2198,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2242,7 +2242,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2290,7 +2290,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2325,8 +2325,8 @@
          fhir:value "xmlAttr";
          fhir:index 0
        ];
-       fhir:ElementDefinition.short [ fhir:value "Unique id for inter-element referencing" ];
-       fhir:ElementDefinition.definition [ fhir:value "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
+       fhir:ElementDefinition.short [ fhir:value "要素間参照のための一意のID / Unique id for inter-element referencing" ];
+       fhir:ElementDefinition.definition [ fhir:value "リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -2354,9 +2354,9 @@
        fhir:index 46;
        fhir:Element.id [ fhir:value "MedicationAdministration.performer.extension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.performer.extension" ];
-       fhir:ElementDefinition.short [ fhir:value "Additional content defined by implementations" ];
-       fhir:ElementDefinition.definition [ fhir:value "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
-       fhir:ElementDefinition.comment [ fhir:value "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
+       fhir:ElementDefinition.short [ fhir:value "実装で定義された追加のコンテンツ / Additional content defined by implementations" ];
+       fhir:ElementDefinition.definition [ fhir:value "要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
+       fhir:ElementDefinition.comment [ fhir:value "拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
        fhir:ElementDefinition.alias [
          fhir:value "extensions";
          fhir:index 0
@@ -2379,7 +2379,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2390,7 +2390,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -2409,10 +2409,10 @@
        fhir:index 47;
        fhir:Element.id [ fhir:value "MedicationAdministration.performer.modifierExtension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.performer.modifierExtension" ];
-       fhir:ElementDefinition.short [ fhir:value "Extensions that cannot be ignored even if unrecognized" ];
-       fhir:ElementDefinition.definition [ fhir:value "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)." ];
-       fhir:ElementDefinition.comment [ fhir:value "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
-       fhir:ElementDefinition.requirements [ fhir:value "Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension)." ];
+       fhir:ElementDefinition.short [ fhir:value "認識されていなくても無視できない拡張機能 / Extensions that cannot be ignored even if unrecognized" ];
+       fhir:ElementDefinition.definition [ fhir:value "要素の基本的な定義の一部ではなく、それが含まれている要素の理解、および/または含まれる要素の子孫の理解を変更するために使用される場合があります。通常、修飾子要素は否定または資格を提供します。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。アプリケーションの処理リソースは、修飾子拡張機能をチェックする必要があります。\n\nモディファイア拡張は、リソースまたはdomainResource上の要素の意味を変更してはなりません（修飾軸自体の意味を変更することはできません）。 / May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)." ];
+       fhir:ElementDefinition.comment [ fhir:value "拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
+       fhir:ElementDefinition.requirements [ fhir:value "修飾子拡張機能により、安全に無視できる大部分の拡張機能と明確に区別できるように、安全に無視できない拡張機能が可能になります。これにより、実装者が拡張の存在を禁止する必要性を排除することにより、相互運用性が促進されます。詳細については、[修飾子拡張の定義]（拡張性.html＃modifierextension）を参照してください。 / Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension)." ];
        fhir:ElementDefinition.alias [
          fhir:value "extensions";
          fhir:index 0
@@ -2438,7 +2438,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2449,7 +2449,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -2458,7 +2458,7 @@
          ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value "true"^^xsd:boolean ];
-       fhir:ElementDefinition.isModifierReason [ fhir:value "Modifier extensions are expected to modify the meaning or interpretation of the element that contains them" ];
+       fhir:ElementDefinition.isModifierReason [ fhir:value "修飾子拡張は、それらを含む要素の意味または解釈を変更することが期待されています / Modifier extensions are expected to modify the meaning or interpretation of the element that contains them" ];
        fhir:ElementDefinition.isSummary [ fhir:value "true"^^xsd:boolean ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -2469,8 +2469,8 @@
        fhir:index 48;
        fhir:Element.id [ fhir:value "MedicationAdministration.performer.function" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.performer.function" ];
-       fhir:ElementDefinition.short [ fhir:value "Type of performance" ];
-       fhir:ElementDefinition.definition [ fhir:value "Distinguishes the type of involvement of the performer in the medication administration." ];
+       fhir:ElementDefinition.short [ fhir:value "パフォーマンスの種類 / Type of performance" ];
+       fhir:ElementDefinition.definition [ fhir:value "投薬投与におけるパフォーマーの関与の種類を区別します。 / Distinguishes the type of involvement of the performer in the medication administration." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -2486,7 +2486,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2503,7 +2503,7 @@
            fhir:Extension.valueString [ fhir:value "MedicationAdministrationPerformerFunction" ]
          ];
          fhir:ElementDefinition.binding.strength [ fhir:value "example" ];
-         fhir:ElementDefinition.binding.description [ fhir:value "A code describing the role an individual played in administering the medication." ];
+         fhir:ElementDefinition.binding.description [ fhir:value "個人が薬を投与する際に果たした役割を説明するコード。 / A code describing the role an individual played in administering the medication." ];
          fhir:ElementDefinition.binding.valueSet [
            fhir:value "http://hl7.org/fhir/ValueSet/med-admin-perform-function";
            fhir:link <http://hl7.org/fhir/ValueSet/med-admin-perform-function>
@@ -2522,8 +2522,8 @@
        fhir:index 49;
        fhir:Element.id [ fhir:value "MedicationAdministration.performer.actor" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.performer.actor" ];
-       fhir:ElementDefinition.short [ fhir:value "Who performed the medication administration" ];
-       fhir:ElementDefinition.definition [ fhir:value "Indicates who or what performed the medication administration." ];
+       fhir:ElementDefinition.short [ fhir:value "投薬を行った人 / Who performed the medication administration" ];
+       fhir:ElementDefinition.definition [ fhir:value "投薬投与を誰または何が実行したかを示します。 / Indicates who or what performed the medication administration." ];
        fhir:ElementDefinition.min [ fhir:value "1"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -2560,7 +2560,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2600,7 +2600,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2617,7 +2617,7 @@
            fhir:Extension.valueString [ fhir:value "MedicationAdministrationReason" ]
          ];
          fhir:ElementDefinition.binding.strength [ fhir:value "example" ];
-         fhir:ElementDefinition.binding.description [ fhir:value "A set of codes indicating the reason why the MedicationAdministration was made." ];
+         fhir:ElementDefinition.binding.description [ fhir:value "薬剤管理が行われた理由を示す一連のコード。 / A set of codes indicating the reason why the MedicationAdministration was made." ];
          fhir:ElementDefinition.binding.valueSet [
            fhir:value "http://hl7.org/fhir/ValueSet/reason-medication-given-codes";
            fhir:link <http://hl7.org/fhir/ValueSet/reason-medication-given-codes>
@@ -2671,7 +2671,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2726,7 +2726,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2776,7 +2776,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2817,7 +2817,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2857,7 +2857,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2868,7 +2868,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "mad-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "SHALL have at least one of dosage.dose or dosage.rate[x]" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "Dosage.DoseまたはDosage.Rate [x]の少なくとも1つがあります。 / SHALL have at least one of dosage.dose or dosage.rate[x]" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "dose.exists() or rate.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:dose) or exists(f:*[starts-with(local-name(.), 'rate')])" ];
          fhir:ElementDefinition.constraint.source [
@@ -2891,8 +2891,8 @@
          fhir:value "xmlAttr";
          fhir:index 0
        ];
-       fhir:ElementDefinition.short [ fhir:value "Unique id for inter-element referencing" ];
-       fhir:ElementDefinition.definition [ fhir:value "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
+       fhir:ElementDefinition.short [ fhir:value "要素間参照のための一意のID / Unique id for inter-element referencing" ];
+       fhir:ElementDefinition.definition [ fhir:value "リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -2946,7 +2946,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -2957,7 +2957,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -2998,7 +2998,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3009,7 +3009,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" ];
          fhir:ElementDefinition.constraint.source [
@@ -3049,7 +3049,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3060,7 +3060,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" ];
          fhir:ElementDefinition.constraint.source [
@@ -3100,7 +3100,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3111,7 +3111,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" ];
          fhir:ElementDefinition.constraint.source [
@@ -3124,10 +3124,10 @@
        fhir:index 61;
        fhir:Element.id [ fhir:value "MedicationAdministration.dosage.modifierExtension" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.dosage.modifierExtension" ];
-       fhir:ElementDefinition.short [ fhir:value "Extensions that cannot be ignored even if unrecognized" ];
-       fhir:ElementDefinition.definition [ fhir:value "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)." ];
-       fhir:ElementDefinition.comment [ fhir:value "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
-       fhir:ElementDefinition.requirements [ fhir:value "Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension)." ];
+       fhir:ElementDefinition.short [ fhir:value "認識されていなくても無視できない拡張機能 / Extensions that cannot be ignored even if unrecognized" ];
+       fhir:ElementDefinition.definition [ fhir:value "要素の基本的な定義の一部ではなく、それが含まれている要素の理解、および/または含まれる要素の子孫の理解を変更するために使用される場合があります。通常、修飾子要素は否定または資格を提供します。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。アプリケーションの処理リソースは、修飾子拡張機能をチェックする必要があります。\n\nモディファイア拡張は、リソースまたはdomainResource上の要素の意味を変更してはなりません（修飾軸自体の意味を変更することはできません）。 / May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)." ];
+       fhir:ElementDefinition.comment [ fhir:value "拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
+       fhir:ElementDefinition.requirements [ fhir:value "修飾子拡張機能により、安全に無視できる大部分の拡張機能と明確に区別できるように、安全に無視できない拡張機能が可能になります。これにより、実装者が拡張の存在を禁止する必要性を排除することにより、相互運用性が促進されます。詳細については、[修飾子拡張の定義]（拡張性.html＃modifierextension）を参照してください。 / Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension)." ];
        fhir:ElementDefinition.alias [
          fhir:value "extensions";
          fhir:index 0
@@ -3153,7 +3153,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3164,7 +3164,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -3173,7 +3173,7 @@
          ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value "true"^^xsd:boolean ];
-       fhir:ElementDefinition.isModifierReason [ fhir:value "Modifier extensions are expected to modify the meaning or interpretation of the element that contains them" ];
+       fhir:ElementDefinition.isModifierReason [ fhir:value "修飾子拡張は、それらを含む要素の意味または解釈を変更することが期待されています / Modifier extensions are expected to modify the meaning or interpretation of the element that contains them" ];
        fhir:ElementDefinition.isSummary [ fhir:value "true"^^xsd:boolean ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -3201,7 +3201,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3238,7 +3238,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3255,7 +3255,7 @@
            fhir:Extension.valueString [ fhir:value "MedicationAdministrationSite" ]
          ];
          fhir:ElementDefinition.binding.strength [ fhir:value "example" ];
-         fhir:ElementDefinition.binding.description [ fhir:value "A coded concept describing the site location the medicine enters into or onto the body." ];
+         fhir:ElementDefinition.binding.description [ fhir:value "薬が身体に入る、または体に入るサイトの場所を説明するコード化された概念。 / A coded concept describing the site location the medicine enters into or onto the body." ];
          fhir:ElementDefinition.binding.valueSet [
            fhir:value "http://hl7.org/fhir/ValueSet/approach-site-codes";
            fhir:link <http://hl7.org/fhir/ValueSet/approach-site-codes>
@@ -3278,8 +3278,8 @@
          fhir:value "xmlAttr";
          fhir:index 0
        ];
-       fhir:ElementDefinition.short [ fhir:value "Unique id for inter-element referencing" ];
-       fhir:ElementDefinition.definition [ fhir:value "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
+       fhir:ElementDefinition.short [ fhir:value "要素間参照のための一意のID / Unique id for inter-element referencing" ];
+       fhir:ElementDefinition.definition [ fhir:value "リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -3316,9 +3316,9 @@
          fhir:ElementDefinition.slicing.description [ fhir:value "Extensions are always sliced by (at least) url" ];
          fhir:ElementDefinition.slicing.rules [ fhir:value "open" ]
        ];
-       fhir:ElementDefinition.short [ fhir:value "Additional content defined by implementations" ];
-       fhir:ElementDefinition.definition [ fhir:value "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
-       fhir:ElementDefinition.comment [ fhir:value "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
+       fhir:ElementDefinition.short [ fhir:value "実装で定義された追加のコンテンツ / Additional content defined by implementations" ];
+       fhir:ElementDefinition.definition [ fhir:value "要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
+       fhir:ElementDefinition.comment [ fhir:value "拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
        fhir:ElementDefinition.alias [
          fhir:value "extensions";
          fhir:index 0
@@ -3341,7 +3341,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3352,7 +3352,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -3394,7 +3394,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3405,7 +3405,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -3419,10 +3419,10 @@
        fhir:index 67;
        fhir:Element.id [ fhir:value "MedicationAdministration.dosage.site.coding" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.dosage.site.coding" ];
-       fhir:ElementDefinition.short [ fhir:value "Code defined by a terminology system" ];
-       fhir:ElementDefinition.definition [ fhir:value "A reference to a code defined by a terminology system." ];
-       fhir:ElementDefinition.comment [ fhir:value "Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true." ];
-       fhir:ElementDefinition.requirements [ fhir:value "Allows for alternative encodings within a code system, and translations to other code systems." ];
+       fhir:ElementDefinition.short [ fhir:value "用語システムによって定義されたコード / Code defined by a terminology system" ];
+       fhir:ElementDefinition.definition [ fhir:value "用語システムによって定義されたコードへの参照。 / A reference to a code defined by a terminology system." ];
+       fhir:ElementDefinition.comment [ fhir:value "コードは、列挙されたCTなどの非常に正式な定義まで、列挙またはコードリストで非常にさりげなく定義される場合があります。詳細については、HL7 V3コアプリンシップを参照してください。コーディングの順序付けは未定義であり、意味を推測するために使用されません。一般に、せいぜい、コーディング値の1つのみがuserselected = trueとしてラベル付けされます。 / Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true." ];
+       fhir:ElementDefinition.requirements [ fhir:value "コードシステム内の代替エンコーディング、および他のコードシステムへの翻訳が可能になります。 / Allows for alternative encodings within a code system, and translations to other code systems." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "*" ];
        fhir:ElementDefinition.base [
@@ -3438,7 +3438,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3470,10 +3470,10 @@
          fhir:Extension.valueBoolean [ fhir:value "true"^^xsd:boolean ]
        ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.dosage.site.text" ];
-       fhir:ElementDefinition.short [ fhir:value "Plain text representation of the concept" ];
-       fhir:ElementDefinition.definition [ fhir:value "A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user." ];
-       fhir:ElementDefinition.comment [ fhir:value "Very often the text is the same as a displayName of one of the codings." ];
-       fhir:ElementDefinition.requirements [ fhir:value "The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source." ];
+       fhir:ElementDefinition.short [ fhir:value "コンセプトの単純なテキスト表現 / Plain text representation of the concept" ];
+       fhir:ElementDefinition.definition [ fhir:value "データを入力したユーザー、および/またはユーザーの意図された意味を表すユーザーによって見られる/選択/発言された概念の人間の言語表現。 / A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user." ];
+       fhir:ElementDefinition.comment [ fhir:value "多くの場合、テキストはコーディングの1つの表示名と同じです。 / Very often the text is the same as a displayName of one of the codings." ];
+       fhir:ElementDefinition.requirements [ fhir:value "用語からのコードは、それらを使用する人間のすべてのニュアンスを使用して、常に正しい意味をキャプチャするとは限りません。または、適切なコードがまったくない場合があります。これらの場合、テキストはソースの完全な意味をキャプチャするために使用されます。 / The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -3489,7 +3489,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3534,7 +3534,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3551,7 +3551,7 @@
            fhir:Extension.valueString [ fhir:value "RouteOfAdministration" ]
          ];
          fhir:ElementDefinition.binding.strength [ fhir:value "example" ];
-         fhir:ElementDefinition.binding.description [ fhir:value "A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject." ];
+         fhir:ElementDefinition.binding.description [ fhir:value "被験者の体への、またはそれへの治療剤の投与の経路または生理学的経路を説明するコード化された概念。 / A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject." ];
          fhir:ElementDefinition.binding.valueSet [
            fhir:value "http://hl7.org/fhir/ValueSet/route-codes";
            fhir:link <http://hl7.org/fhir/ValueSet/route-codes>
@@ -3574,8 +3574,8 @@
          fhir:value "xmlAttr";
          fhir:index 0
        ];
-       fhir:ElementDefinition.short [ fhir:value "Unique id for inter-element referencing" ];
-       fhir:ElementDefinition.definition [ fhir:value "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
+       fhir:ElementDefinition.short [ fhir:value "要素間参照のための一意のID / Unique id for inter-element referencing" ];
+       fhir:ElementDefinition.definition [ fhir:value "リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -3612,9 +3612,9 @@
          fhir:ElementDefinition.slicing.description [ fhir:value "Extensions are always sliced by (at least) url" ];
          fhir:ElementDefinition.slicing.rules [ fhir:value "open" ]
        ];
-       fhir:ElementDefinition.short [ fhir:value "Additional content defined by implementations" ];
-       fhir:ElementDefinition.definition [ fhir:value "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
-       fhir:ElementDefinition.comment [ fhir:value "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
+       fhir:ElementDefinition.short [ fhir:value "実装で定義された追加のコンテンツ / Additional content defined by implementations" ];
+       fhir:ElementDefinition.definition [ fhir:value "要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
+       fhir:ElementDefinition.comment [ fhir:value "拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
        fhir:ElementDefinition.alias [
          fhir:value "extensions";
          fhir:index 0
@@ -3637,7 +3637,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3648,7 +3648,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -3690,7 +3690,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3701,7 +3701,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -3715,10 +3715,10 @@
        fhir:index 73;
        fhir:Element.id [ fhir:value "MedicationAdministration.dosage.route.coding" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.dosage.route.coding" ];
-       fhir:ElementDefinition.short [ fhir:value "Code defined by a terminology system" ];
-       fhir:ElementDefinition.definition [ fhir:value "A reference to a code defined by a terminology system." ];
-       fhir:ElementDefinition.comment [ fhir:value "Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true." ];
-       fhir:ElementDefinition.requirements [ fhir:value "Allows for alternative encodings within a code system, and translations to other code systems." ];
+       fhir:ElementDefinition.short [ fhir:value "用語システムによって定義されたコード / Code defined by a terminology system" ];
+       fhir:ElementDefinition.definition [ fhir:value "用語システムによって定義されたコードへの参照。 / A reference to a code defined by a terminology system." ];
+       fhir:ElementDefinition.comment [ fhir:value "コードは、列挙されたCTなどの非常に正式な定義まで、列挙またはコードリストで非常にさりげなく定義される場合があります。詳細については、HL7 V3コアプリンシップを参照してください。コーディングの順序付けは未定義であり、意味を推測するために使用されません。一般に、せいぜい、コーディング値の1つのみがuserselected = trueとしてラベル付けされます。 / Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true." ];
+       fhir:ElementDefinition.requirements [ fhir:value "コードシステム内の代替エンコーディング、および他のコードシステムへの翻訳が可能になります。 / Allows for alternative encodings within a code system, and translations to other code systems." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "*" ];
        fhir:ElementDefinition.base [
@@ -3734,7 +3734,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3766,10 +3766,10 @@
          fhir:Extension.valueBoolean [ fhir:value "true"^^xsd:boolean ]
        ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.dosage.route.text" ];
-       fhir:ElementDefinition.short [ fhir:value "Plain text representation of the concept" ];
-       fhir:ElementDefinition.definition [ fhir:value "A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user." ];
-       fhir:ElementDefinition.comment [ fhir:value "Very often the text is the same as a displayName of one of the codings." ];
-       fhir:ElementDefinition.requirements [ fhir:value "The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source." ];
+       fhir:ElementDefinition.short [ fhir:value "コンセプトの単純なテキスト表現 / Plain text representation of the concept" ];
+       fhir:ElementDefinition.definition [ fhir:value "データを入力したユーザー、および/またはユーザーの意図された意味を表すユーザーによって見られる/選択/発言された概念の人間の言語表現。 / A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user." ];
+       fhir:ElementDefinition.comment [ fhir:value "多くの場合、テキストはコーディングの1つの表示名と同じです。 / Very often the text is the same as a displayName of one of the codings." ];
+       fhir:ElementDefinition.requirements [ fhir:value "用語からのコードは、それらを使用する人間のすべてのニュアンスを使用して、常に正しい意味をキャプチャするとは限りません。または、適切なコードがまったくない場合があります。これらの場合、テキストはソースの完全な意味をキャプチャするために使用されます。 / The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -3785,7 +3785,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3830,7 +3830,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3847,7 +3847,7 @@
            fhir:Extension.valueString [ fhir:value "MedicationAdministrationMethod" ]
          ];
          fhir:ElementDefinition.binding.strength [ fhir:value "example" ];
-         fhir:ElementDefinition.binding.description [ fhir:value "A coded concept describing the technique by which the medicine is administered." ];
+         fhir:ElementDefinition.binding.description [ fhir:value "薬が投与される手法を説明するコード化された概念。 / A coded concept describing the technique by which the medicine is administered." ];
          fhir:ElementDefinition.binding.valueSet [
            fhir:value "http://hl7.org/fhir/ValueSet/administration-method-codes";
            fhir:link <http://hl7.org/fhir/ValueSet/administration-method-codes>
@@ -3870,8 +3870,8 @@
          fhir:value "xmlAttr";
          fhir:index 0
        ];
-       fhir:ElementDefinition.short [ fhir:value "Unique id for inter-element referencing" ];
-       fhir:ElementDefinition.definition [ fhir:value "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
+       fhir:ElementDefinition.short [ fhir:value "要素間参照のための一意のID / Unique id for inter-element referencing" ];
+       fhir:ElementDefinition.definition [ fhir:value "リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -3908,9 +3908,9 @@
          fhir:ElementDefinition.slicing.description [ fhir:value "Extensions are always sliced by (at least) url" ];
          fhir:ElementDefinition.slicing.rules [ fhir:value "open" ]
        ];
-       fhir:ElementDefinition.short [ fhir:value "Additional content defined by implementations" ];
-       fhir:ElementDefinition.definition [ fhir:value "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
-       fhir:ElementDefinition.comment [ fhir:value "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
+       fhir:ElementDefinition.short [ fhir:value "実装で定義された追加のコンテンツ / Additional content defined by implementations" ];
+       fhir:ElementDefinition.definition [ fhir:value "要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
+       fhir:ElementDefinition.comment [ fhir:value "拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
        fhir:ElementDefinition.alias [
          fhir:value "extensions";
          fhir:index 0
@@ -3933,7 +3933,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3944,7 +3944,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -3986,7 +3986,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -3997,7 +3997,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -4011,10 +4011,10 @@
        fhir:index 79;
        fhir:Element.id [ fhir:value "MedicationAdministration.dosage.method.coding" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.dosage.method.coding" ];
-       fhir:ElementDefinition.short [ fhir:value "Code defined by a terminology system" ];
-       fhir:ElementDefinition.definition [ fhir:value "A reference to a code defined by a terminology system." ];
-       fhir:ElementDefinition.comment [ fhir:value "Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true." ];
-       fhir:ElementDefinition.requirements [ fhir:value "Allows for alternative encodings within a code system, and translations to other code systems." ];
+       fhir:ElementDefinition.short [ fhir:value "用語システムによって定義されたコード / Code defined by a terminology system" ];
+       fhir:ElementDefinition.definition [ fhir:value "用語システムによって定義されたコードへの参照。 / A reference to a code defined by a terminology system." ];
+       fhir:ElementDefinition.comment [ fhir:value "コードは、列挙されたCTなどの非常に正式な定義まで、列挙またはコードリストで非常にさりげなく定義される場合があります。詳細については、HL7 V3コアプリンシップを参照してください。コーディングの順序付けは未定義であり、意味を推測するために使用されません。一般に、せいぜい、コーディング値の1つのみがuserselected = trueとしてラベル付けされます。 / Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true." ];
+       fhir:ElementDefinition.requirements [ fhir:value "コードシステム内の代替エンコーディング、および他のコードシステムへの翻訳が可能になります。 / Allows for alternative encodings within a code system, and translations to other code systems." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "*" ];
        fhir:ElementDefinition.base [
@@ -4030,7 +4030,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -4062,10 +4062,10 @@
          fhir:Extension.valueBoolean [ fhir:value "true"^^xsd:boolean ]
        ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.dosage.method.text" ];
-       fhir:ElementDefinition.short [ fhir:value "Plain text representation of the concept" ];
-       fhir:ElementDefinition.definition [ fhir:value "A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user." ];
-       fhir:ElementDefinition.comment [ fhir:value "Very often the text is the same as a displayName of one of the codings." ];
-       fhir:ElementDefinition.requirements [ fhir:value "The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source." ];
+       fhir:ElementDefinition.short [ fhir:value "コンセプトの単純なテキスト表現 / Plain text representation of the concept" ];
+       fhir:ElementDefinition.definition [ fhir:value "データを入力したユーザー、および/またはユーザーの意図された意味を表すユーザーによって見られる/選択/発言された概念の人間の言語表現。 / A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user." ];
+       fhir:ElementDefinition.comment [ fhir:value "多くの場合、テキストはコーディングの1つの表示名と同じです。 / Very often the text is the same as a displayName of one of the codings." ];
+       fhir:ElementDefinition.requirements [ fhir:value "用語からのコードは、それらを使用する人間のすべてのニュアンスを使用して、常に正しい意味をキャプチャするとは限りません。または、適切なコードがまったくない場合があります。これらの場合、テキストはソースの完全な意味をキャプチャするために使用されます。 / The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -4081,7 +4081,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -4110,7 +4110,7 @@
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.dosage.dose" ];
        fhir:ElementDefinition.short [ fhir:value "Amount of medication per dose　用量あたりの投薬量" ];
        fhir:ElementDefinition.definition [ fhir:value "The amount of the medication given at one administration event.   Use this value when the administration is essentially an instantaneous event such as a swallowing a tablet or giving an injection.\r\n\r\n1回の投与イベントで投与される薬剤の量。この値は、投与が錠剤の飲み込みや注射などの本質的に瞬間的なイベントである場合に使用する。" ];
-       fhir:ElementDefinition.comment [ fhir:value "If the administration is not instantaneous (rate is present), this can be specified to convey the total amount administered over period of time of a single administration." ];
+       fhir:ElementDefinition.comment [ fhir:value "政権が瞬間的でない場合（レートが存在します）、これは単一の管理の期間にわたって投与される総量を伝えるために指定できます。 / If the administration is not instantaneous (rate is present), this can be specified to convey the total amount administered over period of time of a single administration." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -4131,7 +4131,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -4184,7 +4184,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -4226,7 +4226,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -4253,8 +4253,8 @@
          fhir:value "xmlAttr";
          fhir:index 0
        ];
-       fhir:ElementDefinition.short [ fhir:value "Unique id for inter-element referencing" ];
-       fhir:ElementDefinition.definition [ fhir:value "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
+       fhir:ElementDefinition.short [ fhir:value "要素間参照のための一意のID / Unique id for inter-element referencing" ];
+       fhir:ElementDefinition.definition [ fhir:value "リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -4291,9 +4291,9 @@
          fhir:ElementDefinition.slicing.description [ fhir:value "Extensions are always sliced by (at least) url" ];
          fhir:ElementDefinition.slicing.rules [ fhir:value "open" ]
        ];
-       fhir:ElementDefinition.short [ fhir:value "Additional content defined by implementations" ];
-       fhir:ElementDefinition.definition [ fhir:value "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
-       fhir:ElementDefinition.comment [ fhir:value "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
+       fhir:ElementDefinition.short [ fhir:value "実装で定義された追加のコンテンツ / Additional content defined by implementations" ];
+       fhir:ElementDefinition.definition [ fhir:value "要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ];
+       fhir:ElementDefinition.comment [ fhir:value "拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ];
        fhir:ElementDefinition.alias [
          fhir:value "extensions";
          fhir:index 0
@@ -4316,7 +4316,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -4327,7 +4327,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -4369,7 +4369,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -4380,7 +4380,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "ext-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "Must have either extensions or value[x], not both" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ];
          fhir:ElementDefinition.constraint.source [
@@ -4394,8 +4394,8 @@
        fhir:index 87;
        fhir:Element.id [ fhir:value "MedicationAdministration.dosage.rate[x]:rateRatio.numerator" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.dosage.rate[x].numerator" ];
-       fhir:ElementDefinition.short [ fhir:value "Numerator value" ];
-       fhir:ElementDefinition.definition [ fhir:value "The value of the numerator." ];
+       fhir:ElementDefinition.short [ fhir:value "分子値 / Numerator value" ];
+       fhir:ElementDefinition.definition [ fhir:value "分子の値。 / The value of the numerator." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -4411,7 +4411,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -4430,8 +4430,8 @@
        fhir:index 88;
        fhir:Element.id [ fhir:value "MedicationAdministration.dosage.rate[x]:rateRatio.denominator" ];
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.dosage.rate[x].denominator" ];
-       fhir:ElementDefinition.short [ fhir:value "Denominator value" ];
-       fhir:ElementDefinition.definition [ fhir:value "The value of the denominator." ];
+       fhir:ElementDefinition.short [ fhir:value "分母値 / Denominator value" ];
+       fhir:ElementDefinition.definition [ fhir:value "分母の値。 / The value of the denominator." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -4447,7 +4447,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -4468,8 +4468,8 @@
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.dosage.rate[x]" ];
        fhir:ElementDefinition.sliceName [ fhir:value "rateQuantity" ];
        fhir:ElementDefinition.short [ fhir:value "JP Coreでは未使用" ];
-       fhir:ElementDefinition.definition [ fhir:value "The comparator is not used on a SimpleQuantity" ];
-       fhir:ElementDefinition.comment [ fhir:value "The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator." ];
+       fhir:ElementDefinition.definition [ fhir:value "コンパレータは、単純なQuantityで使用されません / The comparator is not used on a SimpleQuantity" ];
+       fhir:ElementDefinition.comment [ fhir:value "使用のコンテキストは、これがどのような量であるか、したがってどのようなユニットを使用できるかを頻繁に定義する場合があります。使用のコンテキストは、コンパレータの値を制限する場合もあります。 / The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
        fhir:ElementDefinition.base [
@@ -4494,7 +4494,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
@@ -4505,7 +4505,7 @@
          fhir:index 1;
          fhir:ElementDefinition.constraint.key [ fhir:value "qty-3" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "If a code for the unit is present, the system SHALL also be present" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "ユニットのコードが存在する場合、システムも存在するものとします / If a code for the unit is present, the system SHALL also be present" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "code.empty() or system.exists()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "not(exists(f:code)) or exists(f:system)" ];
          fhir:ElementDefinition.constraint.source [
@@ -4516,7 +4516,7 @@
          fhir:index 2;
          fhir:ElementDefinition.constraint.key [ fhir:value "sqty-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "The comparator is not used on a SimpleQuantity" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "コンパレータは、単純なQuantityで使用されません / The comparator is not used on a SimpleQuantity" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "comparator.empty()" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "not(exists(f:comparator))" ];
          fhir:ElementDefinition.constraint.source [
@@ -4544,7 +4544,7 @@
        fhir:ElementDefinition.path [ fhir:value "MedicationAdministration.eventHistory" ];
        fhir:ElementDefinition.short [ fhir:value "A list of events of interest in the lifecycle　ライフサイクルで関心のあるイベントのリスト" ];
        fhir:ElementDefinition.definition [ fhir:value "A summary of the events of interest that have occurred, such as when the administration was verified.\r\n\r\n投与が確認されたときなど、発生した関連のあるベントのサマリー。" ];
-       fhir:ElementDefinition.comment [ fhir:value "This might not include provenances for all versions of the request – only those deemed “relevant” or important. This SHALL NOT include the Provenance associated with this current version of the resource. (If that provenance is deemed to be a “relevant” change, it will need to be added as part of a later update. Until then, it can be queried directly as the Provenance that points to this version using _revinclude All Provenances should have some historical version of this Request as their subject." ];
+       fhir:ElementDefinition.comment [ fhir:value "これには、リクエストのすべてのバージョンの出所が含まれない場合があります。「関連性がある」または重要とみなされるもののみです。これには、この現在のバージョンのリソースに関連する出所を含めてはなりません。（その出所が「関連性のある」変更と見なされる場合、後の更新の一部として追加する必要があります。それまで、_revincludeを使用してこのバージョンを指す出所として直接照会することができます。この要求の歴史的バージョンは、彼らの主題として。 / This might not include provenances for all versions of the request – only those deemed “relevant” or important. This SHALL NOT include the Provenance associated with this current version of the resource. (If that provenance is deemed to be a “relevant” change, it will need to be added as part of a later update. Until then, it can be queried directly as the Provenance that points to this version using _revinclude All Provenances should have some historical version of this Request as their subject." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "*" ];
        fhir:ElementDefinition.base [
@@ -4565,7 +4565,7 @@
          fhir:index 0;
          fhir:ElementDefinition.constraint.key [ fhir:value "ele-1" ];
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ];
-         fhir:ElementDefinition.constraint.human [ fhir:value "All FHIR elements must have a @value or children" ];
+         fhir:ElementDefinition.constraint.human [ fhir:value "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ];
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ];
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ];
          fhir:ElementDefinition.constraint.source [
