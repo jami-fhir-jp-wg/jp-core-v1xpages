@@ -9,11 +9,11 @@ index_src = 'resources/index.org'   #コピー元index.html
 index_dest = 'index.html'           #コピー先index.html
 
 # pull request link
-def getpullrequestlink(url)
+def getpullrequestlink(url, title)
     if(url=='')
         return ''
     else
-        return "<a href='" + url + "' ><img src='resources/img/gitpullrequest.svg'/></a> "
+        return "<a href='" + url + "' ><img src='resources/img/gitpullrequest.svg'/>" + title + "</a> <br/>"
     end
 end
 
@@ -29,7 +29,7 @@ def populate_html( fName, hash, published, warn)
     .gsub(/{published}/, published)
     .gsub(/{user}/, hash['actor'])
     .gsub(/{warn}/, warn)
-    .gsub(/{pullrequest_link}/, getpullrequestlink(hash['pullrequest_url'].to_s))
+    .gsub(/{pullrequest_link}/, getpullrequestlink(hash['pullrequest_url'].to_s,hash['pullrequest_title'].to_s ))
 end
 
 # 発行日を取得
