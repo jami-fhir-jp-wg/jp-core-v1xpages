@@ -367,9 +367,11 @@
       <li>
         <a href="#tabs-snap">Snapshot Table</a>
       </li>
+<!--
       <li>
         <a href="#tabs-snapms">Snapshot Table (Must Support)</a>
       </li>
+-->
 
 <!--      <li>
         <a href="#tabs-xml">Pseudo-XML</a>
@@ -1170,82 +1172,6 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 <h3 id="extension定義">Extension定義</h3>
 <p>このプロファイルでは拡張定義は行っていない。</p>
 
-<h3 id="用語定義">用語定義</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Path</th>
-      <th>定義</th>
-      <th>バインディング強度</th>
-      <th>バリューセット</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="highlighter-rouge">Observation.status</code></td>
-      <td>検査の状態を提供するコード</td>
-      <td>Required（必須）</td>
-      <td><a href="https://www.hl7.org/fhir/valueset-observation-status.html">ObservationStatus</a></td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">Observation.category</code></td>
-      <td>上位レベルの検査カテゴリのコード</td>
-      <td>Example（例）</td>
-      <td><a href="https://www.hl7.org/fhir/valueset-observation-category.html">ObservationCategoryCodes</a></td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">Observation.code</code><br /><code class="highlighter-rouge">Observation.component.code</code></td>
-      <td>単一の検査名を特定するコード</td>
-      <td>Example（例）</td>
-      <td><a href="https://www.hl7.org/fhir/valueset-observation-codes.html">LOINCCodes</a></td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">Observation.dataAbsentReason</code> <br /> <code class="highlighter-rouge">Observation.component.dataAbsentReason</code></td>
-      <td>結果(<code class="highlighter-rouge">Observation.value[x]</code>)の欠損理由を特定するコード</td>
-      <td>Extensible（拡張可能）</td>
-      <td><a href="https://www.hl7.org/fhir/valueset-data-absent-reason.html">DataAbsentReason</a></td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">Observation.interpretation</code> <br /> <code class="highlighter-rouge">Observation.component.interpretation</code></td>
-      <td>検査の解釈を特定するコード</td>
-      <td>Extensible（拡張可能）</td>
-      <td><a href="https://www.hl7.org/fhir/valueset-observation-interpretation.html">ObservationInterpretationCodes</a></td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">Observation.bodySite</code></td>
-      <td>解剖学的位置を表現するコード。ラテラリティ（左右）も含む場合あり。</td>
-      <td>Example（例）</td>
-      <td><a href="https://www.hl7.org/fhir/valueset-body-site.html">SNOMEDCTBodyStructures</a></td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">Observation.method</code></td>
-      <td>単一の検査の測定方法</td>
-      <td>Example（例）</td>
-      <td><a href="https://www.hl7.org/fhir/valueset-observation-methods.html">ObservationMethods</a></td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">Observation.referenceRange.type</code></td>
-      <td>基準値の種別コード</td>
-      <td>Preferred（優先）</td>
-      <td><a href="https://www.hl7.org/fhir/valueset-referencerange-meaning.html">ObservationReferenceRangeMeaningCodes</a></td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">Observation.referenceRange.appliesTo</code></td>
-      <td>基準値が適用される母集団を識別するコード</td>
-      <td>Example（例）</td>
-      <td><a href="https://www.hl7.org/fhir/valueset-referencerange-appliesto.html">ObservationReferenceRangeAppliesToCodes</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="制約一覧">制約一覧</h3>
-<p>| id |レベル| 位置 | 説明 |式|
-|  —  |  —  |  —  |  —  |  —  |
-| obs-3 | Rule | <code class="highlighter-rouge">Observation.referenceRange</code> | 少なくとも上限・下限もしくはテキストが必要。 | <code class="highlighter-rouge">low.exists()</code><br />or<br /><code class="highlighter-rouge">high.exists()</code><br />or<br /><code class="highlighter-rouge">text.exists()</code> |
-| obs-6 | Rule | (base) | <code class="highlighter-rouge">Observation.value[x]</code> が存在しない場合にのみ <code class="highlighter-rouge">dataAbsentReason</code> が存在するようする必要がある。(SHALL) | <code class="highlighter-rouge">dataAbsentReason.empty()</code><br />or<br /><code class="highlighter-rouge">value.empty()</code> |
-| obs-7 | Rule | (base) | <code class="highlighter-rouge">Observation.code</code> が <code class="highlighter-rouge">Observation.component.code</code> と同一だった場合、コードに関連付けられた<code class="highlighter-rouge">value</code>要素は存在してはいけない。(SHALL NOT) | <code class="highlighter-rouge">value.empty()</code><br />or<br /><code class="highlighter-rouge">component.code.where(coding.intersect(%resource.code.coding).exists()).empty()</code> |</p>
-
 <h2 id="利用方法">利用方法</h2>
 
 <h3 id="インタラクション一覧">インタラクション一覧</h3>
@@ -1886,7 +1812,7 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 20, 2022 05:15+0000">2022-07-20</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 20, 2022 08:05+0000">2022-07-20</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

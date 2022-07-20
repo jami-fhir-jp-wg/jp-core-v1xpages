@@ -353,9 +353,11 @@
       <li>
         <a href="#tabs-snap">Snapshot Table</a>
       </li>
+<!--
       <li>
         <a href="#tabs-snapms">Snapshot Table (Must Support)</a>
       </li>
+-->
 
 <!--      <li>
         <a href="#tabs-xml">Pseudo-XML</a>
@@ -1890,156 +1892,6 @@ DetectedIssue リソースへの参照。" class="dict"><span style="text-decora
   </tbody>
 </table>
 
-<p>JP Core MedicationDispense Injectionリソースの各要素のバインディングは以下の通りである。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Path</th>
-      <th>定義</th>
-      <th>バインディング強度</th>
-      <th>バリューセット</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>MedicationDispense.status</td>
-      <td>オーダーの現在の状態を示すコード</td>
-      <td>required</td>
-      <td>http://hl7.org/fhir/ValueSet/MedicationDispense-status</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.medicationCodeableConcept</td>
-      <td>医薬品の識別情報</td>
-      <td>prefered</td>
-      <td>HOT7,HOT9,HOT13,YJコード,一般処方名マスター</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.additionalInstruction</td>
-      <td>補足用法</td>
-      <td>prefered</td>
-      <td>JAMI処方・注射オーダ標準用法規格(補足用法コード)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.timing.code</td>
-      <td>用法コード</td>
-      <td>prefered</td>
-      <td>JAMI処方・注射オーダ標準用法規格(用法コード)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.site</td>
-      <td>投与部位</td>
-      <td>prefered</td>
-      <td>JAMI処方・注射オーダ標準用法規格(外用部位コード)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.route</td>
-      <td>投与経路</td>
-      <td>prefered</td>
-      <td>HLJAMI処方・注射オーダ標準用法規格(基本用法区分)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.method</td>
-      <td>投与方法</td>
-      <td>prefered</td>
-      <td>JAMI処方・注射オーダ標準用法規格(用法詳細区分)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.doseAndRate.doseQuantity.code</td>
-      <td>１回量単位</td>
-      <td>prefered</td>
-      <td>MERIT-9(単位)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.doseAndRate.rateRatio.numerator.code</td>
-      <td>１日量単位</td>
-      <td>prefered</td>
-      <td>MERIT-9(単位)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.doseAndRate.rateRatio.denominator.code</td>
-      <td>１日</td>
-      <td>required</td>
-      <td>UCUM(http://hl7.org/fhir/ValueSet/ucum-units)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.quantity.code</td>
-      <td>調剤容量単位</td>
-      <td>required</td>
-      <td>UCUM(http://hl7.org/fhir/ValueSet/ucum-units)</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>JP Core MedicationDispense Injectionリソースに内包されるMedicationリソースのバインディングは以下の通りである。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Path</th>
-      <th>定義</th>
-      <th>バインディング強度</th>
-      <th>バリューセット</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Medication.ingredient.itemCodeableConcept</td>
-      <td>医薬品の識別情報</td>
-      <td>prefered</td>
-      <td>HOT7,HOT9,HOT13,YJコード</td>
-    </tr>
-    <tr>
-      <td>Medication.ingredient.strength.numerator.code</td>
-      <td>成分量単位</td>
-      <td>prefered</td>
-      <td>MERIT-9(単位)</td>
-    </tr>
-    <tr>
-      <td>Medication.ingredient.strength.denominator.code</td>
-      <td>１回</td>
-      <td>prefered</td>
-      <td>MERIT-9(単位)</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>JP Core MedicationDispense Injectionリソースに内包されるBodyStructureリソースのバインディングは以下の通りである。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Path</th>
-      <th>定義</th>
-      <th>バインディング強度</th>
-      <th>バリューセット</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>BodyStructure.location</td>
-      <td>投与部位</td>
-      <td>prefered</td>
-      <td>HL7 V2(HL7表0550)</td>
-    </tr>
-    <tr>
-      <td>BodyStructure.locationModifier</td>
-      <td>投与部位修飾子</td>
-      <td>prefered</td>
-      <td>HL7 V2(HL7表0495)</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="制約一覧">制約一覧</h3>
-<p>JP Core MedicationDispense Injectionリソースに内包されるMedicationリソースは、以下の制約を満たさなければならない。</p>
-<ul>
-  <li>ingredient.strength.denominator.value : “1”に固定される。</li>
-  <li>ingredient.strength.denominator.unit : “回”に固定される。</li>
-  <li>ingredient.strength.denominator.system : “urn:oid:1.2.392.100495.20.2.101”に固定される。</li>
-  <li>ingredient.strength.denominator.code : “KAI”に固定される。</li>
-</ul>
-
 <h3 id="項目の追加">項目の追加</h3>
 <p>日本国内の電子カルテシステムでの注射オーダの運用に合わせ、以下の項目を追加した。</p>
 
@@ -2878,7 +2730,7 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 20, 2022 05:15+0000">2022-07-20</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 20, 2022 08:05+0000">2022-07-20</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

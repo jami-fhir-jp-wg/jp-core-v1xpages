@@ -383,9 +383,11 @@
       <li>
         <a href="#tabs-snap">Snapshot Table</a>
       </li>
+<!--
       <li>
         <a href="#tabs-snapms">Snapshot Table (Must Support)</a>
       </li>
+-->
 
 <!--      <li>
         <a href="#tabs-xml">Pseudo-XML</a>
@@ -1451,52 +1453,6 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
 <p>このプロファイルでは拡張定義は行っていない。</p>
 
-<h3 id="用語定義">用語定義</h3>
-<p>| Path                            | 定義                               | バインディング強度 | バリューセット |
-| ——————————- | ———————————- | —————— | ————– |
-| <code class="highlighter-rouge">Observation.category</code> | 「laboratoy」固定 | Preferred | <a href="https://hl7.org/fhir/valueset-observation-category.html"><code class="highlighter-rouge">ObservationCategoryCodes</code></a> |
-| <code class="highlighter-rouge">Observation.code</code> | JLAC10 | Preferred | <code class="highlighter-rouge">LabResultCode</code> |</p>
-
-<h3 id="制約一覧">制約一覧</h3>
-
-<!-- <span style="color:red;">レベルの指定が必要。</span>> 
--->
-
-<table>
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>レベル</th>
-      <th>位置</th>
-      <th>説明</th>
-      <th>式</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>jp-core-1</td>
-      <td>Warning</td>
-      <td><code class="highlighter-rouge">Observation.effective[x]</code></td>
-      <td>一日を含む細かな検体採取日時を必要がある。（年月のみでは不足）</td>
-      <td><code class="highlighter-rouge">Observation.effectiveDateTime.exists() implies Observation.effectiveDateTime.toString().length() &gt;= 8</code></td>
-    </tr>
-    <tr>
-      <td>jp-core-2</td>
-      <td>Warning</td>
-      <td><code class="highlighter-rouge">Observation</code></td>
-      <td><code class="highlighter-rouge">component</code> または、<code class="highlighter-rouge">hasMember</code> が存在しない場合、<code class="highlighter-rouge">value</code>が存在する必要がある。</td>
-      <td><code class="highlighter-rouge">component.empty() and hasMember.empty()) implies  value.exists()</code></td>
-    </tr>
-    <tr>
-      <td>obs-3</td>
-      <td>Guideline</td>
-      <td><code class="highlighter-rouge">Observation.referenceRange</code></td>
-      <td>可能な限り<code class="highlighter-rouge">low</code>、<code class="highlighter-rouge">high</code>に構造化すべき。構造化できない場合、あるいは<code class="highlighter-rouge">low</code>、<code class="highlighter-rouge">high</code>に該当しない場合は<code class="highlighter-rouge">text</code>を使用</td>
-      <td><code class="highlighter-rouge">low.exists() or high.exists() or text.exists()</code></td>
-    </tr>
-  </tbody>
-</table>
-
 <h2 id="利用方法">利用方法</h2>
 
 <h3 id="インタラクション一覧">インタラクション一覧</h3>
@@ -1853,7 +1809,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 20, 2022 05:15+0000">2022-07-20</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 20, 2022 08:05+0000">2022-07-20</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
