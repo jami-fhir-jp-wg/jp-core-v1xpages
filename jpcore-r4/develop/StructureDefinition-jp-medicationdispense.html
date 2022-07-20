@@ -1776,178 +1776,22 @@ DetectedIssue リソースへの参照。" class="dict"><span style="text-decora
 
 <p>HL7 V2系では用語集を識別するコーディングシステム名(以下、「CS名」）は文字列であったが、FHIRではURIを指定する必要があるため、それぞれにURIを割り当てた。以下に使用する用語集のCS名とURI表記を列記する。</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>分類</th>
-      <th>CS名</th>
-      <th>URI</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>医薬品</td>
-      <td>HOT7</td>
-      <td>urn:oid:1.2.392.200119.4.403.2</td>
-    </tr>
-    <tr>
-      <td>医薬品</td>
-      <td>HOT9</td>
-      <td>urn:oid:1.2.392.200119.4.403.1</td>
-    </tr>
-    <tr>
-      <td>医薬品</td>
-      <td>HOT13</td>
-      <td>urn:oid:1.2.392.200119.4.402.1</td>
-    </tr>
-    <tr>
-      <td>医薬品</td>
-      <td>YJコード</td>
-      <td>urn:oid:1.2.392.100495.20.1.73</td>
-    </tr>
-    <tr>
-      <td>医薬品</td>
-      <td>⼀般処⽅名マスター</td>
-      <td>urn:oid:1.2.392.100495.20.1.81</td>
-    </tr>
-    <tr>
-      <td>剤形</td>
-      <td>MERIT-9(剤形)</td>
-      <td>http://jpfhir.jp/ePrescription/CodeSystem/merit9-form</td>
-    </tr>
-    <tr>
-      <td>薬品単位</td>
-      <td>MERIT-9(単位）</td>
-      <td>urn:oid:1.2.392.100495.20.2.101</td>
-    </tr>
-    <tr>
-      <td>力価区分</td>
-      <td>電子処方箋HL7 FHIR仕様(力価区分)</td>
-      <td>urn:oid:1.2.392.100495.20.2.22</td>
-    </tr>
-    <tr>
-      <td>用法</td>
-      <td>JAMI処方・注射オーダ標準用法規格(用法コード)</td>
-      <td>urn:oid:1.2.392.200250.2.2.20.20</td>
-    </tr>
-    <tr>
-      <td>用法</td>
-      <td>JAMI処方・注射オーダ標準用法規格(補足用法コード)</td>
-      <td>urn:oid:1.2.392.200250.2.2.20.22</td>
-    </tr>
-    <tr>
-      <td>部位</td>
-      <td>JAMI処方・注射オーダ標準用法規格(部位コード)</td>
-      <td>urn:oid:1.2.392.200250.2.2.20.32</td>
-    </tr>
-    <tr>
-      <td>投与方法</td>
-      <td>JAMI処方・注射オーダ標準用法規格(基本用法区分)</td>
-      <td>urn:oid:1.2.392.200250.2.2.20.30</td>
-    </tr>
-    <tr>
-      <td>投与経路</td>
-      <td>HL7 V2(使用者定義表0162)</td>
-      <td>http://terminology.hl7.org/CodeSystem/v2-0162</td>
-    </tr>
-    <tr>
-      <td>入外区分</td>
-      <td>HL7V2(HL7表0482)</td>
-      <td>http://terminology.hl7.org/CodeSystem/v2-0482</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>JP Core MedicationDispenseリソースの各要素のバインディングは以下の通りである。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Path</th>
-      <th>定義</th>
-      <th>バインディング強度</th>
-      <th>バリューセット</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>MedicationDispense.status</td>
-      <td>オーダーの現在の状態を示すコード</td>
-      <td>required</td>
-      <td>http://hl7.org/fhir/ValueSet/MedicationDispense-status</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.medicationCodeableConcept</td>
-      <td>医薬品の識別情報</td>
-      <td>prefered</td>
-      <td>HOT7,HOT9,HOT13,YJコード,一般処方名マスター</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.additionalInstruction</td>
-      <td>補足用法</td>
-      <td>prefered</td>
-      <td>JAMI処方・注射オーダ標準用法規格(補足用法コード)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.timing.code</td>
-      <td>用法コード</td>
-      <td>prefered</td>
-      <td>JAMI処方・注射オーダ標準用法規格(用法コード)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.site</td>
-      <td>投与部位</td>
-      <td>prefered</td>
-      <td>JAMI処方・注射オーダ標準用法規格(外用部位コード)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.route</td>
-      <td>投与経路</td>
-      <td>prefered</td>
-      <td>HL7 V2(HL7表0162)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.method</td>
-      <td>投与方法</td>
-      <td>prefered</td>
-      <td>JAMI処方・注射オーダ標準用法規格(用法詳細区分)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.doseAndRate.doseQuantity.code</td>
-      <td>１回量単位</td>
-      <td>prefered</td>
-      <td>MERIT-9(単位)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.doseAndRate.rateRatio.numerator.code</td>
-      <td>１日量単位</td>
-      <td>prefered</td>
-      <td>MERIT-9(単位)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.dosageInstruction.doseAndRate.rateRatio.denominator.code</td>
-      <td>１日</td>
-      <td>required</td>
-      <td>UCUM(http://hl7.org/fhir/ValueSet/ucum-units)</td>
-    </tr>
-    <tr>
-      <td>MedicationDispense.quantity.code</td>
-      <td>調剤量単位</td>
-      <td>prefered</td>
-      <td>MERIT-9(単位)</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="制約一覧">制約一覧</h3>
-<p>JP Core MedicationDispense リソースは、以下の制約を満たさなければならない。</p>
-<ul>
-  <li>dosageInstruction.doseAndRage.rateRatio.denominator.value : １日量を記述する場合”1”に固定される。</li>
-  <li>dosageInstruction.doseAndRage.rateRatio.denominator.unit : １日量を記述する場合”日”に固定される。</li>
-  <li>dosageInstruction.doseAndRage.rateRatio.denominator.system : １日量を記述する場合”http://unitsofmeasure.org”に固定される。</li>
-  <li>dosageInstruction.doseAndRage.rateRatio.denominator.code : １日量を記述する場合”d”に固定される。</li>
-</ul>
-
+<p>|分類|CS名|URI|
+|———|—-|—————————|
+|医薬品|HOT7|urn:oid:1.2.392.200119.4.403.2|
+|医薬品|HOT9|urn:oid:1.2.392.200119.4.403.1|
+|医薬品|HOT13|urn:oid:1.2.392.200119.4.402.1|
+|医薬品|YJコード|urn:oid:1.2.392.100495.20.1.73|
+|医薬品|⼀般処⽅名マスター|urn:oid:1.2.392.100495.20.1.81|
+|剤形|MERIT-9(剤形)|http://jpfhir.jp/ePrescription/CodeSystem/merit9-form |
+|薬品単位|MERIT-9(単位）|urn:oid:1.2.392.100495.20.2.101|
+|力価区分|電子処方箋HL7 FHIR仕様(力価区分)|urn:oid:1.2.392.100495.20.2.22|
+|用法|JAMI処方・注射オーダ標準用法規格(用法コード)|urn:oid:1.2.392.200250.2.2.20.20|
+|用法|JAMI処方・注射オーダ標準用法規格(補足用法コード)|urn:oid:1.2.392.200250.2.2.20.22|
+|部位|JAMI処方・注射オーダ標準用法規格(部位コード)|urn:oid:1.2.392.200250.2.2.20.32|
+|投与方法|JAMI処方・注射オーダ標準用法規格(基本用法区分)|urn:oid:1.2.392.200250.2.2.20.30|
+|投与経路|HL7 V2(使用者定義表0162)|http://terminology.hl7.org/CodeSystem/v2-0162|
+|入外区分|HL7V2(HL7表0482)|http://terminology.hl7.org/CodeSystem/v2-0482|</p>
 <h3 id="項目の追加">項目の追加</h3>
 <p>療養担当則23条では、「保険医は、処方箋を交付する場合には、様式第二号若しくは第二号の二又はこれらに準ずる様式の処方箋に必要な事項を記載しなければならない。」とされており、外来処方、院内処方の区分を明示していない。
 したがって、個別のユースケースにおいては一部を省略されることも前提の上で、規格としてはこれに準拠すべきと考え、様式に収載されている以下の項目を追加した。</p>
@@ -2564,7 +2408,7 @@ GET [base]/MedicationDispense?patient=[url]&amp;whenhandedover=[date]
   <li>日本医療情報学会MERIT-9研究会, 医療情報交換規約運用指針、MERIT-9 処方オーダver 1.0, <a href="http://merit-9.mi.hama-med.ac.jp/jahis/SHOHOU.pdf">http://merit-9.mi.hama-med.ac.jp/jahis/SHOHOU.pdf</a></li>
   <li>保健医療福祉情報システム工業会, JAHISデータ交換規約（共通編）Ver.1.1, <a href="https://www.jahis.jp/standard/detail/id=125">https://www.jahis.jp/standard/detail/id=125</a></li>
   <li>保健医療福祉情報システム工業会, JAHIS注射データ交換規約Ver.2.1C, <a href="https://www.jahis.jp/standard/detail/id=590">https://www.jahis.jp/standard/detail/id=590</a></li>
-  <li><a name="l13475">​</a>児玉 義憲、<a href="hl7v2-to-fhir, 
+  <li><a name="l13076">​</a>児玉 義憲、<a href="hl7v2-to-fhir, 
 https://github.com/Acedia-Belphegor/hl7v2-to-fhir/">hl7v2-to-fhir, 
 https://github.com/Acedia-Belphegor/hl7v2-to-fhir/</a></li>
   <li>Mike Henderson, 日本HL7協会監修、「HL7メッセージ交換」、第2版、インナービジョン社、2013年</li>
@@ -2626,7 +2470,7 @@ https://github.com/Acedia-Belphegor/hl7v2-to-fhir/</a></li>
 
       <div class="inner-wrapper">
         <p>
-          IG &copy; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 20, 2022 03:55+0000">2022-07-20</span>
+          IG &copy; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 20, 2022 05:59+0000">2022-07-20</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

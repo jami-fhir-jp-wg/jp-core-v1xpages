@@ -1519,142 +1519,21 @@ The type is the Canonical URL of Resource Definition that is the type this refer
 
 <p>HL7 V2系では用語集を識別するコーディングシステム名(以下、「CS名」）は文字列であったが、FHIRではURIを指定する必要があるため、それぞれにURIを割り当てた。以下に使用する用語集のCS名とURI表記を列記する。</p>
 
-<p>★電子処方箋HL7 FHIR仕様を参照しているがよいか。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>分類</th>
-      <th>CS名</th>
-      <th>URI</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>医薬品</td>
-      <td>HOT7</td>
-      <td>urn:oid:1.2.392.200119.4.403.2</td>
-    </tr>
-    <tr>
-      <td>医薬品</td>
-      <td>HOT9</td>
-      <td>urn:oid:1.2.392.200119.4.403.1</td>
-    </tr>
-    <tr>
-      <td>医薬品</td>
-      <td>HOT13</td>
-      <td>urn:oid:1.2.392.200119.4.402.1</td>
-    </tr>
-    <tr>
-      <td>医薬品</td>
-      <td>YJコード</td>
-      <td>urn:oid:1.2.392.100495.20.1.73</td>
-    </tr>
-    <tr>
-      <td>医薬品</td>
-      <td>⼀般処⽅名マスター</td>
-      <td>urn:oid:1.2.392.100495.20.1.81</td>
-    </tr>
-    <tr>
-      <td>薬品単位</td>
-      <td>MERIT-9(単位）</td>
-      <td>urn:oid:1.2.392.100495.20.2.101</td>
-    </tr>
-    <tr>
-      <td>力価区分</td>
-      <td>電子処方箋HL7 FHIR仕様(力価区分)</td>
-      <td>urn:oid:1.2.392.100495.20.2.22</td>
-    </tr>
-    <tr>
-      <td>用法</td>
-      <td>JAMI処方・注射オーダ標準用法規格(用法コード)</td>
-      <td>urn:oid:1.2.392.200250.2.2.20.20</td>
-    </tr>
-    <tr>
-      <td>用法</td>
-      <td>JAMI処方・注射オーダ標準用法規格(補足用法コード)</td>
-      <td>urn:oid:1.2.392.200250.2.2.20.22</td>
-    </tr>
-    <tr>
-      <td>部位</td>
-      <td>JAMI処方・注射オーダ標準用法規格(部位コード)</td>
-      <td>urn:oid:1.2.392.200250.2.2.20.32</td>
-    </tr>
-    <tr>
-      <td>投与方法</td>
-      <td>JAMI処方・注射オーダ標準用法規格(基本用法区分)</td>
-      <td>urn:oid:1.2.392.200250.2.2.20.30</td>
-    </tr>
-    <tr>
-      <td>投与経路</td>
-      <td>JAMI処方・注射オーダ標準用法規格(用法詳細区分)</td>
-      <td>urn:oid:1.2.392.200250.2.2.20.40</td>
-    </tr>
-    <tr>
-      <td>入外区分</td>
-      <td>HL7V2(HL7表0482)</td>
-      <td>http://terminology.hl7.org/CodeSystem/v2-0482</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>MedicationAdministrationの各要素のバインディングは以下の通りである。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Path</th>
-      <th>定義</th>
-      <th>バインディング強度</th>
-      <th>バリューセット</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>MedicationAdministration.status</td>
-      <td>投与実施の状態を示すコード</td>
-      <td>required</td>
-      <td>http://hl7.org/fhir/ValueSet/medication-admin-status</td>
-    </tr>
-    <tr>
-      <td>MedicationAdministration.medicationCodeableConcept</td>
-      <td>医薬品の識別情報</td>
-      <td>prefered</td>
-      <td>HOT7,HOT9,HOT13,YJコード</td>
-    </tr>
-    <tr>
-      <td>MedicationAdministration.dosage.site</td>
-      <td>投与部位</td>
-      <td>prefered</td>
-      <td>JAMI処方・注射オーダ標準用法規格(外用部位コード)</td>
-    </tr>
-    <tr>
-      <td>MedicationAdministration.dosage.route</td>
-      <td>投与経路</td>
-      <td>prefered</td>
-      <td>JAMI処方・注射オーダ標準用法規格(用法詳細区分)</td>
-    </tr>
-    <tr>
-      <td>MedicationAdministration.dosage.method</td>
-      <td>投与方法</td>
-      <td>prefered</td>
-      <td>JAMI処方・注射オーダ標準用法規格(基本用法区分)</td>
-    </tr>
-    <tr>
-      <td>MedicationAdministration.dosage.dose.code</td>
-      <td>１回量単位</td>
-      <td>prefered</td>
-      <td>MERIT-9(単位)</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="制約一覧">制約一覧</h3>
-<p>MedicationAdministration リソースは、以下の制約を満たさなければならない。</p>
-<ul>
-  <li>status : JP Coreでは <code class="highlighter-rouge">completed</code> or <code class="highlighter-rouge">stopped</code> に限定される。</li>
-</ul>
-
+<p>|分類|CS名|URI|
+|———|—-|—————————|
+|医薬品|HOT7|urn:oid:1.2.392.200119.4.403.2|
+|医薬品|HOT9|urn:oid:1.2.392.200119.4.403.1|
+|医薬品|HOT13|urn:oid:1.2.392.200119.4.402.1|
+|医薬品|YJコード|urn:oid:1.2.392.100495.20.1.73|
+|医薬品|⼀般処⽅名マスター|urn:oid:1.2.392.100495.20.1.81|
+|薬品単位|MERIT-9(単位）|urn:oid:1.2.392.100495.20.2.101|
+|力価区分|電子処方箋HL7 FHIR仕様(力価区分)|urn:oid:1.2.392.100495.20.2.22|
+|用法|JAMI処方・注射オーダ標準用法規格(用法コード)|urn:oid:1.2.392.200250.2.2.20.20|
+|用法|JAMI処方・注射オーダ標準用法規格(補足用法コード)|urn:oid:1.2.392.200250.2.2.20.22|
+|部位|JAMI処方・注射オーダ標準用法規格(部位コード)|urn:oid:1.2.392.200250.2.2.20.32|
+|投与方法|JAMI処方・注射オーダ標準用法規格(基本用法区分)|urn:oid:1.2.392.200250.2.2.20.30|
+|投与経路|JAMI処方・注射オーダ標準用法規格(用法詳細区分)|urn:oid:1.2.392.200250.2.2.20.40|
+|入外区分|HL7V2(HL7表0482)|http://terminology.hl7.org/CodeSystem/v2-0482|</p>
 <h3 id="項目の追加">項目の追加</h3>
 <p>MedicationAdministrationリソースでは、依頼元のMedicationRequestリソースをrequest要素にReferenceで参照できるようになっているが、
 依頼元のMedicationRequestリソースが取得できないケースも考慮して、依頼情報を直接記述できるように以下の項目を追加した。</p>
@@ -2491,7 +2370,7 @@ performer.actorには、医療従事者(Practitioner)、または患者(Patient)
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 20, 2022 03:55+0000">2022-07-20</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 20, 2022 05:59+0000">2022-07-20</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
