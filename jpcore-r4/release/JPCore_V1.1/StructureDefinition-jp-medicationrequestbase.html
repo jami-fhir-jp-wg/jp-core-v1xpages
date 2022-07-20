@@ -298,7 +298,7 @@
 
   <!-- no uri -->
   <a name="profile"> </a>
-  <h3 id="profile">Formal Views of Profile Content</h3>
+  <h3 id="profile">Profile Content (プロファイル詳細) </h3>
   <p>
     <a href="http://hl7.org/fhir/R4/profiling.html#presentation">Description of Profiles, Differentials, Snapshots and how the different presentations work</a>.
   </p>
@@ -314,8 +314,16 @@
         <a href="#tabs-snap">Snapshot Table</a>
       </li>
       <li>
+        <a href="#terminology-bindings-view">Terminology Bindings</a>
+      </li>
+      <li>
+        <a href="#constraints-view">Constraints</a>
+      </li>
+<!--
+      <li>
         <a href="#tabs-snapms">Snapshot Table (Must Support)</a>
       </li>
+-->
 
 <!--      <li>
         <a href="#tabs-xml">Pseudo-XML</a>
@@ -1044,6 +1052,405 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <tr style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white"><td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck00.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_reference.png" alt="." style="background-color: white; background-color: inherit" title="Reference to another Resource" class="hierarchy"/> <a href="StructureDefinition-jp-medicationrequestbase-definitions.html#MedicationRequest.eventHistory" title="このリソースの現在のバージョンをユーザーから見て関係していそうなキーとなる更新や状態遷移と識別される過去のバージョンのこのリソースあるいは調剤請求あるいはEvent ResourceについてのProvenance resourceへの参照。">eventHistory</a><a name="MedicationRequest.eventHistory"> </a></td><td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"></td><td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td><td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="http://hl7.org/fhir/R4/provenance.html">Provenance</a>)</td><td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">ライフサイクルで関心のあるイベントのリスト<br/></td></tr>
 <tr><td colspan="5" class="hierarchy"><br/><a href="http://hl7.org/fhir/R4/formats.html#table" title="Legend for this format"><img src="http://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr></table>
         </div>
+      </div>
+    </div>
+    <a name="terminology-bindings-view"> </a>
+    <div id="terminology-bindings-view">
+      <div id="terminology-bindings-view-inner">
+        <!--Terminology Bindings heading in the fragment -->
+        <h4>Terminology Bindings</h4>
+<table class="list">
+<tr><td><b>Path</b></td><td><b>Conformance</b></td><td><b>ValueSet / Code</b></td></tr>
+<tr><td>MedicationRequest.language</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#preferred">preferred</a></td><td title="A human language."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-languages.html">CommonLanguages</a><br/><a style="font-weight:bold" title="Max Value Set Extension" href="http://hl7.org/fhir/R4/extension-elementdefinition-maxvalueset.html">Max Binding</a>: <a href="http://hl7.org/fhir/R4/valueset-all-languages.html">AllLanguages</a></td></tr>
+<tr><td>MedicationRequest.identifier:requestIdentifier.use</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#required">required</a></td><td title="Identifies the purpose for this identifier, if known ."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a></td></tr>
+<tr><td>MedicationRequest.identifier:requestIdentifier.type</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#extensible">extensible</a></td><td title="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-identifier-type.html">Identifier Type Codes</a></td></tr>
+<tr><td>MedicationRequest.status</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#required">required</a></td><td title="A coded concept specifying the state of the prescribing event. Describes the lifecycle of the prescription."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-medicationrequest-status.html">medicationrequest Status</a></td></tr>
+<tr><td>MedicationRequest.statusReason</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="Identifies the reasons for a given status."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-medicationrequest-status-reason.html">medicationRequest Status Reason Codes</a></td></tr>
+<tr><td>MedicationRequest.intent</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#required">required</a></td><td title="The kind of medication order.">Fixed Value: order</td></tr>
+<tr><td>MedicationRequest.category</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="MedicationRequest Resourceの区分を示すコード化された概念。たとえば、どこで服薬あるいは投与されるか、治療の種別はどうかについて。FHIRでは"><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-medicationrequest-category.html">medicationRequest Category Codes</a></td></tr>
+<tr><td>MedicationRequest.priority</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#required">required</a></td><td title="Identifies the level of importance to be assigned to actioning the request."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-request-priority.html">RequestPriority</a></td></tr>
+<tr><td>MedicationRequest.medication[x]</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="A coded concept identifying substance or product that can be ordered."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-medication-codes.html">SNOMEDCTMedicationCodes</a></td></tr>
+<tr><td>MedicationRequest.medication[x]:medicationCodeableConcept</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#preferred">preferred</a></td><td title="処方する製剤を表すコード。"><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-medication-codes.html">SNOMEDCTMedicationCodes</a></td></tr>
+<tr><td>MedicationRequest.subject.type</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#extensible">extensible</a></td><td title="Aa resource (or, for logical models, the URI of the logical model)."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-resource-types.html">ResourceType</a></td></tr>
+<tr><td>MedicationRequest.performerType</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="Identifies the type of individual that is desired to administer the medication."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-performer-role.html">ProcedurePerformerRoleCodes</a></td></tr>
+<tr><td>MedicationRequest.reasonCode</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="A coded concept indicating why the medication was ordered."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-condition-code.html">Condition/Problem/DiagnosisCodes</a></td></tr>
+<tr><td>MedicationRequest.courseOfTherapyType</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="Identifies the overall pattern of medication administratio."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-medicationrequest-course-of-therapy.html">medicationRequest Course of Therapy Codes</a></td></tr>
+<tr><td>MedicationRequest.dosageInstruction.additionalInstruction</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="A coded concept identifying additional instructions such as &quot;take with water&quot; or &quot;avoid operating heavy machinery&quot;."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-additional-instruction-codes.html">SNOMEDCTAdditionalDosageInstructions</a></td></tr>
+<tr><td>MedicationRequest.dosageInstruction.timing.repeat.durationUnit</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#required">required</a></td><td title="A unit of time (units from UCUM)."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-units-of-time.html">UnitsOfTime</a></td></tr>
+<tr><td>MedicationRequest.dosageInstruction.timing.repeat.periodUnit</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#required">required</a></td><td title="A unit of time (units from UCUM)."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-units-of-time.html">UnitsOfTime</a></td></tr>
+<tr><td>MedicationRequest.dosageInstruction.timing.repeat.dayOfWeek</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#required">required</a></td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-days-of-week.html">DaysOfWeek</a></td></tr>
+<tr><td>MedicationRequest.dosageInstruction.timing.repeat.when</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#required">required</a></td><td title="Real world event relating to the schedule."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-event-timing.html">EventTiming</a></td></tr>
+<tr><td>MedicationRequest.dosageInstruction.timing.code</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#preferred">preferred</a></td><td title="Code for a known / defined timing pattern."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-timing-abbreviation.html">TimingAbbreviation</a></td></tr>
+<tr><td>MedicationRequest.dosageInstruction.site</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="A coded concept describing the site location the medicine enters into or onto the body."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-approach-site-codes.html">SNOMEDCTAnatomicalStructureForAdministrationSiteCodes</a></td></tr>
+<tr><td>MedicationRequest.dosageInstruction.route</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-route-codes.html">SNOMEDCTRouteCodes</a></td></tr>
+<tr><td>MedicationRequest.dosageInstruction.method</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="A coded concept describing the technique by which the medicine is administered."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-administration-method-codes.html">SNOMEDCTAdministrationMethodCodes</a></td></tr>
+<tr><td>MedicationRequest.dosageInstruction.doseAndRate.type</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="The kind of dose or rate specified."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-dose-rate-type.html">DoseAndRateType</a></td></tr>
+<tr><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.numerator.comparator</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#required">required</a></td><td title="How the Quantity should be understood and represented."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-quantity-comparator.html">QuantityComparator</a></td></tr>
+<tr><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.denominator.comparator</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#required">required</a></td><td title="How the Quantity should be understood and represented."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-quantity-comparator.html">QuantityComparator</a></td></tr>
+<tr><td>MedicationRequest.dispenseRequest.initialFill.duration.comparator</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#required">required</a></td><td title="How the Quantity should be understood and represented."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-quantity-comparator.html">QuantityComparator</a></td></tr>
+<tr><td>MedicationRequest.dispenseRequest.dispenseInterval.comparator</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#required">required</a></td><td title="How the Quantity should be understood and represented."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-quantity-comparator.html">QuantityComparator</a></td></tr>
+<tr><td>MedicationRequest.substitution.allowed[x]</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="Identifies the type of substitution allowed."><a style="opacity: 1.0" href="http://terminology.hl7.org/3.1.0/ValueSet-v3-ActSubstanceAdminSubstitutionCode.html">ActSubstanceAdminSubstitutionCode</a></td></tr>
+<tr><td>MedicationRequest.substitution.reason</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="A coded concept describing the reason that a different medication should (or should not) be substituted from what was prescribed."><a style="opacity: 1.0" href="http://terminology.hl7.org/3.1.0/ValueSet-v3-SubstanceAdminSubstitutionReason.html">SubstanceAdminSubstitutionReason</a></td></tr>
+</table>
+
+      </div>
+    </div>
+    <a name="constraints-view"> </a>
+    <div id="constraints-view">
+      <div id="constraints-view-inner">
+        <h4>Constraints</h4>
+<table class="list">
+<tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
+<tr><td>dom-2</td><td>error</td><td>MedicationRequest</td><td>If the resource is contained in another resource, it SHALL NOT contain nested Resources<br/>: contained.contained.empty()</td><td></td></tr>
+<tr><td>dom-3</td><td>error</td><td>MedicationRequest</td><td>If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource<br/>: contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()</td><td></td></tr>
+<tr><td>dom-4</td><td>error</td><td>MedicationRequest</td><td>If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated<br/>: contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()</td><td></td></tr>
+<tr><td>dom-5</td><td>error</td><td>MedicationRequest</td><td>If a resource is contained in another resource, it SHALL NOT have a security label<br/>: contained.meta.security.empty()</td><td></td></tr>
+<tr><td>dom-6</td><td>Best Practice</td><td>MedicationRequest</td><td>A resource should have narrative for robust management<br/>: text.`div`.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.meta</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.implicitRules</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.language</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.text</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.extension:preparation</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.extension:preparation</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.modifierExtension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.modifierExtension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:rpNumber</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:rpNumber.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.identifier:rpNumber.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:rpNumber.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:rpNumber.value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:orderInRp</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:orderInRp.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.identifier:orderInRp.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:orderInRp.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:orderInRp.value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:requestIdentifier</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:requestIdentifier.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.identifier:requestIdentifier.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:requestIdentifier.use</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:requestIdentifier.type</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:requestIdentifier.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:requestIdentifier.value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:requestIdentifier.period</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.identifier:requestIdentifier.assigner</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.status</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.statusReason</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.intent</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.category</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.priority</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.doNotPerform</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.reported[x]</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.medication[x]</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.medication[x]:medicationCodeableConcept</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.medication[x]:medicationCodeableConcept.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.medication[x]:medicationCodeableConcept.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.medication[x]:medicationCodeableConcept.coding</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.medication[x]:medicationCodeableConcept.coding.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.medication[x]:medicationCodeableConcept.coding.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.medication[x]:medicationCodeableConcept.coding.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.medication[x]:medicationCodeableConcept.coding.version</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.medication[x]:medicationCodeableConcept.coding.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.medication[x]:medicationCodeableConcept.coding.display</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.medication[x]:medicationCodeableConcept.coding.userSelected</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.medication[x]:medicationCodeableConcept.text</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.medication[x]:medicationReference</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.subject</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.subject.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.subject.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.subject.reference</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.subject.type</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.subject.identifier</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.subject.display</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.encounter</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.supportingInformation</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.authoredOn</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.requester</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.performer</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.performerType</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.recorder</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.reasonCode</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.reasonReference</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.instantiatesCanonical</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.instantiatesUri</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.basedOn</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.groupIdentifier</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.courseOfTherapyType</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.insurance</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.note</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.extension:periodOfUse</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.extension:periodOfUse</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.extension:usageDuration</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.extension:usageDuration</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.extension:line</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.extension:line</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.extension:device</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.extension:device</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.modifierExtension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.modifierExtension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.sequence</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.text</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.additionalInstruction</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.additionalInstruction.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.additionalInstruction.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.additionalInstruction.coding</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.additionalInstruction.coding.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.additionalInstruction.coding.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.additionalInstruction.coding.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.additionalInstruction.coding.version</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.additionalInstruction.coding.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.additionalInstruction.coding.display</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.additionalInstruction.coding.userSelected</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.additionalInstruction.text</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.patientInstruction</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.modifierExtension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.modifierExtension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.event</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>tim-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat</td><td>if there's a duration, there needs to be duration units<br/>: duration.empty() or durationUnit.exists()</td><td></td></tr>
+<tr><td>tim-2</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat</td><td>if there's a period, there needs to be period units<br/>: period.empty() or periodUnit.exists()</td><td></td></tr>
+<tr><td>tim-4</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat</td><td>duration SHALL be a non-negative value<br/>: duration.exists() implies duration &gt;= 0</td><td></td></tr>
+<tr><td>tim-5</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat</td><td>period SHALL be a non-negative value<br/>: period.exists() implies period &gt;= 0</td><td></td></tr>
+<tr><td>tim-6</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat</td><td>If there's a periodMax, there must be a period<br/>: periodMax.empty() or period.exists()</td><td></td></tr>
+<tr><td>tim-7</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat</td><td>If there's a durationMax, there must be a duration<br/>: durationMax.empty() or duration.exists()</td><td></td></tr>
+<tr><td>tim-8</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat</td><td>If there's a countMax, there must be a count<br/>: countMax.empty() or count.exists()</td><td></td></tr>
+<tr><td>tim-9</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat</td><td>If there's an offset, there must be a when (and not C, CM, CD, CV)<br/>: offset.empty() or (when.exists() and ((when in ('C' | 'CM' | 'CD' | 'CV')).not()))</td><td></td></tr>
+<tr><td>tim-10</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat</td><td>If there's a timeOfDay, there cannot be a when, or vice versa<br/>: timeOfDay.empty() or when.empty()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.bounds[x]</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.bounds[x]:boundsDuration</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.bounds[x]:boundsDuration.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.bounds[x]:boundsDuration.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.bounds[x]:boundsDuration.value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.bounds[x]:boundsDuration.unit</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.bounds[x]:boundsDuration.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.bounds[x]:boundsDuration.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.count</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.countMax</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.duration</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.durationMax</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.durationUnit</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.frequency</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.frequencyMax</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.period</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.periodMax</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.periodUnit</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.dayOfWeek</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.timeOfDay</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.when</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.repeat.offset</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.timing.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.asNeeded[x]</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.site</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.site.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.site.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.site.coding</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.site.coding.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.site.coding.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.site.coding.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.site.coding.version</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.site.coding.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.site.coding.display</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.site.coding.userSelected</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.site.text</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.route</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.route.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.route.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.route.coding</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.route.coding.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.route.coding.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.route.coding.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.route.coding.version</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.route.coding.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.route.coding.display</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.route.coding.userSelected</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.route.text</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit1</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit1.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit1.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit1.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit1.version</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit1.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit1.display</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit1.userSelected</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit2</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit2.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit2.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit2.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit2.version</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit2.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit2.display</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.coding:unitDigit2.userSelected</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.method.text</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.type</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.type.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.type.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.type.coding</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.type.coding.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.type.coding.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.type.coding.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.type.coding.version</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.type.coding.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.type.coding.display</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.type.coding.userSelected</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.type.text</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.dose[x]</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>qty-3</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.dose[x]</td><td>If a code for the unit is present, the system SHALL also be present<br/>: code.empty() or system.exists()</td><td></td></tr>
+<tr><td>sqty-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.dose[x]</td><td>The comparator is not used on a SimpleQuantity<br/>: comparator.empty()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.dose[x].extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.dose[x].extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.dose[x].value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.dose[x].unit</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.dose[x].system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.dose[x].code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x]</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].numerator</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].numerator.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].numerator.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].numerator.value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].numerator.unit</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].numerator.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].numerator.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].denominator</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].denominator.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].denominator.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].denominator.value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].denominator.unit</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].denominator.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.doseAndRate.rate[x].denominator.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.numerator</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.numerator.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.numerator.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.numerator.value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.numerator.comparator</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.numerator.unit</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.numerator.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.numerator.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.denominator</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.denominator.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.denominator.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.denominator.value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.denominator.comparator</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.denominator.unit</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.denominator.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerPeriod.denominator.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerAdministration</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerAdministration.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerAdministration.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerAdministration.value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerAdministration.unit</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerAdministration.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerAdministration.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerLifetime</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerLifetime.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerLifetime.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerLifetime.value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerLifetime.unit</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerLifetime.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dosageInstruction.maxDosePerLifetime.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dispenseRequest.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.extension:instructionForDispense</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dispenseRequest.extension:instructionForDispense</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.extension:instructionForDispense.value[x]</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.extension:expectedRepeatCount</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dispenseRequest.extension:expectedRepeatCount</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.modifierExtension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dispenseRequest.modifierExtension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.modifierExtension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.modifierExtension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.quantity</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.quantity.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.quantity.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.quantity.value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.quantity.unit</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.quantity.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.quantity.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.duration</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.duration.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.duration.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.duration.value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.duration.comparator</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.duration.unit</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.duration.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.initialFill.duration.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.dispenseInterval</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.dispenseInterval.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dispenseRequest.dispenseInterval.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.dispenseInterval.value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.dispenseInterval.comparator</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.dispenseInterval.unit</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.dispenseInterval.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.dispenseInterval.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.validityPeriod</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.validityPeriod.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dispenseRequest.validityPeriod.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.validityPeriod.start</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.validityPeriod.end</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.numberOfRepeatsAllowed</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.quantity</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.quantity.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dispenseRequest.quantity.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.quantity.value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.quantity.unit</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.quantity.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.quantity.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.expectedSupplyDuration</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.expectedSupplyDuration.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.dispenseRequest.expectedSupplyDuration.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.expectedSupplyDuration.value</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.expectedSupplyDuration.unit</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.expectedSupplyDuration.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.expectedSupplyDuration.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.dispenseRequest.performer</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.substitution</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.substitution.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.substitution.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.substitution.modifierExtension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.substitution.modifierExtension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.substitution.allowed[x]</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.substitution.allowed[x].extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.substitution.allowed[x].extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.substitution.allowed[x].coding</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.substitution.allowed[x].coding.extension</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ext-1</td><td>error</td><td>MedicationRequest.substitution.allowed[x].coding.extension</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.substitution.allowed[x].coding.system</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.substitution.allowed[x].coding.version</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.substitution.allowed[x].coding.code</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.substitution.allowed[x].coding.display</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.substitution.allowed[x].coding.userSelected</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.substitution.allowed[x].text</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.substitution.reason</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.priorPrescription</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.detectedIssue</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+<tr><td>ele-1</td><td>error</td><td>MedicationRequest.eventHistory</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
+</table>
+
       </div>
     </div>
 
@@ -2646,15 +3053,10 @@ Indicates the intended dispensing Organization specified by the prescriber" clas
       </div>-->
 
 
-    </div>
-  </div>
-  <p>&#160;</p>
-  <p>Other representations of profile: <a href="StructureDefinition-jp-medicationrequestbase.csv">CSV</a>, <a href="StructureDefinition-jp-medicationrequestbase.xlsx">Excel</a>, <a href="StructureDefinition-jp-medicationrequestbase.sch">Schematron</a>
- 
-  </p>
-  <a name="tx"> </a>
-  <!--Terminology Bindings heading in the fragment -->
-  <h4>Terminology Bindings</h4>
+      <div id="terminology-bindings-view">
+        <div id="terminology-bindings-view-inner">
+          <!--Terminology Bindings heading in the fragment -->
+          <h4>Terminology Bindings</h4>
 <table class="list">
 <tr><td><b>Path</b></td><td><b>Conformance</b></td><td><b>ValueSet / Code</b></td></tr>
 <tr><td>MedicationRequest.language</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#preferred">preferred</a></td><td title="A human language."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-languages.html">CommonLanguages</a><br/><a style="font-weight:bold" title="Max Value Set Extension" href="http://hl7.org/fhir/R4/extension-elementdefinition-maxvalueset.html">Max Binding</a>: <a href="http://hl7.org/fhir/R4/valueset-all-languages.html">AllLanguages</a></td></tr>
@@ -2689,13 +3091,11 @@ Indicates the intended dispensing Organization specified by the prescriber" clas
 <tr><td>MedicationRequest.substitution.reason</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="A coded concept describing the reason that a different medication should (or should not) be substituted from what was prescribed."><a style="opacity: 1.0" href="http://terminology.hl7.org/3.1.0/ValueSet-v3-SubstanceAdminSubstitutionReason.html">SubstanceAdminSubstitutionReason</a></td></tr>
 </table>
 
-
-  
-  <!-- 218 is size of empty table -->
-  
-    <a name="inv"> </a>
-    <!--Constraints  heading in the fragment -->
-    <h4>Constraints</h4>
+        </div>
+      </div>
+      <div id="constraints-view">
+        <div id="constraints-view-inner">
+          <h4>Constraints</h4>
 <table class="list">
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
 <tr><td>dom-2</td><td>error</td><td>MedicationRequest</td><td>If the resource is contained in another resource, it SHALL NOT contain nested Resources<br/>: contained.contained.empty()</td><td></td></tr>
@@ -3048,7 +3448,14 @@ Indicates the intended dispensing Organization specified by the prescriber" clas
 <tr><td>ele-1</td><td>error</td><td>MedicationRequest.eventHistory</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
 </table>
 
-  
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>&#160;</p>
+  <p>Other representations of profile: <a href="StructureDefinition-jp-medicationrequestbase.csv">CSV</a>, <a href="StructureDefinition-jp-medicationrequestbase.xlsx">Excel</a>, <a href="StructureDefinition-jp-medicationrequestbase.sch">Schematron</a>
+ 
+  </p>
 
   
 
@@ -3103,7 +3510,7 @@ Indicates the intended dispensing Organization specified by the prescriber" clas
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jul 19, 2022 08:05+0000">2022-07-19</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 20, 2022 22:47+0000">2022-07-20</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
