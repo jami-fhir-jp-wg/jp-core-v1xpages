@@ -18,58 +18,58 @@
   <sch:pattern>
     <sch:title>HumanName</sch:title>
     <sch:rule context="f:HumanName">
-      <sch:assert test="@value|f:*|h:div">すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>HumanName.extension</sch:title>
     <sch:rule context="f:HumanName/f:extension">
-      <sch:assert test="@value|f:*|h:div">すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children (inherited)</sch:assert>
-      <sch:assert test="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])">両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both (inherited)</sch:assert>
-      <sch:assert test="@value|f:*|h:div">すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children (inherited)</sch:assert>
-      <sch:assert test="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])">両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])">Must have either extensions or value[x], not both (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])">Must have either extensions or value[x], not both (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>HumanName.use</sch:title>
     <sch:rule context="f:HumanName/f:use">
-      <sch:assert test="@value|f:*|h:div">すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>HumanName.text</sch:title>
     <sch:rule context="f:HumanName/f:text">
-      <sch:assert test="@value|f:*|h:div">すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>HumanName.family</sch:title>
     <sch:rule context="f:HumanName/f:family">
-      <sch:assert test="@value|f:*|h:div">すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>HumanName.given</sch:title>
     <sch:rule context="f:HumanName/f:given">
-      <sch:assert test="@value|f:*|h:div">すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>HumanName.prefix</sch:title>
     <sch:rule context="f:HumanName/f:prefix">
-      <sch:assert test="@value|f:*|h:div">すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>HumanName.suffix</sch:title>
     <sch:rule context="f:HumanName/f:suffix">
-      <sch:assert test="@value|f:*|h:div">すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>HumanName.period</sch:title>
     <sch:rule context="f:HumanName/f:period">
-      <sch:assert test="@value|f:*|h:div">すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
 </sch:schema>
