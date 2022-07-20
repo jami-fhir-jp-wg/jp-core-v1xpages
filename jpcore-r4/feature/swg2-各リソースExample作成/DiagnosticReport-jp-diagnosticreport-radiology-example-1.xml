@@ -3,23 +3,62 @@
 <DiagnosticReport xmlns="http://hl7.org/fhir">
   <id value="jp-diagnosticreport-radiology-example-1"/>
   <meta>
-    <versionId value="1"/>
-    <lastUpdated value="2020-10-25T17:00:03.903+00:00"/>
-    <source value="xxxxxxxxxxxxxx"/>
     <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Radiology"/>
   </meta>
   <text>
-    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><h2><span title="Codes: {http://loinc.org 10191-5}">Physical findings of Abdomen Narrative</span> (<span title="Codes: {http://hl7.org/fhir/v2/0074 RAD}">RAD</span>) </h2><table class="grid"><tr><td>Subject</td><td>Unable to get Patient Details</td></tr><tr><td>When For</td><td>2008-06-17</td></tr><tr><td>Reported</td><td>2008-06-18 09:23:00+1000</td></tr><tr><td>Identifier:</td><td> id: xxxxxxxxxxxxxxx (USUAL)</td></tr></table><p><b>Report Details</b></p><p>インプレッション: ひだり肺上葉の空洞性病変。 肺腺癌を疑う。みぎ肺上葉陳旧性炎症性瘢痕。</p></div>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><h2><span title="Codes: {http://loinc.org 10191-5}">Physical findings of Abdomen Narrative</span> (<span title="Codes: {http://hl7.org/fhir/ValueSet/diagnostic-service-sections RAD}">RAD</span>) </h2><table class="grid"><tr><td>Subject</td><td><b>山田 太郎</b> male, DoB: 1970-01-01 ( id: 00000010)</td></tr><tr><td>When For</td><td>2008-06-17</td></tr><tr><td>Reported</td><td>2008-06-18 09:23:00+1000</td></tr><tr><td>Identifier:</td><td> id: 123456 (USUAL)</td></tr></table><p><b>Report Details</b></p><p>インプレッション: ひだり肺上葉の空洞性病変。 肺腺癌を疑う。みぎ肺上葉陳旧性炎症性瘢痕。</p></div>
   </text>
+  <contained>
+    <ImagingStudy>
+      <id value="jp-imagingstudy-radiology-example-1"/>
+      <meta>
+        <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Radiology"/>
+      </meta>
+      <identifier>
+        <system value="http://www.acme.com/identifiers/patient"/>
+        <value value="urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430045"/>
+      </identifier>
+      <status value="available"/>
+      <subject>
+        <reference value="Patient/jp-patient-example-1"/>
+      </subject>
+      <started value="2011-01-01T11:01:20+09:00"/>
+      <numberOfSeries value="1"/>
+      <numberOfInstances value="1"/>
+      <series>
+        <uid value="2.16.124.113543.6003.2588828330.45298.17418.2723805630"/>
+        <number value="3"/>
+        <modality>
+          <system value="http://dicom.nema.org/resources/ontology/DCM"/>
+          <code value="CT"/>
+        </modality>
+        <description value="CT胸部スクリーニング"/>
+        <numberOfInstances value="1"/>
+        <bodySite>
+          <system value="http://jpfhir.jp/Common/ValueSet/imagingStudy-bodySite"/>
+          <code value="43799004"/>
+          <display value="Chest"/>
+        </bodySite>
+        <instance>
+          <uid value="2.16.124.113543.6003.189642796.63084.16748.2599092903"/>
+          <sopClass>
+            <system value="urn:ietf:rfc:3986"/>
+            <code value="urn:oid:1.2.840.10008.5.1.4.1.1.2"/>
+          </sopClass>
+          <number value="1"/>
+        </instance>
+      </series>
+    </ImagingStudy>
+  </contained>
   <identifier>
     <use value="usual"/>
-    <system value="http://www.acme.com/identifiers/patient"/>
-    <value value="xxxxxxxxxxxxxxx"/>
+    <system value="http://jpfhir.jp/fhir/Common/IdSystem/resourceInstance-identifier"/>
+    <value value="123456"/>
   </identifier>
   <status value="final"/>
   <category>
     <coding>
-      <system value="http://hl7.org/fhir/v2/0074"/>
+      <system value="http://hl7.org/fhir/ValueSet/diagnostic-service-sections"/>
       <code value="RAD"/>
     </coding>
   </category>
@@ -30,16 +69,16 @@
     </coding>
   </code>
   <subject>
-    <reference value="&quot;Patient/jp-patient-example-1&quot;"/>
+    <reference value="Patient/jp-patient-example-1"/>
   </subject>
   <effectiveDateTime value="2008-06-17"/>
   <issued value="2008-06-18T09:23:00+10:00"/>
   <performer>
-    <reference value="&quot;Practitioner/3ad0687e-f477-468c-afd5-fcc2bf897809&quot;"/>
-    <display value="田中太郎"/>
+    <reference value="Practitioner/jp-practionner-example-male-1"/>
+    <display value="大阪 一郎"/>
   </performer>
   <imagingStudy>
-    <reference value="http://someserver/some-path"/>
+    <reference value="#jp-imagingstudy-radiology-example-1"/>
     <display value="CHEST CT DICOM imaging study"/>
   </imagingStudy>
   <conclusion value="インプレッション: ひだり肺上葉の空洞性病変。 肺腺癌を疑う。みぎ肺上葉陳旧性炎症性瘢痕。"/>
