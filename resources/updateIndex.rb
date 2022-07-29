@@ -74,7 +74,7 @@ infos.sort_by {|v| v["date"]}.reverse.each do |i|
     if(i['json']['group']=="pullrequest")
         prcount = prcount + 1
     end
-    if(i['json']['group']!="pullrequest" || prcount <= 5)
+    if(i['json']['group']!="pullrequest" || prcount <= 10)
         if(first)
             first=false
             i['date'] =  i['date'] + '<label class="new">new</label>'
