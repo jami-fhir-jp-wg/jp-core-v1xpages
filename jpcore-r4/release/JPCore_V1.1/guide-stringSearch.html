@@ -237,7 +237,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li><a href="https://www.hl7.org/fhir/search.html#string">string</a></li>
       <li><a href="https://www.hl7.org/fhir/search.html#:~:text=The%20%3Acontains%20modifier%20returns%20results%20that%20include%20the%20supplied%20parameter%20value%20anywhere%20within%20the%20field%20being%20searched.">string: contains</a></li>
       <li><a href="https://www.hl7.org/fhir/search.html#:~:text=Use-,%3Atext,-The%20search%20parameter">token: text</a> （code型などに対して、CodeableConcept.textなどのテキストデータを通常のstring型の検索を行う）<br />
-基本的な文字列検索であり、患者名や住所、病名など検索がこのタイプである。FHIR®では、このタイプの検索において<a href="https://www.hl7.org/fhir/search.html#:~:text=This%20search%20is%20insensitive%20to%20casing%20and%20included%20combining%20characters%2C%20like%20accents%20or%20other%20diacritical%20marks">大文字小文字の同一視、アクセントや他の発音区別符号の無視、句読点と連続する空白の無視</a>を規定している。JP Coreではこれに加えて、いわゆる全角文字（2バイト文字）と半角文字（1バイト文字）の正規化を必須とする（<strong>SHOULD</strong>）。実装上は、Unicodeの互換正規化（NFKCもしくはNFKD）に、大文字小文字の変換、濁点・半濁点の削除、句読点と連続する空白の処理を加えることで条件を満たすことができる。
+基本的な文字列検索であり、患者名や住所、病名など検索がこのタイプである。FHIR®では、このタイプの検索において<a href="https://www.hl7.org/fhir/search.html#:~:text=This%20search%20is%20insensitive%20to%20casing%20and%20included%20combining%20characters%2C%20like%20accents%20or%20other%20diacritical%20marks">大文字小文字の同一視、アクセントや他の発音区別符号の無視、句読点と連続する空白の無視</a>した先頭一致検索（:containsを用いた場合は部分一致検索）として規定されている。JP Coreではこれに加えて、いわゆる全角文字（2バイト文字）と半角文字（1バイト文字）の正規化を必須とする（<strong>SHOULD</strong>）。実装上は、Unicodeの互換正規化（NFKCもしくはNFKD）に、大文字小文字の変換、濁点・半濁点の削除、句読点と連続する空白の処理を加えることで条件を満たすことができる。
 サーバーは検索のときに、丸付き文字（①⇔1）、数字（2⇔Ⅱ⇔II⇔二）、ひらがな⇔カタカナ、<a href="https://www.scripts-lab.co.jp/mindsearch/mindsearchHypermanual/modectrl.html">カタカナの正規化</a>（末尾の長音記号の削除、ベ⇔ヴェなど）、<a href="https://www.asahi-net.or.jp/~ax2s-kmtn/ref/old_chara.html">新字体⇔旧字体</a>、統合漢字⇔互換漢字、異体字セレクタの処理、<a href="https://info.gbiz.go.jp/tools/imi_tools/index.html">住所の正規化</a>、<a href="http://sociocom.jp/~data/2018-manbyo/index.html">病名の正規化</a>など、必要性に応じて自由に追加の正規化を行うことができる（<strong>MAY</strong>）。クライアントは、サーバーが<a href="https://www.hl7.org/fhir/search.html">関連があると思われる追加の検索結果を返すことができる特権を有する</a>ことに注意する。</li>
     </ul>
   </li>
@@ -281,7 +281,7 @@ _textと_contentはすべてのリソースに適応される<a href="https://ww
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jul 26, 2022 13:48+0000">2022-07-26</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jul 29, 2022 00:48+0000">2022-07-29</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
