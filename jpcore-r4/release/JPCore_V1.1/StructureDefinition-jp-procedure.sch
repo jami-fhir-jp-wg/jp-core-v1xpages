@@ -14,7 +14,6 @@
     <sch:rule context="f:Procedure">
       <sch:assert test="count(f:category) &gt;= 1">category: minimum cardinality of 'category' is 1</sch:assert>
       <sch:assert test="count(f:code) &gt;= 1">code: minimum cardinality of 'code' is 1</sch:assert>
-      <sch:assert test="count(f:performed[x]) &gt;= 1">performed[x]: minimum cardinality of 'performed[x]' is 1</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
