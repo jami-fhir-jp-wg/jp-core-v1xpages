@@ -2,7 +2,7 @@ name: UpdateIndex
 
 on:
   push:
-    branches: [ pages ]
+    branches: [ pages , pages_test]
   pull_request:
     branches: [ pages ]
 
@@ -19,6 +19,7 @@ jobs:
 
     - name: Execute Update Script 
       run: |
+        ruby resources/gcBrunch.rb ${{ secrets.GITHUB_TOKEN }}
         ruby resources/updateIndex.rb
     
     - name: Commit files
