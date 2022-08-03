@@ -36,14 +36,14 @@ user content","",0,*,"","Y","","Extension {[]} {[]}
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "AllergyIntolerance.identifier","AllergyIntolerance.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
-","この事象を識別するID","Business identifiers assigned to this AllergyIntolerance by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
+","External ids for this item","Business identifiers assigned to this AllergyIntolerance by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
 
 実行者または他のシステムによってこのAllergyIntoleranceに割り当てられたビジネス識別子。リソースが更新され、サーバーからサーバーに伝送するときにも変化しない。","This is a business identifier, not a resource identifier (see [discussion](resource.html#identifiers)).  It is best practice for the identifier to only appear on a single resource instance, however business practices may occasionally dictate that multiple resource instances with the same identifier can exist - possibly even with different resource types.  For example, multiple Patient and a Person resource instance might share the same social insurance number.
 
 これはビジネス識別子であり、リソース識別子ではない。全インスタンスを通して識別子は単一インスタンスを指し示すことがベストである。しかし、異なるリソースタイプの複数のリソースインスタンスに同じ識別子を割り当てることも稀にはある。例えば、重複するPatientリソースインスタンスとPersonリソースインスタンスは同じソーシャルセキュリティー番号を共有することなどである。","情報を相互に利用するサーバー間で一貫性を保つ方法でAllergyIntoleranceを識​​別できることが求められる。","","","","","","","",,,,,"",,,,"AllergyIntolerance.identifier",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","id","FiveWs.identifier","IAM-7"
 "AllergyIntolerance.clinicalStatus","AllergyIntolerance.clinicalStatus","","","",0,1,"","Y","Y","CodeableConcept {[]} {[]}
-","active | inactive | resolved のいずれか","The clinical status of the allergy or intolerance.
+","active | inactive | resolved","The clinical status of the allergy or intolerance.
 
 アレルギーまたは不耐性の臨床状態","Refer to [discussion](extensibility.html#Special-Case) if clincalStatus is missing data.
 The data type is CodeableConcept because clinicalStatus has some clinical judgment involved, such that there might need to be more specificity than the required FHIR value set allows. For example, a SNOMED coding might allow for additional specificity.
@@ -54,7 +54,7 @@ Value set http://hl7.org/fhir/ValueSet/allergyintolerance-clinical
 ait-2","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=""clinicalStatus"", moodCode=EVN].value","FiveWs.status"
 "AllergyIntolerance.verificationStatus","AllergyIntolerance.verificationStatus","","","",0,1,"","Y","Y","CodeableConcept {[]} {[]}
-","unconfirmed | confirmed | refuted | entered-in-error のいずれか","Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).
+","unconfirmed | confirmed | refuted | entered-in-error","Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).
 
 特定された物質（医薬品を含む）に対する反応の傾向または潜在的なリスクの確実性の度合い","The data type is CodeableConcept because verificationStatus has some clinical judgment involved, such that there might need to be more specificity than the required FHIR value set allows. For example, a SNOMED coding might allow for additional specificity.
 
@@ -65,7 +65,7 @@ ait-2","ele-1:All FHIR elements must have a @value or children {hasValue() or (c
 ","Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=""verificationStatus"", moodCode=EVN].value","FiveWs.status"
 "AllergyIntolerance.type","AllergyIntolerance.type","","Category
 Class","",0,1,"","","Y","code {[]} {[]}
-","allergy | intolerance","Identification of the underlying physiological mechanism for the reaction risk.
+","allergy | intolerance - Underlying mechanism (if known)","Identification of the underlying physiological mechanism for the reaction risk.
 
 反応リスクの根底にある生理学的メカニズムの特定ができる場合にアレルギーか不耐性(不寛容)かを区分する","Allergic (typically immune-mediated) reactions have been traditionally regarded as an indicator for potential escalation to significant future risk. Contemporary knowledge suggests that some reactions previously thought to be immune-mediated are, in fact, non-immune, but in some cases can still pose a life threatening risk. It is acknowledged that many clinicians might not be in a position to distinguish the mechanism of a particular reaction. Often the term ""allergy"" is used rather generically and may overlap with the use of ""intolerance"" - in practice the boundaries between these two concepts might not be well-defined or understood. This data element is included nevertheless, because many legacy systems have captured this attribute. Immunologic testing may provide supporting evidence for the basis of the reaction and the causative substance, but no tests are 100% sensitive or specific for sensitivity to a particular substance. If, as is commonly the case, it is unclear whether the reaction is due to an allergy or an intolerance, then the type element should be omitted from the resource.
 
@@ -88,8 +88,8 @@ SeriousnessContra-indicationRisk","",0,1,"","","Y","code {[]} {[]}
 有害反応の傾向のデフォルト値は「低リスク」である必要があり、少なくとも物質への意図的または自発的な曝露に対する相対的な禁忌を示す。臨床医がアナフィラキシーなどのより深刻な、または生命を脅かす可能性のある反応の傾向を特定した場合、「高リスク」のフラグが立てられ、物質への意図的または自発的な曝露に対する絶対禁忌を意味する。この要素が欠落している場合、重要度は不明である（他の場所でわかっている可能性がある）。conditionレベルでseverity（重大度）を格納し利用するシステムは、実際にはseverity（重大度）の概念を表しているのに対して、reactionレベルで文書化されている重大度は、実際のreaction（反応）のseverity（重大度を表している。conditionレベルの重大度とreactionレベルの重大度の両方を格納し利用している既存のシステムでは、「重大度」という用語を使用して両方のレベルを表す場合がある。Criticality（重要度）は将来的に最も悪い状態になる可能性がある（つまり、状況に依存しない）が、severity（重大度）は状況に依存する概念である。","","","","","","","","",,"required","Estimate of the potential clinical harm, or seriousness, of a reaction to an identified substance.","http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality|4.0.1","",,,,"AllergyIntolerance.criticality",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=SEV, value <= SeverityObservation (Severity Level)]","FiveWs.grade","AL1-4"
 "AllergyIntolerance.code","AllergyIntolerance.code","","Code
-","",1,1,"","","Y","CodeableConcept {[]} {[]}
-","アレルギーまたは不耐性を識別するコード","Code for an allergy or intolerance statement (either a positive or a negated/excluded statement). This may be a code for a substance or pharmaceutical product that is considered to be responsible for the adverse reaction risk (e.g., ""Latex""), an allergy or intolerance condition (e.g., ""Latex allergy""), or a negated/excluded code for a specific substance or class (e.g., ""No latex allergy"") or a general or categorical negated statement (e.g., ""No known allergy"", ""No known drug allergies""). Note: the substance for a specific reaction may be different from the substance identified as the cause of the risk, but it must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite product that includes the identified substance. It must be clinically safe to only process the 'code' and ignore the 'reaction.substance'. If a receiving system is unable to confirm that AllergyIntolerance.reaction.substance falls within the semantic scope of AllergyIntolerance.code, then the receiving system should ignore AllergyIntolerance.reaction.substance.　
+","",0,1,"","","Y","CodeableConcept {[]} {[]}
+","アレルギーまたは不耐性を識別するコード","Code for an allergy or intolerance statement (either a positive or a negated/excluded statement). This may be a code for a substance or pharmaceutical product that is considered to be responsible for the adverse reaction risk (e.g., ""Latex""), an allergy or intolerance condition (e.g., ""Latex allergy""), or a negated/excluded code for a specific substance or class (e.g., ""No latex allergy"") or a general or categorical negated statement (e.g., ""No known allergy"", ""No known drug allergies""). Note: the substance for a specific reaction may be different from the substance identified as the cause of the risk, but it must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite product that includes the identified substance. It must be clinically safe to only process the 'code' and ignore the 'reaction.substance'. If a receiving system is unable to confirm that AllergyIntolerance.reaction.substance falls within the semantic scope of AllergyIntolerance.code, then the receiving system should ignore AllergyIntolerance.reaction.substance. 
 
 アレルギーまたは不寛容の記録（肯定的または否定的/除外されたという記録のいずれか）のコード。これは、有害反応のリスク（「ラテックス」など）、アレルギーまたは不耐性状態（「ラテックスアレルギー」など）、または否定/除外されたコードの原因であると考えられる物質または医薬品のコードである可能性がある。
 
@@ -107,24 +107,24 @@ SeriousnessContra-indicationRisk","",0,1,"","","Y","code {[]} {[]}
 このアレルギーまたは不耐性のある患者。","参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","","","","","","","","",,,,,"",,,,"AllergyIntolerance.patient",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".participation[typeCode=SBJ].role[classCode=PAT]","FiveWs.subject[x]","FiveWs.subject","(PID-3)"
 "AllergyIntolerance.encounter","AllergyIntolerance.encounter","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Encounter]]}
-","Encounter when the allergy or intolerance was asserted　このアレルギーまたは不耐性がわかったときの受診Encounter情報","The encounter when the allergy or intolerance was asserted.
+","Encounter when the allergy or intolerance was asserted このアレルギーまたは不耐性がわかったときの受診Encounter情報","The encounter when the allergy or intolerance was asserted.
 このアレルギーまたは不耐性がわかったときの受診Encounter情報","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","","","","","","","","",,,,,"",,,,"AllergyIntolerance.encounter",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]","FiveWs.context"
 "AllergyIntolerance.onset[x]","AllergyIntolerance.onset[x]","","","",0,1,"","","","dateTime {[]} {[]}
-Age {[]} {[]}Period {[]} {[]}Range {[]} {[]}string {[]} {[]}","When allergy or intolerance was identified　アレルギーや不耐性が同定された時期","Estimated or actual date,  date-time, or age when allergy or intolerance was identified.
+Age {[]} {[]}Period {[]} {[]}Range {[]} {[]}string {[]} {[]}","When allergy or intolerance was identified アレルギーや不耐性が同定された時期","Estimated or actual date,  date-time, or age when allergy or intolerance was identified.
 
 アレルギーや不耐性が同定された推定時期または実際の時期で、日付、日時、年齢","","","","","","","","","",,,,,"",,,,"AllergyIntolerance.onset[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","effectiveTime.low","FiveWs.init"
 "AllergyIntolerance.recordedDate","AllergyIntolerance.recordedDate","","","",0,1,"","","","dateTime {[]} {[]}
-","Date first version of the resource instance was recorded　このリソースインスタンスの最初の版が記録された日付","The recordedDate represents when this particular AllergyIntolerance record was created in the system, which is often a system-generated date.
+","Date first version of the resource instance was recorded このリソースインスタンスの最初の版が記録された日付","The recordedDate represents when this particular AllergyIntolerance record was created in the system, which is often a system-generated date.
 
 この要素は、特定のこのAllergyIntolerance レコードがシステムに作成された時期を示し、たいていはシステムが生成した日付。","","","","","","","","","",,,,,"",,,,"AllergyIntolerance.recordedDate",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".participation[typeCode=AUT].time","FiveWs.recorded","IAM-13"
 "AllergyIntolerance.recorder","AllergyIntolerance.recorder","","Author
 ","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson]]}
-","Who recorded the sensitivity　この感受性をっ記録した人","Individual who recorded the record and takes responsibility for its content.
+","Who recorded the sensitivity この感受性をっ記録した人","Individual who recorded the record and takes responsibility for its content.
 
 このレコードを記録し、その内容に責任を持つ個人。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
@@ -132,28 +132,28 @@ Age {[]} {[]}Period {[]} {[]}Range {[]} {[]}string {[]} {[]}","When allergy or i
 ",".participation[typeCode=AUT].role","FiveWs.author"
 "AllergyIntolerance.asserter","AllergyIntolerance.asserter","","Source
 Informant","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole]]}
-","Source of the information about the allergy　アレルギーに関する情報の発生または取得元","The source of the information about the allergy that is recorded.
+","Source of the information about the allergy アレルギーに関する情報の発生または取得元","The source of the information about the allergy that is recorded.
 
 アレルギーに関する情報の発生または取得元","The recorder takes responsibility for the content, but can reference the source from where they got it.
 
  recorderは内容に責任を持つのに対して、これはどこからその情報を取得したかについての情報。","","","","","","","","",,,,,"",,,,"AllergyIntolerance.asserter",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".participation[typeCode=INF].role","FiveWs.source","IAM-14 (if patient) / IAM-18 (if practitioner)"
 "AllergyIntolerance.lastOccurrence","AllergyIntolerance.lastOccurrence","","","",0,1,"","","","dateTime {[]} {[]}
-","Date(/time) of last known occurrence of a reaction　反応が一番直近（最後）に発生したとわかっている日付（日時）","Represents the date and/or time of the last known occurrence of a reaction event.
+","Date(/time) of last known occurrence of a reaction 反応が一番直近（最後）に発生したとわかっている日付（日時）","Represents the date and/or time of the last known occurrence of a reaction event.
 
 反応イベントが一番直近（最後）に発生したとわかっている日付（日時）を表す。","This date may be replicated by one of the Onset of Reaction dates. Where a textual representation of the date of last occurrence is required e.g. 'In Childhood, '10 years ago' the Comment element should be used.
 
 この日付は、初めて反応があった複数の日のいずれかによって複製されるてもよい。最後に発生した日付のテキスト表現が必要な場合（例： 「子供の頃、「10年前」」コメント要素を使用する必要がある。","","","","","","","","",,,,,"",,,,"AllergyIntolerance.lastOccurrence",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","outBoundRelationship[typeCode=SUBJ].target[classCode=OBS, moodCode=EVN, code <= CommonClinicalObservationType, value <= ObservationValue (Reaction Type)].effectiveTime"
 "AllergyIntolerance.note","AllergyIntolerance.note","","","",0,*,"","","","Annotation {[]} {[]}
-","Additional text not captured in other fields　他のフィールド要素では記述できない追加テキスト","Additional narrative about the propensity for the Adverse Reaction, not captured in other fields.
+","Additional text not captured in other fields 他のフィールド要素では記述できない追加テキスト","Additional narrative about the propensity for the Adverse Reaction, not captured in other fields.
 
 他のフィールド要素では記述（取得）できない、副反応に関する傾向に関する追加的な叙述テキスト","For example: including reason for flagging a seriousness of 'High Risk'; and instructions related to future exposure or administration of the substance, such as administration within an Intensive Care Unit or under corticosteroid cover. The notes should be related to an allergy or intolerance as a condition in general and not related to any particular episode of it. For episode notes and descriptions, use AllergyIntolerance.event.description and  AllergyIntolerance.event.notes.
 
 例：「高リスク」の重大度にフラグを立てる理由を含めたり、集中治療室内またはコルチコステロイド治療の下での投与など、薬剤の将来の曝露または投与に関連する指示などを含める。note要素は、一般的な状態としてのアレルギーや不耐性に関連した情報を記述するためのもので、その特定のエピソードに関連した情報の記述には使わないこと。特定のエピソードのメモや説明については、AllergyIntolerance.event.descriptionとAllergyIntolerance.event.notesを使用すること。","","","","","","","","",,,,,"",,,,"AllergyIntolerance.note",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","subjectOf.observationEvent[code=""annotation""].value"
 "AllergyIntolerance.reaction","AllergyIntolerance.reaction","","","",0,*,"","","","BackboneElement {[]} {[]}
-","Adverse Reaction Events linked to exposure to substance　物質への暴露に関連する有害反応事象","Details about each adverse reaction event linked to exposure to the identified substance.
+","Adverse Reaction Events linked to exposure to substance 物質への暴露に関連する有害反応事象","Details about each adverse reaction event linked to exposure to the identified substance.
 
 同定された物質への暴露に関連する個々の有害反応イベントに関する詳細情報。","","","","","","","","","",,,,,"",,,,"AllergyIntolerance.reaction",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","outBoundRelationship[typeCode=SUBJ].target[classCode=OBS, moodCode=EVN, code <= CommonClinicalObservationType, value <= ObservationValue (Reaction Type)]"
@@ -170,28 +170,28 @@ user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "AllergyIntolerance.reaction.substance","AllergyIntolerance.reaction.substance","","","",0,1,"","","","CodeableConcept {[]} {[]}
-","Specific substance or pharmaceutical product considered to be responsible for event　イベントの原因と考えられる特定の物質または医薬品","Identification of the specific substance (or pharmaceutical product) considered to be responsible for the Adverse Reaction event. Note: the substance for a specific reaction may be different from the substance identified as the cause of the risk, but it must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite product that includes the identified substance. It must be clinically safe to only process the 'code' and ignore the 'reaction.substance'.  If a receiving system is unable to confirm that AllergyIntolerance.reaction.substance falls within the semantic scope of AllergyIntolerance.code, then the receiving system should ignore AllergyIntolerance.reaction.substance.
+","Specific substance or pharmaceutical product considered to be responsible for event イベントの原因と考えられる特定の物質または医薬品","Identification of the specific substance (or pharmaceutical product) considered to be responsible for the Adverse Reaction event. Note: the substance for a specific reaction may be different from the substance identified as the cause of the risk, but it must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite product that includes the identified substance. It must be clinically safe to only process the 'code' and ignore the 'reaction.substance'.  If a receiving system is unable to confirm that AllergyIntolerance.reaction.substance falls within the semantic scope of AllergyIntolerance.code, then the receiving system should ignore AllergyIntolerance.reaction.substance.
 副作用の原因と考えられる特定の物質（または医薬品）の特定。
 注：特定の反応の物質は、リスクの原因として特定された物質とは異なる場合があるが、それと一致している必要がある。たとえば、より具体的な物質（ブランド薬など）や、特定された物質を含む複合製品の場合がある。 「コード」のみを処理し、「reaction.substance」を無視しても臨床的に安全でなければならない。受信システムがAllergyIntolerance.reaction.substanceがAllergyIntolerance.codeのセマンティックスコープ内にあること（つまり意味的に親子関係、包含される関係）を確認できない（確認できる機能を持たない）場合、受信システムはAllergyIntolerance.reaction.substanceを無視する必要がある。","Coding of the specific substance (or pharmaceutical product) with a terminology capable of triggering decision support should be used wherever possible.  The 'code' element allows for the use of a specific substance or pharmaceutical product, or a group or class of substances. In the case of an allergy or intolerance to a class of substances, (for example, ""penicillins""), the 'reaction.substance' element could be used to code the specific substance that was identified as having caused the reaction (for example, ""amoxycillin""). Duplication of the value in the 'code' and 'reaction.substance' elements is acceptable when a specific substance has been recorded in 'code'.
 意思決定支援機能を開始するきっかけとなるような、ターミノロジーを使用した特定の物質（または医薬品）のコーディングを、可能な限り使用する必要がある。 「コード」要素は、特定の物質または医薬品、あるいは物質のグループまたはクラスの使用を可能にする。あるクラスの物質（たとえば、「ペニシリン」）に対するアレルギーまたは不耐性の場合、「reaction.substance」要素を使用して、反応を引き起こしたと特定された特定の物質をコード化できる（たとえば、 「アモキシシリン」）。 「code」および「reaction.substance」要素の値の重複は、特定の物質が「code」に記録されている場合には許容される。","","","","","","","","",,"example","Codes defining the type of the substance (including pharmaceutical products).","http://hl7.org/fhir/ValueSet/substance-code","",,,,"AllergyIntolerance.reaction.substance",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","outBoundRelationship[typeCode=SAS].target[classCode=SBADM, code <= ExposureCode].participation[typeCode=CSM].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code <= ExposureAgentEntityType]"
 "AllergyIntolerance.reaction.manifestation","AllergyIntolerance.reaction.manifestation","","Symptoms
 Signs","",1,*,"","","","CodeableConcept {[]} {[]}
-","Clinical symptoms/signs associated with the Event　事象（イベント）に関連した臨床的症状や兆候","Clinical symptoms and/or signs that are observed or associated with the adverse reaction event.
+","Clinical symptoms/signs associated with the Event 事象（イベント）に関連した臨床的症状や兆候","Clinical symptoms and/or signs that are observed or associated with the adverse reaction event.
 有害反応事象に関連した臨床的な症状や兆候。","Manifestation can be expressed as a single word, phrase or brief description. For example: nausea, rash or no reaction. It is preferable that manifestation should be coded with a terminology, where possible. The values entered here may be used to display on an application screen as part of a list of adverse reactions, as recommended in the UK NHS CUI guidelines.  Terminologies commonly used include, but are not limited to, SNOMED CT or ICD10.
 
 症状は、単一の単語、フレーズ、または簡単な説明で表現できる。例：吐き気、発疹、反応なし。可能であれば、症状をターミノロジーを使ってコーディングすることが望ましい。ここに入力された値は、英国NHS CUIガイドラインで推奨されているように、副作用のリストの一部としてアプリケーション画面に表示するために使用される場合がある。一般的に使用される用語には、SNOMED CTまたはICD10が含まれるが、これらに限定されない。","","","","","","","","",,"example","Clinical symptoms and/or signs that are observed or associated with an Adverse Reaction Event.","http://hl7.org/fhir/ValueSet/clinical-findings","",,,,"AllergyIntolerance.reaction.manifestation",1,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","code","AL1-5"
 "AllergyIntolerance.reaction.description","AllergyIntolerance.reaction.description","","Narrative
 Text","",0,1,"","","","string {[]} {[]}
-","Description of the event as a whole　事象の全体的な記述","Text description about the reaction as a whole, including details of the manifestation if required.
+","Description of the event as a whole 事象の全体的な記述","Text description about the reaction as a whole, including details of the manifestation if required.
 必要なら症状兆候の詳細も含めた、反応事象に関する全体としてはテキスト記述。","Use the description to provide any details of a particular event of the occurred reaction such as circumstances, reaction specifics, what happened before/after. Information, related to the event, but not describing a particular care should be captured in the comment field. For example: at the age of four, the patient was given penicillin for strep throat and subsequently developed severe hives.
 
 この要素を使用して、状況、反応の詳細、前後に何が起こったかなど、発生した反応の特定のイベントの詳細を提供できる。イベントに関連しているが、特定の治療的対応を記述しない情報は、コメントフィールドに取り込む必要がある。
 例：4歳のとき、患者は連鎖球菌性咽頭炎のためにペニシリンを投与され、その後重度のじんましんを発症しました。","","","","","","","","",,,,,"",,,,"AllergyIntolerance.reaction.description",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","text"
 "AllergyIntolerance.reaction.onset","AllergyIntolerance.reaction.onset","","","",0,1,"","","","dateTime {[]} {[]}
-","Date(/time) when manifestations showed　症状所見がみられた日付（日時）","Record of the date and/or time of the onset of the Reaction.
+","Date(/time) when manifestations showed 症状所見がみられた日付（日時）","Record of the date and/or time of the onset of the Reaction.
 反応の開始の日付か日時の記録。","","","","","","","","","",,,,,"",,,,"AllergyIntolerance.reaction.onset",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","effectiveTime.low","AL1-6"
 "AllergyIntolerance.reaction.severity","AllergyIntolerance.reaction.severity","","","",0,1,"","","","code {[]} {[]}
@@ -200,12 +200,12 @@ Text","",0,1,"","","","string {[]} {[]}
 この評価は非常に主観的なものであることが認められている。客観的な尺度が適用されている特定の実践領域がいくつかあるかもしれない。客観的なスケールは、このモデルに拡張Extensionとして記述できる。","","","","","","","","",,"required","Clinical assessment of the severity of a reaction event as a whole, potentially considering multiple different manifestations.","http://hl7.org/fhir/ValueSet/reaction-event-severity|4.0.1","",,,,"AllergyIntolerance.reaction.severity",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=SEV, value <= SeverityObservation (Severity Level)]"
 "AllergyIntolerance.reaction.exposureRoute","AllergyIntolerance.reaction.exposureRoute","","","",0,1,"","","","CodeableConcept {[]} {[]}
-","How the subject was exposed to the substance　対象者（患者）がどのように物質に暴露したか。","Identification of the route by which the subject was exposed to the substance.
+","How the subject was exposed to the substance 対象者（患者）がどのように物質に暴露したか。","Identification of the route by which the subject was exposed to the substance.
 対象者（患者）がどにょうな経路でその物質に暴露したかの同定。","Coding of the route of exposure with a terminology should be used wherever possible.
 可能であれば必ずターミノロジーを使って暴露経路をコーディングすること。","","","","","","","","",,"example","A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject.","http://hl7.org/fhir/ValueSet/route-codes","",,,,"AllergyIntolerance.reaction.exposureRoute",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","outBoundRelationship[typeCode=SAS].target[classCode=SBADM, code <= ExposureCode].routeCode"
 "AllergyIntolerance.reaction.note","AllergyIntolerance.reaction.note","","","",0,*,"","","","Annotation {[]} {[]}
-","Text about event not captured in other fields　他のフィールド要素では記述できない追加テキスト","Additional text about the adverse reaction event not captured in other fields.
+","Text about event not captured in other fields 他のフィールド要素では記述できない追加テキスト","Additional text about the adverse reaction event not captured in other fields.
 他のフィールド要素では記述（取得）できない、副反応に関する傾向に関する追加的な叙述テキスト","Use this field to record information indirectly related to a particular event and not captured in the description. For example: Clinical records are no longer available, recorded based on information provided to the patient by her mother and her mother is deceased.
 
 このフィールドを使用して、特定のイベントに間接的に関連し、descriptionに記述されていない情報を記録する。
