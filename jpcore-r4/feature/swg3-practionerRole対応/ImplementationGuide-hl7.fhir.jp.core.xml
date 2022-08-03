@@ -486,7 +486,7 @@
         <valueString value="special-url"/>
       </extension>
       <extension url="value">
-        <valueString value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_CertificatedDate"/>
+        <valueString value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Immunization_CertificatedDate"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -494,7 +494,7 @@
         <valueString value="special-url"/>
       </extension>
       <extension url="value">
-        <valueString value="http://jpfhir.jp/fhir/StructureDefinition/JP_Immunization_DueDateOfNextDose"/>
+        <valueString value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Immunization_DueDateOfNextDose"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -502,7 +502,7 @@
         <valueString value="special-url"/>
       </extension>
       <extension url="value">
-        <valueString value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_ManufacturedDate"/>
+        <valueString value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Immunization_ManufacturedDate"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -663,14 +663,6 @@
       </extension>
       <extension url="value">
         <valueString value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationRequest_DosageInstruction_UsageDuration"/>
-      </extension>
-    </extension>
-    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
-      <extension url="code">
-        <valueString value="special-url"/>
-      </extension>
-      <extension url="value">
-        <valueString value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Observation_BodySite_BodySitePosition"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -905,7 +897,7 @@
         <reference value="StructureDefinition/jp-allergyintolerance"/>
       </reference>
       <name value="JP Core AllergyIntolerance Profile"/>
-      <description value="本プロファイルはAllergyIntoleranceリソースに対して、患者のアレルギーや不耐症に関するデータを送受信するための基礎となる制約と拡張を定めたものである。"/>
+      <description value="このプロファイルはAllergyIntoleranceリソースに対して、患者のアレルギー不耐症に関するデータを送受信するための制約と拡張を定めたものである。"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -916,7 +908,7 @@
         <reference value="StructureDefinition/jp-careplan"/>
       </reference>
       <name value="JP Core CarePlan Profile"/>
-      <description value="本プロファイルはJP Core CarePlanリソースに対する共通の制約と拡張を定めたものである"/>
+      <description value="このプロファイルはJP Core CarePlanリソースに対する共通の制約と拡張を定めたものである。"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -927,7 +919,7 @@
         <reference value="StructureDefinition/jp-condition"/>
       </reference>
       <name value="JP Core Condition Profile"/>
-      <description value="本プロファイルはConditionリソースに対して、患者の健康状態に関するデータを送受信するための共通の制約と拡張を定めたものである。"/>
+      <description value="このプロファイルはConditionリソースに対して、患者の健康状態に関するデータを送受信するための共通の制約と拡張を定めたものである。"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1551,17 +1543,6 @@
         <valueString value="StructureDefinition:extension"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/jp-observation-bodysite-bodysiteposition"/>
-      </reference>
-      <name value="JP Core Observation BodySite BodySitePosition Extension"/>
-      <description value="部位（bodySite）の左右の区別を表現する際に使用する"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
-      </extension>
-      <reference>
         <reference value="StructureDefinition/jp-organization-insuranceorganizationcategory"/>
       </reference>
       <name value="JP Core Organization InsuranceOrganizationCategory Extension"/>
@@ -1608,8 +1589,30 @@
       <reference>
         <reference value="ValueSet/jp-allergyintolerance-codes-vs"/>
       </reference>
-      <name value="JP Core AllergyIntolerance ValueSet"/>
-      <description value="アレルギー・不耐症のコード"/>
+      <name value="JP Core AllergyIntolerance Codes"/>
+      <description value="アレルギー・不耐症に関連するアレルゲンコード"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/jp-condition-severity-vs"/>
+      </reference>
+      <name value="JP Core Condition Severity"/>
+      <description value="Conditionの重症度を示すコード"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/jp-medicallicencecertificate-vs"/>
+      </reference>
+      <name value="JP Core MedicalLicence Certificate ValueSet"/>
+      <description value="医療関連免許証明に関する値セット"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1619,7 +1622,7 @@
       <reference>
         <reference value="ValueSet/jp-physicalexamcodes-vs"/>
       </reference>
-      <name value="JP Core PhysicalExamCodes ValueSet"/>
+      <name value="JP Core Physical Exam Codes"/>
       <description value="身体所見の区分を表すコード"/>
       <exampleBoolean value="false"/>
     </resource>
@@ -1631,7 +1634,18 @@
         <reference value="ValueSet/jp-procedure-body-site-vs"/>
       </reference>
       <name value="JP Core Procedure BodySite"/>
-      <description value="Procedureで使用する身体部位のコード"/>
+      <description value="処置の対象となる身体部位のコード"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/jp-procedure-category-codes-vs"/>
+      </reference>
+      <name value="JP Core Procedure Category Codes"/>
+      <description value="処置のカテゴリを示すコード"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1641,8 +1655,8 @@
       <reference>
         <reference value="ValueSet/jp-procedure-codes-dental-vs"/>
       </reference>
-      <name value="JP Core Procedure Codes(Dental)"/>
-      <description value="Procedureで使用する処置のコード 歯科診療行為マスタ"/>
+      <name value="JP Core Procedure Codes Dental"/>
+      <description value="処置のコード:歯科診療行為マスタ"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1652,8 +1666,8 @@
       <reference>
         <reference value="ValueSet/jp-procedure-codes-ichi-vs"/>
       </reference>
-      <name value="JP Core Procedure Codes(ICHI)"/>
-      <description value="Procedureで使用する処置のコード International Classification of Health Interventions (ICHI)"/>
+      <name value="JP Core Procedure Codes ICHI"/>
+      <description value="処置のコード:ICHI(International Classification of Health Interventions)"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1663,8 +1677,8 @@
       <reference>
         <reference value="ValueSet/jp-procedure-code-medical-vs"/>
       </reference>
-      <name value="JP Core Procedure Codes(Medical)"/>
-      <description value="Procedureで使用する処置のコード 医科診療行為マスタ"/>
+      <name value="JP Core Procedure Codes Medical"/>
+      <description value="処置のコード:医科診療行為マスタ"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1674,8 +1688,8 @@
       <reference>
         <reference value="ValueSet/jp-procedure-codes-nurse-vs"/>
       </reference>
-      <name value="JP Core Procedure Codes(Nurse)"/>
-      <description value="Procedureで使用する処置のコード 看護実践用語標準マスター(看護行為)"/>
+      <name value="JP Core Procedure Codes Nurse"/>
+      <description value="処置のコード:看護実践用語標準マスター(看護行為)"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1685,8 +1699,8 @@
       <reference>
         <reference value="ValueSet/jp-procedure-code-stem7-vs"/>
       </reference>
-      <name value="JP Core Procedure Codes(STEM7)"/>
-      <description value="Procedureで使用する処置のコード 外保連手術基幹コード(STEM7)"/>
+      <name value="JP Core Procedure Codes STEM7"/>
+      <description value="処置のコード:外保連手術基幹コード(STEM7)"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1696,8 +1710,8 @@
       <reference>
         <reference value="ValueSet/jp-procedure-condition-code-vs"/>
       </reference>
-      <name value="JP Core Procedure Condition/Problem/Diagnosis Codes"/>
-      <description value="Procedureで使用する状態のコード"/>
+      <name value="JP Core Procedure Condition Codes"/>
+      <description value="処置中もしくは処置の後に発生した合併症を示すコード(Condition/Problem/Diagnosis)"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1708,7 +1722,7 @@
         <reference value="ValueSet/jp-procedure-device-action-vs"/>
       </reference>
       <name value="JP Core Procedure Device Action Codes"/>
-      <description value="Codes indicating the change that happened to the device during the procedure."/>
+      <description value="処置の実施中に機器に起こった変化を示すコード"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1718,8 +1732,8 @@
       <reference>
         <reference value="ValueSet/jp-procedure-devicekind-vs"/>
       </reference>
-      <name value="JP Core Procedure DeviceKind"/>
-      <description value="Codes used to identify medical devices."/>
+      <name value="JP Core Procedure Device Kind"/>
+      <description value="処置の実施に利用された医療機器を識別するコード"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1729,8 +1743,8 @@
       <reference>
         <reference value="ValueSet/jp-procedure-followup-vs"/>
       </reference>
-      <name value="JP Core Procedure Follow up Codes"/>
-      <description value="Procedure follow up codes."/>
+      <name value="JP Core Procedure Follow Up Codes"/>
+      <description value="処置のフォローアップとして実施される処置のコード"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1741,7 +1755,18 @@
         <reference value="ValueSet/jp-procedure-not-performed-reason-vs"/>
       </reference>
       <name value="JP Core Procedure Not Performed Reason"/>
-      <description value="Situation codes describing the reason that a procedure, which might otherwise be expected, was not performed, or a procedure that was started and was not completed."/>
+      <description value="処置が実施されなかった理由、または開始された処置が完了しなかった理由を示すコード"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/jp-procedure-outcome-codes-vs"/>
+      </reference>
+      <name value="JP Core Procedure Outcome Codes"/>
+      <description value="処置が実施されたアウトカムを示すコード"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1752,7 +1777,7 @@
         <reference value="ValueSet/jp-procedure-performer-role-codes-vs"/>
       </reference>
       <name value="JP Core Procedure Performer Role Codes"/>
-      <description value="This value set defines the set of codes that can be used to indicate a role of a procedure performer."/>
+      <description value="処置を実施した者の役割（ロール）を示すコード"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1763,7 +1788,18 @@
         <reference value="ValueSet/jp-procedure-reason-codes-vs"/>
       </reference>
       <name value="JP Core Procedure Reason Codes"/>
-      <description value="This value set defines the set of codes that can be used to indicate a reason for a procedure."/>
+      <description value="処置が実施された理由を示すコード"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/jp-condition-severity-cs"/>
+      </reference>
+      <name value="JP Core Condition Severity"/>
+      <description value="Conditionの重症度を示すコードシステム（HL70421 Severity of Illness Code）"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1773,7 +1809,7 @@
       <reference>
         <reference value="CodeSystem/jp-jfagy-food-allergen-codes-cs"/>
       </reference>
-      <name value="JFAGY Food Allergen Codes CodeSystem"/>
+      <name value="JFAGY Food Allergen Codes"/>
       <description value="JFAGY アレルゲンコード（食品）"/>
       <exampleBoolean value="false"/>
     </resource>
@@ -1784,7 +1820,7 @@
       <reference>
         <reference value="CodeSystem/jp-jfagy-medication-allergen-codes-cs"/>
       </reference>
-      <name value="JFAGY Medication Allergen Codes CodeSystem"/>
+      <name value="JFAGY Medication Allergen Codes"/>
       <description value="JFAGY アレルゲンコード（医薬品）"/>
       <exampleBoolean value="false"/>
     </resource>
@@ -1795,8 +1831,19 @@
       <reference>
         <reference value="CodeSystem/jp-jfagy-non-food-non-medication-allergen-codes-cs"/>
       </reference>
-      <name value="JFAGY Non Food None Medication Allergen Codes CodeSystem"/>
+      <name value="JFAGY Non Food None Medication Allergen Codes"/>
       <description value="JFAGY アレルゲンコード（非食品・非医薬品）"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/jp-medicallicencecertificate-cs"/>
+      </reference>
+      <name value="JP Core MedicalLicenceCertificate CodeSystem"/>
+      <description value="医療関連免許証明に関するコードシステム。（現在作成中、今後医療系免許に関する情報追加する予定です。）"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1806,7 +1853,7 @@
       <reference>
         <reference value="CodeSystem/jp-physicalexamcodes-cs"/>
       </reference>
-      <name value="JP Core PhysicalExamCodes CodeSystem"/>
+      <name value="JP Core Physical Exam Codes"/>
       <description value="身体所見の区分を表すコード"/>
       <exampleBoolean value="false"/>
     </resource>
@@ -1818,7 +1865,18 @@
         <reference value="CodeSystem/jp-procedure-body-site-cs"/>
       </reference>
       <name value="JP Core Procedure BodySite"/>
-      <description value="Procedureで使用する身体部位のコード"/>
+      <description value="処置の対象となる身体部位のコード"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/jp-procedure-category-codes-cs"/>
+      </reference>
+      <name value="JP Core Procedure Category Codes"/>
+      <description value="処置のカテゴリを示すコードのコードシステム"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1828,8 +1886,8 @@
       <reference>
         <reference value="CodeSystem/jp-procedure-codes-dental-cs"/>
       </reference>
-      <name value="JP Core Procedure Codes(Dental)"/>
-      <description value="Procedureで使用する処置のコード 歯科診療行為マスタ"/>
+      <name value="JP Core Procedure Codes Dental"/>
+      <description value="処置のコード:歯科診療行為マスタ"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1839,8 +1897,8 @@
       <reference>
         <reference value="CodeSystem/jp-procedure-codes-ichi-cs"/>
       </reference>
-      <name value="JP Core Procedure Codes(ICHI)"/>
-      <description value="Procedureで使用する処置のコード International Classification of Health Interventions (ICHI)"/>
+      <name value="JP Core Procedure Codes ICHI"/>
+      <description value="処置のコード:ICHI(International Classification of Health Interventions)"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1850,8 +1908,8 @@
       <reference>
         <reference value="CodeSystem/jp-procedure-codes-medical-cs"/>
       </reference>
-      <name value="JP Core Procedure Codes(Medical)"/>
-      <description value="Procedureで使用する処置のコード 医科診療行為マスタ"/>
+      <name value="JP Core Procedure Codes Medical"/>
+      <description value="処置のコード:医科診療行為マスタ"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1861,8 +1919,8 @@
       <reference>
         <reference value="CodeSystem/jp-procedure-codes-nurse-cs"/>
       </reference>
-      <name value="JP Core Procedure Codes(Nurse)"/>
-      <description value="Procedureで使用する処置のコード 看護実践用語標準マスター(看護行為)"/>
+      <name value="JP Core Procedure Codes Nurse"/>
+      <description value="処置のコード:看護実践用語標準マスター(看護行為)"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1872,8 +1930,8 @@
       <reference>
         <reference value="CodeSystem/jp-procedure-codes-stem7-cs"/>
       </reference>
-      <name value="JP Core Procedure Codes(STEM7)"/>
-      <description value="Procedureで使用する処置のコード 外保連手術基幹コード(STEM7)"/>
+      <name value="JP Core Procedure Codes STEM7"/>
+      <description value="処置のコード:外保連手術基幹コード(STEM7)"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1883,8 +1941,8 @@
       <reference>
         <reference value="CodeSystem/jp-procedure-condition-codes-cs"/>
       </reference>
-      <name value="JP Core Procedure Condition/Problem/Diagnosis Codes"/>
-      <description value="Procedureで使用する状態のコード"/>
+      <name value="JP Core Procedure Condition Codes"/>
+      <description value="処置中もしくは処置の後に発生した合併症を示すコード(Condition/Problem/Diagnosis)"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1895,7 +1953,7 @@
         <reference value="CodeSystem/jp-procedure-device-action-codes-cs"/>
       </reference>
       <name value="JP Core Procedure Device Action Codes"/>
-      <description value="Codes indicating the change that happened to the device during the procedure."/>
+      <description value="処置の実施中に機器に起こった変化を示すコード"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1905,8 +1963,8 @@
       <reference>
         <reference value="CodeSystem/jp-procedure-devicekind-cs"/>
       </reference>
-      <name value="JP Core Procedure DeviceKind"/>
-      <description value="Codes used to identify medical devices."/>
+      <name value="JP Core Procedure Device Kind"/>
+      <description value="処置の実施に利用された医療機器を識別するコード"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1916,8 +1974,8 @@
       <reference>
         <reference value="CodeSystem/jp-procedure-followup-codes-cs"/>
       </reference>
-      <name value="JP Core Procedure Follow up Codes"/>
-      <description value="Procedure follow up codes."/>
+      <name value="JP Core Procedure Follow Up Codes"/>
+      <description value="処置のフォローアップとして実施される処置のコード"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1928,7 +1986,18 @@
         <reference value="CodeSystem/jp-procedure-not-performed-reason-cs"/>
       </reference>
       <name value="JP Core Procedure Not Performed Reason"/>
-      <description value="Situation codes describing the reason that a procedure, which might otherwise be expected, was not performed, or a procedure that was started and was not completed."/>
+      <description value="処置が実施されなかった理由、または開始された処置が完了しなかった理由を示すコード"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/jp-procedure-outcome-codes-cs"/>
+      </reference>
+      <name value="JP Core Procedure Outcome Codes"/>
+      <description value="処置が実施されたアウトカムを示すコード"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1939,7 +2008,7 @@
         <reference value="CodeSystem/jp-procedure-performer-role-codes-cs"/>
       </reference>
       <name value="JP Core Procedure Performer Role Codes"/>
-      <description value="This code system defines the set of codes that can be used to indicate a role of a procedure performer."/>
+      <description value="処置を実施した者の役割（ロール）を示すコード"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1950,7 +2019,7 @@
         <reference value="CodeSystem/jp-procedure-reason-codes-cs"/>
       </reference>
       <name value="JP Core Procedure Reason Codes"/>
-      <description value="This code system defines the set of codes that can be used to indicate a reason for a procedure."/>
+      <description value="処置が実施された理由を示すコード"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1960,9 +2029,20 @@
       <reference>
         <reference value="Observation/bm-12345"/>
       </reference>
-      <name value="JP Core Observation BodyMeasurement Basic Example"/>
-      <description value="JP_ObservationBodyMeasurementリソースの1例"/>
+      <name value="JP Core Observation BodyMeasurement Example 身体計測（体重）"/>
+      <description value="身体計測（体重）"/>
       <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_BodyMeasurement"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="AllergyIntolerance"/>
+      </extension>
+      <reference>
+        <reference value="AllergyIntolerance/jp-allergyintolerance-example-1"/>
+      </reference>
+      <name value="JP Core AllergyIntolerance Basic Example"/>
+      <description value="JP_AllergyIntoleranceリソースの1例"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_AllergyIntolerance"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -2046,7 +2126,7 @@
         <valueString value="Encounter"/>
       </extension>
       <reference>
-        <reference value="Encounter/jp-encounter-example1"/>
+        <reference value="Encounter/jp-encounter-example-1"/>
       </reference>
       <name value="JP Core Enconter 外来"/>
       <description value="外来"/>
@@ -2235,8 +2315,8 @@
       <reference>
         <reference value="Observation/jp-observation-labresult-example-1"/>
       </reference>
-      <name value="JP Core Observation LabResult Basic Example"/>
-      <description value="JP_ObservationLabResultリソースの1例"/>
+      <name value="JP Core Observation LabResult Example 検体検査（尿）"/>
+      <description value="検体検査（尿）"/>
       <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_LabResult"/>
     </resource>
     <resource>
@@ -2246,8 +2326,8 @@
       <reference>
         <reference value="Observation/jp-observation-socialhistory-example-1"/>
       </reference>
-      <name value="JP Core Observatio SocialHistory Basic Example"/>
-      <description value="JP_ObservationSocialHistoryリソースの1例"/>
+      <name value="JP Core Observation SocialHistory Example 喫煙"/>
+      <description value="喫煙に関する項目"/>
       <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_SocialHistory"/>
     </resource>
     <resource>
@@ -2257,8 +2337,8 @@
       <reference>
         <reference value="Observation/jp-observation-vitalsigns-example-1"/>
       </reference>
-      <name value="JP Core Observation VitalSigns Basic Example"/>
-      <description value="JP_ObservationVitalSignsリソースの1例"/>
+      <name value="JP Core Observation VitalSigns Basic バイタル（呼吸数）"/>
+      <description value="バイタル（呼吸数）"/>
       <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_VitalSigns"/>
     </resource>
     <resource>
@@ -2464,6 +2544,11 @@
           <title value="検索"/>
           <generation value="markdown"/>
         </page>
+        <page>
+          <nameUrl value="update_history.html"/>
+          <title value="更新履歴"/>
+          <generation value="markdown"/>
+        </page>
       </page>
       <page>
         <nameUrl value="group-fhircontents.html"/>
@@ -2508,11 +2593,6 @@
       <page>
         <nameUrl value="download.html"/>
         <title value="ダウンロード"/>
-        <generation value="markdown"/>
-      </page>
-      <page>
-        <nameUrl value="update_history.html"/>
-        <title value="更新履歴"/>
         <generation value="markdown"/>
       </page>
     </page>

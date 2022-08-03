@@ -777,7 +777,7 @@
           },
           {
             "url": "value",
-            "valueString": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_CertificatedDate"
+            "valueString": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Immunization_CertificatedDate"
           }
         ],
         "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -790,7 +790,7 @@
           },
           {
             "url": "value",
-            "valueString": "http://jpfhir.jp/fhir/StructureDefinition/JP_Immunization_DueDateOfNextDose"
+            "valueString": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Immunization_DueDateOfNextDose"
           }
         ],
         "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -803,7 +803,7 @@
           },
           {
             "url": "value",
-            "valueString": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_ManufacturedDate"
+            "valueString": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Immunization_ManufacturedDate"
           }
         ],
         "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -1064,19 +1064,6 @@
           {
             "url": "value",
             "valueString": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationRequest_DosageInstruction_UsageDuration"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "special-url"
-          },
-          {
-            "url": "value",
-            "valueString": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Observation_BodySite_BodySitePosition"
           }
         ],
         "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -1458,7 +1445,7 @@
           "reference": "StructureDefinition/jp-allergyintolerance"
         },
         "name": "JP Core AllergyIntolerance Profile",
-        "description": "本プロファイルはAllergyIntoleranceリソースに対して、患者のアレルギーや不耐症に関するデータを送受信するための基礎となる制約と拡張を定めたものである。",
+        "description": "このプロファイルはAllergyIntoleranceリソースに対して、患者のアレルギー不耐症に関するデータを送受信するための制約と拡張を定めたものである。",
         "exampleBoolean": false
       },
       {
@@ -1472,7 +1459,7 @@
           "reference": "StructureDefinition/jp-careplan"
         },
         "name": "JP Core CarePlan Profile",
-        "description": "本プロファイルはJP Core CarePlanリソースに対する共通の制約と拡張を定めたものである",
+        "description": "このプロファイルはJP Core CarePlanリソースに対する共通の制約と拡張を定めたものである。",
         "exampleBoolean": false
       },
       {
@@ -1486,7 +1473,7 @@
           "reference": "StructureDefinition/jp-condition"
         },
         "name": "JP Core Condition Profile",
-        "description": "本プロファイルはConditionリソースに対して、患者の健康状態に関するデータを送受信するための共通の制約と拡張を定めたものである。",
+        "description": "このプロファイルはConditionリソースに対して、患者の健康状態に関するデータを送受信するための共通の制約と拡張を定めたものである。",
         "exampleBoolean": false
       },
       {
@@ -2281,20 +2268,6 @@
           }
         ],
         "reference": {
-          "reference": "StructureDefinition/jp-observation-bodysite-bodysiteposition"
-        },
-        "name": "JP Core Observation BodySite BodySitePosition Extension",
-        "description": "部位（bodySite）の左右の区別を表現する際に使用する",
-        "exampleBoolean": false
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "StructureDefinition:extension"
-          }
-        ],
-        "reference": {
           "reference": "StructureDefinition/jp-organization-insuranceorganizationcategory"
         },
         "name": "JP Core Organization InsuranceOrganizationCategory Extension",
@@ -2353,8 +2326,36 @@
         "reference": {
           "reference": "ValueSet/jp-allergyintolerance-codes-vs"
         },
-        "name": "JP Core AllergyIntolerance ValueSet",
-        "description": "アレルギー・不耐症のコード",
+        "name": "JP Core AllergyIntolerance Codes",
+        "description": "アレルギー・不耐症に関連するアレルゲンコード",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/jp-condition-severity-vs"
+        },
+        "name": "JP Core Condition Severity",
+        "description": "Conditionの重症度を示すコード",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/jp-medicallicencecertificate-vs"
+        },
+        "name": "JP Core MedicalLicence Certificate ValueSet",
+        "description": "医療関連免許証明に関する値セット",
         "exampleBoolean": false
       },
       {
@@ -2367,7 +2368,7 @@
         "reference": {
           "reference": "ValueSet/jp-physicalexamcodes-vs"
         },
-        "name": "JP Core PhysicalExamCodes ValueSet",
+        "name": "JP Core Physical Exam Codes",
         "description": "身体所見の区分を表すコード",
         "exampleBoolean": false
       },
@@ -2382,7 +2383,21 @@
           "reference": "ValueSet/jp-procedure-body-site-vs"
         },
         "name": "JP Core Procedure BodySite",
-        "description": "Procedureで使用する身体部位のコード",
+        "description": "処置の対象となる身体部位のコード",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/jp-procedure-category-codes-vs"
+        },
+        "name": "JP Core Procedure Category Codes",
+        "description": "処置のカテゴリを示すコード",
         "exampleBoolean": false
       },
       {
@@ -2395,8 +2410,8 @@
         "reference": {
           "reference": "ValueSet/jp-procedure-codes-dental-vs"
         },
-        "name": "JP Core Procedure Codes(Dental)",
-        "description": "Procedureで使用する処置のコード 歯科診療行為マスタ",
+        "name": "JP Core Procedure Codes Dental",
+        "description": "処置のコード:歯科診療行為マスタ",
         "exampleBoolean": false
       },
       {
@@ -2409,8 +2424,8 @@
         "reference": {
           "reference": "ValueSet/jp-procedure-codes-ichi-vs"
         },
-        "name": "JP Core Procedure Codes(ICHI)",
-        "description": "Procedureで使用する処置のコード International Classification of Health Interventions (ICHI)",
+        "name": "JP Core Procedure Codes ICHI",
+        "description": "処置のコード:ICHI(International Classification of Health Interventions)",
         "exampleBoolean": false
       },
       {
@@ -2423,8 +2438,8 @@
         "reference": {
           "reference": "ValueSet/jp-procedure-code-medical-vs"
         },
-        "name": "JP Core Procedure Codes(Medical)",
-        "description": "Procedureで使用する処置のコード 医科診療行為マスタ",
+        "name": "JP Core Procedure Codes Medical",
+        "description": "処置のコード:医科診療行為マスタ",
         "exampleBoolean": false
       },
       {
@@ -2437,8 +2452,8 @@
         "reference": {
           "reference": "ValueSet/jp-procedure-codes-nurse-vs"
         },
-        "name": "JP Core Procedure Codes(Nurse)",
-        "description": "Procedureで使用する処置のコード 看護実践用語標準マスター(看護行為)",
+        "name": "JP Core Procedure Codes Nurse",
+        "description": "処置のコード:看護実践用語標準マスター(看護行為)",
         "exampleBoolean": false
       },
       {
@@ -2451,8 +2466,8 @@
         "reference": {
           "reference": "ValueSet/jp-procedure-code-stem7-vs"
         },
-        "name": "JP Core Procedure Codes(STEM7)",
-        "description": "Procedureで使用する処置のコード 外保連手術基幹コード(STEM7)",
+        "name": "JP Core Procedure Codes STEM7",
+        "description": "処置のコード:外保連手術基幹コード(STEM7)",
         "exampleBoolean": false
       },
       {
@@ -2465,8 +2480,8 @@
         "reference": {
           "reference": "ValueSet/jp-procedure-condition-code-vs"
         },
-        "name": "JP Core Procedure Condition/Problem/Diagnosis Codes",
-        "description": "Procedureで使用する状態のコード",
+        "name": "JP Core Procedure Condition Codes",
+        "description": "処置中もしくは処置の後に発生した合併症を示すコード(Condition/Problem/Diagnosis)",
         "exampleBoolean": false
       },
       {
@@ -2480,7 +2495,7 @@
           "reference": "ValueSet/jp-procedure-device-action-vs"
         },
         "name": "JP Core Procedure Device Action Codes",
-        "description": "Codes indicating the change that happened to the device during the procedure.",
+        "description": "処置の実施中に機器に起こった変化を示すコード",
         "exampleBoolean": false
       },
       {
@@ -2493,8 +2508,8 @@
         "reference": {
           "reference": "ValueSet/jp-procedure-devicekind-vs"
         },
-        "name": "JP Core Procedure DeviceKind",
-        "description": "Codes used to identify medical devices.",
+        "name": "JP Core Procedure Device Kind",
+        "description": "処置の実施に利用された医療機器を識別するコード",
         "exampleBoolean": false
       },
       {
@@ -2507,8 +2522,8 @@
         "reference": {
           "reference": "ValueSet/jp-procedure-followup-vs"
         },
-        "name": "JP Core Procedure Follow up Codes",
-        "description": "Procedure follow up codes.",
+        "name": "JP Core Procedure Follow Up Codes",
+        "description": "処置のフォローアップとして実施される処置のコード",
         "exampleBoolean": false
       },
       {
@@ -2522,7 +2537,21 @@
           "reference": "ValueSet/jp-procedure-not-performed-reason-vs"
         },
         "name": "JP Core Procedure Not Performed Reason",
-        "description": "Situation codes describing the reason that a procedure, which might otherwise be expected, was not performed, or a procedure that was started and was not completed.",
+        "description": "処置が実施されなかった理由、または開始された処置が完了しなかった理由を示すコード",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/jp-procedure-outcome-codes-vs"
+        },
+        "name": "JP Core Procedure Outcome Codes",
+        "description": "処置が実施されたアウトカムを示すコード",
         "exampleBoolean": false
       },
       {
@@ -2536,7 +2565,7 @@
           "reference": "ValueSet/jp-procedure-performer-role-codes-vs"
         },
         "name": "JP Core Procedure Performer Role Codes",
-        "description": "This value set defines the set of codes that can be used to indicate a role of a procedure performer.",
+        "description": "処置を実施した者の役割（ロール）を示すコード",
         "exampleBoolean": false
       },
       {
@@ -2550,7 +2579,21 @@
           "reference": "ValueSet/jp-procedure-reason-codes-vs"
         },
         "name": "JP Core Procedure Reason Codes",
-        "description": "This value set defines the set of codes that can be used to indicate a reason for a procedure.",
+        "description": "処置が実施された理由を示すコード",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CodeSystem"
+          }
+        ],
+        "reference": {
+          "reference": "CodeSystem/jp-condition-severity-cs"
+        },
+        "name": "JP Core Condition Severity",
+        "description": "Conditionの重症度を示すコードシステム（HL70421 Severity of Illness Code）",
         "exampleBoolean": false
       },
       {
@@ -2563,7 +2606,7 @@
         "reference": {
           "reference": "CodeSystem/jp-jfagy-food-allergen-codes-cs"
         },
-        "name": "JFAGY Food Allergen Codes CodeSystem",
+        "name": "JFAGY Food Allergen Codes",
         "description": "JFAGY アレルゲンコード（食品）",
         "exampleBoolean": false
       },
@@ -2577,7 +2620,7 @@
         "reference": {
           "reference": "CodeSystem/jp-jfagy-medication-allergen-codes-cs"
         },
-        "name": "JFAGY Medication Allergen Codes CodeSystem",
+        "name": "JFAGY Medication Allergen Codes",
         "description": "JFAGY アレルゲンコード（医薬品）",
         "exampleBoolean": false
       },
@@ -2591,8 +2634,22 @@
         "reference": {
           "reference": "CodeSystem/jp-jfagy-non-food-non-medication-allergen-codes-cs"
         },
-        "name": "JFAGY Non Food None Medication Allergen Codes CodeSystem",
+        "name": "JFAGY Non Food None Medication Allergen Codes",
         "description": "JFAGY アレルゲンコード（非食品・非医薬品）",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CodeSystem"
+          }
+        ],
+        "reference": {
+          "reference": "CodeSystem/jp-medicallicencecertificate-cs"
+        },
+        "name": "JP Core MedicalLicenceCertificate CodeSystem",
+        "description": "医療関連免許証明に関するコードシステム。（現在作成中、今後医療系免許に関する情報追加する予定です。）",
         "exampleBoolean": false
       },
       {
@@ -2605,7 +2662,7 @@
         "reference": {
           "reference": "CodeSystem/jp-physicalexamcodes-cs"
         },
-        "name": "JP Core PhysicalExamCodes CodeSystem",
+        "name": "JP Core Physical Exam Codes",
         "description": "身体所見の区分を表すコード",
         "exampleBoolean": false
       },
@@ -2620,7 +2677,21 @@
           "reference": "CodeSystem/jp-procedure-body-site-cs"
         },
         "name": "JP Core Procedure BodySite",
-        "description": "Procedureで使用する身体部位のコード",
+        "description": "処置の対象となる身体部位のコード",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CodeSystem"
+          }
+        ],
+        "reference": {
+          "reference": "CodeSystem/jp-procedure-category-codes-cs"
+        },
+        "name": "JP Core Procedure Category Codes",
+        "description": "処置のカテゴリを示すコードのコードシステム",
         "exampleBoolean": false
       },
       {
@@ -2633,8 +2704,8 @@
         "reference": {
           "reference": "CodeSystem/jp-procedure-codes-dental-cs"
         },
-        "name": "JP Core Procedure Codes(Dental)",
-        "description": "Procedureで使用する処置のコード 歯科診療行為マスタ",
+        "name": "JP Core Procedure Codes Dental",
+        "description": "処置のコード:歯科診療行為マスタ",
         "exampleBoolean": false
       },
       {
@@ -2647,8 +2718,8 @@
         "reference": {
           "reference": "CodeSystem/jp-procedure-codes-ichi-cs"
         },
-        "name": "JP Core Procedure Codes(ICHI)",
-        "description": "Procedureで使用する処置のコード International Classification of Health Interventions (ICHI)",
+        "name": "JP Core Procedure Codes ICHI",
+        "description": "処置のコード:ICHI(International Classification of Health Interventions)",
         "exampleBoolean": false
       },
       {
@@ -2661,8 +2732,8 @@
         "reference": {
           "reference": "CodeSystem/jp-procedure-codes-medical-cs"
         },
-        "name": "JP Core Procedure Codes(Medical)",
-        "description": "Procedureで使用する処置のコード 医科診療行為マスタ",
+        "name": "JP Core Procedure Codes Medical",
+        "description": "処置のコード:医科診療行為マスタ",
         "exampleBoolean": false
       },
       {
@@ -2675,8 +2746,8 @@
         "reference": {
           "reference": "CodeSystem/jp-procedure-codes-nurse-cs"
         },
-        "name": "JP Core Procedure Codes(Nurse)",
-        "description": "Procedureで使用する処置のコード 看護実践用語標準マスター(看護行為)",
+        "name": "JP Core Procedure Codes Nurse",
+        "description": "処置のコード:看護実践用語標準マスター(看護行為)",
         "exampleBoolean": false
       },
       {
@@ -2689,8 +2760,8 @@
         "reference": {
           "reference": "CodeSystem/jp-procedure-codes-stem7-cs"
         },
-        "name": "JP Core Procedure Codes(STEM7)",
-        "description": "Procedureで使用する処置のコード 外保連手術基幹コード(STEM7)",
+        "name": "JP Core Procedure Codes STEM7",
+        "description": "処置のコード:外保連手術基幹コード(STEM7)",
         "exampleBoolean": false
       },
       {
@@ -2703,8 +2774,8 @@
         "reference": {
           "reference": "CodeSystem/jp-procedure-condition-codes-cs"
         },
-        "name": "JP Core Procedure Condition/Problem/Diagnosis Codes",
-        "description": "Procedureで使用する状態のコード",
+        "name": "JP Core Procedure Condition Codes",
+        "description": "処置中もしくは処置の後に発生した合併症を示すコード(Condition/Problem/Diagnosis)",
         "exampleBoolean": false
       },
       {
@@ -2718,7 +2789,7 @@
           "reference": "CodeSystem/jp-procedure-device-action-codes-cs"
         },
         "name": "JP Core Procedure Device Action Codes",
-        "description": "Codes indicating the change that happened to the device during the procedure.",
+        "description": "処置の実施中に機器に起こった変化を示すコード",
         "exampleBoolean": false
       },
       {
@@ -2731,8 +2802,8 @@
         "reference": {
           "reference": "CodeSystem/jp-procedure-devicekind-cs"
         },
-        "name": "JP Core Procedure DeviceKind",
-        "description": "Codes used to identify medical devices.",
+        "name": "JP Core Procedure Device Kind",
+        "description": "処置の実施に利用された医療機器を識別するコード",
         "exampleBoolean": false
       },
       {
@@ -2745,8 +2816,8 @@
         "reference": {
           "reference": "CodeSystem/jp-procedure-followup-codes-cs"
         },
-        "name": "JP Core Procedure Follow up Codes",
-        "description": "Procedure follow up codes.",
+        "name": "JP Core Procedure Follow Up Codes",
+        "description": "処置のフォローアップとして実施される処置のコード",
         "exampleBoolean": false
       },
       {
@@ -2760,7 +2831,21 @@
           "reference": "CodeSystem/jp-procedure-not-performed-reason-cs"
         },
         "name": "JP Core Procedure Not Performed Reason",
-        "description": "Situation codes describing the reason that a procedure, which might otherwise be expected, was not performed, or a procedure that was started and was not completed.",
+        "description": "処置が実施されなかった理由、または開始された処置が完了しなかった理由を示すコード",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CodeSystem"
+          }
+        ],
+        "reference": {
+          "reference": "CodeSystem/jp-procedure-outcome-codes-cs"
+        },
+        "name": "JP Core Procedure Outcome Codes",
+        "description": "処置が実施されたアウトカムを示すコード",
         "exampleBoolean": false
       },
       {
@@ -2774,7 +2859,7 @@
           "reference": "CodeSystem/jp-procedure-performer-role-codes-cs"
         },
         "name": "JP Core Procedure Performer Role Codes",
-        "description": "This code system defines the set of codes that can be used to indicate a role of a procedure performer.",
+        "description": "処置を実施した者の役割（ロール）を示すコード",
         "exampleBoolean": false
       },
       {
@@ -2788,7 +2873,7 @@
           "reference": "CodeSystem/jp-procedure-reason-codes-cs"
         },
         "name": "JP Core Procedure Reason Codes",
-        "description": "This code system defines the set of codes that can be used to indicate a reason for a procedure.",
+        "description": "処置が実施された理由を示すコード",
         "exampleBoolean": false
       },
       {
@@ -2801,9 +2886,23 @@
         "reference": {
           "reference": "Observation/bm-12345"
         },
-        "name": "JP Core Observation BodyMeasurement Basic Example",
-        "description": "JP_ObservationBodyMeasurementリソースの1例",
+        "name": "JP Core Observation BodyMeasurement Example 身体計測（体重）",
+        "description": "身体計測（体重）",
         "exampleCanonical": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_BodyMeasurement"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "AllergyIntolerance"
+          }
+        ],
+        "reference": {
+          "reference": "AllergyIntolerance/jp-allergyintolerance-example-1"
+        },
+        "name": "JP Core AllergyIntolerance Basic Example",
+        "description": "JP_AllergyIntoleranceリソースの1例",
+        "exampleCanonical": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_AllergyIntolerance"
       },
       {
         "extension": [
@@ -2911,7 +3010,7 @@
           }
         ],
         "reference": {
-          "reference": "Encounter/jp-encounter-example1"
+          "reference": "Encounter/jp-encounter-example-1"
         },
         "name": "JP Core Enconter 外来",
         "description": "外来",
@@ -3151,8 +3250,8 @@
         "reference": {
           "reference": "Observation/jp-observation-labresult-example-1"
         },
-        "name": "JP Core Observation LabResult Basic Example",
-        "description": "JP_ObservationLabResultリソースの1例",
+        "name": "JP Core Observation LabResult Example 検体検査（尿）",
+        "description": "検体検査（尿）",
         "exampleCanonical": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_LabResult"
       },
       {
@@ -3165,8 +3264,8 @@
         "reference": {
           "reference": "Observation/jp-observation-socialhistory-example-1"
         },
-        "name": "JP Core Observatio SocialHistory Basic Example",
-        "description": "JP_ObservationSocialHistoryリソースの1例",
+        "name": "JP Core Observation SocialHistory Example 喫煙",
+        "description": "喫煙に関する項目",
         "exampleCanonical": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_SocialHistory"
       },
       {
@@ -3179,8 +3278,8 @@
         "reference": {
           "reference": "Observation/jp-observation-vitalsigns-example-1"
         },
-        "name": "JP Core Observation VitalSigns Basic Example",
-        "description": "JP_ObservationVitalSignsリソースの1例",
+        "name": "JP Core Observation VitalSigns Basic バイタル（呼吸数）",
+        "description": "バイタル（呼吸数）",
         "exampleCanonical": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_VitalSigns"
       },
       {
@@ -3433,6 +3532,11 @@
               "nameUrl": "guide-stringSearch.html",
               "title": "検索",
               "generation": "markdown"
+            },
+            {
+              "nameUrl": "update_history.html",
+              "title": "更新履歴",
+              "generation": "markdown"
             }
           ]
         },
@@ -3481,11 +3585,6 @@
         {
           "nameUrl": "download.html",
           "title": "ダウンロード",
-          "generation": "markdown"
-        },
-        {
-          "nameUrl": "update_history.html",
-          "title": "更新履歴",
           "generation": "markdown"
         }
       ]

@@ -12,9 +12,9 @@
   <sch:pattern>
     <sch:title>f:Immunization</sch:title>
     <sch:rule context="f:Immunization">
-      <sch:assert test="count(f:extension[@url = 'http://jpfhir.jp/fhir/StructureDefinition/JP_Immunization_DueDateOfNextDose']) &lt;= 1">extension with URL = 'http://jpfhir.jp/fhir/StructureDefinition/JP_Immunization_DueDateOfNextDose': maximum cardinality of 'extension' is 1</sch:assert>
-      <sch:assert test="count(f:extension[@url = 'http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_ManufacturedDate']) &lt;= 1">extension with URL = 'http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_ManufacturedDate': maximum cardinality of 'extension' is 1</sch:assert>
-      <sch:assert test="count(f:extension[@url = 'http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_CertificatedDate']) &lt;= 1">extension with URL = 'http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization_CertificatedDate': maximum cardinality of 'extension' is 1</sch:assert>
+      <sch:assert test="count(f:extension[@url = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Immunization_DueDateOfNextDose']) &lt;= 1">extension with URL = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Immunization_DueDateOfNextDose': maximum cardinality of 'extension' is 1</sch:assert>
+      <sch:assert test="count(f:extension[@url = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Immunization_ManufacturedDate']) &lt;= 1">extension with URL = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Immunization_ManufacturedDate': maximum cardinality of 'extension' is 1</sch:assert>
+      <sch:assert test="count(f:extension[@url = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Immunization_CertificatedDate']) &lt;= 1">extension with URL = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Immunization_CertificatedDate': maximum cardinality of 'extension' is 1</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
