@@ -13,7 +13,7 @@ def isExpired(h)
     end
 
     # closedステータスのみ削除
-    keepingPeriod = 0.5
+    keepingPeriod = 0
     prnum = h['pullrequest_url'].split('/').last
     octokitClient = Octokit::Client.new(access_token: ARGV[0])
 
