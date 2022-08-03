@@ -290,6 +290,35 @@
 
 
 
+<div style="display:inline-block" markdown="1">
+
+<p><br />
+本プロファイルは、JP_FamilyMemberHistoryリソースの記録・更新・検索を行う上で、準拠するべき必須となる要素や、サポートすべき拡張、用語、検索パラメータを定義する。</p>
+
+<h2 id="スコープ">スコープ</h2>
+<ul>
+  <li>JP_FamilyMemberHistoryは、FHIRワークフロー仕様のイベントリソースの1つである。</li>
+  <li>このリソースは、対象者に関連する特定の個人の重要な健康状態を記録します。この情報は、さまざまなレベルの正確さで知ることができます。正確な状態（喘息）がわかっている場合もあれば、あまり正確でない場合（ある種のがん）もあります。同様に、人物を特定できる場合もあれば（私の叔母アガサ）、その人物が叔父であることだけがわかっている場合もある。</li>
+  <li>このリソースは、特定の家族の「初歩的な」家族史を把握するために使用される単純な構造を表しています。しかし、遺伝子解析やその他の分析に有用な、より厳密な歴史を把握するための基礎とすることもできます - 例として、Genetic Pedigreeプロファイルを参照してください。</li>
+  <li>JP_FamilyMemberHistoryインスタンスへの参照をListリソースインスタンスに結合することで、個人の家族歴全体を表現することができる。</li>
+</ul>
+
+<h2 id="想定シナリオ">想定シナリオ</h2>
+
+<p>本プロファイルは、以下のようなユースケースを想定する。</p>
+
+<ul>
+  <li>JP_FamilyMemberHistoryリソースの記録・更新・検索。</li>
+</ul>
+
+<h2 id="プロファイル定義">プロファイル定義</h2>
+
+
+</div>
+
+
+
+
 <p><b>Usage:</b></p>
 <ul>
  <li>This Resource Profile is not used by any profiles in this Implementation Guide</li>
@@ -1144,6 +1173,217 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <!-- insert notes if present -->
 
 
+<!-- <h3>Notes:</h3> -->
+
+
+<div style="display:inline-block" markdown="1">
+
+<h3 id="必須要素">必須要素</h3>
+
+<p>本プロファイルに準拠するためには、次の項目の値が存在しなければならない。</p>
+
+<ul>
+  <li>patient : 本リソースを有する患者。</li>
+  <li>relationship : 患者と家族との関係の種類（父、母、兄弟など）</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>status : 家族歴のステータス（部分的</td>
+          <td>完全</td>
+          <td>記録エラー</td>
+          <td>健康状態不明）</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h3 id="extensions定義">Extensions定義</h3>
+
+<ul>
+  <li>Extensions定義はない。</li>
+</ul>
+
+<h2 id="利用方法">利用方法</h2>
+
+<h3 id="インタラクション一覧">インタラクション一覧</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>コンフォーマンス</th>
+      <th>インタラクション</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SHALL（必須）</td>
+      <td>search-type、read</td>
+    </tr>
+    <tr>
+      <td>SHOULD（推奨）</td>
+      <td>vread、history-instance</td>
+    </tr>
+    <tr>
+      <td>MAY（利用可能）</td>
+      <td>create、update、patch、delete、history-type</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="operationおよびsearch-parameter-一覧">OperationおよびSearch Parameter 一覧</h3>
+
+<h4 id="search-parameter一覧">Search Parameter一覧</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>コンフォーマンス</th>
+      <th>パラメータ</th>
+      <th>型</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SHALL</td>
+      <td>patient</td>
+      <td>reference</td>
+      <td>GET [base]/JP_FamilyMemberHistory?patient=123456</td>
+    </tr>
+    <tr>
+      <td>SHALL</td>
+      <td>patient,relationship</td>
+      <td>reference,reference</td>
+      <td>GET [base]/JP_FamilyMemberHistory?patient=123456&amp;relationship=FAMMEMB</td>
+    </tr>
+    <tr>
+      <td>SHALL</td>
+      <td>patient,status</td>
+      <td>reference,code</td>
+      <td>GET [base]/JP_FamilyMemberHistory?patient=123456&amp;status=completed</td>
+    </tr>
+    <tr>
+      <td>SHOULD</td>
+      <td>patient,date</td>
+      <td>reference,dateTime</td>
+      <td>GET [base]/JP_FamilyMemberHistory?patient=123456&amp;date=ge2021-08-24</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="必須検索パラメータ">必須検索パラメータ</h5>
+
+<p>本プロファイルに準拠するためには、以下の検索パラメータをサポートしなければならない（SHALL）。</p>
+
+<ol>
+  <li>
+    <p>検索パラメータpatientを指定し、該当するすべてのJP_FamilyMemberHistoryを検索。</p>
+
+    <p>http
+GET [base]/JP_FamilyMemberHistory?patient={Type/}[id]</p>
+
+    <p>例：</p>
+
+    <p>http
+GET [base]/JP_FamilyMemberHistory?patient=123456</p>
+
+    <p>指定された患者が有するすべてのJP_FamilyMemberHistoryを含むBundleを返却する。</p>
+  </li>
+  <li>
+    <p>検索パラメータpatientとrelationshipを指定し、該当するすべてのJP_FamilyMemberHistoryを検索。</p>
+
+    <p>http
+GET [base]/JP_FamilyMemberHistory?patient={Type/}[id]&amp;relationship={Type/}[coding]</p>
+
+    <p>例：</p>
+
+    <p>http
+GET [base]/JP_FamilyMemberHistory?patient=123456&amp;relationship=FAMMEMB</p>
+
+    <p>指定された患者と対象家族が有するすべてのJP_FamilyMemberHistoryを含むBundleを返却する。</p>
+  </li>
+  <li>
+    <p>検索パラメータpatientとstatusの組みを指定し、該当するすべてのJP_FamilyMemberHistoryを検索。</p>
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>OR検索のサポートを含む(例えば status={system</td>
+              <td>}[code],{system</td>
+              <td>}[code],…)</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+
+    <p>http
+ GET [base]/JP_FamilyMemberHistory?patient={Type/}[id]&amp;status={system|}[code]{,{system|}[code],…}</p>
+
+    <p>例：</p>
+
+    <p>http
+ GET [base]/JP_FamilyMemberHistory?patient=123456&amp;status=completed</p>
+
+    <p>指定された患者とステータスを有するすべてのP_FamilyMemberHistoryを含むBundleを返却する。</p>
+  </li>
+</ol>
+
+<h5 id="推奨検索パラメータ">推奨検索パラメータ</h5>
+
+<p>本プロファイルに準拠するためには、以下の検索パラメータをサポートすることが推奨（SHOULD）される。</p>
+
+<ol>
+  <li>検索パラメータpatientとdateの組みを指定し、該当するすべてのJP_FamilyMemberHistoryを検索。</li>
+</ol>
+
+<ul>
+  <li>dateに対する次の比較演算子のサポートを含む: gt,lt,ge,le</li>
+  <li>
+    <p>AND検索のオプションのサポートを含む (例えば.date=[date]&amp;date=[date]]&amp;…)
+http
+GET [base]/JP_FamilyMemberHistory?patient={Type/}[id]&amp;date={gt|lt|ge|le}[date]{&amp;date={gt|lt|ge|le}[date]&amp;…}</p>
+
+    <p>例：</p>
+
+    <p>http
+GET [base]/JP_FamilyMemberHistory?patinet=123456&amp;date=ge2021-08-24</p>
+
+    <p>指定された患者と日付を有するすべてのJP_FamilyMemberHistoryを含むBundleを返却する。</p>
+  </li>
+</ul>
+
+<h5 id="オプション検索パラメータ">オプション検索パラメータ</h5>
+
+<ul>
+  <li>オプション検索パラメータはない。</li>
+</ul>
+
+<h4 id="operation一覧">Operation一覧</h4>
+
+<ul>
+  <li>Operation一覧はない。</li>
+</ul>
+
+<h2 id="注意事項">注意事項</h2>
+
+<ul>
+  <li>特になし。</li>
+</ul>
+
+<h2 id="その他参考文献リンク等">その他、参考文献・リンク等</h2>
+
+<ul>
+  <li>特になし。</li>
+</ul>
+
+
+</div>
+
+
 
 
 </div>
@@ -1192,7 +1432,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Aug 3, 2022 15:28+0000">2022-08-03</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Aug 3, 2022 16:21+0000">2022-08-03</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

@@ -303,13 +303,13 @@
 <div style="display:inline-block" markdown="1">
 
 <p><br />
-本プロファイルは、患者の健康状態とその臨床的な評価を表現するConditionリソースの記録・更新・検索を行う上で、準拠するべき必須となる要素や、サポートすべき拡張、用語、検索パラメータを定義する。</p>
+本プロファイルは、患者の健康状態とその臨床的な評価を表現するJP_Conditionリソースの記録・更新・検索を行う上で、準拠するべき必須となる要素や、サポートすべき拡張、用語、検索パラメータを定義する。</p>
 
 <h2 id="スコープ">スコープ</h2>
 
 <ul>
-  <li>Conditionリソースは、患者の健康上の懸念となるレベルに達した、身体的、精神的、社会的な<strong>負</strong>の状態(conditon)や問題（problem／issue）、医療者による診断(diagnosis)、生じたイベント(event)、置かれている状況(situation)、臨床医学的概念(clinical concept)を表現する。</li>
-  <li>健康上の<strong>負の状態</strong>を表すものであるため、”妊娠”のようにそれが正常なものである場合にはConditionの対象外である。</li>
+  <li>JP_Conditionリソースは、患者の健康上の懸念となるレベルに達した、身体的、精神的、社会的な<strong>負</strong>の状態(conditon)や問題（problem／issue）、医療者による診断(diagnosis)、生じたイベント(event)、置かれている状況(situation)、臨床医学的概念(clinical concept)を表現する。</li>
+  <li>健康上の<strong>負の状態</strong>を表すものであるため、”妊娠”のようにそれが正常なものである場合にはJP_Conditionの対象外である。</li>
 </ul>
 
 <h2 id="想定シナリオ">想定シナリオ</h2>
@@ -317,7 +317,7 @@
 <p>本プロファイルは、以下のようなユースケースを想定する。</p>
 
 <ul>
-  <li>Conditionリソースの記録・更新・検索。</li>
+  <li>JP_Conditionリソースの記録・更新・検索。</li>
 </ul>
 
 <h2 id="プロファイル定義">プロファイル定義</h2>
@@ -1165,31 +1165,31 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
       <td>SHALL</td>
       <td>patient</td>
       <td>reference</td>
-      <td>GET [base]/Condition?patient=123456</td>
+      <td>GET [base]/JP_Condition?patient=123456</td>
     </tr>
     <tr>
       <td>SHALL</td>
       <td>patient,date</td>
       <td>reference,date</td>
-      <td>GET [base]/Condition?patient=123456&amp;date=ge2021-08-24</td>
+      <td>GET [base]/JP_Condition?patient=123456&amp;date=ge2021-08-24</td>
     </tr>
     <tr>
       <td>SHOULD</td>
       <td>patient,clinicalstatus</td>
       <td>reference,code</td>
-      <td>GET [base]/Condition?patient=123456&amp;clinicalstatus=active</td>
+      <td>GET [base]/JP_Condition?patient=123456&amp;clinicalstatus=active</td>
     </tr>
     <tr>
       <td>SHOULD</td>
       <td>patient,verificationstatus</td>
       <td>reference,code</td>
-      <td>GET [base]/Condition?patient=123456&amp;verificationstatus=confirmed</td>
+      <td>GET [base]/JP_Condition?patient=123456&amp;verificationstatus=confirmed</td>
     </tr>
     <tr>
       <td>SHOULD</td>
       <td>patient,category</td>
       <td>reference,code</td>
-      <td>GET [base]/Condition?patient=123456&amp;category=jp_food</td>
+      <td>GET [base]/JP_Condition?patient=123456&amp;category=jp_food</td>
     </tr>
   </tbody>
 </table>
@@ -1200,19 +1200,19 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
 <ol>
   <li>
-    <p>検索パラメータpatientで指定される患者が有する全てのConditionの検索をサポートしなければならない（SHALL）。</p>
+    <p>検索パラメータpatientで指定される患者が有する全てのJP_Conditionの検索をサポートしなければならない（SHALL）。</p>
 
     <p>http
-GET [base]/Condition?patient={Type/}[id]</p>
+GET [base]/JP_Condition?patient={Type/}[id]</p>
 
     <p>例：
 http
-GET [base]/Condition?patient=123456</p>
+GET [base]/JP_Condition?patient=123456</p>
 
-    <p>指定された患者のすべてのConditionリソースを含むBundleを検索する。</p>
+    <p>指定された患者のすべてのJP_Conditionリソースを含むBundleを検索する。</p>
   </li>
   <li>
-    <p>検索パラメータpatientとdateの両者で指定されるConditionの検索をサポートしなければならない（SHALL）。</p>
+    <p>検索パラメータpatientとdateの両者で指定されるJP_Conditionの検索をサポートしなければならない（SHALL）。</p>
   </li>
 </ol>
 
@@ -1222,13 +1222,13 @@ GET [base]/Condition?patient=123456</p>
     <p>AND検索のオプションのサポートを含む (例えば.date=[date]&amp;date=[date]]&amp;…)</p>
 
     <p>http
-GET [base]/Condition?patient={Type/}[id]&amp;date={gt|lt|ge|le}[date]{&amp;date={gt|lt|ge|le}[date]&amp;…}</p>
+GET [base]/JP_Condition?patient={Type/}[id]&amp;date={gt|lt|ge|le}[date]{&amp;date={gt|lt|ge|le}[date]&amp;…}</p>
 
     <p>例：
 http
-GET [base]/Condition?patinet=123456&amp;date=ge2021-08-24</p>
+GET [base]/JP_Condition?patinet=123456&amp;date=ge2021-08-24</p>
 
-    <p>指定された患者および日付のすべてのConditionを含むBundleを検索する。</p>
+    <p>指定された患者および日付のすべてのJP_Conditionを含むBundleを検索する。</p>
   </li>
 </ul>
 
@@ -1253,17 +1253,17 @@ GET [base]/Condition?patinet=123456&amp;date=ge2021-08-24</p>
     </ul>
 
     <p>http
- GET [base]/Condition?patient={Type/}[id]&amp;clinicalstatus={system|}[code]{,{system|}[code],…}</p>
+ GET [base]/JP_Condition?patient={Type/}[id]&amp;clinicalstatus={system|}[code]{,{system|}[code],…}</p>
 
     <p>例：</p>
 
     <p>http
- GET [base]/Condition?patient=123456&amp;clinicalstatus=active</p>
+ GET [base]/JP_Condition?patient=123456&amp;clinicalstatus=active</p>
 
     <p>http
- GET [base]/Condition?patient=123456&amp;clinicalstatus=http://hl7.org/fhir/ValueSet/condition-clinical|active</p>
+ GET [base]/JP_Condition?patient=123456&amp;clinicalstatus=http://hl7.org/fhir/ValueSet/jp_condition-clinical|active</p>
 
-    <p>指定された患者およびステータスのすべてのConditionを含むBundleを検索する。</p>
+    <p>指定された患者およびステータスのすべてのJP_Conditionを含むBundleを検索する。</p>
   </li>
   <li>検索パラメータpatientとverificationstatusの組み合わせを使用した検索をサポートすることが望ましい（SHOULD）。
     <ul>
@@ -1281,17 +1281,17 @@ GET [base]/Condition?patinet=123456&amp;date=ge2021-08-24</p>
     </ul>
 
     <p>http
- GET [base]/Condition?patient={Type/}[id]&amp;verificationstatus={system|}[code]{,{system|}[code],…}</p>
+ GET [base]/JP_Condition?patient={Type/}[id]&amp;verificationstatus={system|}[code]{,{system|}[code],…}</p>
 
     <p>例：</p>
 
     <p>http
- GET [base]/Condition?patient=123456&amp;verificationstatus=confirmed</p>
+ GET [base]/JP_Condition?patient=123456&amp;verificationstatus=confirmed</p>
 
     <p>http
- GET [base]/Condition?patient=123456&amp;verificationstatus=http://hl7.org/fhir/ValueSet/http://hl7.org/fhir/ValueSet/condition-ver-status|confirmed</p>
+ GET [base]/JP_Condition?patient=123456&amp;verificationstatus=http://hl7.org/fhir/ValueSet/http://hl7.org/fhir/ValueSet/condition-ver-status|confirmed</p>
 
-    <p>指定された患者およびステータスのすべてのConditionを含むBundleを検索する。</p>
+    <p>指定された患者およびステータスのすべてのJP_Conditionを含むBundleを検索する。</p>
   </li>
   <li>検索パラメータpatientとcategoryの組み合わせを使用した検索をサポートすることが望ましい（SHOULD）。
     <ul>
@@ -1309,17 +1309,17 @@ GET [base]/Condition?patinet=123456&amp;date=ge2021-08-24</p>
     </ul>
 
     <p>http
- GET [base]/Condition?patient={Type/}[id]&amp;category={system|}[code]{,{system|}[code],…}</p>
+ GET [base]/JP_Condition?patient={Type/}[id]&amp;category={system|}[code]{,{system|}[code],…}</p>
 
     <p>例：</p>
 
     <p>http
- GET [base]/Condition?patient=123456&amp;category=claim-diagnosis</p>
+ GET [base]/JP_Condition?patient=123456&amp;category=claim-diagnosis</p>
 
     <p>http
- GET [base]/Condition?patient=123456&amp;category=http://jpfhir.jp/fhir/CodeSystem/*** | claim-diagnosis</p>
+ GET [base]/JP_Condition?patient=123456&amp;category=	http://hl7.org/fhir/ValueSet/condition-category|claim-diagnosis</p>
 
-    <p>指定された患者およびステータスのすべてのConditionを含むBundleを検索する。</p>
+    <p>指定された患者およびステータスのすべてのJP_Conditionを含むBundleを検索する。</p>
   </li>
 </ol>
 
@@ -1399,7 +1399,7 @@ GET [base]/Condition?patinet=123456&amp;date=ge2021-08-24</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Aug 3, 2022 15:28+0000">2022-08-03</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Aug 3, 2022 16:21+0000">2022-08-03</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
