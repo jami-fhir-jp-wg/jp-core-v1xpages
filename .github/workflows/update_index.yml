@@ -20,14 +20,14 @@ jobs:
     - name: Execute Update Script 
       run: |
         sudo gem install octokit
-        ruby resources/gcBrunch.rb ${{ secrets.GITHUB_TOKEN }}
+        sudo ruby resources/gcBrunch.rb ${{ secrets.GITHUB_TOKEN }}
         ruby resources/updateIndex.rb
     
     - name: Commit files
       run: |
         git config --local user.email "fhirjp-robot@github.com"
         git config --local user.name "HL7 Japan Github Action"
-        git add -A
+        git add .
         git commit -m "Update landing page index.html"
     - name: Push changes
       uses: ad-m/github-push-action@master
