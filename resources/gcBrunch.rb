@@ -6,7 +6,7 @@ require 'date'
 require 'time'
 
 def octokitClient = Octokit::Client.new(access_token: ARGV[0])
-def keepingPeriod = 0.5
+def keepingPeriod = 0
 
 # 削除対象かどうか
 def isExpired(h)
