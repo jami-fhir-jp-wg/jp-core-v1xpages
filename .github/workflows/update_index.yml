@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['3.0']
+        ruby-version: ['2.7']
     steps:
 
     - name: Checkout Implementation Guide
@@ -19,6 +19,8 @@ jobs:
 
     - name: Execute Update Script 
       run: |
+        sudo gem install octokit
+        sudo ruby resources/gcBrunch.rb ${{ secrets.GITHUB_TOKEN }}
         ruby resources/updateIndex.rb
     
     - name: Commit files
