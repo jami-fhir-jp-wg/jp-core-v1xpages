@@ -5,8 +5,8 @@ require 'fileutils'
 require 'date'
 require 'time'
 
-def octokitClient = Octokit::Client.new(access_token: ARGV[0])
-def keepingPeriod = 0
+octokitClient = Octokit::Client.new(access_token: ARGV[0])
+keepingPeriod = 0.5
 
 # 削除対象かどうか
 def isExpired(h)
