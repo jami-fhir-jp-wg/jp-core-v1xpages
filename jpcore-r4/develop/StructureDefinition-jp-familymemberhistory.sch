@@ -10,12 +10,6 @@
     single schematron that validates contained resources (if you have any) 
   -->
   <sch:pattern>
-    <sch:title>f:FamilyMemberHistory</sch:title>
-    <sch:rule context="f:FamilyMemberHistory">
-      <sch:assert test="count(f:condition) &lt;= 1">condition: maximum cardinality of 'condition' is 1</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:title>FamilyMemberHistory</sch:title>
     <sch:rule context="f:FamilyMemberHistory">
       <sch:assert test="not(parent::f:contained and f:contained)">If the resource is contained in another resource, it SHALL NOT contain nested Resources (inherited)</sch:assert>
