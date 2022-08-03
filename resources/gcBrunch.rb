@@ -5,13 +5,6 @@ require 'fileutils'
 require 'date'
 require 'time'
 
-def
-    octokitClient = Octokit::Client.new(access_token: ARGV[0])
-end
-def
-    keepingPeriod = 0.5
-end
-
 # 削除対象かどうか
 def isExpired(h)
     # pull requestのみ削除
@@ -20,7 +13,10 @@ def isExpired(h)
     end
 
     # closedステータスのみ削除
+    keepingPeriod = 0.5
     prnum = h['pullrequest_url'].split('/').last
+    octokitClient = Octokit::Client.new(access_token: ARGV[0])
+
     pr = octokitClient.pull_request("jami-fhir-jp-wg/jp-core-v1x", prnum)
 
     if(pr[:state] != "closed")
