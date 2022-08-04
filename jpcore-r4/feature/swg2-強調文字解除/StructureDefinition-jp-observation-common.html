@@ -1347,19 +1347,19 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
   <tbody>
     <tr>
       <td>MAY</td>
-      <td>subject,category,code,<code class="highlighter-rouge">value-quantity</code></td>
+      <td>subject,category,code,value-quantity</td>
       <td>reference,token,token,quantity</td>
       <td><code class="highlighter-rouge">GET [base]/Observation?subject=Patient/123&amp;category=vital-signs&amp;code=http://loinc.org|8867-4&amp;value-quantity=gt40</code></td>
     </tr>
     <tr>
       <td>MAY</td>
-      <td>subject,category,code,<code class="highlighter-rouge">value-quantity</code>,date</td>
+      <td>subject,category,code,value-quantity,date</td>
       <td>reference,token,token,quantity,date</td>
       <td><code class="highlighter-rouge">GET [base]/Observation?subject=Patient/123&amp;category=vital-signs&amp;code=http://loinc.org|8867-4&amp;value-quantity=gt40&amp;date=le2020-12-31</code></td>
     </tr>
     <tr>
       <td>MAY</td>
-      <td>subject,category,code,<code class="highlighter-rouge">value-quantity</code>,encounter</td>
+      <td>subject,category,code,value-quantity,encounter</td>
       <td>reference,token,token,quantity,encounter</td>
       <td><code class="highlighter-rouge">GET [base]/Observation?subject=Patient/123&amp;category=vital-signs&amp;code=http://loinc.org|8867-4&amp;value-quantity=gt40&amp;encounter=Encounter/456</code></td>
     </tr>
@@ -1388,9 +1388,9 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 
 <p>1.患者中心での検索：subjet（= Patientリソース：対象患者）、category（対象カテゴリ）、code（対象項目）、<code class="highlighter-rouge">value[x].valueQuantity</code>（値条件）での検索をサポートすることが望ましい。（MAY）</p>
 
-<p>検査結果値であるエレメント=<code class="highlighter-rouge">value[x].valueQuantity</code>の実際のSearch Parameterは<code class="highlighter-rouge">value-quantity</code>となる。</p>
+<p>検査結果値であるエレメント=<code class="highlighter-rouge">value[x].valueQuantity</code>の実際のSearch Parameterはvalue-quantityとなる。</p>
 
-<p>subject,category,code,<code class="highlighter-rouge">value-quantity</code> の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
+<p>subject,category,code,value-quantity の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?subject={reference}&amp;category={token}&amp;code={token}&amp;value-quantity={quantity}
 </code></pre></div></div>
@@ -1402,9 +1402,9 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 
 <p>2.項目中心の検索：subjet（= 複数のPatientリソース：母集団としての患者範囲）、category（対象カテゴリ）、code（対象項目）、<code class="highlighter-rouge">value[x].valueQuantity</code>（値条件）、<code class="highlighter-rouge">effective[x].effectiveDateTime</code> または <code class="highlighter-rouge">.effectivePeriod</code>（期間範囲）での検索をサポートすることが望ましい。（MAY）</p>
 
-<p>検査結果値であるエレメント=<code class="highlighter-rouge">value[x].valueQuantity</code>の実際のSearch Parameterは<code class="highlighter-rouge">value-quantity</code>となり、期間指定についてはエレメントが<code class="highlighter-rouge">effective[x].effectiveDateTime</code> または <code class="highlighter-rouge">.effectivePeriod</code> いずれの場合においてもSearch Parameterはdateとなる。</p>
+<p>検査結果値であるエレメント=<code class="highlighter-rouge">value[x].valueQuantity</code>の実際のSearch Parameterはvalue-quantityとなり、期間指定についてはエレメントが<code class="highlighter-rouge">effective[x].effectiveDateTime</code> または <code class="highlighter-rouge">.effectivePeriod</code> いずれの場合においてもSearch Parameterはdateとなる。</p>
 
-<p>subject,category,code,<code class="highlighter-rouge">value-quantity</code>,date の各検索パラメータに一致するObservationリソースを含むBundleを検索する。</p>
+<p>subject,category,code,value-quantity,date の各検索パラメータに一致するObservationリソースを含むBundleを検索する。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?subject={reference}&amp;category={token}&amp;code={token}&amp;value-quantity={quantity}&amp;date={date}
 </code></pre></div></div>
@@ -1416,7 +1416,7 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 
 <p>3.訪問診療等の検索：subjet（= 複数のPatientリソース：母集団としての患者範囲）、category（対象カテゴリ）、code（対象項目）、<code class="highlighter-rouge">value[x].valueQuantity</code>（値条件）、encounter（= Encounterリソース：対象医療行為）での検索をサポートすることが望ましい。（MAY）</p>
 
-<p>subject,category,code,<code class="highlighter-rouge">value-quantity</code>,date,encountr の各検索パラメータに一致するObservationリソースを含むBundleを検索する。</p>
+<p>subject,category,code,value-quantity,date,encountr の各検索パラメータに一致するObservationリソースを含むBundleを検索する。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?subject={reference}&amp;category={token}&amp;code={token}&amp;value-quantity={quantity}&amp;date={date}&amp;&amp;encounter={encounter}
 </code></pre></div></div>
@@ -1944,7 +1944,7 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Aug 4, 2022 13:38+0000">2022-08-04</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Aug 4, 2022 13:50+0000">2022-08-04</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

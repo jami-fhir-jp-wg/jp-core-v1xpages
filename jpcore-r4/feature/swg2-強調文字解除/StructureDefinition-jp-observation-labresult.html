@@ -1598,43 +1598,43 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   <tbody>
     <tr>
       <td>SHOULD</td>
-      <td>subject,code,date,<code class="highlighter-rouge">based-on</code></td>
+      <td>subject,code,date,based-on</td>
       <td>reference,token,date,reference</td>
       <td><code class="highlighter-rouge">GET [base]/Observation?subject=Patient/123&amp;code=http://loinc.org|8867-4&amp;date=le2020-12-31&amp;based-on=ServiceRequest/456</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td>subject,code,date,<code class="highlighter-rouge">value-quantity</code>,<code class="highlighter-rouge">based-on</code></td>
+      <td>subject,code,date,value-quantity,based-on</td>
       <td>reference,token,date,quantity,reference</td>
       <td><code class="highlighter-rouge">GET [base]/Observation?subject=Patient/123&amp;code=http://loinc.org|8867-4&amp;date=le2020-12-31&amp;value-quantity=gt40&amp;based-on=ServiceRequest/456</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td>subject,code,date,<code class="highlighter-rouge">value-concept</code>,<code class="highlighter-rouge">based-on</code></td>
+      <td>subject,code,date,value-concept,based-on</td>
       <td>reference,token,date,code,reference</td>
       <td><code class="highlighter-rouge">GET [base]/Observation?subject=Patient/123&amp;code=http://loinc.org|8867-4&amp;date=le2020-12-31&amp;value-concept=http://snomed.info/sct|1082004&amp;based-on=ServiceRequest/456</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td>subject,code,date,<code class="highlighter-rouge">value-string</code>,<code class="highlighter-rouge">based-on</code></td>
+      <td>subject,code,date,value-string,based-on</td>
       <td>reference,token,date,string,reference</td>
       <td><code class="highlighter-rouge">GET [base]/Observation?subject=Patient/123&amp;code=http://loinc.org|8867-4&amp;date=le2020-12-31&amp;value-string=positive&amp;based-on=ServiceRequest/456</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td>code,<code class="highlighter-rouge">value-quantity</code>,subject</td>
+      <td>code,value-quantity,subject</td>
       <td>token,quantity,reference</td>
       <td><code class="highlighter-rouge">GET [base]/Observation?code=http://loinc.org|8867-4&amp;value-quantity=gt40&amp;subject=Patient/123</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td>code,<code class="highlighter-rouge">value-concept</code>,subject</td>
+      <td>code,value-concept,subject</td>
       <td>token,code,reference</td>
       <td><code class="highlighter-rouge">GET [base]/Observation?code=http://loinc.org|8867-4&amp;value-concept=http://snomed.info/sct|1082004&amp;subject=Patient/123</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td>code,<code class="highlighter-rouge">value-string</code>,subject</td>
+      <td>code,value-string,subject</td>
       <td>token,string,reference</td>
       <td><code class="highlighter-rouge">GET [base]/Observation?code=http://loinc.org|8867-4&amp;value-string=positive&amp;subject=Patient/123</code></td>
     </tr>
@@ -1655,7 +1655,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   <li>臨床での検索：subject = Patient（対象患者）、検体採取日、検査項目、<code class="highlighter-rouge">basedOn = ServiceRequest</code>（検査オーダの依頼科）を指定した検索をサポートすることが望ましい。（SHOULD）</li>
 </ol>
 
-<p>subject,code,date,<code class="highlighter-rouge">based-on</code> の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
+<p>subject,code,date,based-on の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?subject={reference}&amp;code={code}}&amp;date={date}}&amp;based-on={reference}
 </code></pre></div></div>
@@ -1669,7 +1669,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   <li>臨床（NST）での検索：<code class="highlighter-rouge">subject = Patient</code>（対象患者）、検査項目、検査値（数値、条件：基準値から外れている、等）、<code class="highlighter-rouge">basedOn = ServiceRequest</code>（検査オーダの依頼科）を指定した検索をサポートすることが望ましい。(SHOULD)</li>
 </ol>
 
-<p>subject,code,date,<code class="highlighter-rouge">value-quantity</code>,<code class="highlighter-rouge">based-on</code> の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
+<p>subject,code,date,value-quantity,based-on の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?subject={reference}&amp;code={code}}&amp;date={date}}&amp;value-quantity={quantity}&amp;based-on={reference}
 </code></pre></div></div>
@@ -1683,7 +1683,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   <li>臨床（NST）での検索：<code class="highlighter-rouge">subject = Patient</code>（対象患者）、検査項目、検査値（コード）、<code class="highlighter-rouge">basedOn = ServiceRequest</code>（検査オーダの依頼科）を指定した検索をサポートすることが望ましい。(SHOULD)</li>
 </ol>
 
-<p>subject,code,date,<code class="highlighter-rouge">value-concept</code>,<code class="highlighter-rouge">based-on</code> の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
+<p>subject,code,date,value-concept,based-on の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?subject={reference}&amp;code={code}}&amp;date={date}}&amp;value-concept={code}&amp;based-on={reference}
 </code></pre></div></div>
@@ -1697,7 +1697,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   <li>臨床（NST）での検索：subject = Patient（対象患者）、検査項目、検査値（文字列）、<code class="highlighter-rouge">basedOn = ServiceRequest</code>（検査オーダの依頼科）を指定した検索をサポートすることが望ましい。(SHOULD)</li>
 </ol>
 
-<p>subject,code,date,<code class="highlighter-rouge">value-string</code>,<code class="highlighter-rouge">based-on</code> の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
+<p>subject,code,date,value-string,based-on の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?subject={reference}&amp;code={code}}&amp;date={date}}&amp;value-string={string}&amp;based-on={reference}
 </code></pre></div></div>
@@ -1711,7 +1711,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   <li>研究での検索：検査項目、検査値（数値、条件：ある値以上／以下、等）、<code class="highlighter-rouge">subject = Patient</code>（対象患者で絞る場合あり）を指定した検索をサポートすることが望ましい。(SHOULD)</li>
 </ol>
 
-<p>code,<code class="highlighter-rouge">value-quantity</code>,subject の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
+<p>code,value-quantity,subject の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?code={code}}&amp;value-quantity={quantity}&amp;subject={reference}&amp;
 </code></pre></div></div>
@@ -1725,7 +1725,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   <li>研究での検索：検査項目、検査値（コード）、<code class="highlighter-rouge">subject = Patient</code>（対象患者で絞る場合あり）を指定した検索をサポートすることが望ましい。(SHOULD)</li>
 </ol>
 
-<p>code,<code class="highlighter-rouge">value-concept</code>,subject の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
+<p>code,value-concept,subject の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?code={code}}&amp;value-concept={code}&amp;subject={reference}
 </code></pre></div></div>
@@ -1739,7 +1739,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   <li>研究での検索：検査項目、検査値（文字列）、<code class="highlighter-rouge">subject = Patient</code>（対象患者で絞る場合あり）を指定した検索をサポートすることが望ましい。(SHOULD)</li>
 </ol>
 
-<p>code,<code class="highlighter-rouge">value-string</code>,subject の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
+<p>code,value-string,subject の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?code={code}}&amp;value-string={string}&amp;subject={reference}
 </code></pre></div></div>
@@ -1930,7 +1930,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Aug 4, 2022 13:38+0000">2022-08-04</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Aug 4, 2022 13:50+0000">2022-08-04</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
