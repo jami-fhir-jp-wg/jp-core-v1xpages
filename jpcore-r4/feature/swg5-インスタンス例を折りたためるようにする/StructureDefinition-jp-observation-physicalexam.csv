@@ -42,7 +42,7 @@ Observationに割り当てられたユニーク（一意）の識別ID","","Allo
 "Observation.partOf","Observation.partOf","","Container
 ","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationAdministration], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationAdministration_Injection], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationDispenseBase], CanonicalType[http://hl7.org/fhir/StructureDefinition/MedicationStatement], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization], CanonicalType[http://hl7.org/fhir/StructureDefinition/ImagingStudy]]}
 ","Part of referenced event　参照されるイベントの一部分","A larger event of which this particular Observation is a component or step.  For example,  an observation as part of a procedure.
-この特定のObservationが別のより大きなイベントの要素あるいは一段階であるような親イベント。たとえば、一連の処置手順の一部としてのObservation.","To link an Observation to an Encounter use `encounter`.  See the  [Notes](observation.html#obsgrouping) below for guidance on referencing another Observation.
+この特定のObservationが別のより大きなイベントの要素あるいは一段階であるような親イベント。たとえば、一連の処置手順の一部としてのObservation。","To link an Observation to an Encounter use `encounter`.  See the  [Notes](observation.html#obsgrouping) below for guidance on referencing another Observation.
 ObservationをEncounterにencounter要素を使ってリンクする。もうひとつ別のObservationを参照することについては、以降にあるt [Notes](observation.html#obsgrouping)　をガイダンスとして参照のこと。","","","","","","","","",,,,,"",,,,"Observation.partOf",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.partOf","Varies by domain",".outboundRelationship[typeCode=FLFS].target"
 "Observation.status","Observation.status","","","",1,1,"","Y","Y","code {[]} {[]}
@@ -151,31 +151,8 @@ The alternate way is to use the value element for actual observations and use th
 ","NTE.3 (partner NTE to OBX, or sometimes another (child?) OBX)","subjectOf.observationEvent[code=""annotation""].value"
 "Observation.bodySite","Observation.bodySite","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","Observed body part　観察された身体部位","Indicates the site on the subject's body where the observation was made (i.e. the target site).
-観察が行われた被験者の体の部位（すなわち、標的部位）を示す。","Only used if not implicit in code found in Observation.code.  In many systems, this may be represented as a related observation instead of an inline component.   
-
-If the use case requires BodySite to be handled as a separate resource (e.g. to identify and track separately) then use the standard extension[ bodySite](extension-bodysite.html).
-
-【JP仕様】<br/>
-外保連の手術基幹コード（STEM7）の操作対象部位を基にバリューセットを定義する<br/>
-左右の区別は拡張で表現する<br/>
-具体的なコードについてはSWG6と連携して決定する必要がある（TBD）","","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/Common/ValueSet/observation-bodySite","",,,,"Observation.bodySite",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+観察が行われた被験者の体の部位（すなわち、標的部位）を示す。","ICD-11","","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/Common/ValueSet/observation-bodySite","",,,,"Observation.bodySite",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","< 123037004 |Body structure|","OBX-20","targetSiteCode","718497002 |Inherent location|"
-"Observation.bodySite.id","Observation.bodySite.id","","","",0,1,"","","","string {[]} {[]}
-","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
-"Observation.bodySite.extension","Observation.bodySite.extension","","extensions
-user content","",0,*,"","","","Extension {[]} {[]}
-","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
-","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
-"Observation.bodySite.extension:bodySitePosition","Observation.bodySite.extension","bodySitePosition","","",0,*,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Observation_BodySite_BodySitePosition]]} {[]}
-","部位（bodySite）の左右の区別を表現する際に使用する","部位（bodySite）の左右の区別を表現する際に使用する","左右の区別を表現する際に使用する","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Observation.bodySite.coding","Observation.bodySite.coding","","","",0,*,"","","Y","Coding {[]} {[]}
-","Code defined by a terminology system","A reference to a code defined by a terminology system.","Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true.","Allows for alternative encodings within a code system, and translations to other code systems.","","","","","","","",,,,,"",,,,"CodeableConcept.coding",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-","C*E.1-8, C*E.10-22","union(., ./translation)"
-"Observation.bodySite.text","Observation.bodySite.text","","","",0,1,"","","Y","string {[]} {[]}
-","Plain text representation of the concept","A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.","Very often the text is the same as a displayName of one of the codings.","The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.","","","","","","","",,,,,"",,,,"CodeableConcept.text",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-","C*E.9. But note many systems use C*E.2 for this","./originalText[mediaType/code=""text/plain""]/data"
 "Observation.method","Observation.method","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","How it was done　どのように実施されたか。","Indicates the mechanism used to perform the observation.
 観測を実行するために使用されるメカニズムを示す。","Only used if not implicit in code for Observation.code.
