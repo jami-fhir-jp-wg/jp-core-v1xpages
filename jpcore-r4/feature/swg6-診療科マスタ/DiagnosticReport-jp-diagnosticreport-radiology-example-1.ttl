@@ -1,0 +1,79 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://jpfhir.jp/fhir/core/DiagnosticReport/jp-diagnosticreport-radiology-example-1> a fhir:DiagnosticReport;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "jp-diagnosticreport-radiology-example-1"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Radiology";
+       fhir:index 0;
+       fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Radiology>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2><span title=\"Codes: {http://loinc.org 10191-5}\">Physical findings of Abdomen Narrative</span> (<span title=\"Codes: {http://terminology.hl7.org/CodeSystem/v2-0074 RAD}\">Radiology</span>) </h2><table class=\"grid\"><tr><td>Subject</td><td><b>山田 太郎</b> male, DoB: 1970-01-01 ( id: 00000010)</td></tr><tr><td>When For</td><td>2008-06-17</td></tr><tr><td>Reported</td><td>2008-06-18 09:23:00+1000</td></tr><tr><td>Identifier:</td><td> id: 123456 (USUAL)</td></tr></table><p><b>Report Details</b></p><p>インプレッション: ひだり肺上葉の空洞性病変。 肺腺癌を疑う。みぎ肺上葉陳旧性炎症性瘢痕。</p></div>"
+  ];
+  fhir:DiagnosticReport.identifier [
+     fhir:index 0;
+     fhir:Identifier.use [ fhir:value "usual" ];
+     fhir:Identifier.system [ fhir:value "http://jpfhir.jp/fhir/Common/IdSystem/resourceInstance-identifier" ];
+     fhir:Identifier.value [ fhir:value "123456" ]
+  ];
+  fhir:DiagnosticReport.status [ fhir:value "final"];
+  fhir:DiagnosticReport.category [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v2-0074" ];
+       fhir:Coding.code [ fhir:value "RAD" ]
+     ]
+  ];
+  fhir:DiagnosticReport.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:10191-5;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "10191-5" ]
+     ]
+  ];
+  fhir:DiagnosticReport.subject [
+     fhir:link <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1>;
+     fhir:Reference.reference [ fhir:value "Patient/jp-patient-example-1" ]
+  ];
+  fhir:DiagnosticReport.effectiveDateTime [ fhir:value "2008-06-17"^^xsd:date];
+  fhir:DiagnosticReport.issued [ fhir:value "2008-06-18T09:23:00+10:00"^^xsd:dateTime];
+  fhir:DiagnosticReport.performer [
+     fhir:index 0;
+     fhir:link <http://jpfhir.jp/fhir/core/Practitioner/jp-practionner-example-male-1>;
+     fhir:Reference.reference [ fhir:value "Practitioner/jp-practionner-example-male-1" ];
+     fhir:Reference.display [ fhir:value "大阪 一郎" ]
+  ];
+  fhir:DiagnosticReport.imagingStudy [
+     fhir:index 0;
+     fhir:link <http://jpfhir.jp/fhir/core/ImagingStudy/jp-imagingstudy-radiology-example-1>;
+     fhir:Reference.reference [ fhir:value "ImagingStudy/jp-imagingstudy-radiology-example-1" ];
+     fhir:Reference.display [ fhir:value "CHEST CT DICOM imaging study" ]
+  ];
+  fhir:DiagnosticReport.conclusion [ fhir:value "インプレッション: ひだり肺上葉の空洞性病変。 肺腺癌を疑う。みぎ肺上葉陳旧性炎症性瘢痕。"];
+  fhir:DiagnosticReport.presentedForm [
+     fhir:index 0;
+     fhir:Attachment.contentType [ fhir:value "image/jpeg" ];
+     fhir:Attachment.language [ fhir:value "ja" ];
+     fhir:Attachment.data [ fhir:value "/9j/"^^xsd:base64Binary ];
+     fhir:Attachment.title [ fhir:value "HTML Report" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://jpfhir.jp/fhir/core/DiagnosticReport/jp-diagnosticreport-radiology-example-1.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
