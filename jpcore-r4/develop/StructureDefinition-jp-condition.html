@@ -1211,39 +1211,32 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <p>本プロファイルに準拠するためには、以下の検索パラメータをサポートしなければならない（SHALL）</p>
 
 <ol>
-  <li>
-    <p>検索パラメータidentifierを指定し、レコードIDなどの識別子によるすべてのConditionを検索。</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Condition?identifier={system|}[code]
-</code></pre></div>    </div>
-
-    <p>例：</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Condition?identifier=http://myhospital.com/fhir/condition\|123
-</code></pre></div>    </div>
-
-    <p>指定された識別子に一致するConditionリソースを含むBundleを検索する。</p>
-  </li>
+  <li>検索パラメータidentifierを指定し、レコードIDなどの識別子によるすべてのConditionを検索。</li>
 </ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  GET [base]/Condition?identifier={system|}[code]
+</code></pre></div></div>
+<p>例：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  GET [base]/Condition?identifier=http://myhospital.com/fhir/condition\|123
+</code></pre></div></div>
+
+<p>指定された識別子に一致するConditionリソースを含むBundleを検索する。</p>
 
 <h5 id="推奨検索パラメータ">推奨検索パラメータ</h5>
 
 <p>本プロファイルに準拠するためには、以下の検索パラメータをサポートすることが推奨される（SHOULD）</p>
 
 <ol>
-  <li>
-    <p>検索パラメータpatientを指定し、該当するすべてのConditionを検索。</p>
-
-    <p>http
-GET [base]/Condition?patient={reference}</p>
-
-    <p>例：
-http
-GET [base]/Condition?patient=Patient/123</p>
-
-    <p>指定された患者のすべてのConditionリソースを含むBundleを検索する。</p>
-  </li>
+  <li>検索パラメータpatientを指定し、該当するすべてのConditionを検索。</li>
 </ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  GET [base]/Condition?patient={reference}
+</code></pre></div></div>
+<p>例：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  GET [base]/Condition?patient=Patient/123
+</code></pre></div></div>
+
+<p>指定された患者のすべてのConditionリソースを含むBundleを検索する。</p>
 
 <h5 id="追加検索パラメータ">追加検索パラメータ</h5>
 
@@ -1255,19 +1248,16 @@ GET [base]/Condition?patient=Patient/123</p>
 
 <ul>
   <li>dateに対する次の比較演算子のサポートを含む: gt,lt,ge,le</li>
-  <li>
-    <p>AND検索のオプションのサポートを含む (例えば.date=[date]&amp;date=[date]]&amp;…)</p>
-
-    <p>http
-GET [base]/Condition?patient={reference}&amp;date={gt|lt|ge|le}[date]{&amp;date={gt|lt|ge|le}[date]&amp;…}</p>
-
-    <p>例：
-http
-GET [base]/Condition?patient=Patient/123&amp;date=ge2021-08-24</p>
-
-    <p>指定された患者および日付のすべてのConditionを含むBundleを検索する。</p>
-  </li>
+  <li>AND検索のオプションのサポートを含む (例えば.date=[date]&amp;date=[date]]&amp;…)</li>
 </ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  GET [base]/Condition?patient={reference}&amp;date={gt|lt|ge|le}[date]{&amp;date={gt|lt|ge|le}[date]&amp;...}
+</code></pre></div></div>
+<p>例：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  GET [base]/Condition?patient=Patient/123&amp;date=ge2021-08-24
+</code></pre></div></div>
+
+<p>指定された患者および日付のすべてのConditionを含むBundleを検索する。</p>
 
 <ol>
   <li>検索パラメータpatientとclinicalstatusを指定し、該当するすべてのConditionを検索。</li>
@@ -1284,21 +1274,18 @@ GET [base]/Condition?patient=Patient/123&amp;date=ge2021-08-24</p>
         </tr>
       </tbody>
     </table>
-
-    <p>http
-GET [base]/Condition?patient={reference}&amp;clinicalstatus={system|}[code]{,{system|}[code],…}</p>
-
-    <p>例：</p>
-
-    <p>http
-GET [base]/Condition?patient=Patient/123&amp;clinicalstatus=active</p>
-
-    <p>http
-GET [base]/Condition?patient=Patient/123&amp;clinicalstatus=http://hl7.org/fhir/ValueSet/condition-clinical|active</p>
-
-    <p>指定された患者およびステータスのすべてのConditionを含むBundleを検索する。</p>
   </li>
 </ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  GET [base]/Condition?patient={reference}&amp;clinicalstatus={system|}[code]{,{system|}[code],...}
+</code></pre></div></div>
+<p>例：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  GET [base]/Condition?patient=Patient/123&amp;clinicalstatus=active
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  GET [base]/Condition?patient=Patient/123&amp;clinicalstatus=http://hl7.org/fhir/ValueSet/condition-clinical|active
+</code></pre></div></div>
+
+<p>指定された患者およびステータスのすべてのConditionを含むBundleを検索する。</p>
 
 <ol>
   <li>検索パラメータpatientとverificationstatusを指定し、該当するすべてのConditionを検索。
@@ -1315,20 +1302,19 @@ GET [base]/Condition?patient=Patient/123&amp;clinicalstatus=http://hl7.org/fhir/
         </table>
       </li>
     </ul>
-
-    <p>http
- GET [base]/Condition?patient={reference}&amp;verificationstatus={system|}[code]{,{system|}[code],…}</p>
-
-    <p>例：</p>
-
-    <p>http
- GET [base]/Condition?patient=Patient/123&amp;verificationstatus=confirmed</p>
-
-    <p>http
- GET [base]/Condition?patient=Patient/123&amp;verificationstatus=http://hl7.org/fhir/ValueSet/http://hl7.org/fhir/ValueSet/condition-ver-status|confirmed</p>
-
-    <p>指定された患者およびステータスのすべてのConditionを含むBundleを検索する。</p>
   </li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  GET [base]/Condition?patient={reference}&amp;verificationstatus={system|}[code]{,{system|}[code],...}
+</code></pre></div></div>
+<p>例：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  GET [base]/Condition?patient=Patient/123&amp;verificationstatus=confirmed
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  GET [base]/Condition?patient=Patient/123&amp;verificationstatus=http://hl7.org/fhir/ValueSet/http://hl7.org/fhir/ValueSet/condition-ver-status|confirmed
+</code></pre></div></div>
+<p>指定された患者およびステータスのすべてのConditionを含むBundleを検索する。</p>
+
+<ol>
   <li>検索パラメータpatientとcategoryを指定し、該当するすべてのConditionを検索。
     <ul>
       <li>
@@ -1344,17 +1330,13 @@ GET [base]/Condition?patient=Patient/123&amp;clinicalstatus=http://hl7.org/fhir/
       </li>
     </ul>
 
-    <p>http
- GET [base]/Condition?patient={reference}&amp;category={system|}[code]{,{system|}[code],…}</p>
-
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Condition?patient={reference}&amp;category={system|}[code]{,{system|}[code],...}
+</code></pre></div>    </div>
     <p>例：</p>
-
-    <p>http
- GET [base]/Condition?patient=Patient/123&amp;category=claim-diagnosis</p>
-
-    <p>http
- GET [base]/Condition?patient=Patient/123&amp;category=	http://hl7.org/fhir/ValueSet/condition-category|claim-diagnosis</p>
-
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Condition?patient=Patient/123&amp;category=claim-diagnosis
+</code></pre></div>    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Condition?patient=Patient/123&amp;category=	http://hl7.org/fhir/ValueSet/condition-category|claim-diagnosis
+</code></pre></div>    </div>
     <p>指定された患者およびステータスのすべてのConditionを含むBundleを検索する。</p>
   </li>
 </ol>
@@ -1435,7 +1417,7 @@ GET [base]/Condition?patient=Patient/123&amp;clinicalstatus=http://hl7.org/fhir/
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Aug 5, 2022 05:15+0000">2022-08-05</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Aug 5, 2022 05:39+0000">2022-08-05</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
