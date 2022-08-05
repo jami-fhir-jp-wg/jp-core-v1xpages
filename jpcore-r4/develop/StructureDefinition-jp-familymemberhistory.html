@@ -1311,113 +1311,92 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   <tbody>
     <tr>
       <td>SHALL</td>
-      <td>patient</td>
-      <td>reference</td>
-      <td>GET [base]/JP_FamilyMemberHistory?patient=123456</td>
-    </tr>
-    <tr>
-      <td>SHALL</td>
-      <td>patient,relationship</td>
-      <td>reference,reference</td>
-      <td>GET [base]/JP_FamilyMemberHistory?patient=123456&amp;relationship=FAMMEMB</td>
-    </tr>
-    <tr>
-      <td>SHALL</td>
-      <td>patient,status</td>
-      <td>reference,code</td>
-      <td>GET [base]/JP_FamilyMemberHistory?patient=123456&amp;status=completed</td>
+      <td>identifier</td>
+      <td>token</td>
+      <td>GET [base]/FamilyMemberHistory?identifier=http://myhospital.com/fhir/gamilymemberhistory|123</td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td>patient,date</td>
-      <td>reference,dateTime</td>
-      <td>GET [base]/JP_FamilyMemberHistory?patient=123456&amp;date=ge2021-08-24</td>
+      <td>patient</td>
+      <td>reference</td>
+      <td>GET [base]/FamilyMemberHistory?patient=Patient/123</td>
+    </tr>
+    <tr>
+      <td>MAY</td>
+      <td>patient,relationship</td>
+      <td>reference,reference</td>
+      <td>GET [base]/FamilyMemberHistory?patient=Patient/123&amp;relationship=FAMMEMB</td>
+    </tr>
+    <tr>
+      <td>MAY</td>
+      <td>patient,status</td>
+      <td>reference,code</td>
+      <td>GET [base]/FamilyMemberHistory?patient=Patient/123&amp;status=completed</td>
     </tr>
   </tbody>
 </table>
 
 <h5 id="必須検索パラメータ">必須検索パラメータ</h5>
 
-<p>本プロファイルに準拠するためには、以下の検索パラメータをサポートしなければならない（SHALL）。</p>
+<p>本プロファイルに準拠するためには、以下の検索パラメータをサポートしなければならない（SHALL）</p>
 
 <ol>
   <li>
-    <p>検索パラメータpatientを指定し、該当するすべてのJP_FamilyMemberHistoryを検索。</p>
+    <p>検索パラメータidentifierを指定し、レコードIDなどの識別子によりFamilyMemberHistoryを検索。</p>
 
-    <p>http
-GET [base]/JP_FamilyMemberHistory?patient={Type/}[id]</p>
-
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/FamilyMemberHistory?identifier={system|}[code]
+</code></pre></div>    </div>
     <p>例：</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/FamilyMemberHistory?identifier=http://myhospital.com/fhir/familymemberhistory\|123
+</code></pre></div>    </div>
 
-    <p>http
-GET [base]/JP_FamilyMemberHistory?patient=123456</p>
-
-    <p>指定された患者が有するすべてのJP_FamilyMemberHistoryを含むBundleを返却する。</p>
-  </li>
-  <li>
-    <p>検索パラメータpatientとrelationshipを指定し、該当するすべてのJP_FamilyMemberHistoryを検索。</p>
-
-    <p>http
-GET [base]/JP_FamilyMemberHistory?patient={Type/}[id]&amp;relationship={Type/}[coding]</p>
-
-    <p>例：</p>
-
-    <p>http
-GET [base]/JP_FamilyMemberHistory?patient=123456&amp;relationship=FAMMEMB</p>
-
-    <p>指定された患者と対象家族が有するすべてのJP_FamilyMemberHistoryを含むBundleを返却する。</p>
-  </li>
-  <li>
-    <p>検索パラメータpatientとstatusの組みを指定し、該当するすべてのJP_FamilyMemberHistoryを検索。</p>
-    <ul>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>OR検索のサポートを含む(例えば status={system</td>
-              <td>}[code],{system</td>
-              <td>}[code],…)</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
-    </ul>
-
-    <p>http
- GET [base]/JP_FamilyMemberHistory?patient={Type/}[id]&amp;status={system|}[code]{,{system|}[code],…}</p>
-
-    <p>例：</p>
-
-    <p>http
- GET [base]/JP_FamilyMemberHistory?patient=123456&amp;status=completed</p>
-
-    <p>指定された患者とステータスを有するすべてのP_FamilyMemberHistoryを含むBundleを返却する。</p>
+    <p>指定された識別子に一致するFamilyMemberHistoryリソースを含むBundleを検索する。</p>
   </li>
 </ol>
 
 <h5 id="推奨検索パラメータ">推奨検索パラメータ</h5>
 
-<p>本プロファイルに準拠するためには、以下の検索パラメータをサポートすることが推奨（SHOULD）される。</p>
+<ol>
+  <li>
+    <p>検索パラメータpatientとrelationshipを指定し、該当するすべてのFamilyMemberHistoryを検索。</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/FamilyMemberHistory?patient={reference}
+</code></pre></div>    </div>
+    <p>例：</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/FamilyMemberHistory?patient=Patient/123
+</code></pre></div>    </div>
+
+    <p>指定された患者のすべてのFamilyMemberHistoryを含むBundleを返却する。</p>
+  </li>
+</ol>
+
+<h5 id="追加検索パラメータ">追加検索パラメータ</h5>
+
+<p>オプションとして次の検索パラメータをサポートすることができる（MAY）</p>
 
 <ol>
-  <li>検索パラメータpatientとdateの組みを指定し、該当するすべてのJP_FamilyMemberHistoryを検索。</li>
+  <li>検索パラメータpatientとstatusの組みを指定し、該当するすべてのFamilyMemberHistoryを検索。</li>
 </ol>
 
 <ul>
-  <li>dateに対する次の比較演算子のサポートを含む: gt,lt,ge,le</li>
   <li>
-    <p>AND検索のオプションのサポートを含む (例えば.date=[date]&amp;date=[date]]&amp;…)
-http
-GET [base]/JP_FamilyMemberHistory?patient={Type/}[id]&amp;date={gt|lt|ge|le}[date]{&amp;date={gt|lt|ge|le}[date]&amp;…}</p>
-
-    <p>例：</p>
-
-    <p>http
-GET [base]/JP_FamilyMemberHistory?patient=123456&amp;date=ge2021-08-24</p>
-
-    <p>指定された患者と日付を有するすべてのJP_FamilyMemberHistoryを含むBundleを返却する。</p>
+    <table>
+      <tbody>
+        <tr>
+          <td>OR検索のサポートを含む(例えば status={system</td>
+          <td>}[code],{system</td>
+          <td>}[code],…)</td>
+        </tr>
+      </tbody>
+    </table>
   </li>
 </ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/FamilyMemberHistory?patient={reference}&amp;status={system|}[code]{,{system|}[code],...}
+</code></pre></div></div>
+<p>例：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/FamilyMemberHistory?patient=Patient/123&amp;status=completed
+</code></pre></div></div>
 
 <h5 id="オプション検索パラメータ">オプション検索パラメータ</h5>
 
@@ -1495,7 +1474,7 @@ GET [base]/JP_FamilyMemberHistory?patient=123456&amp;date=ge2021-08-24</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Aug 5, 2022 07:10+0000">2022-08-05</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Aug 5, 2022 07:27+0000">2022-08-05</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
