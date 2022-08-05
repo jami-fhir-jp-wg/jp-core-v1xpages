@@ -1,0 +1,235 @@
+
+
+### 必須要素
+
+
+次のデータ項目は必須（データが存在しなければならない）、あるいは、データが送信システムに存在する場合はサポートされなければならないことを意味する。（Must Support）。
+
+#### 必須
+
+Encounter リソースは、次の要素を持たなければならない。
+
+- status ：受診状況を示す。value set encounter-statusで定義された値から設定する必要がある。（planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown）
+- class : 受診分類を示す。value set ActEncounterCodeで定義された値から設定する必要がある。（AMB/EMER/FLD/HH/IMP/ACUTE/NONAC/OBSENC/PRENC/SS/VR）
+
+#### Must Support
+このプロファイルでは MustSupport要素定義は行っていない。
+
+### Extensions定義
+
+
+JP Encounter リソースで使用される拡張は次の通りである。
+
+- [Associated Encounter](https://www.hl7.org/fhir/extension-encounter-associatedencounter.html)
+
+  - リソースで関連付けを定義しているプロパティが存在しないEncounterを参照するために利用する
+
+
+## 利用方法
+
+### インタラクション一覧
+
+| コンフォーマンス | インタラクション                            |
+| ---------------- | ------------------------------------------- |
+| SHALL（必須）    | search-type、read                           |
+| SHOULD（推奨）   | vread、history-instance                     |
+| MAY（利用可能）  | create、update、patch、delete、history-type |
+
+### OperationおよびSearch Parameter 一覧
+
+#### Search Parameter一覧
+
+| コンフォーマンス | パラメータ    | 型     | 例                                                           |
+| ---------------- | ------------- | ------ | ------------------------------------------------------------ |
+| SHALL            | patient    | token  | GET [base]/Encounter?patient=http://hl7.org/fhir/sid/us-npi\|123456  |
+| SHALL            | date, patient    | token  | GET [base]/Encounter?date=http://hl7.org/fhir/sid/us-npi\20210415?patient=http://hl7.org/fhir/sid/us-npi\|123456  |
+| SHOULD           | identifier    | token  | GET [base]/Encounter?identifier=http://hl7.org/fhir/sid/us-npi\|123456 |
+| SHOULD           | class, patient    | token  | GET [base]/Encounter?class=http://hl7.org/fhir/sid/us-npi\EMER?patient=http://hl7.org/fhir/sid/us-npi\|123456  |
+| SHOULD           | patient, type    | token  | GET [base]/Encounter?patient=http://hl7.org/fhir/sid/us-npi\|123456?type=http://hl7.org/fhir/sid/us-npi\ADMS  |
+| SHOULD           | patient, status    | token  | GET [base]/Encounter?patient=http://hl7.org/fhir/sid/us-npi\|123456?status=http://hl7.org/fhir/sid/us-npi\arrived  |
+
+
+
+##### 必須検索パラメータ
+
+次の検索パラメータはでサポートされるべきである。(SHALL)
+
+必須検索パラメータ(SHALL)はない。
+
+##### 推奨検索パラメータ
+
+
+次の検索パラメータをサポートすることが望ましい。(SHOULD)
+
+1. identifier 検索パラメータを使用して、診察番号等の識別子によるEncounterの検索をサポートすることが望ましい（SHOULD）。
+
+   ```
+   GET [base]/Encounter?identifier={system|}[code]
+   ```
+
+   例：
+
+   ```
+   GET [base]/Encounter?identifier=http://hl7.org/fhir/sid/us-npi|123456
+   ```
+
+   指定された識別子に一致するEncounterリソースを含むBundleを検索する。
+   
+
+##### 追加検索パラメータ 
+
+オプションとして次の検索パラメータをサポートすることができる。(MAY)
+
+オプション検索パラメータ(MAY)はない。
+
+#### Operation一覧
+
+
+JP Encounter リソースに対して使用される操作は次の通りである。
+
+- $everything：[base]/Encounter/[id]/$everything
+
+  - この操作が呼び出された特定のEncounterに関連する全ての情報を返す。
+    
+
+#### Operation 詳細
+
+##### $everything 操作
+
+この操作は、この操作が呼び出された特定のEncounterリソースに関連する全ての情報を返す。
+応答は "searchset" タイプのBundleリソースである。
+
+この操作の公式なURLは以下である。
+
+```
+http://hl7.org/fhir/OperationDefinition/Encounter-everything
+```
+
+URL: [base]/Encounter/[id]/$everything
+
+本操作は、べき等な操作である。
+
+
+###### 入力パラメータ
+<!--
+<span style="color: red;">http://www.hl7.org/fhir/encounter-operation-everything.html</span>
+-->
+
+| 名前   | 多重度 | 型      | バインディング | プロファイル | 説明                                                         |
+| ------ | ------ | ------- | -------------- | ------------ | ------------------------------------------------------------ |
+| _since | 0..1   | instant |                |              | 指定された日時以降に更新されたリソースのみが応答に含まれる。 |
+| _type  | 0..*   | code    |                |              | 応答に含むFHIRリソース型を、カンマ区切りで指定する。指定されない場合は、サーバは全てのリソース型を対象とする。 |
+| _count | 0..1   | integer |                |              | Bundleの1ページに含まれるリソース件数を指定。                |
+
+
+###### 出力パラメータ
+<!--
+<span style="color: red;">http://www.hl7.org/fhir/encounter-operation-everything.html</span>
+-->
+
+| 名前   | 多重度 | 型     | バインディング | プロファイル | 説明                                                         |
+| ------ | ------ | ------ | -------------- | ------------ | ------------------------------------------------------------ |
+| return | 1..1   | Bundle |                |              | バンドルのタイプは"searchset"である。この操作の結果は、リソースとして直接返される。 |
+
+
+
+
+###### 例
+
+リクエスト：単一のEncounterに関連する全てのリソースを取得する。
+
+```
+GET [base]/Encounter/example/$everything
+[some headers]
+```
+
+レスポンス：指定されたEncounterに関連する全てのリソースを返す。
+
+```
+HTTP/1.1 200 OK
+[other headers]
+
+{
+  "resourceType": "Bundle",
+  "id": "p001",
+  "meta": {
+    "lastUpdated": "2020-01-06T15:11:11.447+00:00"
+  },
+  "type": "searchset",
+  "entry": [
+    {
+      "fullUrl": "http://example.org/fhir/Encounter/p001",
+      "resource": {
+        "resourceType": "Encounter",
+
+　　　　　・・・
+
+　　　 },
+    }
+  ]
+}  
+```
+
+### サンプル
+
+
+```JSON
+{
+  "resourceType": "Encounter",
+  "id": "587293",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2020-01-06T15:11:11.447+00:00",
+    "source": "#tK0UvlqmgxxHWOc2"
+  },
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB"
+  },
+  "subject": {
+    "reference": "Patient/587224",
+    "display": "Jonathan639 Kassulke119"
+  },
+  "participant": [ {
+    "individual": {
+      "reference": "Practitioner/587226",
+      "display": "Dr. Shirely692 Berge125"
+    }
+  } ],
+  "period": {
+    "start": "2016-05-08T03:08:24+02:00",
+    "end": "2016-05-08T03:23:24+02:00"
+  },
+  "serviceProvider": {
+    "reference": "Organization/587225",
+    "display": "PCP15810"
+  }
+}
+```
+
+
+
+## 注意事項
+
+Encounterリソースは、予定情報や予約の保存には使用されない。予約の保存にはAppointmentリソースを利用すること。FHIRでは、Appointmentは診察の日付を決定するのに利用されるのに対して、Encounterは実際に患者が来院して診察が実施されたことを表現する。
+そのため、「計画済み」 status の Encounter は実際に発生する前の Encounter であり、診療行為が完了するまで更新されることが期待される。
+
+
+## その他、参考文献・リンク等
+
+・退院時サマリー規約
+[http://www.hl7.jp/library/item/HL7J-CDA-007.pdf](http://www.hl7.jp/library/item/HL7J-CDA-007.pdf)
+
+・診療情報提供書規格
+[http://www.hl7.jp/intro/std/HL7J-CDA-005.pdf](http://www.hl7.jp/intro/std/HL7J-CDA-005.pdf)
+
+・特定健診情報ファイル仕様
+[https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000165280.html](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000165280.html)
+
+
+・SS-MIX2 標準化ストレージ 仕様書 Ver.1.2f
+[http://www.jami.jp/jamistd/docs/SS-MIX2/f/SS-MIX2_StndrdStrgSpecVer.1.2f.pdf](http://www.jami.jp/jamistd/docs/SS-MIX2/f/SS-MIX2_StndrdStrgSpecVer.1.2f.pdf)
+
+・ICSR E2B(R3)
+[https://www.pmda.go.jp/int-activities/int-harmony/ich/0093.html](https://www.pmda.go.jp/int-activities/int-harmony/ich/0093.html)
