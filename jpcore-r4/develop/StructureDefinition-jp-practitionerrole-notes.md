@@ -59,7 +59,7 @@
    2.GET [base]/PractitionerRole?practitioner.name=山田&_include=PractitionerRole:practitioner&_include=PractitionerRole?endpoint
    ```
 
-   practitioner.nameまたはpractitioner.identifierの連結パラメータに一致するPractitionerRoleリソースを含むBundleを検索する。PractionerRole.practitionerとPractitionerRole.endpointの_include検索をサポートすることが望ましい。（SHOULD）
+   practitioner.nameまたはpractitioner.identifierの連結パラメータに一致するPractitionerRoleリソースを含むBundleを検索する。PractitionerRole.practitionerとPractitionerRole.endpointの_include検索をサポートすることが望ましい。（SHOULD）
 
 ##### 推奨検索パラメータ
 
@@ -75,7 +75,7 @@ PractitionerRoleに対するOperationは定義されていない。
 
 ### サンプル
 
-[精神科外来サービス担当][jp-practitionerrole-example-1]
+* [**精神科外来サービス担当**][jp-practitionerrole-example-1]
 
 ## 注意事項
 
