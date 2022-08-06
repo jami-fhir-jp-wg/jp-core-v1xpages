@@ -111,6 +111,9 @@
       <li>
         <a href="guide-stringSearch.html">文字列検索</a>
       </li>
+      <li>
+        <a href="update_history.html">更新履歴</a>
+      </li>
     </ul>
   </li>
   <li class="dropdown">
@@ -195,7 +198,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p><strong><em>v1.1</em></strong></p>
 
-<p>v1.0 → v1.1に変更するあたり、開発環境(simplefier→ Sushi &amp; IG Publisher)を変更しているため、特に見た目や動作等が変更されている。<br />
+<p>v1.0 → v1.1に変更するあたり、開発環境(Sushi &amp; IG Publisher)を変更しているため、特に見た目や動作等が変更されている。<br />
 内容に関する主な変更については下記のとおりである。</p>
 
 <ul>
@@ -205,7 +208,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li>全てのリソースに対して、idを割り振った。</li>
       <li>name,title,url等は命名規則に合わせるように見直しを行なった。</li>
       <li>説明文書について、「である調」に合わせた。</li>
-      <li>Terminlogy BindingおよびConstrantsに関する記述はは、IG Publisherによる自動生成記述に変更した。</li>
+      <li>Terminology BindingおよびConstraintsに関する記述はは、IG Publisherによる自動生成記述に変更した。</li>
       <li>リソースの被参照、参照先の記載を削除した。</li>
       <li>slice名称を先頭小文字に統一した。</li>
       <li>FHIR Baseの説明に一部機械翻訳を用いた。</li>
@@ -219,53 +222,57 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li>JP Coreで定義してしていない用語の扱いについて説明を行なった。</li>
     </ul>
   </li>
-  <li>Administration Profile関連
+  <li>プロファイル
     <ul>
-      <li>JP_HumanNameにてtext欄の名前の区切り文字に、半角空白であることを明示した。</li>
-      <li>JP_Patient.nameをSlicingを利用せずに、参照先をJP_HumanNameとするように定義した。</li>
-      <li>JP_Practitioner.nameをSlicingを利用せずに、参照先をJP_HumanNameとするように定義した。</li>
-      <li>JP_Practitioner.qualificationの定義を詳細化した。</li>
+      <li>Administration関連
+        <ul>
+          <li><code class="highlighter-rouge">JP_HumanName</code>にてtext欄の名前の区切り文字に、半角空白であることを明示した。</li>
+          <li><code class="highlighter-rouge">JP_Patient</code> religionおよびbirthPlaceのExtensionを追加した。</li>
+          <li><code class="highlighter-rouge">JP_Patient</code> nameをSlicingを利用せずに、参照先を<code class="highlighter-rouge">JP_HumanName</code>とすることのみにした。</li>
+          <li><code class="highlighter-rouge">JP_Practitioner</code> nameをSlicingを利用せずに、参照先を<code class="highlighter-rouge">JP_HumanName</code>とすることのみにした。</li>
+          <li><code class="highlighter-rouge">JP_Practitioner</code> qualification.codeに対するバインディング対象となる免許に関するValueSet(<code class="highlighter-rouge">JP_MedicalLicenceCertificate_VS</code>)およびCodeSystem(<code class="highlighter-rouge">JP_MedicalLicenceCertificate_CS</code>)を定義した。</li>
+        </ul>
+      </li>
+      <li>Medication関連
+        <ul>
+          <li><code class="highlighter-rouge">JP_Immunization</code>プロファイルを追加した。</li>
+          <li><code class="highlighter-rouge">JP_MedicationAdministration</code> effective[x]にPeriod型を追加した。</li>
+          <li><code class="highlighter-rouge">JP_MedicationAdministration_Requester</code> valueに対して<code class="highlighter-rouge">JP_Practitioner</code>を参照するように限定した。</li>
+          <li><code class="highlighter-rouge">JP_MedicationAdministration_Location</code> valueに対して<code class="highlighter-rouge">JP_Location</code>を参照するように限定した。</li>
+        </ul>
+      </li>
+      <li>
+        <p>Diagnostic関連</p>
+      </li>
+      <li>Clinical関連
+        <ul>
+          <li>説明文書の全面的な見直し。</li>
+          <li><code class="highlighter-rouge">JP_FamilyMemberHistory</code>プロファイルを追加した。</li>
+          <li><code class="highlighter-rouge">JP_AllergyIntolerance</code> ValueSet <code class="highlighter-rouge">JP_AllergyIntoleranceCodes_VS</code>を定義し、３つのCodeSystem(<code class="highlighter-rouge">JP_JfagyFoodAllergenCodes_CS</code>,<code class="highlighter-rouge">JP_JfagyNonFoodNonMedicationAllergenCodes_CS</code>,<code class="highlighter-rouge">JP_JfagyMedicationAllergenCodes_CS</code>)を参照するように変更を行なった。</li>
+        </ul>
+      </li>
     </ul>
   </li>
-  <li>Medication Profile関連
-    <ul>
-      <li>JP_Immunizationプロファイルを追加した。</li>
-      <li>Extensionにて参照される型を厳密化した。</li>
-      <li>リソースのdescriptionとpurposeが同一の場合にpurposeの記述を削除した。</li>
-    </ul>
-  </li>
-  <li>Diagnostic Profile関連
-    <ul>
-      <li>Observation Profile関連</li>
-      <li>ImagingStudy Profile関連</li>
-      <li>DiagnosticReport Profile関連</li>
-    </ul>
-  </li>
-  <li>Clinical Profile関連
-    <ul>
-      <li>JP_Procedureリソースにてcode,peformer.function, bodySite, complication, followUp, focalDevice.action, usedCode等のTerminology Bindingを定義した。</li>
-    </ul>
-  </li>
-  <li>OperationおよびSearch Parameter関連
+  <li>OperationおよびSearch Parameter
     <ul>
       <li>JP Core派生の必要条件ではなく、派生先実装ガイドにて定義するものとして、特にJP CoreのExtension(拡張)にて検索パラメータとして利用頻度の高いと思われるものを定義するようにした。</li>
       <li><a href="http://hl7.org/fhir/R4/searchparameter-registry.html">Search Parameter Registry</a>に記載されているSeach ParameterはJP Coreでは新たに定義する必用ないと判断し削除した。</li>
-      <li>Coverageの被保険証関連Extension( <a href="StructureDefinition-jp-coverage-insuredpersonnumber.html">JP_Coverage_InsuredPersonNumber</a>, <a href="StructureDefinition-jp-coverage-insuredpersonsubnumber.html">JP_Coverage_InsuredPersonSubNumber</a>, <a href="StructureDefinition-jp-coverage-insuredpersonsymbol.html">JP_Coverage_InsuredPersonSymbol</a> )に対する検索パラメータを追加した</li>
-      <li>Organizationの施設関連Extension( <a href="StructureDefinition-jp-organization-insuranceorganizationcategory.html">JP_Organization_InsuranceOrganizationCategory</a>, <a href="StructureDefinition-jp-organization-insuranceorganizationno.html">JP_Organization_InsuranceOrganizationNo</a>, <a href="StructureDefinition-jp-organization-prefectureno.html">JP_Organization_PrefectureNo</a> )に対する検索パラメータの追加した。</li>
-      <li>Patientのカナソート用の検索パラメータを追加した。</li>
+      <li><code class="highlighter-rouge">JP_Coverage</code>の被保険証関連Extension( <code class="highlighter-rouge">JP_Coverage_InsuredPersonNumber</code>, <code class="highlighter-rouge">JP_Coverage_InsuredPersonSubNumber</code>, <code class="highlighter-rouge">JP_Coverage_InsuredPersonSymbol</code> )に対する検索パラメータを追加した</li>
+      <li><code class="highlighter-rouge">JP_Organization</code>の施設関連Extension( <code class="highlighter-rouge">JP_Organization_InsuranceOrganizationCategory</code>, <code class="highlighter-rouge">JP_Organization_InsuranceOrganizationNo</code>, <code class="highlighter-rouge">JP_Organization_PrefectureNo</code> )に対する検索パラメータの追加した。</li>
+      <li><code class="highlighter-rouge">JP_Patient</code>のカナソート用の検索パラメータを追加した。</li>
     </ul>
   </li>
-  <li>Terminology関連
+  <li>Terminology
     <ul>
-      <li></li>
+      <li>FHIR Baseで定義されるバインディングされた用語のライセンスに対する注意事項を記載した。</li>
     </ul>
   </li>
-  <li>Capablity Statement関連
+  <li>Capability Statement
     <ul>
       <li>JP Core派生の必要条件ではなく、派生先実装ガイド作成ための参考例として記載をあらためた。</li>
     </ul>
   </li>
-  <li>Security関連
+  <li>Security
     <ul>
       <li>医療情報システムの安全管理に関するガイドライン第5.2版の改版に合わせセキュリティの見直しを行なった。</li>
     </ul>
@@ -330,7 +337,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Aug 3, 2022 13:55+0000">2022-08-03</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Aug 6, 2022 07:57+0000">2022-08-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
