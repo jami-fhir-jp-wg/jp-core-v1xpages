@@ -44,21 +44,21 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_CarePlan], CanonicalType[http://hl7.org/fhir/StructureDefinition/ServiceRequest]]}
 ","A request for this procedure このプロシージャの依頼情報","このプロシージャの依頼情報の詳細を含むリソースへの参照。","参照は、実際のFHIRリソースへの参照であり、解決可能でなければならない（アクセス制御、一時的な利用不能などを可能にする）。解決には、URLからの検索、またはリソースタイプによって該当する場合は、絶対参照を正規のURLとして扱い、ローカルレジストリ/リポジトリで検索することができる。 
 
-【JPーCORE】
+【JP-Core仕様】
 Observation_LabResultにならい、任意。","","","","","","","","",,,,,"",,,,"Procedure.basedOn",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.basedOn",".outboundRelationship[typeCode=FLFS].target[classCode=(various e.g. PROC, OBS, PCPR, ACT,  moodCode=RQO].code"
 "Procedure.partOf","Procedure.partOf","","container
 ","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationAdministration]]}
-","Part of referenced event","A larger event of which this particular procedure is a component or step.【JP仕様】https://www.hl7.org/fhir/procedure.htmlを参照","The MedicationAdministration resource has a partOf reference to Procedure, but this is not a circular reference.   For example, the anesthesia MedicationAdministration is part of the surgical Procedure (MedicationAdministration.partOf = Procedure).  For example, the procedure to insert the IV port for an IV medication administration is part of the medication administration (Procedure.partOf = MedicationAdministration).
+","Part of referenced event","A larger event of which this particular procedure is a component or step.【JP-Core仕様】https://www.hl7.org/fhir/procedure.htmlを参照","The MedicationAdministration resource has a partOf reference to Procedure, but this is not a circular reference.   For example, the anesthesia MedicationAdministration is part of the surgical Procedure (MedicationAdministration.partOf = Procedure).  For example, the procedure to insert the IV port for an IV medication administration is part of the medication administration (Procedure.partOf = MedicationAdministration).
 
 MedicationAdministrationリソースにはProcedureへのpartOf参照があるが、これは循環参照ではない。たとえば、麻酔MedicationAdministrationは外科的処置の一部である（MedicationAdministration.partOf = Procedure）。
 また、たとえば、IV投薬管理用にIVポートを挿入する手順は、投薬管理の一部である（Procedure.partOf = MedicationAdministration）。
 
-【JP-CORE】
+【JP-Core仕様】
 Observation_LabResultにならい、任意。","","","","","","","","",,,,,"",,,,"Procedure.partOf",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.partOf",".inboundRelationship[typeCode=COMP].source[classCode=SBADM or PROC or OBS, moodCode=EVN]"
 "Procedure.status","Procedure.status","","","",1,1,"","Y","Y","code {[]} {[]}
-","preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown","プロシージャの状態を指定するコードである。一般的には、進行中または完了した状態になる。【JP仕様】http://hl7.org/fhir/us/core/STU3.1/StructureDefinition-us-core-procedure.htmlを参照","The ""unknown"" code is not to be used to convey other statuses.  The ""unknown"" code should be used when one of the statuses applies, but the authoring system doesn't know the current state of the procedure.
+","preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown","プロシージャの状態を指定するコードである。一般的には、進行中または完了した状態になる。【JP-Core仕様】http://hl7.org/fhir/us/core/STU3.1/StructureDefinition-us-core-procedure.htmlを参照","The ""unknown"" code is not to be used to convey other statuses.  The ""unknown"" code should be used when one of the statuses applies, but the authoring system doesn't know the current state of the procedure.
 
 This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid.
 
@@ -262,7 +262,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","Type of performance","Distinguishes the type of involvement of the performer in the procedure. For example, surgeon, anaesthetist, endoscopist.
 プロシジャーへの実施者の関与のタイプを区別する。たとえば、外科医、麻酔科医、内視鏡医。","すべての用語の使用がこの一般的なパターンに当てはまるわけではない。場合によっては、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係や事前・事後の調整を管理するための独自の構造を提供するべきである。
 
- 【JP-CORE】
+ 【JP-Core仕様】
 当面利用しない。","Allows disambiguation of the types of involvement of different performers.","","","","","","","",,"example","","http://jpfhir.jp/fhir/Common/ValueSet/JP_ProcedurePerformerRoleCodes_VS","",,,,"Procedure.performer.function",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.performer.function",".functionCode","Some combination of STF-18 / PRA-3 / PRT-4 / ROL-3 / ORC-12 / OBR-16 / PV1-7 / PV1-8 / PV1-9 / PV1-17 / OBX-25"
 "Procedure.performer.actor","Procedure.performer.actor","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device]]}
@@ -359,10 +359,10 @@ user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "Procedure.focalDevice.action","Procedure.focalDevice.action","","","",0,1,"","","","CodeableConcept {[]} {[]}
-","Kind of change to device","Procedure中にデバイスに起こった変化の種類。【JP仕様】https://www.hl7.org/fhir/procedure.htmlを参照","","","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/Common/ValueSet/JP_ProcedureDeviceActionCodes_VS","",,,,"Procedure.focalDevice.action",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Kind of change to device","Procedure中にデバイスに起こった変化の種類。【JP-Core仕様】https://www.hl7.org/fhir/procedure.htmlを参照","","","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/Common/ValueSet/JP_ProcedureDeviceActionCodes_VS","",,,,"Procedure.focalDevice.action",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=""procedure device action""].value=:procedure device action codes"
 "Procedure.focalDevice.manipulated","Procedure.focalDevice.manipulated","","","",1,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Device]]}
-","Device that was changed","Procedure中に操作（変更）されたデバイス。【JP仕様】https://www.hl7.org/fhir/procedure.htmlを参照","","","","","","","","","",,,,,"",,,,"Procedure.focalDevice.manipulated",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Device that was changed","Procedure中に操作（変更）されたデバイス。【JP-Core仕様】https://www.hl7.org/fhir/procedure.htmlを参照","","","","","","","","","",,,,,"",,,,"Procedure.focalDevice.manipulated",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".participation[typeCode=DEV].role[classCode=SDLOC]"
 "Procedure.usedReference","Procedure.usedReference","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Device], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Medication], CanonicalType[http://hl7.org/fhir/StructureDefinition/Substance]]}
 ","Items used during procedure プロシジャー中に使用されるアイテム","Identifies medications, devices and any other substance used as part of the procedure.
