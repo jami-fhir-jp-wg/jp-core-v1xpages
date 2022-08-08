@@ -34,7 +34,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Practitioner.identifier","Practitioner.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
 ","An identifier for the person as this agent","An identifier that applies to this person in this role.
 
-ある役割の人に適用される識別子。","【JP_CORE】
+ある役割の人に適用される識別子。","【JP-Core仕様】
 IDの名前空間を表す Practitioner.identifier.systemと ID値そのものを表す Practitioner.identifier.value の組み合わせとして表現する。
 Practitioner.identifier.systemには、
 医師の場合、　urn:oid:1.2.392.100495.20.3.41.医療機関識別OID番号
@@ -56,9 +56,9 @@ Practitioner.identifier.systemには、
 "Practitioner.active","Practitioner.active","","","",0,1,"","","Y","boolean {[]} {[]}
 ","Whether this practitioner's record is in active use","Whether this practitioner's record is in active use.
 
-この医療従事者の記録がアクティブに使用されているかどうかを示す。","If the practitioner is not in use by one organization, then it should mark the period on the PractitonerRole with an end date (even if they are active) as they may be active in another role.
+この医療従事者の記録がアクティブに使用されているかどうかを示す。","If the practitioner is not in use by one organization, then it should mark the period on the PractitionerRole with an end date (even if they are active) as they may be active in another role.
 
-医療従事者がある組織で使用されていない場合、別のロールでアクティブになっている可能性があるので、(例えそれらがアクティブであっても)PractitonerRoleに有効期間を終了日でマークしておく必要がある。","Need to be able to mark a practitioner record as not to be used because it was created in error.
+医療従事者がある組織で使用されていない場合、別のロールでアクティブになっている可能性があるので、(例えそれらがアクティブであっても)PractitionerRoleに有効期間を終了日でマークしておく必要がある。","Need to be able to mark a practitioner record as not to be used because it was created in error.
 
 医療従事者のレコードを誤って作成してしまったとき、使用しないようにマークできるようにする必要がある。","","This resource is generally assumed to be active if no value is provided for the active element","","","","","",,,,,"",,,,"Practitioner.active",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","./statusCode","FiveWs.status"
@@ -205,7 +205,7 @@ Period is not used for a duration (a measure of elapsed time). See [Duration](da
 多くのEHRシステムは、患者や職員の画像をキャプチャする機能を持っている。新しいソーシャルメディアの利用にも対応している。","","","","","","","",,,,,"",,,,"Practitioner.photo",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","./subjectOf/ObservationEvent[code=""photo""]/value","./ImageURI (only supports the URI reference)"
 "Practitioner.qualification","Practitioner.qualification","","","",0,*,"","","","BackboneElement {[]} {[]}
-","Certification, licenses, or training pertaining to the provision of care　ケアの提供に関連する認定、ライセンス、またはトレーニング","The official certifications, training, and licenses that authorize or otherwise pertain to the provision of care by the practitioner.  For example, a medical license issued by a medical board authorizing the practitioner to practice medicine within a certian locality.
+","Certification, licenses, or training pertaining to the provision of care　ケアの提供に関連する認定、ライセンス、またはトレーニング","The official certifications, training, and licenses that authorize or otherwise pertain to the provision of care by the practitioner.  For example, a medical license issued by a medical board authorizing the practitioner to practice medicine within a certain locality.
 
 医療従事者によるケアの提供を認可する、あるいは関連する、公式の証明書、トレーニング、免許証等。
 例えば、医療委員会が発行した医師免許証は、認定された地域内で医療を行うことを開業医に許可するものである。","麻薬施用者免許番号、または医籍登録番号を格納するためのQualification/Slicing定義。
@@ -267,7 +267,7 @@ Period is not used for a duration (a measure of elapsed time). See [Duration](da
 ","Organization that regulates and issues the qualification","Organization that regulates and issues the qualification.
 
 
-資格を規制し、発行する機関","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+資格を規制し、発行する機関","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 
 参照は実際のFHIRリソースへの参照でなければならず、解決可能でなければならない。解決は URL からの検索、またはリソースタイプによって、絶対参照を正規の URL として扱い、ローカルのレジストリ/リポジトリで検索することで行うことができる。","","","","","","","","",,,,,"",,,,"Practitioner.qualification.issuer",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
