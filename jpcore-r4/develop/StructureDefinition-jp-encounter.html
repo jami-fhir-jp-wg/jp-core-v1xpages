@@ -340,7 +340,7 @@
 
 <p>Hospitalizationコンポーネントは、入院イベントに関連する拡張情報を格納するためのものである。これは常に、Encounter自体と同じ期間であることが期待される。期間が異なる場合は、別のEncounterのインスタンスを使用して、このEncounterのインスタンスの一部としてpartOfエレメントを使用してこの情報を取り込むべきである。</p>
 
-<p>ProcedureとEncounterはお互いへの参照を持つが、これらは異なるProcedureであるべきである。1つは、Encounterの間に行われたProcedure（Procedure.encounterに格納）、もう1つは、Encounterが別のProcedureの結果である場合（Encounter.indicationに格納）、例えば、以前のProcedureによる合併症を解決するためのフォローアップのEncounterなどである。</p>
+<p>ProcedureとEncounterはお互いへの参照を持つが、これらは異なるProcedureとするべきである。1つは、Encounterの間に行われたProcedure（Procedure.encounterに格納）、もう1つは、Encounterが別のProcedureの結果である場合（Encounter.indicationに格納）、例えば、以前のProcedureによる合併症を解決するためのフォローアップのEncounterなどである。</p>
 
 <h3>Status Managementの内容</h3>
 
@@ -367,7 +367,7 @@ Encounterには「入院した」という固定した定義はないので、�
 
 <p>Communicationリソースは、直接の接触がない場合に、医療従事者と患者の間で同時に行われる対話に使用される。例としては、電話によるメッセージや、通信文書の送信などがある。通信資源には継続時間は記録されないが、送信時間と受信時間が含まれる可能性がある。</p>
 
-<p>標準拡張。Associcated Encounter
+<p>標準拡張。Associated Encounter
 この拡張機能は、リソース上にこの関連性を定義するプロパティが既に存在しない場合に、エンカウンターを参照するために使用されるべきである。</p>
 
 <h2 id="スコープ">スコープ</h2>
@@ -385,11 +385,11 @@ Encounterには「入院した」という固定した定義はないので、�
   <li>遠隔診療</li>
 </ul>
 
-<p>Encounter リソースは発生単位が医療機関や組織ごとに異なる可能性がある。例えば、入院中に開業医が1回訪問するたびに新しいEncounterインスタンスが発生する可能性もあるし、地域の慣行や関連システムによっては、入院全体で1つのインスタンスに集約される場合もある。</p>
+<p>Encounter リソースは発生単位が医療機関や組織ごとに異なる可能性がある。例えば、入院中に開業医が1回訪問するたびに新しいEncounterインスタンスが発生する可能性や、地域の慣行や関連システムによっては、入院全体で1つのインスタンスに集約される場合もある。</p>
 
-<p>Encounterリソースは、partOf要素を仕様して、他のEncounterインスタンスの下に集約することができる。</p>
+<p>Encounterリソースは、partOf要素を使用して、他のEncounterインスタンスの下に集約できる。</p>
 
-<p>またEncounterリソースは、受診前の情報を伝達するために生成することもできる。この場合、status要素は「planned」に設定される。患者の受信内容が入院に関連する場合は、hospitalization要素に入院イベントに関連する拡張情報を格納することができる。
+<p>またEncounterリソースは、受診前の情報を伝達するために生成することもできる。この場合、status要素は「planned」に設定される。患者の受信内容が入院に関連する場合は、hospitalization要素に入院イベントに関連する拡張情報を格納できる。
 なおこの入院イベントの関連付けは、Encounterリソースのperiod要素で指定されている期間と同じ期間内であることが望ましい。もし期間が異なる場合は、別のEncounterインスタンスを使用し、このEncounterインスタンスの一部として情報を関連付ける必要がある。</p>
 
 <h2 id="プロファイル定義">プロファイル定義</h2>
@@ -2091,8 +2091,6 @@ Encounterの舞台となる場所。" class="dict"><span style="text-decoration:
 
 <h5 id="必須検索パラメータ">必須検索パラメータ</h5>
 
-<p>次の検索パラメータはでサポートされるべきである。(SHALL)</p>
-
 <p>必須検索パラメータ(SHALL)はない。</p>
 
 <h5 id="推奨検索パラメータ">推奨検索パラメータ</h5>
@@ -2116,8 +2114,6 @@ Encounterの舞台となる場所。" class="dict"><span style="text-decoration:
 </ol>
 
 <h5 id="追加検索パラメータ">追加検索パラメータ</h5>
-
-<p>オプションとして次の検索パラメータをサポートすることができる。(MAY)</p>
 
 <p>オプション検索パラメータ(MAY)はない。</p>
 
@@ -2363,7 +2359,7 @@ Encounterの舞台となる場所。" class="dict"><span style="text-decoration:
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Aug 6, 2022 09:11+0000">2022-08-06</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Aug 8, 2022 02:28+0000">2022-08-08</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

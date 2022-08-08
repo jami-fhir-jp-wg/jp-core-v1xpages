@@ -1504,26 +1504,135 @@ GET [base]/Immunization?patient=[url]&amp;date=[date]
 </code></pre></div></div>
 
 <h3 id="サンプル">サンプル</h3>
-<p>. ワクチン接種例1</p>
-
-<h4 id="ワクチン接種メッセージ作成例">ワクチン接種メッセージ作成例</h4>
-<p>具体的な内服処方箋の作成例について、上記のサンプルのそれぞれについて解説する。</p>
-
-<h5 id="ワクチン接種例１">ワクチン接種例１</h5>
 <p>このワクチン接種例では下記の内容をFHIRで表現する場合について解説する。</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">項目名</th>
+      <th style="text-align: left">項目値</th>
+      <th style="text-align: left">備考</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">接種ワクチン</td>
+      <td style="text-align: left">コミナティ筋注 (182110901)</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">対象疾患</td>
+      <td style="text-align: left">ＣＯＶＩＤ－１９ (S9VN)</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">接種量</td>
+      <td style="text-align: left">0.45mL</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">接種部位</td>
+      <td style="text-align: left">左上腕 (74L)</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">接種実施者</td>
+      <td style="text-align: left">大阪 一郎</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">接種日時</td>
+      <td style="text-align: left">2021/07/01 10:30</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">ロット番号</td>
+      <td style="text-align: left">12345678</td>
+      <td style="text-align: left"> </td>
+    </tr>
+  </tbody>
+</table>
 
 <p>ワクチン接種の上記部分をFHIR R4で記述する場合以下のようになる。</p>
+
 <details>
-<summary><b>FHIRでのワクチン接種例一部抜粋(クリックで展開)</b></summary>
-<div>
+<summary><b>インスタンス例（クリックで展開）</b></summary>
+<dev>
 
-```json
-```
-</div>
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Immunization"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jp-immunization-example-1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vaccineCode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200119.4.403.1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"182110901"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"コミナティ筋注"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient/jp-patient-example-1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"occurrenceDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-01T10:30:00+09:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"site"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200250.2.2.20.32"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"74L"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"左上腕"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"doseQuantity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.45</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mL"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://unitsofmeasure.org"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mL"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"performer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"function"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/v2-0443"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AP"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Administering Provider"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"actor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Practitioner/jp-practionner-example-male-1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"大阪 一郎"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"protocolApplied"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"targetDisease"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200119.4.101.6"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S9VN"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ＣＯＶＩＤ－１９"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"doseNumberPositiveInt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+</dev>
 </details>
-
-<h3 id="サンプル-1">サンプル</h3>
 
 <h2 id="注意事項">注意事項</h2>
 
@@ -1535,11 +1644,11 @@ GET [base]/Immunization?patient=[url]&amp;date=[date]
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"vaccineCode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nl">"coding"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.2.75"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1820201040101"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"インフルエンザHAワクチン「第一三共」1mL"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.2.75"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1820201040101"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"インフルエンザHAワクチン「第一三共」1mL"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
@@ -1565,7 +1674,7 @@ GET [base]/Immunization?patient=[url]&amp;date=[date]
 <p>ワクチンの接種場所は Immunization.location要素にReference型でLocationリソースの参照情報を記述する。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Location/1234"</span><span class="w">
+  </span><span class="nl">"reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Location/1234"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
@@ -1573,7 +1682,7 @@ GET [base]/Immunization?patient=[url]&amp;date=[date]
 <p>ワクチンの製造会社は Immunization.manufacturer要素にReference型でOrganizationリソースの参照情報を記述する。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"manufacturer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Organization/1234"</span><span class="w">
+  </span><span class="nl">"reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Organization/1234"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
@@ -1761,7 +1870,7 @@ MEDIS標準病名マスターの病名交換用コード(“urn:oid:1.2.392.2001
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Aug 6, 2022 09:11+0000">2022-08-06</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Aug 8, 2022 02:28+0000">2022-08-08</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
