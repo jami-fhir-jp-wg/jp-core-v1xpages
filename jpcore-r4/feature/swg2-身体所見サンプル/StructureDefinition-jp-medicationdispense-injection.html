@@ -1999,7 +1999,7 @@ DetectedIssue リソースへの参照。" class="dict"><span style="text-decora
     <tr>
       <td>剤形</td>
       <td>MERIT-9(剤形)</td>
-      <td>http://jpfhir.jp/ePrescription/CodeSystem/merit9-form</td>
+      <td>http://jpfhir.jp/Common/CodeSystem/merit9-form</td>
     </tr>
     <tr>
       <td>薬品単位</td>
@@ -2019,7 +2019,7 @@ DetectedIssue リソースへの参照。" class="dict"><span style="text-decora
     <tr>
       <td>頓用条件</td>
       <td>MERIT-9(頓用指示)</td>
-      <td>http://jpfhir.jp/ePrescription/CodeSystem/merit9-asNeededCondition</td>
+      <td>http://jpfhir.jp/Common/CodeSystem/merit9-asNeededCondition</td>
     </tr>
     <tr>
       <td>投与部位</td>
@@ -2059,7 +2059,7 @@ DetectedIssue リソースへの参照。" class="dict"><span style="text-decora
     <tr>
       <td>投与手技</td>
       <td>JAHIS注射データ交換規約Ver.2.1C(JHSI表0003)</td>
-      <td>http://jpfhir.jp/ePrescription/CodeSystem/JHSI0003</td>
+      <td>http://jpfhir.jp/Common/CodeSystem/JHSI0003</td>
     </tr>
     <tr>
       <td>投与経路</td>
@@ -2139,7 +2139,7 @@ DetectedIssue リソースへの参照。" class="dict"><span style="text-decora
     <tr>
       <td>SHOULD</td>
       <td>patient,whenhandedover</td>
-      <td>referenece,date</td>
+      <td>reference,date</td>
       <td>GET [base]/MedicationDispense?patient=123456&amp;whenhandedover=eq2013-01-14</td>
     </tr>
     <tr>
@@ -2157,7 +2157,7 @@ DetectedIssue リソースへの参照。" class="dict"><span style="text-decora
 
 <ol>
   <li>
-    <p>identifier 検索パラメータを使用して、オーダーIDなどの識別子によるMedicationReuqestの検索をサポートしなければならない（SHALL）。</p>
+    <p>identifier 検索パラメータを使用して、オーダーIDなどの識別子によるMedicationRequestの検索をサポートしなければならない（SHALL）。</p>
 
     <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/MedicationDispense?identifier={system|}[code]
 </code></pre></div>    </div>
@@ -2600,7 +2600,7 @@ GET [base]/MedicationDispense?patient=[url]&amp;whenhandedover=[date]
 <h2 id="注意事項">注意事項</h2>
 
 <h3 id="記述の単位について">記述の単位について</h3>
-<p>MedicationDispenseは薬剤をCodeableConceptとして1つまでしか持つか、Medicationリソースのreferenceをもつことしかできない。したがって、複数の薬剤を同一のRp番号で表現する場合にはMedicationDispenseを繰り返すか、複数の薬剤をまとめたMedication Resouceのインスタンスを参照することとなる。ワーキンググループでの検討の結果、注射の場合は複数の薬剤をまとめたMedicationリソースのインスタンスをcontained属性に内包した上で参照することとした。</p>
+<p>MedicationDispenseは薬剤をCodeableConceptとして1つまでしか持つか、Medicationリソースのreferenceをもつことしかできない。したがって、複数の薬剤を同一のRp番号で表現する場合にはMedicationDispenseを繰り返すか、複数の薬剤をまとめたMedication Resourceのインスタンスを参照することとなる。ワーキンググループでの検討の結果、注射の場合は複数の薬剤をまとめたMedicationリソースのインスタンスをcontained属性に内包した上で参照することとした。</p>
 
 <p>１オーダー内に複数のRpがある場合には、MedicationDispenseを繰り返し、identifier属性にオーダー番号、Rp番号をそれぞれ持つことでリソース間の関係性がわかるようにする。</p>
 
@@ -2744,7 +2744,7 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
 </span></code></pre></div></div>
 
 <h3 id="代替医薬品への変更内容の記述方法">代替医薬品への変更内容の記述方法</h3>
-<p>調剤時に行ったジェネリック医薬品などへの変更内容の記述は、substitution.wasSubstituted, substitution.type, substitusion.reason を使用する。
+<p>調剤時に行ったジェネリック医薬品などへの変更内容の記述は、substitution.wasSubstituted, substitution.type, substitution.reason を使用する。
 変更の種類はデフォルトのコード表（”http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution”）を使用する。
 変更の理由はデフォルトのコード表（”http://terminology.hl7.org/CodeSystem/v3-ActReason”)を使用するかフリーテキストで記述する。ローカルのコード表を使用してもよい。</p>
 
@@ -2912,7 +2912,7 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Aug 5, 2022 04:44+0000">2022-08-05</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Aug 8, 2022 00:38+0000">2022-08-08</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
