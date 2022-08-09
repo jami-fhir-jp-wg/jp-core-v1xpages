@@ -44,8 +44,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_CarePlan], CanonicalType[http://hl7.org/fhir/StructureDefinition/ServiceRequest]]}
 ","A request for this procedure このプロシージャの依頼情報","このプロシージャの依頼情報の詳細を含むリソースへの参照。","参照は、実際のFHIRリソースへの参照であり、解決可能でなければならない（アクセス制御、一時的な利用不能などを可能にする）。解決には、URLからの検索、またはリソースタイプによって該当する場合は、絶対参照を正規のURLとして扱い、ローカルレジストリ/リポジトリで検索することができる。 
 
-【JP-Core仕様】
-Observation_LabResultにならい、任意。","","","","","","","","",,,,,"",,,,"Procedure.basedOn",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP-Core仕様】Observation_LabResultにならい、任意。","","","","","","","","",,,,,"",,,,"Procedure.basedOn",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.basedOn",".outboundRelationship[typeCode=FLFS].target[classCode=(various e.g. PROC, OBS, PCPR, ACT,  moodCode=RQO].code"
 "Procedure.partOf","Procedure.partOf","","container
 ","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationAdministration]]}
@@ -54,8 +53,7 @@ Observation_LabResultにならい、任意。","","","","","","","","",,,,,"",,,
 MedicationAdministrationリソースにはProcedureへのpartOf参照があるが、これは循環参照ではない。たとえば、麻酔MedicationAdministrationは外科的処置の一部である（MedicationAdministration.partOf = Procedure）。
 また、たとえば、IV投薬管理用にIVポートを挿入する手順は、投薬管理の一部である（Procedure.partOf = MedicationAdministration）。
 
-【JP-Core仕様】
-Observation_LabResultにならい、任意。","","","","","","","","",,,,,"",,,,"Procedure.partOf",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP-Core仕様】Observation_LabResultにならい、任意。","","","","","","","","",,,,,"",,,,"Procedure.partOf",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.partOf",".inboundRelationship[typeCode=COMP].source[classCode=SBADM or PROC or OBS, moodCode=EVN]"
 "Procedure.status","Procedure.status","","","",1,1,"","Y","Y","code {[]} {[]}
 ","preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown","プロシージャの状態を指定するコードである。一般的には、進行中または完了した状態になる。【JP-Core仕様】http://hl7.org/fhir/us/core/STU3.1/StructureDefinition-us-core-procedure.htmlを参照","The ""unknown"" code is not to be used to convey other statuses.  The ""unknown"" code should be used when one of the statuses applies, but the authoring system doesn't know the current state of the procedure.
@@ -226,7 +224,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","Encounter created as part of 一部として作成されたエンカウンター","プロシジャーが作成または実行されたエンカウンター、またはこの記録の作成が緊密に関連しているエンカウンター。","これは通常、イベントが発生した出会いの中で行われるが、活動によっては、出会いの公式な終了前または終了後に開始されても、出会いの文脈と結びついている場合がある。","","","","","","","","",,,,,"",,,,"Procedure.encounter",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.context",".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]","FiveWs.context","PV1-19"
 "Procedure.performed[x]","Procedure.performed[x]","","","",0,1,"","","Y","dateTime {[]} {[]}
-Period {[]} {[]}string {[]} {[]}Age {[]} {[]}Range {[]} {[]}","When the procedure was performed プロシジャーが実施された時期","Procedureが行われた推定または実際の日付、日時、期間、または年齢。複数の日付にまたがる複雑なProcedureをサポートするために期間を許可し、Procdedureの長さを把握することも可能。","Age is generally used when the patient reports an age at which the procedure was performed. Range is generally used when the patient reports an age range when the procedure was performed, such as sometime between 20-25 years old.  dateTime supports a range of precision due to some procedures being reported as past procedures that might not have millisecond precision while other procedures performed and documented during the encounter might have more precise UTC timestamps with timezone.
+Period {[]} {[]}string {[]} {[]}Age {[]} {[]}Range {[]} {[]}","When the procedure was performed プロシジャーが実施された時期","Procedureが行われた推定または実際の日付、日時、期間、または年齢。複数の日付にまたがる複雑なProcedureをサポートするために期間を許可し、Procedureの長さを把握することも可能。","Age is generally used when the patient reports an age at which the procedure was performed. Range is generally used when the patient reports an age range when the procedure was performed, such as sometime between 20-25 years old.  dateTime supports a range of precision due to some procedures being reported as past procedures that might not have millisecond precision while other procedures performed and documented during the encounter might have more precise UTC timestamps with timezone.
 
 年齢は一般的に、患者が手技が行われた年齢を報告するときに使用される。
 範囲は、一般的に、患者が手順が実行されたときに年齢範囲を報告する場合に使用される。たとえば、20〜25歳の間など。
@@ -234,12 +232,12 @@ dateTimeは、ミリ秒の精度を持たない可能性がある過去の手順
 ","Event.occurrence[x]",".effectiveTime","FiveWs.done[x]","OBR-7"
 "Procedure.recorder","Procedure.recorder","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole]]}
 ","Who recorded the procedure プロシジャーを記録した人","Individual who recorded the record and takes responsibility for its content.
-記録を記録し、その内容に責任を負う個人。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+記録を記録し、その内容に責任を負う個人。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","","","","","","","","",,,,,"",,,,"Procedure.recorder",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".participation[typeCode=AUT].role","FiveWs.author"
 "Procedure.asserter","Procedure.asserter","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole]]}
 ","Person who asserts this procedure プロシジャーを実施したと報告する人","Individual who is making the procedure statement.
-プロシジャー記録を作成している個人","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+プロシジャー記録を作成している個人","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","","","","","","","","",,,,,"",,,,"Procedure.asserter",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".participation[typeCode=INF].role","FiveWs.source"
 "Procedure.performer","Procedure.performer","","","",0,*,"","","Y","BackboneElement {[]} {[]}
@@ -262,8 +260,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","Type of performance","Distinguishes the type of involvement of the performer in the procedure. For example, surgeon, anaesthetist, endoscopist.
 プロシジャーへの実施者の関与のタイプを区別する。たとえば、外科医、麻酔科医、内視鏡医。","すべての用語の使用がこの一般的なパターンに当てはまるわけではない。場合によっては、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係や事前・事後の調整を管理するための独自の構造を提供するべきである。
 
- 【JP-Core仕様】
-当面利用しない。","Allows disambiguation of the types of involvement of different performers.","","","","","","","",,"example","","http://jpfhir.jp/fhir/Common/ValueSet/JP_ProcedurePerformerRoleCodes_VS","",,,,"Procedure.performer.function",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ 【JP-Core仕様】当面利用しない。","Allows disambiguation of the types of involvement of different performers.","","","","","","","",,"example","","http://jpfhir.jp/fhir/Common/ValueSet/JP_ProcedurePerformerRoleCodes_VS","",,,,"Procedure.performer.function",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.performer.function",".functionCode","Some combination of STF-18 / PRA-3 / PRT-4 / ROL-3 / ORC-12 / OBR-16 / PV1-7 / PV1-8 / PV1-9 / PV1-17 / OBX-25"
 "Procedure.performer.actor","Procedure.performer.actor","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device]]}
 ","The reference to the practitioner 医療従事者への参照","The practitioner who was involved in the procedure.
@@ -275,7 +272,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ",".scoper"
 "Procedure.location","Procedure.location","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location]]}
 ","Where the procedure happened  プロシジャーが実施された場所","プロシジャーが実施された場所。
-例:自宅での出生、レストランで気管切開など。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+例:自宅での出生、レストランで気管切開など。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","Ties a procedure to where the records are likely kept.","","","","","","","",,,,,"",,,,"Procedure.location",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".participation[typeCode=LOC].role[classCode=SDLOC]","FiveWs.where[x]"
 "Procedure.reasonCode","Procedure.reasonCode","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
@@ -323,7 +320,7 @@ Procedureの結果 - Procedureが行われた理由が解決されたか？","If
 ",".outboundRelationship[typeCode=OUTC].target[classCode=OBS, code=""complication"", moodCode=EVN].value"
 "Procedure.complicationDetail","Procedure.complicationDetail","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition]]}
 ","A condition that is a result of the procedure プロシジャーの結果であるような患者状態","Any complications that occurred during the procedure, or in the immediate post-performance period.
-Procedureの実施中、または実施直後に発生した全ての合併症。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+Procedureの実施中、または実施直後に発生した全ての合併症。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","This is used to document a condition that is a result of the procedure, not the condition that was the reason for the procedure.
 これは、プロシジャーの理由であった状態ではなく、プロシジャーの結果である状態を文書化するために使用される。","","","","","","","",,,,,"",,,,"Procedure.complicationDetail",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".outboundRelationship[typeCode=OUTC].target[classCode=OBS, code=""complication"", moodCode=EVN].value"

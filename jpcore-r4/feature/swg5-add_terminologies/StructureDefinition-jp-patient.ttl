@@ -1808,7 +1808,7 @@
        fhir:ElementDefinition.path [ fhir:value "Patient.address" ];
        fhir:ElementDefinition.short [ fhir:value "An address for the individual　個人の住所" ];
        fhir:ElementDefinition.definition [ fhir:value "An address for the individual.\r\n個人の住所。" ];
-       fhir:ElementDefinition.comment [ fhir:value "Patient may have multiple addresses with different uses or applicable periods.\r\n患者は、異なる用途または適用可能な期間で複数の住所を持っている可能性がある。\r\n\r\n【JP-Core仕様】\r\nFHIRデータ型仕様に従って、以下の案とした。\r\n・住所が構造化されている場合、住所パート Address.contry、Address.postalcode、Address.state、Address.city、Address.line に分割して記載する。\r\n・住所が構造化されていない場合は、Address.text に記述する。\r\n・各住所パートとtext は、両方存在してもよい。\r\n※診療文書構造化記述規約等では、streetAddressLine (FHIRではlineに対応) に指定するとなっていた。" ];
+       fhir:ElementDefinition.comment [ fhir:value "Patient may have multiple addresses with different uses or applicable periods.\r\n患者は、異なる用途または適用可能な期間で複数の住所を持っている可能性がある。\r\n\r\n【JP-Core仕様】FHIRデータ型仕様に従って、以下の案とした。\r\n・住所が構造化されている場合、住所パート Address.contry、Address.postalcode、Address.state、Address.city、Address.line に分割して記載する。\r\n・住所が構造化されていない場合は、Address.text に記述する。\r\n・各住所パートとtext は、両方存在してもよい。\r\n※診療文書構造化記述規約等では、streetAddressLine (FHIRではlineに対応) に指定するとなっていた。" ];
        fhir:ElementDefinition.requirements [ fhir:value "May need to keep track of patient addresses for contacting, billing or reporting requirements and also to help with identification." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "*" ];
@@ -2130,7 +2130,7 @@
        fhir:ElementDefinition.path [ fhir:value "Patient.address.line" ];
        fhir:ElementDefinition.short [ fhir:value "Street name, number, direction & P.O. Box etc.ストリート名や番地など" ];
        fhir:ElementDefinition.definition [ fhir:value "This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information.\r\nこのコンポーネントには、家番号、アパート番号、通りの名前、通りの方向、P.O。が含まれる。ボックス番号、配達のヒント、および同様の住所情報など。" ];
-       fhir:ElementDefinition.comment [ fhir:value "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n１MBを超えないこと。\r\n【JP-Core仕様】\r\nstate要素とcity要素で表現しなかったそのあとの住所部分を番地以降の部分も含めてすべていれる。\r\n英数字は半角でも全角でもよい。文字列の前後および途中に空白文字を含めないこと。\r\n繰り返し要素が許されているので、区切りを表現したい場合には、複数要素に分けて格納してもよい。\r\n\r\n例：本郷7-3-1\r\n例：大字石神９７６\r\n例：藤崎町大字藤崎字西村1-2 春山荘201号室" ];
+       fhir:ElementDefinition.comment [ fhir:value "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n１MBを超えないこと。\r\n【JP-Core仕様】state要素とcity要素で表現しなかったそのあとの住所部分を番地以降の部分も含めてすべていれる。\r\n英数字は半角でも全角でもよい。文字列の前後および途中に空白文字を含めないこと。\r\n繰り返し要素が許されているので、区切りを表現したい場合には、複数要素に分けて格納してもよい。\r\n\r\n例：本郷7-3-1\r\n例：大字石神９７６\r\n例：藤崎町大字藤崎字西村1-2 春山荘201号室" ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "*" ];
        fhir:ElementDefinition.base [
@@ -2185,7 +2185,7 @@
        fhir:ElementDefinition.path [ fhir:value "Patient.address.city" ];
        fhir:ElementDefinition.short [ fhir:value "Name of city, town etc.　市区町村名" ];
        fhir:ElementDefinition.definition [ fhir:value "The name of the city, town, suburb, village or other community or delivery center.\r\n市、町、郊外、村、その他のコミュニティまたは配達センターの名前。" ];
-       fhir:ElementDefinition.comment [ fhir:value "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n１MBを超えないこと。\r\n【JP-Core仕様】\r\n郡市区町村部分だけを「郡」「市」「区」「町」「村」などの文字を含めて設定する。\r\n例：文京区" ];
+       fhir:ElementDefinition.comment [ fhir:value "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n１MBを超えないこと。\r\n【JP-Core仕様】郡市区町村部分だけを「郡」「市」「区」「町」「村」などの文字を含めて設定する。\r\n例：文京区" ];
        fhir:ElementDefinition.alias [
          fhir:value "Municpality";
          fhir:index 0
@@ -2243,7 +2243,7 @@
        fhir:ElementDefinition.path [ fhir:value "Patient.address.district" ];
        fhir:ElementDefinition.short [ fhir:value "District name (aka county)" ];
        fhir:ElementDefinition.definition [ fhir:value "The name of the administrative area (county)." ];
-       fhir:ElementDefinition.comment [ fhir:value "District is sometimes known as county, but in some regions 'county' is used in place of city (municipality), so county name should be conveyed in city instead.\r\n【JP-Core仕様】\r\n日本の住所では使用しない。" ];
+       fhir:ElementDefinition.comment [ fhir:value "District is sometimes known as county, but in some regions 'county' is used in place of city (municipality), so county name should be conveyed in city instead.\r\n【JP-Core仕様】日本の住所では使用しない。" ];
        fhir:ElementDefinition.alias [
          fhir:value "County";
          fhir:index 0
@@ -3131,7 +3131,7 @@
        fhir:ElementDefinition.path [ fhir:value "Patient.contact.organization" ];
        fhir:ElementDefinition.short [ fhir:value "Organization that is associated with the contact" ];
        fhir:ElementDefinition.definition [ fhir:value "Organization on behalf of which the contact is acting or for which the contact is working.\r\n連絡先が主として活動する、または勤務している組織。" ];
-       fhir:ElementDefinition.comment [ fhir:value "References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n連絡先に関連する組織" ];
+       fhir:ElementDefinition.comment [ fhir:value "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n連絡先に関連する組織" ];
        fhir:ElementDefinition.requirements [ fhir:value "For guardians or business related contacts, the organization is relevant." ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
@@ -3416,7 +3416,7 @@
        fhir:ElementDefinition.path [ fhir:value "Patient.communication.language" ];
        fhir:ElementDefinition.short [ fhir:value "The language which can be used to communicate with the patient about his or her health" ];
        fhir:ElementDefinition.definition [ fhir:value "The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. \"en\" for English, or \"en-US\" for American English versus \"en-EN\" for England English.\r\nISO-639-1 alpha 2コード小文字で言語を、また、オプションとしてハイフンとISO-3166-1 alpha 2コード大文字を続けて地域を表す。たとえば、英語の場合は「en」、アメリカ英語の場合は「en-US」、イギリス英語の場合は「en-EN」である。" ];
-       fhir:ElementDefinition.comment [ fhir:value "The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.\r\n\r\n\r\n患者とコミュニケーションするときに使用できる言語をValueSet(CommonLanguages)より選択する。\r\n\r\nde ドイツ語\r\n\r\nen 英語\r\n\r\nfr フランス語\r\n\r\nja 日本語\r\n\r\nko 韓国語\r\nなど" ];
+       fhir:ElementDefinition.comment [ fhir:value "The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.\r\n\r\n患者とコミュニケーションするときに使用できる言語をValueSet(CommonLanguages)より選択する。\r\n\r\nde ドイツ語\r\n\r\nen 英語\r\n\r\nfr フランス語\r\n\r\nja 日本語\r\n\r\nko 韓国語\r\nなど" ];
        fhir:ElementDefinition.requirements [ fhir:value "Most systems in multilingual countries will want to convey language. Not all systems actually need the regional dialect.\r\n多言語の国のほとんどのシステムは、言語を伝えたいと考えられる。 すべてのシステムが実際に地域の方言を必要とするわけではない。" ];
        fhir:ElementDefinition.min [ fhir:value "1"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
@@ -4150,7 +4150,7 @@
        fhir:ElementDefinition.path [ fhir:value "Patient.address" ];
        fhir:ElementDefinition.short [ fhir:value "An address for the individual　個人の住所" ];
        fhir:ElementDefinition.definition [ fhir:value "An address for the individual.\r\n個人の住所。" ];
-       fhir:ElementDefinition.comment [ fhir:value "Patient may have multiple addresses with different uses or applicable periods.\r\n患者は、異なる用途または適用可能な期間で複数の住所を持っている可能性がある。\r\n\r\n【JP-Core仕様】\r\nFHIRデータ型仕様に従って、以下の案とした。\r\n・住所が構造化されている場合、住所パート Address.contry、Address.postalcode、Address.state、Address.city、Address.line に分割して記載する。\r\n・住所が構造化されていない場合は、Address.text に記述する。\r\n・各住所パートとtext は、両方存在してもよい。\r\n※診療文書構造化記述規約等では、streetAddressLine (FHIRではlineに対応) に指定するとなっていた。" ]
+       fhir:ElementDefinition.comment [ fhir:value "Patient may have multiple addresses with different uses or applicable periods.\r\n患者は、異なる用途または適用可能な期間で複数の住所を持っている可能性がある。\r\n\r\n【JP-Core仕様】FHIRデータ型仕様に従って、以下の案とした。\r\n・住所が構造化されている場合、住所パート Address.contry、Address.postalcode、Address.state、Address.city、Address.line に分割して記載する。\r\n・住所が構造化されていない場合は、Address.text に記述する。\r\n・各住所パートとtext は、両方存在してもよい。\r\n※診療文書構造化記述規約等では、streetAddressLine (FHIRではlineに対応) に指定するとなっていた。" ]
      ], [
        fhir:index 24;
        fhir:Element.id [ fhir:value "Patient.address.use" ];
@@ -4177,19 +4177,19 @@
        fhir:ElementDefinition.path [ fhir:value "Patient.address.line" ];
        fhir:ElementDefinition.short [ fhir:value "Street name, number, direction & P.O. Box etc.ストリート名や番地など" ];
        fhir:ElementDefinition.definition [ fhir:value "This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information.\r\nこのコンポーネントには、家番号、アパート番号、通りの名前、通りの方向、P.O。が含まれる。ボックス番号、配達のヒント、および同様の住所情報など。" ];
-       fhir:ElementDefinition.comment [ fhir:value "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n１MBを超えないこと。\r\n【JP-Core仕様】\r\nstate要素とcity要素で表現しなかったそのあとの住所部分を番地以降の部分も含めてすべていれる。\r\n英数字は半角でも全角でもよい。文字列の前後および途中に空白文字を含めないこと。\r\n繰り返し要素が許されているので、区切りを表現したい場合には、複数要素に分けて格納してもよい。\r\n\r\n例：本郷7-3-1\r\n例：大字石神９７６\r\n例：藤崎町大字藤崎字西村1-2 春山荘201号室" ]
+       fhir:ElementDefinition.comment [ fhir:value "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n１MBを超えないこと。\r\n【JP-Core仕様】state要素とcity要素で表現しなかったそのあとの住所部分を番地以降の部分も含めてすべていれる。\r\n英数字は半角でも全角でもよい。文字列の前後および途中に空白文字を含めないこと。\r\n繰り返し要素が許されているので、区切りを表現したい場合には、複数要素に分けて格納してもよい。\r\n\r\n例：本郷7-3-1\r\n例：大字石神９７６\r\n例：藤崎町大字藤崎字西村1-2 春山荘201号室" ]
      ], [
        fhir:index 28;
        fhir:Element.id [ fhir:value "Patient.address.city" ];
        fhir:ElementDefinition.path [ fhir:value "Patient.address.city" ];
        fhir:ElementDefinition.short [ fhir:value "Name of city, town etc.　市区町村名" ];
        fhir:ElementDefinition.definition [ fhir:value "The name of the city, town, suburb, village or other community or delivery center.\r\n市、町、郊外、村、その他のコミュニティまたは配達センターの名前。" ];
-       fhir:ElementDefinition.comment [ fhir:value "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n１MBを超えないこと。\r\n【JP-Core仕様】\r\n郡市区町村部分だけを「郡」「市」「区」「町」「村」などの文字を含めて設定する。\r\n例：文京区" ]
+       fhir:ElementDefinition.comment [ fhir:value "Note that FHIR strings SHALL NOT exceed 1MB in size\r\n１MBを超えないこと。\r\n【JP-Core仕様】郡市区町村部分だけを「郡」「市」「区」「町」「村」などの文字を含めて設定する。\r\n例：文京区" ]
      ], [
        fhir:index 29;
        fhir:Element.id [ fhir:value "Patient.address.district" ];
        fhir:ElementDefinition.path [ fhir:value "Patient.address.district" ];
-       fhir:ElementDefinition.comment [ fhir:value "District is sometimes known as county, but in some regions 'county' is used in place of city (municipality), so county name should be conveyed in city instead.\r\n【JP-Core仕様】\r\n日本の住所では使用しない。" ]
+       fhir:ElementDefinition.comment [ fhir:value "District is sometimes known as county, but in some regions 'county' is used in place of city (municipality), so county name should be conveyed in city instead.\r\n【JP-Core仕様】日本の住所では使用しない。" ]
      ], [
        fhir:index 30;
        fhir:Element.id [ fhir:value "Patient.address.state" ];
@@ -4284,7 +4284,7 @@
        fhir:Element.id [ fhir:value "Patient.contact.organization" ];
        fhir:ElementDefinition.path [ fhir:value "Patient.contact.organization" ];
        fhir:ElementDefinition.definition [ fhir:value "Organization on behalf of which the contact is acting or for which the contact is working.\r\n連絡先が主として活動する、または勤務している組織。" ];
-       fhir:ElementDefinition.comment [ fhir:value "References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n連絡先に関連する組織" ];
+       fhir:ElementDefinition.comment [ fhir:value "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n連絡先に関連する組織" ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.type.code [ fhir:value "Reference" ];
@@ -4312,7 +4312,7 @@
        fhir:Element.id [ fhir:value "Patient.communication.language" ];
        fhir:ElementDefinition.path [ fhir:value "Patient.communication.language" ];
        fhir:ElementDefinition.definition [ fhir:value "The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. \"en\" for English, or \"en-US\" for American English versus \"en-EN\" for England English.\r\nISO-639-1 alpha 2コード小文字で言語を、また、オプションとしてハイフンとISO-3166-1 alpha 2コード大文字を続けて地域を表す。たとえば、英語の場合は「en」、アメリカ英語の場合は「en-US」、イギリス英語の場合は「en-EN」である。" ];
-       fhir:ElementDefinition.comment [ fhir:value "The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.\r\n\r\n\r\n患者とコミュニケーションするときに使用できる言語をValueSet(CommonLanguages)より選択する。\r\n\r\nde ドイツ語\r\n\r\nen 英語\r\n\r\nfr フランス語\r\n\r\nja 日本語\r\n\r\nko 韓国語\r\nなど" ];
+       fhir:ElementDefinition.comment [ fhir:value "The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.\r\n\r\n患者とコミュニケーションするときに使用できる言語をValueSet(CommonLanguages)より選択する。\r\n\r\nde ドイツ語\r\n\r\nen 英語\r\n\r\nfr フランス語\r\n\r\nja 日本語\r\n\r\nko 韓国語\r\nなど" ];
        fhir:ElementDefinition.requirements [ fhir:value "Most systems in multilingual countries will want to convey language. Not all systems actually need the regional dialect.\r\n多言語の国のほとんどのシステムは、言語を伝えたいと考えられる。 すべてのシステムが実際に地域の方言を必要とするわけではない。" ]
      ], [
        fhir:index 47;

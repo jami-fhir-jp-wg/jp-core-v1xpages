@@ -98,7 +98,6 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
 カバレッジのメイン（および場合によっては唯一の）識別子-多くの場合、メンバーID、証明書番号、個人の健康番号、またはケースIDと呼ばれる。 Coverage.SubscriberIDとCoverage.dependantの連結として構築できる。","Allows coverages to be distinguished and referenced.
 
-
 カバレッジを区別して参照できるようにする。","","","","","","","",,,,,"",,,,"Coverage.identifier",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.identifier",".id","FiveWs.identifier","C02","IN1-2","C.32, C.33, C.39"
 "Coverage.status","Coverage.status","","","",1,1,"","Y","Y","code {[]} {[]}
@@ -107,7 +106,6 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 リソースインスタンスのステータス。","This element is labeled as a modifier because the status contains the code entered-in-error that marks the coverage as not currently valid.
 
 ステータスには、カバレッジが現在無効であることを示すエラー入力されたコードが含まれているため、この要素は修飾子としてラベル付けされる。","Need to track the status of the resource as 'draft' resources may undergo further edits while 'active' resources are immutable and may only have their status changed to 'cancelled'.
-
 
 「ドラフト」リソースはさらに編集される可能性があり、「アクティブ」リソースは不変であり、ステータスが「キャンセル」に変更されるだけである可能性があるため、リソースのステータスを追跡する必要がある。","","","","","","","",,"required","A code specifying the state of the resource instance.","http://hl7.org/fhir/ValueSet/fm-status|4.0.1","",,,,"Coverage.status",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.status","Act.status","FiveWs.status"
@@ -118,8 +116,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
 すべてのターミノロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。
 
-【JP-Core仕様】
-厚労省保険局の電子処方等で使用される保険種別コード（system=”urn:oid:1.2.392.100495.20.2.61”）として、https://www.mhlw.go.jp/content/10800000/000342368.pdf　の別表１１が使用できる。","The order of application of coverages is dependent on the types of coverage.
+【JP-Core仕様】厚労省保険局の電子処方等で使用される保険種別コード（system=”urn:oid:1.2.392.100495.20.2.61”）として、https://www.mhlw.go.jp/content/10800000/000342368.pdf　の別表１１が使用できる。","The order of application of coverages is dependent on the types of coverage.
 
 カバレッジの適用順序は、カバレッジのタイプによって異なる。","","","","","","","",,"preferred","The type of insurance: public health, worker compensation; private accident, auto, private health, etc.) or a direct payment by an individual or organization.","http://hl7.org/fhir/ValueSet/coverage-type","",,,,"Coverage.type",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","FiveWs.class","IN1-15"
@@ -141,8 +138,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
 これは、ポリシーに基づいて給付を受ける権利を有する当事者である。
 
-【JP-Core仕様】
-公費情報で本リソースを使用する場合には、この要素に公費受給者番号を設定する。","","","","","","","",,,,,"",,,,"Coverage.subscriber",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP-Core仕様】公費情報で本リソースを使用する場合には、この要素に公費受給者番号を設定する。","","","","","","","",,,,,"",,,,"Coverage.subscriber",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","FiveWs.subject[x]","FiveWs.subject","D01 through D09","IN1-16, 18,  19-name of insured, address, date of birth","C.35"
 "Coverage.subscriberId","Coverage.subscriberId","","","",0,1,"","","Y","string {[]} {[]}
 ","ID assigned to the subscriber　契約当事者に割り当てられたID","The insurer assigned ID for the Subscriber.
@@ -157,12 +153,11 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Coverage.beneficiary","Coverage.beneficiary","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient]]}
 ","Plan beneficiary","The party who benefits from the insurance coverage; the patient when products and/or services are provided.
 
-保険適用から利益を得る当事者、製品および／またはサービスが提供される際の患者。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+保険適用から利益を得る当事者、製品および／またはサービスが提供される際の患者。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
 
-【JP-Core仕様】
-患者Patientリソースへの参照。","This is the party who receives treatment for which the costs are reimbursed under the coverage.
+【JP-Core仕様】患者Patientリソースへの参照。","This is the party who receives treatment for which the costs are reimbursed under the coverage.
 
 これは、補償の下で費用が償還される治療を受ける側のことである。","","","","","","","",,,,,"",,,,"Coverage.beneficiary",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.subject","FiveWs.subject[x]","FiveWs.subject","D01 through D09","IN1-16, 18,  19-name of insured, address, date of birth","C.35"
@@ -176,8 +171,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 一部の補償では、単一の識別子が加入者に発行され、次に一意の従属番号が各受益者に発行される。
 一部の保険では、単一の識別子が加入者に発行され、その後、各受益者に固有の扶養番号が発行される。
 
-【JP-Core仕様】
-医療保険で本リソースを使用する場合には、この要素に拡張 InsuredPersonSubNumberに設定した値と同じ、被保険者番号の枝番号2桁を設定する。","","","","","","","",,,,,"",,,,"Coverage.dependent",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP-Core仕様】医療保険で本リソースを使用する場合には、この要素に拡張 InsuredPersonSubNumberに設定した値と同じ、被保険者番号の枝番号2桁を設定する。","","","","","","","",,,,,"",,,,"Coverage.dependent",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C17","- No exact HL7 v2 equivalent concept seems to exist;"
 "Coverage.relationship","Coverage.relationship","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","Beneficiary relationship to the subscriber　加入者との受益者関係","The relationship of beneficiary (patient) to the subscriber.
@@ -188,8 +182,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
 患者と加入者の関係を決定し、給付の調整を決定する。
 
-【JP-Core仕様】
-厚労省保険局の電子処方等で使用される被保険者区分コード（system=”urn:oid:1.2.392.100495.20.2.62”）として、https://www.mhlw.go.jp/content/10800000/000342368.pdf　の別表１２が使用できる。
+【JP-Core仕様】厚労省保険局の電子処方等で使用される被保険者区分コード（system=”urn:oid:1.2.392.100495.20.2.62”）として、https://www.mhlw.go.jp/content/10800000/000342368.pdf　の別表１２が使用できる。
 1　被保険者
 2　被扶養者","","","","","","","",,"extensible","The relationship between the Subscriber and the Beneficiary (insured/covered party/patient).","http://hl7.org/fhir/ValueSet/subscriber-relationship","",,,,"Coverage.relationship",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C03"
@@ -206,14 +199,12 @@ This is not a duration - that's a measure of time (a separate type), but a durat
 これはDuration（時間区間）ではない-　Durationは時間の尺度（別のタイプ）だが、時間の固定値で発生する時間区間である。Period（期間）は時間の範囲を指定する。使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、範囲から1つの値が適用されるか（たとえば、「この2回の間に患者に投与する」）を指定する。もし、Duration（時間区間）が必要な場合は、タイプをInterval | Durationとして指定する。
 これは期間ではなく-これは時間の尺度（別のタイプ）あるが、時間の固定値で発生する期間である。期間は時間の範囲を指定する。使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、または範囲から1つの値が適用されるか（たとえば、「これら2回の間に患者に与える」）を指定する。期間が必要な場合は、タイプをInterval | Durationとして指定する。
 
-【JP-Core仕様】
-医療保険、公費で本リソースを使用する場合には、保険証または公費の有効期間の開始日、終了日をstart とendに yyyy-mm-dd形式で設定する。","Some insurers require the submission of the coverage term.
+【JP-Core仕様】医療保険、公費で本リソースを使用する場合には、保険証または公費の有効期間の開始日、終了日をstart とendに yyyy-mm-dd形式で設定する。","Some insurers require the submission of the coverage term.
 
 保険会社によっては、補償期間の提出を義務付けているところもある。","","","","","","","",,,,,"",,,,"Coverage.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.occurrence[x]","Act.effectiveTime","FiveWs.done[x]","IN1-12 / IN1-13"
 "Coverage.payor","Coverage.payor","","","",1,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson]]}
 ","Issuer of the policy","The program or plan underwriter or payor including both insurance and non-insurance agreements, such as patient-pay agreements.
-
 
 患者負担契約などの保険契約と保険外契約の両方を含むプログラムまたはプランの引受人または支払人。","May provide multiple identifiers such as insurance company identifier or business identifier (BIN number).
 For selfpay it may provide multiple paying persons and/or organizations.
@@ -222,12 +213,10 @@ For selfpay it may provide multiple paying persons and/or organizations.
 
 請求処理および給付処理の調整の対象となる発行者を特定する必要がある。
 
-【JP-Core仕様】
-医療保険で本リソースを使用する場合には、保険者組織Organizationリソースへの参照。自費の場合には、患者Patientリソースへの参照。公費の場合には、公費負担者組織Organizationリソースへの参照。","","","","","","","",,,,,"",,,,"Coverage.payor",1,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP-Core仕様】医療保険で本リソースを使用する場合には、保険者組織Organizationリソースへの参照。自費の場合には、患者Patientリソースへの参照。公費の場合には、公費負担者組織Organizationリソースへの参照。","","","","","","","",,,,,"",,,,"Coverage.payor",1,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","FiveWs.author","A05","IN1-3","C.30"
 "Coverage.class","Coverage.class","","","",0,*,"","","","BackboneElement {[]} {[]}
 ","Additional coverage classifications","A suite of underwriter specific classifiers.
-
 
 保険事業者の分類子","For example may be used to identify a class of coverage or employer group, Policy, Plan.
 
@@ -250,34 +239,25 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Coverage.class.type","Coverage.class.type","","","",1,1,"","","Y","CodeableConcept {[]} {[]}
 ","Type of class such as 'group' or 'plan'","The type of classification for which an insurer-specific class label or number and optional name is provided, for example may be used to identify a class of coverage or employer group, Policy, Plan.
 
-
 保険者固有のクラスラベルまたは番号、任意の名前が提供されている分類のタイプを表す。例えば、保険のクラスまたは雇用者グループ、保険契約、Planを識別するために使用することができる。","Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.
 
-
-
 すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。","The insurer issued label for a specific health card value.
-
 
 保険者が発行した特定の健康カード番号のラベル。","","","","","","","",,"extensible","The policy classifications, eg. Group, Plan, Class, etc.","http://hl7.org/fhir/ValueSet/coverage-class","",,,,"Coverage.class.type",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
 "Coverage.class.value","Coverage.class.value","","","",1,1,"","","Y","string {[]} {[]}
 ","Value associated with the type","The alphanumeric string value associated with the insurer issued label.
 
-
 保険者が発行したラベルに関連付けられた英数字の文字列値。","For example, the Group or Plan number.
 
-
 例えば、グループ番号やプラン番号など。","The insurer issued label and value are necessary to identify the specific policy.
-
 
 保険者が発行したラベルと値は、特定の保険契約を識別するために必要なものである。","","","","","","","",,,,,"",,,,"Coverage.class.value",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C11 (Division,Section)","IN1-8","C.31"
 "Coverage.class.name","Coverage.class.name","","","",0,1,"","","Y","string {[]} {[]}
 ","Human readable description of the type and value","A short description for the class.
 
-
 保険種類の簡単な説明。","","Used to provide a meaningful description in correspondence to the patient.
-
 
 患者に対応するのに意味のある説明をするために使用する。","","","","","","","",,,,,"",,,,"Coverage.class.name",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C11 (Division,Section)","IN1-8","C.31"
@@ -290,14 +270,12 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
 保険給付の調整管理に使用する。
 
-【JP-Core仕様】
-公費情報で本リソースを使用する場合で、複数の公費負担情報がある場合に、その適用順序番号を示す１，２，３．．．を設定する。","","","","","","","",,,,,"",,,,"Coverage.order",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP-Core仕様】公費情報で本リソースを使用する場合で、複数の公費負担情報がある場合に、その適用順序番号を示す１，２，３．．．を設定する。","","","","","","","",,,,,"",,,,"Coverage.order",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","- No exact HL7 v2 equivalent concept seems to exist;"
 "Coverage.network","Coverage.network","","","",0,1,"","","Y","string {[]} {[]}
 ","Insurer network","The insurer-specific identifier for the insurer-defined network of providers to which the beneficiary may seek treatment which will be covered at the 'in-network' rate, otherwise 'out of network' terms and conditions apply.
 
 保険者が定義したプロバイダーの保険者定義ネットワークの保険者固有の識別子で、被保険者が「ネットワーク内」の料金でカバーされる治療を受けることができるが、そうでなければ「ネットワーク外」の条件が適用される。","","Used in referral for treatment and in claims processing.
-
 
 治療のための紹介や請求処理の際に使用する。","","","","","","","",,,,,"",,,,"Coverage.network",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","D10"
@@ -309,8 +287,7 @@ DeductibleExceptions","",0,*,"","","","BackboneElement {[]} {[]}
 
 例えば、患者の訪問時の自己負担額を知ることで、医療提供者は治療を行う前にその金額を回収することができる。
 
-【JP-Core仕様】
-公費の場合には自己負担率。判明している場合のみ設定する。","Required by providers to manage financial transaction with the patient.
+【JP-Core仕様】公費の場合には自己負担率。判明している場合のみ設定する。","Required by providers to manage financial transaction with the patient.
 
 事業者が患者との金銭的な取引を管理するために必要となる。","","","","","","","",,,,,"",,,,"Coverage.costToBeneficiary",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
@@ -329,12 +306,9 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Coverage.costToBeneficiary.type","Coverage.costToBeneficiary.type","","","",0,1,"","","Y","CodeableConcept {[]} {[]}
 ","Cost category","The category of patient centric costs associated with treatment.
 
-
 治療に伴う患者中心の費用のカテゴリー。","For example visit, specialist visits, emergency, inpatient care, etc.
 
-
 例えば、訪問診療、専門医の訪問診療、救急診療、入院診療など。","Needed to identify the category associated with the amount for the patient.
-
 
 患者の金額に関連するカテゴリーを特定する必要がありました。","","","","","","","",,"extensible","The types of services to which patient copayments are specified.","http://hl7.org/fhir/ValueSet/coverage-copay-type","",,,,"Coverage.costToBeneficiary.type",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
@@ -381,21 +355,16 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Coverage.costToBeneficiary.value[x]","Coverage.costToBeneficiary.value[x]","","","",1,1,"","","Y","Quantity {[CanonicalType[http://hl7.org/fhir/StructureDefinition/SimpleQuantity]]} {[]}
 Money {[]} {[]}","The amount or percentage due from the beneficiary","The amount due from the patient for the cost category.
 
-
 費用区分の患者からの支払額。","Amount may be expressed as a percentage of the service/product cost or a fixed amount of currency.
 
-
 金額は、サービス/製品のコストに対する割合で表現される場合と、通貨の固定額で表現される場合がある。","Needed to identify the amount for the patient associated with the category.
-
 
 カテゴリーに関連する患者の支払い金額を特定する必要がありました。","","","","","","","",,,,,"",,,,"Coverage.costToBeneficiary.value[x]",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C11 (Division,Section)","IN1-8","C.31"
 "Coverage.costToBeneficiary.exception","Coverage.costToBeneficiary.exception","","","",0,*,"","","","BackboneElement {[]} {[]}
 ","Exceptions for patient payments","A suite of codes indicating exceptions or reductions to patient costs and their effective periods.
 
-
 患者費用の例外または削減を示すコードとその有効期間を示すコード群。","","Required by providers to manage financial transaction with the patient.
-
 
 事業者が患者との金銭的な取引を管理するために必要となる。","","","","","","","",,,,,"",,,,"Coverage.costToBeneficiary.exception",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
@@ -414,18 +383,14 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Coverage.costToBeneficiary.exception.type","Coverage.costToBeneficiary.exception.type","","","",1,1,"","","Y","CodeableConcept {[]} {[]}
 ","Exception category","The code for the specific exception.
 
-
 特定の例外のコード。","","Needed to identify the exception associated with the amount for the patient.
-
 
 患者の金額に関連する例外を特定する必要があった。","","","","","","","",,"example","The types of exceptions from the part or full value of financial obligations such as copays.","http://hl7.org/fhir/ValueSet/coverage-financial-exception","",,,,"Coverage.costToBeneficiary.exception.type",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
 "Coverage.costToBeneficiary.exception.period","Coverage.costToBeneficiary.exception.period","","","",0,1,"","","Y","Period {[]} {[]}
 ","The effective period of the exception","The timeframe during when the exception is in force.
 
-
 例外が発生している間の時間枠。","","Needed to identify the applicable timeframe for the exception for the correct calculation of patient costs.
-
 
 患者の費用を正しく計算するための例外の適用時期を特定する必要があった。","","","","","","","",,,,,"",,,,"Coverage.costToBeneficiary.exception.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
@@ -436,13 +401,12 @@ subrogation=trueの場合、この保険インスタンスは裁定のためで�
 
 一般的に、自動車保険や労災保険では、医療費支払い者が事故請求に対して回収できるように、subrogation＝true というフラグが立てられている。","See definition for when to be used.
 
-
 使用時期については定義を参照すること。","","","","","","","",,,,,"",,,,"Coverage.subrogation",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
 "Coverage.contract","Coverage.contract","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Contract]]}
 ","Contract details　契約の詳細","The policy(s) which constitute this insurance coverage.
 
-この保険の適用範囲を構成するポリシー。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+この保険の適用範囲を構成するポリシー。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","To reference the legally binding contract between the policy holder and the insurer.
 
