@@ -63,7 +63,7 @@ ImagingStudyの現在のステータス","Unknown does not represent ""other"" -
 コードは、列挙型またはコードリストで、SNOMED CTなどの非常に正式な定義まで、非常にカジュアルに定義できる。詳細については、HL7v3コア原則を参照のこと。
 
 ・モダリティのコードを設定。<br/>
-・Seriesの階層の(0008,0060)を集約する、または(0008,0060)　と　(0008, 0061) のOR。但し、重複する値は1つにまとめて表現。<br/>","","","","","","","","",,"extensible","Type of acquired data in the instance.","http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html","",,,,"ImagingStudy.modality",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+・Seriesの階層の(0008,0060)を集約する、または(0008,0060)　と　(0008, 0061) のOR。但し、重複する値は1つにまとめて表現。","","","","","","","","",,"extensible","Type of acquired data in the instance.","http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html","",,,,"ImagingStudy.modality",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".code","(0008,0061)","FiveWs.class"
 "ImagingStudy.subject","ImagingStudy.subject","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device], CanonicalType[http://hl7.org/fhir/StructureDefinition/Group]]}
 ","Who or what is the subject of the study　検査対象者","The subject, typically a patient, of the imaging study.
@@ -74,7 +74,7 @@ QAファントムはデバイスで記録できる。複数の被験者（マウ
 
 ・患者(Patient)リソースを参照。<br/>
 ・DICOMタグ値を参照する場合は、tag mappingの通りグループ0010（患者情報に関連する情報を扱うグループ）を参照。<br/>
-・不明患者は、空もしくは不明を指すPatientリソースを参照。<br/>","","","","","","","","",,,,,"",,,,"ImagingStudy.subject",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+・不明患者は、空もしくは不明を指すPatientリソースを参照。","","","","","","","","",,,,,"",,,,"ImagingStudy.subject",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.subject",".participation[typeCode=SBJ].role","(0010/*)","FiveWs.subject[x]","FiveWs.subject"
 "ImagingStudy.encounter","ImagingStudy.encounter","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Encounter]]}
 ","Encounter with which this imaging study is associated　この画像検査が関連しているエンカウンター","The healthcare event (e.g. a patient and healthcare provider interaction) during which this ImagingStudy is made.
@@ -95,7 +95,7 @@ StudyTime","",0,1,"","","Y","dateTime {[]} {[]}
 "ImagingStudy.basedOn","ImagingStudy.basedOn","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/CarePlan], CanonicalType[http://hl7.org/fhir/StructureDefinition/ServiceRequest], CanonicalType[http://hl7.org/fhir/StructureDefinition/Appointment], CanonicalType[http://hl7.org/fhir/StructureDefinition/AppointmentResponse], CanonicalType[http://hl7.org/fhir/StructureDefinition/Task]]}
 ","Request fulfilled　実施された依頼","A list of the diagnostic requests that resulted in this imaging study being performed.
 
-この画像検査の実施につながった診断依頼のリスト。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+この画像検査の実施につながった診断依頼のリスト。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
 
@@ -105,7 +105,7 @@ StudyTime","",0,1,"","","Y","dateTime {[]} {[]}
 ","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole]]}
 ","Referring physician　依頼紹介医師","The requesting/referring physician.
 
-依頼紹介医師","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+依頼紹介医師","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
 
@@ -115,7 +115,7 @@ StudyTime","",0,1,"","","Y","dateTime {[]} {[]}
 ","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole]]}
 ","Who interpreted images　画像の読影者","Who read the study and interpreted the images or other content.
 
-画像の読影者","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+画像の読影者","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
 
@@ -151,7 +151,7 @@ DICOMのリソース位置を指定。基本的には1つ。","Access methods fo
 "ImagingStudy.procedureReference","ImagingStudy.procedureReference","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure]]}
 ","The performed Procedure reference　実施されたProcedure への参照","The procedure which this ImagingStudy was part of.
 
-このImagingStudyが含まれていたprocedure リソースへの参照。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+このImagingStudyが含まれていたprocedure リソースへの参照。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
 
@@ -170,7 +170,7 @@ DICOMのリソース位置を指定。基本的には1つ。","Access methods fo
 "ImagingStudy.location","ImagingStudy.location","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location]]}
 ","Where ImagingStudy occurred　ImagingStudy が起こった場所","The principal physical location where the ImagingStudy was performed.
 
-ImagingStudyが実行された主要な物理的な場所。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+ImagingStudyが実行された主要な物理的な場所。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
 
@@ -188,7 +188,7 @@ JP Coreでは未使用","","","","","","","","",,"example","The reason for the s
 "ImagingStudy.reasonReference","ImagingStudy.reasonReference","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common], CanonicalType[http://hl7.org/fhir/StructureDefinition/Media], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Common], CanonicalType[http://hl7.org/fhir/StructureDefinition/DocumentReference]]}
 ","Why was study performed　スタディーが実施された理由","Indicates another resource whose existence justifies this Study.
 
-このスタディーを正当化する別のリソースを示す。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+このスタディーを正当化する別のリソースを示す。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
 
@@ -316,7 +316,7 @@ JP Coreでは左右などを示す。フリーではなく、DICOM定義書の�
 "ImagingStudy.series.specimen","ImagingStudy.series.specimen","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Specimen]]}
 ","Specimen imaged　画像検査をした検体","The specimen imaged, e.g., for whole slide imaging of a biopsy.
 
-例えば、生検のスライド全体の画像化のために画像化された標本。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+例えば、生検のスライド全体の画像化のために画像化された標本。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
 
@@ -344,7 +344,7 @@ OperatorName","",0,*,"","","Y","BackboneElement {[]} {[]}
 　　(0008,1050)Performing Physician's Name<br/>
 　　(0008,1052)Performing Physician Identification Sequence<br/>
 　　(0008,1070)Operators' Name<br/>
-　　(0008,1072)Operator Identification Sequence<br/>","The performer is recorded at the series level, since each series in a study may be performed by a different performer, at different times, and using different devices. A series may be performed by multiple performers.","","","","","","","",,,,,"",,,,"ImagingStudy.series.performer",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+　　(0008,1072)Operator Identification Sequence","The performer is recorded at the series level, since each series in a study may be performed by a different performer, at different times, and using different devices. A series may be performed by multiple performers.","","","","","","","",,,,,"",,,,"ImagingStudy.series.performer",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.performer",".participation[typeCode=PRF].role","(0008, 1050) | (0008, 1052) | (0008, 1070) | (0008, 1072)"
 "ImagingStudy.series.performer.id","ImagingStudy.series.performer.id","","","",0,1,"","","","string {[]} {[]}
 ","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
@@ -362,7 +362,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","Type of performance","Distinguishes the type of involvement of the performer in the series.","","Allows disambiguation of the types of involvement of different performers.","","","","","","","",,"extensible","The type of involvement of the performer.","http://hl7.org/fhir/ValueSet/series-performer-function","",,,,"ImagingStudy.series.performer.function",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".participation[typeCode=PRF].role"
 "ImagingStudy.series.performer.actor","ImagingStudy.series.performer.actor","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization], CanonicalType[http://hl7.org/fhir/StructureDefinition/CareTeam], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson]]}
-","Who performed the series","Indicates who or what performed the series.","References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+","Who performed the series","Indicates who or what performed the series.","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 <br/><br/>
 【JP仕様】<br/>

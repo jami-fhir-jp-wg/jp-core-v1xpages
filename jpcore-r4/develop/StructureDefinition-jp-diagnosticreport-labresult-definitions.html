@@ -261,7 +261,7 @@
   <tr><td>Comments</td><td><p>This is intended to capture a single report and is not suitable for use in displaying summary information that covers multiple reports.  For example, this resource has not been designed for laboratory cumulative reporting formats nor detailed structured reports for sequencing.</p>
 <p>これは単一のレポートをキャプチャすることを目的としており、複数のレポートをカバーする要約情報の表示に使用するのには適していない。たとえば、このリソースは、検査結果の累積レポート形式やシーケンスの詳細な構造化レポート用に作られていない。</p>
 <p>【JP-CORE】
-DIagnosticReportリソースの共通プロフィール</p>
+DiagnosticReportリソースの共通プロフィール</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">dom-2</b>: If the resource is contained in another resource, it SHALL NOT contain nested Resources (: contained.contained.empty())<br/><b title="Formal Invariant Identifier">dom-3</b>: If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource (: contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty())<br/><b title="Formal Invariant Identifier">dom-4</b>: If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated (: contained.meta.versionId.empty() and contained.meta.lastUpdated.empty())<br/><b title="Formal Invariant Identifier">dom-5</b>: If a resource is contained in another resource, it SHALL NOT have a security label (: contained.meta.security.empty())<br/><b title="Formal Invariant Identifier">dom-6</b>: A resource should have narrative for robust management (: text.`div`.exists())</td></tr>
@@ -360,7 +360,7 @@ A human language.</p>
 検体検査結果の場合、「依頼者オーダ番号(ORC-2)」だけで十分&lt;br/&gt;
 ・複数の容器で1つの結果のまとまり&lt;br/&gt;
 ・容器ごとに結果が出るタイミングはずれる&lt;br/&gt;
-・オーダ側でオーダ番号が1つにまとまるか別になるかは有り得る&lt;br/&gt;</p>
+・オーダ側でオーダ番号が1つにまとまるか別になるかは有り得る</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -376,7 +376,7 @@ A human language.</p>
   <tr><td>Comments</td><td><p>Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single test result resource. Note that there are also cases where one request leads to multiple reports.
 通常、１結果ごとに１つの検査依頼があるが、状況によっては、複数の検査要求に対して１レポートがある場合がある。また 1つの検査依頼に対して複数のレポートが作成される場合もあることに注意。</p>
 <p>【JP-CORE】
-ServiceRequestリソースを参照(ObservationLabresultと同様）&lt;br/&gt;</p>
+ServiceRequestリソースを参照(ObservationLabresultと同様）</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -397,7 +397,7 @@ The status of the diagnostic report.</p>
 無ければ：OBR-25(&quot;F&quot;)のAND結果&lt;br/&gt;
 　例：全部&quot;F&quot;なら&quot;F&quot;、それ以外の場合は要検討&lt;br/&gt;
 設定する値は、DiagnosticReportStatus（コード）から1つ選ぶ&lt;br/&gt;
-コード体系：HL7 Table 0038のコードと定義&lt;br/&gt;</p>
+コード体系：HL7 Table 0038のコードと定義</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -446,10 +446,10 @@ LOINCの臨床検査の分類コードを割り当てる。&lt;br/&gt;
   <tr><td>Requirements</td><td><p>SHALL know the subject context.</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Patient</td></tr>
-  <tr><td>Comments</td><td><p>References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+  <tr><td>Comments</td><td><p>References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。</p>
 <p>【JP-CORE】
-Patientリソースを参照&lt;br/&gt;</p>
+Patientリソースを参照</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -468,7 +468,7 @@ Patientリソースを参照&lt;br/&gt;</p>
 Encounterリソースを参照&lt;br/&gt;
 &lt;br/&gt;
 【議論】&lt;br/&gt;
-入院の場合には、ラベル印刷日時とは限らない。&lt;br/&gt;</p>
+入院の場合には、ラベル印刷日時とは限らない。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -485,7 +485,7 @@ Encounterリソースを参照&lt;br/&gt;
   <tr><td>Comments</td><td><p>If the diagnostic procedure was performed on the patient, this is the time it was performed. If there are specimens, the diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship between the specimens and the diagnostically relevant time is not always automatic.
 診断手順が患者に対して実行された場合、これは実施された時刻。対象が検体である場合は、検体採取時間から診断関連時刻を導き出すことができるが、検体情報が常に入手できるとは限らず、検体と診断関連時刻の正確な関係は必ずしも自明ではない。</p>
 <p>【JP-CORE】
-検体採取時間&lt;br/&gt;</p>
+検体採取時間</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -501,7 +501,7 @@ Encounterリソースを参照&lt;br/&gt;
   <tr><td>Comments</td><td><p>May be different from the update time of the resource itself, because that is the status of the record (potentially a secondary copy), not the actual release time of the report.
 リソース自体の更新時刻とは異なる場合がある。これは、レポートの実際の提供時刻ではなく、リソース自体の更新時刻はレコード（場合によってはセカンダリコピー）のステータスの更新時刻となるため。</p>
 <p>【JP-CORE】
-このデータが出来た時間&lt;br/&gt;</p>
+このデータが出来た時間</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -517,7 +517,7 @@ Encounterリソースを参照&lt;br/&gt;
   <tr><td>Comments</td><td><p>This is not necessarily the source of the atomic data items or the entity that interpreted the results. It is the entity that takes responsibility for the clinical report.
 必ずしも１項目データ単位のデータソースまたは結果を解釈した主体でなない。臨床レポートに責任をもつ主体のこと。</p>
 <p>【JP-CORE】
-検査に関わった人もしくは組織&lt;br/&gt;</p>
+検査に関わった人もしくは組織</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -533,7 +533,7 @@ Encounterリソースを参照&lt;br/&gt;
   <tr><td>Comments</td><td><p>Might not be the same entity that takes responsibility for the clinical report.
 レポートに責任を持つ主体とは異なる場合がある。</p>
 <p>【JP-CORE】
-検査責任者&lt;br/&gt;</p>
+検査責任者</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -548,7 +548,7 @@ Encounterリソースを参照&lt;br/&gt;
   <tr><td>Comments</td><td><p>If the specimen is sufficiently specified with a code in the test result name, then this additional data may be redundant. If there are multiple specimens, these may be represented per observation or group.
 検査結果名称のコードを見れば検体情報が十分に判明するような場合には、この検体情報は冗長になる。複数の検体が関与する場合には、検査や検査グループごとに検体情報が記述されることがある。</p>
 <p>【JP-CORE】
-該当するspecimenを設定&lt;br/&gt;</p>
+該当するspecimenを設定</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -565,7 +565,7 @@ Encounterリソースを参照&lt;br/&gt;
   <tr><td>Comments</td><td><p>Observations can contain observations.
 Observationはobservationを含みうる。</p>
 <p>【JP-CORE】
-該当するObservationを設定&lt;br/&gt;</p>
+該当するObservationを設定</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -578,7 +578,7 @@ Observationはobservationを含みうる。</p>
   <tr><td>Comments</td><td><p>ImagingStudy and the image element are somewhat overlapping - typically, the list of image references in the image element will also be found in one of the imaging study resources. However, each caters to different types of displays for different types of purposes. Neither, either, or both may be provided.
 ImagingStudyと画像要素は多少重複する。通常、画像要素内の画像参照のリストは、画像検査リソースのひとつにも存在する。。ただし、それぞれがさまざまなタイプの目的のためにさまざまなタイプのディスプレイに対応している。どちらも、どちらか、または両方を提供することはできない。</p>
 <p>【JP-CORE】
-使わない&lt;br/&gt;</p>
+使わない</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -592,7 +592,7 @@ ImagingStudyと画像要素は多少重複する。通常、画像要素内の�
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>DICOM, Slides, Scans</td></tr>
   <tr><td>Comments</td><td><p>【JP仕様】&lt;br/&gt;
-レポート1つに対して、複数の画像・コメントがぶら下がる&lt;br/&gt;</p>
+レポート1つに対して、複数の画像・コメントがぶら下がる</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -634,7 +634,7 @@ ImagingStudyと画像要素は多少重複する。通常、画像要素内の�
 </td></tr>
   <tr><td>Comments</td><td><p>The comment should be displayed with the image. It would be common for the report to include additional discussion of the image contents in other sections such as the conclusion.</p>
 <p>【JP仕様】&lt;br/&gt;
-画像に対するコメント&lt;br/&gt;</p>
+画像に対するコメント</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -643,9 +643,9 @@ ImagingStudyと画像要素は多少重複する。通常、画像要素内の�
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>1..1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="http://hl7.org/fhir/R4/media.html" title="http://hl7.org/fhir/StructureDefinition/Media">Media</a>)</td></tr>
-  <tr><td>Comments</td><td><p>References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.</p>
+  <tr><td>Comments</td><td><p>References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.</p>
 <p>【JP仕様】&lt;br/&gt;
-画像に対するリンク&lt;br/&gt;</p>
+画像に対するリンク</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -660,7 +660,7 @@ ImagingStudyと画像要素は多少重複する。通常、画像要素内の�
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Report</td></tr>
   <tr><td>Comments</td><td><p>Note that FHIR strings SHALL NOT exceed 1MB in size</p>
 <p>【JP仕様】&lt;br/&gt;
-原則使わない&lt;br/&gt;</p>
+原則使わない</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -676,7 +676,7 @@ Diagnosis codes provided as adjuncts to the report.</p>
   <tr><td>Comments</td><td><p>Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.
 すべてのターミのロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。</p>
 <p>【JP仕様】&lt;br/&gt;
-原則使わない&lt;br/&gt;</p>
+原則使わない</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -691,7 +691,7 @@ Diagnosis codes provided as adjuncts to the report.</p>
   <tr><td>Comments</td><td><p>&quot;application/pdf&quot; is recommended as the most reliable and interoperable in this context.
 application / pdf」がこのコンテキストで最も信頼でき相互運用可能なものとして推奨される。</p>
 <p>【JP仕様】&lt;br/&gt;
-原則使わない&lt;br/&gt;</p>
+原則使わない</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -749,7 +749,7 @@ application / pdf」がこのコンテキストで最も信頼でき相互運用
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 9, 2022 11:40+0000">2022-08-09</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 9, 2022 11:56+0000">2022-08-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
