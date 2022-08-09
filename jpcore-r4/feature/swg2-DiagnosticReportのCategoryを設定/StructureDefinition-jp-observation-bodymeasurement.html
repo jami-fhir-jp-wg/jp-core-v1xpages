@@ -275,7 +275,7 @@
   <td><i>Status</i></td>
   <td>Draft
     
-      ( 2022-08-08 )
+      ( 2022-08-09 )
     </td>
 </tr>
 
@@ -306,23 +306,23 @@
 <div style="display:inline-block" markdown="1">
 
 <p><br />
-本プロファイル説明は、患者に付属する一項目分の身体計測情報について、情報の登録や検索、取得のために、FHIR <code class="highlighter-rouge">Observation</code>リソースを使用するにあたっての、最低限の制約を記述したものである。
-<code class="highlighter-rouge">Observation</code>リソースに対して本プロファイルに準拠する場合に必須となる要素や、サポートすべき拡張、用語、検索パラメータを定義する。</p>
+本プロファイル説明は、患者に付属する一項目分の身体計測情報について、情報の登録や検索、取得のために、FHIR Observationリソースを使用するにあたっての、最低限の制約を記述したものである。
+Observationリソースに対して本プロファイルに準拠する場合に必須となる要素や、サポートすべき拡張、用語、検索パラメータを定義する。</p>
 
 <h2 id="背景および想定シナリオ">背景および想定シナリオ</h2>
 <p>本プロファイルは、以下のようなユースケースを想定している。</p>
 
 <ul>
-  <li><code class="highlighter-rouge">Patient</code>リソースからの指定された日時、期間での患者身体計測情報の参照</li>
-  <li><code class="highlighter-rouge">Patient</code>リソースからの指定された患者身体計測情報項目に対する指定された期間での身体計測情報の参照</li>
-  <li><code class="highlighter-rouge">Patient</code>リソースからの標準値を外れた患者身体計測情報の参照</li>
-  <li>指定された期間や患者身体計測情報項目に対し、条件に合致する身体計測情報、または関連する他のリソース（<code class="highlighter-rouge">Observation</code>リソースや、<code class="highlighter-rouge">Patient</code>リソース等）の参照。</li>
+  <li>Patientリソースからの指定された日時、期間での患者身体計測情報の参照</li>
+  <li>Patientリソースからの指定された患者身体計測情報項目に対する指定された期間での身体計測情報の参照</li>
+  <li>Patientリソースからの標準値を外れた患者身体計測情報の参照</li>
+  <li>指定された期間や患者身体計測情報項目に対し、条件に合致する身体計測情報、または関連する他のリソース（Observationリソースや、Patientリソース等）の参照。</li>
 </ul>
 
 <h2 id="スコープ">スコープ</h2>
-<p><code class="highlighter-rouge">Observation</code>はヘルスケアの中心的な要素であり、診断の支援、進捗状況の監視、ベースラインやパターンの決定、さらには人口統計学的特性の把握に使用される。ほとんどの<code class="highlighter-rouge">Observation</code>は、いくつかのメタデータを持つ単純な名前/値のペアのアサーションであるが、いくつかの<code class="highlighter-rouge">Observation</code>は、他の <code class="highlighter-rouge">Observation</code>を論理的にグループ化したり、あるいはマルチコンポーネントの<code class="highlighter-rouge">Observation</code>であったりする。</p>
+<p>Observationはヘルスケアの中心的な要素であり、診断の支援、進捗状況の監視、ベースラインやパターンの決定、さらには人口統計学的特性の把握に使用される。ほとんどのObservationは、いくつかのメタデータを持つ単純な名前/値のペアのアサーションであるが、いくつかのObservationは、他の Observationを論理的にグループ化したり、あるいはマルチコンポーネントのObservationであったりする。</p>
 
-<p>このプロファイルでは上記想定シナリオにて用いられる<code class="highlighter-rouge">Observation</code>の用途がスコープであり、患者基本情報の中でも特に身体計測に該当する情報項目の１つを取り扱う際に、必要な要件を定義している。</p>
+<p>このプロファイルでは上記想定シナリオにて用いられるObservationの用途がスコープであり、患者基本情報の中でも特に身体計測に該当する情報項目の１つを取り扱う際に、必要な要件を定義している。</p>
 
 <h2 id="プロファイル定義">プロファイル定義</h2>
 
@@ -1191,11 +1191,11 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 <p>本プロファイルでは、次の要素を持たなければならない。</p>
 
 <ul>
-  <li><code class="highlighter-rouge">status</code>︓患者身体計測情報の状態は必須である。</li>
-  <li><code class="highlighter-rouge">category</code>︓このリソースが示す身体計測情報項目を分類するための区分であり、このプロファイルでは必須とする。</li>
-  <li><code class="highlighter-rouge">code</code>︓このリソースは何の身体計測情報項目であるかを示すため必須である。</li>
-  <li><code class="highlighter-rouge">subject</code>︓このリソースが示す身体計測情報項目が、どの患者のものかを示すため、このプロファイルでは参照する<code class="highlighter-rouge">patient</code>リソースの定義を必須とする。</li>
-  <li><code class="highlighter-rouge">encouter</code>：このリソースが示す身体計測情報項目が、どの診療イベントにより発生したものかを示すため、このプロファイルでは必須とする。</li>
+  <li>status︓患者身体計測情報の状態は必須である。</li>
+  <li>category︓このリソースが示す身体計測情報項目を分類するための区分であり、このプロファイルでは必須とする。</li>
+  <li>code︓このリソースは何の身体計測情報項目であるかを示すため必須である。</li>
+  <li>subject︓このリソースが示す身体計測情報項目が、どの患者のものかを示すため、このプロファイルでは参照するpatientリソースの定義を必須とする。</li>
+  <li>encounter：このリソースが示す身体計測情報項目が、どの診療イベントにより発生したものかを示すため、このプロファイルでは必須とする。</li>
 </ul>
 
 <h4 id="must-support">Must Support</h4>
@@ -1208,7 +1208,7 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 
 <h3 id="インタラクション一覧">インタラクション一覧</h3>
 
-<p><code class="highlighter-rouge">Observation</code>リソースのインタラクション一覧の定義はユースケースに依存せず共通であるため、共通情報プロファイルに記載されている。</p>
+<p>Observationリソースのインタラクション一覧の定義はユースケースに依存せず共通であるため、共通情報プロファイルに記載されている。</p>
 
 <p><a href="StructureDefinition-jp-observation-common.html#インタラクション一覧">Observation共通情報プロファイル#インタラクション一覧</a></p>
 
@@ -1218,7 +1218,7 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 
 <p>身体計測ユースケースのSearch Parameter一覧は共通情報プロファイルに記載されている。</p>
 
-<p>検索時の<code class="highlighter-rouge">category</code>パラメータは”vital-sign”となる。</p>
+<p>検索時のcategoryパラメータは”vital-sign”となる。</p>
 
 <p><a href="StructureDefinition-jp-observation-common.html#search-parameter一覧">Observation共通情報プロファイル#Search Parameter一覧</a></p>
 
@@ -1351,7 +1351,7 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Aug 8, 2022 12:55+0000">2022-08-08</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 9, 2022 09:09+0000">2022-08-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

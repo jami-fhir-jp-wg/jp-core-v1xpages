@@ -265,7 +265,7 @@
   <td><i>Status</i></td>
   <td>Draft
     
-      ( 2022-08-08 )
+      ( 2022-08-09 )
     </td>
 </tr>
 
@@ -296,7 +296,7 @@
 <div style="display:inline-block" markdown="1">
 
 <h2 id="背景および想定シナリオ">背景および想定シナリオ</h2>
-<p><code class="highlighter-rouge">Observation</code>リソースに対する主な用途は以下の通り。</p>
+<p>Observationリソースに対する主な用途は以下の通り。</p>
 <ul>
   <li>体重、血圧、体温などのバイタルサイン</li>
   <li>血糖値や推定GFRなどの検体検査結果</li>
@@ -306,12 +306,12 @@
   <li>喫煙歴、社会歴、家族支援、認知状態など</li>
 </ul>
 
-<p>※ 臨床所見と疾患の境界は、医療オントロジーの課題となる。一般的なガイドについては、<a href="https://www.hl7.org/fhir/observation.html#bnr"><code class="highlighter-rouge">Observation</code>リソースの境界</a>および<a href="https://www.hl7.org/fhir/condition.html#bnr"><code class="highlighter-rouge">Condition</code>リソースの境界</a>のセクションを参照のこと。</p>
+<p>※ 臨床所見と疾患の境界は、医療オントロジーの課題となる。一般的なガイドについては、<a href="https://www.hl7.org/fhir/observation.html#bnr">Observationリソースの境界</a>および<a href="https://www.hl7.org/fhir/condition.html#bnr">Conditionリソースの境界</a>のセクションを参照のこと。</p>
 
 <h2 id="スコープ">スコープ</h2>
-<p><code class="highlighter-rouge">Observation</code>（検査、観察）はヘルスケアの中心的な要素であり、診断の補助、進行状況のモニタリング、基準とパターンの決定、人口統計的特性の把握に使用される。ほとんどの<code class="highlighter-rouge">Observation</code>は、メタデータを含む単純な名前/値のペアとなる。一部の<code class="highlighter-rouge">Observation</code>は、他の<code class="highlighter-rouge">Observation</code>を論理的にグループ化したり、複数の要素から構成される場合もある。</p>
+<p>Observation（検査、観察）はヘルスケアの中心的な要素であり、診断の補助、進行状況のモニタリング、基準とパターンの決定、人口統計的特性の把握に使用される。ほとんどのObservationは、メタデータを含む単純な名前/値のペアとなる。一部のObservationは、他のObservationを論理的にグループ化したり、複数の要素から構成される場合もある。</p>
 
-<p><code class="highlighter-rouge">DiagnosticReport</code>（検査レポート）リソースは一連の検査の臨床/ワークフローの文脈を定義する。<code class="highlighter-rouge">Observation</code>リソースは<code class="highlighter-rouge">DiagnosticReport</code>から参照されることで、検査、画像、その他の臨床および診断データから表現されるレポートを形作る。</p>
+<p>DiagnosticReport（検査レポート）リソースは一連の検査の臨床/ワークフローの文脈を定義する。ObservationリソースはDiagnosticReportから参照されることで、検査、画像、その他の臨床および診断データから表現されるレポートを形作る。</p>
 
 <h2 id="プロファイル定義">プロファイル定義</h2>
 
@@ -1292,8 +1292,8 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 <p>このプロファイルでは、次の要素を持たなければならない。</p>
 
 <ul>
-  <li><code class="highlighter-rouge">status</code>︓検査項目情報の状態は必須である。</li>
-  <li><code class="highlighter-rouge">code</code>︓このプロファイルは何の検査項目であるかを示すため必須である。</li>
+  <li>status︓検査項目情報の状態は必須である。</li>
+  <li>code︓このプロファイルは何の検査項目であるかを示すため必須である。</li>
 </ul>
 
 <h4 id="mustsupport">MustSupport</h4>
@@ -1333,7 +1333,7 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 
 <h4 id="search-parameter一覧">Search Parameter一覧</h4>
 
-<p>ユースケース独自のSearch Parameterが定義されていない場合、以下の表の内容の共通のSearch Parameterとなる。ただし、<code class="highlighter-rouge">category</code>パラメータおよび<code class="highlighter-rouge">code</code>パラメータについては、各ユースケース毎に異なる固定値および用語定義で定められたコード体系を指定することになるので注意が必要である。</p>
+<p>ユースケース独自のSearch Parameterが定義されていない場合、以下の表の内容が共通のSearch Parameterとなる。ただし、categoryパラメータおよびcodeパラメータについては、各ユースケース毎に異なる固定値および用語定義で定められたコード体系を指定することになるので注意が必要である。</p>
 
 <table>
   <thead>
@@ -1347,20 +1347,20 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
   <tbody>
     <tr>
       <td>MAY</td>
-      <td><code class="highlighter-rouge">subject</code>,<code class="highlighter-rouge">category</code>,<code class="highlighter-rouge">code</code>,<code class="highlighter-rouge">value-quantity</code></td>
-      <td><code class="highlighter-rouge">reference</code>,<code class="highlighter-rouge">token</code>,<code class="highlighter-rouge">token</code>,<code class="highlighter-rouge">quantity</code></td>
+      <td>subject,category,code,value-quantity</td>
+      <td>reference,token,token,quantity</td>
       <td><code class="highlighter-rouge">GET [base]/Observation?subject=Patient/123&amp;category=vital-signs&amp;code=http://loinc.org|8867-4&amp;value-quantity=gt40</code></td>
     </tr>
     <tr>
       <td>MAY</td>
-      <td><code class="highlighter-rouge">subject</code>,<code class="highlighter-rouge">category</code>,<code class="highlighter-rouge">code</code>,<code class="highlighter-rouge">value-quantity</code>,<code class="highlighter-rouge">date</code></td>
-      <td><code class="highlighter-rouge">reference</code>,<code class="highlighter-rouge">token</code>,<code class="highlighter-rouge">token</code>,<code class="highlighter-rouge">quantity</code>,<code class="highlighter-rouge">date</code></td>
+      <td>subject,category,code,value-quantity,date</td>
+      <td>reference,token,token,quantity,date</td>
       <td><code class="highlighter-rouge">GET [base]/Observation?subject=Patient/123&amp;category=vital-signs&amp;code=http://loinc.org|8867-4&amp;value-quantity=gt40&amp;date=le2020-12-31</code></td>
     </tr>
     <tr>
       <td>MAY</td>
-      <td><code class="highlighter-rouge">subject</code>,<code class="highlighter-rouge">category</code>,<code class="highlighter-rouge">code</code>,<code class="highlighter-rouge">value-quantity</code>,<code class="highlighter-rouge">encounter</code></td>
-      <td><code class="highlighter-rouge">reference</code>,<code class="highlighter-rouge">token</code>,<code class="highlighter-rouge">token</code>,<code class="highlighter-rouge">quantity</code>,<code class="highlighter-rouge">encounter</code></td>
+      <td>subject,category,code,value-quantity,encounter</td>
+      <td>reference,token,token,quantity,encounter</td>
       <td><code class="highlighter-rouge">GET [base]/Observation?subject=Patient/123&amp;category=vital-signs&amp;code=http://loinc.org|8867-4&amp;value-quantity=gt40&amp;encounter=Encounter/456</code></td>
     </tr>
   </tbody>
@@ -1386,11 +1386,11 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 
 <p>オプションとして次の検索パラメータをサポートすることができる。(MAY)</p>
 
-<p>1.患者中心での検索：<code class="highlighter-rouge">subjet</code>（= <code class="highlighter-rouge">Patient</code>リソース：対象患者）、<code class="highlighter-rouge">category</code>（対象カテゴリ）、<code class="highlighter-rouge">code</code>（対象項目）、<code class="highlighter-rouge">value[x].valueQuantity</code>（値条件）での検索をサポートすることが望ましい。（MAY）</p>
+<p>1.患者中心での検索：subject（= Patientリソース：対象患者）、category（対象カテゴリ）、code（対象項目）、value[x].valueQuantity（値条件）での検索をサポートすることが望ましい。（MAY）</p>
 
-<p>検査結果値であるエレメント=<code class="highlighter-rouge">value[x].valueQuantity</code>の実際のSearch Parameterは<code class="highlighter-rouge">value-quantity</code>となる。</p>
+<p>検査結果値であるエレメント=value[x].valueQuantityの実際のSearch Parameterはvalue-quantityとなる。</p>
 
-<p><code class="highlighter-rouge">subject</code>,<code class="highlighter-rouge">category</code>,<code class="highlighter-rouge">code</code>,<code class="highlighter-rouge">value-quantity</code> の各検索パラメータに一致する<code class="highlighter-rouge">Observation</code>リソースを含むBundleを取得することができる。</p>
+<p>subject,category,code,value-quantity の各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?subject={reference}&amp;category={token}&amp;code={token}&amp;value-quantity={quantity}
 </code></pre></div></div>
@@ -1400,11 +1400,11 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?subject=Patient/123&amp;category=vital-signs&amp;code=http://loinc.org|8867-4&amp;value-quantity=gt40
 </code></pre></div></div>
 
-<p>2.項目中心の検索：<code class="highlighter-rouge">subjet</code>（= 複数の<code class="highlighter-rouge">Patient</code>リソース：母集団としての患者範囲）、<code class="highlighter-rouge">category</code>（対象カテゴリ）、<code class="highlighter-rouge">code</code>（対象項目）、<code class="highlighter-rouge">value[x].valueQuantity</code>（値条件）、<code class="highlighter-rouge">effective[x].effectiveDateTime</code> または <code class="highlighter-rouge">.effectivePeriod</code>（期間範囲）での検索をサポートすることが望ましい。（MAY）</p>
+<p>2.項目中心の検索：subject（= 複数のPatientリソース：母集団としての患者範囲）、category（対象カテゴリ）、code（対象項目）、value[x].valueQuantity（値条件）、effective[x].effectiveDateTime または .effectivePeriod（期間範囲）での検索をサポートすることが望ましい。（MAY）</p>
 
-<p>検査結果値であるエレメント=<code class="highlighter-rouge">value[x].valueQuantity</code>の実際のSearch Parameterは<code class="highlighter-rouge">value-quantity</code>となり、期間指定についてはエレメントが<code class="highlighter-rouge">effective[x].effectiveDateTime</code> または <code class="highlighter-rouge">.effectivePeriod</code> いずれの場合においてもSearch Parameterは<code class="highlighter-rouge">date</code>となる。</p>
+<p>検査結果値であるエレメント=value[x].valueQuantityの実際のSearch Parameterはvalue-quantityとなり、期間指定についてはエレメントがeffective[x].effectiveDateTime または .effectivePeriod いずれの場合においてもSearch Parameterはdateとなる。</p>
 
-<p><code class="highlighter-rouge">subject</code>,<code class="highlighter-rouge">category</code>,<code class="highlighter-rouge">code</code>,<code class="highlighter-rouge">value-quantity</code>,<code class="highlighter-rouge">date</code> の各検索パラメータに一致する<code class="highlighter-rouge">Observation</code>リソースを含むBundleを検索する。</p>
+<p>subject,category,code,value-quantity,date の各検索パラメータに一致するObservationリソースを含むBundleを検索する。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?subject={reference}&amp;category={token}&amp;code={token}&amp;value-quantity={quantity}&amp;date={date}
 </code></pre></div></div>
@@ -1414,9 +1414,9 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?subject=Patient/123&amp;category=vital-signs&amp;code=http://loinc.org|8867-4&amp;value-quantity=gt40&amp;date=le2020-12-31
 </code></pre></div></div>
 
-<p>3.訪問診療等の検索：<code class="highlighter-rouge">subjet</code>（= 複数の<code class="highlighter-rouge">Patient</code>リソース：母集団としての患者範囲）、<code class="highlighter-rouge">category</code>（対象カテゴリ）、<code class="highlighter-rouge">code</code>（対象項目）、<code class="highlighter-rouge">value[x].valueQuantity</code>（値条件）、<code class="highlighter-rouge">encounter</code>（= <code class="highlighter-rouge">Encounter</code>リソース：対象医療行為）での検索をサポートすることが望ましい。（MAY）</p>
+<p>3.訪問診療等の検索：subject（= 複数のPatientリソース：母集団としての患者範囲）、category（対象カテゴリ）、code（対象項目）、value[x].valueQuantity（値条件）、encounter（= Encounterリソース：対象医療行為）での検索をサポートすることが望ましい。（MAY）</p>
 
-<p><code class="highlighter-rouge">subject</code>,<code class="highlighter-rouge">category</code>,<code class="highlighter-rouge">code</code>,<code class="highlighter-rouge">value-quantity</code>,<code class="highlighter-rouge">date</code>,<code class="highlighter-rouge">encountr</code> の各検索パラメータに一致する<code class="highlighter-rouge">Observation</code>リソースを含むBundleを検索する。</p>
+<p>subject,category,code,value-quantity,date,encounter の各検索パラメータに一致するObservationリソースを含むBundleを検索する。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?subject={reference}&amp;category={token}&amp;code={token}&amp;value-quantity={quantity}&amp;date={date}&amp;&amp;encounter={encounter}
 </code></pre></div></div>
@@ -1440,7 +1440,7 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
     <tr>
       <td>MAY</td>
       <td><code class="highlighter-rouge">$lastn</code></td>
-      <td><code class="highlighter-rouge">$lastn</code>オペレーションを使用すると、指定したある条件を満たす、最新のn件の<code class="highlighter-rouge">Observation</code>リソースを取得することができる。</td>
+      <td><code class="highlighter-rouge">$lastn</code>オペレーションを使用すると、指定したある条件を満たす、最新のn件のObservationリソースを取得することができる。</td>
     </tr>
   </tbody>
 </table>
@@ -1450,16 +1450,16 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 <p>オプションとして次のオペレーションをサポートすることができる。(MAY)</p>
 
 <ol>
-  <li><code class="highlighter-rouge">Observation</code>用 <code class="highlighter-rouge">$lastn</code> オペレーション</li>
+  <li>Observation用 <code class="highlighter-rouge">$lastn</code> オペレーション</li>
 </ol>
 
 <p><code class="highlighter-rouge">$lastn</code> オペレーションはある条件に基づく最新、または最新からn件の検査結果/測定結果等を取得するという一般的なニーズを満たすためのオペレーションである。例えば、直近の傾向を見るために、患者の過去5回分の体温を取得したり、最新の検査結果や媒体るサインを取得したりすることができる。
-検索を行う際は、通常の<code class="highlighter-rouge">Observation</code>の検索パラメータと組み合わせて使用される。また、対象となる患者等を限定するための、<code class="highlighter-rouge">patient</code>または<code class="highlighter-rouge">subject</code>の検索パラメータ、およびカテゴリを指定する<code class="highlighter-rouge">category</code>検索パラメータは必須の検索パラメータとなる。</p>
+検索を行う際は、通常のObservationの検索パラメータと組み合わせて使用される。また、対象となる患者等を限定するための、patientまたはsubjectの検索パラメータ、およびカテゴリを指定するcategory検索パラメータは必須の検索パラメータとなる。</p>
 
 <p>また取得される結果には以下のルールに従う。</p>
 <ul>
   <li>追加パラメータによりフィルタされる</li>
-  <li>取得される結果は<code class="highlighter-rouge">Observation.code</code>の値によるグルーピング処理(Group by)される</li>
+  <li>取得される結果はObservation.codeの値によるグルーピング処理(Group by)される</li>
   <li>新しいデータから古いデータの順にソートされる</li>
   <li>グループごとにmaxパラメータに指定された数だけ応答が返る。maxが指定されない場合は、最新の結果のみが返される。</li>
 </ul>
@@ -1487,7 +1487,7 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
       <td>positiveInt</td>
       <td> </td>
       <td> </td>
-      <td>max は、lastn クエリ操作のオプションの入力パラメータ。これは、各グループから返す<code class="highlighter-rouge">Observation</code>の最大数を指定するために使用される。例えば、「ある患者のすべてのバイタルサイン結果から最新の3件を取得する」というクエリの場合、max = 3となる。</td>
+      <td>max は、lastn クエリ操作のオプションの入力パラメータ。これは、各グループから返すObservationの最大数を指定するために使用される。例えば、「ある患者のすべてのバイタルサイン結果から最新の3件を取得する」というクエリの場合、max = 3となる。</td>
     </tr>
   </tbody>
 </table>
@@ -1524,7 +1524,7 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Observation/$lastn?max=3&amp;patient=Patient/123&amp;category=vital-signs
 </code></pre></div></div>
 
-<p>レスポンス：各サーバ毎に実装されたLast Nアルゴリズムに従い、患者のすべてのバイタルの中からコードごとに分類し、それぞれについて最新の3件を返す。以下の応答例では、9種のバイタルに対してそれぞれ3件ずつ応答を返しているため、合計27件の<code class="highlighter-rouge">Observation</code>のバンドルとなっている。</p>
+<p>レスポンス：各サーバ毎に実装されたLast Nアルゴリズムに従い、患者のすべてのバイタルの中からコードごとに分類し、それぞれについて最新の3件を返す。以下の応答例では、9種のバイタルに対してそれぞれ3件ずつ応答を返しているため、合計27件のObservationのバンドルとなっている。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
 </span><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
@@ -1558,13 +1558,13 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
 </span></code></pre></div></div>
 
 <h2 id="補足説明">補足説明</h2>
-<p>本セクションは<code class="highlighter-rouge">Observation</code>リソースを理解する上で重要となる<a href="https://www.hl7.org/fhir/observation.html#notes">Observation基底仕様の「Note」セクション</a>を抜粋＆翻訳し、転記したものである。なお、本セクションではobservationを”検査”と和訳している点に留意されたい（ただし、リソース名を明確に指す場合のみ<code class="highlighter-rouge">Observation</code>と表記している）。</p>
+<p>本セクションはObservationリソースを理解する上で重要となる<a href="https://www.hl7.org/fhir/observation.html#notes">Observation基底仕様の「Note」セクション</a>を抜粋＆翻訳し、転記したものである。なお、本セクションではobservationを”検査”と和訳している点に留意されたい（ただし、リソース名を明確に指す場合のみObservationと表記している）。</p>
 
 <h3 id="検査のプロファイリング">検査のプロファイリング</h3>
-<p>最も単純な場合、リソースインスタンスはコード、値、および状態フラグだけで構成できる。他のプロパティの関連性は、検査の種類によって異なる。プロファイルは、与えられた事例に対する特定の種類の検査を記録する際の指針を提供するために作成される。<code class="highlighter-rouge">Observation</code>リソースは、大多数のシステムで記録された詳細さの度合いに焦点を当てている。ただし、特定の事例では、特定の状況に関連する追加の制約と追加の情​​報がある場合がある。こうした複雑さを追加で取り込めるように、他のリソースと同様、拡張機能が利用できる。</p>
+<p>最も単純な場合、リソースインスタンスはコード、値、および状態フラグだけで構成できる。他のプロパティの関連性は、検査の種類によって異なる。プロファイルは、与えられた事例に対する特定の種類の検査を記録する際の指針を提供するために作成される。Observationリソースは、大多数のシステムで記録された詳細さの度合いに焦点を当てている。ただし、特定の事例では、特定の状況に関連する追加の制約と追加の情​​報がある場合がある。こうした複雑さを追加で取り込めるように、他のリソースと同様、拡張機能が利用できる。</p>
 
 <h3 id="検査の対象">検査の対象</h3>
-<p>通常、対象（患者もしくは患者グループ、場所、もしくは機器）に対して検査が行われ、その検査のために直接計測されたものと対象との間の区別は、検査コード（例えば、血糖）によって特定され、別々に表現する必要はない。ただし、対象そのものでない場合、検査の焦点を表現するために3つの属性を使用できる。<code class="highlighter-rouge">specimen</code>（検体）および<code class="highlighter-rouge">bodySite</code>（検査対応部位）の要素は、対象のサンプルもしくは解剖学的・形態学的な位置の測定値の表現に利用され、患者に埋め込まれた機器や別の検査などの注意点に相当するような対象の特定の観点に焦点を当てて表現している。</p>
+<p>通常、対象（患者もしくは患者グループ、場所、もしくは機器）に対して検査が行われ、その検査のために直接計測されたものと対象との間の区別は、検査コード（例えば、血糖）によって特定され、別々に表現する必要はない。ただし、対象そのものでない場合、検査の焦点を表現するために3つの属性を使用できる。specimen（検体）およびbodySite（検査対応部位）の要素は、対象のサンプルもしくは解剖学的・形態学的な位置の測定値の表現に利用され、患者に埋め込まれた機器や別の検査などの注意点に相当するような対象の特定の観点に焦点を当てて表現している。</p>
 
 <h3 id="検査のグループ分け">検査のグループ分け</h3>
 <p>多くの検査は、他の検査と重要な関係性を持っているため、グループ化する必要がある。</p>
@@ -1572,21 +1572,21 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
 <ul>
   <li>
     <p>例えば、構造は以下のように定義される：<br />
-検査レポートと<code class="highlighter-rouge">DiagnosticReport.result</code>（検査レポート結果）</p>
+検査レポートとDiagnosticReport.result（検査レポート結果）</p>
   </li>
   <li>
     <p>検査の要素については以下のように定義される：<br />
-<code class="highlighter-rouge">Observation.component</code>（検査コンポーネント）、 <code class="highlighter-rouge">Observation.hasMember</code>（検査保持メンバ）、<code class="highlighter-rouge">Observation.derivedFrom</code>（検査派生元）</p>
+Observation.component（検査コンポーネント）、 Observation.hasMember（検査保持メンバ）、Observation.derivedFrom（検査派生元）</p>
   </li>
 </ul>
 
 <p>以下の節では、使用される構造に関しての指針について述べる。何をグループ化するのかという考え方は、しばしば文脈に高く依存しており、エンドユーザーの視点にも基づくため、使用する構造の選択は、権限や組織的な訓練、文脈などによって決めるべきである。通常、プロファイリングは実装に必要になるだろう。</p>
 
 <h4 id="diagnosticreportresult検査レポート結果">DiagnosticReport.result（検査レポート結果）</h4>
-<p>検査レポートはオーダ（サービス要求）に直接関連している。<code class="highlighter-rouge">DiagnosticReport.code</code>（検査レポートコード）はパネルに名前を付け、グループ化要素として機能する。従来、これは臨床検査において”パネル”や”バッテリー”と呼ばれていたものである。<code class="highlighter-rouge">DiagnosticReport.result</code>（検査レポート結果）の要素は、個々の検査を参照する。いくつかの例では、検査レポートを使った検査のグループ化をグループ化の構造として示している。</p>
+<p>検査レポートはオーダ（サービス要求）に直接関連している。DiagnosticReport.code（検査レポートコード）はパネルに名前を付け、グループ化要素として機能する。従来、これは臨床検査において”パネル”や”バッテリー”と呼ばれていたものである。DiagnosticReport.result（検査レポート結果）の要素は、個々の検査を参照する。いくつかの例では、検査レポートを使った検査のグループ化をグループ化の構造として示している。</p>
 
 <h4 id="observationcomponent検査コンポーネント">Observation.component（検査コンポーネント）</h4>
-<p><code class="highlighter-rouge">Observation.component</code>（検査コンポーネント）は、構成する<code class="highlighter-rouge">Observation</code>リソースの範囲を超えて、合理的には解釈できないような結果をサポートするために使われる。検査コンポーネントは、個別かつ分けられた検査の一部分から構成されるか、<code class="highlighter-rouge">Observation.code</code>に対して適切な情報を提供する。また、<code class="highlighter-rouge">Observation.code</code>に関して唯一、解釈を与えるものとなる（例えば、<code class="highlighter-rouge">$stats</code>操作を参照）。従って、正しく検査の意味を理解するためには、<strong>すべて</strong>の <code class="highlighter-rouge">code</code>-<code class="highlighter-rouge">value</code>（コード・値） と <code class="highlighter-rouge">component.code</code>-<code class="highlighter-rouge">component.value</code>（要素コード・要素値） のペアを考慮する必要がある。コンポーネントは、一つの手法、一つの検査、一人の検査実施者、一つの装置、および1回しかない場合のみ使用するべきである。この構造を使用するユースケースには次のようなものがある。：</p>
+<p>Observation.component（検査コンポーネント）は、構成するObservationリソースの範囲を超えて、合理的には解釈できないような結果をサポートするために使われる。検査コンポーネントは、個別かつ分けられた検査の一部分から構成されるか、Observation.codeに対して適切な情報を提供する。また、Observation.codeに関して唯一、解釈を与えるものとなる（例えば、<code class="highlighter-rouge">$stats</code>操作を参照）。従って、正しく検査の意味を理解するためには、<strong>すべて</strong>の code-value（コード・値） と component.code-component.value（要素コード・要素値） のペアを考慮する必要がある。コンポーネントは、一つの手法、一つの検査、一人の検査実施者、一つの装置、および1回しかない場合のみ使用するべきである。この構造を使用するユースケースには次のようなものがある。：</p>
 
 <ul>
   <li>1.一般的に生成され、一緒に解釈される検査。たとえば、収縮期および拡張期の血圧は、単一の血圧パネルとして表現。</li>
@@ -1594,21 +1594,21 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
   <li>3.質問に対する複数の回答の表現（検査と質問/回答の関係と境界）。たとえば、患者が飲んだアルコールの種類の報告。</li>
 </ul>
 
-<p>一方で、別の検査の構成要素であるという文脈から外れた臨床的に関連する検査は、個別の<code class="highlighter-rouge">Observation</code>リソースで表されるべきである。例えば、ボディマス指数（BMI）検査は、身長と体重は臨床的に関連した検査であるから、これらを要素に含むべきではない。個別の<code class="highlighter-rouge">Observation</code>リソースとして表現するべきである。どのように独立した検査を関連付けるか、後述するセクションを参照のこと。</p>
+<p>一方で、別の検査の構成要素であるという文脈から外れた臨床的に関連する検査は、個別のObservationリソースで表されるべきである。例えば、ボディマス指数（BMI）検査は、身長と体重は臨床的に関連した検査であるから、これらを要素に含むべきではない。個別のObservationリソースとして表現するべきである。どのように独立した検査を関連付けるか、後述するセクションを参照のこと。</p>
 
 <h4 id="observationhasmember検査保持メンバ-および-observationderivedfrom検査派生元">Observation.hasMember（検査保持メンバ） および Observation.derivedFrom（検査派生元）</h4>
-<p><code class="highlighter-rouge">Observation.hasMember</code>（検査保持メンバ）と <code class="highlighter-rouge">Observation.derivedFrom</code>（検査派生元）、および中核となる拡張機能である<code class="highlighter-rouge">Observation</code>-<code class="highlighter-rouge">sequelTo</code>（検査・続編） と <code class="highlighter-rouge">Observation</code>-<code class="highlighter-rouge">replaces</code>（検査・置換）は、手法、検査、実施者、機器、時間、エラー状態に対して1つ以上の異なる値を持った結果や、それ自体の使用や解釈した結果をサポートするために利用される。この構造を用いる2つの共通事例は以下の通り:</p>
+<p>Observation.hasMember（検査保持メンバ）と Observation.derivedFrom（検査派生元）、および中核となる拡張機能であるObservation-sequelTo（検査・続編） と Observation-replaces（検査・置換）は、手法、検査、実施者、機器、時間、エラー状態に対して1つ以上の異なる値を持った結果や、それ自体の使用や解釈した結果をサポートするために利用される。この構造を用いる2つの共通事例は以下の通り:</p>
 
 <ul>
-  <li>1.”パネル”や”バッテリー”などに対する検査に関連したグループ分けについて。この事例では、<code class="highlighter-rouge">Observation.code</code>（検査コード）は、”パネル”コードを表す。典型的には、<code class="highlighter-rouge">Observation.value[x]</code>（検査値）は存在せず、検査メンバのセットが<code class="highlighter-rouge">Observation.hasMember</code>（検査保持メンバ）に一覧される。この構造は、検査レポート（例えば、複雑なマイクロ分離と感受性検査報告）と共に利用される場合には、入れ子になったグループ分けを許可する。</li>
-  <li>2.ある検査が派生して他の検査と関連付ける場合、<code class="highlighter-rouge">Observation.code</code>（検査コード） と <code class="highlighter-rouge">Observation.value[x]</code>（検査値）の両方とも存在し、関連付けられた検査は<code class="highlighter-rouge">Observation.derivedFrom</code>（検査派生元）に一覧される。この一例として、身長と体重の計測値が参照されるボディマス指数（BMI）検査がある。</li>
+  <li>1.”パネル”や”バッテリー”などに対する検査に関連したグループ分けについて。この事例では、Observation.code（検査コード）は、”パネル”コードを表す。典型的には、Observation.value[x]（検査値）は存在せず、検査メンバのセットがObservation.hasMember（検査保持メンバ）に一覧される。この構造は、検査レポート（例えば、複雑なマイクロ分離と感受性検査報告）と共に利用される場合には、入れ子になったグループ分けを許可する。</li>
+  <li>2.ある検査が派生して他の検査と関連付ける場合、Observation.code（検査コード） と Observation.value[x]（検査値）の両方とも存在し、関連付けられた検査はObservation.derivedFrom（検査派生元）に一覧される。この一例として、身長と体重の計測値が参照されるボディマス指数（BMI）検査がある。</li>
 </ul>
 
 <h3 id="検査におけるコード利用">検査におけるコード利用</h3>
-<p>結果の値をコードを用いて事前定義された概念で表現するとき、<code class="highlighter-rouge">valueCodeableConcept</code>が使われる。この要素は、SNOMED CTなどの標準的な命名法または元システム（”ローカル”）でコード化された結果値で構成される値セットにバインドされる。</p>
+<p>結果の値をコードを用いて事前定義された概念で表現するとき、valueCodeableConceptが使われる。この要素は、SNOMED CTなどの標準的な命名法または元システム（”ローカル”）でコード化された結果値で構成される値セットにバインドされる。</p>
 
 <h4 id="多重コーディング">多重コーディング</h4>
-<p>結果は、異なるコードシステムに基づいて複数の値セットでコーディングでき、概念マップリソースを使用してマッピングしたり、下の例に示すように要素に直接追加のコーディングとして指定したりできる。 例えば、<a href="https://loinc.org/43304-5/">LOINC 43304-5（*プローブおよびターゲット増幅法による不特定検体中のクラミジア･トラコマチスrRNA [Presence] *）</a>は、典型的にコード化された presence もしくは absence の概念と関連付けられる。 標準コード変換を用いて “陰性” をコード化した値を利用して、<code class="highlighter-rouge">valueCodeableConcept</code>は以下のように表現される：</p>
+<p>結果は、異なるコードシステムに基づいて複数の値セットでコーディングでき、概念マップリソースを使用してマッピングしたり、下の例に示すように要素に直接追加のコーディングとして指定したりできる。 例えば、<a href="https://loinc.org/43304-5/">LOINC 43304-5（*プローブおよびターゲット増幅法による不特定検体中のクラミジア･トラコマチスrRNA [Presence] *）</a>は、典型的にコード化された presence もしくは absence の概念と関連付けられる。 標準コード変換を用いて “陰性” をコード化した値を利用して、valueCodeableConceptは以下のように表現される：</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="nl">"valueCodeableConcept"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1627,14 +1627,14 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
 </span></code></pre></div></div>
 
 <h4 id="コーディング結果のためのテキスト値">コーディング結果のためのテキスト値:</h4>
-<p>データ要素が通常通りコード化される時や、<code class="highlighter-rouge">code</code>（コード）要素と関連付けられた型がコードの値を定義する際、適切なコードがなく、フリーテキストのみが利用できる場合であっても<code class="highlighter-rouge">valueCodeableConcept</code>を使用する。例えば、テキストだけ使うと、<code class="highlighter-rouge">valueCodeableConcept</code> 要素は以下のようになる：</p>
+<p>データ要素が通常通りコード化される時や、code（コード）要素と関連付けられた型がコードの値を定義する際、適切なコードがなく、フリーテキストのみが利用できる場合であってもvalueCodeableConceptを使用する。例えば、テキストだけ使うと、valueCodeableConcept 要素は以下のようになる：</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="nl">"valueCodeableConcept"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"コード化不可のフリーテキスト結果"</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>コード化された回答リストに”その他”の概念コードが含まれ、概念のフリーテキスト記述がある場合、情報源の完全な意味を取り込むため <code class="highlighter-rouge">valueCodeableConcept.text</code>要素を使用するべきである。以下の例では、回答コード”その他”は、<code class="highlighter-rouge">valueCodeableConcept</code>要素の中で提供され、<code class="highlighter-rouge">valueCodeableConcept.text</code>要素の中で提供される値がテキスト値となる。</p>
+<p>コード化された回答リストに”その他”の概念コードが含まれ、概念のフリーテキスト記述がある場合、情報源の完全な意味を取り込むため valueCodeableConcept.text要素を使用するべきである。以下の例では、回答コード”その他”は、valueCodeableConcept要素の中で提供され、valueCodeableConcept.text要素の中で提供される値がテキスト値となる。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
@@ -1664,7 +1664,7 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
 </span></code></pre></div></div>
 
 <h4 id="fhirにおけるコード値の組み合わせを用いた相互運用性の課題">FHIRにおけるコード値の組み合わせを用いた相互運用性の課題</h4>
-<p>多くの検査イベントに対して（特定パターンかどうかに関わらず）繰り返し発生する課題は、<code class="highlighter-rouge">Observation.code</code>（検査コード）と<code class="highlighter-rouge">Observation.value</code>（検査値）を追加する方法を決める時に起こる。このことは臨床検査においてはごく簡単なことだが、所見や疾患、家族歴などのその他の種類の検査にて曖昧性を生じる。この議論は、そのようなステートメントのコード化された表現が <code class="highlighter-rouge">Observation.code</code>（検査コード）および <code class="highlighter-rouge">Observation.value</code>（検査値）の要素を使用して表現される方法に焦点を当てている。</p>
+<p>多くの検査イベントに対して（特定パターンかどうかに関わらず）繰り返し発生する課題は、Observation.code（検査コード）とObservation.value（検査値）を追加する方法を決める時に起こる。このことは臨床検査においてはごく簡単なことだが、所見や疾患、家族歴などのその他の種類の検査にて曖昧性を生じる。この議論は、そのようなステートメントのコード化された表現が Observation.code（検査コード）および Observation.value（検査値）の要素を使用して表現される方法に焦点を当てている。</p>
 
 <p>FHIRの検査には、中心となる2つの異なる側面がある：</p>
 <ul>
@@ -1672,35 +1672,35 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
   <li>検査の結果。例：14 g/dl。</li>
 </ul>
 
-<p><code class="highlighter-rouge">Observation.code</code>と<code class="highlighter-rouge">Observation.value</code>の異なる組み合わせを使用して、同じ情報を表すいくつかの異なる方法が存在する。代替手段の制約のない使用は、意味的等価性の計算と、さまざまなアプリケーションおよびユーザーからの検査に対する安全な解釈が大きな課題である。次の4つのパターンは、同じケースを合理的に表すことができる。 <code class="highlighter-rouge">Observation</code>リソースは多くのユースケースをサポートする必要があることを考慮すると、特定のパターンを定義する適切な場所は、FHIRを実装する権限 および/または 組織によって指定されたプロファイルおよび実装ガイドを通じて行われることが期待される。:</p>
+<p>Observation.codeとObservation.valueの異なる組み合わせを使用して、同じ情報を表すいくつかの異なる方法が存在する。代替手段の制約のない使用は、意味的等価性の計算と、さまざまなアプリケーションおよびユーザーからの検査に対する安全な解釈が大きな課題である。次の4つのパターンは、同じケースを合理的に表すことができる。 Observationリソースは多くのユースケースをサポートする必要があることを考慮すると、特定のパターンを定義する適切な場所は、FHIRを実装する権限 および/または 組織によって指定されたプロファイルおよび実装ガイドを通じて行われることが期待される。:</p>
 
 <ul>
-  <li>1.<code class="highlighter-rouge">Observation.code</code> は、検査の性質を表現しており、<code class="highlighter-rouge">Observation.value</code> は数値以外の結果値を表している。これらは、FHIR検査の中心となる2つの異なる側面となっている。<br />
+  <li>1.Observation.code は、検査の性質を表現しており、Observation.value は数値以外の結果値を表している。これらは、FHIR検査の中心となる2つの異なる側面となっている。<br />
 例:
     <ul>
-      <li><code class="highlighter-rouge">code</code>=[検査]</li>
-      <li><code class="highlighter-rouge">value</code>=[腹部圧痛]</li>
+      <li>code=[検査]</li>
+      <li>value=[腹部圧痛]</li>
     </ul>
   </li>
-  <li>2.<code class="highlighter-rouge">Observation.code</code> は上記1.とほぼ同じだが、粒度のレベルは値からコードに移行される。  <br />
+  <li>2.Observation.code は上記1.とほぼ同じだが、粒度のレベルは値からコードに移行される。  <br />
 例:
     <ul>
-      <li><code class="highlighter-rouge">code</code>=[腹部検査]</li>
-      <li><code class="highlighter-rouge">value</code>=[圧痛]</li>
+      <li>code=[腹部検査]</li>
+      <li>value=[圧痛]</li>
     </ul>
   </li>
-  <li>3.<code class="highlighter-rouge">Observation.code</code> は、検査アクションを指定しない方法でも表現されるが、上記の項目のように、単一の名前（または用語）にまとめられた検出結果に関するステートメントを示す。 この例では、<code class="highlighter-rouge">Observation.value</code> が存在し、通常それを確認または否決する結果を「修飾」する。<br />
+  <li>3.Observation.code は、検査アクションを指定しない方法でも表現されるが、上記の項目のように、単一の名前（または用語）にまとめられた検出結果に関するステートメントを示す。 この例では、Observation.value が存在し、通常それを確認または否決する結果を「修飾」する。<br />
 例:
     <ul>
-      <li><code class="highlighter-rouge">code</code>=[腹部圧痛]</li>
-      <li><code class="highlighter-rouge">value</code>=[確認/陽性]</li>
+      <li>code=[腹部圧痛]</li>
+      <li>value=[確認/陽性]</li>
     </ul>
   </li>
-  <li>4.この例では <code class="highlighter-rouge">Observation.code</code> は、検査アクションを指定しない方法で表現されているが、単一の名前（または用語）にまとめられた検出結果に関するステートメントを示している。 この文脈における特定の例では、<code class="highlighter-rouge">Observation.value</code>は省略されている。<br />
+  <li>4.この例では Observation.code は、検査アクションを指定しない方法で表現されているが、単一の名前（または用語）にまとめられた検出結果に関するステートメントを示している。 この文脈における特定の例では、Observation.valueは省略されている。<br />
 例：
     <ul>
-      <li><code class="highlighter-rouge">code</code>=[腹部圧痛]</li>
-      <li><code class="highlighter-rouge">value</code>要素は省略</li>
+      <li>code=[腹部圧痛]</li>
+      <li>value要素は省略</li>
     </ul>
   </li>
 </ul>
@@ -1709,25 +1709,25 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
 <ul>
   <li>1.ケース1 と ケース2 の推奨ルール:
     <ul>
-      <li><code class="highlighter-rouge">Observation.code</code> はLOINC概念コードであることが望ましい。
+      <li>Observation.code はLOINC概念コードであることが望ましい。
         <ul>
           <li>もし SNOMED CT 概念コードを使用する場合、363787002 (<em>Observable entity (Observable entity)</em>) か386053000 (<em>Evaluation procedure(evaluation procedure)</em>) を表す必要がある（SHOULD）。</li>
         </ul>
       </li>
-      <li>数値以外の場合、<code class="highlighter-rouge">Observation.value</code> はSNOMED CT概念コードであることが望ましい。</li>
+      <li>数値以外の場合、Observation.value はSNOMED CT概念コードであることが望ましい。</li>
     </ul>
   </li>
   <li>2.ケース3 の推奨ルール:
     <ul>
-      <li><code class="highlighter-rouge">Observation.value</code> はLOINCまたはSNOMED CT概念コードであることが望ましい。
+      <li>Observation.value はLOINCまたはSNOMED CT概念コードであることが望ましい。
         <ul>
           <li>もしSNOMED CT 概念コードを使用する場合、404684003 (<em>Clinical finding (finding)</em>)、413350009 (<em>Finding with explicit context(finding)</em>)、または 272379006 (<em>Event(event)</em>) を表す必要がある（SHOULD）。</li>
         </ul>
       </li>
-      <li><code class="highlighter-rouge">Observation.value</code> は以下のどちらかによって表される。
+      <li>Observation.value は以下のどちらかによって表される。
         <ul>
-          <li><code class="highlighter-rouge">valueBoolean</code>（論理値）</li>
-          <li><code class="highlighter-rouge">valueCodeableConcept</code>はできれば以下を利用:
+          <li>valueBoolean（論理値）</li>
+          <li>valueCodeableConceptはできれば以下を利用:
             <ul>
               <li>SNOMED CTの362981000 (<em>Qualifier value (qualifiervalue)</em>) の下位概念</li>
               <li>HL7 v2 の Y/N Indicator</li>
@@ -1740,8 +1740,8 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
   </li>
   <li>3.ケース4の推奨ルール:
     <ul>
-      <li><code class="highlighter-rouge">Observation.code</code> がSNOMED CTの404684003 (<em>Clinical finding (finding)</em>)、413350009 (<em>Finding with explicit context(finding)</em>) または 272379006 (<em>Event(event)</em>)の下位概念。</li>
-      <li><code class="highlighter-rouge">Observation.value</code> は省略される。デフォルトの解釈は、<code class="highlighter-rouge">Observation.code</code>で表される概念（単一コードまたは表現）が患者に存在すること。”clinical-finding”（臨床所見）の <code class="highlighter-rouge">Observation.dataAbsentReason</code> 値は想定される値が欠損している理由を明記している必要がある（SHOULD）。</li>
+      <li>Observation.code がSNOMED CTの404684003 (<em>Clinical finding (finding)</em>)、413350009 (<em>Finding with explicit context(finding)</em>) または 272379006 (<em>Event(event)</em>)の下位概念。</li>
+      <li>Observation.value は省略される。デフォルトの解釈は、Observation.codeで表される概念（単一コードまたは表現）が患者に存在すること。”clinical-finding”（臨床所見）の Observation.dataAbsentReason 値は想定される値が欠損している理由を明記している必要がある（SHOULD）。</li>
     </ul>
   </li>
   <li>4.HL7 Version 3 Implementation Guide: TermInfo - Using SNOMED CT in CDA R2 Models, Release 1 で説明されているアサーションパターンは使用してはならない（SHOULD NOT）。</li>
@@ -1772,8 +1772,8 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
 </span></code></pre></div></div>
 
 <ul>
-  <li>2.または上記のように<code class="highlighter-rouge">Observation.code</code> で追加のコードを使用する。<br />
-例: <code class="highlighter-rouge">Observation.code</code> = <em>coding-1: 59408-5 パルスオキシメータによる動脈血酸素飽和度, coding-2: 20564-1 血中酸素飽和度</em></li>
+  <li>2.または上記のようにObservation.code で追加のコードを使用する。<br />
+例: Observation.code = <em>coding-1: 59408-5 パルスオキシメータによる動脈血酸素飽和度, coding-2: 20564-1 血中酸素飽和度</em></li>
 </ul>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
@@ -1804,30 +1804,30 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
 <p>（備考：既存の Observation Extensionsを評価するため、実装者コミュニティからの意見を募集中。フィードバックは<a href="https://chat.fhir.org/#narrow/stream/103-Orders-and.20Observation.20WG">こちら</a>。）</p>
 
 <h3 id="値とデータ型">値とデータ型</h3>
-<p><code class="highlighter-rouge">Observation.value[x]</code>要素には、次のように型に応じた変数名がある。</p>
+<p>Observation.value[x]要素には、次のように型に応じた変数名がある。</p>
 <ul>
-  <li><code class="highlighter-rouge">valueQuantity</code>（量）</li>
-  <li><code class="highlighter-rouge">valueCodeableConcept</code>（コーダブルコンセプト値）</li>
-  <li><code class="highlighter-rouge">valueString</code>（文字列）</li>
-  <li><code class="highlighter-rouge">valueBoolean</code>（論理値）</li>
-  <li><code class="highlighter-rouge">valueInteger</code>（整数値）</li>
-  <li><code class="highlighter-rouge">valueRange</code>（範囲）</li>
-  <li><code class="highlighter-rouge">valueRatio</code>（比率）</li>
-  <li><code class="highlighter-rouge">valueSampledData</code>（サンプルデータ値）</li>
-  <li><code class="highlighter-rouge">valueTime</code>（時刻）</li>
-  <li><code class="highlighter-rouge">valueDateTime</code>（日時）</li>
-  <li><code class="highlighter-rouge">valuePeriod</code>（期間）</li>
+  <li>valueQuantity（量）</li>
+  <li>valueCodeableConcept（コーダブルコンセプト値）</li>
+  <li>valueString（文字列）</li>
+  <li>valueBoolean（論理値）</li>
+  <li>valueInteger（整数値）</li>
+  <li>valueRange（範囲）</li>
+  <li>valueRatio（比率）</li>
+  <li>valueSampledData（サンプルデータ値）</li>
+  <li>valueTime（時刻）</li>
+  <li>valueDateTime（日時）</li>
+  <li>valuePeriod（期間）</li>
 </ul>
 
 <p>詳細は<a href="https://www.hl7.org/fhir/observation.html#usingcodes">結果値のコードの使い方</a>を参照のこと。</p>
 
 <p>ほとんどの検査結果値は「不明」などの例外のために完全な論理値にならないため、論理型はめったに使用されない。
-従って、代わりにデータ型<code class="highlighter-rouge">CodeableConcept</code>を使用し、<a href="http://terminology.hl7.org/ValueSet/v2-0136">バリューセット</a>からコードを選択する必要がある（これら「はい/いいえ」の概念は、表示名「true / false」または必要に応じて他の相互に排他的な用語にマッピング可能）。</p>
+従って、代わりにデータ型CodeableConceptを使用し、<a href="http://terminology.hl7.org/ValueSet/v2-0136">バリューセット</a>からコードを選択する必要がある（これら「はい/いいえ」の概念は、表示名「true / false」または必要に応じて他の相互に排他的な用語にマッピング可能）。</p>
 
-<p>データ型<code class="highlighter-rouge">SampledData</code>には、特別な値「E」（エラー）、「L」（検出限界未満）、「U」（検出限界超え）が使用できる。
-しかし、検出限界値超えもしくは未満の範囲の検査でデータ型<code class="highlighter-rouge">valueQuantity</code>を使用する場合は、比較基準と共に限界値を指定して<code class="highlighter-rouge">valueQuantity</code>を使用する必要がある。
-さらにエラーが発生した場合、<code class="highlighter-rouge">dataAbsentReason</code>要素に適切な値（「エラー」または「NaN」）を使用する必要がある。
-たとえば、値が “2.0 mmol/L 未満” の検出下限を下回った場合、<code class="highlighter-rouge">valueQuantity</code>は次のようになる:</p>
+<p>データ型SampledDataには、特別な値「E」（エラー）、「L」（検出限界未満）、「U」（検出限界超え）が使用できる。
+しかし、検出限界値超えもしくは未満の範囲の検査でデータ型valueQuantityを使用する場合は、比較基準と共に限界値を指定してvalueQuantityを使用する必要がある。
+さらにエラーが発生した場合、dataAbsentReason要素に適切な値（「エラー」または「NaN」）を使用する必要がある。
+たとえば、値が “2.0 mmol/L 未満” の検出下限を下回った場合、valueQuantityは次のようになる:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="nl">"valueQuantity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w">
@@ -1838,7 +1838,7 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
  </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>もし値が「NaN」（エラー）の場合、<code class="highlighter-rouge">valueCodeableConcept</code>要素は存在せず。<code class="highlighter-rouge">dataAbsentReason</code>要素は次のようになる。</p>
+<p>もし値が「NaN」（エラー）の場合、valueCodeableConcept要素は存在せず。dataAbsentReason要素は次のようになる。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="nl">"dataAbsentReason"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1851,19 +1851,19 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
  </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>値要素には複数の型が許可されているため、複数の値検索パラメータが定義されている。ただし、<code class="highlighter-rouge">Ratio</code>型の値を検索するための標準パラメータはない。</p>
+<p>値要素には複数の型が許可されているため、複数の値検索パラメータが定義されている。ただし、Ratio型の値を検索するための標準パラメータはない。</p>
 
 <h3 id="検査における生理学的に重要な時間">検査における生理学的に重要な時間</h3>
-<p><code class="highlighter-rouge">effectiveDateTime</code>と<code class="highlighter-rouge">effectivePeriod</code>は、検査に密接に関連する時間情報である。 生物学的対象（例：人間の患者）の場合、生理学的に検査に関連する時間である。検体の検査の場合、検体収集の開始と終了を表す（24時間尿中ナトリウム等）が、収集時間が十分に短い場合は１点の時刻を指す（例：通常の静脈穿刺）。対象者から直接得た検査の場合（例：血圧、胸部X線）、こちらも多くの場合、検査プロセスの開始時間と終了時間のうち１点の時刻を指す。</p>
+<p>effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情報である。 生物学的対象（例：人間の患者）の場合、生理学的に検査に関連する時間である。検体の検査の場合、検体収集の開始と終了を表す（24時間尿中ナトリウム等）が、収集時間が十分に短い場合は１点の時刻を指す（例：通常の静脈穿刺）。対象者から直接得た検査の場合（例：血圧、胸部X線）、こちらも多くの場合、検査プロセスの開始時間と終了時間のうち１点の時刻を指す。</p>
 
 <h3 id="参照範囲">参照範囲</h3>
 <p>最も一般的な検査には普遍的な参照範囲が1個だけ含まれる。参照範囲は、臨床検査や他の収縮期血圧のような検査には有用かもしれないが、「妊娠」のようなものにはほとんど関係ない。システムは患者に関する知識（例：患者固有の年齢・性別・体重・その他要因）に基づいて関連する参照範囲のみに制限できる（MAY）が、それは不可能か不適切な場合がある。複数の参照範囲があるときは常に、参照範囲 および/または 年齢属性で違いが分かるようにしなければならない（SHOULD）。</p>
 
 <h3 id="キャンセルまたは中止された検査">キャンセルまたは中止された検査</h3>
-<p>検査や検査を完了できなかった場合（例えば検体が不十分とか、医療者がオーダをキャンセルしたとか）、ステータスをキャンセルに更新し、具体的な詳細を、できればコード化された値として<code class="highlighter-rouge">dataAbsentReason</code>か<code class="highlighter-rouge">valueCodeableConcept</code>要素に設定する。<code class="highlighter-rouge">note</code>要素にも同様に追加情報が付与される場合がある。<a href="https://www.hl7.org/fhir/observation-example-unsat.html">検体拒否の例</a>は、”不十分な検体”という意味のコード値を<code class="highlighter-rouge">dataAbsentReason</code>へ設定している。</p>
+<p>検査や検査を完了できなかった場合（例えば検体が不十分とか、医療者がオーダをキャンセルしたとか）、ステータスをキャンセルに更新し、具体的な詳細を、できればコード化された値としてdataAbsentReasonかvalueCodeableConcept要素に設定する。note要素にも同様に追加情報が付与される場合がある。<a href="https://www.hl7.org/fhir/observation-example-unsat.html">検体拒否の例</a>は、”不十分な検体”という意味のコード値をdataAbsentReasonへ設定している。</p>
 
 <h3 id="遺伝情報についての検査">遺伝情報についての検査</h3>
-<p>遺伝情報の報告には、<code class="highlighter-rouge">DiagnosticReport</code>リソースと<code class="highlighter-rouge">Observation</code>リソースを主に使用する。遺伝情報に関する結果の記述についての実装ガイドは<a href="http://hl7.org/fhir/uv/genomics-reporting/index.html">こちら</a>を参照されたい。</p>
+<p>遺伝情報の報告には、DiagnosticReportリソースとObservationリソースを主に使用する。遺伝情報に関する結果の記述についての実装ガイドは<a href="http://hl7.org/fhir/uv/genomics-reporting/index.html">こちら</a>を参照されたい。</p>
 
 <!-- 本ファイル修正不可。-->
 <!-- リソース追加・変更はruby script/markdownlink_creator.mdを実行にて反映される -->
@@ -1944,7 +1944,7 @@ http://hl7.org/fhir/OperationDefinition/Observation-lastn</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Aug 8, 2022 12:55+0000">2022-08-08</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 9, 2022 09:09+0000">2022-08-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
