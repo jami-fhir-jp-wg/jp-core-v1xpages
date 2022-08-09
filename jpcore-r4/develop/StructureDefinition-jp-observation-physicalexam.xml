@@ -46,7 +46,7 @@
   <name value="JP_Observation_PhysicalExam"/>
   <title value="JP Core Observation PhysicalExam Profile"/>
   <status value="draft"/>
-  <date value="2022-08-09T11:56:01+00:00"/>
+  <date value="2022-08-09T12:47:03+00:00"/>
   <publisher value="FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"/>
   <contact>
     <name value="FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"/>
@@ -663,7 +663,7 @@
       </slicing>
       <short value="Classification of  type of observation　Obserbationの種類（タイプ）の分類"/>
       <definition value="A code that classifies the general type of observation being made.&#xD;&#xA;実施されているobservationの一般的なタイプを分類するコード"/>
-      <comment value="In addition to the required category valueset, this element allows various categorization schemes based on the owner’s definition of the category and effectively multiple categories can be used at once.  The level of granularity is defined by the category concepts in the value set.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;基底仕様のカテゴリ「exam」固定とする"/>
+      <comment value="In addition to the required category valueset, this element allows various categorization schemes based on the owner’s definition of the category and effectively multiple categories can be used at once.  The level of granularity is defined by the category concepts in the value set.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】基底仕様のカテゴリ「exam」固定とする"/>
       <requirements value="Used for filtering what observations are retrieved and displayed."/>
       <min value="1"/>
       <max value="*"/>
@@ -756,7 +756,7 @@
       <path value="Observation.code"/>
       <short value="Type of observation (code / type)　observation のタイプ（コードまたはタイプ）"/>
       <definition value="Describes what was observed. Sometimes this is called the observation &quot;name&quot;.&#xD;&#xA;&#xD;&#xA;observationの対象物を記述する。 observation の名前で呼ばれることもある。"/>
-      <comment value="*All* code-value and, if present, component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;所見の有無を表すコード（固定値）"/>
+      <comment value="*All* code-value and, if present, component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】所見の有無を表すコード（固定値）"/>
       <requirements value="Knowing what kind of observation is being made is essential to understanding the observation."/>
       <alias value="Name"/>
       <min value="1"/>
@@ -819,7 +819,7 @@
       <path value="Observation.subject"/>
       <short value="Who and/or what the observation is about　観察対象者"/>
       <definition value="The patient, or group of patients, location, or device this observation is about and into whose record the observation is placed. If the actual focus of the observation is different from the subject (or a sample of, part, or region of the subject), the `focus` element or the `code` itself specifies the actual focus of the observation.&#xD;&#xA;この観察が行われた対象となる患者、または患者のグループ、場所、またはデバイス、あるいはそれらの記録。&#xD;&#xA;もし観察の実際の焦点が対象（または対象のサンプル、一部、または領域）と異なる場合、 `focus`要素または` code`自体が観察の実際の焦点を指し示す。"/>
-      <comment value="One would expect this element to be a cardinality of 1..1. The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;患者"/>
+      <comment value="One would expect this element to be a cardinality of 1..1. The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】患者"/>
       <requirements value="Observations have no value if you don't know who or what they're about."/>
       <min value="1"/>
       <max value="1"/>
@@ -910,7 +910,7 @@
       <path value="Observation.encounter"/>
       <short value="Healthcare event during which this observation is made　このobservationが行われるヘルスケアイベント"/>
       <definition value="The healthcare event  (e.g. a patient and healthcare provider interaction) during which this observation is made.&#xD;&#xA;このobservationが行われるヘルスケアイベント（患者とヘルスケアプロバイダーの相互作用など）（受診、入院など）。"/>
-      <comment value="This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;診察"/>
+      <comment value="This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】診察"/>
       <requirements value="For some observations it may be important to know the link between an observation and a particular encounter."/>
       <alias value="Context"/>
       <min value="0"/>
@@ -955,7 +955,7 @@
       <path value="Observation.effective[x]"/>
       <short value="Clinically relevant time/time-period for observation　臨床的に関連する時刻または時間"/>
       <definition value="The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the &quot;physiologically relevant time&quot;. This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.&#xD;&#xA;観測値が関連する時間または期間。レポートの対象が患者である場合、これは通常、処置や検体採取の時刻のいずれかであるが、日付/時刻の出処は不明であり、日付/時刻自体のみのことがある。"/>
-      <comment value="At least a date should be present unless this observation is a historical report.  For recording imprecise or &quot;fuzzy&quot; times (For example, a blood glucose measurement taken &quot;after breakfast&quot;) use the [Timing](datatypes.html#timing) datatype which allow the measurement to be tied to regular life events.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;effectiveDateTime：医療者が確認した日時&lt;br/&gt;&#xD;&#xA;effectivePeriod：医療者が確認した期間"/>
+      <comment value="At least a date should be present unless this observation is a historical report.  For recording imprecise or &quot;fuzzy&quot; times (For example, a blood glucose measurement taken &quot;after breakfast&quot;) use the [Timing](datatypes.html#timing) datatype which allow the measurement to be tied to regular life events.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】effectiveDateTime：医療者が確認した日時&#xD;&#xA;&#xD;&#xA;effectivePeriod：医療者が確認した期間"/>
       <requirements value="Knowing when an observation was deemed true is important to its relevance as well as determining trends."/>
       <alias value="Occurrence"/>
       <min value="0"/>
@@ -1089,7 +1089,7 @@
       <path value="Observation.value[x]"/>
       <short value="Actual result　実際の結果値"/>
       <definition value="The information determined as a result of making the observation, if the information has a simple value.&#xD;&#xA;結果情報が単純な値である場合、observationを行った結果として決定された情報。"/>
-      <comment value="An observation may have; 1)  a single value here, 2)  both a value and a set of related or component values,  or 3)  only a set of related or component values. If a value is present, the datatype for this element should be determined by Observation.code.  A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](observation.html#notes) below.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;コードに限定する"/>
+      <comment value="An observation may have; 1)  a single value here, 2)  both a value and a set of related or component values,  or 3)  only a set of related or component values. If a value is present, the datatype for this element should be determined by Observation.code.  A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](observation.html#notes) below.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】コードに限定する"/>
       <requirements value="An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations."/>
       <min value="0"/>
       <max value="1"/>
@@ -1315,7 +1315,7 @@
       <path value="Observation.method"/>
       <short value="How it was done　どのように実施されたか。"/>
       <definition value="Indicates the mechanism used to perform the observation.&#xD;&#xA;観測を実行するために使用されるメカニズムを示す。"/>
-      <comment value="Only used if not implicit in code for Observation.code.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;症状・所見マスターの「診察方法」を基にバリューセットを定義する&lt;br/&gt;&#xD;&#xA;具体的なコードについてはSWG6と連携して決定する必要がある（TBD）"/>
+      <comment value="Only used if not implicit in code for Observation.code.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】症状・所見マスターの「診察方法」を基にバリューセットを定義する"/>
       <requirements value="In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.&#xD;&#xA;場合によっては、観察（観測・検査）方法によっては結果に影響を与える可能性があるため、結果を比較できるかどうかを判断したり、結果の重要性を判断したりするために使用される。"/>
       <min value="0"/>
       <max value="1"/>
@@ -1819,7 +1819,7 @@
       <path value="Observation.hasMember"/>
       <short value="Related resource that belongs to the Observation group　observationグループに属する関連リソース"/>
       <definition value="This observation is a group observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group.&#xD;&#xA;このobservationは、グループのメンバーとしてターゲットを含むグループobservation（たとえば、一連検査セット、パネル検査、バイタルサイン測定値のセット）である。"/>
-      <comment value="When using this element, an observation will typically have either a value or a set of related resources, although both may be present in some cases.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.  Note that a system may calculate results from [QuestionnaireResponse](questionnaireresponse.html)  into a final score and represent the score as an Observation.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;関連する参照リソースにJP_Observation_PhysicalExamを追加"/>
+      <comment value="When using this element, an observation will typically have either a value or a set of related resources, although both may be present in some cases.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.  Note that a system may calculate results from [QuestionnaireResponse](questionnaireresponse.html)  into a final score and represent the score as an Observation.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】関連する参照リソースにJP_Observation_PhysicalExamを追加"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -1857,7 +1857,7 @@
       <path value="Observation.derivedFrom"/>
       <short value="Related measurements the observation is made from　observation がつくりゃれる元の関連する測定"/>
       <definition value="The target resource that represents a measurement from which this observation value is derived. For example, a calculated anion gap or a fetal measurement based on an ultrasound image.&#xD;&#xA;このobservation が導出される元の測定値を表すターゲットリソース。たとえば、超音波画像に基づいて計算されたアニオンギャップまたは胎児の測定値の場合、この要素には、元となった超音波画像検査結果への参照を設定する。"/>
-      <comment value="All the reference choices that are listed in this element can represent clinical observations and other measurements that may be the source for a derived value.  The most common reference will be another Observation.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;導出元の参照リソースにJP_Observation_PhysicalExamを追加"/>
+      <comment value="All the reference choices that are listed in this element can represent clinical observations and other measurements that may be the source for a derived value.  The most common reference will be another Observation.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】導出元の参照リソースにJP_Observation_PhysicalExamを追加"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -1898,7 +1898,7 @@
       <path value="Observation.component"/>
       <short value="Component results　　コンポーネント結果"/>
       <definition value="Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations.&#xD;&#xA;一部の観測には、複数のコンポーネントの観測がある。これらのコンポーネントの観察結果は、同じ属性を共有する個別のコード値のペアとして表される。例としては、血圧測定のための収縮期および拡張期のコンポーネントの観察や、遺伝学の観察のための複数のコンポーネントの観察がある。"/>
-      <comment value="For a discussion on the ways Observations can be assembled in groups together see [Notes](observation.html#notes) below.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;具体的な所見を記載する"/>
+      <comment value="For a discussion on the ways Observations can be assembled in groups together see [Notes](observation.html#notes) below.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】具体的な所見を記載する"/>
       <requirements value="Component observations share the same attributes in the Observation resource as the primary observation and are always treated a part of a single observation (they are not separable).   However, the reference range for the primary observation value is not inherited by the component values and is required when appropriate for each component observation.&#xD;&#xA;コンポーネントobservation は プライマリobservation としてのobservation リソースの中で同じ属性を共有し、常に単一のobservation の一部として扱われる（つまりそれらは分離可能ではないん）。ただし、プライマリobservationのreference rangeはコンポーネント値に継承されないため、reference rangeは各コンポーネントobservation に適切であれば必要である。"/>
       <min value="0"/>
       <max value="*"/>
@@ -2041,7 +2041,7 @@
       <path value="Observation.component.code"/>
       <short value="Type of component observation (code / type)"/>
       <definition value="Describes what was observed. Sometimes this is called the observation &quot;code&quot;."/>
-      <comment value="*All* code-value and  component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;具体的な所見を表すコード（固定値）"/>
+      <comment value="*All* code-value and  component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】具体的な所見を表すコード（固定値）"/>
       <requirements value="Knowing what kind of observation is being made is essential to understanding the observation."/>
       <min value="1"/>
       <max value="1"/>
@@ -2283,7 +2283,7 @@
         </discriminator>
         <rules value="open"/>
       </slicing>
-      <comment value="In addition to the required category valueset, this element allows various categorization schemes based on the owner’s definition of the category and effectively multiple categories can be used at once.  The level of granularity is defined by the category concepts in the value set.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;基底仕様のカテゴリ「exam」固定とする"/>
+      <comment value="In addition to the required category valueset, this element allows various categorization schemes based on the owner’s definition of the category and effectively multiple categories can be used at once.  The level of granularity is defined by the category concepts in the value set.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】基底仕様のカテゴリ「exam」固定とする"/>
       <min value="1"/>
     </element>
     <element id="Observation.category:exam">
@@ -2300,7 +2300,7 @@
     </element>
     <element id="Observation.code">
       <path value="Observation.code"/>
-      <comment value="*All* code-value and, if present, component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;所見の有無を表すコード（固定値）"/>
+      <comment value="*All* code-value and, if present, component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】所見の有無を表すコード（固定値）"/>
       <fixedCodeableConcept>
         <coding>
           <system value="http://jpfhir.jp/fhir/Common/CodeSystem/JP_PhysicalExamCodes_CS"/>
@@ -2315,7 +2315,7 @@
     </element>
     <element id="Observation.subject">
       <path value="Observation.subject"/>
-      <comment value="One would expect this element to be a cardinality of 1..1. The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;患者"/>
+      <comment value="One would expect this element to be a cardinality of 1..1. The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】患者"/>
       <min value="1"/>
       <type>
         <code value="Reference"/>
@@ -2324,11 +2324,11 @@
     </element>
     <element id="Observation.encounter">
       <path value="Observation.encounter"/>
-      <comment value="This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;診察"/>
+      <comment value="This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】診察"/>
     </element>
     <element id="Observation.effective[x]">
       <path value="Observation.effective[x]"/>
-      <comment value="At least a date should be present unless this observation is a historical report.  For recording imprecise or &quot;fuzzy&quot; times (For example, a blood glucose measurement taken &quot;after breakfast&quot;) use the [Timing](datatypes.html#timing) datatype which allow the measurement to be tied to regular life events.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;effectiveDateTime：医療者が確認した日時&lt;br/&gt;&#xD;&#xA;effectivePeriod：医療者が確認した期間"/>
+      <comment value="At least a date should be present unless this observation is a historical report.  For recording imprecise or &quot;fuzzy&quot; times (For example, a blood glucose measurement taken &quot;after breakfast&quot;) use the [Timing](datatypes.html#timing) datatype which allow the measurement to be tied to regular life events.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】effectiveDateTime：医療者が確認した日時&#xD;&#xA;&#xD;&#xA;effectivePeriod：医療者が確認した期間"/>
       <type>
         <code value="dateTime"/>
       </type>
@@ -2338,7 +2338,7 @@
     </element>
     <element id="Observation.value[x]">
       <path value="Observation.value[x]"/>
-      <comment value="An observation may have; 1)  a single value here, 2)  both a value and a set of related or component values,  or 3)  only a set of related or component values. If a value is present, the datatype for this element should be determined by Observation.code.  A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](observation.html#notes) below.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;コードに限定する"/>
+      <comment value="An observation may have; 1)  a single value here, 2)  both a value and a set of related or component values,  or 3)  only a set of related or component values. If a value is present, the datatype for this element should be determined by Observation.code.  A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](observation.html#notes) below.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】コードに限定する"/>
       <type>
         <code value="CodeableConcept"/>
       </type>
@@ -2358,7 +2358,7 @@
     </element>
     <element id="Observation.method">
       <path value="Observation.method"/>
-      <comment value="Only used if not implicit in code for Observation.code.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;症状・所見マスターの「診察方法」を基にバリューセットを定義する&lt;br/&gt;&#xD;&#xA;具体的なコードについてはSWG6と連携して決定する必要がある（TBD）"/>
+      <comment value="Only used if not implicit in code for Observation.code.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】症状・所見マスターの「診察方法」を基にバリューセットを定義する"/>
       <binding>
         <strength value="preferred"/>
         <valueSet value="http://jpfhir.jp/fhir/Common/ValueSet/observation-method"/>
@@ -2366,7 +2366,7 @@
     </element>
     <element id="Observation.hasMember">
       <path value="Observation.hasMember"/>
-      <comment value="When using this element, an observation will typically have either a value or a set of related resources, although both may be present in some cases.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.  Note that a system may calculate results from [QuestionnaireResponse](questionnaireresponse.html)  into a final score and represent the score as an Observation.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;関連する参照リソースにJP_Observation_PhysicalExamを追加"/>
+      <comment value="When using this element, an observation will typically have either a value or a set of related resources, although both may be present in some cases.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.  Note that a system may calculate results from [QuestionnaireResponse](questionnaireresponse.html)  into a final score and represent the score as an Observation.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】関連する参照リソースにJP_Observation_PhysicalExamを追加"/>
       <type>
         <code value="Reference"/>
         <targetProfile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common"/>
@@ -2377,7 +2377,7 @@
     </element>
     <element id="Observation.derivedFrom">
       <path value="Observation.derivedFrom"/>
-      <comment value="All the reference choices that are listed in this element can represent clinical observations and other measurements that may be the source for a derived value.  The most common reference will be another Observation.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;導出元の参照リソースにJP_Observation_PhysicalExamを追加"/>
+      <comment value="All the reference choices that are listed in this element can represent clinical observations and other measurements that may be the source for a derived value.  The most common reference will be another Observation.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】導出元の参照リソースにJP_Observation_PhysicalExamを追加"/>
       <type>
         <code value="Reference"/>
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/DocumentReference"/>
@@ -2391,11 +2391,11 @@
     </element>
     <element id="Observation.component">
       <path value="Observation.component"/>
-      <comment value="For a discussion on the ways Observations can be assembled in groups together see [Notes](observation.html#notes) below.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;具体的な所見を記載する"/>
+      <comment value="For a discussion on the ways Observations can be assembled in groups together see [Notes](observation.html#notes) below.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】具体的な所見を記載する"/>
     </element>
     <element id="Observation.component.code">
       <path value="Observation.component.code"/>
-      <comment value="*All* code-value and  component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.&#xD;&#xA;&#xD;&#xA;【JP仕様】&lt;br/&gt;&#xD;&#xA;具体的な所見を表すコード（固定値）"/>
+      <comment value="*All* code-value and  component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.&#xD;&#xA;&#xD;&#xA;【JP-Core仕様】具体的な所見を表すコード（固定値）"/>
       <fixedCodeableConcept>
         <coding>
           <system value="http://jpfhir.jp/fhir/Common/CodeSystem/JP_PhysicalExamCodes_CS"/>

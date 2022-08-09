@@ -36,14 +36,12 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
 ユーザーに場所を特定する一意のコードまたは番号","","Organization label locations in registries, need to keep track of those.
 
-
 登記内の組織ラベルの場所。これらを追跡する必要がある。","","","","","","","",,,,,"",,,,"Location.identifier",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".id","FiveWs.identifier"
 "Location.status","Location.status","","","",0,1,"","Y","Y","code {[]} {[]}
 ","active | suspended | inactive / アクティブ|中断|非アクティブ","The status property covers the general availability of the resource, not the current value which may be covered by the operationStatus, or by a schedule/slots if they are configured for the location.
 
 statusプロパティは、operationStatus、またはロケーションに構成されている場合はスケジュール/スロットによってカバーされる可能性がある現在の値ではなく、リソースの一般的な可用性をカバーする。","Note that FHIR strings SHALL NOT exceed 1MB in size
-
 
 FHIR文字列はサイズが1MBを超えてはならないことに注意すること","","","","","","","","",,"required","Indicates whether the location is still in use.","http://hl7.org/fhir/ValueSet/location-status|4.0.1","",,,,"Location.status",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".statusCode","FiveWs.status"
@@ -143,27 +141,21 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Location.position.longitude","Location.position.longitude","","","",1,1,"","","","decimal {[]} {[]}
 ","Longitude with WGS84 datum / WGS84データの経度","Longitude. The value domain and the interpretation are the same as for the text of the longitude element in KML (see notes below).
 
-
 経度。値の領域及び解釈は、KML の longitude 要素のテキストと同様である（後述）。","Do not use an IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (e.g. Java BigInteger)
-
 
 IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。","","","","","","","","",,,,,"",,,,"Location.position.longitude",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","(RIM Opted not to map the sub-elements of GPS location, is now an OBS)"
 "Location.position.latitude","Location.position.latitude","","","",1,1,"","","","decimal {[]} {[]}
 ","Latitude with WGS84 datum / WGS84データの緯度","Latitude. The value domain and the interpretation are the same as for the text of the latitude element in KML (see notes below).
 
-
 緯度。値領域及び解釈は、KML の latitude 要素のテキストと同様である（後述）。","Do not use an IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (e.g. Java BigInteger)
-
 
 IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。","","","","","","","","",,,,,"",,,,"Location.position.latitude",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","(RIM Opted not to map the sub-elements of GPS location, is now an OBS)"
 "Location.position.altitude","Location.position.altitude","","","",0,1,"","","","decimal {[]} {[]}
 ","Altitude with WGS84 datum / WGS84データによる高度","Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML (see notes below).
 
-
 高度。値領域及び解釈は、KML の altitude 要素のテキストと同様である（後述）。","Do not use an IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (e.g. Java BigInteger)
-
 
 IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。","","","","","","","","",,,,,"",,,,"Location.position.altitude",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","(RIM Opted not to map the sub-elements of GPS location, is now an OBS)"
@@ -173,7 +165,6 @@ IEEE型の浮動小数点型は使用せず、真の10進数のように動作�
 場所のプロビジョニングと維持管理を担当する組織。","This can also be used as the part of the organization hierarchy where this location provides services. These services can be defined through the HealthcareService resource.
 
 これは、この場所がサービスを提供する組織階層の一部として使用することもできる。これらのサービスは、HealthcareServiceリソースを介して定義することができる。","Need to know who manages the location.
-
 
 場所を管理している人を知る必要がある。","","","","","","","",,,,,"",,,,"Location.managingOrganization",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".scopingEntity[classCode=ORG determinerKind=INSTANCE]"
@@ -211,27 +202,22 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Location.hoursOfOperation.daysOfWeek","Location.hoursOfOperation.daysOfWeek","","","",0,*,"","","","code {[]} {[]}
 ","mon | tue | wed | thu | fri | sat | sun / 月｜火｜水｜木｜金｜土｜日","Indicates which days of the week are available between the start and end Times.
 
-
 開始時刻と終了時刻の間に利用可能な曜日を示す。","Note that FHIR strings SHALL NOT exceed 1MB in size
-
 
 FHIR文字列のサイズは1MBを超えてはならないことに注意すること。","","","","","","","","",,"required","The days of the week.","http://hl7.org/fhir/ValueSet/days-of-week|4.0.1","",,,,"Location.hoursOfOperation.daysOfWeek",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".effectiveTime"
 "Location.hoursOfOperation.allDay","Location.hoursOfOperation.allDay","","","",0,1,"","","","boolean {[]} {[]}
 ","The Location is open all day / その場所は終日営業している","The Location is open all day.
 
-
 その場所は終日営業している。","","","","","","","","","",,,,,"",,,,"Location.hoursOfOperation.allDay",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".effectiveTime"
 "Location.hoursOfOperation.openingTime","Location.hoursOfOperation.openingTime","","","",0,1,"","","","time {[]} {[]}
 ","Time that the Location opens / 場所が開く時間","Time that the Location opens.
 
-
 場所が開く時間","","","","","","","","","",,,,,"",,,,"Location.hoursOfOperation.openingTime",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".effectiveTime"
 "Location.hoursOfOperation.closingTime","Location.hoursOfOperation.closingTime","","","",0,1,"","","","time {[]} {[]}
 ","Time that the Location closes / 場所が閉まる時間","Time that the Location closes.
-
 
 場所が閉まる時間","","","","","","","","","",,,,,"",,,,"Location.hoursOfOperation.closingTime",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".effectiveTime"

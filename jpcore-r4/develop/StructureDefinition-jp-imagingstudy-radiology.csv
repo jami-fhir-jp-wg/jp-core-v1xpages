@@ -39,9 +39,7 @@ DICOMスタディインスタンスUIDやアクセッション番号などのIma
 
 DICOMスタディインスタンスUIDのエンコードについては、[Imaging Study Implementation Notes]（imagingstudy.html＃notes）の説明を参照。アクセッション番号はACSN識別子タイプを使用する必要がある。
 
-<br/><br/>
-【JP仕様】<br/>
-Study Instance UIDは必須、その他は任意。","If one or more series elements are present in the ImagingStudy, then there shall be one DICOM Study UID identifier (see [DICOM PS 3.3 C.7.2](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.2.html).
+【JP-Core仕様】Study Instance UIDは必須、その他は任意。","If one or more series elements are present in the ImagingStudy, then there shall be one DICOM Study UID identifier (see [DICOM PS 3.3 C.7.2](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.2.html).
 ImagingStudyに1つ以上のシリーズ要素が存在する場合、1つのDICOMスタディUID識別子が存在する必要がある（[DICOM PS 3.3 C.7.2]（http://dicom.nema.org/medical/dicom/current/output/を参照） chtml / part03 / sect_C.7.2.html）。","","","","","","","",,,,,"",,,,"ImagingStudy.identifier",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.identifier",".id and .inboundRelationship[typeCode=COMP].source[classCode=ACSN, moodCode=EVN].id","StudyInstanceUID (0020,000D) | Accession Number and Issuer (0080,0050)+(0080,0051) | Study ID (0020,0010)","FiveWs.identifier"
 "ImagingStudy.status","ImagingStudy.status","","","",1,1,"","Y","Y","code {[]} {[]}
@@ -50,9 +48,7 @@ ImagingStudyの現在のステータス","Unknown does not represent ""other"" -
 
 不明は「その他」を表すものではない。定義されたステータスの1つを適用する必要がある。不明は、オーサリングシステムが現在のステータスを確認できない場合に使用される。
 
-<br/><br/>
-【JP仕様】<br/>
-リソースの状態。","","","","","","","","",,"required","The status of the ImagingStudy.","http://hl7.org/fhir/ValueSet/imagingstudy-status|4.0.1","",,,,"ImagingStudy.status",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP-Core仕様】リソースの状態。","","","","","","","","",,"required","The status of the ImagingStudy.","http://hl7.org/fhir/ValueSet/imagingstudy-status|4.0.1","",,,,"ImagingStudy.status",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.status",".status","FiveWs.status","Varies by domain"
 "ImagingStudy.modality","ImagingStudy.modality","","ModalitiesInStudy
 ","",0,*,"","","Y","Coding {[]} {[]}
@@ -62,7 +58,8 @@ ImagingStudyの現在のステータス","Unknown does not represent ""other"" -
 
 コードは、列挙型またはコードリストで、SNOMED CTなどの非常に正式な定義まで、非常にカジュアルに定義できる。詳細については、HL7v3コア原則を参照のこと。
 
-・モダリティのコードを設定。<br/>
+・モダリティのコードを設定。
+
 ・Seriesの階層の(0008,0060)を集約する、または(0008,0060)　と　(0008, 0061) のOR。但し、重複する値は1つにまとめて表現。","","","","","","","","",,"extensible","Type of acquired data in the instance.","http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html","",,,,"ImagingStudy.modality",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".code","(0008,0061)","FiveWs.class"
 "ImagingStudy.subject","ImagingStudy.subject","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device], CanonicalType[http://hl7.org/fhir/StructureDefinition/Group]]}
@@ -72,8 +69,10 @@ ImagingStudyの現在のステータス","Unknown does not represent ""other"" -
 
 QAファントムはデバイスで記録できる。複数の被験者（マウスなど）をグループで記録できる。
 
-・患者(Patient)リソースを参照。<br/>
-・DICOMタグ値を参照する場合は、tag mappingの通りグループ0010（患者情報に関連する情報を扱うグループ）を参照。<br/>
+・患者(Patient)リソースを参照。
+
+・DICOMタグ値を参照する場合は、tag mappingの通りグループ0010（患者情報に関連する情報を扱うグループ）を参照。
+
 ・不明患者は、空もしくは不明を指すPatientリソースを参照。","","","","","","","","",,,,,"",,,,"ImagingStudy.subject",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.subject",".participation[typeCode=SBJ].role","(0010/*)","FiveWs.subject[x]","FiveWs.subject"
 "ImagingStudy.encounter","ImagingStudy.encounter","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Encounter]]}
@@ -258,9 +257,11 @@ study階層のidentifierと同じ概念。(0020,000E)にseries固有のUIDが付
 コードは、列挙型またはコードリストで、SNOMED CTなどの非常に正式な定義まで、非常に柔軟に定義できる。詳細については、HL7v3コア原則を参照。
 
 当該シリーズのモダリティコード。1シリーズ1モダリティ（1つのシリーズの中に複数のモダリティが混在することはない）。
-<br/>
-（参照先）<br/>
-ftp://medical.nema.org/medical/dicom/resources/valuesets/fhir/json/CID_29.json<br/>
+
+（参照先）
+
+ftp://medical.nema.org/medical/dicom/resources/valuesets/fhir/json/CID_29.json
+
 http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html","","","","","","","","",,"extensible","Type of acquired data in the instance.","http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html","",,,,"ImagingStudy.series.modality",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".code","(0008,0060)"
 "ImagingStudy.series.description","ImagingStudy.series.description","","SeriesDescription
@@ -320,11 +321,7 @@ JP Coreでは左右などを示す。フリーではなく、DICOM定義書の�
 
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
 
-【JP-CORE】
-病理検体などを管理するための番号。
-<br/>
-【議論】<br/>
-UIDは別のtagが存在するので、ユーザー側で自由に付与していい番号と思われる。","","","","","","","","",,,,,"",,,,"ImagingStudy.series.specimen",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP-Core仕様】UIDは別のtagが存在するので、ユーザー側で自由に付与していい番号と思われる。","","","","","","","","",,,,,"",,,,"ImagingStudy.series.specimen",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Role[classCode=SPEC]","(0040,0551) + (0040,0562)"
 "ImagingStudy.series.started","ImagingStudy.series.started","","","",0,1,"","","Y","dateTime {[]} {[]}
 ","When the series started　シリーズの開始時期","The date and time the series was started.
@@ -339,11 +336,14 @@ OperatorName","",0,*,"","","Y","BackboneElement {[]} {[]}
 
 シリーズを行った人がわからない場合は、その組織が記録される場合がある。患者または関係者は、患者自身で取得した画像の場合など、パフォーマーである可能性がある。
 
-【JP-CORE】
-検査を実施した（画像を取得する操作を行った）人。<br/>
-　　(0008,1050)Performing Physician's Name<br/>
-　　(0008,1052)Performing Physician Identification Sequence<br/>
-　　(0008,1070)Operators' Name<br/>
+【JP-Core仕様】検査を実施した（画像を取得する操作を行った）人。
+
+　　(0008,1050)Performing Physician's Name
+
+　　(0008,1052)Performing Physician Identification Sequence
+
+　　(0008,1070)Operators' Name
+
 　　(0008,1072)Operator Identification Sequence","The performer is recorded at the series level, since each series in a study may be performed by a different performer, at different times, and using different devices. A series may be performed by multiple performers.","","","","","","","",,,,,"",,,,"ImagingStudy.series.performer",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.performer",".participation[typeCode=PRF].role","(0008, 1050) | (0008, 1052) | (0008, 1070) | (0008, 1072)"
 "ImagingStudy.series.performer.id","ImagingStudy.series.performer.id","","","",0,1,"","","","string {[]} {[]}
@@ -364,9 +364,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "ImagingStudy.series.performer.actor","ImagingStudy.series.performer.actor","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization], CanonicalType[http://hl7.org/fhir/StructureDefinition/CareTeam], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson]]}
 ","Who performed the series","Indicates who or what performed the series.","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
-<br/><br/>
-【JP仕様】<br/>
-組織または撮影者","","","","","","","","",,,,,"",,,,"ImagingStudy.series.performer.actor",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP-Core仕様】組織または撮影者","","","","","","","","",,,,,"",,,,"ImagingStudy.series.performer.actor",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]","FiveWs.actor","EVN.5 or by domain"
 "ImagingStudy.series.instance","ImagingStudy.series.instance","","","",0,*,"","","","BackboneElement {[]} {[]}
 ","A single SOP instance from the series　シリーズからの単一SOPインスタンス","A single SOP instance within the series, e.g. an image, or presentation state.
@@ -389,35 +387,31 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","",1,1,"","","","id {[]} {[]}
 ","DICOM SOP Instance UID","The DICOM SOP Instance UID for this image or other DICOM content.","See  [DICOM PS3.3 C.12.1](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.12.html#sect_C.12.1).
 
-<br/><br/>
-【JP仕様】<br/>
-画像のユニークID。DICOMタグマッピングにある値をそのまま設定。","DICOM SOP Instance UID.","","","","","<valueId xmlns=""http://hl7.org/fhir"" value=""2.16.124.113543.6003.189642796.63084.16748.2599092903""/>","","",,,,,"",,,,"ImagingStudy.series.instance.uid",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP-Core仕様】画像のユニークID。DICOMタグマッピングにある値をそのまま設定。","DICOM SOP Instance UID.","","","","","<valueId xmlns=""http://hl7.org/fhir"" value=""2.16.124.113543.6003.189642796.63084.16748.2599092903""/>","","",,,,,"",,,,"ImagingStudy.series.instance.uid",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".id","(0008,0018)"
 "ImagingStudy.series.instance.sopClass","ImagingStudy.series.instance.sopClass","","SOPClassUID
 ","",1,1,"","","","Coding {[]} {[]}
 ","DICOM class type","DICOM instance  type.","Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.
 
-<br/><br/>
-【JP仕様】<br/>
-SOPクラスUID。DICOMタグマッピングにある値をそのまま設定。","","","","","","","","",,"extensible","The sopClass for the instance.","http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_B.5.html#table_B.5-1","",,,,"ImagingStudy.series.instance.sopClass",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP-Core仕様】SOPクラスUID。DICOMタグマッピングにある値をそのまま設定。","","","","","","","","",,"extensible","The sopClass for the instance.","http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_B.5.html#table_B.5-1","",,,,"ImagingStudy.series.instance.sopClass",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".inboundRelationship[typeCode=COMP]. source[classCode=OBS, moodCode=EVN, code=""sop class""].value","(0008,0016)"
 "ImagingStudy.series.instance.number","ImagingStudy.series.instance.number","","InstanceNumber
 ","",0,1,"","","","unsignedInt {[]} {[]}
 ","The number of this instance in the series","The number of instance in the series.","32 bit number; for values larger than this, use decimal
 
-<br/><br/>
-【JP仕様】<br/>
-ユーザー（または装置）が自由に決められる画像ごとの番号。DICOMタグマッピングにある値をそのまま設定。","","","","","","<valueUnsignedInt xmlns=""http://hl7.org/fhir"" value=""1""/>","","",,,,,"",,,,"ImagingStudy.series.instance.number",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP-Core仕様】ユーザー（または装置）が自由に決められる画像ごとの番号。DICOMタグマッピングにある値をそのまま設定。","","","","","","<valueUnsignedInt xmlns=""http://hl7.org/fhir"" value=""1""/>","","",,,,,"",,,,"ImagingStudy.series.instance.number",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".inboundRelationship[typeCode=COMP, source[classCode=OBSSER, moodCode=EVN]].sequenceNumber","(0020,0013)"
 "ImagingStudy.series.instance.title","ImagingStudy.series.instance.title","","","",0,1,"","","","string {[]} {[]}
 ","Description of instance　インスタンスの記述","The description of the instance.
 インスタンスの記述","Particularly for post-acquisition analytic objects, such as SR, presentation states, value mapping, etc.
 
-<br/><br/>
-【JP仕様】<br/>
-画像に対する説明。DICOMタグマッピングにある値があれば、そのまま設定<br/>
-　　(0008,0008)Image Type<br/>
-　　(0040,A043)Concept Name Code Sequence<br/>
-　　(0008,0104)Code Meaning<br/>
+【JP-Core仕様】画像に対する説明。DICOMタグマッピングにある値があれば、そのまま設定
+
+　　(0008,0008)Image Type
+
+　　(0040,A043)Concept Name Code Sequence
+
+　　(0008,0104)Code Meaning
+
 　　(0042,0010)Document Title","","","","","","","","",,,,,"",,,,"ImagingStudy.series.instance.title",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".title","(0008,0008) | (0007,0080) | (0040,A043) + (0008,0104) | (0042,0010)"

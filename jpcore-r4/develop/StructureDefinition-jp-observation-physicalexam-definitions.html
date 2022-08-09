@@ -398,8 +398,7 @@ Codes for high level observation categories.</p>
   <tr><td>Requirements</td><td><p>Used for filtering what observations are retrieved and displayed.</p>
 </td></tr>
   <tr><td>Comments</td><td><p>In addition to the required category valueset, this element allows various categorization schemes based on the owner’s definition of the category and effectively multiple categories can be used at once.  The level of granularity is defined by the category concepts in the value set.</p>
-<p>【JP仕様】&lt;br/&gt;
-基底仕様のカテゴリ「exam」固定とする</p>
+<p>【JP-Core仕様】基底仕様のカテゴリ「exam」固定とする</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -433,8 +432,7 @@ Codes for high level observation categories.</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Name</td></tr>
   <tr><td>Comments</td><td><p><em>All</em> code-value and, if present, component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.</p>
-<p>【JP仕様】&lt;br/&gt;
-所見の有無を表すコード（固定値）</p>
+<p>【JP-Core仕様】所見の有無を表すコード（固定値）</p>
 </td></tr>
   <tr><td>Fixed Value</td><td>&lt;valueCodeableConcept&nbsp;xmlns=&quot;http://hl7.org/fhir&quot;&gt;<br/>&nbsp;&nbsp;&lt;coding&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;system&nbsp;value=&quot;http://jpfhir.jp/fhir/Common/CodeSystem/JP_PhysicalExamCodes_CS&quot;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;code&nbsp;value=&quot;physical-findings&quot;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;display&nbsp;value=&quot;Physical&nbsp;Findings&quot;/&gt;<br/>&nbsp;&nbsp;&lt;/coding&gt;<br/>&lt;/valueCodeableConcept&gt;<br/></td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
@@ -449,8 +447,7 @@ Codes for high level observation categories.</p>
   <tr><td>Requirements</td><td><p>Observations have no value if you don't know who or what they're about.</p>
 </td></tr>
   <tr><td>Comments</td><td><p>One would expect this element to be a cardinality of 1..1. The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.</p>
-<p>【JP仕様】&lt;br/&gt;
-患者</p>
+<p>【JP-Core仕様】患者</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -475,8 +472,7 @@ Codes for high level observation categories.</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Context</td></tr>
   <tr><td>Comments</td><td><p>This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).</p>
-<p>【JP仕様】&lt;br/&gt;
-診察</p>
+<p>【JP-Core仕様】診察</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -491,9 +487,8 @@ Codes for high level observation categories.</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Occurrence</td></tr>
   <tr><td>Comments</td><td><p>At least a date should be present unless this observation is a historical report.  For recording imprecise or &quot;fuzzy&quot; times (For example, a blood glucose measurement taken &quot;after breakfast&quot;) use the <a href="http://hl7.org/fhir/R4/datatypes.html#timing">Timing</a> datatype which allow the measurement to be tied to regular life events.</p>
-<p>【JP仕様】&lt;br/&gt;
-effectiveDateTime：医療者が確認した日時&lt;br/&gt;
-effectivePeriod：医療者が確認した期間</p>
+<p>【JP-Core仕様】effectiveDateTime：医療者が確認した日時</p>
+<p>effectivePeriod：医療者が確認した期間</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -534,8 +529,7 @@ Codes specifying either Yes or No used in fields containing binary answers gener
   <tr><td>Requirements</td><td><p>An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.</p>
 </td></tr>
   <tr><td>Comments</td><td><p>An observation may have; 1)  a single value here, 2)  both a value and a set of related or component values,  or 3)  only a set of related or component values. If a value is present, the datatype for this element should be determined by Observation.code.  A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the <a href="http://hl7.org/fhir/R4/observation.html#notes">Notes section</a> below.</p>
-<p>【JP仕様】&lt;br/&gt;
-コードに限定する</p>
+<p>【JP-Core仕様】コードに限定する</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -610,9 +604,7 @@ Codes identifying interpretations of observations.</p>
 場合によっては、観察（観測・検査）方法によっては結果に影響を与える可能性があるため、結果を比較できるかどうかを判断したり、結果の重要性を判断したりするために使用される。</p>
 </td></tr>
   <tr><td>Comments</td><td><p>Only used if not implicit in code for Observation.code.</p>
-<p>【JP仕様】&lt;br/&gt;
-症状・所見マスターの「診察方法」を基にバリューセットを定義する&lt;br/&gt;
-具体的なコードについてはSWG6と連携して決定する必要がある（TBD）</p>
+<p>【JP-Core仕様】症状・所見マスターの「診察方法」を基にバリューセットを定義する</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -745,8 +737,7 @@ Codes identifying the population the reference range applies to.</p>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..*</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="StructureDefinition-jp-observation-common.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common">JP_Observation_Common</a> | <a href="http://hl7.org/fhir/R4/questionnaireresponse.html" title="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse">QuestionnaireResponse</a> | <a href="http://hl7.org/fhir/R4/molecularsequence.html" title="http://hl7.org/fhir/StructureDefinition/MolecularSequence">MolecularSequence</a> | <a href="StructureDefinition-jp-observation-physicalexam.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_PhysicalExam">JP_Observation_PhysicalExam</a>)</td></tr>
   <tr><td>Comments</td><td><p>When using this element, an observation will typically have either a value or a set of related resources, although both may be present in some cases.  For a discussion on the ways Observations can assembled in groups together, see <a href="http://hl7.org/fhir/R4/observation.html#obsgrouping">Notes</a> below.  Note that a system may calculate results from <a href="http://hl7.org/fhir/R4/questionnaireresponse.html">QuestionnaireResponse</a>  into a final score and represent the score as an Observation.</p>
-<p>【JP仕様】&lt;br/&gt;
-関連する参照リソースにJP_Observation_PhysicalExamを追加</p>
+<p>【JP-Core仕様】関連する参照リソースにJP_Observation_PhysicalExamを追加</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -757,8 +748,7 @@ Codes identifying the population the reference range applies to.</p>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..*</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="http://hl7.org/fhir/R4/documentreference.html" title="http://hl7.org/fhir/StructureDefinition/DocumentReference">DocumentReference</a> | <a href="http://hl7.org/fhir/R4/imagingstudy.html" title="http://hl7.org/fhir/StructureDefinition/ImagingStudy">ImagingStudy</a> | <a href="http://hl7.org/fhir/R4/media.html" title="http://hl7.org/fhir/StructureDefinition/Media">Media</a> | <a href="http://hl7.org/fhir/R4/questionnaireresponse.html" title="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse">QuestionnaireResponse</a> | <a href="StructureDefinition-jp-observation-common.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common">JP_Observation_Common</a> | <a href="http://hl7.org/fhir/R4/molecularsequence.html" title="http://hl7.org/fhir/StructureDefinition/MolecularSequence">MolecularSequence</a> | <a href="StructureDefinition-jp-observation-physicalexam.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_PhysicalExam">JP_Observation_PhysicalExam</a>)</td></tr>
   <tr><td>Comments</td><td><p>All the reference choices that are listed in this element can represent clinical observations and other measurements that may be the source for a derived value.  The most common reference will be another Observation.  For a discussion on the ways Observations can assembled in groups together, see <a href="http://hl7.org/fhir/R4/observation.html#obsgrouping">Notes</a> below.</p>
-<p>【JP仕様】&lt;br/&gt;
-導出元の参照リソースにJP_Observation_PhysicalExamを追加</p>
+<p>【JP-Core仕様】導出元の参照リソースにJP_Observation_PhysicalExamを追加</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -772,8 +762,7 @@ Codes identifying the population the reference range applies to.</p>
 コンポーネントobservation は プライマリobservation としてのobservation リソースの中で同じ属性を共有し、常に単一のobservation の一部として扱われる（つまりそれらは分離可能ではないん）。ただし、プライマリobservationのreference rangeはコンポーネント値に継承されないため、reference rangeは各コンポーネントobservation に適切であれば必要である。</p>
 </td></tr>
   <tr><td>Comments</td><td><p>For a discussion on the ways Observations can be assembled in groups together see <a href="http://hl7.org/fhir/R4/observation.html#notes">Notes</a> below.</p>
-<p>【JP仕様】&lt;br/&gt;
-具体的な所見を記載する</p>
+<p>【JP-Core仕様】具体的な所見を記載する</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -815,8 +804,7 @@ Codes identifying the population the reference range applies to.</p>
   <tr><td>Requirements</td><td><p>Knowing what kind of observation is being made is essential to understanding the observation.</p>
 </td></tr>
   <tr><td>Comments</td><td><p><em>All</em> code-value and  component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.</p>
-<p>【JP仕様】&lt;br/&gt;
-具体的な所見を表すコード（固定値）</p>
+<p>【JP-Core仕様】具体的な所見を表すコード（固定値）</p>
 </td></tr>
   <tr><td>Fixed Value</td><td>&lt;valueCodeableConcept&nbsp;xmlns=&quot;http://hl7.org/fhir&quot;&gt;<br/>&nbsp;&nbsp;&lt;coding&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;system&nbsp;value=&quot;http://jpfhir.jp/fhir/Common/CodeSystem/JP_PhysicalExamCodes_CS&quot;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;code&nbsp;value=&quot;detailed-physical-findings&quot;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;display&nbsp;value=&quot;Detailed&nbsp;Physical&nbsp;Findings&quot;/&gt;<br/>&nbsp;&nbsp;&lt;/coding&gt;<br/>&lt;/valueCodeableConcept&gt;<br/></td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
@@ -928,7 +916,7 @@ Codes identifying interpretations of observations.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 9, 2022 11:56+0000">2022-08-09</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 9, 2022 12:47+0000">2022-08-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
