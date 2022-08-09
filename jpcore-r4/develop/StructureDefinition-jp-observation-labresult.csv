@@ -101,12 +101,13 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 v2.5の「F」に相当する値は「final」であるが、ここでは 必須コード表「ObservationStatus」より、全てのコード値を使用可とする。<br/>
 (registered | preliminary | final | amended |   corrected | cancelled | entered-in-error | unknown)","Need to track the status of individual results. Some results are finalized before the whole report is finalized.","","","","","","","",,"required","Codes providing the status of an observation.","http://hl7.org/fhir/ValueSet/observation-status|4.0.1","",,,,"Observation.status",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.status","< 445584004 |Report by finality status|","OBX-11","status  Amended & Final are differentiated by whether it is the subject of a ControlAct event with a type of ""revise""","FiveWs.status"
-"Observation.category","Observation.category","","","",1,1,"","","","CodeableConcept {[]} {[]}
+"Observation.category","Observation.category","","","",1,*,"","","","CodeableConcept {[]} {[]}
 ","Classification of  type of observation　Obserbationの種類（タイプ）の分類","A code that classifies the general type of observation being made.
 <br/>行われた検査の一般的なタイプの分類。取得、表示の際のフィルタリングに使用。","In addition to the required category valueset, this element allows various categorization schemes based on the owner’s definition of the category and effectively multiple categories can be used at once.  The level of granularity is defined by the category concepts in the value set.
 <p/>【JP仕様】<br/>
 推奨コード表「ObservationCategoryCodes」より、本プロファイルでは「laboratory」固定とする。<br/>
-(social-history | vital-signs | imaging | laboratory | procedure | survey | exam | therapy | activity)","Used for filtering what observations are retrieved and displayed.","","","","","","","",,"preferred","Codes for high level observation categories.","http://hl7.org/fhir/ValueSet/observation-category","",,,,"Observation.category",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+(social-history | vital-signs | imaging | laboratory | procedure | survey | exam | therapy | activity)","Used for filtering what observations are retrieved and displayed.","","","","","","","",,"preferred","Codes for high level observation categories.","http://hl7.org/fhir/ValueSet/observation-category","","pattern:$this}
+","",,"open","Observation.category",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".outboundRelationship[typeCode=""COMP].target[classCode=""LIST"", moodCode=""EVN""].code","FiveWs.class"
 "Observation.category.id","Observation.category.id","","","",0,1,"","","","string {[]} {[]}
 ","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
@@ -115,7 +116,7 @@ user content","",0,*,"","","","Extension {[]} {[]}
 ","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
 ","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
-"Observation.category.coding","Observation.category.coding","","","",1,1,"","","Y","Coding {[]} {[]}
+"Observation.category.coding","Observation.category.coding","","","",0,*,"","","Y","Coding {[]} {[]}
 ","Code defined by a terminology system","A reference to a code defined by a terminology system.","Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true.
 
 <p/>【JP仕様】<br/>
@@ -124,6 +125,16 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Observation.category.text","Observation.category.text","","","",0,1,"","","Y","string {[]} {[]}
 ","Plain text representation of the concept","A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.","Very often the text is the same as a displayName of one of the codings.","The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.","","","","","","","",,,,,"",,,,"CodeableConcept.text",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C*E.9. But note many systems use C*E.2 for this","./originalText[mediaType/code=""text/plain""]/data"
+"Observation.category:laboratory","Observation.category","laboratory","","",1,1,"","","","CodeableConcept {[]} {[]}
+","Classification of  type of observation　Obserbationの種類（タイプ）の分類","A code that classifies the general type of observation being made.
+実施されているobservationの一般的なタイプを分類するコード","In addition to the required category valueset, this element allows various categorization schemes based on the owner’s definition of the category and effectively multiple categories can be used at once.  The level of granularity is defined by the category concepts in the value set.
+必要なカテゴリ値セットに加えて、この要素を使用すると、所有者のカテゴリの定義に基づいたさまざまなカテゴリ化スキームが可能になり、複数のカテゴリを一度に効果的に使用できる。粒度のレベルは、値セットのカテゴリの概念によって定義される。","Used for filtering what observations are retrieved and displayed.","","","","<valueCodeableConcept xmlns=""http://hl7.org/fhir"">
+  <coding>
+    <system value=""http://terminology.hl7.org/CodeSystem/observation-category""/>
+    <code value=""laboratory""/>
+  </coding>
+</valueCodeableConcept>","","","",,"preferred","Codes for high level observation categories.","http://hl7.org/fhir/ValueSet/observation-category","",,,,"Observation.category",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=""COMP].target[classCode=""LIST"", moodCode=""EVN""].code","FiveWs.class"
 "Observation.code","Observation.code","","Name
 ","",1,1,"","","Y","CodeableConcept {[]} {[]}
 ","Type of observation (code / type)　observation のタイプ（コードまたはタイプ）","Describes what was observed. Sometimes this is called the observation ""name"".
