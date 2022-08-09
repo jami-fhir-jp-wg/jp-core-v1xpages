@@ -57,7 +57,7 @@ Filler IDPlacer ID","",0,*,"","","Y","Identifier {[]} {[]}
 オーダ発生元の ServiceRequest または CarePlan への参照（多くの場合はServiceRequest（オーダ）が存在するが、オーダが発生しない検査も想定される。）
 <br/><br/>","このエレメントによりレポートの認可をトレースしたり、レポート作成サービスに対する提案や推奨事項を追跡することができる。","","","","","","","",,,,,"",,,,"DiagnosticReport.basedOn",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.basedOn","ORC? OBR-2/3?","outboundRelationship[typeCode=FLFS].target"
-"DiagnosticReport.status","DiagnosticReport.status","","","",1,1,"Y","Y","Y","code {[]} {[]}
+"DiagnosticReport.status","DiagnosticReport.status","","","",1,1,"","Y","Y","code {[]} {[]}
 ","registered | partial | preliminary | final +","診断レポートの状態","FHIRのstringsは1MBを越えてはならない（SHALL NOT）ことに留意すること。
 
 【JP-CORE】
@@ -66,7 +66,7 @@ Filler IDPlacer ID","",0,*,"","","Y","Identifier {[]} {[]}
 <br/><br/>","診断サービスではルーチンに仮確定あるいは不完全なレポートが発生することがある。また、しばしば前に発行されたレポートが取り消されることもある。","","","","","","","",,"required","The status of the diagnostic report.","http://hl7.org/fhir/ValueSet/diagnostic-report-status|4.0.1","",,,,"DiagnosticReport.status",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.status","OBR-25 (not 1:1 mapping)","statusCode  Note: final and amended are distinguished by whether observation is the subject of a ControlAct event of type ""revise""","FiveWs.status"
 "DiagnosticReport.category","DiagnosticReport.category","","Department
-Sub-departmentServiceDiscipline","",0,*,"Y","","Y","CodeableConcept {[]} {[]}
+Sub-departmentServiceDiscipline","",1,*,"","","Y","CodeableConcept {[]} {[]}
 ","Service category　サービスカテゴリー","レポートを作成した臨床分野・部門、または診断サービス（CT, US, MRIなど）を分類するコード。 これは、検索、並べ替え、および表示の目的で使用される。","様々なカテゴリのシェーマを用いて複数のカテゴリを設定できる。 カテゴリの情報粒度はvalue setに定義されている。より詳細なフィルタリングの粒度が必要な場合はDiagnosticReport.codeのmetadata等を用いることで対応できる。
 
 【JP-CORE】
@@ -98,7 +98,7 @@ Patient リソースを参照
 <br/><br/>","Enconterコンテキストへのリンクが必要である","","","","","","","",,,,,"",,,,"DiagnosticReport.encounter",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.encounter","PV1-19","inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]","FiveWs.context"
 "DiagnosticReport.effective[x]","DiagnosticReport.effective[x]","","Observation time
-Effective TimeOccurrence","",0,1,"","","Y","dateTime {[]} {[]}
+Effective TimeOccurrence","",1,1,"","","Y","dateTime {[]} {[]}
 ","Clinically relevant time/time-period for report　臨床的に関連する時刻または時間","観測値が関連する時間または期間。レポートの対象が患者である場合、これは通常、読影開始の時間であり、日付/時刻自体のみが提供される。","診断手順が患者に対して実行された場合、これは実行された時間を示す。
 
 【JP-CORE】
