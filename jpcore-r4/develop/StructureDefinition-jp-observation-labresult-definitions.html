@@ -367,8 +367,6 @@ A human language.</p>
 　４．OBX-3(検査項目)&lt;br/&gt;
 　５．OBX-4(検査副ID)・・・オプション。必要に応じて使用。&lt;br/&gt;
 形式：[ORC-2]</em>[OBR-4]<em>[SPM-4]</em>[OBX-3]（_[OBX-4]）</p>
-<p>&lt;br/&gt;【要検討】&lt;br/&gt;
-identifier.system に格納されるコード体系について。本WGでURIを定義する。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -426,9 +424,7 @@ A coded type for an identifier that can be used to determine which identifier to
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#uri">uri</a></td></tr>
   <tr><td>Requirements</td><td><p>There are many sets  of identifiers.  To perform matching of two identifiers, we need to know what set we're dealing with. The system identifies a particular set of unique identifiers.</p>
 </td></tr>
-  <tr><td>Comments</td><td><p>Identifier.system is always case sensitive.
-&lt;br/&gt;【要検討】URIを本WGで決定する。
-院内識別コードを使用する場合、JP仕様に合わせて設定する場合、同じURIになるか？</p>
+  <tr><td>Comments</td><td><p>Identifier.system is always case sensitive.</p>
 </td></tr>
   <tr><td>Example</td><td><br/><b>General</b>:http://www.acme.com/identifiers/patient
 </td></tr>
@@ -503,7 +499,6 @@ Codes providing the status of an observation.</p>
   <tr><td>Requirements</td><td><p>Need to track the status of individual results. Some results are finalized before the whole report is finalized.</p>
 </td></tr>
   <tr><td>Comments</td><td><p>This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid.
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-11(検査結果状態)&lt;br/&gt;「F」（最終結果）を使用する。
 &lt;p/&gt;【JP仕様】&lt;br/&gt;
 v2.5の「F」に相当する値は「final」であるが、ここでは 必須コード表「ObservationStatus」より、全てのコード値を使用可とする。&lt;br/&gt;
 (registered | preliminary | final | amended |   corrected | cancelled | entered-in-error | unknown)</p>
@@ -554,7 +549,7 @@ Codes for high level observation categories.</p>
 </td></tr>
   <tr><td>Comments</td><td><p>Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true.</p>
 <p>&lt;p/&gt;【JP仕様】&lt;br/&gt;
-推奨コード表「ObservationCategoryCodes」より、本プロファイルでは「laboratory」固定とする。&lt;br/&gt;</p>
+推奨コード表「ObservationCategoryCodes」より、本プロファイルでは「laboratory」固定とする。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -601,9 +596,7 @@ MEDIS 臨床検査マスター</p>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Name</td></tr>
   <tr><td>Comments</td><td><p><em>All</em> code-value and, if present, component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.</p>
 <p>&lt;p/&gt;【JP仕様】&lt;br/&gt;
-【要検討】&lt;br/&gt;
-標準コードとして何を推奨、指定するか。JLAC10で良いか。
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-3(検査項目)&lt;br/&gt;検査結果の場合、標準コードは「日本臨床検査医学会臨床検査項目分類コード体系（JLAC10）」を使用</p>
+検査結果の場合、標準コードは「日本臨床検査医学会臨床検査項目分類コード体系（JLAC10）」を使用</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -634,7 +627,7 @@ MEDIS 臨床検査マスター</p>
   <tr><td>Comments</td><td><p>Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true.
 &lt;p/&gt;【JP仕様】&lt;br/&gt;
 SS-MIX2にならい、標準コード、ローカルコードの2つを設定可能とし、いずれか一方は必須とする。さらにJLAC10とJLAC11などの複数の標準コードも設定できるよう、上限は設けない。
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;標準コード、ローカルコードの2つまで格納可。順不同。&lt;br/&gt;SS-MIX2だとCWE.1 ～CWE.3に標準コード、CWE.4～CWE.6にローカルコード、など（順不同）。</p>
+&lt;p/&gt;標準コード、ローカルコードの2つまで格納可。順不同。&lt;br/&gt;SS-MIX2だとCWE.1 ～CWE.3に標準コード、CWE.4～CWE.6にローカルコード、など（順不同）。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -665,8 +658,7 @@ SS-MIX2にならい、標準コード、ローカルコードの2つを設定可
   <tr><td>Comments</td><td><p>The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should reference to some definition that establishes the system clearly and unambiguously.</p>
 <p>&lt;p/&gt;【JP仕様】&lt;br/&gt;
 【暫定】標準コードの場合、JLAC10を表すURIを設定。&lt;br/&gt;
-URIは本WGで定義する。
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;CWE.3 コード体系名称</p>
+URIは本WGで定義する。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -676,8 +668,7 @@ URIは本WGで定義する。
   <tr><td>Note</td><td>This is a business versionId, not a resource version id (see <a href="http://hl7.org/fhir/R4/resource.html#versions">discussion</a>)</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td></tr>
-  <tr><td>Comments</td><td><p>Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;CWE.7 コード体系バージョン ID</p>
+  <tr><td>Comments</td><td><p>Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -688,8 +679,7 @@ URIは本WGで定義する。
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#code">code</a></td></tr>
   <tr><td>Requirements</td><td><p>Need to refer to a particular code in the system.</p>
 </td></tr>
-  <tr><td>Comments</td><td><p>Note that FHIR strings SHALL NOT exceed 1MB in size
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;CWE.1 識別子&lt;br/&gt;標準コードの場合、JLAC10のコード</p>
+  <tr><td>Comments</td><td><p>Note that FHIR strings SHALL NOT exceed 1MB in size</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -700,8 +690,7 @@ URIは本WGで定義する。
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td></tr>
   <tr><td>Requirements</td><td><p>Need to be able to carry a human-readable meaning of the code for readers that do not know  the system.</p>
 </td></tr>
-  <tr><td>Comments</td><td><p>Note that FHIR strings SHALL NOT exceed 1MB in size
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;CWE.2 テキストに相当する。</p>
+  <tr><td>Comments</td><td><p>Note that FHIR strings SHALL NOT exceed 1MB in size</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -730,8 +719,7 @@ URIは本WGで定義する。
   <tr><td>Comments</td><td><p>Very often the text is the same as a displayName of one of the codings.
 &lt;p/&gt;【JP仕様】&lt;br/&gt;
 本プロファイルでは、表示名として必須とする。
-&lt;br/&gt;多くの場合、coding.display と同一になるが、coding.display に異なる複数の表現が格納される場合を想定し、code間で共通の表現として必須とする。
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;CWE.2 テキスト</p>
+&lt;br/&gt;多くの場合、coding.display と同一になるが、coding.display に異なる複数の表現が格納される場合を想定し、code間で共通の表現として必須とする。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -745,8 +733,7 @@ URIは本WGで定義する。
 </td></tr>
   <tr><td>Comments</td><td><p>One would expect this element to be a cardinality of 1..1. The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.
 &lt;p/&gt;【JP仕様】&lt;br/&gt;
-本プロファイルでは、Patient 限定、かつ必須とする。
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;PID-3(患者IDリスト)</p>
+本プロファイルでは、Patient 限定、かつ必須とする。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -758,8 +745,7 @@ URIは本WGで定義する。
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="http://hl7.org/fhir/R4/resource.html" title="http://hl7.org/fhir/StructureDefinition/Resource">Resource</a>)</td></tr>
   <tr><td>Comments</td><td><p>Typically, an observation is made about the subject - a patient, or group of patients, location, or device - and the distinction between the subject and what is directly measured for an observation is specified in the observation code itself ( e.g., &quot;Blood Glucose&quot;) and does not need to be represented separately using this element.  Use <code>specimen</code> if a reference to a specimen is required.  If a code is required instead of a resource use either  <code>bodysite</code> for bodysites or the standard extension <a href="http://hl7.org/fhir/R4/extension-observation-focuscode.html">focusCode</a>.
 &lt;p/&gt;【JP仕様】&lt;br/&gt;
-当面は未使用とする。
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;v2.5 Mappingでは OBX-3(検査項目)  が該当するが、SS-MIX2にはこの意味での該当はなし。</p>
+当面は未使用とする。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -775,8 +761,7 @@ URIは本WGで定義する。
   <tr><td>Comments</td><td><p>This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).
 &lt;p/&gt;【JP仕様】&lt;br/&gt;
 入院外来の区別や所在場所、担当診療科の情報に使用する。&lt;br/&gt;
-※本プロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;PV1セグメントに相当する。</p>
+※本プロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -795,18 +780,6 @@ URIは本WGで定義する。
 本プロファイルでは、検体採取日時を設定し、必須とする。&lt;br/&gt;
 &lt;p/&gt;effectiveInstant&lt;br/&gt;
 instant型はイベント発生のログ時間であり、未使用とする。</p>
-<p>&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-14(検査日時)&lt;br/&gt;OBX-19(分析日時)&lt;br/&gt;検体検査の場合は、OBX-14が該当。&lt;br/&gt;
-OBX-14(検査日時)のSS-MIX2仕様書内での説明：&lt;br/&gt;
-実際に検査された日時を示す。&lt;br/&gt;
-検体に対して行われる検査の場合、検体採取日時であり、患者に対して行われる測定の場合には、測定が行われた日時を設定する。&lt;br/&gt;
-&lt;p/&gt;effective[x].effectiveDateTime&lt;br/&gt;
-OBX-14(検査日時)
-&lt;p/&gt;effective[x].effectivePeriod&lt;br/&gt;
-検査結果の有効期限。例えば院内でルールがあれば設定してもよい。
-&lt;p/&gt;effective[x].effectiveTiming&lt;br/&gt;
-正確な採取時間が不明な場合、例えば「午前中」などの設定。SS-MIXでは該当なしだが、使用できても良い
-&lt;p/&gt;effective[x].effectiveInstant&lt;br/&gt;
-イベント発生のログ時間。SS-MIXでは使用しない。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -818,13 +791,7 @@ OBX-14(検査日時)
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#instant">instant</a></td></tr>
   <tr><td>Comments</td><td><p>For Observations that don’t require review and verification, it may be the same as the <a href="http://hl7.org/fhir/R4/resource-definitions.html#Meta.lastUpdated"><code>lastUpdated</code> </a> time of the resource itself.  For Observations that do require review and verification for certain updates, it might not be the same as the <code>lastUpdated</code> time of the resource itself due to a non-clinically significant update that doesn’t require the new version to be reviewed and verified again.</p>
 <p>&lt;p/&gt;【JP仕様】&lt;br/&gt;
-検査結果が<strong>システムにより</strong>Observationリソースに格納または更新された日時。
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;
-OBR-22(結果報告/状態変更-日時)&lt;br/&gt;
-MSH-7(メッセージ日時)&lt;br/&gt;
-OBX-14(検査日時)&lt;br/&gt;
-OBX-19(分析日時)
-&lt;br/&gt;検査結果に発生した最終イベント日時。検査結果がレビューされた時間等も含む。SS-MIX2の場合は、検査値が確定した時間に相当すると考えられる。</p>
+検査結果が<strong>システムにより</strong>Observationリソースに格納または更新された日時。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -838,10 +805,7 @@ OBX-19(分析日時)
 </td></tr>
   <tr><td>Comments</td><td><p>References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 &lt;p/&gt;【JP仕様】&lt;br/&gt;
-検査に直接責任を負う個人(つまり検査を実行、もしくは検証した人)の識別子。
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;
-SS-MIX2ではいずれも未使用であるが、v2.5では次が該当する。&lt;br/&gt;
-OBX-15(実施者ID)&lt;br/&gt;OBX-16(検査責任者)&lt;br/&gt;OBX-18(装置ID)</p>
+検査に直接責任を負う個人(つまり検査を実行、もしくは検証した人)の識別子。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -879,8 +843,7 @@ OBX-15(実施者ID)&lt;br/&gt;OBX-16(検査責任者)&lt;br/&gt;OBX-18(装置ID)
 &lt;br/&gt;valueSampledData&lt;br/&gt;
 &lt;br/&gt;valueTime　：OBX-2＝「TM」の時の OBX-5(結果値)
 &lt;br/&gt;valueDateTime　：OBX-2＝「DT」の時の OBX-5(結果値)
-&lt;br/&gt;valuePeriod&lt;br/&gt;
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-2(値型)&lt;br/&gt;OBX-5(結果値)&lt;br/&gt;OBX-6(単位)&lt;br/&gt;</p>
+&lt;br/&gt;valuePeriod</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -901,10 +864,8 @@ Codes specifying why the result (<code>Observation.value[x]</code>) is missing.<
 SS-MIX2で未使用だが、valueの欠落時に使用する必要があり、重要な項目である。&lt;br/&gt;
 制約「obs-6」に示す通り、valueが存在する場合、当該項目は存在してはならない。&lt;br/&gt;
 textのみでの使用は基本的に不可とし、必ずcodingを設定すること。
-&lt;br/&gt;【要検討】&lt;br/&gt;
-拡張可コード体系「DataAbsentReason」を拡張の要否を含め検討。&lt;br/&gt;
+&lt;br/&gt;
 (unknown |   asked-unknown |   temp-unknown |   not-asked |   asked-declined | masked | not-applicable | unsupported | as-text | error |   not-a-number |   negative-infinity |   positive-infinity | not-performed | not-permitted)</p>
-<p>&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;SS-MIX2では該当なし。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -926,7 +887,6 @@ Codes identifying interpretations of observations.</p>
 拡張可コード表「ObservationInterpretationCodes」を使用する。&lt;br/&gt;
 コード表が大きいため、下記参照。&lt;br/&gt;
 https://www.hl7.org/fhir/valueset-observation-interpretation.html</p>
-<p>&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-8(異常フラグ) に相当する。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -940,8 +900,6 @@ https://www.hl7.org/fhir/valueset-observation-interpretation.html</p>
 フリーテキストの追加情報を提供できる必要がある。</p>
 </td></tr>
   <tr><td>Comments</td><td><p>May include general statements about the observation, or statements about significant, unexpected or unreliable results values, or information about its source when relevant to its interpretation.</p>
-<p>&lt;p/&gt;【要検討】検体検査の親要素のコメントと子要素のコメントの取り扱いをどうするか（血算の中のAlｂ値、等）
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;NTE-3(コメント)(JAHIS標準)&lt;br/&gt;SS-MIX2では未使用。JAHISではOBXに対して設定できるNTEセグメント内容。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -967,7 +925,7 @@ https://www.hl7.org/fhir/valueset-observation-interpretation.html</p>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td>Choice of: <a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="http://hl7.org/fhir/R4/practitioner.html" title="http://hl7.org/fhir/StructureDefinition/Practitioner">Practitioner</a> | <a href="http://hl7.org/fhir/R4/patient.html" title="http://hl7.org/fhir/StructureDefinition/Patient">Patient</a> | <a href="http://hl7.org/fhir/R4/relatedperson.html" title="http://hl7.org/fhir/StructureDefinition/RelatedPerson">RelatedPerson</a> | <a href="http://hl7.org/fhir/R4/organization.html" title="http://hl7.org/fhir/StructureDefinition/Organization">Organization</a>), <a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td></tr>
   <tr><td>[x] Note</td><td>See <a href="http://hl7.org/fhir/R4/formats.html#choice">Choice of Data Types</a> for further information about how to use [x]</td></tr>
-  <tr><td>Comments</td><td><p>Organization is used when there's no need for specific attribution as to who made the comment.&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;v2 NTE セグメントでは該当なし。よって未使用。(2020/1/15)</p>
+  <tr><td>Comments</td><td><p>Organization is used when there's no need for specific attribution as to who made the comment.</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -976,8 +934,6 @@ https://www.hl7.org/fhir/valueset-observation-interpretation.html</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#dateTime">dateTime</a></td></tr>
-  <tr><td>Comments</td><td><p>&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;v2 NTE セグメントでは該当なし。よって未使用。(2020/1/15)</p>
-</td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
   <tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="Observation.note.text"> </a><span style="color: grey">54.</span> <b>Observation.note.text</b><a href="#Observation.note.text" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="16" class="self-link" height="16"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></span></td></tr>
@@ -985,7 +941,7 @@ https://www.hl7.org/fhir/valueset-observation-interpretation.html</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>1..1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#markdown">markdown</a></td></tr>
-  <tr><td>Comments</td><td><p>Systems are not required to have markdown support, so the text should be readable without markdown processing. The markdown syntax is GFM - see https://github.github.com/gfm/&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;コメント内容（NTE-3 または、NTE-4（CWE）の場合は、NTE-4.2 を設定）(2020/1/15)</p>
+  <tr><td>Comments</td><td><p>Systems are not required to have markdown support, so the text should be readable without markdown processing. The markdown syntax is GFM - see https://github.github.com/gfm/</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1001,8 +957,7 @@ Codes describing anatomical locations. May include laterality.</p>
   <tr><td>Comments</td><td><p>Only used if not implicit in code found in Observation.code.  In many systems, this may be represented as a related observation instead of an inline component.</p>
 <p>If the use case requires BodySite to be handled as a separate resource (e.g. to identify and track separately) then use the standard extension<a href="http://hl7.org/fhir/R4/extension-bodysite.html"> bodySite</a>.
 &lt;p/&gt;【JP仕様】&lt;br/&gt;
-当面は未使用とする。
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;SPM-10 (CWE) が該当。SS-MIX2では未使用。</p>
+当面は未使用とする。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1021,8 +976,7 @@ Methods for simple observations.</p>
   <tr><td>Comments</td><td><p>Only used if not implicit in code for Observation.code.
 &lt;br/&gt;Observation.code の code から測定方法が暗黙的でない場合にのみ使用する。
 &lt;p/&gt;【JP仕様】&lt;br/&gt;
-Observation.code に JLAC10コードを使用する場合、測定方法コードが含まれているため method は使用しない。Observation.code から測定方法が判明しない場合や、実際の測定方法が異なる場合に使用することになるが、現状では運用が困難と想定されるため、当面は未使用とする。
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-17(検査方法) (CWE)&lt;br/&gt;SS-MIX2では未使用。</p>
+Observation.code に JLAC10コードを使用する場合、測定方法コードが含まれているため method は使用しない。Observation.code から測定方法が判明しない場合や、実際の測定方法が異なる場合に使用することになるが、現状では運用が困難と想定されるため、当面は未使用とする。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1035,7 +989,6 @@ Observation.code に JLAC10コードを使用する場合、測定方法コー�
   <tr><td>Comments</td><td><p>Should only be used if not implicit in code found in <code>Observation.code</code>.  Observations are not made on specimens themselves; they are made on a subject, but in many cases by the means of a specimen. Note that although specimens are often involved, they are not always tracked and reported explicitly. Also note that observation resources may be used in contexts that track the specimen explicitly (e.g. Diagnostic Report).</p>
 <p>&lt;p/&gt;【JP仕様】&lt;br/&gt;
 検体検査プロファイルでは必須とする。</p>
-<p>&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;SPM セグメントに相当する。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1048,7 +1001,6 @@ Observation.code に JLAC10コードを使用する場合、測定方法コー�
   <tr><td>Comments</td><td><p>Note that this is not meant to represent a device involved in the transmission of the result, e.g., a gateway.  Such devices may be documented using the Provenance resource where relevant.</p>
 <p>&lt;p/&gt;【JP仕様】&lt;br/&gt;
 検査に使用した機器等の情報に使用する。</p>
-<p>&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-18 装置ID (EI)&lt;br/&gt;SS-MIX2では未使用。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1063,8 +1015,7 @@ Observation.code に JLAC10コードを使用する場合、測定方法コー�
 </td></tr>
   <tr><td>Comments</td><td><p>Most observations only have one generic reference range. Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g., specific to the patient's age, gender, weight and other factors), but this might not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties.</p>
 <p>&lt;p/&gt;【JP仕様】&lt;br/&gt;
-可能な限りlow、highに構造化すべき。構造化できない場合、あるいはlow、highに該当しない場合はtextを使用。
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-7 基準値範囲 （ST文字列型）&lt;br/&gt;ex)    6.5-8.2  、&gt;10、&lt;15&lt;br/&gt;</p>
+可能な限りlow、highに構造化すべき。構造化できない場合、あるいはlow、highに該当しない場合はtextを使用。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))<br/><b title="Formal Invariant Identifier">obs-3</b>: Must have at least a low or a high or text (: low.exists() or high.exists() or text.exists())</td></tr>
@@ -1102,7 +1053,7 @@ Observation.code に JLAC10コードを使用する場合、測定方法コー�
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1 This element is affected by the following invariants: obs-3</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#Quantity">Quantity</a>(<a href="http://hl7.org/fhir/R4/datatypes.html#SimpleQuantity" title="[CanonicalType[http://hl7.org/fhir/StructureDefinition/SimpleQuantity]]">SimpleQuantity</a>)</td></tr>
-  <tr><td>Comments</td><td><p>The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-7 基準値範囲 （ST文字列型）</p>
+  <tr><td>Comments</td><td><p>The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1111,7 +1062,7 @@ Observation.code に JLAC10コードを使用する場合、測定方法コー�
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1 This element is affected by the following invariants: obs-3</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#Quantity">Quantity</a>(<a href="http://hl7.org/fhir/R4/datatypes.html#SimpleQuantity" title="[CanonicalType[http://hl7.org/fhir/StructureDefinition/SimpleQuantity]]">SimpleQuantity</a>)</td></tr>
-  <tr><td>Comments</td><td><p>The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-7 基準値範囲 （ST文字列型）</p>
+  <tr><td>Comments</td><td><p>The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1126,7 +1077,7 @@ Code for the meaning of a reference range.</p>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td>Requirements</td><td><p>Need to be able to say what kind of reference range this is - normal, recommended, therapeutic, etc.,  - for proper interpretation.</p>
 </td></tr>
-  <tr><td>Comments</td><td><p>This SHOULD be populated if there is more than one range.  If this element is not present then the normal range is assumed.&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-10 異常検査の特質&lt;br/&gt;SS-MIX2では未使用</p>
+  <tr><td>Comments</td><td><p>This SHOULD be populated if there is more than one range.  If this element is not present then the normal range is assumed.</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1141,7 +1092,7 @@ Codes identifying the population the reference range applies to.</p>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td>Requirements</td><td><p>Need to be able to identify the target population for proper interpretation.</p>
 </td></tr>
-  <tr><td>Comments</td><td><p>This SHOULD be populated if there is more than one range.  If this element is not present then the normal population is assumed.&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-10 異常検査の特質&lt;br/&gt;基準値の適応対象（地域）を示す。SS-MIX2では未使用</p>
+  <tr><td>Comments</td><td><p>This SHOULD be populated if there is more than one range.  If this element is not present then the normal population is assumed.</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1153,7 +1104,7 @@ Codes identifying the population the reference range applies to.</p>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#Range">Range</a></td></tr>
   <tr><td>Requirements</td><td><p>Some analytes vary greatly over age.</p>
 </td></tr>
-  <tr><td>Comments</td><td><p>The stated low and high value are assumed to have arbitrarily high precision when it comes to determining which values are in the range. I.e. 1.99 is not in the range 2 -&gt; 3.&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;基準値の適応対象年齢を示す。SS-MIX2では該当フィールドなし。</p>
+  <tr><td>Comments</td><td><p>The stated low and high value are assumed to have arbitrarily high precision when it comes to determining which values are in the range. I.e. 1.99 is not in the range 2 -&gt; 3.</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1163,7 +1114,7 @@ Codes identifying the population the reference range applies to.</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td></tr>
-  <tr><td>Comments</td><td><p>Note that FHIR strings SHALL NOT exceed 1MB in size&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-7 基準値範囲 （ST文字列型）</p>
+  <tr><td>Comments</td><td><p>Note that FHIR strings SHALL NOT exceed 1MB in size</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1175,10 +1126,7 @@ Codes identifying the population the reference range applies to.</p>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="StructureDefinition-jp-observation-common.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common">JP_Observation_Common</a> | <a href="http://hl7.org/fhir/R4/questionnaireresponse.html" title="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse">QuestionnaireResponse</a> | <a href="http://hl7.org/fhir/R4/molecularsequence.html" title="http://hl7.org/fhir/StructureDefinition/MolecularSequence">MolecularSequence</a>)</td></tr>
   <tr><td>Comments</td><td><p>When using this element, an observation will typically have either a value or a set of related resources, although both may be present in some cases.  For a discussion on the ways Observations can assembled in groups together, see <a href="http://hl7.org/fhir/R4/observation.html#obsgrouping">Notes</a> below.  Note that a system may calculate results from <a href="http://hl7.org/fhir/R4/questionnaireresponse.html">QuestionnaireResponse</a>  into a final score and represent the score as an Observation.</p>
 <p>&lt;p/&gt;【JP仕様】&lt;br/&gt;
-1検査で複数の検査項目が実施される場合の親検査項目を設定する。
-&lt;p/&gt;【要検討】&lt;br/&gt;
-componentと合わせて、具体的な検査項目、使用例で、使い分けを明確にする。
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;（OBX-4 検査副 ID）</p>
+1検査で複数の検査項目が実施される場合の親検査項目を設定する。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1189,8 +1137,6 @@ componentと合わせて、具体的な検査項目、使用例で、使い分�
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..*</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="http://hl7.org/fhir/R4/documentreference.html" title="http://hl7.org/fhir/StructureDefinition/DocumentReference">DocumentReference</a> | <a href="http://hl7.org/fhir/R4/imagingstudy.html" title="http://hl7.org/fhir/StructureDefinition/ImagingStudy">ImagingStudy</a> | <a href="http://hl7.org/fhir/R4/media.html" title="http://hl7.org/fhir/StructureDefinition/Media">Media</a> | <a href="http://hl7.org/fhir/R4/questionnaireresponse.html" title="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse">QuestionnaireResponse</a> | <a href="StructureDefinition-jp-observation-common.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common">JP_Observation_Common</a> | <a href="http://hl7.org/fhir/R4/molecularsequence.html" title="http://hl7.org/fhir/StructureDefinition/MolecularSequence">MolecularSequence</a>)</td></tr>
   <tr><td>Comments</td><td><p>All the reference choices that are listed in this element can represent clinical observations and other measurements that may be the source for a derived value.  The most common reference will be another Observation.  For a discussion on the ways Observations can assembled in groups together, see <a href="http://hl7.org/fhir/R4/observation.html#obsgrouping">Notes</a> below.</p>
-<p>&lt;p/&gt;【要検討】&lt;br/&gt;検体検査としての用途として具体例を検討。
-&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-4 検査副 ID</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1204,10 +1150,6 @@ componentと合わせて、具体的な検査項目、使用例で、使い分�
 コンポーネントobservation は プライマリobservation としてのobservation リソースの中で同じ属性を共有し、常に単一のobservation の一部として扱われる（つまりそれらは分離可能ではないん）。ただし、プライマリobservationのreference rangeはコンポーネント値に継承されないため、reference rangeは各コンポーネントobservation に適切であれば必要である。</p>
 </td></tr>
   <tr><td>Comments</td><td><p>For a discussion on the ways Observations can be assembled in groups together see <a href="http://hl7.org/fhir/R4/observation.html#notes">Notes</a> below.</p>
-<p>&lt;p/&gt;【要検討】&lt;br/&gt;
-hasMemberと合わせて、具体的な検査項目、使用例で、使い分けを明確にする。
-&lt;br/&gt;検体検査で、該当する検査項目の調査が必要。分析器の都合でセットにしたい場合と、検査項目としてセットにしたい場合がある。後者か。血圧の収縮期だけ欲しい場合は、どうするのか。</p>
-<p>&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-4 検査副 ID</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1250,7 +1192,7 @@ Codes identifying names of simple observations.</p>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td>Requirements</td><td><p>Knowing what kind of observation is being made is essential to understanding the observation.</p>
 </td></tr>
-  <tr><td>Comments</td><td><p><em>All</em> code-value and  component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;Observation.code と同様(2020/1/15)</p>
+  <tr><td>Comments</td><td><p><em>All</em> code-value and  component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1262,7 +1204,7 @@ Codes identifying names of simple observations.</p>
   <tr><td>[x] Note</td><td>See <a href="http://hl7.org/fhir/R4/formats.html#choice">Choice of Data Types</a> for further information about how to use [x]</td></tr>
   <tr><td>Requirements</td><td><p>An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.</p>
 </td></tr>
-  <tr><td>Comments</td><td><p>Used when observation has a set of component observations. An observation may have both a value (e.g. an  Apgar score)  and component observations (the observations from which the Apgar score was derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the <a href="http://hl7.org/fhir/R4/observation.html#notes">Notes section</a> below.&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;Observation.value と同様(2020/1/15)</p>
+  <tr><td>Comments</td><td><p>Used when observation has a set of component observations. An observation may have both a value (e.g. an  Apgar score)  and component observations (the observations from which the Apgar score was derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the <a href="http://hl7.org/fhir/R4/observation.html#notes">Notes section</a> below.</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1292,7 +1234,7 @@ Codes identifying interpretations of observations.</p>
   <tr><td>Requirements</td><td><p>For some results, particularly numeric results, an interpretation is necessary to fully understand the significance of a result.</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Abnormal Flag</td></tr>
-  <tr><td>Comments</td><td><p>Historically used for laboratory results (known as 'abnormal flag' ),  its use extends to other use cases where coded interpretations  are relevant.  Often reported as one or more simple compact codes this element is often placed adjacent to the result value in reports and flow sheets to signal the meaning/normalcy status of the result.&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-8 異常フラグ(2020/1/15)</p>
+  <tr><td>Comments</td><td><p>Historically used for laboratory results (known as 'abnormal flag' ),  its use extends to other use cases where coded interpretations  are relevant.  Often reported as one or more simple compact codes this element is often placed adjacent to the result value in reports and flow sheets to signal the meaning/normalcy status of the result.</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1303,7 +1245,7 @@ Codes identifying interpretations of observations.</p>
   <tr><td>Type</td><td>See ttp://hl7.org/fhir/StructureDefinition/Observation#Observation.referenceRange</td></tr>
   <tr><td>Requirements</td><td><p>Knowing what values are considered &quot;normal&quot; can help evaluate the significance of a particular result. Need to be able to provide multiple reference ranges for different contexts.</p>
 </td></tr>
-  <tr><td>Comments</td><td><p>Most observations only have one generic reference range. Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g., specific to the patient's age, gender, weight and other factors), but this might not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties.&lt;p/&gt;---SS-MIX2メモ---&lt;br/&gt;OBX-7 基準値範囲 （ST文字列型）(2020/1/15)</p>
+  <tr><td>Comments</td><td><p>Most observations only have one generic reference range. Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g., specific to the patient's age, gender, weight and other factors), but this might not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties.</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -1361,7 +1303,7 @@ Codes identifying interpretations of observations.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 9, 2022 11:02+0000">2022-08-09</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 9, 2022 11:40+0000">2022-08-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
