@@ -38,7 +38,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","この薬剤を特定するコード","A code (or set of codes) that specify this medication, or a textual description if no code is available. Usage note: This could be a standard medication code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be a national or local formulary code, optionally with translations to other code systems.
 
 この薬剤を指定するコード。該当するコードがない場合はテキスト表記。
-使用法について注記：日本ではHOTコードを利用することが推奨される。一般的な薬剤コードとしてRxNorm、SNOMD CT, IDMPなど標準的な医薬品コードを使うことができる。国や地域に特有のローカルコードも使うことができ、他のコードに変換することもできる。","使われるコンテキストによるが、ユーザー(処方や調剤などを行った人）によって実際にコードが選択されたのであれば、coding.userSelectedはtrueとすることとなる。Codingのデータ型で説明されているように、「ユーザーインターフェース（たとえば、選択肢から特定の項目をユーザーが選択するような形式）で特定のコードをユーザーが選択したのであれば、""userSlected""に記録されてもよい」
+使用法について注記：日本ではHOTコードを利用することが推奨される。一般的な薬剤コードとしてRxNorm、SNOMD CT, IDMPなど標準的な医薬品コードを使うことができる。国や地域に特有のローカルコードも使うことができ、他のコードに変換することもできる。","使われるコンテキストによるが、ユーザー(処方や調剤などを行った人）によって実際にコードが選択されたのであれば、coding.userSelectedはtrueとすることとなる。Codingのデータ型で説明されているように、「ユーザーインターフェース（たとえば、選択肢から特定の項目をユーザーが選択するような形式）で特定のコードをユーザーが選択したのであれば、""userSelected""に記録されてもよい」
 ユーザーが選択したコードがあれば、その選択がコード変換などで優先される。そのほかのコードは代替のコードシステムか低粒度のコード（たとえば、ベンダー固有の初期値のための一般的なコード）に文字列変換変換するしかない。","","","","","","","","",,"preferred","薬品の種類を規定するコード化された概念","http://hl7.org/fhir/ValueSet/medication-codes","",,,,"Medication.code",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","coding.code = //element(*,MedicationType)/DrugCoded/ProductCodecoding.system = //element(*,MedicationType)/DrugCoded/ProductCodeQualifiercoding.display = //element(*,MedicationType)/DrugDescription",".code","FiveWs.class","RXO-1.1-Requested Give Code.code / RXE-2.1-Give Code.code / RXD-2.1-Dispense/Give Code.code / RXG-4.1-Give Code.code /RXA-5.1-Administered Code.code / RXC-2.1 Component Code"
 "Medication.status","Medication.status","","","",1,1,"","Y","Y","code {[]} {[]}
@@ -80,8 +80,8 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","coding.code = //element(*,MedicationType)/DrugCoded/ProductCodecoding.system = //element(*,MedicationType)/DrugCoded/ProductCodeQualifiercoding.display = //element(*,MedicationType)/DrugDescription",".player","RXC-2-Component Code  if medication: RXO-1-Requested Give Code / RXE-2-Give Code / RXD-2-Dispense/Give Code / RXG-4-Give Code / RXA-5-Administered Code"
 "Medication.ingredient.isActive","Medication.ingredient.isActive","","","",0,1,"","","","boolean {[]} {[]}
 ","有効成分の指標","この成分が薬剤の治療効果に影響するかどうかの指標
-I
-ndication of whether this ingredient affects the therapeutic action of the drug.","","Trueであれば、この成分が薬剤の治療効果に影響がある（たとえば有効）ということを示す。
+
+Indication of whether this ingredient affects the therapeutic action of the drug.","","Trueであれば、この成分が薬剤の治療効果に影響がある（たとえば有効）ということを示す。
 Falseであれば、この成分が薬剤の治療効果に影響がない（たとえば無効）ということを示す。","","","","","","","",,,,,"",,,,"Medication.ingredient.isActive",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","NA"
 "Medication.ingredient.strength","Medication.ingredient.strength","","","",1,1,"","","","Ratio {[]} {[]}
@@ -94,7 +94,7 @@ user content","",0,*,"","","","Extension {[]} {[]}
 ","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
 ","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
-"Medication.ingredient.strength.extension:strenghtType","Medication.ingredient.strength.extension","strenghtType","","",0,*,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_IngredientStrength_StrengthType]]} {[]}
+"Medication.ingredient.strength.extension:strengthType","Medication.ingredient.strength.extension","strengthType","","",0,*,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_IngredientStrength_StrengthType]]} {[]}
 ","力価区分","投与量が製剤単位か成分単位かを格納する拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Medication.ingredient.strength.numerator","Medication.ingredient.strength.numerator","","","",0,1,"","","Y","Quantity {[]} {[]}
