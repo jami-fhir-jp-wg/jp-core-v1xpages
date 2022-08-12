@@ -150,9 +150,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","",1,1,"","","Y","CodeableConcept {[]} {[]}
 ","Type of observation (code / type)　observation のタイプ（コードまたはタイプ）","Describes what was observed. Sometimes this is called the observation ""name"".
 
-検査の内容の説明。検査名称。","*All* code-value and, if present, component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.
-
-【JP-Core仕様】検査結果の場合、標準コードは「日本臨床検査医学会臨床検査項目分類コード体系（JLAC10）」を使用","Knowing what kind of observation is being made is essential to understanding the observation.","","","","","","","",,"preferred","MEDIS 臨床検査マスター","http://jpfhir.jp/fhir/Common/ValueSet/labResult-code","",,,,"Observation.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+検査の内容の説明。検査名称。","*JLAC10","Knowing what kind of observation is being made is essential to understanding the observation.","","","","","","","",,"preferred","MEDIS 臨床検査マスター","http://jpfhir.jp/fhir/Common/ValueSet/JP_ObservationLabResultCode_VS","",,,,"Observation.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.code","< 363787002 |Observable entity| OR < 386053000 |Evaluation procedure|","OBX-3","code","FiveWs.what[x]","116680003 |Is a|"
 "Observation.code.id","Observation.code.id","","","",0,1,"","","","string {[]} {[]}
 ","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
@@ -374,7 +372,7 @@ string {[]} {[]}","Individual responsible for the annotation","The individual re
 
 If the use case requires BodySite to be handled as a separate resource (e.g. to identify and track separately) then use the standard extension[ bodySite](extension-bodysite.html).
 
-【JP-Core仕様】当面は未使用とする。","","","","","","","","",,"example","Codes describing anatomical locations. May include laterality.","http://hl7.org/fhir/ValueSet/body-site","",,,,"Observation.bodySite",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP-Core仕様】当面は未使用とする。","","","","","","","","",,"example","","http://jpfhir.jp/fhir/Common/ValueSet/JP_ObservationBodySite_VS","",,,,"Observation.bodySite",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","< 123037004 |Body structure|","OBX-20","targetSiteCode","718497002 |Inherent location|"
 "Observation.method","Observation.method","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","How it was done 実施の方法","Indicates the mechanism used to perform the observation.
@@ -385,7 +383,7 @@ Observation.code の code から測定方法が暗黙的でない場合にのみ
 
 【JP-Core仕様】Observation.code に JLAC10コードを使用する場合、測定方法コードが含まれているため method は使用しない。Observation.code から測定方法が判明しない場合や、実際の測定方法が異なる場合に使用することになるが、現状では運用が困難と想定されるため、当面は未使用とする。","In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.
 
-場合により、測定方法は結果に影響を与える可能性があるため、結果を比較できるかどうかを判断したり、結果の重要性を判断したりするために使用される。","","","","","","","",,"example","Methods for simple observations.","http://hl7.org/fhir/ValueSet/observation-methods","",,,,"Observation.method",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+場合により、測定方法は結果に影響を与える可能性があるため、結果を比較できるかどうかを判断したり、結果の重要性を判断したりするために使用される。","","","","","","","",,"example","","http://jpfhir.jp/fhir/Common/ValueSet/JP_ObservationMethod_VS","",,,,"Observation.method",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","OBX-17","methodCode"
 "Observation.specimen","Observation.specimen","","","",1,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Specimen]]}
 ","Specimen used for this observation　観察（観測、検査）に使われた検体材料","The specimen that was used when this observation was made.
