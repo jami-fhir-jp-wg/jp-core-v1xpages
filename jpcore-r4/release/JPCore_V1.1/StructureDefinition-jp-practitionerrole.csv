@@ -1,7 +1,6 @@
 "Id","Path","Slice Name","Alias(s)","Label","Min","Max","Must Support?","Is Modifier?","Is Summary?","Type(s)","Short","Definition","Comments","Requirements","Default Value","Meaning When Missing","Fixed Value","Pattern","Example","Minimum Value","Maximum Value","Maximum Length","Binding Strength","Binding Description","Binding Value Set","Code","Slicing Discriminator","Slicing Description","Slicing Ordered","Slicing Rules","Base Path","Base Min","Base Max","Condition(s)","Constraint(s)","Mapping: HL7 v2 Mapping","Mapping: RIM Mapping","Mapping: ServD","Mapping: FiveWs Pattern Mapping"
 "PractitionerRole","PractitionerRole","","","",0,*,"","","","","医療従事者が関連付けられている役割/組織","A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.
 
-
 医療従事者が一定期間、組織で行うことができる役割／場所／専門性／サービスの特定のセット。","","","","","","","","","",,,,,"",,,,"PractitionerRole",0,*,"","dom-2:If the resource is contained in another resource, it SHALL NOT contain nested Resources {contained.contained.empty()}
 dom-3:If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:If a resource is contained in another resource, it SHALL NOT have a security label {contained.meta.security.empty()}dom-6:A resource should have narrative for robust management {text.`div`.exists()}","PRD (as one example)","Entity. Role, or Act","Role","ServiceSiteProvider"
 "PractitionerRole.id","PractitionerRole.id","","","",0,1,"","","Y","string {[]} {[]}
@@ -78,10 +77,9 @@ Period is not used for a duration (a measure of elapsed time). See [Duration](da
 
 人は複数の役割を持つ場合がある。
 
-【JP-Core仕様】
 医師、看護職員、薬剤師、放射線技師、情報職員といった職種を格納する。
 以下のコード表を作成する。
-http://jpfhir.jp/fhir/Common/CodeSystem/JP_PractionerRole_RoleCode
+http://jpfhir.jp/fhir/Common/CodeSystem/JP_PractitionerRoleCodes_CS
 
 SS-MIX2ではJHSR004 医療従事者の職種コードを採用
 コード 名称
@@ -93,12 +91,10 @@ NS-01 看護師
 NS-02 付添看護師
 NS-03 助産師","Need to know what authority the practitioner has - what can they do?
 
-
 プラクティショナーがどのような権限を持っているのかを知る必要がある - 何ができるのか？","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/Common/ValueSet/JP_ProcedurePerformerRoleCodes_VS","",,,,"PractitionerRole.code",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","PRD-1 / STF-18  / PRA-3  / PRT-4  / ROL-3 / ORC-12 / OBR-16 / PV1-7 / PV1-8 / PV1-9 / PV1-17",".code","(ServD maps Practitioners and Organizations via another entity, so this concept is not available)"
 "PractitionerRole.specialty","PractitionerRole.specialty","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
 ","Specific specialty of the practitioner","Specific specialty of the practitioner.
-
 
 医療従事者の特定の専門性","Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.
 
@@ -147,30 +143,24 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "PractitionerRole.availableTime.daysOfWeek","PractitionerRole.availableTime.daysOfWeek","","","",0,*,"","","","code {[]} {[]}
 ","mon | tue | wed | thu | fri | sat | sun","Indicates which days of the week are available between the start and end Times.
 
-
 開始時刻と終了時刻の間に利用可能な曜日を示す。","","","","","","","","","",,"required","The days of the week.","http://hl7.org/fhir/ValueSet/days-of-week|4.0.1","",,,,"PractitionerRole.availableTime.daysOfWeek",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".effectiveTime"
 "PractitionerRole.availableTime.allDay","PractitionerRole.availableTime.allDay","","","",0,1,"","","","boolean {[]} {[]}
 ","Always available? e.g. 24 hour service","Is this always available? (hence times are irrelevant) e.g. 24 hour service.
-
 
 これはいつでも利用できるか(そのため時間は関係ない) 例：24時間サービス。","","","","","","","","","",,,,,"",,,,"PractitionerRole.availableTime.allDay",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".effectiveTime"
 "PractitionerRole.availableTime.availableStartTime","PractitionerRole.availableTime.availableStartTime","","","",0,1,"","","","time {[]} {[]}
 ","Opening time of day (ignored if allDay = true)","The opening time of day. Note: If the AllDay flag is set, then this time is ignored.
 
-
 一日の開始時間。注意：AllDayフラグが設定されている場合、この時間は無視される。","The timezone is expected to be for where this HealthcareService is provided at.
-
 
 タイムゾーンは、このHealthcareServiceが提供されている場所のために期待される。","","","","","","","","",,,,,"",,,,"PractitionerRole.availableTime.availableStartTime",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".effectiveTime"
 "PractitionerRole.availableTime.availableEndTime","PractitionerRole.availableTime.availableEndTime","","","",0,1,"","","","time {[]} {[]}
 ","Closing time of day (ignored if allDay = true)","The closing time of day. Note: If the AllDay flag is set, then this time is ignored.
 
-
 一日の終了時刻。注意：AllDayフラグが設定されている場合、この時間は無視される。","The timezone is expected to be for where this HealthcareService is provided at.
-
 
 タイムゾーンは、このHealthcareServiceが提供されている場所のために期待される。","","","","","","","","",,,,,"",,,,"PractitionerRole.availableTime.availableEndTime",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".effectiveTime"
@@ -194,18 +184,15 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "PractitionerRole.notAvailable.description","PractitionerRole.notAvailable.description","","","",1,1,"","","","string {[]} {[]}
 ","Reason presented to the user explaining why time not available","The reason that can be presented to the user as to why this time is not available.
 
-
 この時間が利用できない理由をユーザーに提示することができる。","","","","","","","","","",,,,,"",,,,"PractitionerRole.notAvailable.description",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","n/a"
 "PractitionerRole.notAvailable.during","PractitionerRole.notAvailable.during","","","",0,1,"","","","Period {[]} {[]}
 ","Service not available from this date","Service is not available (seasonally or for a public holiday) from this date.
 
-
 この日からサービスのご利用（季節・祝日）はできない。","","","","","","","","","",,,,,"",,,,"PractitionerRole.notAvailable.during",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".effectiveTime"
 "PractitionerRole.availabilityExceptions","PractitionerRole.availabilityExceptions","","","",0,1,"","","","string {[]} {[]}
 ","Description of availability exceptions","A description of site availability exceptions, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as details in the available Times and not available Times.
-
 
 祝祭日の利用可能性など、サイトの利用可能性の例外についての説明。通常のサイトの利用可能性に対するすべての可能性のある例外を、利用可能なTimesと利用できないTimesの詳細として簡潔に記述する。","","","","","","","","","",,,,,"",,,,"PractitionerRole.availabilityExceptions",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".effectiveTime"

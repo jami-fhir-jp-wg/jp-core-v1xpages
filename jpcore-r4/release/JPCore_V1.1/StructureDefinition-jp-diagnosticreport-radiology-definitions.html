@@ -242,7 +242,7 @@
         
           Active
           
-            as of 2022-08-08
+            as of 2022-08-15
           
         
       </td>
@@ -262,15 +262,13 @@
   <tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="DiagnosticReport"> </a><span style="color: grey">1.</span> <b>DiagnosticReport</b><a href="#DiagnosticReport" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="16" class="self-link" height="16"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></span></td></tr>
   <tr><td>Definition</td><td><p>The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.</p>
 <p>患者、患者のグループ、デバイス、場所、これらから派生した検体に対して実行された診断的検査の結果と解釈。レポートには、依頼情報や依頼者情報などの臨床コンテキスト（文脈）、および１項目単位の結果、画像、テキストとコード化された解釈、および診断レポートのフォーマットされた表現のいくつかの組み合わせが含まれる。</p>
-<p>【JP_CORE】
-画像結果レポートのプロフィール</p>
+<p>【JP-Core仕様】画像結果レポートのプロフィール</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..*</td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Report, Test, Result, Results, Labs, Laboratory</td></tr>
   <tr><td>Comments</td><td><p>This is intended to capture a single report and is not suitable for use in displaying summary information that covers multiple reports.  For example, this resource has not been designed for laboratory cumulative reporting formats nor detailed structured reports for sequencing.</p>
 <p>これは単一のレポートをキャプチャすることを目的としており、複数のレポートをカバーする要約情報の表示に使用するのには適していない。たとえば、このリソースは、検査結果の累積レポート形式やシーケンスの詳細な構造化レポート用に作られていない。</p>
-<p>【JP-CORE】
-DIagnosticReportリソースの共通プロフィール</p>
+<p>【JP-Core仕様】DiagnosticReportリソースの共通プロフィール</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">dom-2</b>: If the resource is contained in another resource, it SHALL NOT contain nested Resources (: contained.contained.empty())<br/><b title="Formal Invariant Identifier">dom-3</b>: If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource (: contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty())<br/><b title="Formal Invariant Identifier">dom-4</b>: If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated (: contained.meta.versionId.empty() and contained.meta.lastUpdated.empty())<br/><b title="Formal Invariant Identifier">dom-5</b>: If a resource is contained in another resource, it SHALL NOT have a security label (: contained.meta.security.empty())<br/><b title="Formal Invariant Identifier">dom-6</b>: A resource should have narrative for robust management (: text.`div`.exists())</td></tr>
@@ -362,10 +360,8 @@ A human language.</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>ReportID, Filler ID, Placer ID</td></tr>
   <tr><td>Comments</td><td><p>通常は診断サービスプロバイダの情報システムにより設定される。</p>
-<p>【JP-CORE】
-レポート番号&lt;br/&gt;
-（放射線情報システム(RIS)による発番が想定されるが、施設によって電子カルテ等のオーダ番号を使う場合もあり得る）
-&lt;br/&gt;&lt;br/&gt;</p>
+<p>【JP-Core仕様】レポート番号</p>
+<p>（放射線情報システム(RIS)による発番が想定されるが、施設によって電子カルテ等のオーダ番号を使う場合もあり得る）</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -374,13 +370,13 @@ A human language.</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..*</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="http://hl7.org/fhir/R4/careplan.html" title="http://hl7.org/fhir/StructureDefinition/CarePlan">CarePlan</a> | <a href="http://hl7.org/fhir/R4/immunizationrecommendation.html" title="http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation">ImmunizationRecommendation</a> | <a href="StructureDefinition-jp-medicationrequest.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRequest">JP_MedicationRequest</a> | <a href="StructureDefinition-jp-medicationrequest-injection.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRequest_Injection">JP_MedicationRequest_Injection</a> | <a href="http://hl7.org/fhir/R4/nutritionorder.html" title="http://hl7.org/fhir/StructureDefinition/NutritionOrder">NutritionOrder</a> | <a href="http://hl7.org/fhir/R4/servicerequest.html" title="http://hl7.org/fhir/StructureDefinition/ServiceRequest">ServiceRequest</a>)</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Must Support Types</a></td><td>No must-support rules about the choice of types/profiles</td></tr>
   <tr><td>Requirements</td><td><p>このエレメントによりレポートの認可をトレースしたり、レポート作成サービスに対する提案や推奨事項を追跡することができる。</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Request</td></tr>
   <tr><td>Comments</td><td><p>通常は１つのリクエストに対し１つの検査結果となるが、状況によって１つのリクエストに対し複数の検査結果が要求され、複数のレポートが作成される場合もあるので注意すること。</p>
-<p>【JP-CORE】
-オーダ発生元の ServiceRequest または CarePlan への参照（多くの場合はServiceRequest（オーダ）が存在するが、オーダが発生しない検査も想定される。）
-&lt;br/&gt;&lt;br/&gt;</p>
+<p>【JP-Core仕様】オーダ発生元の ServiceRequest または CarePlan への参照（多くの場合はServiceRequest（オーダ）が存在するが、オーダが発生しない検査も想定される。）</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -396,27 +392,24 @@ The status of the diagnostic report.</p>
   <tr><td>Requirements</td><td><p>診断サービスではルーチンに仮確定あるいは不完全なレポートが発生することがある。また、しばしば前に発行されたレポートが取り消されることもある。</p>
 </td></tr>
   <tr><td>Comments</td><td><p>FHIRのstringsは1MBを越えてはならない（SHALL NOT）ことに留意すること。</p>
-<p>【JP-CORE】
-・診断レポートのステータス&lt;br/&gt;
-・定義通りの選択肢（例：preliminary 一次読影, final 二次読影（完了）等）を利用。
-&lt;br/&gt;&lt;br/&gt;</p>
+<p>【JP-Core仕様】・診断レポートのステータス</p>
+<p>・定義通りの選択肢（例：preliminary 一次読影, final 二次読影（完了）等）を利用。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
   <tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="DiagnosticReport.category"> </a><span style="color: grey">13.</span> <b>DiagnosticReport.category</b><a href="#DiagnosticReport.category" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="16" class="self-link" height="16"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></span></td></tr>
   <tr><td>Definition</td><td><p>レポートを作成した臨床分野・部門、または診断サービス（CT, US, MRIなど）を分類するコード。 これは、検索、並べ替え、および表示の目的で使用される。</p>
 </td></tr>
-  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..*</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>1..*</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/terminologies.html">Binding</a></td><td>For example codes, see <a href="http://hl7.org/fhir/R4/valueset-diagnostic-service-sections.html">DiagnosticServiceSectionCodes</a>
 Codes for diagnostic service sections.</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Department, Sub-department, Service, Discipline</td></tr>
   <tr><td>Comments</td><td><p>様々なカテゴリのシェーマを用いて複数のカテゴリを設定できる。 カテゴリの情報粒度はvalue setに定義されている。より詳細なフィルタリングの粒度が必要な場合はDiagnosticReport.codeのmetadata等を用いることで対応できる。</p>
-<p>【JP-CORE】
-放射線レポートは ”RAD” をデフォルトとして設定。追加の情報については任意。
-&lt;br/&gt;&lt;br/&gt;</p>
+<p>【JP-Core仕様】放射線レポートは ”RAD” をデフォルトとして設定。追加の情報については任意。</p>
 </td></tr>
+  <tr><td>Fixed Value</td><td>&lt;valueCodeableConcept&nbsp;xmlns=&quot;http://hl7.org/fhir&quot;&gt;<br/>&nbsp;&nbsp;&lt;coding&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;system&nbsp;value=&quot;http://terminology.hl7.org/CodeSystem/v2-0074&quot;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;code&nbsp;value=&quot;RAD&quot;/&gt;<br/>&nbsp;&nbsp;&lt;/coding&gt;<br/>&lt;/valueCodeableConcept&gt;<br/></td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
   <tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="DiagnosticReport.code"> </a><span style="color: grey">14.</span> <b>DiagnosticReport.code</b><a href="#DiagnosticReport.code" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="16" class="self-link" height="16"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></span></td></tr>
@@ -429,10 +422,9 @@ Codes that describe Diagnostic Reports.</p>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Type</td></tr>
   <tr><td>Comments</td><td><p>すべての用語の使用がこの一般的なパターンに適合するわけではない。 場合によっては、モデルにcodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係と事前調整および事後調整を管理するための独自の構造を提供する必要がある。</p>
-<p>【JP-CORE】
-<a href="https://www.jira-net.or.jp/publishing/files/jesra/JESRA_TR-0042_2018.pdf">画像診断レポート交換手順ガイドライン</a>「5.1 レポート種別コード」に記載されているLOINCコード <a href="https://loinc.org/18748-4/">Diagnostic imaging study</a> を指定
-&lt;br/&gt;&lt;br/&gt;</p>
+<p>【JP-Core仕様】<a href="https://www.jira-net.or.jp/publishing/files/jesra/JESRA_TR-0042_2018.pdf">画像診断レポート交換手順ガイドライン</a>「5.1 レポート種別コード」に記載されているLOINCコード <a href="https://loinc.org/18748-4/">Diagnostic imaging study</a> を指定</p>
 </td></tr>
+  <tr><td>Fixed Value</td><td>&lt;valueCodeableConcept&nbsp;xmlns=&quot;http://hl7.org/fhir&quot;&gt;<br/>&nbsp;&nbsp;&lt;coding&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;system&nbsp;value=&quot;http://loinc.org&quot;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;code&nbsp;value=&quot;18748-4&quot;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;display&nbsp;value=&quot;Diagnostic&nbsp;imaging&nbsp;study&quot;/&gt;<br/>&nbsp;&nbsp;&lt;/coding&gt;<br/>&lt;/valueCodeableConcept&gt;<br/></td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
   <tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="DiagnosticReport.subject"> </a><span style="color: grey">15.</span> <b>DiagnosticReport.subject</b><a href="#DiagnosticReport.subject" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="16" class="self-link" height="16"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></span></td></tr>
@@ -440,13 +432,13 @@ Codes that describe Diagnostic Reports.</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="StructureDefinition-jp-patient.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient">JP_Patient</a> | <a href="http://hl7.org/fhir/R4/group.html" title="http://hl7.org/fhir/StructureDefinition/Group">Group</a> | <a href="http://hl7.org/fhir/R4/device.html" title="http://hl7.org/fhir/StructureDefinition/Device">Device</a> | <a href="StructureDefinition-jp-location.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location">JP_Location</a>)</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Must Support Types</a></td><td>No must-support rules about the choice of types/profiles</td></tr>
   <tr><td>Requirements</td><td><p>対象のコンテキストが必要である。</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Patient</td></tr>
   <tr><td>Comments</td><td><p>参照は実際のFHIRリソースへの参照であり、解決可能である必要がある。解決はURLから取得するか、または、リソースタイプが利用できる場合は絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索する。</p>
-<p>【JP-CORE】
-Patient リソースを参照
-&lt;br/&gt;&lt;br/&gt;</p>
+<p>【JP-Core仕様】Patient リソースを参照</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -455,30 +447,26 @@ Patient リソースを参照
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="StructureDefinition-jp-encounter.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Encounter">JP_Encounter</a>)</td></tr>
-  <tr><td>Requirements</td><td><p>Enconterコンテキストへのリンクが必要である</p>
+  <tr><td>Requirements</td><td><p>Encounterコンテキストへのリンクが必要である</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Context</td></tr>
   <tr><td>Comments</td><td><p>これは通常、レポートの作成が発生するエンカウンターだが、一部のイベントはエンカウンターの正式な完了の前または後に開始される場合がある（例えば入院前の検査）。その場合でも（入院に関連して検査が行われる場合など）、エンカウンターのコンテキストに関連付けられる。</p>
-<p>【JP-CORE】
-このレポートを書く切っ掛けとなる Encounterリソース（例：術前検査の場合、術前訪問） を参照
-&lt;br/&gt;&lt;br/&gt;</p>
+<p>【JP-Core仕様】このレポートを書く切っ掛けとなる Encounterリソース（例：術前検査の場合、術前訪問） を参照</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
   <tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="DiagnosticReport.effective[x]"> </a><a name="DiagnosticReport.effectiveDateTime"> </a><a name="DiagnosticReport.effective[x]:effectiveDateTime"> </a><span style="color: grey">17.</span> <b>DiagnosticReport.effective[x]</b><a href="#DiagnosticReport.effective[x]" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="16" class="self-link" height="16"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></span></td></tr>
   <tr><td>Definition</td><td><p>観測値が関連する時間または期間。レポートの対象が患者である場合、これは通常、読影開始の時間であり、日付/時刻自体のみが提供される。</p>
 </td></tr>
-  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>1..1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#dateTime">dateTime</a></td></tr>
   <tr><td>[x] Note</td><td>See <a href="http://hl7.org/fhir/R4/formats.html#choice">Choice of Data Types</a> for further information about how to use [x]</td></tr>
   <tr><td>Requirements</td><td><p>Need to know where in the patient history to file/present this report.</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Observation time, Effective Time, Occurrence</td></tr>
   <tr><td>Comments</td><td><p>診断手順が患者に対して実行された場合、これは実行された時間を示す。</p>
-<p>【JP-CORE】
-レポート作成日時&lt;br/&gt;
-（DateTimeを採用し、Periodは不使用）
-&lt;br/&gt;&lt;br/&gt;</p>
+<p>【JP-Core仕様】レポート作成日時</p>
+<p>（DateTimeを採用し、Periodは不使用）</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -487,13 +475,12 @@ Patient リソースを参照
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#instant">instant</a></td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
   <tr><td>Requirements</td><td><p>臨床医は、レポートがリリースされた日付を確認できる必要がある。</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Date published, Date Issued, Date Verified</td></tr>
   <tr><td>Comments</td><td><p>リソース自体の更新時間とは異なる場合がある。これは、レポートの実際のリリース時間ではなく、レコード（場合によってはセカンダリコピー）のステータスであるため。</p>
-<p>【JP-CORE】
-レポート確定日時
-&lt;br/&gt;&lt;br/&gt;</p>
+<p>【JP-Core仕様】レポート確定日時</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -502,14 +489,14 @@ Patient リソースを参照
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..*</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="StructureDefinition-jp-practitioner.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner">JP_Practitioner</a> | <a href="StructureDefinition-jp-practitionerrole.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole">JP_PractitionerRole</a> | <a href="StructureDefinition-jp-organization.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization">JP_Organization</a> | <a href="http://hl7.org/fhir/R4/careteam.html" title="http://hl7.org/fhir/StructureDefinition/CareTeam">CareTeam</a>)</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Must Support Types</a></td><td>No must-support rules about the choice of types/profiles</td></tr>
   <tr><td>Requirements</td><td><p>結果に関する問い合わせがある場合は、誰に連絡を取るべきかを知る必要がある。また、データ二次分析のためにレポートの発生源を追跡する必要が生じる場合もある。</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Laboratory, Service, Practitioner, Department, Company, Authorized by, Director</td></tr>
   <tr><td>Comments</td><td><p>臨床診断レポートに対して責任を持つもの.</p>
-<p>【JP-CORE】
-レポート確定者&lt;br/&gt;
-（責任としては performaer &gt; resultsInterpreter という関係性）
-&lt;br/&gt;&lt;br/&gt;</p>
+<p>【JP-Core仕様】レポート確定者</p>
+<p>（責任としては performer &gt; resultsInterpreter という関係性）</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -518,16 +505,13 @@ Patient リソースを参照
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..*</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="StructureDefinition-jp-practitioner.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner">JP_Practitioner</a> | <a href="StructureDefinition-jp-practitionerrole.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole">JP_PractitionerRole</a> | <a href="StructureDefinition-jp-organization.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization">JP_Organization</a> | <a href="http://hl7.org/fhir/R4/careteam.html" title="http://hl7.org/fhir/StructureDefinition/CareTeam">CareTeam</a>)</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Must Support Types</a></td><td>No must-support rules about the choice of types/profiles</td></tr>
   <tr><td>Requirements</td><td><p>結果に関する問い合わせがある場合は、誰に連絡を取るべきかを知る必要がある。また、データ二次分析のためにレポートの発生源を追跡する必要が生じる場合もある。</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Analyzed by, Reported by</td></tr>
   <tr><td>Comments</td><td><p>必ずしも診断レポートに対して責任を持つものを示すわけでは無い。</p>
-<p>【JP-CORE】
-レポートの関係者（作成者、読影者、確定者など）を列挙
-&lt;br/&gt;&lt;br/&gt;
-【議論】&lt;br/&gt;
-但し、一次読影や二次読影などの役割 (Practioner Roll) の指定方法はペンディング
-&lt;br/&gt;&lt;br/&gt;</p>
+<p>【JP-Core仕様】但し、一次読影や二次読影などの役割 (Practitioner Roll) の指定方法はペンディング</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -538,10 +522,8 @@ Patient リソースを参照
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="http://hl7.org/fhir/R4/specimen.html" title="http://hl7.org/fhir/StructureDefinition/Specimen">Specimen</a>)</td></tr>
   <tr><td>Requirements</td><td><p>レポートの対象となる取集された検体についての情報をレポートできる必要がある。</p>
 </td></tr>
-  <tr><td>Comments</td><td><p>【JP-CORE】
-・未使用&lt;br/&gt;
-・画像ガイド下生検で得られる検体の可能性は有り得るが、本項目は病理レポートで利用されることを想定し、放射線レポートでは特には規定しない
-&lt;br/&gt;&lt;br/&gt;</p>
+  <tr><td>Comments</td><td><p>【JP-Core仕様】未使用</p>
+<p>・画像ガイド下生検で得られる検体の可能性は有り得るが、本項目は病理レポートで利用されることを想定し、放射線レポートでは特には規定しない</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -554,9 +536,7 @@ Patient リソースを参照
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Data, Atomic Value, Result, Atomic result, Data, Test, Analyte, Battery, Organizer</td></tr>
   <tr><td>Comments</td><td><p>Observationはさらにobservationを含むことができる。</p>
-<p>【JP-CORE】
-計測情報などの付随所見をObservationリソースとして定義できるが、該当するコードが定義できないため放射線レポートでは未定義とする。関連する検体検査結果（腎機能や感染症情報等）を保持することは可能。
-&lt;br/&gt;&lt;br/&gt;</p>
+<p>【JP-Core仕様】計測情報などの付随所見をObservationリソースとして定義できるが、該当するコードが定義できないため放射線レポートでは未定義とする。関連する検体検査結果（腎機能や感染症情報等）を保持することは可能。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -565,10 +545,9 @@ Patient リソースを参照
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..*</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="StructureDefinition-jp-imagingstudy-radiology.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Radiology">JP_ImagingStudy_Radiology</a>)</td></tr>
-  <tr><td>Comments</td><td><p>【JP-CORE】
-・対象となるImagingStudyリソースを参照&lt;br/&gt;
-・放射線レポートでは検査実施後には必須（複数もあり得る）
-&lt;br/&gt;&lt;br/&gt;</p>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
+  <tr><td>Comments</td><td><p>【JP-Core仕様】・対象となるImagingStudyリソースを参照</p>
+<p>・放射線レポートでは検査実施後には必須（複数もあり得る）</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -580,9 +559,7 @@ Patient リソースを参照
   <tr><td>Requirements</td><td><p>多くの診断サービスには、サービスの一部としてレポートに画像が含まれている。</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>DICOM, Slides, Scans</td></tr>
-  <tr><td>Comments</td><td><p>【JP仕様】&lt;br/&gt;
-キーイメージを設定
-&lt;br/&gt;&lt;br/&gt;</p>
+  <tr><td>Comments</td><td><p>【JP-Core仕様】キーイメージを設定</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -622,11 +599,8 @@ Patient リソースを参照
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td></tr>
   <tr><td>Requirements</td><td><p>レポート作成者は、レポートに含まれる各画像についてコメントを付け加える</p>
 </td></tr>
-  <tr><td>Comments</td><td><p>コメントは、画像と共に表示される。レポートでは画像の内容に関する追加の議論が、DiagnosticReport.textやDiagnosticReport.conclusionなどの他のセクションに含まれるのが一般的である。
-&lt;br/&gt;&lt;br/&gt;
-【JP仕様】&lt;br/&gt;
-キーイメージの説明
-&lt;br/&gt;&lt;br/&gt;</p>
+  <tr><td>Comments</td><td><p>コメントは、画像と共に表示される。レポートでは画像の内容に関する追加の議論が、DiagnosticReport.textやDiagnosticReport.conclusionなどの他のセクションに含まれるのが一般的である。</p>
+<p>【JP-Core仕様】キーイメージの説明</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -635,11 +609,9 @@ Patient リソースを参照
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>1..1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="http://hl7.org/fhir/R4/media.html" title="http://hl7.org/fhir/StructureDefinition/Media">Media</a>)</td></tr>
-  <tr><td>Comments</td><td><p>参照は実際のFHIRリソースへの参照であり、解決可能である必要がある。解決はURLから取得するか、または、リソースタイプが利用できる場合は絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索する。
-&lt;br/&gt;&lt;br/&gt;
-【JP仕様】&lt;br/&gt;
-キーイメージの参照先
-&lt;br/&gt;&lt;br/&gt;</p>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
+  <tr><td>Comments</td><td><p>参照は実際のFHIRリソースへの参照であり、解決可能である必要がある。解決はURLから取得するか、または、リソースタイプが利用できる場合は絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索する。</p>
+<p>【JP-Core仕様】キーイメージの参照先</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -648,13 +620,12 @@ Patient リソースを参照
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
   <tr><td>Requirements</td><td><p>基本的な結果で、失われない結論を提供する必要がある。</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Report</td></tr>
   <tr><td>Comments</td><td><p>FHIRのstringsは1MBを越えてはならない（SHALL NOT）ことに留意すること。</p>
-<p>【JP-CORE】
-放射線レポートの結果/結論/インプレッションの文章を記載
-&lt;br/&gt;&lt;br/&gt;</p>
+<p>【JP-Core仕様】放射線レポートの結果/結論/インプレッションの文章を記載</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -667,10 +638,8 @@ Diagnosis codes provided as adjuncts to the report.</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td>Comments</td><td><p>すべての用語の使用がこの一般的なパターンに適合するわけではない。 場合によっては、モデルにcodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係と事前調整および事後調整を管理するための独自の構造を提供する必要がある。</p>
-<p>【JP-CORE】
-・放射線レポートの所見の結論となるコードを設定。&lt;br/&gt;
-・例えば、ICD 病名コード
-&lt;br/&gt;&lt;br/&gt;</p>
+<p>【JP-Core仕様】・放射線レポートの所見の結論となるコードを設定。</p>
+<p>・例えば、ICD 病名コード</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -679,12 +648,11 @@ Diagnosis codes provided as adjuncts to the report.</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..*</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#Attachment">Attachment</a></td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
   <tr><td>Requirements</td><td><p>臨床での再現性を担保するために、独自の完全にフォーマットされたレポートを提供可能である。</p>
 </td></tr>
   <tr><td>Comments</td><td><p>&quot;application/pdf&quot; がこのコンテキストで最も信頼性が高く、相互運用可能なアプリケーションとして推奨される。</p>
-<p>【JP-CORE】
-添付するXHTMLやPDFなどの文書
-&lt;br/&gt;&lt;br/&gt;</p>
+<p>【JP-Core仕様】添付するXHTMLやPDFなどの文書</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -742,7 +710,7 @@ Diagnosis codes provided as adjuncts to the report.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Aug 8, 2022 12:51+0000">2022-08-08</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Aug 15, 2022 09:08+0000">2022-08-15</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

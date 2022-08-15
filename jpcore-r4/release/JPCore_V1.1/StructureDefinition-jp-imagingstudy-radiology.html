@@ -275,7 +275,7 @@
   <td><i>Status</i></td>
   <td>Active
     
-      ( 2022-08-08 )
+      ( 2022-08-15 )
     </td>
 </tr>
 
@@ -305,45 +305,45 @@
 
 <div style="display:inline-block" markdown="1">
 
-<p>本プロファイル説明は、患者に付属する画像検査情報について、情報の登録や検索、取得のために、FHIR <code class="highlighter-rouge">ImagingStudy</code>リソースを使用するにあたっての、最低限の制約を記述したものである。</p>
+<p>本プロファイル説明は、患者に付属する画像検査情報について、情報の登録や検索、取得のために、FHIR ImagingStudyリソースを使用するにあたっての、最低限の制約を記述したものである。</p>
 
-<p><code class="highlighter-rouge">ImagingStudy</code> リソースに対して本プロファイルに準拠する場合に必須となる要素や、サポートすべき拡張、用語、検索パラメータを定義する。</p>
+<p>ImagingStudy リソースに対して本プロファイルに準拠する場合に必須となる要素や、サポートすべき拡張、用語、検索パラメータを定義する。</p>
 
 <p><br /></p>
 
 <h2 id="背景および想定シナリオ">背景および想定シナリオ</h2>
 
-<p>本プロファイルは、一般的な画像検査でDICOMで定義される画像情報を取り扱うことを想定している。Non-DICOMの画像を取り扱う場合は<a href="http://www.hl7.org/fhir/media.html"><code class="highlighter-rouge">Media</code>リソース</a>を利用すること。</p>
+<p>本プロファイルは、一般的な画像検査でDICOMで定義される画像情報を取り扱うことを想定している。Non-DICOMの画像を取り扱う場合は<a href="http://www.hl7.org/fhir/media.html">Mediaリソース</a>を利用すること。</p>
 
-<p><code class="highlighter-rouge">ImagingStudy</code> リソースはDICOM画像検査において作成された内容（主としてDICOM タグ情報に相当する）を表す。一つの検査はシリーズを構成しており、それぞれのシリーズにはSerivce-Objext Pairインスタンス(SOPインスタンス）が一般的なタグ情報の中に含まれる。一つのシリーズにはただ一つのモダリティ(例えば単純エックス線撮影，CT，MRI，超音波のいずれか）から成り立つが、一つの検査は異なるモダリティによる複数のシリーズから構成されることがある。</p>
+<p>ImagingStudy リソースはDICOM画像検査において作成された内容（主としてDICOM タグ情報に相当する）を表す。一つの検査はシリーズを構成しており、それぞれのシリーズにはService-Object Pairインスタンス(SOPインスタンス）が一般的なタグ情報の中に含まれる。一つのシリーズにはただ一つのモダリティ(例えば単純エックス線撮影，CT，MRI，超音波のいずれか）から成り立つが、一つの検査は異なるモダリティによる複数のシリーズから構成されることがある。</p>
 
 <ul>
-  <li><code class="highlighter-rouge">Patient</code>リソースからの指定された日時、期間での画像検査情報の参照</li>
-  <li><code class="highlighter-rouge">ImagingStudy</code>リソースから指定したモダリティに関する検査の画像検査情報の参照</li>
-  <li><code class="highlighter-rouge">ImagingStudy</code>リソースから指定したモダリティに関するシリーズの画像検査情報の参照</li>
-  <li><code class="highlighter-rouge">ImagingStudy</code>リソースから指定した部位の画像検査情報の参照</li>
-  <li><code class="highlighter-rouge">ImagingStudy</code>リソースから使用可能な画像検査情報の参照</li>
-  <li><code class="highlighter-rouge">Encounter</code>リソースから画像検査を実施した検査の画像検査情報の参照</li>
-  <li><code class="highlighter-rouge">ServiceRequest</code>リソースから画像検査を実施した検査の画像検査情報の参照</li>
+  <li>Patientリソースから指定された日時、期間での画像検査情報の参照</li>
+  <li>ImagingStudyリソースから指定したモダリティに関する検査の画像検査情報の参照</li>
+  <li>ImagingStudyリソースから指定したモダリティに関するシリーズの画像検査情報の参照</li>
+  <li>ImagingStudyリソースから指定した部位の画像検査情報の参照</li>
+  <li>ImagingStudyリソースから使用可能な画像検査情報の参照</li>
+  <li>Encounterリソースから画像検査を実施した検査の画像検査情報の参照</li>
+  <li>ServiceRequestリソースから画像検査を実施した検査の画像検査情報の参照</li>
 </ul>
 
-<p>なお、<code class="highlighter-rouge">ServiceRequest</code>リソースは画像検査を実施するために発生するオーダ情報等を格納しうるリソースであるが、オーダリング情報の標準化の状況や情報の粒度によりユースケースが異なることが想定される。よって、<code class="highlighter-rouge">ServiceRequest</code>から提供され本リソースにマッピングされるべき情報の定義については<code class="highlighter-rouge">ServiceRequest</code>および一連の<code class="highlighter-rouge">TASK</code>管理あるいは<code class="highlighter-rouge">Procedure</code>に関連するユースケースで別途検討される。</p>
+<p>なお、ServiceRequestリソースは画像検査を実施するために発生するオーダ情報等を格納しうるリソースであるが、オーダリング情報の標準化の状況や情報の粒度によりユースケースが異なることが想定される。よって、ServiceRequestから提供され本リソースにマッピングされるべき情報の定義についてはServiceRequestおよび一連のTASK管理あるいはProcedureに関連するユースケースで別途検討される。</p>
 
 <p><br /></p>
 
 <h2 id="スコープ">スコープ</h2>
 
-<p><code class="highlighter-rouge">ImagingStudy</code>リソースはDICOMのstudy, seriesおよび画像に関連する情報を提供し、それらの情報をどのようにして取り出すか（native DICOMフォーマットで受け取るか、JPEGなどの一般的な画像情報に変換したものを受けとるかなど）を示す。<code class="highlighter-rouge">ImagingStudy</code>は一つのDICOM studyのすべての情報を網羅するために用いられる。</p>
+<p>ImagingStudyリソースはDICOMのstudy, seriesおよび画像に関連する情報を提供し、それらの情報をどのようにして取り出すか（native DICOMフォーマットで受け取るか、JPEGなどの一般的な画像情報に変換したものを受けとるかなど）を示す。ImagingStudyは一つのDICOM studyのすべての情報を網羅するために用いられる。</p>
 
 <p>このリソースでは32ビットのタグ（DICOMタグと呼ばれる）で示されるDICOMアトリビュート（タグ情報）をmappingするためのエレメントが用意されている。
 DICOMタグは4桁の16進数がコンマで区切られたペア（例　(0008, 103E) )として表現される。それぞれのタグ情報に関する名称と値のペアについては<a href="http://medical.nema.org/medical/dicom/current/output/html/part06.html">DICOM Part6 Data Dictionary</a>に記載されている。さらに、情報体の中のタグ情報の用途については<a href="http://medical.nema.org/medical/dicom/current/output/html/part03.html">DICOM Part 3 Information Object Definitions</a>に記載されている。Number of Instances in StudyなどのDICOMにおける問い合わせモデルに関する情報は<a href="http://medical.nema.org/medical/dicom/current/output/html/part04.html#chapter_C"> DICOM Part 4 Annex C</a>で参照できる。</p>
 
-<p>最も単純な場合、<code class="highlighter-rouge">ImagingStudy</code>はDICOM query（例えばQIDO-RS）を行うことなく重要なDICOMタグ情報へのアクセスを提供する。一方で、DICOMの実画像情報などのインスタンスは<code class="highlighter-rouge">ImagingStudy</code>リソースには保存されないため、この情報を保存するためにはDICOM WADO-RSサーバやほかのストレージ機能を利用する必要がある。
+<p>最も単純な場合、ImagingStudyはDICOM query（例えばQIDO-RS）を行うことなく重要なDICOMタグ情報へのアクセスを提供する。一方で、DICOMの実画像情報などのインスタンスはImagingStudyリソースには保存されないため、この情報を保存するためにはDICOM WADO-RSサーバやほかのストレージ機能を利用する必要がある。
 （FHIRではREST APIを用いることが想定されており，親和性の観点からはDICOM web accessの利用が想定される。）</p>
 
-<p><code class="highlighter-rouge">ImagingStudy</code>は一つのDICOM studyに対してのリファレンスであり、またそのスタディのサブセットに対する参照にも利用できる。一方で、複数の<code class="highlighter-rouge">ImagingStudy</code>リソースが同じDICOM studyを参照することや，同じDICOM study内の異なるサブセット（シリーズ）を参照することもあり得る。</p>
+<p>ImagingStudyは一つのDICOM studyに対してのリファレンスであり、またそのスタディのサブセットに対する参照にも利用できる。一方で、複数のImagingStudyリソースが同じDICOM studyを参照することや，同じDICOM study内の異なるサブセット（シリーズ）を参照することもあり得る。</p>
 
-<p>このプロファイルでは上記のようなDICOMに関連して用いられる <code class="highlighter-rouge">ImagingStudy</code>の用途がスコープであり、<code class="highlighter-rouge">ImagingStudy</code>の情報項目の１つを取り扱う際に、必要な要件を定義している。</p>
+<p>このプロファイルでは上記のようなDICOMに関連して用いられる ImagingStudyの用途がスコープであり、ImagingStudyの情報項目の１つを取り扱う際に、必要な要件を定義している。</p>
 
 <h2 id="プロファイル定義">プロファイル定義</h2>
 
@@ -459,8 +459,6 @@ Summary
     <a name="tabs-diff"> </a>
     <div id="tabs-diff">
       <div id="tbl-diff">
-        <p>This structure is derived from <a href="http://hl7.org/fhir/R4/imagingstudy.html">ImagingStudy</a>
-        </p>
         <div id="tbl-diff-inner">
           <table border="0" cellpadding="0" cellspacing="0" style="border: 0px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;"><tr style="border: 1px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top"><th style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/formats.html#table" title="The logical name of the element">Name</a></th><th style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/formats.html#table" title="Information about the use of the element">Flags</a></th><th style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/formats.html#table" title="Minimum and Maximum # of times the the element can appear in the instance">Card.</a></th><th style="width: 100px" class="hierarchy"><a href="http://hl7.org/fhir/R4/formats.html#table" title="Reference to the type of the element">Type</a></th><th style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/formats.html#table" title="Additional information about the element">Description &amp; Constraints</a><span style="float: right"><a href="http://hl7.org/fhir/R4/formats.html#table" title="Legend for this format"><img src="http://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/></a></span></th></tr><tr style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white"><td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_resource.png" alt="." style="background-color: white; background-color: inherit" title="Resource" class="hierarchy"/> <a href="StructureDefinition-jp-imagingstudy-radiology-definitions.html#ImagingStudy" title="Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.
 
@@ -717,8 +715,10 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
       <div id="tbl-terminology-bindings-view">
         <div id="terminology-bindings-view-inner">
           <!--Terminology Bindings heading in the fragment -->
-          <h4>Terminology Bindings</h4>
-<table class="list">
+          <p>
+            <b>Terminology Bindings</b>
+          </p>
+          <table class="list">
 <tr><td><b>Path</b></td><td><b>Conformance</b></td><td><b>ValueSet</b></td></tr>
 <tr><td>ImagingStudy.language</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#preferred">preferred</a></td><td title="A human language."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-languages.html">CommonLanguages</a><br/><a style="font-weight:bold" title="Max Value Set Extension" href="http://hl7.org/fhir/R4/extension-elementdefinition-maxvalueset.html">Max Binding</a>: <a href="http://hl7.org/fhir/R4/valueset-all-languages.html">AllLanguages</a></td></tr>
 <tr><td>ImagingStudy.status</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#required">required</a></td><td title="The status of the ImagingStudy."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-imagingstudy-status.html">ImagingStudyStatus</a></td></tr>
@@ -739,8 +739,10 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     <div id="tabs-constraints-view">
       <div id="tbl-constraints-view">
         <div id="constraints-view-inner">
-          <h4>Constraints</h4>
-<table class="list">
+          <p>
+            <b>Constraints</b>
+          </p>
+          <table class="list">
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
 <tr><td>dom-2</td><td>error</td><td>ImagingStudy</td><td>If the resource is contained in another resource, it SHALL NOT contain nested Resources<br/>: contained.contained.empty()</td><td></td></tr>
 <tr><td>dom-3</td><td>error</td><td>ImagingStudy</td><td>If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource<br/>: contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()</td><td></td></tr>
@@ -989,8 +991,6 @@ Summary
       <div id="all-tbl-diff">
         <p>
           <b>Differential View</b>
-        </p>
-        <p>This structure is derived from <a href="http://hl7.org/fhir/R4/imagingstudy.html">ImagingStudy</a>
         </p>
         <div id="all-tbl-diff-inner">
           <table border="0" cellpadding="0" cellspacing="0" style="border: 0px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;"><tr style="border: 1px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top"><th style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/formats.html#table" title="The logical name of the element">Name</a></th><th style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/formats.html#table" title="Information about the use of the element">Flags</a></th><th style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/formats.html#table" title="Minimum and Maximum # of times the the element can appear in the instance">Card.</a></th><th style="width: 100px" class="hierarchy"><a href="http://hl7.org/fhir/R4/formats.html#table" title="Reference to the type of the element">Type</a></th><th style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/formats.html#table" title="Additional information about the element">Description &amp; Constraints</a><span style="float: right"><a href="http://hl7.org/fhir/R4/formats.html#table" title="Legend for this format"><img src="http://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/></a></span></th></tr><tr style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white"><td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_resource.png" alt="." style="background-color: white; background-color: inherit" title="Resource" class="hierarchy"/> <a href="StructureDefinition-jp-imagingstudy-radiology-definitions.html#ImagingStudy" title="Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.
@@ -1391,8 +1391,10 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 
       <div id="all-tbl-terminology-bindings-view-inner">
         <!--Terminology Bindings heading in the fragment -->
-        <h4>Terminology Bindings</h4>
-<table class="list">
+        <p>
+          <b>Terminology Bindings</b>
+        </p>
+        <table class="list">
 <tr><td><b>Path</b></td><td><b>Conformance</b></td><td><b>ValueSet</b></td></tr>
 <tr><td>ImagingStudy.language</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#preferred">preferred</a></td><td title="A human language."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-languages.html">CommonLanguages</a><br/><a style="font-weight:bold" title="Max Value Set Extension" href="http://hl7.org/fhir/R4/extension-elementdefinition-maxvalueset.html">Max Binding</a>: <a href="http://hl7.org/fhir/R4/valueset-all-languages.html">AllLanguages</a></td></tr>
 <tr><td>ImagingStudy.status</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#required">required</a></td><td title="The status of the ImagingStudy."><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-imagingstudy-status.html">ImagingStudyStatus</a></td></tr>
@@ -1408,8 +1410,10 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 
       </div>
       <div id="all-tbl-constraints-view-inner">
-        <h4>Constraints</h4>
-<table class="list">
+        <p>
+          <b>Constraints</b>
+        </p>
+        <table class="list">
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
 <tr><td>dom-2</td><td>error</td><td>ImagingStudy</td><td>If the resource is contained in another resource, it SHALL NOT contain nested Resources<br/>: contained.contained.empty()</td><td></td></tr>
 <tr><td>dom-3</td><td>error</td><td>ImagingStudy</td><td>If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource<br/>: contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()</td><td></td></tr>
@@ -1499,20 +1503,11 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 <p>次のデータ項目は必須（データが存在しなければならない）、あるいは、データが送信システムに存在する場合はサポートされなければならないことを意味する。（Must Support）。</p>
 
 <h4 id="必須">必須</h4>
-<p><code class="highlighter-rouge">ImagingStudy</code>リソースは、次の要素を持たなければならない。</p>
+<p>ImagingStudyリソースは、次の要素を持たなければならない。</p>
 
 <ul>
-  <li><code class="highlighter-rouge">status</code>︓検査項目情報の状態は必須である。</li>
-  <li><code class="highlighter-rouge">subject</code>︓このリソースが示す検査項目が、どの患者のものかを示すため、このプロファイルでは参照する<code class="highlighter-rouge">patient</code>リソースの定義を必須である。</li>
-</ul>
-
-<h4 id="mustsupport">MustSupport</h4>
-<p><code class="highlighter-rouge">ImagingStudy</code>リソースは、以下をサポートしなければならない。</p>
-
-<ul>
-  <li>画像データが送信システムに存在する場合には<code class="highlighter-rouge">identifier</code>, <code class="highlighter-rouge">modality</code>はサポートされなければならない。</li>
-  <li>画像データが送信システムにSeriesが存在する場合には, <code class="highlighter-rouge">series.uid</code>, <code class="highlighter-rouge">series.modality</code>, <code class="highlighter-rouge">series.instance.uid</code>, <code class="highlighter-rouge">series.instance.sopClass</code>はサポートされなければならない。</li>
-  <li>画像検査を行うためのオーダ情報が送信システムに存在する場合には, <code class="highlighter-rouge">encounter</code>と<code class="highlighter-rouge">basedOn</code>はサポートされなければならない。</li>
+  <li>status︓検査項目情報の状態は必須である。</li>
+  <li>subject︓このリソースが示す検査項目が、どの患者のものかを示すため、このプロファイルでは参照するpatientリソースの定義を必須である。</li>
 </ul>
 
 <h3 id="extension定義">Extension定義</h3>
@@ -1562,38 +1557,38 @@ bodySiteは、画像化された身体部分の左右差を示している場合
   <tbody>
     <tr>
       <td>SHOULD</td>
-      <td><code class="highlighter-rouge">subject(Patient)</code></td>
-      <td><code class="highlighter-rouge">reference</code></td>
+      <td>subject(Patient)</td>
+      <td>reference</td>
       <td><code class="highlighter-rouge">GET [base]/ImagingStudy?subject=Patient/123</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td><code class="highlighter-rouge">subject,modality</code></td>
-      <td><code class="highlighter-rouge">reference</code>,<code class="highlighter-rouge">token</code></td>
+      <td>subject,modality</td>
+      <td>reference,token</td>
       <td><code class="highlighter-rouge">GET [base]/ImagingStudy?subject=Patient/123&amp;modality=CT</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td><code class="highlighter-rouge">subject</code>,<code class="highlighter-rouge">bodysite</code></td>
-      <td><code class="highlighter-rouge">reference</code>,<code class="highlighter-rouge">token</code></td>
+      <td>subject,bodysite</td>
+      <td>reference,token</td>
       <td><code class="highlighter-rouge">GET [base]/ImagingStudy?subject=Patient/123&amp;bodysite=T-15460</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td><code class="highlighter-rouge">subject</code>,<code class="highlighter-rouge">started</code></td>
-      <td><code class="highlighter-rouge">reference</code>,<code class="highlighter-rouge">date</code></td>
+      <td>subject,started</td>
+      <td>reference,date</td>
       <td><code class="highlighter-rouge">GET [base]/ImagingStudy?subject=Patient/123&amp;data=eq2021-06-25</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td><code class="highlighter-rouge">subject</code>,<code class="highlighter-rouge">started</code>,<code class="highlighter-rouge">modality</code>,<code class="highlighter-rouge">bodysite</code></td>
-      <td><code class="highlighter-rouge">reference</code>,<code class="highlighter-rouge">date</code>,<code class="highlighter-rouge">token</code>,<code class="highlighter-rouge">token</code></td>
+      <td>subject,started,modality,bodysite</td>
+      <td>reference,date,token,token</td>
       <td><code class="highlighter-rouge">GET [base]/ImagingStudy?subject=Patient/123&amp;data=eq2021-06-18&amp;modality=CT&amp;bodysite=T-15460</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td><code class="highlighter-rouge">encounter</code></td>
-      <td><code class="highlighter-rouge">reference</code></td>
+      <td>encounter</td>
+      <td>reference</td>
       <td><code class="highlighter-rouge">GET [base]/ImagingStudy?encounter=Encounter/456</code></td>
     </tr>
   </tbody>
@@ -1604,13 +1599,13 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 <h5 id="必須検索パラメータ">必須検索パラメータ</h5>
 
 <p>次の検索パラメータは必須でサポートされなければならない。（SHALL）
-<code class="highlighter-rouge">ImagingStudy</code>リソースでは検索の多様性が求められるため、必須としての検索項目は定義していない。</p>
+ImagingStudyリソースでは検索の多様性が求められるため、必須としての検索項目は定義していない。</p>
 
 <h5 id="推奨検索パラメータ">推奨検索パラメータ</h5>
 
 <p>次の検索パラメータはサポートすることが推奨される。（SHOULD）</p>
 
-<p>1.患者中心での検索：対象患者（= <code class="highlighter-rouge">Patient</code>リソース）を条件とした検索をサポートすることが望ましい。</p>
+<p>1.患者中心での検索：対象患者（= Patientリソース）を条件とした検索をサポートすることが望ましい。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject={reference}
 </code></pre></div></div>
@@ -1620,9 +1615,7 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject=Patient/123
 </code></pre></div></div>
 
-<p><br /></p>
-
-<p>2.モダリティ中心の検索：対象患者（= <code class="highlighter-rouge">Patient</code>リソース）と撮影に使用されたモダリティを条件とした検索をサポートすることが望ましい。</p>
+<p>2.モダリティ中心の検索：対象患者（= Patientリソース）と撮影に使用されたモダリティを条件とした検索をサポートすることが望ましい。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject={reference}&amp;modality={token}
 </code></pre></div></div>
@@ -1631,9 +1624,8 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject=Patient/123&amp;modality=CT
 </code></pre></div></div>
-<p><br /></p>
 
-<p>3.部位中心の検索：対象患者（= <code class="highlighter-rouge">Patient</code>リソース）と撮影の対象となった撮影部位を条件とした検索をサポートすることが望ましい。</p>
+<p>3.部位中心の検索：対象患者（= Patientリソース）と撮影の対象となった撮影部位を条件とした検索をサポートすることが望ましい。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject={reference}&amp;bodysite={token}
 </code></pre></div></div>
@@ -1644,7 +1636,7 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 </code></pre></div></div>
 <p><br /></p>
 
-<p>4.日付中心の検索：対象患者（= <code class="highlighter-rouge">Patient</code>リソース）と撮影の日時を条件とした検索をサポートすることが望ましい。</p>
+<p>4.日付中心の検索：対象患者（= Patientリソース）と撮影の日時を条件とした検索をサポートすることが望ましい。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject={reference}&amp;started={date}
 </code></pre></div></div>
@@ -1654,9 +1646,7 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject=subject=Patient/123&amp;data=eq2021-06-25
 </code></pre></div></div>
 
-<p><br /></p>
-
-<p>5.日付中心の検索：対象患者（= <code class="highlighter-rouge">Patient</code>リソース）と撮影の日時を条件とした検索をサポートすることが望ましい。</p>
+<p>5.日付中心の検索：対象患者（= Patientリソース）と撮影の日時を条件とした検索をサポートすることが望ましい。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject={reference}&amp;started={date}
 </code></pre></div></div>
@@ -1666,9 +1656,7 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject=subject=Patient/123&amp;data=eq2021-06-25
 </code></pre></div></div>
 
-<p><br /></p>
-
-<p>6.複数の条件を組み合わせた検索：対象患者（= <code class="highlighter-rouge">Patient</code>リソース）、撮影の日時、撮影に使用されたモダリティ、撮影の対象となった撮影部位を条件とした検索をサポートすることが望ましい。</p>
+<p>6.複数の条件を組み合わせた検索：対象患者（= Patientリソース）、撮影の日時、撮影に使用されたモダリティ、撮影の対象となった撮影部位を条件とした検索をサポートすることが望ましい。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject={reference}&amp;data={date}&amp;modality={token}&amp;bodysite={token}
 </code></pre></div></div>
@@ -1678,9 +1666,7 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject=Patient/123&amp;data=eq2021-06-18&amp;modality=CT&amp;bodysite=T-15460
 </code></pre></div></div>
 
-<p><br /></p>
-
-<p>7.来院情報中心の検索：来院情報（= <code class="highlighter-rouge">Encounter</code>リソース）を条件とした検索をサポートすることが望ましい。</p>
+<p>7.来院情報中心の検索：来院情報（= Encounterリソース）を条件とした検索をサポートすることが望ましい。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?encounter={reference}
 </code></pre></div></div>
@@ -1699,6 +1685,7 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 <p>このプロファイルではオペレーション定義は行っていない。</p>
 
 <h4 id="サンプル">サンプル</h4>
+
 <ul>
   <li><a href="ImagingStudy-jp-imagingstudy-radiology-example-1.html"><strong>放射線画像検査</strong></a></li>
 </ul>
@@ -1782,7 +1769,7 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Aug 8, 2022 12:51+0000">2022-08-08</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Aug 15, 2022 09:08+0000">2022-08-15</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
