@@ -265,7 +265,7 @@
   <td><i>Status</i></td>
   <td>Active
     
-      ( 2022-08-15 )
+      ( 2022-08-17 )
     </td>
 </tr>
 
@@ -311,16 +311,16 @@
 
 <p>なお、DiagnosticReportリソースは蓄積された結果の表示（例えば過去および現在のレポートの結果一覧の表示）をサポートしていない。連続的に作成された詳細な構造化レポートを完全にサポートすることは現時点ではできておらず、将来のリリースで実現するように計画されている。</p>
 
-<p>また、DiagnosticReportリソースは、FHIRのワークフロー(<a href="http://www.hl7.org/fhir/workflow.html">Workflowを参照</a>）の観点からは、「イベント」リソースの１つである。このリソース（DiagnosticReport）を、<a href="http://www.hl7.org/fhir/workflow.html#event">イベントリソース</a>のワークフローパターンに合わせることは、OrdersやObservation Workgroupが意図するところである。</p>
+<p>また、DiagnosticReportリソースは、FHIRのワークフロー(<a href="http://www.hl7.org/fhir/R4/workflow.html">Workflowを参照</a>）の観点からは、「イベント」リソースの１つである。このリソース（DiagnosticReport）を、<a href="http://www.hl7.org/fhir/R4/workflow.html#event">イベントリソース</a>のワークフローパターンに合わせることは、OrdersやObservation Workgroupが意図するところである。</p>
 
 <h2 id="スコープ">スコープ</h2>
-<p>多くの診断プロセスは、Observation（検査、観察）とDiagnosticReport（検査レポート）を生成する手続きである点に留意する必要がある。多くの場合、Observationを作成するために明示的に手続きの発行を要しないが、診断手順がどのように実行されたかについての詳細な関心がある場合、<a href="http://www.hl7.org/fhir/procedure.html">Procedure</a>リソースが行為を記述するために使用される。</p>
+<p>多くの診断プロセスは、Observation（検査、観察）とDiagnosticReport（検査レポート）を生成する手続きである点に留意する必要がある。多くの場合、Observationを作成するために明示的に手続きの発行を要しないが、診断手順がどのように実行されたかについての詳細な関心がある場合、<a href="http://www.hl7.org/fhir/R4/procedure.html">Procedure</a>リソースが行為を記述するために使用される。</p>
 
-<p><a href="http://www.hl7.org/fhir/observation.html">Observation</a>リソースとは 対照的に、DiagnosticReportリソースには通常、追加の臨床コンテキスト、いくつかの小さな所見のまとめ、画像、画像レポート、テキストおよびコード化された解釈、テンプレート化された診断報告書などが含まれる。検査レポート、病理レポート、および画像レポートは、DiagnosticReportリソースを使用して表す必要がある。Observationリソースは、特定の検査におけるいくつかの小さな所見のまとめを提供するためにDiagnosticReportから参照される。</p>
+<p><a href="http://www.hl7.org/fhir/R4/observation.html">Observation</a>リソースとは 対照的に、DiagnosticReportリソースには通常、追加の臨床コンテキスト、いくつかの小さな所見のまとめ、画像、画像レポート、テキストおよびコード化された解釈、テンプレート化された診断報告書などが含まれる。検査レポート、病理レポート、および画像レポートは、DiagnosticReportリソースを使用して表す必要がある。Observationリソースは、特定の検査におけるいくつかの小さな所見のまとめを提供するためにDiagnosticReportから参照される。</p>
 
-<p>高度に構造化されたレポートがある場合は、データとワークフローをサポートするDiagnosticReportを使用する。診断調査のリクエストに関する詳細は、さまざまな「リクエスト」リソース（<a href="http://www.hl7.org/fhir/servicerequest.html">ServiceRequestなど</a>）に取り込まれ、レポートを臨床ワークフローに接続できるようにする。組織診、剖検などにおいて、少ないワークフローでナラティブに書き起こされるレポートの場合は、<a href="http://www.hl7.org/fhir/composition.html">Compositionリソース</a>の方が適切である。</p>
+<p>高度に構造化されたレポートがある場合は、データとワークフローをサポートするDiagnosticReportを使用する。診断調査のリクエストに関する詳細は、さまざまな「リクエスト」リソース（<a href="http://www.hl7.org/fhir/R4/servicerequest.html">ServiceRequestなど</a>）に取り込まれ、レポートを臨床ワークフローに接続できるようにする。組織診、剖検などにおいて、少ないワークフローでナラティブに書き起こされるレポートの場合は、<a href="http://www.hl7.org/fhir/R4/composition.html">Compositionリソース</a>の方が適切である。</p>
 
-<p>レポートに関連する医用画像や汎用画像、およびキー画像は、DiagnosticReportリソースで参照される。詳細でかつ実際の画像インスタンスは、DiagnosticReport.mediaエレメントを使用して検査レポートで直接参照するか、DiagnosticReport.ImagingStudyエレメントを介して、特定の患者のDICOM画像検査またはDICOMインスタンスのセットで生成されたコンテンツを表す<a href="http://www.hl7.org/fhir/imagingstudy.html">ImagingStudyリソース</a>を間接的に参照することができる。</p>
+<p>レポートに関連する医用画像や汎用画像、およびキー画像は、DiagnosticReportリソースで参照される。詳細でかつ実際の画像インスタンスは、DiagnosticReport.mediaエレメントを使用して検査レポートで直接参照するか、DiagnosticReport.ImagingStudyエレメントを介して、特定の患者のDICOM画像検査またはDICOMインスタンスのセットで生成されたコンテンツを表す<a href="http://www.hl7.org/fhir/R4/imagingstudy.html">ImagingStudyリソース</a>を間接的に参照することができる。</p>
 
 <h2 id="プロファイル定義">プロファイル定義</h2>
 
@@ -1180,7 +1180,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Aug 15, 2022 09:08+0000">2022-08-15</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Aug 17, 2022 12:11+0000">2022-08-17</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
