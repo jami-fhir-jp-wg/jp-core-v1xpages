@@ -199,9 +199,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </ul>
 
 </div>
-<p>FHIR®では<a href="https://www.hl7.org/fhir/json.html#2.6.2">JSON</a>および<a href="https://www.hl7.org/fhir/xml.html">XML</a>いずれにおいてもオブジェクトは空ではならない。リソース内にエレメントが存在している場合、そのエレメントはそのタイプに応じた何らかのプロパティか1つ以上の拡張を持つ必要がある（<a href="https://www.hl7.org/fhir/json.html#:~:text=Objects%20are%20never%20empty">2.6.2 JSON Representation of Resources</a>, <a href="https://www.hl7.org/fhir/xml.html#:~:text=FHIR%20elements%20are%20never%20empty">2.6.1 XML Representation of Resources</a>）。string型の値は空文字列であってはならず、そのプロパティが存在するのであれば、1字以上の文字を含む必要がある（<a href="https://www.hl7.org/fhir/datatypes.html#:~:text=strings%20SHOULD%20always%20contain%20non-whitespace">2.24.0.1 Primitive Types</a>）。</p>
+<p>FHIR®では<a href="https://www.hl7.org/fhir/R4/json.html#2.6.2">JSON</a>および<a href="https://www.hl7.org/fhir/R4/xml.html">XML</a>いずれにおいてもオブジェクトは空ではならない。リソース内にエレメントが存在している場合、そのエレメントはそのタイプに応じた何らかのプロパティか1つ以上の拡張を持つ必要がある（<a href="https://www.hl7.org/fhir/R4/json.html#:~:text=Objects%20are%20never%20empty">2.6.2 JSON Representation of Resources</a>, <a href="https://www.hl7.org/fhir/R4/xml.html#:~:text=FHIR%20elements%20are%20never%20empty">2.6.1 XML Representation of Resources</a>）。string型の値は空文字列であってはならず、そのプロパティが存在するのであれば、1字以上の文字を含む必要がある（<a href="https://www.hl7.org/fhir/R4/datatypes.html#:~:text=strings%20SHOULD%20always%20contain%20non-whitespace">2.24.0.1 Primitive Types</a>）。</p>
 
-<p>データがない場合に、<a href="https://www.hl7.org/fhir/extension-data-absent-reason.html">Data Absent Reason拡張</a>を用いて、データが欠損している理由を表すことができる。</p>
+<p>データがない場合に、<a href="https://www.hl7.org/fhir/R4/extension-data-absent-reason.html">Data Absent Reason拡張</a>を用いて、データが欠損している理由を表すことができる。</p>
 
 <p>JP Core の検索要求するクライアント(Requester)およびサーバ(Responder)は以下の要求を満たすこと <strong>(SHALL)</strong>。</p>
 <h3 id="クライアントrequester">クライアント(Requester)</h3>
@@ -228,7 +228,7 @@ Readインタラクションの応答として、Cardinalityが１以上の 要�
 
 <h4 id="実装ガイドに準拠するクライアントは欠損データであることを宣言した-cardinalityが1以上のデータ要素を含むリソースインスタンスを処理できなければならない-shall">実装ガイドに準拠するクライアントは、欠損データであることを宣言した Cardinalityが1以上のデータ要素を含むリソースインスタンスを処理できなければならない <strong>(SHALL)</strong>。</h4>
 <p><strong>例)</strong>
-Patient.birthDateの値に欠損情報が付与されているリソースを、要求者は処理できなければならない。なお、birthDateはdate型というprimitive typeであり、そのextensionは”_“を先頭につけたプロパティに対して設定される(<a href="https://www.hl7.org/fhir/json.html#primitive">2.6.2.3 JSON representation of primitive elements</a>)。</p>
+Patient.birthDateの値に欠損情報が付与されているリソースを、要求者は処理できなければならない。なお、birthDateはdate型というprimitive typeであり、そのextensionは”_“を先頭につけたプロパティに対して設定される(<a href="https://www.hl7.org/fhir/R4/json.html#primitive">2.6.2.3 JSON representation of primitive elements</a>)。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
     "resourceType " : "Patient",
@@ -273,7 +273,7 @@ Patient.birthDateの値に欠損情報が付与されているリソースを、
 信できなければならない <strong>(SHALL)</strong> 。</p>
 
 <p><strong>例)</strong>
-患者の生年月日が不明なため、Patient.birthDateに値を保持していない場合（Patient.birthDateが必須 MustSupport）、Data Absent Reason 拡張を使用して、欠損理由（＝不明）を示す。なお、birthDateはdate型というprimitive typeであり、そのextensionは”_“を先頭につけたプロパティに対して設定される(<a href="https://www.hl7.org/fhir/json.html#primitive">2.6.2.3 JSON representation of primitive elements</a>)。</p>
+患者の生年月日が不明なため、Patient.birthDateに値を保持していない場合（Patient.birthDateが必須 MustSupport）、Data Absent Reason 拡張を使用して、欠損理由（＝不明）を示す。なお、birthDateはdate型というprimitive typeであり、そのextensionは”_“を先頭につけたプロパティに対して設定される(<a href="https://www.hl7.org/fhir/R4/json.html#primitive">2.6.2.3 JSON representation of primitive elements</a>)。</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
     "resourceType " : "Patient",
@@ -382,7 +382,7 @@ Patient.birthDateの値に欠損情報が付与されているリソースを、
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Aug 17, 2022 02:18+0000">2022-08-17</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Aug 19, 2022 07:58+0000">2022-08-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
