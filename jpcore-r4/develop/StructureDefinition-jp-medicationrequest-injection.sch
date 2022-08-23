@@ -895,62 +895,6 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.extension</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:extension">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
-      <sch:assert test="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])">Must have either extensions or value[x], not both</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.coding</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.coding.extension</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding/f:extension">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
-      <sch:assert test="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])">Must have either extensions or value[x], not both</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.coding.system</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding/f:system">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.coding.version</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding/f:version">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.coding.code</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding/f:code">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.coding.display</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding/f:display">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.coding.userSelected</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding/f:userSelected">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.text</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:text">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:title>f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:dose[x] 1</sch:title>
     <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:dose[x]">
       <sch:assert test="count(f:value) &gt;= 1">value: minimum cardinality of 'value' is 1</sch:assert>

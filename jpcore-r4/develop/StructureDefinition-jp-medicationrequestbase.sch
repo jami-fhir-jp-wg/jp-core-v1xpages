@@ -1039,7 +1039,6 @@
     <sch:title>f:MedicationRequest/f:dosageInstruction/f:doseAndRate</sch:title>
     <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate">
       <sch:assert test="count(f:id) &lt;= 1">id: maximum cardinality of 'id' is 1</sch:assert>
-      <sch:assert test="count(f:type) &gt;= 1">type: minimum cardinality of 'type' is 1</sch:assert>
       <sch:assert test="count(f:type) &lt;= 1">type: maximum cardinality of 'type' is 1</sch:assert>
       <sch:assert test="count(f:dose[x]) &lt;= 1">dose[x]: maximum cardinality of 'dose[x]' is 1</sch:assert>
       <sch:assert test="count(f:rate[x]) &lt;= 1">rate[x]: maximum cardinality of 'rate[x]' is 1</sch:assert>
@@ -1059,84 +1058,8 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type">
-      <sch:assert test="count(f:id) &lt;= 1">id: maximum cardinality of 'id' is 1</sch:assert>
-      <sch:assert test="count(f:text) &lt;= 1">text: maximum cardinality of 'text' is 1</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type</sch:title>
     <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.extension</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:extension">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
-      <sch:assert test="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])">Must have either extensions or value[x], not both</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding">
-      <sch:assert test="count(f:id) &lt;= 1">id: maximum cardinality of 'id' is 1</sch:assert>
-      <sch:assert test="count(f:system) &gt;= 1">system: minimum cardinality of 'system' is 1</sch:assert>
-      <sch:assert test="count(f:system) &lt;= 1">system: maximum cardinality of 'system' is 1</sch:assert>
-      <sch:assert test="count(f:version) &lt;= 1">version: maximum cardinality of 'version' is 1</sch:assert>
-      <sch:assert test="count(f:code) &gt;= 1">code: minimum cardinality of 'code' is 1</sch:assert>
-      <sch:assert test="count(f:code) &lt;= 1">code: maximum cardinality of 'code' is 1</sch:assert>
-      <sch:assert test="count(f:display) &lt;= 1">display: maximum cardinality of 'display' is 1</sch:assert>
-      <sch:assert test="count(f:userSelected) &lt;= 1">userSelected: maximum cardinality of 'userSelected' is 1</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.coding</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.coding.extension</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding/f:extension">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
-      <sch:assert test="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])">Must have either extensions or value[x], not both</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.coding.system</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding/f:system">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.coding.version</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding/f:version">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.coding.code</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding/f:code">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.coding.display</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding/f:display">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.coding.userSelected</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:coding/f:userSelected">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>MedicationRequest.dosageInstruction.doseAndRate.type.text</sch:title>
-    <sch:rule context="f:MedicationRequest/f:dosageInstruction/f:doseAndRate/f:type/f:text">
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
