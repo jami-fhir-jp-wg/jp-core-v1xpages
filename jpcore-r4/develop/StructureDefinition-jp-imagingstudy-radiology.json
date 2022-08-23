@@ -20,7 +20,7 @@
   "name": "JP_ImagingStudy_Radiology",
   "title": "JP Core ImagingStudy Radiology Profile",
   "status": "draft",
-  "date": "2022-08-23T14:14:41+00:00",
+  "date": "2022-08-23T14:37:49+00:00",
   "publisher": "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact": [
     {
@@ -488,7 +488,7 @@
         "path": "ImagingStudy.identifier",
         "short": "Identifiers for the whole study　スタディ全体の識別子",
         "definition": "Identifiers for the ImagingStudy such as DICOM Study Instance UID, and Accession Number.\r\n\r\nDICOMスタディインスタンスUIDやアクセッション番号などのImagingStudyの識別子。",
-        "comment": "See discussion under [Imaging Study Implementation Notes](imagingstudy.html#notes) for encoding of DICOM Study Instance UID. Accession Number should use ACSN Identifier type.\r\n\r\nDICOMスタディインスタンスUIDのエンコードについては、[Imaging Study Implementation Notes]（imagingstudy.html＃notes）の説明を参照。アクセッション番号はACSN識別子タイプを使用する必要がある。\r\n\r\n【JP-Core仕様】Study Instance UIDは必須、その他は任意。",
+        "comment": "See discussion under [Imaging Study Implementation Notes](imagingstudy.html#notes) for encoding of DICOM Study Instance UID. Accession Number should use ACSN Identifier type.\r\n\r\nDICOMスタディインスタンスUIDのエンコードについては、[Imaging Study Implementation Notes]（imagingstudy.html＃notes）の説明を参照。アクセッション番号はACSN識別子タイプを使用する必要がある。\r\n\r\n【JP Core仕様】Study Instance UIDは必須、その他は任意。",
         "requirements": "If one or more series elements are present in the ImagingStudy, then there shall be one DICOM Study UID identifier (see [DICOM PS 3.3 C.7.2](https://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.2.html).\r\nImagingStudyに1つ以上のシリーズ要素が存在する場合、1つのDICOMスタディUID識別子が存在する必要がある（[DICOM PS 3.3 C.7.2]（https://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.2.html）を参照） 。",
         "alias": [
           "StudyInstanceUID",
@@ -542,7 +542,7 @@
         "path": "ImagingStudy.status",
         "short": "registered | available | cancelled | entered-in-error | unknown",
         "definition": "The current state of the ImagingStudy.　\r\nImagingStudyの現在のステータス",
-        "comment": "Unknown does not represent \"other\" - one of the defined statuses must apply.  Unknown is used when the authoring system is not sure what the current status is.\r\n\r\n不明は「その他」を表すものではない。定義されたステータスの1つを適用する必要がある。不明は、オーサリングシステムが現在のステータスを確認できない場合に使用される。\r\n\r\n【JP-Core仕様】リソースの状態。",
+        "comment": "Unknown does not represent \"other\" - one of the defined statuses must apply.  Unknown is used when the authoring system is not sure what the current status is.\r\n\r\n不明は「その他」を表すものではない。定義されたステータスの1つを適用する必要がある。不明は、オーサリングシステムが現在のステータスを確認できない場合に使用される。\r\n\r\n【JP Core仕様】リソースの状態。",
         "min": 1,
         "max": "1",
         "base": {
@@ -2065,7 +2065,7 @@
         "path": "ImagingStudy.series.specimen",
         "short": "Specimen imaged　画像検査をした検体",
         "definition": "The specimen imaged, e.g., for whole slide imaging of a biopsy.\r\n\r\n例えば、生検のスライド全体の画像化のために画像化された標本。",
-        "comment": "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。\r\n\r\n【JP-Core仕様】UIDは別のtagが存在するので、ユーザー側で自由に付与していい番号と思われる。",
+        "comment": "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。\r\n\r\n【JP Core仕様】UIDは別のtagが存在するので、ユーザー側で自由に付与していい番号と思われる。",
         "min": 0,
         "max": "*",
         "base": {
@@ -2150,7 +2150,7 @@
         "path": "ImagingStudy.series.performer",
         "short": "Who performed the series　シリーズの実施者",
         "definition": "Indicates who or what performed the series and how they were involved.\r\n\r\nシリーズを実施し、かかわった人を示す。",
-        "comment": "If the person who performed the series is not known, their Organization may be recorded. A patient, or related person, may be the performer, e.g. for patient-captured images.\r\n\r\nシリーズを行った人がわからない場合は、その組織が記録される場合がある。患者または関係者は、患者自身で取得した画像の場合など、パフォーマーである可能性がある。\r\n\r\n【JP-Core仕様】検査を実施した（画像を取得する操作を行った）人。\r\n\r\n　　(0008,1050)Performing Physician's Name\r\n\r\n　　(0008,1052)Performing Physician Identification Sequence\r\n\r\n　　(0008,1070)Operators' Name\r\n\r\n　　(0008,1072)Operator Identification Sequence",
+        "comment": "If the person who performed the series is not known, their Organization may be recorded. A patient, or related person, may be the performer, e.g. for patient-captured images.\r\n\r\nシリーズを行った人がわからない場合は、その組織が記録される場合がある。患者または関係者は、患者自身で取得した画像の場合など、パフォーマーである可能性がある。\r\n\r\n【JP Core仕様】検査を実施した（画像を取得する操作を行った）人。\r\n\r\n　　(0008,1050)Performing Physician's Name\r\n\r\n　　(0008,1052)Performing Physician Identification Sequence\r\n\r\n　　(0008,1070)Operators' Name\r\n\r\n　　(0008,1072)Operator Identification Sequence",
         "requirements": "The performer is recorded at the series level, since each series in a study may be performed by a different performer, at different times, and using different devices. A series may be performed by multiple performers.",
         "alias": [
           "PerformingPhysicianName",
@@ -2384,7 +2384,7 @@
         "path": "ImagingStudy.series.performer.actor",
         "short": "Who performed the series",
         "definition": "Indicates who or what performed the series.",
-        "comment": "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n【JP-Core仕様】組織または撮影者",
+        "comment": "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n【JP Core仕様】組織または撮影者",
         "min": 1,
         "max": "1",
         "base": {
@@ -2611,7 +2611,7 @@
         "path": "ImagingStudy.series.instance.uid",
         "short": "DICOM SOP Instance UID",
         "definition": "The DICOM SOP Instance UID for this image or other DICOM content.",
-        "comment": "See  [DICOM PS3.3 C.12.1](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.12.html#sect_C.12.1).\r\n\r\n【JP-Core仕様】画像のユニークID。DICOMタグマッピングにある値をそのまま設定。",
+        "comment": "See  [DICOM PS3.3 C.12.1](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.12.html#sect_C.12.1).\r\n\r\n【JP Core仕様】画像のユニークID。DICOMタグマッピングにある値をそのまま設定。",
         "requirements": "DICOM SOP Instance UID.",
         "alias": [
           "SOPInstanceUID"
@@ -2662,7 +2662,7 @@
         "path": "ImagingStudy.series.instance.sopClass",
         "short": "DICOM class type",
         "definition": "DICOM instance  type.",
-        "comment": "Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.\r\n\r\n【JP-Core仕様】SOPクラスUID。DICOMタグマッピングにある値をそのまま設定。",
+        "comment": "Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.\r\n\r\n【JP Core仕様】SOPクラスUID。DICOMタグマッピングにある値をそのまま設定。",
         "alias": [
           "SOPClassUID"
         ],
@@ -2717,7 +2717,7 @@
         "path": "ImagingStudy.series.instance.number",
         "short": "The number of this instance in the series",
         "definition": "The number of instance in the series.",
-        "comment": "32 bit number; for values larger than this, use decimal\r\n\r\n【JP-Core仕様】ユーザー（または装置）が自由に決められる画像ごとの番号。DICOMタグマッピングにある値をそのまま設定。",
+        "comment": "32 bit number; for values larger than this, use decimal\r\n\r\n【JP Core仕様】ユーザー（または装置）が自由に決められる画像ごとの番号。DICOMタグマッピングにある値をそのまま設定。",
         "alias": [
           "InstanceNumber"
         ],
@@ -2767,7 +2767,7 @@
         "path": "ImagingStudy.series.instance.title",
         "short": "Description of instance　インスタンスの記述",
         "definition": "The description of the instance.\r\nインスタンスの記述",
-        "comment": "Particularly for post-acquisition analytic objects, such as SR, presentation states, value mapping, etc.\r\n\r\n【JP-Core仕様】画像に対する説明。DICOMタグマッピングにある値があれば、そのまま設定\r\n\r\n　　(0008,0008)Image Type\r\n\r\n　　(0040,A043)Concept Name Code Sequence\r\n\r\n　　(0008,0104)Code Meaning\r\n\r\n　　(0042,0010)Document Title",
+        "comment": "Particularly for post-acquisition analytic objects, such as SR, presentation states, value mapping, etc.\r\n\r\n【JP Core仕様】画像に対する説明。DICOMタグマッピングにある値があれば、そのまま設定\r\n\r\n　　(0008,0008)Image Type\r\n\r\n　　(0040,A043)Concept Name Code Sequence\r\n\r\n　　(0008,0104)Code Meaning\r\n\r\n　　(0042,0010)Document Title",
         "min": 0,
         "max": "1",
         "base": {
@@ -2818,14 +2818,14 @@
         "path": "ImagingStudy.identifier",
         "short": "Identifiers for the whole study　スタディ全体の識別子",
         "definition": "Identifiers for the ImagingStudy such as DICOM Study Instance UID, and Accession Number.\r\n\r\nDICOMスタディインスタンスUIDやアクセッション番号などのImagingStudyの識別子。",
-        "comment": "See discussion under [Imaging Study Implementation Notes](imagingstudy.html#notes) for encoding of DICOM Study Instance UID. Accession Number should use ACSN Identifier type.\r\n\r\nDICOMスタディインスタンスUIDのエンコードについては、[Imaging Study Implementation Notes]（imagingstudy.html＃notes）の説明を参照。アクセッション番号はACSN識別子タイプを使用する必要がある。\r\n\r\n【JP-Core仕様】Study Instance UIDは必須、その他は任意。",
+        "comment": "See discussion under [Imaging Study Implementation Notes](imagingstudy.html#notes) for encoding of DICOM Study Instance UID. Accession Number should use ACSN Identifier type.\r\n\r\nDICOMスタディインスタンスUIDのエンコードについては、[Imaging Study Implementation Notes]（imagingstudy.html＃notes）の説明を参照。アクセッション番号はACSN識別子タイプを使用する必要がある。\r\n\r\n【JP Core仕様】Study Instance UIDは必須、その他は任意。",
         "requirements": "If one or more series elements are present in the ImagingStudy, then there shall be one DICOM Study UID identifier (see [DICOM PS 3.3 C.7.2](https://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.2.html).\r\nImagingStudyに1つ以上のシリーズ要素が存在する場合、1つのDICOMスタディUID識別子が存在する必要がある（[DICOM PS 3.3 C.7.2]（https://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.2.html）を参照） 。"
       },
       {
         "id": "ImagingStudy.status",
         "path": "ImagingStudy.status",
         "definition": "The current state of the ImagingStudy.　\r\nImagingStudyの現在のステータス",
-        "comment": "Unknown does not represent \"other\" - one of the defined statuses must apply.  Unknown is used when the authoring system is not sure what the current status is.\r\n\r\n不明は「その他」を表すものではない。定義されたステータスの1つを適用する必要がある。不明は、オーサリングシステムが現在のステータスを確認できない場合に使用される。\r\n\r\n【JP-Core仕様】リソースの状態。"
+        "comment": "Unknown does not represent \"other\" - one of the defined statuses must apply.  Unknown is used when the authoring system is not sure what the current status is.\r\n\r\n不明は「その他」を表すものではない。定義されたステータスの1つを適用する必要がある。不明は、オーサリングシステムが現在のステータスを確認できない場合に使用される。\r\n\r\n【JP Core仕様】リソースの状態。"
       },
       {
         "id": "ImagingStudy.modality",
@@ -3077,7 +3077,7 @@
         "path": "ImagingStudy.series.specimen",
         "short": "Specimen imaged　画像検査をした検体",
         "definition": "The specimen imaged, e.g., for whole slide imaging of a biopsy.\r\n\r\n例えば、生検のスライド全体の画像化のために画像化された標本。",
-        "comment": "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。\r\n\r\n【JP-Core仕様】UIDは別のtagが存在するので、ユーザー側で自由に付与していい番号と思われる。"
+        "comment": "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。\r\n\r\n【JP Core仕様】UIDは別のtagが存在するので、ユーザー側で自由に付与していい番号と思われる。"
       },
       {
         "id": "ImagingStudy.series.started",
@@ -3091,12 +3091,12 @@
         "path": "ImagingStudy.series.performer",
         "short": "Who performed the series　シリーズの実施者",
         "definition": "Indicates who or what performed the series and how they were involved.\r\n\r\nシリーズを実施し、かかわった人を示す。",
-        "comment": "If the person who performed the series is not known, their Organization may be recorded. A patient, or related person, may be the performer, e.g. for patient-captured images.\r\n\r\nシリーズを行った人がわからない場合は、その組織が記録される場合がある。患者または関係者は、患者自身で取得した画像の場合など、パフォーマーである可能性がある。\r\n\r\n【JP-Core仕様】検査を実施した（画像を取得する操作を行った）人。\r\n\r\n　　(0008,1050)Performing Physician's Name\r\n\r\n　　(0008,1052)Performing Physician Identification Sequence\r\n\r\n　　(0008,1070)Operators' Name\r\n\r\n　　(0008,1072)Operator Identification Sequence"
+        "comment": "If the person who performed the series is not known, their Organization may be recorded. A patient, or related person, may be the performer, e.g. for patient-captured images.\r\n\r\nシリーズを行った人がわからない場合は、その組織が記録される場合がある。患者または関係者は、患者自身で取得した画像の場合など、パフォーマーである可能性がある。\r\n\r\n【JP Core仕様】検査を実施した（画像を取得する操作を行った）人。\r\n\r\n　　(0008,1050)Performing Physician's Name\r\n\r\n　　(0008,1052)Performing Physician Identification Sequence\r\n\r\n　　(0008,1070)Operators' Name\r\n\r\n　　(0008,1072)Operator Identification Sequence"
       },
       {
         "id": "ImagingStudy.series.performer.actor",
         "path": "ImagingStudy.series.performer.actor",
-        "comment": "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n【JP-Core仕様】組織または撮影者",
+        "comment": "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n【JP Core仕様】組織または撮影者",
         "type": [
           {
             "code": "Reference",
@@ -3122,24 +3122,24 @@
       {
         "id": "ImagingStudy.series.instance.uid",
         "path": "ImagingStudy.series.instance.uid",
-        "comment": "See  [DICOM PS3.3 C.12.1](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.12.html#sect_C.12.1).\r\n\r\n【JP-Core仕様】画像のユニークID。DICOMタグマッピングにある値をそのまま設定。"
+        "comment": "See  [DICOM PS3.3 C.12.1](http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.12.html#sect_C.12.1).\r\n\r\n【JP Core仕様】画像のユニークID。DICOMタグマッピングにある値をそのまま設定。"
       },
       {
         "id": "ImagingStudy.series.instance.sopClass",
         "path": "ImagingStudy.series.instance.sopClass",
-        "comment": "Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.\r\n\r\n【JP-Core仕様】SOPクラスUID。DICOMタグマッピングにある値をそのまま設定。"
+        "comment": "Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.\r\n\r\n【JP Core仕様】SOPクラスUID。DICOMタグマッピングにある値をそのまま設定。"
       },
       {
         "id": "ImagingStudy.series.instance.number",
         "path": "ImagingStudy.series.instance.number",
-        "comment": "32 bit number; for values larger than this, use decimal\r\n\r\n【JP-Core仕様】ユーザー（または装置）が自由に決められる画像ごとの番号。DICOMタグマッピングにある値をそのまま設定。"
+        "comment": "32 bit number; for values larger than this, use decimal\r\n\r\n【JP Core仕様】ユーザー（または装置）が自由に決められる画像ごとの番号。DICOMタグマッピングにある値をそのまま設定。"
       },
       {
         "id": "ImagingStudy.series.instance.title",
         "path": "ImagingStudy.series.instance.title",
         "short": "Description of instance　インスタンスの記述",
         "definition": "The description of the instance.\r\nインスタンスの記述",
-        "comment": "Particularly for post-acquisition analytic objects, such as SR, presentation states, value mapping, etc.\r\n\r\n【JP-Core仕様】画像に対する説明。DICOMタグマッピングにある値があれば、そのまま設定\r\n\r\n　　(0008,0008)Image Type\r\n\r\n　　(0040,A043)Concept Name Code Sequence\r\n\r\n　　(0008,0104)Code Meaning\r\n\r\n　　(0042,0010)Document Title"
+        "comment": "Particularly for post-acquisition analytic objects, such as SR, presentation states, value mapping, etc.\r\n\r\n【JP Core仕様】画像に対する説明。DICOMタグマッピングにある値があれば、そのまま設定\r\n\r\n　　(0008,0008)Image Type\r\n\r\n　　(0040,A043)Concept Name Code Sequence\r\n\r\n　　(0008,0104)Code Meaning\r\n\r\n　　(0042,0010)Document Title"
       }
     ]
   }

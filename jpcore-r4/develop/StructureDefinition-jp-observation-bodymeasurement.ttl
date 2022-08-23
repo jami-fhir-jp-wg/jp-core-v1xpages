@@ -26,7 +26,7 @@
   fhir:StructureDefinition.name [ fhir:value "JP_Observation_BodyMeasurement"];
   fhir:StructureDefinition.title [ fhir:value "JP Core Observation BodyMeasurement Profile"];
   fhir:StructureDefinition.status [ fhir:value "draft"];
-  fhir:StructureDefinition.date [ fhir:value "2022-08-23T14:14:41+00:00"^^xsd:dateTime];
+  fhir:StructureDefinition.date [ fhir:value "2022-08-23T14:37:49+00:00"^^xsd:dateTime];
   fhir:StructureDefinition.publisher [ fhir:value "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -973,7 +973,7 @@
        fhir:ElementDefinition.path [ fhir:value "Observation.subject" ];
        fhir:ElementDefinition.short [ fhir:value "Who and/or what the observation is about　観察対象者" ];
        fhir:ElementDefinition.definition [ fhir:value "The patient, or group of patients, location, or device this observation is about and into whose record the observation is placed. If the actual focus of the observation is different from the subject (or a sample of, part, or region of the subject), the `focus` element or the `code` itself specifies the actual focus of the observation.\r\nこの観察が行われた対象となる患者、または患者のグループ、場所、またはデバイス、あるいはそれらの記録。\r\nもし観察の実際の焦点が対象（または対象のサンプル、一部、または領域）と異なる場合、 `focus`要素または` code`自体が観察の実際の焦点を指し示す。" ];
-       fhir:ElementDefinition.comment [ fhir:value "One would expect this element to be a cardinality of 1..1. The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.\r\n\r\n【JP-Core仕様】患者" ];
+       fhir:ElementDefinition.comment [ fhir:value "One would expect this element to be a cardinality of 1..1. The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.\r\n\r\n【JP Core仕様】患者" ];
        fhir:ElementDefinition.requirements [ fhir:value "Observations have no value if you don't know who or what they're about." ];
        fhir:ElementDefinition.min [ fhir:value "1"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "1" ];
@@ -1086,7 +1086,7 @@
        fhir:ElementDefinition.path [ fhir:value "Observation.encounter" ];
        fhir:ElementDefinition.short [ fhir:value "Healthcare event during which this observation is made　このobservationが行われるヘルスケアイベント" ];
        fhir:ElementDefinition.definition [ fhir:value "The healthcare event  (e.g. a patient and healthcare provider interaction) during which this observation is made.\r\nこのobservationが行われるヘルスケアイベント（患者とヘルスケアプロバイダーの相互作用など）（受診、入院など）。" ];
-       fhir:ElementDefinition.comment [ fhir:value "This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).\r\n\r\n【JP-Core仕様】診察" ];
+       fhir:ElementDefinition.comment [ fhir:value "This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).\r\n\r\n【JP Core仕様】診察" ];
        fhir:ElementDefinition.requirements [ fhir:value "For some observations it may be important to know the link between an observation and a particular encounter." ];
        fhir:ElementDefinition.alias [
          fhir:value "Context";
@@ -1145,7 +1145,7 @@
        fhir:ElementDefinition.path [ fhir:value "Observation.effective[x]" ];
        fhir:ElementDefinition.short [ fhir:value "Clinically relevant time/time-period for observation　臨床的に関連する時刻または時間" ];
        fhir:ElementDefinition.definition [ fhir:value "The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the \"physiologically relevant time\". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.\r\n観測値が関連する時間または期間。レポートの対象が患者である場合、これは通常、処置や検体採取の時刻のいずれかであるが、日付/時刻の出処は不明であり、日付/時刻自体のみのことがある。" ];
-       fhir:ElementDefinition.comment [ fhir:value "At least a date should be present unless this observation is a historical report.  For recording imprecise or \"fuzzy\" times (For example, a blood glucose measurement taken \"after breakfast\") use the [Timing](datatypes.html#timing) datatype which allow the measurement to be tied to regular life events.\r\n\r\n【JP-Core仕様】effectiveDateTime：医療者が確認した日時\r\n\r\neffectivePeriod：医療者が確認した期間" ];
+       fhir:ElementDefinition.comment [ fhir:value "At least a date should be present unless this observation is a historical report.  For recording imprecise or \"fuzzy\" times (For example, a blood glucose measurement taken \"after breakfast\") use the [Timing](datatypes.html#timing) datatype which allow the measurement to be tied to regular life events.\r\n\r\n【JP Core仕様】effectiveDateTime：医療者が確認した日時\r\n\r\neffectivePeriod：医療者が確認した期間" ];
        fhir:ElementDefinition.requirements [ fhir:value "Knowing when an observation was deemed true is important to its relevance as well as determining trends." ];
        fhir:ElementDefinition.alias [
          fhir:value "Occurrence";
@@ -2285,7 +2285,7 @@
        fhir:ElementDefinition.path [ fhir:value "Observation.hasMember" ];
        fhir:ElementDefinition.short [ fhir:value "Related resource that belongs to the Observation group　observationグループに属する関連リソース" ];
        fhir:ElementDefinition.definition [ fhir:value "This observation is a group observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group.\r\nこのobservationは、グループのメンバーとしてターゲットを含むグループobservation（たとえば、一連検査セット、パネル検査、バイタルサイン測定値のセット）である。" ];
-       fhir:ElementDefinition.comment [ fhir:value "When using this element, an observation will typically have either a value or a set of related resources, although both may be present in some cases.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.  Note that a system may calculate results from [QuestionnaireResponse](questionnaireresponse.html)  into a final score and represent the score as an Observation.\r\n\r\n【JP-Core仕様】関連する参照リソースにJP_Observation_BodyMeasurementを追加" ];
+       fhir:ElementDefinition.comment [ fhir:value "When using this element, an observation will typically have either a value or a set of related resources, although both may be present in some cases.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.  Note that a system may calculate results from [QuestionnaireResponse](questionnaireresponse.html)  into a final score and represent the score as an Observation.\r\n\r\n【JP Core仕様】関連する参照リソースにJP_Observation_BodyMeasurementを追加" ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "*" ];
        fhir:ElementDefinition.base [
@@ -2343,7 +2343,7 @@
        fhir:ElementDefinition.path [ fhir:value "Observation.derivedFrom" ];
        fhir:ElementDefinition.short [ fhir:value "Related measurements the observation is made from　observation がつくりゃれる元の関連する測定" ];
        fhir:ElementDefinition.definition [ fhir:value "The target resource that represents a measurement from which this observation value is derived. For example, a calculated anion gap or a fetal measurement based on an ultrasound image.\r\nこのobservation が導出される元の測定値を表すターゲットリソース。たとえば、超音波画像に基づいて計算されたアニオンギャップまたは胎児の測定値の場合、この要素には、元となった超音波画像検査結果への参照を設定する。" ];
-       fhir:ElementDefinition.comment [ fhir:value "All the reference choices that are listed in this element can represent clinical observations and other measurements that may be the source for a derived value.  The most common reference will be another Observation.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.\r\n\r\n【JP-Core仕様】導出元の参照リソースにJP_Observation_BodyMeasurementを追加" ];
+       fhir:ElementDefinition.comment [ fhir:value "All the reference choices that are listed in this element can represent clinical observations and other measurements that may be the source for a derived value.  The most common reference will be another Observation.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.\r\n\r\n【JP Core仕様】導出元の参照リソースにJP_Observation_BodyMeasurementを追加" ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "*" ];
        fhir:ElementDefinition.base [
@@ -2944,7 +2944,7 @@
        fhir:index 3;
        fhir:Element.id [ fhir:value "Observation.subject" ];
        fhir:ElementDefinition.path [ fhir:value "Observation.subject" ];
-       fhir:ElementDefinition.comment [ fhir:value "One would expect this element to be a cardinality of 1..1. The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.\r\n\r\n【JP-Core仕様】患者" ];
+       fhir:ElementDefinition.comment [ fhir:value "One would expect this element to be a cardinality of 1..1. The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.\r\n\r\n【JP Core仕様】患者" ];
        fhir:ElementDefinition.min [ fhir:value "1"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.type [
          fhir:index 0;
@@ -2959,12 +2959,12 @@
        fhir:index 4;
        fhir:Element.id [ fhir:value "Observation.encounter" ];
        fhir:ElementDefinition.path [ fhir:value "Observation.encounter" ];
-       fhir:ElementDefinition.comment [ fhir:value "This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).\r\n\r\n【JP-Core仕様】診察" ]
+       fhir:ElementDefinition.comment [ fhir:value "This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).\r\n\r\n【JP Core仕様】診察" ]
      ], [
        fhir:index 5;
        fhir:Element.id [ fhir:value "Observation.effective[x]" ];
        fhir:ElementDefinition.path [ fhir:value "Observation.effective[x]" ];
-       fhir:ElementDefinition.comment [ fhir:value "At least a date should be present unless this observation is a historical report.  For recording imprecise or \"fuzzy\" times (For example, a blood glucose measurement taken \"after breakfast\") use the [Timing](datatypes.html#timing) datatype which allow the measurement to be tied to regular life events.\r\n\r\n【JP-Core仕様】effectiveDateTime：医療者が確認した日時\r\n\r\neffectivePeriod：医療者が確認した期間" ];
+       fhir:ElementDefinition.comment [ fhir:value "At least a date should be present unless this observation is a historical report.  For recording imprecise or \"fuzzy\" times (For example, a blood glucose measurement taken \"after breakfast\") use the [Timing](datatypes.html#timing) datatype which allow the measurement to be tied to regular life events.\r\n\r\n【JP Core仕様】effectiveDateTime：医療者が確認した日時\r\n\r\neffectivePeriod：医療者が確認した期間" ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.type.code [ fhir:value "dateTime" ]
@@ -2976,7 +2976,7 @@
        fhir:index 6;
        fhir:Element.id [ fhir:value "Observation.hasMember" ];
        fhir:ElementDefinition.path [ fhir:value "Observation.hasMember" ];
-       fhir:ElementDefinition.comment [ fhir:value "When using this element, an observation will typically have either a value or a set of related resources, although both may be present in some cases.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.  Note that a system may calculate results from [QuestionnaireResponse](questionnaireresponse.html)  into a final score and represent the score as an Observation.\r\n\r\n【JP-Core仕様】関連する参照リソースにJP_Observation_BodyMeasurementを追加" ];
+       fhir:ElementDefinition.comment [ fhir:value "When using this element, an observation will typically have either a value or a set of related resources, although both may be present in some cases.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.  Note that a system may calculate results from [QuestionnaireResponse](questionnaireresponse.html)  into a final score and represent the score as an Observation.\r\n\r\n【JP Core仕様】関連する参照リソースにJP_Observation_BodyMeasurementを追加" ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.type.code [ fhir:value "Reference" ];
@@ -3002,7 +3002,7 @@
        fhir:index 7;
        fhir:Element.id [ fhir:value "Observation.derivedFrom" ];
        fhir:ElementDefinition.path [ fhir:value "Observation.derivedFrom" ];
-       fhir:ElementDefinition.comment [ fhir:value "All the reference choices that are listed in this element can represent clinical observations and other measurements that may be the source for a derived value.  The most common reference will be another Observation.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.\r\n\r\n【JP-Core仕様】導出元の参照リソースにJP_Observation_BodyMeasurementを追加" ];
+       fhir:ElementDefinition.comment [ fhir:value "All the reference choices that are listed in this element can represent clinical observations and other measurements that may be the source for a derived value.  The most common reference will be another Observation.  For a discussion on the ways Observations can assembled in groups together, see [Notes](observation.html#obsgrouping) below.\r\n\r\n【JP Core仕様】導出元の参照リソースにJP_Observation_BodyMeasurementを追加" ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.type.code [ fhir:value "Reference" ];
