@@ -74,11 +74,11 @@ observationの対象物を記述する。 observation の名前で呼ばれる�
 
 【JP-Core仕様】所見の有無を表すコード（固定値）","Knowing what kind of observation is being made is essential to understanding the observation.","","","<valueCodeableConcept xmlns=""http://hl7.org/fhir"">
   <coding>
-    <system value=""http://jpfhir.jp/fhir/Common/CodeSystem/JP_PhysicalExamCodes_CS""/>
+    <system value=""http://jpfhir.jp/fhir/Common/CodeSystem/JP_PhysicalExamCode_CS""/>
     <code value=""physical-findings""/>
     <display value=""Physical Findings""/>
   </coding>
-</valueCodeableConcept>","","","","",,"required","","http://jpfhir.jp/fhir/Common/ValueSet/JP_PhysicalExamCodes_VS","",,,,"Observation.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+</valueCodeableConcept>","","","","",,"required","","http://jpfhir.jp/fhir/Common/ValueSet/JP_PhysicalExamCode_VS","",,,,"Observation.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.code","< 363787002 |Observable entity| OR < 386053000 |Evaluation procedure|","OBX-3","code","FiveWs.what[x]","116680003 |Is a|"
 "Observation.subject","Observation.subject","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient]]}
 ","Who and/or what the observation is about　観察対象者","The patient, or group of patients, location, or device this observation is about and into whose record the observation is placed. If the actual focus of the observation is different from the subject (or a sample of, part, or region of the subject), the `focus` element or the `code` itself specifies the actual focus of the observation.
@@ -241,11 +241,11 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
 【JP-Core仕様】具体的な所見を表すコード（固定値）","Knowing what kind of observation is being made is essential to understanding the observation.","","","<valueCodeableConcept xmlns=""http://hl7.org/fhir"">
   <coding>
-    <system value=""http://jpfhir.jp/fhir/Common/CodeSystem/JP_PhysicalExamCodes_CS""/>
+    <system value=""http://jpfhir.jp/fhir/Common/CodeSystem/JP_PhysicalExamCode_CS""/>
     <code value=""detailed-physical-findings""/>
     <display value=""Detailed Physical Findings""/>
   </coding>
-</valueCodeableConcept>","","","","",,"required","","http://jpfhir.jp/fhir/Common/ValueSet/JP_PhysicalExamCodes_VS","",,,,"Observation.component.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+</valueCodeableConcept>","","","","",,"required","","http://jpfhir.jp/fhir/Common/ValueSet/JP_PhysicalExamCode_VS","",,,,"Observation.component.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","< 363787002 |Observable entity| OR < 386053000 |Evaluation procedure|","OBX-3","code","FiveWs.what[x]"
 "Observation.component.value[x]","Observation.component.value[x]","","","",0,1,"","","Y","CodeableConcept {[]} {[]}
 string {[]} {[]}","Actual component result","The information determined as a result of making the observation, if the information has a simple value.","Used when observation has a set of component observations. An observation may have both a value (e.g. an  Apgar score)  and component observations (the observations from which the Apgar score was derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](http://hl7.org/fhir/R4/observation.html#notes) below.","An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.","","","","","","","",,,,,"",,,,"Observation.component.value[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
