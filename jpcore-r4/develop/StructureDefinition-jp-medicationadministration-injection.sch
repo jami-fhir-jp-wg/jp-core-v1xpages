@@ -434,6 +434,43 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
+    <sch:title>MedicationAdministration.dosage.dose.extension</sch:title>
+    <sch:rule context="f:MedicationAdministration/f:dosage/f:dose/f:extension">
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
+      <sch:assert test="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])">Must have either extensions or value[x], not both</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>MedicationAdministration.dosage.dose.value</sch:title>
+    <sch:rule context="f:MedicationAdministration/f:dosage/f:dose/f:value">
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>MedicationAdministration.dosage.dose.comparator</sch:title>
+    <sch:rule context="f:MedicationAdministration/f:dosage/f:dose/f:comparator">
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>MedicationAdministration.dosage.dose.unit</sch:title>
+    <sch:rule context="f:MedicationAdministration/f:dosage/f:dose/f:unit">
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>MedicationAdministration.dosage.dose.system</sch:title>
+    <sch:rule context="f:MedicationAdministration/f:dosage/f:dose/f:system">
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>MedicationAdministration.dosage.dose.code</sch:title>
+    <sch:rule context="f:MedicationAdministration/f:dosage/f:dose/f:code">
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
     <sch:title>MedicationAdministration.dosage.rate[x] 1</sch:title>
     <sch:rule context="f:MedicationAdministration/f:dosage/f:rate[x]">
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
