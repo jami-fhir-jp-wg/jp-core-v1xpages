@@ -11607,6 +11607,1317 @@
         ]
       }
     },
+    "/Immunization": {
+      "summary": "Manager for resources of type Immunization",
+      "description": "The Manager for resources of type Immunization: provides services to manage the collection of all the Immunization instances",
+      "get": {
+        "summary": "Search all resources of type Immunization based on a set of criteria",
+        "operationId": "searchImmunization",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/Bundle.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "identifier",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): External ids for this item\r\n* [CarePlan](careplan.html): External Ids for this plan\r\n* [CareTeam](careteam.html): External Ids for this team\r\n* [Composition](composition.html): Version-independent identifier for the Composition\r\n* [Condition](condition.html): A unique identifier of the condition record\r\n* [Consent](consent.html): Identifier for this record (external references)\r\n* [DetectedIssue](detectedissue.html): Unique id for the detected issue\r\n* [DeviceRequest](devicerequest.html): Business identifier for request/order\r\n* [DiagnosticReport](diagnosticreport.html): An identifier for the report\r\n* [DocumentManifest](documentmanifest.html): Unique Identifier for the set of documents\r\n* [DocumentReference](documentreference.html): Master Version Specific Identifier\r\n* [Encounter](encounter.html): Identifier(s) by which this encounter is known\r\n* [EpisodeOfCare](episodeofcare.html): Business Identifier(s) relevant for this EpisodeOfCare\r\n* [FamilyMemberHistory](familymemberhistory.html): A search by a record identifier\r\n* [Goal](goal.html): External Ids for this goal\r\n* [ImagingStudy](imagingstudy.html): Identifiers for the Study, such as DICOM Study Instance UID and Accession number\r\n* [Immunization](immunization.html): Business identifier\r\n* [List](list.html): Business identifier\r\n* [MedicationAdministration](medicationadministration.html): Return administrations with this external identifier\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses with this external identifier\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions with this external identifier\r\n* [MedicationStatement](medicationstatement.html): Return statements with this external identifier\r\n* [NutritionOrder](nutritionorder.html): Return nutrition orders with this external identifier\r\n* [Observation](observation.html): The unique id for a particular observation\r\n* [Procedure](procedure.html): A unique identifier for a procedure\r\n* [RiskAssessment](riskassessment.html): Unique identifier for the assessment\r\n* [ServiceRequest](servicerequest.html): Identifiers assigned to this order\r\n* [SupplyDelivery](supplydelivery.html): External identifier\r\n* [SupplyRequest](supplyrequest.html): Business Identifier for SupplyRequest\r\n* [VisionPrescription](visionprescription.html): Return prescriptions with this external identifier\r\n"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "pattern": "([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            },
+            "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Date first version of the resource instance was recorded\r\n* [CarePlan](careplan.html): Time period plan covers\r\n* [CareTeam](careteam.html): Time period team covers\r\n* [ClinicalImpression](clinicalimpression.html): When the assessment was documented\r\n* [Composition](composition.html): Composition editing time\r\n* [Consent](consent.html): When this Consent was created or indexed\r\n* [DiagnosticReport](diagnosticreport.html): The clinically relevant time of the report\r\n* [Encounter](encounter.html): A date within the period the Encounter lasted\r\n* [EpisodeOfCare](episodeofcare.html): The provided date search value falls within the episode of care\u0027s period\r\n* [FamilyMemberHistory](familymemberhistory.html): When history was recorded or last updated\r\n* [Flag](flag.html): Time period when flag is active\r\n* [Immunization](immunization.html): Vaccination  (non)-Administration Date\r\n* [List](list.html): When the list was prepared\r\n* [Observation](observation.html): Obtained date/time. If the obtained element is a period, a date that falls in the period\r\n* [Procedure](procedure.html): When the procedure was performed\r\n* [RiskAssessment](riskassessment.html): When was assessment made?\r\n* [SupplyRequest](supplyrequest.html): When the request was made\r\n"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create a new resource",
+        "operationId": "createImmunization",
+        "requestBody": {
+          "description": "The new state of the resource",
+          "required": true,
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Immunization"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/Immunization.xsd"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned after being updated",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Immunization"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/Immunization.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      }
+    },
+    "/Immunization/{rid}": {
+      "summary": "Read/Write/etc resource instance of type Immunization",
+      "description": "Access to services to manage the state of a single resource of type Immunization",
+      "get": {
+        "summary": "Read the current state of the resource",
+        "operationId": "readImmunization",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Immunization"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/Immunization.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update the current state of the resource",
+        "operationId": "updateImmunization",
+        "requestBody": {
+          "description": "The new state of the resource",
+          "required": true,
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Immunization"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/Immunization.xsd"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned after being updated",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Immunization"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/Immunization.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Change the current state of the resource by providing a patch - a series of change commands",
+        "operationId": "patchImmunization",
+        "requestBody": {
+          "description": "The new state of the resource",
+          "required": true,
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Immunization"
+              }
+            },
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Parameters"
+              }
+            },
+            "application/xml-patch+xml": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/Immunization.xsd"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/Parameters.xsd"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned after being patched",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Immunization"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/Immunization.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete the resource so that it no exists (no read, search etc)",
+        "operationId": "deleteImmunization",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "If the resource is deleted - no content is returned",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          }
+        ]
+      }
+    },
+    "/Immunization/{rid}/_history": {
+      "summary": "Read past versions of resource instance of type Immunization",
+      "description": "Access to previous versions of a single resource of type Immunization",
+      "get": {
+        "summary": "Read the past states of the resource",
+        "operationId": "histinstImmunization",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resources being returned",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/Bundle.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "_since",
+            "in": "query",
+            "description": "Only include resource versions that were created at or after the given instant in time",
+            "schema": {
+              "type": "string",
+              "pattern": "([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            }
+          },
+          {
+            "name": "_at",
+            "in": "query",
+            "description": "Only include resource versions that were current at some point during the time period specified in the date time value (see Search notes on date searching)",
+            "schema": {
+              "type": "string",
+              "pattern": "([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            }
+          },
+          {
+            "name": "_list",
+            "in": "query",
+            "description": "Only include resource versions that are referenced in the specified list (current list references are allowed)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/Immunization/{rid}/_history/{hid}": {
+      "summary": "Read a past version of resource instance of type Immunization",
+      "description": "Access a to specified previous version of a single resource of type Immunization",
+      "get": {
+        "summary": "Read a past state of the resource",
+        "operationId": "vreadImmunization",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag for that version",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Immunization"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/Immunization.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/hid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      }
+    },
+    "/Immunization/_history": {
+      "summary": "Read past versions of resources of type Immunization",
+      "description": "Access to previous versions of resourcez of type Immunization",
+      "get": {
+        "summary": "Read the past states of the resource",
+        "operationId": "histtypeImmunization",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resources being returned",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/Bundle.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "_since",
+            "in": "query",
+            "description": "Only include resource versions that were created at or after the given instant in time",
+            "schema": {
+              "type": "string",
+              "pattern": "([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            }
+          },
+          {
+            "name": "_at",
+            "in": "query",
+            "description": "Only include resource versions that were current at some point during the time period specified in the date time value (see Search notes on date searching)",
+            "schema": {
+              "type": "string",
+              "pattern": "([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            }
+          },
+          {
+            "name": "_list",
+            "in": "query",
+            "description": "Only include resource versions that are referenced in the specified list (current list references are allowed)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/FamilyMemberHistory": {
+      "summary": "Manager for resources of type FamilyMemberHistory",
+      "description": "The Manager for resources of type FamilyMemberHistory: provides services to manage the collection of all the FamilyMemberHistory instances",
+      "get": {
+        "summary": "Search all resources of type FamilyMemberHistory based on a set of criteria",
+        "operationId": "searchFamilyMemberHistory",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/Bundle.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "identifier",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): External ids for this item\r\n* [CarePlan](careplan.html): External Ids for this plan\r\n* [CareTeam](careteam.html): External Ids for this team\r\n* [Composition](composition.html): Version-independent identifier for the Composition\r\n* [Condition](condition.html): A unique identifier of the condition record\r\n* [Consent](consent.html): Identifier for this record (external references)\r\n* [DetectedIssue](detectedissue.html): Unique id for the detected issue\r\n* [DeviceRequest](devicerequest.html): Business identifier for request/order\r\n* [DiagnosticReport](diagnosticreport.html): An identifier for the report\r\n* [DocumentManifest](documentmanifest.html): Unique Identifier for the set of documents\r\n* [DocumentReference](documentreference.html): Master Version Specific Identifier\r\n* [Encounter](encounter.html): Identifier(s) by which this encounter is known\r\n* [EpisodeOfCare](episodeofcare.html): Business Identifier(s) relevant for this EpisodeOfCare\r\n* [FamilyMemberHistory](familymemberhistory.html): A search by a record identifier\r\n* [Goal](goal.html): External Ids for this goal\r\n* [ImagingStudy](imagingstudy.html): Identifiers for the Study, such as DICOM Study Instance UID and Accession number\r\n* [Immunization](immunization.html): Business identifier\r\n* [List](list.html): Business identifier\r\n* [MedicationAdministration](medicationadministration.html): Return administrations with this external identifier\r\n* [MedicationDispense](medicationdispense.html): Returns dispenses with this external identifier\r\n* [MedicationRequest](medicationrequest.html): Return prescriptions with this external identifier\r\n* [MedicationStatement](medicationstatement.html): Return statements with this external identifier\r\n* [NutritionOrder](nutritionorder.html): Return nutrition orders with this external identifier\r\n* [Observation](observation.html): The unique id for a particular observation\r\n* [Procedure](procedure.html): A unique identifier for a procedure\r\n* [RiskAssessment](riskassessment.html): Unique identifier for the assessment\r\n* [ServiceRequest](servicerequest.html): Identifiers assigned to this order\r\n* [SupplyDelivery](supplydelivery.html): External identifier\r\n* [SupplyRequest](supplyrequest.html): Business Identifier for SupplyRequest\r\n* [VisionPrescription](visionprescription.html): Return prescriptions with this external identifier\r\n"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Multiple Resources: \r\n\r\n* [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for\r\n* [CarePlan](careplan.html): Who the care plan is for\r\n* [CareTeam](careteam.html): Who care team is for\r\n* [ClinicalImpression](clinicalimpression.html): Patient or group assessed\r\n* [Composition](composition.html): Who and/or what the composition is about\r\n* [Condition](condition.html): Who has the condition?\r\n* [Consent](consent.html): Who the consent applies to\r\n* [DetectedIssue](detectedissue.html): Associated patient\r\n* [DeviceRequest](devicerequest.html): Individual the service is ordered for\r\n* [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient\r\n* [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient\r\n* [DocumentManifest](documentmanifest.html): The subject of the set of documents\r\n* [DocumentReference](documentreference.html): Who/what is the subject of the document\r\n* [Encounter](encounter.html): The patient or group present at the encounter\r\n* [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care\r\n* [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for\r\n* [Flag](flag.html): The identity of a subject to list flags for\r\n* [Goal](goal.html): Who this goal is intended for\r\n* [ImagingStudy](imagingstudy.html): Who the study is about\r\n* [Immunization](immunization.html): The patient for the vaccination record\r\n* [List](list.html): If all resources have the same subject\r\n* [MedicationAdministration](medicationadministration.html): The identity of a patient to list administrations  for\r\n* [MedicationDispense](medicationdispense.html): The identity of a patient to list dispenses  for\r\n* [MedicationRequest](medicationrequest.html): Returns prescriptions for a specific patient\r\n* [MedicationStatement](medicationstatement.html): Returns statements for a specific patient.\r\n* [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement\r\n* [Observation](observation.html): The subject that the observation is about (if patient)\r\n* [Procedure](procedure.html): Search by subject - a patient\r\n* [RiskAssessment](riskassessment.html): Who/what does assessment apply to?\r\n* [ServiceRequest](servicerequest.html): Search by subject - a patient\r\n* [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied\r\n* [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for\r\n"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "partial | completed | entered-in-error | health-unknown"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create a new resource",
+        "operationId": "createFamilyMemberHistory",
+        "requestBody": {
+          "description": "The new state of the resource",
+          "required": true,
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/FamilyMemberHistory"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/FamilyMemberHistory.xsd"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned after being updated",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/FamilyMemberHistory"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/FamilyMemberHistory.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      }
+    },
+    "/FamilyMemberHistory/{rid}": {
+      "summary": "Read/Write/etc resource instance of type FamilyMemberHistory",
+      "description": "Access to services to manage the state of a single resource of type FamilyMemberHistory",
+      "get": {
+        "summary": "Read the current state of the resource",
+        "operationId": "readFamilyMemberHistory",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/FamilyMemberHistory"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/FamilyMemberHistory.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update the current state of the resource",
+        "operationId": "updateFamilyMemberHistory",
+        "requestBody": {
+          "description": "The new state of the resource",
+          "required": true,
+          "content": {
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/FamilyMemberHistory"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/FamilyMemberHistory.xsd"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned after being updated",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/FamilyMemberHistory"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/FamilyMemberHistory.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Change the current state of the resource by providing a patch - a series of change commands",
+        "operationId": "patchFamilyMemberHistory",
+        "requestBody": {
+          "description": "The new state of the resource",
+          "required": true,
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/FamilyMemberHistory"
+              }
+            },
+            "application/fhir+json": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Parameters"
+              }
+            },
+            "application/xml-patch+xml": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/FamilyMemberHistory.xsd"
+              }
+            },
+            "application/fhir+xml": {
+              "schema": {
+                "$ref": "https://hl7.org/fhir/R4/Parameters.xsd"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned after being patched",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/FamilyMemberHistory"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/FamilyMemberHistory.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete the resource so that it no exists (no read, search etc)",
+        "operationId": "deleteFamilyMemberHistory",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "If the resource is deleted - no content is returned",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          }
+        ]
+      }
+    },
+    "/FamilyMemberHistory/{rid}/_history": {
+      "summary": "Read past versions of resource instance of type FamilyMemberHistory",
+      "description": "Access to previous versions of a single resource of type FamilyMemberHistory",
+      "get": {
+        "summary": "Read the past states of the resource",
+        "operationId": "histinstFamilyMemberHistory",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resources being returned",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/Bundle.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "_since",
+            "in": "query",
+            "description": "Only include resource versions that were created at or after the given instant in time",
+            "schema": {
+              "type": "string",
+              "pattern": "([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            }
+          },
+          {
+            "name": "_at",
+            "in": "query",
+            "description": "Only include resource versions that were current at some point during the time period specified in the date time value (see Search notes on date searching)",
+            "schema": {
+              "type": "string",
+              "pattern": "([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            }
+          },
+          {
+            "name": "_list",
+            "in": "query",
+            "description": "Only include resource versions that are referenced in the specified list (current list references are allowed)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/FamilyMemberHistory/{rid}/_history/{hid}": {
+      "summary": "Read a past version of resource instance of type FamilyMemberHistory",
+      "description": "Access a to specified previous version of a single resource of type FamilyMemberHistory",
+      "get": {
+        "summary": "Read a past state of the resource",
+        "operationId": "vreadFamilyMemberHistory",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag for that version",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/FamilyMemberHistory"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/FamilyMemberHistory.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/hid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      }
+    },
+    "/FamilyMemberHistory/_history": {
+      "summary": "Read past versions of resources of type FamilyMemberHistory",
+      "description": "Access to previous versions of resourcez of type FamilyMemberHistory",
+      "get": {
+        "summary": "Read the past states of the resource",
+        "operationId": "histtypeFamilyMemberHistory",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/OperationOutcome.xsd"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resources being returned",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Bundle"
+                }
+              },
+              "application/fhir+xml": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/Bundle.xsd"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "_since",
+            "in": "query",
+            "description": "Only include resource versions that were created at or after the given instant in time",
+            "schema": {
+              "type": "string",
+              "pattern": "([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            }
+          },
+          {
+            "name": "_at",
+            "in": "query",
+            "description": "Only include resource versions that were current at some point during the time period specified in the date time value (see Search notes on date searching)",
+            "schema": {
+              "type": "string",
+              "pattern": "([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            }
+          },
+          {
+            "name": "_list",
+            "in": "query",
+            "description": "Only include resource versions that are referenced in the specified list (current list references are allowed)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/_history": {
       "summary": "Read a past version of resource instance of all types",
       "description": "Access a previous versions of all types",
