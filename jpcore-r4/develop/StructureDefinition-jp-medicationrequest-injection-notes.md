@@ -239,9 +239,9 @@ HTTP/1.1 200 OK
       "resource": {
         "resourceType": "MedicationRequest",
 
-　　　　　・・・
+          ・・・
 
-　　　 },
+       },
     }
   ]
 }  
@@ -834,3 +834,5 @@ HL7 FHIRでは、注射箋の中で同一の用法を持つ剤グループ(RP)�
 1. Mike Henderson, 日本HL7協会監修、「HL7メッセージ交換」、第2版、インナービジョン社、2013年
 1. 一般社団法人医療情報システム開発センター, 医薬品HOT コードマスター, [http://www2.medis.or.jp/hcode/](http://www2.medis.or.jp/hcode/)
 1. 日本医療情報学会、SS-MIX2仕様書・ガイドライン, [http://www.jami.jp/jamistd/ssmix2.php](http://www.jami.jp/jamistd/ssmix2.php)
+
+{% include markdown-link-references.md %}
