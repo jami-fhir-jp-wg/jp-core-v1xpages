@@ -12,7 +12,6 @@
   <sch:pattern>
     <sch:title>f:DiagnosticReport</sch:title>
     <sch:rule context="f:DiagnosticReport">
-      <sch:assert test="count(f:category) &gt;= 1">category: minimum cardinality of 'category' is 1</sch:assert>
       <sch:assert test="count(f:effective[x]) &gt;= 1">effective[x]: minimum cardinality of 'effective[x]' is 1</sch:assert>
     </sch:rule>
   </sch:pattern>
@@ -85,6 +84,7 @@
   <sch:pattern>
     <sch:title>DiagnosticReport.category</sch:title>
     <sch:rule context="f:DiagnosticReport/f:category">
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
