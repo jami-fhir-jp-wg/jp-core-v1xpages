@@ -27,7 +27,7 @@
   <name value="JP_MedicationDosage_Injection"/>
   <title value="JP Core MedicationDosage Prescription Profile"/>
   <status value="draft"/>
-  <date value="2022-09-07T11:02:51+00:00"/>
+  <date value="2022-09-07T12:57:45+00:00"/>
   <publisher value="FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"/>
   <contact>
     <name value="FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"/>
@@ -899,9 +899,9 @@
     <element id="Dosage.timing.repeat.bounds[x]:boundsRange">
       <path value="Dosage.timing.repeat.bounds[x]"/>
       <sliceName value="boundsRange"/>
-      <short value="Set of values bounded by low and high"/>
-      <definition value="A set of ordered Quantities defined by a low and high limit."/>
-      <comment value="The stated low and high value are assumed to have arbitrarily high precision when it comes to determining which values are in the range. I.e. 1.99 is not in the range 2 -&gt; 3."/>
+      <short value="薬剤の単位指定された上限下限量"/>
+      <definition value="薬剤の単位指定された上限下限量"/>
+      <comment value="薬剤の上限量、下限量の範囲を持っている。単位指定された数量を割り当てている。"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1437,7 +1437,7 @@
     <element id="Dosage.asNeeded[x]">
       <path value="Dosage.asNeeded[x]"/>
       <short value="「頓用」指示"/>
-      <definition value="JP Coreでは頓用型の用法を指定する場合に”true”を指定し、そのコードを指定する場合は用法コードとして指定する。&#xD;&#xA;Medication(薬剤)が必要なときに指定された量とスケジュールのみで内服するか（Booleanで選択される）、内服する前提条件(CodeableConcept)を示している。"/>
+      <definition value="【JP Core仕様】頓用型の用法を指定する場合に”true”を指定し、そのコードを指定する場合は用法コードとして指定する。&#xD;&#xA;Medication(薬剤)が必要なときに指定された量とスケジュールのみで投薬するか（Booleanで選択される）、投薬する前提条件はTiming.Code(CodeableConcept)を示している。"/>
       <comment value="Can express &quot;as needed&quot; without a reason by setting the Boolean = True.  In this case the CodeableConcept is not populated.  Or you can express &quot;as needed&quot; with a reason by including the CodeableConcept.  In this case the Boolean is assumed to be True.  If you set the Boolean to False, then the dose is given according to the schedule and is not &quot;prn&quot; or &quot;as needed&quot;."/>
       <min value="0"/>
       <max value="1"/>
@@ -2580,9 +2580,9 @@
     <element id="Dosage.doseAndRate.dose[x]:doseRange">
       <path value="Dosage.doseAndRate.dose[x]"/>
       <sliceName value="doseRange"/>
-      <short value="Set of values bounded by low and high"/>
-      <definition value="A set of ordered Quantities defined by a low and high limit."/>
-      <comment value="The stated low and high value are assumed to have arbitrarily high precision when it comes to determining which values are in the range. I.e. 1.99 is not in the range 2 -&gt; 3."/>
+      <short value="薬剤の単位指定された上限下限量"/>
+      <definition value="薬剤の単位指定された上限下限量"/>
+      <comment value="薬剤の上限量、下限量の範囲を持っている。単位指定された数量を割り当てている。"/>
       <requirements value="The amount of therapeutic or other substance given at one administration event."/>
       <min value="0"/>
       <max value="1"/>
@@ -2629,9 +2629,9 @@
     <element id="Dosage.doseAndRate.dose[x]:doseQuantity">
       <path value="Dosage.doseAndRate.dose[x]"/>
       <sliceName value="doseQuantity"/>
-      <short value="薬剤に関する数量と単位を定めたデータイプ"/>
-      <definition value="薬剤に関する数量と単位を定めたデータイプ"/>
-      <comment value="薬剤に関する数量と単位を定めている。【JP Core仕様】単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)"/>
+      <short value="薬剤に関する数量と単位を定めた簡易データイプ"/>
+      <definition value="薬剤に関する数量と単位を定めた簡易データイプ"/>
+      <comment value="薬剤に関する簡易的な数量と単位を定めている。ValueおよびCodeを必須とし、comparatorは記述不可。単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)"/>
       <requirements value="The amount of therapeutic or other substance given at one administration event."/>
       <min value="0"/>
       <max value="1"/>
@@ -2730,7 +2730,7 @@
       <path value="Dosage.doseAndRate.rate[x]"/>
       <sliceName value="rateRatio"/>
       <short value="単位時間内での薬剤の容量（体積）"/>
-      <definition value="A relationship of two Quantity values - expressed as a numerator and a denominator."/>
+      <definition value="単位時間あたり薬剤の投与量"/>
       <comment value="【JP Core仕様】単位時間内での薬剤の容量（体積）、すなわち投与速度を記述する。単位はUCUMを使用する。"/>
       <requirements value="患者の体内に導入される、あるいはされた薬剤の速度を指定する。一般的には、たとえば1時間あたり100mlあるいは100ml/hrのように注射の速度を示す。たとえば、500mlを2時間でというように、単位時間あたりの速さを表現することもできる。その他、200マイクログラム/minや200マイクログラム/1分, 1 リットル/8時間のような表現もできる。しばしば、投与速度を投与総量/ 投与総時間で表ような場合に投与時間が明示される（たとえば、500ml/2時間という場合は、投与時間が2時間であることを示している）。しかしながら、投与速度で投与時間が明示されない場合（たとえば、250ml/毎時)は、timing.repeat.durationが注射の総投与時間を示すためには必要となる。"/>
       <min value="0"/>
@@ -3428,9 +3428,9 @@
     <element id="Dosage.doseAndRate.rate[x]:rateRange">
       <path value="Dosage.doseAndRate.rate[x]"/>
       <sliceName value="rateRange"/>
-      <short value="Set of values bounded by low and high"/>
-      <definition value="A set of ordered Quantities defined by a low and high limit."/>
-      <comment value="The stated low and high value are assumed to have arbitrarily high precision when it comes to determining which values are in the range. I.e. 1.99 is not in the range 2 -&gt; 3."/>
+      <short value="薬剤の単位指定された上限下限量"/>
+      <definition value="薬剤の単位指定された上限下限量"/>
+      <comment value="薬剤の上限量、下限量の範囲を持っている。単位指定された数量を割り当てている。"/>
       <requirements value="Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn't imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period."/>
       <min value="0"/>
       <max value="1"/>
@@ -3477,9 +3477,9 @@
     <element id="Dosage.doseAndRate.rate[x]:rateQuantity">
       <path value="Dosage.doseAndRate.rate[x]"/>
       <sliceName value="rateQuantity"/>
-      <short value="薬剤に関する数量と単位を定めたデータイプ"/>
-      <definition value="薬剤に関する数量と単位を定めたデータイプ"/>
-      <comment value="薬剤に関する数量と単位を定めている。【JP Core仕様】単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)"/>
+      <short value="薬剤に関する数量と単位を定めた簡易データイプ"/>
+      <definition value="薬剤に関する数量と単位を定めた簡易データイプ"/>
+      <comment value="薬剤に関する簡易的な数量と単位を定めている。ValueおよびCodeを必須とし、comparatorは記述不可。単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)"/>
       <requirements value="Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn't imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period."/>
       <min value="0"/>
       <max value="1"/>
@@ -3533,9 +3533,9 @@
     </element>
     <element id="Dosage.maxDosePerPeriod">
       <path value="Dosage.maxDosePerPeriod"/>
-      <short value="A ratio of two Quantity values - a numerator and a denominator"/>
-      <definition value="A relationship of two Quantity values - expressed as a numerator and a denominator."/>
-      <comment value="The Ratio datatype should only be used to express a relationship of two numbers if the relationship cannot be suitably expressed using a Quantity and a common unit.  Where the denominator value is known to be fixed to &quot;1&quot;, Quantity should be used instead of Ratio."/>
+      <short value="単位時間あたり薬剤の投与量"/>
+      <definition value="単位時間あたり薬剤の投与量"/>
+      <comment value="単位時間あたり薬剤の投与量について薬剤単位をバインディングした型である。"/>
       <requirements value="The maximum total quantity of a therapeutic substance that may be administered to a subject over the period of time.  For example, 1000mg in 24 hours."/>
       <min value="0"/>
       <max value="1"/>
@@ -3581,9 +3581,9 @@
     </element>
     <element id="Dosage.maxDosePerAdministration">
       <path value="Dosage.maxDosePerAdministration"/>
-      <short value="薬剤に関する数量と単位を定めたデータイプ"/>
-      <definition value="薬剤に関する数量と単位を定めたデータイプ"/>
-      <comment value="薬剤に関する数量と単位を定めている。【JP Core仕様】単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)"/>
+      <short value="薬剤に関する数量と単位を定めた簡易データイプ"/>
+      <definition value="薬剤に関する数量と単位を定めた簡易データイプ"/>
+      <comment value="薬剤に関する簡易的な数量と単位を定めている。ValueおよびCodeを必須とし、comparatorは記述不可。単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)"/>
       <requirements value="The maximum total quantity of a therapeutic substance that may be administered to a subject per administration."/>
       <min value="0"/>
       <max value="1"/>
@@ -3637,9 +3637,9 @@
     </element>
     <element id="Dosage.maxDosePerLifetime">
       <path value="Dosage.maxDosePerLifetime"/>
-      <short value="薬剤に関する数量と単位を定めたデータイプ"/>
-      <definition value="薬剤に関する数量と単位を定めたデータイプ"/>
-      <comment value="薬剤に関する数量と単位を定めている。【JP Core仕様】単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)"/>
+      <short value="薬剤に関する数量と単位を定めた簡易データイプ"/>
+      <definition value="薬剤に関する数量と単位を定めた簡易データイプ"/>
+      <comment value="薬剤に関する簡易的な数量と単位を定めている。ValueおよびCodeを必須とし、comparatorは記述不可。単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)"/>
       <requirements value="The maximum total quantity of a therapeutic substance that may be administered per lifetime of the subject."/>
       <min value="0"/>
       <max value="1"/>
