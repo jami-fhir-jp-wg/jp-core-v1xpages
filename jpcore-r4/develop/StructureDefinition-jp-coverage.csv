@@ -28,15 +28,15 @@ anonymous resourcescontained resources","",0,*,"","","","Resource {[]} {[]}
 ","",,"open","DomainResource.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Coverage.extension:insuredPersonSymbol","Coverage.extension","insuredPersonSymbol","","",0,*,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSymbol]]} {[]}
-","健康保険における被保険者証記号","健康保険における被保険者証記号を示す拡張","健康保険における被保険者証記号を示す拡張。被保険者記号の文字列。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
+","健康保険における被保険者証記号","健康保険における被保険者証記号を示す拡張","健康保険における被保険者証記号を示す拡張。被保険者記号の全角文字列。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Coverage.extension:insuredPersonNumber","Coverage.extension","insuredPersonNumber","","",0,*,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonNumber]]} {[]}
-","健康保険における被保険者証番号","健康保険における被保険者証番号を示す拡張","健康保険における被保険者証番号を示す拡張。被保険者記号の文字列。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
+","健康保険における被保険者証番号","健康保険における被保険者証番号を示す拡張","健康保険における被保険者証番号を示す拡張。被保険者記号の全角文字列。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Coverage.extension:insuredPersonSubNumber","Coverage.extension","insuredPersonSubNumber","","",0,*,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSubNumber]]} {[]}
-","健康保険における被保険者証番号の枝番","健康保険における被保険者証番号の枝番を示す拡張","健康保険における被保険者証番号を示す拡張。2桁の半角数字文字列。一桁の場合には先頭に０をつけて2桁にする。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
+","健康保険における被保険者証番号の枝番","健康保険における被保険者証番号の枝番を示す拡張","健康保険における被保険者証番号を示す拡張。2桁の全角数字文字列。一桁の場合には先頭に０をつけて2桁にする。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Coverage.modifierExtension","Coverage.modifierExtension","","extensions
@@ -46,11 +46,17 @@ user content","",0,*,"","Y","","Extension {[]} {[]}
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "Coverage.identifier","Coverage.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
-","Business Identifier for the coverage　このカバレッジに割り当てられた一意の識別子。","A unique identifier assigned to this coverage.
+","Business Identifier for the coverage　このカバレッジに割り当てられた一意の識別子。【詳細参照】","A unique identifier assigned to this coverage.
 
 このカバレッジに割り当てられた一意の識別子。","The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Certificate number, Personal Health Number or Case ID. May be constructed as the concatenation of the Coverage.SubscriberID and the Coverage.dependent.
 
-カバレッジのメイン（および場合によっては唯一の）識別子-多くの場合、メンバーID、証明書番号、個人の健康番号、またはケースIDと呼ばれる。 Coverage.SubscriberIDとCoverage.dependentの連結として構築できる。","Allows coverages to be distinguished and referenced.
+カバレッジのメイン（および場合によっては唯一の）識別子-多くの場合、メンバーID、証明書番号、個人の健康番号、またはケースIDと呼ばれる。
+
+【JP Core仕様】被保険者記号と番号と枝番を全角にした上でダブルコーテーションで囲い、カンマ区切りで連結する。
+
+ルール：""{被保険者記号}"",""{被保険者番号}"",""{枝番}""
+
+例：""１２－３４"",""５６７８"",""００""","Allows coverages to be distinguished and referenced.
 
 カバレッジを区別して参照できるようにする。","","","","","","","",,,,,"",,,,"Coverage.identifier",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.identifier",".id","FiveWs.identifier","C02","IN1-2","C.32, C.33, C.39"
@@ -84,7 +90,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 これは、労働者災害補償およびその他のポリシーの場合に雇用者情報を提供する。","","","","","","","",,,,,"",,,,"Coverage.policyHolder",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","FiveWs.subject[x]","FiveWs.subject","D01 through D09","IN1-16, 18,  19-name of insured, address, date of birth","C.35"
 "Coverage.subscriber","Coverage.subscriber","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson]]}
-","Subscriber to the policy　契約当事者","The party who has signed-up for or 'owns' the contractual relationship to the policy or to whom the benefit of the policy for services rendered to them or their family is due.
+","Subscriber to the policy　被保険者","The party who has signed-up for or 'owns' the contractual relationship to the policy or to whom the benefit of the policy for services rendered to them or their family is due.
 
 ポリシーにサインアップした、またはポリシーとの契約関係を「所有」している当事者、またはポリシーの利益が彼らまたはその家族に提供されることになっている当事者。","May be self or a parent in the case of dependents.
 
@@ -93,14 +99,18 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 これは、ポリシーに基づいて給付を受ける権利を有する当事者である。","","","","","","","",,,,,"",,,,"Coverage.subscriber",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","FiveWs.subject[x]","FiveWs.subject","D01 through D09","IN1-16, 18,  19-name of insured, address, date of birth","C.35"
 "Coverage.subscriberId","Coverage.subscriberId","","","",0,1,"","","Y","string {[]} {[]}
-","ID assigned to the subscriber　契約当事者に割り当てられたID","The insurer assigned ID for the Subscriber.
+","ID assigned to the subscriber　被保険者に割り当てられたID","The insurer assigned ID for the Subscriber.
 
-契約当事者に保険者が割り当てたID","","The insurer requires this identifier on correspondence and claims (digital and otherwise).
+被保険者に保険者が割り当てたID","","The insurer requires this identifier on correspondence and claims (digital and otherwise).
 
 保険者は、連絡や請求（デジタルおよびその他）でこの識別子を要求する。
 保険会社は、通信および請求（デジタルおよびその他）でこの識別子を要求する。
 
-【JP Core仕様】被保険者番号を全角で格納する","","","","","","","",,,,,"",,,,"Coverage.subscriberId",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP Core仕様】被保険者記号と番号を全角にした上でダブルコーテーションで囲い、カンマ区切りで連結する。
+
+ルール：""{被保険者記号}"",""{被保険者番号}""
+
+例：""１２－３４"",""５６７８""","","","","","","","",,,,,"",,,,"Coverage.subscriberId",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","FiveWs.subject[x]","FiveWs.subject","D01 through D09","IN1-16, 18,  19-name of insured, address, date of birth","C.35"
 "Coverage.beneficiary","Coverage.beneficiary","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient]]}
 ","Plan beneficiary","The party who benefits from the insurance coverage; the patient when products and/or services are provided.
@@ -114,16 +124,18 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 これは、補償の下で費用が償還される治療を受ける側のことである。","","","","","","","",,,,,"",,,,"Coverage.beneficiary",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.subject","FiveWs.subject[x]","FiveWs.subject","D01 through D09","IN1-16, 18,  19-name of insured, address, date of birth","C.35"
 "Coverage.dependent","Coverage.dependent","","","",0,1,"","","Y","string {[]} {[]}
-","Dependent number","A unique identifier for a dependent under the coverage.
+","被保険者証 枝番","A unique identifier for a dependent under the coverage.
 
-補償対象の被扶養者の一意の識別子。","Periodically the member number is constructed from the subscriberId and the dependent number.
+被保険者証の枝番。","Periodically the member number is constructed from the subscriberId and the dependent number.
 
-定期的に subscriberId と従属番号からメンバー番号を構築する。","For some coverages a single identifier is issued to the Subscriber and then a unique dependent number is issued to each beneficiary.
+被保険者証の枝番を全角で格納する。","For some coverages a single identifier is issued to the Subscriber and then a unique dependent number is issued to each beneficiary.
 
 一部の補償では、単一の識別子が加入者に発行され、次に一意の従属番号が各受益者に発行される。
 一部の保険では、単一の識別子が加入者に発行され、その後、各受益者に固有の扶養番号が発行される。
 
-【JP Core仕様】医療保険で本リソースを使用する場合には、この要素に拡張 InsuredPersonSubNumberに設定した値と同じ、被保険者番号の枝番号2桁を設定する。","","","","","","","",,,,,"",,,,"Coverage.dependent",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP Core仕様】医療保険で本リソースを使用する場合には、この要素に拡張 InsuredPersonSubNumberに設定した値と同じ、被保険者番号の枝番号全角2桁を設定する。
+
+例：""００""","","","","","","","",,,,,"",,,,"Coverage.dependent",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C17","- No exact HL7 v2 equivalent concept seems to exist;"
 "Coverage.relationship","Coverage.relationship","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","Beneficiary relationship to the subscriber　加入者との受益者関係","The relationship of beneficiary (patient) to the subscriber.
