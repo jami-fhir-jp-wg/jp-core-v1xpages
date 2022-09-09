@@ -24,18 +24,9 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>f:Extension/f:value[x] 1</sch:title>
-    <sch:rule context="f:Extension/f:value[x]">
-      <sch:assert test="count(f:id) &lt;= 0">id: maximum cardinality of 'id' is 0</sch:assert>
-      <sch:assert test="count(f:use) &lt;= 0">use: maximum cardinality of 'use' is 0</sch:assert>
-      <sch:assert test="count(f:type) &lt;= 0">type: maximum cardinality of 'type' is 0</sch:assert>
-      <sch:assert test="count(f:period) &lt;= 0">period: maximum cardinality of 'period' is 0</sch:assert>
-      <sch:assert test="count(f:assigner) &lt;= 0">assigner: maximum cardinality of 'assigner' is 0</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:title>Extension.value[x] 1</sch:title>
     <sch:rule context="f:Extension/f:value[x]">
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
@@ -47,38 +38,32 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>Extension.value[x].use 1</sch:title>
-    <sch:rule context="f:Extension/f:value[x]/f:use">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>Extension.value[x].type 1</sch:title>
-    <sch:rule context="f:Extension/f:value[x]/f:type">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:title>Extension.value[x].system 1</sch:title>
     <sch:rule context="f:Extension/f:value[x]/f:system">
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>Extension.value[x].value 1</sch:title>
-    <sch:rule context="f:Extension/f:value[x]/f:value">
+    <sch:title>Extension.value[x].version 1</sch:title>
+    <sch:rule context="f:Extension/f:value[x]/f:version">
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>Extension.value[x].period 1</sch:title>
-    <sch:rule context="f:Extension/f:value[x]/f:period">
+    <sch:title>Extension.value[x].code 1</sch:title>
+    <sch:rule context="f:Extension/f:value[x]/f:code">
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>Extension.value[x].assigner 1</sch:title>
-    <sch:rule context="f:Extension/f:value[x]/f:assigner">
+    <sch:title>Extension.value[x].display 1</sch:title>
+    <sch:rule context="f:Extension/f:value[x]/f:display">
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>Extension.value[x].userSelected 1</sch:title>
+    <sch:rule context="f:Extension/f:value[x]/f:userSelected">
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>

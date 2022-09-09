@@ -4,7 +4,7 @@
 
 ケアまたはその他の健康関連サービスを受けている個人または動物に関する人口統計およびその他の管理情報。","","","","","","","","","",,,,,"",,,,"Patient",0,*,"","dom-2:If the resource is contained in another resource, it SHALL NOT contain nested Resources {contained.contained.empty()}
 dom-3:If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:If a resource is contained in another resource, it SHALL NOT have a security label {contained.meta.security.empty()}dom-6:A resource should have narrative for robust management {text.`div`.exists()}","Entity. Role, or Act","Patient[classCode=PAT]","ClinicalDocument.recordTarget.patientRole"
-"Patient.id","Patient.id","","","",0,1,"","","Y","string {[]} {[]}
+"Patient.id","Patient.id","","","",0,1,"","","Y","id {[]} {[]}
 ","Logical id of this artifact","The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.","The only time that a resource does not have an id is when it is being submitted to the server using a create operation.","","","","","","","","",,,,,"",,,,"Resource.id",0,1,"",""
 "Patient.meta","Patient.meta","","","",0,1,"","","Y","Meta {[]} {[]}
 ","Metadata about the resource","The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.","","","","","","","","","",,,,,"",,,,"Resource.meta",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
@@ -66,13 +66,11 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Patient.identifier","Patient.identifier","","","",1,*,"","","Y","Identifier {[]} {[]}
 ","An identifier for this patient","An identifier for this patient.
 
-この患者の識別子。","IDの名前空間を表す Patient.identifier.system と ID値そのものを表す Patient.identifier.value の組み合わせとして表現する。
+この患者の識別子。【詳細参照】","IDの名前空間を表す Patient.identifier.system と ID値そのものを表す Patient.identifier.value の組み合わせとして表現する。
 Patient.identifier.system には、
 　urn:oid:1.2.392.100495.20.3.51.医療機関識別OID番号
 を使用する。
-医療機関識別OID番号は、患者IDの発行者である医療機関の識別するもので、保険医療機関の場合、都道府県番号２桁から始まる10桁の医療機関番号（都道府県2桁、保険点数表コード1桁、保険医療機関番号７桁を連結したもの）または、特定健診・特定保健指導機関の医療機関番号10桁の先頭に１をつけた11桁とする。
-保険点数表コード1桁は医科は１，歯科は３である。
-医療機関コードを持たない場合、「[9]＋当該施設の電話番号下 9 桁」を医療機関コードとして、その先頭に１をつけた11桁とする。
+医療機関識別OID番号は、患者IDの発行者である医療機関の識別するもので、保険医療機関の場合、都道府県番号２桁から始まる10桁の医療機関コードまたは、特定健診・特定保健指導機関の医療機関コード10桁の先頭に１をつけた11桁とする。医療機関コードの詳細については[こちらのリンク](StructureDefinition-jp-patient.html#医療機関コード)を参照すること。
 
 例：医療機関コード「1312345670」の場合「urn:oid:1.2.392.100495.20.3.51.11312345670」
 なお、urn:oid:1.2.392.100495.20.3.51　の部分は、厚生労働省 電子処方箋CDA 記述仕様第1版（平成30年7月）付表2 OID一覧において患者番号として割り当てられたOIDのURL型である。
@@ -178,8 +176,7 @@ FHIRデータ型仕様に従って、以下の内容を採用する。
 ・ミドルネームがある場合は、given に指定する（givenは繰り返し可能）
 ・姓名に分割できない場合は、HumanName.text にフルネームを指定する。
 ・各名前パートとtext は、両方存在してもよい。
-・漢字氏名、カナ氏名の区別は、iso21090-EN-representation を使用する。
-・漢字、カナの指定がない場合やローマ字名の場合などはデフォルトスライスが適用される。","Need to be able to track the patient by multiple names. Examples are your official name and a partner name.
+・漢字氏名、カナ氏名の区別は、iso21090-EN-representation を使用する。","Need to be able to track the patient by multiple names. Examples are your official name and a partner name.
 
 複数の名前で患者を追跡できる必要がある。例としては、正式名とパートナー名がある。","","","","","","","",,,,,"",,,,"Patient.name",0,*,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}

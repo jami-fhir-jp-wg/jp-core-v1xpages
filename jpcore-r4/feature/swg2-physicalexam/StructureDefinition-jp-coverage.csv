@@ -5,7 +5,7 @@
 
 Coverageには、保険証レベルの情報が含まれている。これは、保険金請求やプロバイダーと保険会社間のその他の通信で提供するのが通例である。","","","","","","","","",,,,,"",,,,"Coverage",0,*,"","dom-2:If the resource is contained in another resource, it SHALL NOT contain nested Resources {contained.contained.empty()}
 dom-3:If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:If a resource is contained in another resource, it SHALL NOT have a security label {contained.meta.security.empty()}dom-6:A resource should have narrative for robust management {text.`div`.exists()}","Event","Entity. Role, or Act","Coverage"
-"Coverage.id","Coverage.id","","","",0,1,"","","Y","string {[]} {[]}
+"Coverage.id","Coverage.id","","","",0,1,"","","Y","id {[]} {[]}
 ","Logical id of this artifact","The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.","The only time that a resource does not have an id is when it is being submitted to the server using a create operation.","","","","","","","","",,,,,"",,,,"Resource.id",0,1,"",""
 "Coverage.meta","Coverage.meta","","","",0,1,"","","Y","Meta {[]} {[]}
 ","Metadata about the resource","The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.","","","","","","","","","",,,,,"",,,,"Resource.meta",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
@@ -28,63 +28,17 @@ anonymous resourcescontained resources","",0,*,"","","","Resource {[]} {[]}
 ","",,"open","DomainResource.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Coverage.extension:insuredPersonSymbol","Coverage.extension","insuredPersonSymbol","","",0,*,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSymbol]]} {[]}
-","健康保険における被保険者証記号","健康保険における被保険者証記号を示す拡張","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-
-健康保険における被保険者証記号を示す拡張","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
+","健康保険における被保険者証記号","健康保険における被保険者証記号を示す拡張","健康保険における被保険者証記号を示す拡張。被保険者記号の全角文字列。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Coverage.extension:insuredPersonSymbol.id","Coverage.extension.id","","","",0,1,"","","","string {[]} {[]}
-","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
-"Coverage.extension:insuredPersonSymbol.extension","Coverage.extension.extension","","","",0,0,"","","","Extension {[]} {[]}
-","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
-","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Coverage.extension:insuredPersonSymbol.url","Coverage.extension.url","","","",1,1,"","","","uri {[]} {[]}
-","identifies the meaning of the extension","Source of the definition for the extension code - a logical name or a URL.","The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.","","","","<valueUri xmlns=""http://hl7.org/fhir"" value=""http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSymbol""/>","","","","",,,,,"",,,,"Extension.url",1,1,"","","N/A"
-"Coverage.extension:insuredPersonSymbol.value[x]","Coverage.extension.value[x]","","","",0,1,"","","","string {[]} {[]}
-","Value of extension","Value of extension - must be one of a constrained set of the data types (see [Extensibility](http://hl7.org/fhir/R4/extensibility.html) for a list).","A stream of bytes, base64 encoded
-
-被保険者記号の文字列。","","","","","","","","",,,,,"",,,,"Extension.value[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-","N/A"
 "Coverage.extension:insuredPersonNumber","Coverage.extension","insuredPersonNumber","","",0,*,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonNumber]]} {[]}
-","健康保険における被保険者証番号","健康保険における被保険者証番号を示す拡張","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-
-健康保険における被保険者証番号を示す拡張","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
+","健康保険における被保険者証番号","健康保険における被保険者証番号を示す拡張","健康保険における被保険者証番号を示す拡張。被保険者記号の全角文字列。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Coverage.extension:insuredPersonNumber.id","Coverage.extension.id","","","",0,1,"","","","string {[]} {[]}
-","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
-"Coverage.extension:insuredPersonNumber.extension","Coverage.extension.extension","","","",0,0,"","","","Extension {[]} {[]}
-","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
-","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Coverage.extension:insuredPersonNumber.url","Coverage.extension.url","","","",1,1,"","","","uri {[]} {[]}
-","identifies the meaning of the extension","Source of the definition for the extension code - a logical name or a URL.","The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.","","","","<valueUri xmlns=""http://hl7.org/fhir"" value=""http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonNumber""/>","","","","",,,,,"",,,,"Extension.url",1,1,"","","N/A"
-"Coverage.extension:insuredPersonNumber.value[x]","Coverage.extension.value[x]","","","",0,1,"","","","string {[]} {[]}
-","Value of extension","Value of extension - must be one of a constrained set of the data types (see [Extensibility](http://hl7.org/fhir/R4/extensibility.html) for a list).","A stream of bytes, base64 encoded
-
-被保険者番号","","","","","","","","",,,,,"",,,,"Extension.value[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-","N/A"
 "Coverage.extension:insuredPersonSubNumber","Coverage.extension","insuredPersonSubNumber","","",0,*,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSubNumber]]} {[]}
-","健康保険における被保険者証番号の枝番","健康保険における被保険者証番号の枝番を示す拡張","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
-
-健康保険における被保険者証番号の枝番を示す拡張
-枝番号は2桁。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
+","健康保険における被保険者証番号の枝番","健康保険における被保険者証番号の枝番を示す拡張","健康保険における被保険者証番号を示す拡張。2桁の全角数字文字列。一桁の場合には先頭に０をつけて2桁にする。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Coverage.extension:insuredPersonSubNumber.id","Coverage.extension.id","","","",0,1,"","","","string {[]} {[]}
-","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
-"Coverage.extension:insuredPersonSubNumber.extension","Coverage.extension.extension","","","",0,0,"","","","Extension {[]} {[]}
-","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
-","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Coverage.extension:insuredPersonSubNumber.url","Coverage.extension.url","","","",1,1,"","","","uri {[]} {[]}
-","identifies the meaning of the extension","Source of the definition for the extension code - a logical name or a URL.","The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.","","","","<valueUri xmlns=""http://hl7.org/fhir"" value=""http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSubNumber""/>","","","","",,,,,"",,,,"Extension.url",1,1,"","","N/A"
-"Coverage.extension:insuredPersonSubNumber.value[x]","Coverage.extension.value[x]","","","",0,1,"","","","string {[]} {[]}
-","Value of extension","Value of extension - must be one of a constrained set of the data types (see [Extensibility](http://hl7.org/fhir/R4/extensibility.html) for a list).","A stream of bytes, base64 encoded
-
-2桁の半角数字文字列。一桁の場合には先頭に０をつけて2桁にする。","","","","","","","","",,,,,"",,,,"Extension.value[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-","N/A"
 "Coverage.modifierExtension","Coverage.modifierExtension","","extensions
 user content","",0,*,"","Y","","Extension {[]} {[]}
 ","Extensions that cannot be ignored","May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
@@ -92,11 +46,17 @@ user content","",0,*,"","Y","","Extension {[]} {[]}
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "Coverage.identifier","Coverage.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
-","Business Identifier for the coverage　このカバレッジに割り当てられた一意の識別子。","A unique identifier assigned to this coverage.
+","Business Identifier for the coverage　このカバレッジに割り当てられた一意の識別子。【詳細参照】","A unique identifier assigned to this coverage.
 
 このカバレッジに割り当てられた一意の識別子。","The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Certificate number, Personal Health Number or Case ID. May be constructed as the concatenation of the Coverage.SubscriberID and the Coverage.dependent.
 
-カバレッジのメイン（および場合によっては唯一の）識別子-多くの場合、メンバーID、証明書番号、個人の健康番号、またはケースIDと呼ばれる。 Coverage.SubscriberIDとCoverage.dependentの連結として構築できる。","Allows coverages to be distinguished and referenced.
+カバレッジのメイン（および場合によっては唯一の）識別子-多くの場合、メンバーID、証明書番号、個人の健康番号、またはケースIDと呼ばれる。
+
+【JP Core仕様】被保険者記号と番号と枝番を全角にした上でダブルコーテーションで囲い、カンマ区切りで連結する。
+
+ルール：""{被保険者記号}"",""{被保険者番号}"",""{枝番}""
+
+例：""１２－３４"",""５６７８"",""００""","Allows coverages to be distinguished and referenced.
 
 カバレッジを区別して参照できるようにする。","","","","","","","",,,,,"",,,,"Coverage.identifier",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.identifier",".id","FiveWs.identifier","C02","IN1-2","C.32, C.33, C.39"
@@ -130,25 +90,27 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 これは、労働者災害補償およびその他のポリシーの場合に雇用者情報を提供する。","","","","","","","",,,,,"",,,,"Coverage.policyHolder",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","FiveWs.subject[x]","FiveWs.subject","D01 through D09","IN1-16, 18,  19-name of insured, address, date of birth","C.35"
 "Coverage.subscriber","Coverage.subscriber","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson]]}
-","Subscriber to the policy　契約当事者","The party who has signed-up for or 'owns' the contractual relationship to the policy or to whom the benefit of the policy for services rendered to them or their family is due.
+","Subscriber to the policy　被保険者","The party who has signed-up for or 'owns' the contractual relationship to the policy or to whom the benefit of the policy for services rendered to them or their family is due.
 
 ポリシーにサインアップした、またはポリシーとの契約関係を「所有」している当事者、またはポリシーの利益が彼らまたはその家族に提供されることになっている当事者。","May be self or a parent in the case of dependents.
 
 扶養家族の場合、自己または親である可能性がある。","This is the party who is entitled to the benefits under the policy.
 
-これは、ポリシーに基づいて給付を受ける権利を有する当事者である。
-
-【JP Core仕様】公費情報で本リソースを使用する場合には、この要素に公費受給者番号を設定する。","","","","","","","",,,,,"",,,,"Coverage.subscriber",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+これは、ポリシーに基づいて給付を受ける権利を有する当事者である。","","","","","","","",,,,,"",,,,"Coverage.subscriber",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","FiveWs.subject[x]","FiveWs.subject","D01 through D09","IN1-16, 18,  19-name of insured, address, date of birth","C.35"
 "Coverage.subscriberId","Coverage.subscriberId","","","",0,1,"","","Y","string {[]} {[]}
-","ID assigned to the subscriber　契約当事者に割り当てられたID","The insurer assigned ID for the Subscriber.
+","ID assigned to the subscriber　被保険者に割り当てられたID","The insurer assigned ID for the Subscriber.
 
-契約当事者に保険者が割り当てたID","","The insurer requires this identifier on correspondence and claims (digital and otherwise).
+被保険者に保険者が割り当てたID","","The insurer requires this identifier on correspondence and claims (digital and otherwise).
 
 保険者は、連絡や請求（デジタルおよびその他）でこの識別子を要求する。
 保険会社は、通信および請求（デジタルおよびその他）でこの識別子を要求する。
 
-被保険者番号を全角で格納する","","","","","","","",,,,,"",,,,"Coverage.subscriberId",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP Core仕様】被保険者記号と番号を全角にした上でダブルコーテーションで囲い、カンマ区切りで連結する。
+
+ルール：""{被保険者記号}"",""{被保険者番号}""
+
+例：""１２－３４"",""５６７８""","","","","","","","",,,,,"",,,,"Coverage.subscriberId",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","FiveWs.subject[x]","FiveWs.subject","D01 through D09","IN1-16, 18,  19-name of insured, address, date of birth","C.35"
 "Coverage.beneficiary","Coverage.beneficiary","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient]]}
 ","Plan beneficiary","The party who benefits from the insurance coverage; the patient when products and/or services are provided.
@@ -162,16 +124,18 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 これは、補償の下で費用が償還される治療を受ける側のことである。","","","","","","","",,,,,"",,,,"Coverage.beneficiary",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.subject","FiveWs.subject[x]","FiveWs.subject","D01 through D09","IN1-16, 18,  19-name of insured, address, date of birth","C.35"
 "Coverage.dependent","Coverage.dependent","","","",0,1,"","","Y","string {[]} {[]}
-","Dependent number","A unique identifier for a dependent under the coverage.
+","被保険者証 枝番","A unique identifier for a dependent under the coverage.
 
-補償対象の被扶養者の一意の識別子。","Periodically the member number is constructed from the subscriberId and the dependent number.
+被保険者証の枝番。","Periodically the member number is constructed from the subscriberId and the dependent number.
 
-定期的に subscriberId と従属番号からメンバー番号を構築する。","For some coverages a single identifier is issued to the Subscriber and then a unique dependent number is issued to each beneficiary.
+被保険者証の枝番を全角で格納する。","For some coverages a single identifier is issued to the Subscriber and then a unique dependent number is issued to each beneficiary.
 
 一部の補償では、単一の識別子が加入者に発行され、次に一意の従属番号が各受益者に発行される。
 一部の保険では、単一の識別子が加入者に発行され、その後、各受益者に固有の扶養番号が発行される。
 
-【JP Core仕様】医療保険で本リソースを使用する場合には、この要素に拡張 InsuredPersonSubNumberに設定した値と同じ、被保険者番号の枝番号2桁を設定する。","","","","","","","",,,,,"",,,,"Coverage.dependent",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP Core仕様】医療保険で本リソースを使用する場合には、この要素に拡張 InsuredPersonSubNumberに設定した値と同じ、被保険者番号の枝番号全角2桁を設定する。
+
+例：""００""","","","","","","","",,,,,"",,,,"Coverage.dependent",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C17","- No exact HL7 v2 equivalent concept seems to exist;"
 "Coverage.relationship","Coverage.relationship","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","Beneficiary relationship to the subscriber　加入者との受益者関係","The relationship of beneficiary (patient) to the subscriber.
