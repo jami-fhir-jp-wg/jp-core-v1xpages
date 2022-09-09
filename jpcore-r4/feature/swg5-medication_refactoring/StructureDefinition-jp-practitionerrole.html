@@ -1131,15 +1131,21 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   <tbody>
     <tr>
       <td>SHALL</td>
+      <td>identifier</td>
+      <td>token</td>
+      <td>GET [base]/PractitionerRole?identifier=http://myhospital.com/fhir/PractitionerRoleid|1234</td>
+    </tr>
+    <tr>
+      <td>SHOULD</td>
       <td>specialty</td>
       <td>token</td>
       <td>GET [base]/PractitionerRole?specialty=http://nucc.org/provider-taxonomy|208D0000X</td>
     </tr>
     <tr>
-      <td>SHALL</td>
+      <td>SHOULD</td>
       <td>practitioner</td>
       <td>token</td>
-      <td>GET [base]/PractitionerRole?practitioner.identifier=http://hl7.org/fhir/sid/us-npi|97860456</td>
+      <td>GET [base]/PractitionerRole?practitioner.identifier=http://myhospital.com/fhir/Practitionerid|97860456</td>
     </tr>
   </tbody>
 </table>
@@ -1150,7 +1156,27 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
 <ol>
   <li>
-    <p>specialty 検索パラメータを使用して、医療者の特定の専門性によるPractitionerRoleの検索をサポートしなければならない（SHALL）。</p>
+    <p>identifier 検索パラメータを使用して、職種IDなどの識別子によるPractitionerRoleの検索をサポートしなければならない（SHALL）。</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/PractitionerRole?identifier={system|}[code]
+</code></pre></div>    </div>
+
+    <p>例：</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/PractitionerRole?identifier=http://myhospital.com/fhir/PractitionerRoleid|1234
+</code></pre></div>    </div>
+
+    <p>指定された識別子に一致するPractitionerRoleリソースを含むBundleを検索する。</p>
+  </li>
+</ol>
+
+<h5 id="推奨検索パラメータ">推奨検索パラメータ</h5>
+
+<p>次の検索パラメータをサポートすることが望ましい。</p>
+
+<ol>
+  <li>
+    <p>specialty 検索パラメータを使用して、医療者の特定の専門性によるPractitionerRoleの検索をサポートすることが望ましい（SHOULD）。</p>
 
     <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/PractitionerRole?specialty={system|}[code]
 </code></pre></div>    </div>
@@ -1163,24 +1189,20 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     <p>指定された医療者の特定の専門性に一致するPractitionerRoleリソースを含むBundleを検索する。</p>
   </li>
   <li>
-    <p>practitioner 検索パラメータを使用して、医療者の名前と識別子によるPractitionerRoleの検索をサポートしなければならない（SHALL）。</p>
+    <p>practitioner 検索パラメータを使用して、医療者の名前と識別子によるPractitionerRoleの検索をサポートすることが望ましい（SHOULD）。</p>
 
     <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/PractitionerRole?practitioner={Type/}[id]
 </code></pre></div>    </div>
 
     <p>例：</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.GET [base]/PractitionerRole?practitioner.identifier=http://hl7.org/fhir/sid/us-npi|97860456&amp;_include=PractitionerRole:practitioner&amp;_include=PractitionerRole?endpoint
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.GET [base]/PractitionerRole?practitioner.identifier=http://myhospital.com/fhir/Practitionerid|97860456&amp;_include=PractitionerRole:practitioner&amp;_include=PractitionerRole?endpoint
 2.GET [base]/PractitionerRole?practitioner.name=山田&amp;_include=PractitionerRole:practitioner&amp;_include=PractitionerRole?endpoint
 </code></pre></div>    </div>
 
     <p>practitioner.nameまたはpractitioner.identifierの連結パラメータに一致するPractitionerRoleリソースを含むBundleを検索する。PractitionerRole.practitionerとPractitionerRole.endpointの_include検索をサポートすることが望ましい。（SHOULD）</p>
   </li>
 </ol>
-
-<h5 id="推奨検索パラメータ">推奨検索パラメータ</h5>
-
-<p>推奨検索パラメータはない。</p>
 
 <h5 id="追加検索パラメータ">追加検索パラメータ</h5>
 
@@ -1297,7 +1319,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Sep 9, 2022 00:36+0000">2022-09-09</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Sep 9, 2022 12:25+0000">2022-09-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
