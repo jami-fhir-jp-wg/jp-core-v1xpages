@@ -26,7 +26,7 @@
   <name value="JP_Observation_BodyMeasurement"/>
   <title value="JP Core Observation BodyMeasurement Profile"/>
   <status value="draft"/>
-  <date value="2022-09-09T22:38:47+00:00"/>
+  <date value="2022-09-11T10:13:05+00:00"/>
   <publisher value="FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"/>
   <contact>
     <name value="FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"/>
@@ -1204,9 +1204,9 @@
     </element>
     <element id="Observation.bodySite">
       <path value="Observation.bodySite"/>
-      <short value="Observed body part　観察された身体部位"/>
-      <definition value="Indicates the site on the subject's body where the observation was made (i.e. the target site).&#xD;&#xA;観察が行われた被験者の体の部位（すなわち、標的部位）を示す。"/>
-      <comment value="Only used if not implicit in code found in Observation.code.  In many systems, this may be represented as a related observation instead of an inline component.   &#xA;&#xA;If the use case requires BodySite to be handled as a separate resource (e.g. to identify and track separately) then use the standard extension[ bodySite](extension-bodysite.html).&#xD;&#xA;&#xD;&#xA;Observation.codeにあるコードだけでは暗黙的に部位はわからない場合にだけ使用される。多くのシステムでは、これはデータ中の部分情報ではなく関連する観察（観測）として記述さえる場合がある。&#xD;&#xA;もしBodySiteを個別のリソースとして処理する必要があるような使用例（たとえば、個別に識別して追跡するなど）においては、標準の拡張機能[bodySite]（extension-bodysite.html）を使用する。"/>
+      <short value="Bindingについてはユースケースに応じて各プロファイルで定義すること"/>
+      <definition value="Indicates the site on the subject's body where the observation was made (i.e. the target site)."/>
+      <comment value="Only used if not implicit in code found in Observation.code.  In many systems, this may be represented as a related observation instead of an inline component.   &#xA;&#xA;If the use case requires BodySite to be handled as a separate resource (e.g. to identify and track separately) then use the standard extension[ bodySite](http://hl7.org/fhir/R4/extension-bodysite.html)."/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1228,8 +1228,12 @@
       <isModifier value="false"/>
       <isSummary value="false"/>
       <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="BodySite"/>
+        </extension>
         <strength value="example"/>
-        <valueSet value="http://jpfhir.jp/fhir/Common/ValueSet/JP_ObservationBodySite_VS"/>
+        <description value="Codes describing anatomical locations. May include laterality."/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/body-site"/>
       </binding>
       <mapping>
         <identity value="sct-concept"/>
@@ -1250,10 +1254,10 @@
     </element>
     <element id="Observation.method">
       <path value="Observation.method"/>
-      <short value="How it was done　どのように実施されたか。"/>
-      <definition value="Indicates the mechanism used to perform the observation.&#xD;&#xA;観測を実行するために使用されるメカニズムを示す。"/>
-      <comment value="Only used if not implicit in code for Observation.code.&#xD;&#xA;Observation.codeのコードでは暗黙的に示されない場合にだけ使用する。"/>
-      <requirements value="In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.&#xD;&#xA;場合によっては、観察（観測・検査）方法によっては結果に影響を与える可能性があるため、結果を比較できるかどうかを判断したり、結果の重要性を判断したりするために使用される。"/>
+      <short value="Bindingについてはユースケースに応じて各プロファイルで定義すること"/>
+      <definition value="Indicates the mechanism used to perform the observation."/>
+      <comment value="Only used if not implicit in code for Observation.code."/>
+      <requirements value="In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results."/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1275,8 +1279,12 @@
       <isModifier value="false"/>
       <isSummary value="false"/>
       <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="ObservationMethod"/>
+        </extension>
         <strength value="example"/>
-        <valueSet value="http://jpfhir.jp/fhir/Common/ValueSet/JP_ObservationMethod_VS"/>
+        <description value="Methods for simple observations."/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/observation-methods"/>
       </binding>
       <mapping>
         <identity value="v2"/>
