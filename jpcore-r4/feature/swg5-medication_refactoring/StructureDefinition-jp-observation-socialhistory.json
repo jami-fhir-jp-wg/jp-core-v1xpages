@@ -20,7 +20,7 @@
   "name": "JP_Observation_SocialHistory",
   "title": "JP Core Observation SocialHistory Profile",
   "status": "draft",
-  "date": "2022-09-09T12:25:43+00:00",
+  "date": "2022-09-12T18:58:52+00:00",
   "publisher": "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact": [
     {
@@ -1487,9 +1487,9 @@
       {
         "id": "Observation.bodySite",
         "path": "Observation.bodySite",
-        "short": "Observed body part　観察された身体部位",
-        "definition": "Indicates the site on the subject's body where the observation was made (i.e. the target site).\r\n観察が行われた被験者の体の部位（すなわち、標的部位）を示す。",
-        "comment": "Only used if not implicit in code found in Observation.code.  In many systems, this may be represented as a related observation instead of an inline component.   \n\nIf the use case requires BodySite to be handled as a separate resource (e.g. to identify and track separately) then use the standard extension[ bodySite](extension-bodysite.html).\r\n\r\nObservation.codeにあるコードだけでは暗黙的に部位はわからない場合にだけ使用される。多くのシステムでは、これはデータ中の部分情報ではなく関連する観察（観測）として記述さえる場合がある。\r\nもしBodySiteを個別のリソースとして処理する必要があるような使用例（たとえば、個別に識別して追跡するなど）においては、標準の拡張機能[bodySite]（extension-bodysite.html）を使用する。",
+        "short": "Bindingについてはユースケースに応じて各プロファイルで定義すること",
+        "definition": "Indicates the site on the subject's body where the observation was made (i.e. the target site).",
+        "comment": "Only used if not implicit in code found in Observation.code.  In many systems, this may be represented as a related observation instead of an inline component.   \n\nIf the use case requires BodySite to be handled as a separate resource (e.g. to identify and track separately) then use the standard extension[ bodySite](http://hl7.org/fhir/R4/extension-bodysite.html).",
         "min": 0,
         "max": "1",
         "base": {
@@ -1515,8 +1515,15 @@
         "isModifier": false,
         "isSummary": false,
         "binding": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+              "valueString": "BodySite"
+            }
+          ],
           "strength": "example",
-          "valueSet": "http://jpfhir.jp/fhir/Common/ValueSet/JP_ObservationBodySite_VS"
+          "description": "Codes describing anatomical locations. May include laterality.",
+          "valueSet": "http://hl7.org/fhir/ValueSet/body-site"
         },
         "mapping": [
           {
@@ -1540,10 +1547,10 @@
       {
         "id": "Observation.method",
         "path": "Observation.method",
-        "short": "How it was done　どのように実施されたか。",
-        "definition": "Indicates the mechanism used to perform the observation.\r\n観測を実行するために使用されるメカニズムを示す。",
-        "comment": "Only used if not implicit in code for Observation.code.\r\nObservation.codeのコードでは暗黙的に示されない場合にだけ使用する。",
-        "requirements": "In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.\r\n場合によっては、観察（観測・検査）方法によっては結果に影響を与える可能性があるため、結果を比較できるかどうかを判断したり、結果の重要性を判断したりするために使用される。",
+        "short": "Bindingについてはユースケースに応じて各プロファイルで定義すること",
+        "definition": "Indicates the mechanism used to perform the observation.",
+        "comment": "Only used if not implicit in code for Observation.code.",
+        "requirements": "In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.",
         "min": 0,
         "max": "1",
         "base": {
@@ -1569,8 +1576,15 @@
         "isModifier": false,
         "isSummary": false,
         "binding": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+              "valueString": "ObservationMethod"
+            }
+          ],
           "strength": "example",
-          "valueSet": "http://jpfhir.jp/fhir/Common/ValueSet/JP_ObservationMethod_VS"
+          "description": "Methods for simple observations.",
+          "valueSet": "http://hl7.org/fhir/ValueSet/observation-methods"
         },
         "mapping": [
           {

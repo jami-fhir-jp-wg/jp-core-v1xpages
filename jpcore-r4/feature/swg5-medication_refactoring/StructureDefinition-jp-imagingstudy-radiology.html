@@ -275,7 +275,7 @@
   <td><i>Status</i></td>
   <td>Draft
     
-      ( 2022-09-09 )
+      ( 2022-09-12 )
     </td>
 </tr>
 
@@ -1153,33 +1153,33 @@ BodySite等でDICOMでmappingされているSNOMED-CTをCodeSystemとして利�
   <tbody>
     <tr>
       <td>SHOULD</td>
-      <td>subject(Patient)</td>
+      <td>patient</td>
       <td>reference</td>
-      <td><code class="highlighter-rouge">GET [base]/ImagingStudy?subject=Patient/123</code></td>
+      <td><code class="highlighter-rouge">GET [base]/ImagingStudy?patient=123</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td>subject,modality</td>
+      <td>patient,modality</td>
       <td>reference,token</td>
-      <td><code class="highlighter-rouge">GET [base]/ImagingStudy?subject=Patient/123&amp;modality=CT</code></td>
+      <td><code class="highlighter-rouge">GET [base]/ImagingStudy?patient=123&amp;modality=CT</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td>subject,bodysite</td>
+      <td>patient,bodysite</td>
       <td>reference,token</td>
-      <td><code class="highlighter-rouge">GET [base]/ImagingStudy?subject=Patient/123&amp;bodysite=T-15460</code></td>
+      <td><code class="highlighter-rouge">GET [base]/ImagingStudy?patient=123&amp;bodysite=T-15460</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td>subject,started</td>
+      <td>patient,started</td>
       <td>reference,date</td>
-      <td><code class="highlighter-rouge">GET [base]/ImagingStudy?subject=Patient/123&amp;data=eq2021-06-25</code></td>
+      <td><code class="highlighter-rouge">GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-25</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td>subject,started,modality,bodysite</td>
+      <td>patient,started,modality,bodysite</td>
       <td>reference,date,token,token</td>
-      <td><code class="highlighter-rouge">GET [base]/ImagingStudy?subject=Patient/123&amp;data=eq2021-06-18&amp;modality=CT&amp;bodysite=T-15460</code></td>
+      <td><code class="highlighter-rouge">GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-18&amp;modality=CT&amp;bodysite=T-15460</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
@@ -1203,63 +1203,63 @@ ImagingStudyリソースでは検索の多様性が求められるため、必�
 
 <p>1.患者中心での検索：対象患者（= Patientリソース）を条件とした検索をサポートすることが望ましい。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject={reference}
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}
 </code></pre></div></div>
 
 <p>例：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject=Patient/123
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123
 </code></pre></div></div>
 
 <p>2.モダリティ中心の検索：対象患者（= Patientリソース）と撮影に使用されたモダリティを条件とした検索をサポートすることが望ましい。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject={reference}&amp;modality={token}
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}&amp;modality={token}
 </code></pre></div></div>
 
 <p>例：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject=Patient/123&amp;modality=CT
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123&amp;modality=CT
 </code></pre></div></div>
 
 <p>3.部位中心の検索：対象患者（= Patientリソース）と撮影の対象となった撮影部位を条件とした検索をサポートすることが望ましい。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject={reference}&amp;bodysite={token}
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}&amp;bodysite={token}
 </code></pre></div></div>
 
 <p>例：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject=Patient/123&amp;bodysite=T-15460
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123&amp;bodysite=T-15460
 </code></pre></div></div>
 <p><br /></p>
 
 <p>4.日付中心の検索：対象患者（= Patientリソース）と撮影の日時を条件とした検索をサポートすることが望ましい。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject={reference}&amp;started={date}
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}&amp;started={date}
 </code></pre></div></div>
 
 <p>例：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject=subject=Patient/123&amp;data=eq2021-06-25
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-25
 </code></pre></div></div>
 
 <p>5.日付中心の検索：対象患者（= Patientリソース）と撮影の日時を条件とした検索をサポートすることが望ましい。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject={reference}&amp;started={date}
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}&amp;started={date}
 </code></pre></div></div>
 
 <p>例：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject=subject=Patient/123&amp;data=eq2021-06-25
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-25
 </code></pre></div></div>
 
 <p>6.複数の条件を組み合わせた検索：対象患者（= Patientリソース）、撮影の日時、撮影に使用されたモダリティ、撮影の対象となった撮影部位を条件とした検索をサポートすることが望ましい。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject={reference}&amp;data={date}&amp;modality={token}&amp;bodysite={token}
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}&amp;started={date}&amp;modality={token}&amp;bodysite={token}
 </code></pre></div></div>
 
 <p>例：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?subject=Patient/123&amp;data=eq2021-06-18&amp;modality=CT&amp;bodysite=T-15460
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-18&amp;modality=CT&amp;bodysite=T-15460
 </code></pre></div></div>
 
 <p>7.来院情報中心の検索：来院情報（= Encounterリソース）を条件とした検索をサポートすることが望ましい。</p>
@@ -1269,7 +1269,7 @@ ImagingStudyリソースでは検索の多様性が求められるため、必�
 
 <p>例：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?encounter=Encounter/456
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?encounter=456
 </code></pre></div></div>
 
 <h5 id="オプション検索パラメータ">オプション検索パラメータ</h5>
@@ -1365,7 +1365,7 @@ ImagingStudyリソースでは検索の多様性が求められるため、必�
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Sep 9, 2022 12:25+0000">2022-09-09</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Sep 12, 2022 18:58+0000">2022-09-12</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

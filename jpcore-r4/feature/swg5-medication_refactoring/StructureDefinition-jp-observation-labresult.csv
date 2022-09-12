@@ -33,7 +33,7 @@ user content","",0,*,"","Y","","Extension {[]} {[]}
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "Observation.identifier","Observation.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
-","Business Identifier for observation　Observationのためのビジネス識別子","A unique identifier assigned to this observation.
+","当該検査項目に対して、施設内で割り振られる一意の識別子","A unique identifier assigned to this observation.
 
 この検査項目に割り当てられた一意の識別子。リソースの識別子やシステム的なシーケンスではなく、ビジネスID。","【JP Core仕様】当該検査項目に対して、施設内で割り振られる一意の識別子があればそれを使用する。なければ次のルールを参考に一意となる識別子を生成し設定する。
 
@@ -366,13 +366,13 @@ string {[]} {[]}","Individual responsible for the annotation","The individual re
 ","The annotation  - text content (as markdown)","The text of the annotation in markdown format.","Systems are not required to have markdown support, so the text should be readable without markdown processing. The markdown syntax is GFM - see https://github.github.com/gfm/","","","","","","","","",,,,,"",,,,"Annotation.text",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","N/A","Act.text"
 "Observation.bodySite","Observation.bodySite","","","",0,1,"","","","CodeableConcept {[]} {[]}
-","Observed body part　観察された身体部位","Indicates the site on the subject's body where the observation was made (i.e. the target site).
+","Bindingについてはユースケースに応じて各プロファイルで定義すること","Indicates the site on the subject's body where the observation was made (i.e. the target site).
 
 検査が行われた患者の体の部位。検体検査に関しては、当面は使用しない。","Only used if not implicit in code found in Observation.code.  In many systems, this may be represented as a related observation instead of an inline component.   
 
 If the use case requires BodySite to be handled as a separate resource (e.g. to identify and track separately) then use the standard extension[ bodySite](extension-bodysite.html).
 
-【JP Core仕様】当面は未使用とする。","","","","","","","","",,"example","","http://jpfhir.jp/fhir/Common/ValueSet/JP_ObservationBodySite_VS","",,,,"Observation.bodySite",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP Core仕様】当面は未使用とする。","","","","","","","","",,"example","Codes describing anatomical locations. May include laterality.","http://hl7.org/fhir/ValueSet/body-site","",,,,"Observation.bodySite",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","< 123037004 |Body structure|","OBX-20","targetSiteCode","718497002 |Inherent location|"
 "Observation.method","Observation.method","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","How it was done 実施の方法","Indicates the mechanism used to perform the observation.
@@ -383,7 +383,7 @@ Observation.code の code から測定方法が暗黙的でない場合にのみ
 
 【JP Core仕様】Observation.code に JLAC10コードを使用する場合、測定方法コードが含まれているため method は使用しない。Observation.code から測定方法が判明しない場合や、実際の測定方法が異なる場合に使用することになるが、現状では運用が困難と想定されるため、当面は未使用とする。","In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.
 
-場合により、測定方法は結果に影響を与える可能性があるため、結果を比較できるかどうかを判断したり、結果の重要性を判断したりするために使用される。","","","","","","","",,"example","","http://jpfhir.jp/fhir/Common/ValueSet/JP_ObservationMethod_VS","",,,,"Observation.method",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+場合により、測定方法は結果に影響を与える可能性があるため、結果を比較できるかどうかを判断したり、結果の重要性を判断したりするために使用される。","","","","","","","",,"example","Methods for simple observations.","http://hl7.org/fhir/ValueSet/observation-methods","",,,,"Observation.method",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","OBX-17","methodCode"
 "Observation.specimen","Observation.specimen","","","",1,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Specimen]]}
 ","Specimen used for this observation　観察（観測、検査）に使われた検体材料","The specimen that was used when this observation was made.
