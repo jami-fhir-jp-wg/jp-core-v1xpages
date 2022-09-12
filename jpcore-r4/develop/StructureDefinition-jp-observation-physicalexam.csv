@@ -72,14 +72,29 @@ ObservationをEncounterにencounter要素を使ってリンクする。もうひ
 
 observationの対象物を記述する。 observation の名前で呼ばれることもある。","*All* code-value and, if present, component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.
 
-【JP Core仕様】所見の有無を表すコード（固定値）","Knowing what kind of observation is being made is essential to understanding the observation.","","","<valueCodeableConcept xmlns=""http://hl7.org/fhir"">
-  <coding>
-    <system value=""http://jpfhir.jp/fhir/Common/CodeSystem/JP_PhysicalExamCode_CS""/>
-    <code value=""physical-findings""/>
-    <display value=""Physical Findings""/>
-  </coding>
-</valueCodeableConcept>","","","","",,"preferred","","http://jpfhir.jp/fhir/Common/ValueSet/JP_PhysicalExamCode_VS","",,,,"Observation.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP Core仕様】所見の有無を表すコード（固定値）","Knowing what kind of observation is being made is essential to understanding the observation.","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/Common/ValueSet/JP_PhysicalExamCode_VS","",,,,"Observation.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.code","< 363787002 |Observable entity| OR < 386053000 |Evaluation procedure|","OBX-3","code","FiveWs.what[x]","116680003 |Is a|"
+"Observation.code.id","Observation.code.id","","","",0,1,"","","","string {[]} {[]}
+","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Observation.code.extension","Observation.code.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
+","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+"Observation.code.coding","Observation.code.coding","","","",0,*,"","","Y","Coding {[]} {[]}
+","Code defined by a terminology system","A reference to a code defined by a terminology system.","Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true.","Allows for alternative encodings within a code system, and translations to other code systems.","","","","","","","",,,,,"","pattern:$this}
+","",,"open","CodeableConcept.coding",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","C*E.1-8, C*E.10-22","union(., ./translation)"
+"Observation.code.coding:physicalExamCode","Observation.code.coding","physicalExamCode","","",0,1,"","","Y","Coding {[]} {[]}
+","身体所見項目コード。本ユースケースにおける項目コード推奨値をスライスにて示している。【詳細参照】","身体所見項目コード。本ユースケースにおける項目コード推奨値をスライスにて示している。","推奨項目コードは必須ではない、派生先によるコード体系を作成し割り振ることを否定しない","Allows for alternative encodings within a code system, and translations to other code systems.","","","","<valueCoding xmlns=""http://hl7.org/fhir"">
+  <system value=""http://jpfhir.jp/fhir/Common/CodeSystem/JP_PhysicalExamCode_CS""/>
+  <code value=""physical-findings""/>
+  <display value=""Physical Findings""/>
+</valueCoding>","","","",,,,,"",,,,"CodeableConcept.coding",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","C*E.1-8, C*E.10-22","union(., ./translation)"
+"Observation.code.text","Observation.code.text","","","",0,1,"","","Y","string {[]} {[]}
+","Plain text representation of the concept","A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.","Very often the text is the same as a displayName of one of the codings.","The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.","","","","","","","",,,,,"",,,,"CodeableConcept.text",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","C*E.9. But note many systems use C*E.2 for this","./originalText[mediaType/code=""text/plain""]/data"
 "Observation.subject","Observation.subject","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient]]}
 ","Who and/or what the observation is about　観察対象者","The patient, or group of patients, location, or device this observation is about and into whose record the observation is placed. If the actual focus of the observation is different from the subject (or a sample of, part, or region of the subject), the `focus` element or the `code` itself specifies the actual focus of the observation.
 この観察が行われた対象となる患者、または患者のグループ、場所、またはデバイス、あるいはそれらの記録。
@@ -240,14 +255,29 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Observation.component.code","Observation.component.code","","","",1,1,"","","Y","CodeableConcept {[]} {[]}
 ","Type of component observation (code / type)","Describes what was observed. Sometimes this is called the observation ""code"".","*All* code-value and  component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.
 
-【JP Core仕様】具体的な所見を表すコード（固定値）","Knowing what kind of observation is being made is essential to understanding the observation.","","","<valueCodeableConcept xmlns=""http://hl7.org/fhir"">
-  <coding>
-    <system value=""http://jpfhir.jp/fhir/Common/CodeSystem/JP_PhysicalExamCode_CS""/>
-    <code value=""detailed-physical-findings""/>
-    <display value=""Detailed Physical Findings""/>
-  </coding>
-</valueCodeableConcept>","","","","",,"preferred","","http://jpfhir.jp/fhir/Common/ValueSet/JP_PhysicalExamCode_VS","",,,,"Observation.component.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP Core仕様】具体的な所見を表すコード（固定値）","Knowing what kind of observation is being made is essential to understanding the observation.","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/Common/ValueSet/JP_PhysicalExamCode_VS","",,,,"Observation.component.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","< 363787002 |Observable entity| OR < 386053000 |Evaluation procedure|","OBX-3","code","FiveWs.what[x]"
+"Observation.component.code.id","Observation.component.code.id","","","",0,1,"","","","string {[]} {[]}
+","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Observation.component.code.extension","Observation.component.code.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
+","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+"Observation.component.code.coding","Observation.component.code.coding","","","",0,*,"","","Y","Coding {[]} {[]}
+","Code defined by a terminology system","A reference to a code defined by a terminology system.","Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true.","Allows for alternative encodings within a code system, and translations to other code systems.","","","","","","","",,,,,"","pattern:$this}
+","",,"open","CodeableConcept.coding",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","C*E.1-8, C*E.10-22","union(., ./translation)"
+"Observation.component.code.coding:physicalExamCode","Observation.component.code.coding","physicalExamCode","","",0,1,"","","Y","Coding {[]} {[]}
+","身体所見項目コード。本ユースケースにおける項目コード推奨値をスライスにて示している。【詳細参照】","身体所見項目コード。本ユースケースにおける項目コード推奨値をスライスにて示している。","推奨項目コードは必須ではない、派生先によるコード体系を作成し割り振ることを否定しない","Allows for alternative encodings within a code system, and translations to other code systems.","","","","<valueCoding xmlns=""http://hl7.org/fhir"">
+  <system value=""http://jpfhir.jp/fhir/Common/CodeSystem/JP_PhysicalExamCode_CS""/>
+  <code value=""detailed-physical-findings""/>
+  <display value=""Detailed Physical Findings""/>
+</valueCoding>","","","",,,,,"",,,,"CodeableConcept.coding",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","C*E.1-8, C*E.10-22","union(., ./translation)"
+"Observation.component.code.text","Observation.component.code.text","","","",0,1,"","","Y","string {[]} {[]}
+","Plain text representation of the concept","A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.","Very often the text is the same as a displayName of one of the codings.","The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.","","","","","","","",,,,,"",,,,"CodeableConcept.text",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","C*E.9. But note many systems use C*E.2 for this","./originalText[mediaType/code=""text/plain""]/data"
 "Observation.component.value[x]","Observation.component.value[x]","","","",0,1,"","","Y","Quantity {[]} {[]}
 CodeableConcept {[]} {[]}string {[]} {[]}boolean {[]} {[]}integer {[]} {[]}Range {[]} {[]}Ratio {[]} {[]}SampledData {[]} {[]}time {[]} {[]}dateTime {[]} {[]}Period {[]} {[]}","Actual component result","The information determined as a result of making the observation, if the information has a simple value.","Used when observation has a set of component observations. An observation may have both a value (e.g. an  Apgar score)  and component observations (the observations from which the Apgar score was derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](http://hl7.org/fhir/R4/observation.html#notes) below.","An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.","","","","","","","",,,,,"",,,,"Observation.component.value[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","363714003 |Interprets| < 441742003 |Evaluation finding|","OBX.2, OBX.5, OBX.6","value","363714003 |Interprets|"
