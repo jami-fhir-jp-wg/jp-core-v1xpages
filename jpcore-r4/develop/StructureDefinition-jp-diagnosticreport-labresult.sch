@@ -79,6 +79,7 @@
     <sch:title>DiagnosticReport.category</sch:title>
     <sch:rule context="f:DiagnosticReport/f:category">
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
