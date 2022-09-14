@@ -8,9 +8,9 @@
   "url": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationDosage",
   "version": "1.1.0a",
   "name": "JP_MedicationDosage",
-  "title": "JP Core MedicationDosage Profile",
+  "title": "JP Core MedicationDosage DataType",
   "status": "draft",
-  "date": "2022-09-14T09:38:33+00:00",
+  "date": "2022-09-14T12:56:24+00:00",
   "publisher": "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact": [
     {
@@ -27,7 +27,7 @@
       ]
     }
   ],
-  "description": "処方用法に関するプロファイル",
+  "description": "処方用法に関するDataType",
   "jurisdiction": [
     {
       "coding": [
@@ -1418,65 +1418,6 @@
           {
             "identity": "rim",
             "map": "PQ.code, MO.currency, PQ.translation.code"
-          }
-        ]
-      },
-      {
-        "id": "Dosage.timing.repeat.bounds[x]:boundsRange",
-        "path": "Dosage.timing.repeat.bounds[x]",
-        "sliceName": "boundsRange",
-        "short": "薬剤の単位指定された上限下限量",
-        "definition": "薬剤の単位指定された上限下限量",
-        "comment": "薬剤の上限量、下限量の範囲を持っている。単位指定された数量を割り当てている。",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "Timing.repeat.bounds[x]",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "Range",
-            "profile": [
-              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRange"
-            ]
-          }
-        ],
-        "condition": [
-          "ele-1"
-        ],
-        "constraint": [
-          {
-            "key": "ele-1",
-            "severity": "error",
-            "human": "All FHIR elements must have a @value or children",
-            "expression": "hasValue() or (children().count() > id.count())",
-            "xpath": "@value|f:*|h:div",
-            "source": "http://hl7.org/fhir/StructureDefinition/Element"
-          },
-          {
-            "key": "rng-2",
-            "severity": "error",
-            "human": "If present, low SHALL have a lower value than high",
-            "expression": "low.empty() or high.empty() or (low <= high)",
-            "xpath": "not(exists(f:low/f:value/@value)) or not(exists(f:high/f:value/@value)) or (number(f:low/f:value/@value) <= number(f:high/f:value/@value))",
-            "source": "http://hl7.org/fhir/StructureDefinition/Range"
-          }
-        ],
-        "isModifier": false,
-        "mapping": [
-          {
-            "identity": "rim",
-            "map": "n/a"
-          },
-          {
-            "identity": "v2",
-            "map": "NR and also possibly SN (but see also quantity)"
-          },
-          {
-            "identity": "rim",
-            "map": "IVL<QTY[not(type=\"TS\")]> [lowClosed=\"true\" and highClosed=\"true\"]or URG<QTY[not(type=\"TS\")]>"
           }
         ]
       },
@@ -3754,6 +3695,48 @@
             "map": "n/a"
           }
         ]
+      },
+      {
+        "id": "Dosage.doseAndRate.rate[x]:rateRatio.extension:strengthType",
+        "path": "Dosage.doseAndRate.rate[x].extension",
+        "sliceName": "strengthType",
+        "short": "力価区分",
+        "definition": "投与量が製剤単位か成分単位かを格納する",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "Element.extension",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_IngredientStrength_StrengthType"
+            ]
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          },
+          {
+            "key": "ext-1",
+            "severity": "error",
+            "human": "Must have either extensions or value[x], not both",
+            "expression": "extension.exists() != value.exists()",
+            "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])",
+            "source": "http://hl7.org/fhir/StructureDefinition/Extension"
+          }
+        ],
+        "isModifier": false,
+        "isSummary": false
       },
       {
         "id": "Dosage.doseAndRate.rate[x]:rateRatio.numerator",

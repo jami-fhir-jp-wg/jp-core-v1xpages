@@ -31,9 +31,9 @@
   <url value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationDosage"/>
   <version value="1.1.0a"/>
   <name value="JP_MedicationDosage"/>
-  <title value="JP Core MedicationDosage Profile"/>
+  <title value="JP Core MedicationDosage DataType"/>
   <status value="draft"/>
-  <date value="2022-09-14T09:38:33+00:00"/>
+  <date value="2022-09-14T12:56:24+00:00"/>
   <publisher value="FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"/>
   <contact>
     <name value="FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"/>
@@ -46,7 +46,7 @@
       <value value="office@hlfhir.jp"/>
     </telecom>
   </contact>
-  <description value="処方用法に関するプロファイル"/>
+  <description value="処方用法に関するDataType"/>
   <jurisdiction>
     <coding>
       <system value="urn:iso:std:iso:3166"/>
@@ -1186,54 +1186,6 @@
       <mapping>
         <identity value="rim"/>
         <map value="PQ.code, MO.currency, PQ.translation.code"/>
-      </mapping>
-    </element>
-    <element id="Dosage.timing.repeat.bounds[x]:boundsRange">
-      <path value="Dosage.timing.repeat.bounds[x]"/>
-      <sliceName value="boundsRange"/>
-      <short value="薬剤の単位指定された上限下限量"/>
-      <definition value="薬剤の単位指定された上限下限量"/>
-      <comment value="薬剤の上限量、下限量の範囲を持っている。単位指定された数量を割り当てている。"/>
-      <min value="0"/>
-      <max value="1"/>
-      <base>
-        <path value="Timing.repeat.bounds[x]"/>
-        <min value="0"/>
-        <max value="1"/>
-      </base>
-      <type>
-        <code value="Range"/>
-        <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRange"/>
-      </type>
-      <condition value="ele-1"/>
-      <constraint>
-        <key value="ele-1"/>
-        <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
-        <expression value="hasValue() or (children().count() &gt; id.count())"/>
-        <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
-      </constraint>
-      <constraint>
-        <key value="rng-2"/>
-        <severity value="error"/>
-        <human value="If present, low SHALL have a lower value than high"/>
-        <expression value="low.empty() or high.empty() or (low &lt;= high)"/>
-        <xpath value="not(exists(f:low/f:value/@value)) or not(exists(f:high/f:value/@value)) or (number(f:low/f:value/@value) &lt;= number(f:high/f:value/@value))"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Range"/>
-      </constraint>
-      <isModifier value="false"/>
-      <mapping>
-        <identity value="rim"/>
-        <map value="n/a"/>
-      </mapping>
-      <mapping>
-        <identity value="v2"/>
-        <map value="NR and also possibly SN (but see also quantity)"/>
-      </mapping>
-      <mapping>
-        <identity value="rim"/>
-        <map value="IVL&lt;QTY[not(type=&quot;TS&quot;)]&gt; [lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]or URG&lt;QTY[not(type=&quot;TS&quot;)]&gt;"/>
       </mapping>
     </element>
     <element id="Dosage.timing.repeat.count">
@@ -3090,6 +3042,41 @@
         <identity value="rim"/>
         <map value="n/a"/>
       </mapping>
+    </element>
+    <element id="Dosage.doseAndRate.rate[x]:rateRatio.extension:strengthType">
+      <path value="Dosage.doseAndRate.rate[x].extension"/>
+      <sliceName value="strengthType"/>
+      <short value="力価区分"/>
+      <definition value="投与量が製剤単位か成分単位かを格納する"/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Element.extension"/>
+        <min value="0"/>
+        <max value="*"/>
+      </base>
+      <type>
+        <code value="Extension"/>
+        <profile value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_IngredientStrength_StrengthType"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <constraint>
+        <key value="ext-1"/>
+        <severity value="error"/>
+        <human value="Must have either extensions or value[x], not both"/>
+        <expression value="extension.exists() != value.exists()"/>
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
     </element>
     <element id="Dosage.doseAndRate.rate[x]:rateRatio.numerator">
       <path value="Dosage.doseAndRate.rate[x].numerator"/>
