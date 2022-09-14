@@ -1,0 +1,288 @@
+"Id","Path","Slice Name","Alias(s)","Label","Min","Max","Must Support?","Is Modifier?","Is Summary?","Type(s)","Short","Definition","Comments","Requirements","Default Value","Meaning When Missing","Fixed Value","Pattern","Example","Minimum Value","Maximum Value","Maximum Length","Binding Strength","Binding Description","Binding Value Set","Code","Slicing Discriminator","Slicing Description","Slicing Ordered","Slicing Rules","Base Path","Base Min","Base Max","Condition(s)","Constraint(s)","Mapping: Workflow Pattern","Mapping: RIM Mapping","Mapping: DICOM Tag Mapping","Mapping: FiveWs Pattern Mapping","Mapping: HL7 v2 Mapping"
+"ImagingStudy","ImagingStudy","","","",0,*,"","","","","DICOM画像検査で作成されたコンテンツの表現。スタディは一連のシリーズで構成され、各シリーズには、共通のコンテキストで取得または生成された一連のサービスオブジェクトペアインスタンス（SOPインスタンス-画像またはその他のデータ）が含まれる。シリーズは1つのモダリティ（X線、CT、MR、超音波など）のみだが、スタディには複数の異なるモダリティのシリーズが含まれる場合がある。","Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.","","","","","","","","","",,,,,"",,,,"ImagingStudy",0,*,"","dom-2:If the resource is contained in another resource, it SHALL NOT contain nested Resources {contained.contained.empty()}
+dom-3:If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:If a resource is contained in another resource, it SHALL NOT have a security label {contained.meta.security.empty()}dom-6:A resource should have narrative for robust management {text.`div`.exists()}","Event","Entity. Role, or Act","Act[classCode=COMPOSITION, moodCode=EVN]","Reference IHE radiology TF vol 2 table 4.14-1"
+"ImagingStudy.id","ImagingStudy.id","","","",0,1,"","","Y","id {[]} {[]}
+","Logical id of this artifact","The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.","The only time that a resource does not have an id is when it is being submitted to the server using a create operation.","","","","","","","","",,,,,"",,,,"Resource.id",0,1,"",""
+"ImagingStudy.meta","ImagingStudy.meta","","","",0,1,"","","Y","Meta {[]} {[]}
+","Metadata about the resource","The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.","","","","","","","","","",,,,,"",,,,"Resource.meta",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+"
+"ImagingStudy.implicitRules","ImagingStudy.implicitRules","","","",0,1,"","Y","Y","uri {[]} {[]}
+","A set of rules under which this content was created","A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.","Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element. Often, when used, the URL is a reference to an implementation guide that defines these special rules as part of it's narrative along with other profiles, value sets, etc.","","","","","","","","",,,,,"",,,,"Resource.implicitRules",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+"
+"ImagingStudy.language","ImagingStudy.language","","","",0,1,"","","","code {[]} {[]}
+","Language of the resource content","The base language in which the resource is written.","Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource. Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute).","","","","","","","","",,"preferred","A human language.","http://hl7.org/fhir/ValueSet/languages","",,,,"Resource.language",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+"
+"ImagingStudy.text","ImagingStudy.text","","narrative
+htmlxhtmldisplay","",0,1,"","","","Narrative {[]} {[]}
+","Text summary of the resource, for human interpretation","A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it ""clinically safe"" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.","Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative. In some cases, a resource may only have text with little or no additional discrete data (as long as all minOccurs=1 elements are satisfied).  This may be necessary for data from legacy systems where information is captured as a ""text blob"" or where text is additionally entered raw or narrated and encoded information is added later.","","","","","","","","",,,,,"",,,,"DomainResource.text",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Act.text?"
+"ImagingStudy.contained","ImagingStudy.contained","","inline resources
+anonymous resourcescontained resources","",0,*,"","","","Resource {[]} {[]}
+","Contained, inline Resources","These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.","This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again. Contained resources may have profiles and tags In their meta elements, but SHALL NOT have security labels.","","","","","","","","",,,,,"",,,,"DomainResource.contained",0,*,"","","N/A"
+"ImagingStudy.extension","ImagingStudy.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
+"ImagingStudy.modifierExtension","ImagingStudy.modifierExtension","","extensions
+user content","",0,*,"","Y","","Extension {[]} {[]}
+","Extensions that cannot be ignored","May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
+"ImagingStudy.identifier","ImagingStudy.identifier","","StudyInstanceUID
+AccessionNumber","",0,*,"","","Y","Identifier {[]} {[]}
+","スタディ全体の識別子","DICOMスタディインスタンスUIDやアクセッション番号などのImagingStudyの識別子。","DICOMスタディインスタンスUIDのエンコードについては、[Imaging Study Implementation Notes]（imagingstudy.html＃notes）の説明を参照。アクセッション番号はACSN識別子タイプを使用する必要がある。
+
+【JP-Core仕様】Study Instance UIDは必須、その他は任意。","ImagingStudyに1つ以上のシリーズ要素が存在する場合、1つのDICOMスタディUID識別子が存在する必要がある（[DICOM PS 3.3 C.7.2]（https://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.2.html）を参照） 。","","","","","","","",,,,,"",,,,"ImagingStudy.identifier",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Event.identifier",".id and .inboundRelationship[typeCode=COMP].source[classCode=ACSN, moodCode=EVN].id","StudyInstanceUID (0020,000D) | Accession Number and Issuer (0080,0050)+(0080,0051) | Study ID (0020,0010)","FiveWs.identifier"
+"ImagingStudy.status","ImagingStudy.status","","","",1,1,"","Y","Y","code {[]} {[]}
+","registered | available | cancelled | entered-in-error | unknown","ImagingStudyの現在のステータス","不明(unknown)は「その他」を表すものではない。定義されたステータスの1つを適用する必要がある。不明(unknown)は、オーサリングシステムが現在のステータスを確認できない場合に使用される。
+
+【JP-Core仕様】リソースの状態。","","","","","","","","",,"required","The status of the ImagingStudy.","http://hl7.org/fhir/ValueSet/imagingstudy-status|4.0.1","",,,,"ImagingStudy.status",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Event.status",".status","FiveWs.status","Varies by domain"
+"ImagingStudy.modality","ImagingStudy.modality","","ModalitiesInStudy
+","",0,*,"","","Y","Coding {[]} {[]}
+","実際の取得モダリティーの場合、モダリティーの全シリーズ。対応するDICOM tag: (0008, 0061)","実際の取得モダリティであるすべてのseries.modality値のリスト、つまりDICOMコンテキストグループ29（値セットOID 1.2.840.10008.6.1.19）の値。","コードは、列挙型またはコードリストで、SNOMED CTなどの非常に正式な定義まで、非常にカジュアルに定義できる。詳細については、HL7v3コア原則を参照のこと。
+
+・モダリティのコードを設定。
+
+・Seriesの階層の(0008,0060)を集約する、または(0008,0060)　と　(0008, 0061) のOR。但し、重複する値は1つにまとめて表現。","","","","","","","","",,"extensible","Type of acquired data in the instance.","http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html","",,,,"ImagingStudy.modality",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".code","(0008,0061)","FiveWs.class"
+"ImagingStudy.subject","ImagingStudy.subject","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device], CanonicalType[http://hl7.org/fhir/StructureDefinition/Group]]}
+","検査対象者","画像検査の対象、通常は患者。","QAファントムはDeviceリソースとして記録できる。複数の被験者（マウスなど）の場合はGroupリソースで記録できる。
+
+・患者(Patient)リソースを参照。
+
+・DICOMタグ値を参照する場合は、tag mappingの通りグループ0010（患者情報に関連する情報を扱うグループ）を参照。
+
+・不明患者は、空もしくは不明を指すPatientリソースを参照。","","","","","","","","",,,,,"",,,,"ImagingStudy.subject",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Event.subject",".participation[typeCode=SBJ].role","(0010/*)","FiveWs.subject[x]","FiveWs.subject"
+"ImagingStudy.encounter","ImagingStudy.encounter","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Encounter]]}
+","この画像検査が関連しているEncounterリソース","このImagingStudyが行われるヘルスケアイベント（患者とヘルスケアプロバイダーの相互作用など）。","これは通常、イベントが発生したエンカウンターであるが、一部のイベントは、エンカウンターの正式な完了の前または後に開始される場合があり、それでもそのエンカウンターのコンテキストに関連付けられている（例：入院前の検査）
+
+受付を示すEncounterリソースを参照。
+（補足：訪問診療では医療者が患者と会った事を指す）","","","","","","","","",,,,,"",,,,"ImagingStudy.encounter",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Event.encounter","inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]","FiveWs.context"
+"ImagingStudy.started","ImagingStudy.started","","StudyDate
+StudyTime","",0,1,"","","Y","dateTime {[]} {[]}
+","スタディの開始時期","スタディの開始日時","検査開始日時　もしくは　撮影装置へ患者情報が届いた/入力した日時。","","","","","","<valueDateTime xmlns=""http://hl7.org/fhir"" value=""2011-01-01T11:01:20+03:00""/>","","",,,,,"",,,,"ImagingStudy.started",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Event.occurrence[x]",".effectiveTime","(0008,0020)+(0008,0030)","FiveWs.init"
+"ImagingStudy.basedOn","ImagingStudy.basedOn","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/CarePlan], CanonicalType[http://hl7.org/fhir/StructureDefinition/ServiceRequest], CanonicalType[http://hl7.org/fhir/StructureDefinition/Appointment], CanonicalType[http://hl7.org/fhir/StructureDefinition/AppointmentResponse], CanonicalType[http://hl7.org/fhir/StructureDefinition/Task]]}
+","実施された依頼","この画像検査の実施につながった診断依頼のリスト。","参照は、実在するFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的に使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
+
+依頼元のServiceRequestを紐付ける。","グループ化された手技をサポートすること。（一つの画像検査に複数の種類の手技が含まれることがある。例：胸部/腹部/骨盤部 CT）","","","","","","","",,,,,"",,,,"ImagingStudy.basedOn",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Event.basedOn",".outboundRelationship[typeCode=FLFS].target[classCode=DGIMG, moodCode=RQO]","(0032,1064)","FiveWs.cause"
+"ImagingStudy.referrer","ImagingStudy.referrer","","ReferringPhysiciansName
+","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole]]}
+","依頼紹介医師","依頼紹介医師","参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
+
+依頼医師。必須ではない（ServiceRequestから参照できるため）。","","","","","","","","",,,,,"",,,,"ImagingStudy.referrer",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=FLFS].target[classCode=DGIMG, moodCode=RQO].participation[typeCode=AUT].role","(0008,0090)+(0008,0096)","FiveWs.cause"
+"ImagingStudy.interpreter","ImagingStudy.interpreter","","Name of Physician(s) Reading Study
+","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole]]}
+","画像の読影者","画像の読影者","参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
+
+読影医","","","","","","","","",,,,,"",,,,"ImagingStudy.interpreter",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=PRF].role","(0008,1060)","FiveWs.witness"
+"ImagingStudy.endpoint","ImagingStudy.endpoint","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Endpoint]]}
+","スタディにアクセスするエンドポイント","スタディへのアクセス（クエリ、表示、取得など）を提供するネットワークサービス。 DICOMエンドポイントの使用については、実装ノートを参照。スタディレベルのエンドポイントは、同じEndpoint.connectionTypeを持つシリーズレベルのエンドポイントによってオーバーライドされない限り、スタディの各シリーズに適用される。","典型的なエンドポイントタイプには、RESTful APIを使用してネイティブまたはレンダリング（JPG、PNGなど）形式でDICOMインスタンスを取得するために使用されるDICOMWADO-RSが含まれる。 DICOMWADO-URI。HTTPクエリベースのアプローチを使用することを除いて、ネイティブインスタンスまたはレンダリングされたインスタンスを同様に取得できる。 DICOM QIDO-RS。実際のインスタンスを取得せずに、DICOM情報のRESTfulクエリを可能にする。またはIHEInvoke Image Display（IID）。これは、イメージングWebビューアの標準的な呼び出しを提供する。
+
+DICOMのリソース位置を指定。基本的には1つ。","スタディまたはスタディに含まれるシリーズやインスタンスを閲覧（例：IHE’s IID profile）したり、取得（例：DICOM’s WADO-URI and WADO-RS）したりするためのアクセス方法。スタディレベルのbaseLocationは、同じタイプのシリーズレベルのbaseLocationにてオーバーライドされない限り、スタディ内の各シリーズに適用される。","","","","","","","",,,,,"",,,,"ImagingStudy.endpoint",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Not supported"
+"ImagingStudy.numberOfSeries","ImagingStudy.numberOfSeries","","NumberOfStudyRelatedSeries
+","",0,1,"","","Y","unsignedInt {[]} {[]}
+","スタディに含まれるシリーズ数","調査のシリーズ数。指定されたこの値は、リソースの可用性、セキュリティ、またはその他の要因により、このリソースに含まれる一連の要素の数よりも大きい場合がある。系列要素が存在する場合、この要素が存在する必要がある。","32ビット数で表す。これより大きい値の場合は、10進数を使用する。
+
+シリーズの数","","","","","","","","",,,,,"",,,,"ImagingStudy.numberOfSeries",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP, subsetCode=SUMM].target[classCode=OBSSER, moodCode=EVN].repeatNumber","(0020,1206)"
+"ImagingStudy.numberOfInstances","ImagingStudy.numberOfInstances","","NumberOfStudyRelatedInstances
+","",0,1,"","","Y","unsignedInt {[]} {[]}
+","スタディ関連のインスタンス数","スタディの中のSOPインスタンスの数。指定されたこの値は、リソースの可用性、セキュリティ、またはその他の要因により、このリソースに含まれるインスタンス要素の数よりも大きい場合がある。インスタンス要素が存在する場合は、この要素が存在する必要がある。","32ビット数で表す。これより大きい値の場合は、10進数を使用する。
+
+イメージ（インスタンス）の数。","","","","","","","","",,,,,"",,,,"ImagingStudy.numberOfInstances",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP, subsetCode=SUMM].target[classCode=DGIMG, moodCode=EVN].repeatNumber","(0020,1208)"
+"ImagingStudy.procedureReference","ImagingStudy.procedureReference","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure]]}
+","実施されたProcedure への参照","このImagingStudyが含まれていたprocedure リソースへの参照。","参照は、実在するFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
+
+進捗状況に関するProcedureリソースを参照。","","","","","","","","",,,,,"",,,,"ImagingStudy.procedureReference",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Event.partOf",".outboundRelationship[typeCode=COMP].target[classCode=PROC, moodCode=EVN]","(0008,1032)"
+"ImagingStudy.procedureCode","ImagingStudy.procedureCode","","ProcedureCodeSequence
+","",0,*,"","","Y","CodeableConcept {[]} {[]}
+","実施されたProcedureのコード","実施されたProcedureのタイプを表すコード。","すべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係と調整前後の関係を管理するための独自の構造を提供する必要がある。
+
+エラーコードなどを記載","","","","","","","","",,"extensible","コードは http://playbook.radlex.org/playbook/SearchRadlexAction に該当があれば使わなければならない。ただし、実施された行為のタイプにこれらのコードがなじまない場合は他のコードが利用される可能性がある。","http://playbook.radlex.org/playbook/SearchRadlexAction","",,,,"ImagingStudy.procedureCode",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Event.code",".outboundRelationship[typeCode=COMP].target[classCode=PROC, moodCode=EVN]","(0008,1032)"
+"ImagingStudy.location","ImagingStudy.location","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Location]]}
+","ImagingStudy が実施された場所","ImagingStudyが実施された主要な物理的な場所。","参照は、実在のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
+
+撮影室を示すLocationリソースを参照。","イベントをレコードが保持される可能性が高い場所に結び付け、イベントの発生に関するコンテキストを提供する。 (たとえば、専用の医療環境の内外で発生した場合など。）","","","","","","","",,,,,"",,,,"ImagingStudy.location",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Event.location",".participation[typeCode=LOC].role","(0008,1040) | (0040,0243)","FiveWs.where[x]","EVN.7"
+"ImagingStudy.reasonCode","ImagingStudy.reasonCode","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
+","スタディが依頼された理由","ImagingStudyが要求された理由を示す臨床状態の説明。","すべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係と調整前後の関係を管理するための独自の構造を提供する必要がある。
+
+JP Coreでは未使用","","","","","","","","",,"example","The reason for the study.","http://hl7.org/fhir/ValueSet/procedure-reason","",,,,"ImagingStudy.reasonCode",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Event.reasonCode",".reasonCode","(0040,1002)","FiveWs.why[x]"
+"ImagingStudy.reasonReference","ImagingStudy.reasonReference","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common], CanonicalType[http://hl7.org/fhir/StructureDefinition/Media], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Common], CanonicalType[http://hl7.org/fhir/StructureDefinition/DocumentReference]]}
+","スタディが実施された理由","このスタディを正当化する別のリソースを示す。","参照は、実在のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
+
+実施理由が書かれたDiagnosticReportリソースを参照。","","","","","","","","",,,,,"",,,,"ImagingStudy.reasonReference",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Event.reasonReference",".outboundRelationship[typeCode=RSON].target","FiveWs.why[x]","EVN.4 or by domain"
+"ImagingStudy.note","ImagingStudy.note","","","",0,*,"","","Y","Annotation {[]} {[]}
+","ユーザが定義したコメント","推奨されるDICOMマッピングによると、この要素はスタディの説明属性（0008,1030）から派生している。画像検査に関する観察または所見は、この要素に記述するのではなく、Observationのような別のリソースに記録する必要がある。","構造化された注釈（アノテーション）を持たないシステムの場合、作成者や時間なしで単一の注釈を簡単に伝達できる。情報を変更する可能性があるため、この要素をナラティブに含める必要がある場合がある。 
+*注釈は、計算機処理れきる「変更」情報を伝達するために使用されるべきではない*。 （ユーザーの行動を強制することはほとんど不可能であるため、これはSHOULDとする）。
+
+コメント（Annotation型による記述）","","","","","","","","",,,,,"",,,,"ImagingStudy.note",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Event.note","unknown"
+"ImagingStudy.description","ImagingStudy.description","","StudyDescription
+","",0,1,"","","Y","string {[]} {[]}
+","機関生成の記述","スタディのイメージングマネージャの説明。実施されたスタディ（コンポーネント）の機関生成の説明または分類。","FHIR文字列のサイズは1MBを超えてはならないことに注意。
+
+検査に関するフリーコメント。","","","","","","","","",,,,,"",,,,"ImagingStudy.description",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".text","(0008,1030)"
+"ImagingStudy.series","ImagingStudy.series","","","",0,*,"","","Y","BackboneElement {[]} {[]}
+","個々のスタディはインスタンスの１以上のシリーズを有する。","個々のスタディは画像か他の内容の１以上のシリーズを有する。","シリーズ（大まかな画像のグループ）","","","","","","","","",,,,,"",,,,"ImagingStudy.series",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].target[classCode=OBSSER, moodCode=EVN]"
+"ImagingStudy.series.id","ImagingStudy.series.id","","","",0,1,"","","","string {[]} {[]}
+","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"ImagingStudy.series.extension","ImagingStudy.series.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+"ImagingStudy.series.modifierExtension","ImagingStudy.series.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","Extensions that cannot be ignored even if unrecognized","May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
+"ImagingStudy.series.uid","ImagingStudy.series.uid","","SeriesInstanceUID
+","",1,1,"","","Y","id {[]} {[]}
+","そのシリーズに対するDICOM Series Instance UID","そのシリーズに対するDICOM Series Instance UID","[DICOM PS3.3 C.7.3]（https://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.3.html）を参照。
+
+study階層のidentifierと同じ概念。(0020,000E)にseries固有のUIDが付与される。","DICOM Series Instance UID.","","","","","<valueId xmlns=""http://hl7.org/fhir"" value=""2.16.124.113543.6003.2588828330.45298.17418.2723805630""/>","","",,,,,"",,,,"ImagingStudy.series.uid",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".id","(0020,000E)"
+"ImagingStudy.series.number","ImagingStudy.series.number","","SeriesNumber
+","",0,1,"","","Y","unsignedInt {[]} {[]}
+","このシリーズの数値型識別子","このシリーズの数値型識別子","32ビット数で表す。これより大きい値の場合は、10進数を使用する。
+
+上記UIDとは別に、ユーザー（または装置）が自由に決められる番号。","","","","","","<valueUnsignedInt xmlns=""http://hl7.org/fhir"" value=""3""/>","","",,,,,"",,,,"ImagingStudy.series.number",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[type=COMP, source[classCode=COMPOSITION, moodCode=EVN]].sequenceNumber","(0020,0011)"
+"ImagingStudy.series.modality","ImagingStudy.series.modality","","Modality
+","",1,1,"","","Y","Coding {[]} {[]}
+","シリーズが取得されたモダリティ","シリーズが取得されたモダリティー","コードは、列挙型またはコードリストで、SNOMED CTなどの非常に正式な定義まで、非常に柔軟に定義できる。ただしJP CoreではSNOMED CTを推奨しない。詳細については、HL7v3コア原則を参照。
+
+当該シリーズのモダリティコード。1シリーズ1モダリティ（1つのシリーズの中に複数のモダリティが混在することはない）。
+
+（参照先）
+
+ftp://medical.nema.org/medical/dicom/resources/valuesets/fhir/json/CID_29.json
+
+https://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html","","","","","","","","",,"extensible","Type of acquired data in the instance.","http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html","",,,,"ImagingStudy.series.modality",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".code","(0008,0060)"
+"ImagingStudy.series.description","ImagingStudy.series.description","","SeriesDescription
+","",0,1,"","","Y","string {[]} {[]}
+","シリーズの人間可読な形式での短い要約記述","シリーズの記述。","FHIR文字列のサイズは1MBを超えてはならないことに注意。
+
+シリーズごとにつけられるフリーコメント。","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""CT Surview 180""/>","","",,,,,"",,,,"ImagingStudy.series.description",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".text","(0008,103E)"
+"ImagingStudy.series.numberOfInstances","ImagingStudy.series.numberOfInstances","","NumberOfSeriesRelatedInstances
+","",0,1,"","","Y","unsignedInt {[]} {[]}
+","Number of Series Related Instances","スタディの中のSOPインスタンスの数。指定されたこの値は、リソースの可用性、セキュリティ、またはその他の要因により、このリソースに含まれるインスタンス要素の数よりも大きい場合がある。インスタンス要素が存在する場合は、この要素が存在する必要がある。","32ビット数で表す。これより大きい値の場合は、10進数を使用する。
+
+シリーズに含まれる画像枚数","","","","","","","","",,,,,"",,,,"ImagingStudy.series.numberOfInstances",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP, subsetCode=SUMM].target[classCode=DGIMG, moodCode=EVN].repeatNumber","(0020,1209)"
+"ImagingStudy.series.endpoint","ImagingStudy.series.endpoint","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Endpoint]]}
+","シリーズにアクセスするエンドポイント","シリーズへのアクセス（クエリ、表示、取得など）を提供するネットワークサービス。 DICOMエンドポイントの使用については、実装ノートを参照。シリーズレベルのエンドポイントは、同じEndpoint.connectionTypeを持つシリーズレベルのエンドポイントによってオーバーライドされない限り、スタディの各シリーズに適用される。","典型的なエンドポイントタイプには、RESTful APIを使用してネイティブまたはレンダリング（JPG、PNGなど）形式でDICOMインスタンスを取得するために使用されるDICOMWADO-RSが含まれる。 DICOMWADO-URI。HTTPクエリベースのアプローチを使用することを除いて、ネイティブインスタンスまたはレンダリングされたインスタンスを同様に取得できる。 DICOM QIDO-RSは、実際のインスタンスを取得せずにDICOM情報のRESTfulクエリを可能にする。
+
+study階層のendpointと同じ。DICOMのリソース位置を指定。基本的には1つ。","Access methods for retrieving (e.g., DICOM’s WADO-URI and WADO-RS) the series or the series’ instances. A baseLocation specified at the series level has precedence over a baseLocation of the same type specified at the study level.","","","","","","","",,,,,"",,,,"ImagingStudy.series.endpoint",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Not supported"
+"ImagingStudy.series.bodySite","ImagingStudy.series.bodySite","","BodyPartExamined
+","",0,1,"","","Y","Coding {[]} {[]}
+","検査した人体部位","検査対象の解剖学的構造。 
+bodySiteは、画像化された身体部分の左右差を示している場合がある。その場合、ImagingStudy.series.lateralityのコンテンツと一致している必要がある。","コードは、列挙型またはコードリストで、どの部位の検査なのかを示す。フリーではなく、DICOM定義書の中で示される語句（コード）をデフォルトとするが、JJ1017Pの小部位コードの利用を許容する。","","","","","","","","",,"example","DICOM tagに設定されているコードをデフォルトとするが、JJ1017Pの小部位コードの利用を許容する。","http://hl7.org/fhir/ValueSet/body-site","",,,,"ImagingStudy.series.bodySite",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".targetSiteCode","(0018,0015)"
+"ImagingStudy.series.laterality","ImagingStudy.series.laterality","","","",0,1,"","","Y","Coding {[]} {[]}
+","人体部位の左右識別","検査した（おそらく対になっている）解剖学的構造の左右識別。
+例：左膝、両方の肺、または対になっていない腹部。存在する場合は、ImagingStudy.series.bodySiteに示されている左右差情報と一致している必要がある。","コードは、列挙型またはコードリストで、どの部位の検査なのかを示す。フリーではなく、DICOM定義書の中で示される語句（コード）をデフォルトとするが、JJ1017Pの左右コードの利用を許容する。","","","","","","","","",,"example","DICOM定義書の中で示される語句（コード）をデフォルトとするが、JJ1017Pの左右コードの利用を許容する。","http://hl7.org/fhir/ValueSet/bodysite-laterality","",,,,"ImagingStudy.series.laterality",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".targetSiteCode","(0020,0060)"
+"ImagingStudy.series.specimen","ImagingStudy.series.specimen","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Specimen]]}
+","画像検査をした検体","例えば、生検のスライド全体の画像化のために画像化された標本。通常の放射線画像検査では使用されない。（DICOMを用いた病理画像検査で用いられる）","参照は、実在のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。
+
+【JP Core仕様】UIDは別のtagが存在するので、ユーザー側で自由に付与していい番号と思われる。","","","","","","","","",,,,,"",,,,"ImagingStudy.series.specimen",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Role[classCode=SPEC]","(0040,0551) + (0040,0562)"
+"ImagingStudy.series.started","ImagingStudy.series.started","","","",0,1,"","","Y","dateTime {[]} {[]}
+","シリーズの開始時期","シリーズの開始日付、日時。","シリーズ単位での開始時刻。最初にシリーズを取得 or 定義した時刻。","","","","","","","","",,,,,"",,,,"ImagingStudy.series.started",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".effectiveTime","(0008,0021) + (0008,0031)"
+"ImagingStudy.series.performer","ImagingStudy.series.performer","","PerformingPhysicianName
+OperatorName","",0,*,"","","Y","BackboneElement {[]} {[]}
+","シリーズの実施者","シリーズを実施し、関係した人を示す。","シリーズを実施した人がわからない場合は、その組織が記録される場合がある。患者または関係者は、患者自身で取得した画像の場合など、パフォーマーである可能性がある。
+
+【JP Core仕様】検査を実施した（画像を取得する操作を行った）人。
+
+　　(0008,1050)Performing Physician's Name
+
+　　(0008,1052)Performing Physician Identification Sequence
+
+　　(0008,1070)Operators' Name
+
+　　(0008,1072)Operator Identification Sequence","The performer is recorded at the series level, since each series in a study may be performed by a different performer, at different times, and using different devices. A series may be performed by multiple performers.","","","","","","","",,,,,"",,,,"ImagingStudy.series.performer",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Event.performer",".participation[typeCode=PRF].role","(0008, 1050) | (0008, 1052) | (0008, 1070) | (0008, 1072)"
+"ImagingStudy.series.performer.id","ImagingStudy.series.performer.id","","","",0,1,"","","","string {[]} {[]}
+","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"ImagingStudy.series.performer.extension","ImagingStudy.series.performer.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+"ImagingStudy.series.performer.modifierExtension","ImagingStudy.series.performer.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","Extensions that cannot be ignored even if unrecognized","May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
+"ImagingStudy.series.performer.function","ImagingStudy.series.performer.function","","","",0,1,"","","Y","CodeableConcept {[]} {[]}
+","Type of performance","Distinguishes the type of involvement of the performer in the series.","","Allows disambiguation of the types of involvement of different performers.","","","","","","","",,"extensible","The type of involvement of the performer.","http://hl7.org/fhir/ValueSet/series-performer-function","",,,,"ImagingStudy.series.performer.function",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=PRF].role"
+"ImagingStudy.series.performer.actor","ImagingStudy.series.performer.actor","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization], CanonicalType[http://hl7.org/fhir/StructureDefinition/CareTeam], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson]]}
+","Who performed the series","Indicates who or what performed the series.","【JP Core仕様】組織または撮影者","","","","","","","","",,,,,"",,,,"ImagingStudy.series.performer.actor",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]","FiveWs.actor","EVN.5 or by domain"
+"ImagingStudy.series.instance","ImagingStudy.series.instance","","","",0,*,"","","","BackboneElement {[]} {[]}
+","シリーズからの単一SOPインスタンス","ひとつの画像、またはプレゼンテーションの状態など、シリーズ内の単一のSOPインスタンス。","インスタンス（画像）単位の情報","","","","","","","","",,,,,"",,,,"ImagingStudy.series.instance",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].target[classCode=DGIMG, moodCode=EVN]"
+"ImagingStudy.series.instance.id","ImagingStudy.series.instance.id","","","",0,1,"","","","string {[]} {[]}
+","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"ImagingStudy.series.instance.extension","ImagingStudy.series.instance.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+"ImagingStudy.series.instance.modifierExtension","ImagingStudy.series.instance.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","Extensions that cannot be ignored even if unrecognized","May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
+"ImagingStudy.series.instance.uid","ImagingStudy.series.instance.uid","","SOPInstanceUID
+","",1,1,"","","","id {[]} {[]}
+","DICOM SOP Instance UID","The DICOM SOP Instance UID for this image or other DICOM content.","[DICOM PS3.3 C.12.1](https://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.12.html#sect_C.12.1)を参照。
+
+【JP Core仕様】画像のユニークID。DICOMタグマッピングにある値をそのまま設定。","DICOM SOP Instance UID.","","","","","<valueId xmlns=""http://hl7.org/fhir"" value=""2.16.124.113543.6003.189642796.63084.16748.2599092903""/>","","",,,,,"",,,,"ImagingStudy.series.instance.uid",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".id","(0008,0018)"
+"ImagingStudy.series.instance.sopClass","ImagingStudy.series.instance.sopClass","","SOPClassUID
+","",1,1,"","","","Coding {[]} {[]}
+","DICOM class type","DICOM instance  type.","【JP Core仕様】SOPクラスUID。DICOMタグマッピングにある値をそのまま設定。","","","","","","","","",,"extensible","The sopClass for the instance.","http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_B.5.html#table_B.5-1","",,,,"ImagingStudy.series.instance.sopClass",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=COMP]. source[classCode=OBS, moodCode=EVN, code=""sop class""].value","(0008,0016)"
+"ImagingStudy.series.instance.number","ImagingStudy.series.instance.number","","InstanceNumber
+","",0,1,"","","","unsignedInt {[]} {[]}
+","The number of this instance in the series","The number of instance in the series.","32ビット数で表す。これより大きい値の場合は、10進数を使用する。
+
+【JP Core仕様】ユーザー（または装置）が自由に決められる画像ごとの番号。DICOMタグマッピングにある値をそのまま設定。","","","","","","<valueUnsignedInt xmlns=""http://hl7.org/fhir"" value=""1""/>","","",,,,,"",,,,"ImagingStudy.series.instance.number",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=COMP, source[classCode=OBSSER, moodCode=EVN]].sequenceNumber","(0020,0013)"
+"ImagingStudy.series.instance.title","ImagingStudy.series.instance.title","","","",0,1,"","","","string {[]} {[]}
+","インスタンスの記述","インスタンスの記述","【JP Core仕様】画像に対する説明。DICOMタグマッピングにある値があれば、そのまま設定
+
+　　(0008,0008)Image Type
+
+　　(0040,A043)Concept Name Code Sequence
+
+　　(0008,0104)Code Meaning
+
+　　(0042,0010)Document Title","","","","","","","","",,,,,"",,,,"ImagingStudy.series.instance.title",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".title","(0008,0008) | (0007,0080) | (0040,A043) + (0008,0104) | (0042,0010)"
