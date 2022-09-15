@@ -175,6 +175,7 @@
     <sch:title>Medication.ingredient.strength.denominator</sch:title>
     <sch:rule context="f:Medication/f:ingredient/f:strength/f:denominator">
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="not(exists(f:code)) or exists(f:system)">If a code for the unit is present, the system SHALL also be present (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>

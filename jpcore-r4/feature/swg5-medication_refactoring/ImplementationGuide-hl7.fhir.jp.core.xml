@@ -38,7 +38,7 @@
   <dependsOn id="hl7tx">
     <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
     <packageId value="hl7.terminology.r4"/>
-    <version value="3.1.0"/>
+    <version value="4.0.0"/>
   </dependsOn>
   <definition>
     <resource>
@@ -321,10 +321,10 @@
         <valueString value="StructureDefinition:complex-type"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/jp-medicationrateratio"/>
+        <reference value="StructureDefinition/jp-medicationratio-amount"/>
       </reference>
-      <name value="JP Core Medication Rate Ratio DataType"/>
-      <description value="このプロファイルはRatio DataTypeに対して、日本の薬剤単位を割り当てた派生型である。単位時間内での薬剤の容量（体積）を記述する"/>
+      <name value="JP Core Medication Ratio Amount DataType"/>
+      <description value="このプロファイルはRatio Amount DataTypeに対して、日本の薬剤単位を割り当てた派生型である。"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -332,10 +332,10 @@
         <valueString value="StructureDefinition:complex-type"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/jp-medicationratio"/>
+        <reference value="StructureDefinition/jp-medicationratio-doseperperiod"/>
       </reference>
-      <name value="JP Core Medication Ratio DataType"/>
-      <description value="このプロファイルはRatio DataTypeに対して、日本の薬剤単位を割り当てた派生型である。"/>
+      <name value="JP Core Medication Rate Ratio DataType"/>
+      <description value="このプロファイルはRatio DataTypeに対して、日本の薬剤単位を割り当てた派生型である。単位時間内での薬剤の容量（体積）を記述する"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1616,6 +1616,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/jp-undefined-vs"/>
+      </reference>
+      <name value="JP Core Undefined ValueSet"/>
+      <description value="未定義の値セット。使用する予定のコードシステムが利用できない場合や方針未決定の場合に割り振る特別なリソースです。"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="CodeSystem"/>
       </extension>
       <reference>
@@ -2316,6 +2327,17 @@
       </reference>
       <name value="JP Core Procedure Reason CodeSystem"/>
       <description value="処置が実施された理由を示すコードシステム"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/jp-undefined-cs"/>
+      </reference>
+      <name value="JP Core Undefined CodeSystem"/>
+      <description value="未定義のコードシステム。使用する予定のコードシステムが利用できない場合や方針未決定の場合等に割り振る特別なリソースです。"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -3827,6 +3849,10 @@
     </parameter>
     <parameter>
       <code value="special-url"/>
+      <value value="http://jpfhir.jp/fhir/Common/CodeSystem/JP_Undefined_CS"/>
+    </parameter>
+    <parameter>
+      <code value="special-url"/>
       <value value="http://jpfhir.jp/fhir/Common/ValueSet/JP_AllergyIntolerance_VS"/>
     </parameter>
     <parameter>
@@ -3844,10 +3870,6 @@
     <parameter>
       <code value="special-url"/>
       <value value="http://jpfhir.jp/fhir/Common/ValueSet/JP_Department_SsMix3Digits_VS"/>
-    </parameter>
-    <parameter>
-      <code value="special-url"/>
-      <value value="http://jpfhir.jp/fhir/Common/ValueSet/JP_DiagnosticReportRadiologyCode_VS"/>
     </parameter>
     <parameter>
       <code value="special-url"/>
@@ -4108,6 +4130,10 @@
     <parameter>
       <code value="special-url"/>
       <value value="http://jpfhir.jp/fhir/Common/ValueSet/JP_ProcedureReason_VS"/>
+    </parameter>
+    <parameter>
+      <code value="special-url"/>
+      <value value="http://jpfhir.jp/fhir/Common/ValueSet/JP_Undefined_VS"/>
     </parameter>
     <parameter>
       <code value="autoload-resources"/>
