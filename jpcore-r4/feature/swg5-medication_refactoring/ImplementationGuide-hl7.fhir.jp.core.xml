@@ -269,7 +269,7 @@
         <reference value="StructureDefinition/jp-medicationdosage"/>
       </reference>
       <name value="JP Core MedicationDosage DataType"/>
-      <description value="処方用法に関するDataType"/>
+      <description value="このプロファイルは内服用法の制約と拡張のうち共通部分を定めている。"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -280,7 +280,7 @@
         <reference value="StructureDefinition/jp-medicationdosagebase"/>
       </reference>
       <name value="JP Core MedicationDosage Base DataType"/>
-      <description value="このプロファイルはユーザは直接適用するものではなく、JP_MedicationRequestとJP_MedicationRequestInjectionの共通の親となる抽象プロファイルである。MedicationRequestリソースに対して、内服・外用薬剤処方、注射・点滴などのデータを送受信するため、JP_MedicationRequestとJP_MedicationRequestInjectionの各プロファイルの基礎となる制約と拡張のうち共通部分を定めている。"/>
+      <description value="このプロファイルは薬剤用のDosageベースとして基礎となる制約と拡張のうち共通部分を定めている。"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -290,8 +290,8 @@
       <reference>
         <reference value="StructureDefinition/jp-medicationdosage-injection"/>
       </reference>
-      <name value="JP Core MedicationDosage Prescription DataType"/>
-      <description value="注射用法に関するDataType"/>
+      <name value="JP Core MedicationDosage Injection DataType"/>
+      <description value="このプロファイルは注射用法の制約と拡張のうち共通部分を定めている。"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -321,10 +321,32 @@
         <valueString value="StructureDefinition:complex-type"/>
       </extension>
       <reference>
+        <reference value="StructureDefinition/jp-medicationrange-unitoftime"/>
+      </reference>
+      <name value="JP Core Medication Range DataType"/>
+      <description value="このプロファイルはRange DataTypeに対して、薬剤量の上限下限に関する定義を行なったものである"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:complex-type"/>
+      </extension>
+      <reference>
         <reference value="StructureDefinition/jp-medicationratio-amount"/>
       </reference>
       <name value="JP Core Medication Ratio Amount DataType"/>
       <description value="このプロファイルはRatio Amount DataTypeに対して、日本の薬剤単位を割り当てた派生型である。"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:complex-type"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/jp-medicationratio-doseperday"/>
+      </reference>
+      <name value="JP Core Medication Rate Ratio DataType"/>
+      <description value="このプロファイルはRatio DataTypeに対して、日本の薬剤単位を割り当てた派生型である。単位時間内での薬剤の容量（体積）を記述する"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -3365,11 +3387,23 @@
     </parameter>
     <parameter>
       <code value="special-url"/>
+      <value value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRange_UnitOfTime"/>
+    </parameter>
+    <parameter>
+      <code value="special-url"/>
       <value value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRange"/>
     </parameter>
     <parameter>
       <code value="special-url"/>
-      <value value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRatio"/>
+      <value value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRatio_Amount"/>
+    </parameter>
+    <parameter>
+      <code value="special-url"/>
+      <value value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRatio_DosePerDay"/>
+    </parameter>
+    <parameter>
+      <code value="special-url"/>
+      <value value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRatio_DosePerPeriod"/>
     </parameter>
     <parameter>
       <code value="special-url"/>
