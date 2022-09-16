@@ -334,7 +334,7 @@ A human language.</p>
 JP Core Organizationプロファイルで利用されることを想定しているが、他のリソースでも利用可能である</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1 This element is affected by the following invariants: ele-1</td></tr>
-  <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/extensibility.html#Extension">Extension</a>(<a href="StructureDefinition-jp-organization-prefectureno.html" title="[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Organization_PrefectureNo]]">JP_Organization_PrefectureNo</a>)  (Extension Type: <a href="http://hl7.org/fhir/R4/datatypes.html#Coding">Coding</a>)</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/extensibility.html#Extension">Extension</a>(<a href="StructureDefinition-jp-organization-prefectureno.html" title="[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Organization_PrefectureNo]]">JP_Organization_PrefectureNo</a>)  (Extension Type: <a href="http://hl7.org/fhir/R4/datatypes.html#Identifier">Identifier</a>)</td></tr>
   <tr><td>Comments</td><td><p>都道府県番号２桁。Identifier型の拡張を使用する。
 valueには都道府県番号2桁の値を格納し、systemには都道府県番号を表すOID「1.2.392.100495.20.3.21」を指定する。</p>
 </td></tr>
@@ -345,7 +345,7 @@ valueには都道府県番号2桁の値を格納し、systemには都道府県�
   <tr><td>Definition</td><td><p>点数表コード１桁（医科１、歯科３）表現するためのExtension。 JP Core Organizationプロファイルで利用されることを想定しているが、他のリソースでも利用可能である</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1 This element is affected by the following invariants: ele-1</td></tr>
-  <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/extensibility.html#Extension">Extension</a>(<a href="StructureDefinition-jp-organization-insuranceorganizationcategory.html" title="[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Organization_InsuranceOrganizationCategory]]">JP_Organization_InsuranceOrganizationCategory</a>)  (Extension Type: <a href="http://hl7.org/fhir/R4/datatypes.html#Coding">Coding</a>)</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/extensibility.html#Extension">Extension</a>(<a href="StructureDefinition-jp-organization-insuranceorganizationcategory.html" title="[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Organization_InsuranceOrganizationCategory]]">JP_Organization_InsuranceOrganizationCategory</a>)  (Extension Type: <a href="http://hl7.org/fhir/R4/datatypes.html#Identifier">Identifier</a>)</td></tr>
   <tr><td>Comments</td><td><p>点数表コード１桁（医科1、歯科 3）。Identifier型の拡張
 「OrganizationCategory」を使用する。systemには点数表番号
 を表すOID「1.2.392.100495.20.3.22」を指定する。</p>
@@ -387,6 +387,10 @@ valueには都道府県番号2桁の値を格納し、systemには都道府県�
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#Identifier">Identifier</a></td></tr>
   <tr><td>Requirements</td><td><p>Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.</p>
 <p>組織は様々な ID で知られている。いくつかの機関では複数のIDを保持しており、ほとんどの機関では、組織に関する他の組織との交換のためにIDを収集している。</p>
+</td></tr>
+  <tr><td>Comments</td><td><p>もし適切なOID が存在しない場合で、その医療施設が保険医療機関の場合、特定健診・特定保健指導機関のルールに従い以下のルールで設定してもよい。</p>
+<p>医療施設が固有のOID を持っている場合は、そのOID を指定する。医療施設が保険医療機関の場合、特定健診・特定保健指導機関の医療機関コードの OID「1.2.392.200119.6.102.」の末尾に「[1]＋医療機関コード（10 桁）」を指定する。医療機関コードを持たない場合、「[9]＋当該施設の電話番号下 9 桁」を医療機関コードとする。</p>
+<p>例：医療機関コード「1312345670」の場合「1.2.392.200119.6.102.11312345670」</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -956,7 +960,7 @@ The purpose for which you would contact a contact party.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Sep 16, 2022 07:09+0000">2022-09-16</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Sep 16, 2022 07:54+0000">2022-09-16</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
