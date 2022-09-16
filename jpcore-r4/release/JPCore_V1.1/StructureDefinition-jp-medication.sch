@@ -97,6 +97,7 @@
     <sch:title>Medication.amount</sch:title>
     <sch:rule context="f:Medication/f:amount">
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="(count(f:numerator) = count(f:denominator)) and ((count(f:numerator) &gt; 0) or (count(f:extension) &gt; 0))">Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -151,6 +152,7 @@
     <sch:title>Medication.ingredient.strength</sch:title>
     <sch:rule context="f:Medication/f:ingredient/f:strength">
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="(count(f:numerator) = count(f:denominator)) and ((count(f:numerator) &gt; 0) or (count(f:extension) &gt; 0))">Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -166,12 +168,14 @@
     <sch:title>Medication.ingredient.strength.numerator</sch:title>
     <sch:rule context="f:Medication/f:ingredient/f:strength/f:numerator">
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="not(exists(f:code)) or exists(f:system)">If a code for the unit is present, the system SHALL also be present (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:title>Medication.ingredient.strength.denominator</sch:title>
     <sch:rule context="f:Medication/f:ingredient/f:strength/f:denominator">
       <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
+      <sch:assert test="not(exists(f:code)) or exists(f:system)">If a code for the unit is present, the system SHALL also be present (inherited)</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>

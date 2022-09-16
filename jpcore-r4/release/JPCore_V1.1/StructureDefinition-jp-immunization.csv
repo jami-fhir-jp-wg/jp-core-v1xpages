@@ -53,10 +53,10 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Immunization.vaccineCode","Immunization.vaccineCode","","","",1,1,"","","Y","CodeableConcept {[]} {[]}
 ","接種されたワクチン製剤","接種されたあるいは接種予定のワクチン。","全てのターミノロジーがこのパターンに当てはまるわけではない。モデルによってはCodeableConceptではなく，独自構造でCodingを直接指定して文書やコーディング，その解釈や事前条件や事後条件との関連について示される。","","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/Common/ValueSet/JP_MedicationCode_Immunization_VS","",,,,"Immunization.vaccineCode",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.code","RXA-5",".code","FiveWs.what[x]","ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/consumable/manfacturedProduct/manufacturedMaterial/realmCode/code"
-"Immunization.patient","Immunization.patient","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient]]}
+"Immunization.patient","Immunization.patient","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient]]}
 ","予防接種を受けた人","予防接種を受けた，あるいは受けなかった患者。","","","","","","","","","",,,,,"",,,,"Immunization.patient",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.subject","PID-3",".partipication[ttypeCode=].role","FiveWs.subject[x]","FiveWs.subject"
-"Immunization.encounter","Immunization.encounter","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Encounter]]}
+"Immunization.encounter","Immunization.encounter","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Encounter]]}
 ","予防接種を受けた診察","患者が医療従事者から予防接種を受けた外来，入院あるいは他の対面の状態を表す。","","","","","","","","","",,,,,"",,,,"Immunization.encounter",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.context","PV1-19","component->EncounterEvent","FiveWs.context"
 "Immunization.occurrence[x]","Immunization.occurrence[x]","","","",1,1,"","","Y","dateTime {[]} {[]}
@@ -71,10 +71,10 @@ string {[]} {[]}","ワクチンを接種した日時","ワクチンを接種し�
 "Immunization.reportOrigin","Immunization.reportOrigin","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","二次的に報告された記録の発生源を示す","予防接種を実施した時に，ワクチンを接種した人以外からの報告からの情報である場合のデータの発生源。","Should not be populated if primarySource = True, not required even if primarySource = False.","","","","","","","","",,"example","The source of the data for a record which is not from a primary source.","http://hl7.org/fhir/ValueSet/immunization-origin","",,,,"Immunization.reportOrigin",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","RXA-9",".participation[typeCode=INF].role[classCode=PAT] (this syntax for self-reported) .participation[typeCode=INF].role[classCode=LIC] (this syntax for health care professional) .participation[typeCode=INF].role[classCode=PRS] (this syntax for family member)","FiveWs.source"
-"Immunization.location","Immunization.location","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Location]]}
+"Immunization.location","Immunization.location","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location]]}
 ","ワクチンを接種した場所","接種医療機関。ワクチン接種がどこで実施されたかを表す。サービスが提供された場所。摂取された身体部位ではない。","","","","","","","","","",,,,,"",,,,"Immunization.location",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.location","RXA-27  (or RXA-11, deprecated as of v2.7)",".participation[typeCode=LOC].COCT_MT240000UV","FiveWs.where[x]"
-"Immunization.manufacturer","Immunization.manufacturer","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization]]}
+"Immunization.manufacturer","Immunization.manufacturer","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
 ","ワクチンメーカー","ワクチメーカーの名前。","","","","","","","","","",,,,,"",,,,"Immunization.manufacturer",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","RXA-17",".participation[typeCode=CSM].role[classCode=INST].scopedRole.scoper[classCode=ORG]","ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/consumable/manfacturedProduct/manufacuturerOrganization/name"
 "Immunization.lotNumber","Immunization.lotNumber","","","",0,1,"","","","string {[]} {[]}
@@ -89,9 +89,10 @@ string {[]} {[]}","ワクチンを接種した日時","ワクチンを接種し�
 "Immunization.route","Immunization.route","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","ワクチンを接種した経路","ワクチンが体内へと接種された経路。","","","","","","","","","",,"example","The route by which the vaccine was administered.","http://hl7.org/fhir/ValueSet/immunization-route","",,,,"Immunization.route",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","RXR-1",".routeCode","ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/routeCode/code"
-"Immunization.doseQuantity","Immunization.doseQuantity","","","",0,1,"","","","Quantity {[CanonicalType[http://hl7.org/fhir/StructureDefinition/SimpleQuantity]]} {[]}
-","ワクチンの投与量","ワクチン製剤が接種された量","","","","","","","","","",,,,,"",,,,"Immunization.doseQuantity",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-","RXA-6 / RXA-7",".doseQuantity"
+"Immunization.doseQuantity","Immunization.doseQuantity","","","",0,1,"","","","Quantity {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationSimpleQuantity]]} {[]}
+","ワクチンの投与量","ワクチン製剤が接種された量","薬剤に関する簡易的な数量と単位を定めている。ValueおよびCodeを必須とし、comparatorは記述不可。単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)","","","","","","","","",,,,,"",,,,"Immunization.doseQuantity",0,1,"ele-1
+","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+qty-3:If a code for the unit is present, the system SHALL also be present {code.empty() or system.exists()}sqty-1:The comparator is not used on a SimpleQuantity {comparator.empty()}","SN (see also Range) or CQ","n/a","PQ, IVL<PQ>, MO, CO, depending on the values"
 "Immunization.performer","Immunization.performer","","","",0,*,"","","Y","BackboneElement {[]} {[]}
 ","ワクチン接種を実施した人","誰が予防接種を実施したかを表す。","","","","","","","","","",,,,,"",,,,"Immunization.performer",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.performer","ORC-12 / RXA-10",".participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]"
@@ -110,7 +111,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Immunization.performer.function","Immunization.performer.function","","","",0,1,"","","Y","CodeableConcept {[]} {[]}
 ","What type of performance was done","Describes the type of performance (e.g. ordering provider, administering provider, etc.).","","","","","","","","","",,"extensible","The role a practitioner or organization plays in the immunization event.","http://hl7.org/fhir/ValueSet/immunization-function","",,,,"Immunization.performer.function",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.performer.function",".participation.functionCode"
-"Immunization.performer.actor","Immunization.performer.actor","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization]]}
+"Immunization.performer.actor","Immunization.performer.actor","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
 ","Individual or organization who was performing","The practitioner or organization who performed the action.","When the individual practitioner who performed the action is known, it is best to send.","","","","","","","","",,,,,"",,,,"Immunization.performer.actor",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.performer.actor",".player","FiveWs.actor"
 "Immunization.note","Immunization.note","","","",0,*,"","","Y","Annotation {[]} {[]}

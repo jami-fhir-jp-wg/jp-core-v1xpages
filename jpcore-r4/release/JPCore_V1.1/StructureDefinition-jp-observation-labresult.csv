@@ -259,46 +259,13 @@ instant型はイベント発生のログ時間であり、未使用とする。"
 【JP Core仕様】検査に直接責任を負う個人(つまり検査を実行、もしくは検証した人)の識別子。","May give a degree of confidence in the observation and also indicates where follow-up questions should be directed.","","","","","","","",,,,,"",,,,"Observation.performer",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.performer.actor","OBX.15 / (Practitioner)  OBX-16,  PRT-5:PRT-4='RO' /  (Device)  OBX-18 , PRT-10:PRT-4='EQUIP' / (Organization)  OBX-23,  PRT-8:PRT-4='PO'","participation[typeCode=PRF]","FiveWs.actor"
 "Observation.value[x]","Observation.value[x]","","","",0,1,"","","Y","Quantity {[]} {[]}
-CodeableConcept {[]} {[]}string {[]} {[]}","Actual result　実際の結果値","The information determined as a result of making the observation, if the information has a simple value.
+CodeableConcept {[]} {[]}string {[]} {[]}","同じ検査項目でも、システム（施設）により、使うデータ型が異なる可能性あり。【詳細参照】","The information determined as a result of making the observation, if the information has a simple value.
 
-検体検査の結果として決定された情報。","An observation may have; 1)  a single value here, 2)  both a value and a set of related or component values,  or 3)  only a set of related or component values. If a value is present, the datatype for this element should be determined by Observation.code.  A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](observation.html#notes) below.
-
-【JP Core仕様】valueQuantity　：OBX-2＝「NM」の時の OBX-5(結果値)、OBX-6(単位)
-
-valueQuantity.value　：OBX-5(結果値)
-
-valueQuantity.comparator　：SS-MIX2 検体検査結果メッセージでは未使用となっているデータ型だが、SN型のSN.1(比較演算子)が該当する。検査値の「0未満」の場合の「未満」などに相当するコードを設定。
-
-valueQuantity.unit　：OBX-6(単位) CWE.2 テキスト
-
-valueQuantity.system　：OBX-6(単位) CWE.3 コード体系
-HL7では「ISO+」だが、ローカルコード99zzzのHL7標準の”ISO+""が示すOID、ローカルコードの場合はOIDを別途取得必要？
-
-valueQuantity.code　：OBX-6(単位) CWE.1 識別子
-
-valueCodeableConcept　：OBX-2＝「CWE」の時の OBX-5(結果値)
-
-valueCodeableConcept.coding　：SS-MIXの場合、CWEは正規コード＋代替コードの2種類登録可能。
-
-valueCodeableConcept.coding.system　：CWE.3 or 6 コード体系。対象コードの OIDを設定
-
-valueCodeableConcept.coding.version　：CWE.7 コード体系バージョン ID
-
-valueCodeableConcept.coding.code　：CWE.1 or 4 識別子。対象コードシステムのコード
-
-valueCodeableConcept.coding.display　：CWE.2 or 5 テキスト。対象コードの名称
-
-valueCodeableConcept.coding.userselected　：未使用とする。
-
-valueCodeableConcept.text　：CWE.2 テキスト。coding.display と同じ。
-
-valueString　：OBX-2＝「ST」の時の OBX-5(結果値)
-
-以下のデータ型はSS-MIX2では未使用のため、未使用とした。今後の議論で使用の必要性が出れば復活させる。
+検体検査の結果として決定された情報。","以下のデータ型はSS-MIX2では未使用のため、未使用とした。今後の議論で使用の必要性が出れば復活させる。
 
 valueBoolean
 
-valueInteger　：OBX-2＝「NW」の時の OBX-5(結果値)
+valueInteger　：検査結果値を整数値（Integer）で定義したい場合に指定する。ただし、valueQuantityで単位付き数値を示すので、通常は使わない。　SS-MIX2／HL7 V2.5→ OBX-2＝「NW」の時の OBX-5(結果値)
 
 valueRange
 
@@ -306,11 +273,45 @@ valueRatio
 
 valueSampledData
 
-valueTime　：OBX-2＝「TM」の時の OBX-5(結果値)
+valueTime　：検査結果値が「時間」の場合、その時間を指定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「TM」の時の OBX-5(結果値)
 
-valueDateTime　：OBX-2＝「DT」の時の OBX-5(結果値)
+valueDateTime　：検査結果値が「日時」の場合、その日時を指定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「DT」の時の OBX-5(結果値)
 
-valuePeriod","An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.","","","","","","","",,,,,"",,,,"Observation.value[x]",0,1,"obs-7
+valuePeriod","An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.","","","","","","","",,,,,"","type:$this}
+","",,"closed","Observation.value[x]",0,1,"obs-7
+","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","< 441742003 |Evaluation finding|","OBX.2, OBX.5, OBX.6","value","363714003 |Interprets|"
+"Observation.value[x]:valueQuantity","Observation.value[x]","valueQuantity","","",0,1,"","","Y","Quantity {[]} {[]}
+","検査結果が「数値」の場合、値、単位を設定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「NM」の時の OBX-5(結果値)、OBX-6(単位)【詳細参照】","The information determined as a result of making the observation, if the information has a simple value.
+結果情報が単純な値である場合、observationを行った結果として決定された情報。","valueQuantity.value　：結果値（数値）を定義。　SS-MIX2／HL7 V2.5：OBX-5(結果値)
+
+valueQuantity.comparator　：QuantityComparator Value setから設定。　SS-MIX2／HL7 V2.5→ 検体検査結果メッセージでは未使用となっているデータ型だが、SN型のSN.1(比較演算子)が該当する。検査値の「0未満」の場合の「未満」などに相当するコードを設定。
+
+valueQuantity.unit　：.systemで示す単位のValue setの文字列を指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.2 テキスト
+
+valueQuantity.system　：単位のValue set名を指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.3 コード体系 HL7では「ISO+」だが、ローカルコード99zzzのHL7標準の「ISO+」が示すOID、ローカルコードの場合はOIDを別途取得必要
+
+valueQuantity.code　：.systemで示す単位のValue setのコードを指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.1 識別子","An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.","","","","","","","",,,,,"",,,,"Observation.value[x]",0,1,"obs-7
+","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","< 441742003 |Evaluation finding|","OBX.2, OBX.5, OBX.6","value","363714003 |Interprets|"
+"Observation.value[x]:valueCodeableConcept","Observation.value[x]","valueCodeableConcept","","",0,1,"","","Y","CodeableConcept {[]} {[]}
+","検査結果が「コード値」の場合、コード、テキスト、コードのValue setを定義する。　SS-MIX2／HL7 V2.5→ OBX-2＝「CWE」の時の OBX-5(結果値)【詳細参照】","The information determined as a result of making the observation, if the information has a simple value.
+結果情報が単純な値である場合、observationを行った結果として決定された情報。","valueCodeableConcept.coding　：ローカルコードと国際標準コードなど複数指定できる。　SS-MIX2／HL7 V2.5→ CWEは正規コード＋代替コードの2種類登録可能。
+
+valueCodeableConcept.coding.system　：対象のValue set名を指定。　SS-MIX2／HL7 V2.5→ CWE.3 or 6 コード体系。対象コードの OIDを設定
+
+valueCodeableConcept.coding.version　：対象のValue setのバージョンを指定。　SS-MIX2／HL7 V2.5→ CWE.7 コード体系バージョン ID valueCodeableConcept.coding.code　：対象のValue setのコードを指定。　SS-MIX2／HL7 V2.5→ CWE.1 or 4 識別子。対象コードシステムのコード
+
+valueCodeableConcept.coding.display　：対象のValue setのテキストを指定。　SS-MIX2／HL7 V2.5→ CWE.2 or 5 テキスト。対象コードの名称
+
+valueCodeableConcept.coding.userselected　：未使用。
+
+valueCodeableConcept.text　：コードが示す意味を指定する。通常は.coding.displayの値を指定するが、複数ある場合は適宜編集すること。　SS-MIX2／HL7 V2.5→ CWE.2 テキスト。coding.display と同じ。","An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.","","","","","","","",,,,,"",,,,"Observation.value[x]",0,1,"obs-7
+","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","< 441742003 |Evaluation finding|","OBX.2, OBX.5, OBX.6","value","363714003 |Interprets|"
+"Observation.value[x]:valueString","Observation.value[x]","valueString","","",0,1,"","","Y","string {[]} {[]}
+","検査結果値が「文字列」の場合、その文字列を指定する。SS-MIX2／HL7 V2.5→ OBX-2＝「ST」の時の OBX-5(結果値)","The information determined as a result of making the observation, if the information has a simple value.
+結果情報が単純な値である場合、observationを行った結果として決定された情報。","An observation may have; 1)  a single value here, 2)  both a value and a set of related or component values,  or 3)  only a set of related or component values. If a value is present, the datatype for this element should be determined by Observation.code.  A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](http://hl7.org/fhir/R4/observation.html#notes) below.","An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.","","","","","","","",,,,,"",,,,"Observation.value[x]",0,1,"obs-7
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","< 441742003 |Evaluation finding|","OBX.2, OBX.5, OBX.6","value","363714003 |Interprets|"
 "Observation.dataAbsentReason","Observation.dataAbsentReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
