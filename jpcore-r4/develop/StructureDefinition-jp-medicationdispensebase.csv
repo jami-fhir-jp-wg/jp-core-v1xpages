@@ -42,7 +42,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 この調剤の契機となったProcedureリソースへの参照。","","","","","","","","","",,,,,"",,,,"MedicationDispense.partOf",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.partOf",".outboundRelationship[typeCode=COMP]/target[classCode=PROC,moodCode=EVN]"
 "MedicationDispense.status","MedicationDispense.status","","","",1,1,"","Y","Y","code {[]} {[]}
-","preparation | in-progress | cancelled | on-hold | completed | entered-in-error | stopped | unknown","A code specifying the state of the set of dispense events.
+","preparation | in-progress | cancelled | on-hold | completed | entered-in-error | stopped | unknown 一連の調剤イベントの状態","A code specifying the state of the set of dispense events.
 
 一連の調剤イベントの状態を指定するコード。","This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid.","","","","","","","","",,"required","A coded concept specifying the state of the dispense event.","http://hl7.org/fhir/ValueSet/medicationdispense-status|4.0.1","",,,,"MedicationDispense.status",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.status",".statusCode","FiveWs.status","CombinedMedicationDispense.SupplyEvent.statusCode"
@@ -122,13 +122,13 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 調剤の元になった処方オーダを表すMedicationRequestリソースへの参照。","Maps to basedOn in Event logical model.","","","","","","","","",,,,,"",,,,"MedicationDispense.authorizingPrescription",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.basedOn",".outboundRelationship[typeCode=FLFS].target[moodCode=RQO]","CombinedMedicationDispense.inFulfillmentOf","ORC-2 Placer Order Number"
 "MedicationDispense.type","MedicationDispense.type","","","",0,1,"","","","CodeableConcept {[]} {[]}
-","Trial fill, partial fill, emergency fill, etc.","Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.
+","実行される調剤イベント","Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.
 実行される調剤イベントのタイプを示す。たとえば、トライアルフィル、トライアルの完了、部分フィル、緊急フィル、サンプルなどである。","Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.
 
 すべてのターミノロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。","","","","","","","","",,"example","Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.","http://terminology.hl7.org/ValueSet/v3-ActPharmacySupplyType","",,,,"MedicationDispense.type",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".code","CombinedMedicationDispense.SupplyEvent.code","RXD-33-Dispense Type"
 "MedicationDispense.quantity","MedicationDispense.quantity","","","",1,1,"","","","Quantity {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationSimpleQuantity]]} {[]}
-","払い出される薬剤の量","調剤総量。
+","Trial fill, partial fill, emergency fill, etc. 払い出される薬剤の量","調剤総量。
 JP Coreでは必須
 払い出される薬剤の量。計測単位を含む。","The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.
 
