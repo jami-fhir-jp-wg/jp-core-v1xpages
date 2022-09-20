@@ -214,7 +214,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <p>FHIR JPにおいては、相互運用性確保のためUnicodeの私的領域（E000～F8FF）、補助私的領域A(FFF80～FFFFF)、補助私的領域B(10FF80～10FFFF)は利用するべきではない（<strong>SHOULD NOT</strong>）。とくにオープンなシステムに対して、特段の規定がない限りユーザ定義外字領域を利用したデータを送信することは避けるべきである。氏名および地名についてはIPAの<a href="https://moji.or.jp/mojikiban/mjlist/">文字情報基盤事業</a>により<a href="https://www.ipa.go.jp/about/press/20171225.html">戸籍統一文字（約5万6千字）・住基ネット登録文字（約2万字）のUnicode化が完了して</a>おり、外字が必要となる場面は限定される。</p>
 
 <h3 id="基本多言語面basic-multilingual-plane-bmp外の文字や異体字セレクタ">基本多言語面（Basic Multilingual Plane, BMP）外の文字や異体字セレクタ</h3>
-<p>一部の古いプログラム・ライブラリではこれらの文字を入力するとエラーを生じてしまうものもある。しかし、BMP外の文字や異体字セレクタについても、エラーなく送受信可能であるべきであり、サーバは「<a href="https://www.hl7.org/fhir/R4/http.html#update">updateもしくはcreateを受け入れるときは送信された通りに受け入れ、のちにreadアクセスがあった際には同じ内容を返すべき（SHOULD）</a>」である。</p>
+<p>一部の古いプログラム・ライブラリではこれらの文字を入力するとエラーを生じてしまうものもある。しかし、BMP外の文字や異体字セレクタについても、エラーなく送受信可能であるべきであり、サーバは「<a href="https://www.hl7.org/fhir/R4/http.html#update">updateもしくはcreateを受け入れるときは送信された通りに受け入れ、のちにreadアクセスがあった際には同じ内容を返すべき（<strong>SHOULD</strong>）</a>」である。</p>
 
 <p>なお、Unicode6.3においてCJK互換漢字と等価なCJK統合漢字と異体字セレクタの組み合わせがStandardized Variantsに登録され、Standardized Variation Sequence(SVS)として利用可能になった。今のところ広く用いられているわけではないものの、これはUnicode上での重複符号化を生じ、主に検索の場面などで潜在的に意図しない挙動の理由となりうる。詳しくは、<a href="guide-stringSearch.html">文字列検索</a>を参照のこと。</p>
 
@@ -224,7 +224,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <p>一方で、XMLやRDFといった他のContent Typesについて同様の定めはないが、JSONに準じて、BOMを付加してはならず（<strong>SHALL NOT</strong>）、解析する実装においてはエラーとせずに無視してパースしてもよい（<strong>MAY</strong>）とする。</p>
 
 <h3 id="改行コード">改行コード</h3>
-<p>FHIR®において改行コードについての規定は特に存在せず、<a href="https://www.hl7.org/fhir/R4/datatypes.html#primitive">string型においてCR・LFを含むことができる</a>という記載があるのみである。他のデータと同様に「<a href="https://www.hl7.org/fhir/R4/http.html#update">updateもしくはcreateを受け入れるときは送信された通りに受け入れ、のちにreadアクセスがあった際には同じ内容を返すべき（SHOULD）</a>」であり、何らかの変換がなされる場合は「<a href="https://www.hl7.org/fhir/R4/http.html#conformance-rules">CapabilityStatementに明確に記載しなければならない（SHOULD）</a>」。</p>
+<p>FHIR®において改行コードについての規定は特に存在せず、<a href="https://www.hl7.org/fhir/R4/datatypes.html#primitive">string型においてCR・LFを含むことができる</a>という記載があるのみである。他のデータと同様に「<a href="https://www.hl7.org/fhir/R4/http.html#update">updateもしくはcreateを受け入れるときは送信された通りに受け入れ、のちにreadアクセスがあった際には同じ内容を返すべき（<strong>SHOULD</strong>）</a>」であり、何らかの変換がなされる場合は「<a href="https://www.hl7.org/fhir/R4/http.html#conformance-rules">CapabilityStatementに明確に記載しなければならない（<strong>SHOULD</strong>）</a>」。</p>
 
 <h3 id="unicodeへの文字コード変換に伴う往復の保全性round-trip-safety">Unicodeへの文字コード変換に伴う往復の保全性（round trip safety）</h3>
 <p>この項目はFHIR®システムの範囲外であるが、影響を受けるシステムが多いと考えられ、ここに概略を記す。Shift-JIS, CP932などを用いるシステムからUnicode（UTF-8）に変換してFHIRサーバに登録し、そこからデータを受け取って再変換して用いるケースを考える。</p>
@@ -263,7 +263,7 @@ Shift-JISの円記号(0x5c)を、Unicodeの円記号(U+00A5)ではなくASCIの�
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Sep 20, 2022 14:13+0000">2022-09-20</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Sep 20, 2022 14:36+0000">2022-09-20</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
