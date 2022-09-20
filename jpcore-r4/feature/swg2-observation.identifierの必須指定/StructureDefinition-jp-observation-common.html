@@ -1317,7 +1317,7 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
       <td>SHALL</td>
       <td>identifier</td>
       <td>token</td>
-      <td>`GET [base]/Observation?identifier=123456780</td>
+      <td><code class="highlighter-rouge">GET [base]/Observation?identifier=http://myhospital.com/fhir/observation-id-system|1234567890</code></td>
     </tr>
     <tr>
       <td>MAY</td>
@@ -1348,9 +1348,9 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 
 <ol>
   <li>
-    <p>identifier 検索パラメータを使用して、オーダIDなどの識別子によるDiagnosticReportの検索をサポートしなければならない（SHALL）。</p>
+    <p>identifier 検索パラメータを使用して、オーダIDなどの識別子によるObservationの検索をサポートしなければならない（SHALL）。</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Observation?identifier={system|}[code]
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Observation?identifier={token}
 </code></pre></div>    </div>
 
     <p>例：</p>
@@ -1358,16 +1358,13 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
     <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Observation?identifier=http://myhospital.com/fhir/observation-id-system|1234567890
 </code></pre></div>    </div>
 
-    <p>指定された識別子に一致するDiagnosticReportリソースを含むBundleを検索する。</p>
+    <p>指定された識別子に一致するObservationリソースを含むBundleを検索する。</p>
   </li>
 </ol>
 
 <h5 id="推奨検索パラメータ">推奨検索パラメータ</h5>
 
-<!--
-次の検索パラメータはサポートすることが推奨される。（SHOULD）
--->
-<p>このプロファイルでは検索の多様性が求められるため、推奨（SHOULD）とする検索項目は定義していない。</p>
+<p>このプロファイルでは検索の多様性が求められるため、推奨（<strong>SHOULD</strong>）とする検索項目は定義していない。</p>
 
 <h5 id="オプション検索パラメータ">オプション検索パラメータ</h5>
 
@@ -1405,7 +1402,7 @@ Observation.value[x] 要素に期待される結果が存在しない理由を�
 
 <p>patient,category,code,value-quantity,date,encounter の各検索パラメータに一致するObservationリソースを含むBundleを検索する。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?patient={reference}&amp;category={token}&amp;code={token}&amp;value-quantity={quantity}&amp;date={date}&amp;&amp;encounter={encounter}
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?patient={reference}&amp;category={token}&amp;code={token}&amp;value-quantity={quantity}&amp;date={date}&amp;encounter={encounter}
 </code></pre></div></div>
 
 <p>例：患者123の心拍数が40超えかつ2020年12月31日以前で診療456の時のバイタルサインを取得したい場合</p>
@@ -1801,7 +1798,7 @@ Observation.component（検査コンポーネント）、 Observation.hasMember�
 <p>effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情報である。 生物学的対象（例：人間の患者）の場合、生理学的に検査に関連する時間である。検体の検査の場合、検体収集の開始と終了を表す（24時間尿中ナトリウム等）が、収集時間が十分に短い場合は１点の時刻を指す（例：通常の静脈穿刺）。対象者から直接得た検査の場合（例：血圧、胸部X線）、こちらも多くの場合、検査プロセスの開始時間と終了時間のうち１点の時刻を指す。</p>
 
 <h3 id="参照範囲">参照範囲</h3>
-<p>最も一般的な検査には普遍的な参照範囲が1個だけ含まれる。参照範囲は、臨床検査や他の収縮期血圧のような検査には有用かもしれないが、「妊娠」のようなものにはほとんど関係ない。システムは患者に関する知識（例：患者固有の年齢・性別・体重・その他要因）に基づいて関連する参照範囲のみに制限できる（MAY）が、それは不可能か不適切な場合がある。複数の参照範囲があるときは常に、参照範囲 および/または 年齢属性で違いが分かるようにしなければならない（SHOULD）。</p>
+<p>最も一般的な検査には普遍的な参照範囲が1個だけ含まれる。参照範囲は、臨床検査や他の収縮期血圧のような検査には有用かもしれないが、「妊娠」のようなものにはほとんど関係ない。システムは患者に関する知識（例：患者固有の年齢・性別・体重・その他要因）に基づいて関連する参照範囲のみに制限できる（MAY）が、それは不可能か不適切な場合がある。複数の参照範囲があるときは常に、参照範囲 および/または 年齢属性で違いが分かるようにしなければならない（<strong>SHOULD</strong>）。</p>
 
 <h3 id="キャンセルまたは中止された検査">キャンセルまたは中止された検査</h3>
 <p>検査や検査を完了できなかった場合（例えば検体が不十分とか、医療者がオーダをキャンセルしたとか）、ステータスをキャンセルに更新し、具体的な詳細を、できればコード化された値としてdataAbsentReasonかvalueCodeableConcept要素に設定する。note要素にも同様に追加情報が付与される場合がある。<a href="https://www.hl7.org/fhir/R4/observation-example-unsat.html">検体拒否の例</a>は、”不十分な検体”という意味のコード値をdataAbsentReasonへ設定している。</p>
@@ -1888,7 +1885,7 @@ Observation.component（検査コンポーネント）、 Observation.hasMember�
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Sep 20, 2022 13:55+0000">2022-09-20</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Sep 20, 2022 15:48+0000">2022-09-20</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
