@@ -16,7 +16,7 @@ dom-3:If the resource is contained in another resource, it SHALL be referred to 
 "
 "FamilyMemberHistory.text","FamilyMemberHistory.text","","narrative
 htmlxhtmldisplay","",0,1,"","","","Narrative {[]} {[]}
-","Text summary of the resource, for human interpretation. このリソースを人間が解釈するためのテキスト要約。","A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it ""clinically safe"" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.","Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative. In some cases, a resource may only have text with little or no additional discrete data (as long as all minOccurs=1 elements are satisfied).  This may be necessary for data from legacy systems where information is captured as a ""text blob"" or where text is additionally entered raw or narrated and encoded information is added later.","","","","","","","","",,,,,"",,,,"DomainResource.text",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Text summary of the resource, for human interpretation. このリソースを人間が解釈するためのテキスト要約","A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it ""clinically safe"" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.","Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative. In some cases, a resource may only have text with little or no additional discrete data (as long as all minOccurs=1 elements are satisfied).  This may be necessary for data from legacy systems where information is captured as a ""text blob"" or where text is additionally entered raw or narrated and encoded information is added later.","","","","","","","","",,,,,"",,,,"DomainResource.text",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Act.text?"
 "FamilyMemberHistory.contained","FamilyMemberHistory.contained","","inline resources
 anonymous resourcescontained resources","",0,*,"","","","Resource {[]} {[]}
@@ -58,17 +58,17 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ",".reasonCode"
 "FamilyMemberHistory.patient","FamilyMemberHistory.patient","","Proband
 ","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient]]}
-","Patient history is about. この家族歴を有する患者。","The person who this history concerns.
+","Patient history is about. この家族歴を有する患者","The person who this history concerns.
 
 この家族歴を有する患者。","","","","","","","","","",,,,,"",,,,"FamilyMemberHistory.patient",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.subject","participation[typeCode=SBJ].role","FiveWs.subject[x]","FiveWs.subject"
 "FamilyMemberHistory.date","FamilyMemberHistory.date","","","",0,1,"","","Y","dateTime {[]} {[]}
-","When history was recorded or last updated. この家族歴の最終更新日。","The date (and possibly time) when the family member history was recorded or last updated.
+","When history was recorded or last updated. この家族歴の最終更新日","The date (and possibly time) when the family member history was recorded or last updated.
 
 この家族歴の最終更新日。","This should be captured even if the same as the date on the List aggregating the full family history.","Allows determination of how current the summary is.","","","","","","","",,,,,"",,,,"FamilyMemberHistory.date",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","participation[typeCode=AUT].time","FiveWs.recorded"
 "FamilyMemberHistory.name","FamilyMemberHistory.name","","","",0,1,"","","Y","string {[]} {[]}
-","The family member described. この家族の名前。","This will either be a name or a description; e.g. ""Aunt Susan"", ""my cousin with the red hair"".
+","The family member described. この家族の名前","This will either be a name or a description; e.g. ""Aunt Susan"", ""my cousin with the red hair"".
 
 対象の家族の呼び名。例えば「スーザンおばさん」「赤毛のいとこ」。","","Allows greater ease in ensuring the same person is being talked about.","","","","","","","",,,,,"",,,,"FamilyMemberHistory.name",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","name"
@@ -85,13 +85,13 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 出生届に記載される出生時に割り当てられた性別。","http://hl7.org/fhir/ValueSet/administrative-gender","",,,,"FamilyMemberHistory.sex",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
 "FamilyMemberHistory.born[x]","FamilyMemberHistory.born[x]","","","",0,1,"","","","Period {[]} {[]}
-date {[]} {[]}string {[]} {[]}","(approximate) date of birth. この家族のおよその生年月日。","The actual or approximate date of birth of the relative.
+date {[]} {[]}string {[]} {[]}","(approximate) date of birth. この家族のおよその生年月日","The actual or approximate date of birth of the relative.
 
 家族の実際もしくはおおよその生年月日。","","Allows calculation of the relative's age.","","","","","","","",,,,,"",,,,"FamilyMemberHistory.born[x]",0,1,"fhs-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","player[classCode=LIV, determinerCode=INSTANCE]. birthDate (could be URG)"
 "FamilyMemberHistory.age[x]","FamilyMemberHistory.age[x]","","","",0,1,"","","Y","Age {[]} {[]}
-Range {[]} {[]}string {[]} {[]}","(approximate) age. この家族のおよその年齢。","The age of the relative at the time the family member history is recorded.
+Range {[]} {[]}string {[]} {[]}","(approximate) age. この家族のおよその年齢","The age of the relative at the time the family member history is recorded.
 
 家族歴が記録された時点でのこの家族の年齢。","use estimatedAge to indicate whether the age is actual or not.","While age can be calculated from date of birth, sometimes recording age directly is more natural for clinicians.
 
@@ -105,7 +105,7 @@ Trueである場合この年齢は推定値である。","This element is labele
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
 "FamilyMemberHistory.deceased[x]","FamilyMemberHistory.deceased[x]","","","",0,1,"","","Y","boolean {[]} {[]}
-Age {[]} {[]}Range {[]} {[]}date {[]} {[]}string {[]} {[]}","Dead? How old/when? この家族は亡くなっているか、そうであれば何歳もしくはいつ亡くなったか。","Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record.
+Age {[]} {[]}Range {[]} {[]}date {[]} {[]}string {[]} {[]}","Dead? How old/when? この家族は亡くなっているか、そうであれば何歳もしくはいつ亡くなったか","Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record.
 
 死亡したかどうかのフラグ/家族の死亡時の実年齢/おおよその年齢。","","","","","","","","","",,,,,"",,,,"FamilyMemberHistory.deceased[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","player[classCode=LIV, determinerCode=INSTANCE].deceasedInd, deceasedDate (could be URG)  For age, you'd hang an observation off the role"
@@ -120,12 +120,12 @@ Age {[]} {[]}Range {[]} {[]}date {[]} {[]}string {[]} {[]}","Dead? How old/when?
 この家族歴が聴取されたきっかけとなったFHIRリソースへの参照。","","","","","","","","","",,,,,"",,,,"FamilyMemberHistory.reasonReference",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.reasonReference",".outboundRelationship[typeCode=RSON].target","FiveWs.why[x]"
 "FamilyMemberHistory.note","FamilyMemberHistory.note","","","",0,*,"","","","Annotation {[]} {[]}
-","General note about related person. この家族に関するメモ。","This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible.
+","General note about related person. この家族に関するメモ","This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible.
 
 この家族に関するメモ。","","","","","","","","","",,,,,"",,,,"FamilyMemberHistory.note",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.note","inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=ActCode#ANNGEN].value"
 "FamilyMemberHistory.condition","FamilyMemberHistory.condition","","","",0,*,"","","","BackboneElement {[]} {[]}
-","Condition that the related person had. この家族が有する疾患。","The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.
+","Condition that the related person had. この家族が有する疾患","The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.
 
 この家族が持っていた疾患。","","","","","","","","","",,,,,"",,,,"FamilyMemberHistory.condition",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=ActCode#ASSERTION, value<Diagnosis]"
@@ -142,7 +142,7 @@ user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "FamilyMemberHistory.condition.code","FamilyMemberHistory.condition.code","","","",1,1,"","","","CodeableConcept {[]} {[]}
-","Condition suffered by relation. この家族の疾患。","The actual condition specified. Could be a coded condition (like MI or Diabetes) or a less specific string like 'cancer' depending on how much is known about the condition and the capabilities of the creating system.
+","Condition suffered by relation. この家族の疾患","The actual condition specified. Could be a coded condition (like MI or Diabetes) or a less specific string like 'cancer' depending on how much is known about the condition and the capabilities of the creating system.
 
 この疾患について知られている程度や作成システムの能力に応じて、コード化された状態（MIや糖尿病など）、または「がん」のようなあまり特定されない文字列になる可能性がある。","","","","","","","","","",,"example","Identification of the Condition or diagnosis.","http://hl7.org/fhir/ValueSet/condition-code","",,,,"FamilyMemberHistory.condition.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".value"
@@ -152,17 +152,17 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 その状態の後に何が起こったかを示す。その結果、死亡した場合は、死亡した日付が関連に記録される。","","","","","","","","","",,"example","The result of the condition for the patient; e.g. death, permanent disability, temporary disability, etc.","http://hl7.org/fhir/ValueSet/condition-outcome","",,,,"FamilyMemberHistory.condition.outcome",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","outboundRelationship[typeCode=OUTC)].target[classCode=OBS, moodCode=EVN, code=ActCode#ASSERTION].value"
 "FamilyMemberHistory.condition.contributedToDeath","FamilyMemberHistory.condition.contributedToDeath","","","",0,1,"","","","boolean {[]} {[]}
-","Whether the condition contributed to the cause of death. この疾患が死亡の原因となったかどうか。","This condition contributed to the cause of death of the related person. If contributedToDeath is not populated, then it is unknown.
+","Whether the condition contributed to the cause of death. この疾患が死亡の原因となったかどうか","This condition contributed to the cause of death of the related person. If contributedToDeath is not populated, then it is unknown.
 
 この疾患が家族の死亡に寄与したかどうかのフラグ。入力されていない場合は、不明である。","","","","","","","","","",,,,,"",,,,"FamilyMemberHistory.condition.contributedToDeath",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
 "FamilyMemberHistory.condition.onset[x]","FamilyMemberHistory.condition.onset[x]","","","",0,1,"","","","Age {[]} {[]}
-Range {[]} {[]}Period {[]} {[]}string {[]} {[]}","When condition first manifested. この疾患のオンセット。","Either the age of onset, range of approximate age or descriptive string can be recorded. For conditions with multiple occurrences, this describes the first known occurrence.
+Range {[]} {[]}Period {[]} {[]}string {[]} {[]}","When condition first manifested. この疾患のオンセット","Either the age of onset, range of approximate age or descriptive string can be recorded. For conditions with multiple occurrences, this describes the first known occurrence.
 
 発症年齢、おおよその年齢範囲、記述文字列のいずれかを記録する。複数回発生する疾患については、最初に知られている発生を記述する。","","Age of onset of a condition in relatives is predictive of risk for the patient.","","","","","","","",,,,,"",,,,"FamilyMemberHistory.condition.onset[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=""Subject Age at measurement"", value<Diagnosis].value[@xsi:typeCode='TS' or 'IVL_TS']  Use originalText for string"
 "FamilyMemberHistory.condition.note","FamilyMemberHistory.condition.note","","","",0,*,"","","","Annotation {[]} {[]}
-","Extra information about condition. この疾患についての追加の情報メモ。","An area where general notes can be placed about this specific condition.
+","Extra information about condition. この疾患についての追加の情報メモ","An area where general notes can be placed about this specific condition.
 
 この疾患についての一般的なメモ。","","","","","","","","","",,,,,"",,,,"FamilyMemberHistory.condition.note",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=ActCode#ANNGEN].value"
