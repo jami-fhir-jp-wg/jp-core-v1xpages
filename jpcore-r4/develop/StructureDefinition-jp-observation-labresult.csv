@@ -90,9 +90,9 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/ServiceRequest]]}
 ","Fulfills plan, proposal or order　実施されるプラン、提案、依頼","A plan, proposal or order that is fulfilled in whole or in part by this event.  For example, a MedicationRequest may require a patient to have laboratory test performed before  it is dispensed.
 
-本プロファイルでは、検体検査オーダに関する情報。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+このプロファイルでは、検体検査オーダに関する情報。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
-【JP Core仕様】オーダ情報がある場合、本プロファイルでは ServiceRequest のリソースを参照する。オーダIDの情報はここで使用する。","Allows tracing of authorization for the event and tracking whether proposals/recommendations were acted upon.","","","","","","","",,,,,"",,,,"Observation.basedOn",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP Core仕様】オーダ情報がある場合、このプロファイルでは ServiceRequest のリソースを参照する。オーダIDの情報はここで使用する。","Allows tracing of authorization for the event and tracking whether proposals/recommendations were acted upon.","","","","","","","",,,,,"",,,,"Observation.basedOn",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.basedOn","ORC",".inboundRelationship[typeCode=COMP].source[moodCode=EVN]"
 "Observation.partOf","Observation.partOf","","Container
 ","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationAdministration], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationAdministration_Injection], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationDispenseBase], CanonicalType[http://hl7.org/fhir/StructureDefinition/MedicationStatement], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization], CanonicalType[http://hl7.org/fhir/StructureDefinition/ImagingStudy]]}
@@ -116,7 +116,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
 行われた検査の一般的なタイプの分類。取得、表示の際のフィルタリングに使用。","In addition to the required category valueset, this element allows various categorization schemes based on the owner’s definition of the category and effectively multiple categories can be used at once.  The level of granularity is defined by the category concepts in the value set.
 
-【JP Core仕様】推奨コード表「ObservationCategoryCodes」より、本プロファイルでは「laboratory」固定とする。
+【JP Core仕様】推奨コード表「ObservationCategoryCodes」より、このプロファイルでは「laboratory」固定とする。
 
 (social-history | vital-signs | imaging | laboratory | procedure | survey | exam | therapy | activity)","Used for filtering what observations are retrieved and displayed.","","","","","","","",,"preferred","Codes for high level observation categories.","http://hl7.org/fhir/ValueSet/observation-category","","pattern:$this}
 ","",,"open","Observation.category",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
@@ -131,7 +131,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Observation.category.coding","Observation.category.coding","","","",0,*,"","","Y","Coding {[]} {[]}
 ","Code defined by a terminology system","A reference to a code defined by a terminology system.","Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true.
 
-【JP Core仕様】推奨コード表「ObservationCategoryCodes」より、本プロファイルでは「laboratory」固定とする。","Allows for alternative encodings within a code system, and translations to other code systems.","","","","","","","",,,,,"",,,,"CodeableConcept.coding",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP Core仕様】推奨コード表「ObservationCategoryCodes」より、このプロファイルでは「laboratory」固定とする。","Allows for alternative encodings within a code system, and translations to other code systems.","","","","","","","",,,,,"",,,,"CodeableConcept.coding",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C*E.1-8, C*E.10-22","union(., ./translation)"
 "Observation.category.text","Observation.category.text","","","",0,1,"","","Y","string {[]} {[]}
 ","Plain text representation of the concept","A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.","Very often the text is the same as a displayName of one of the codings.","The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.","","","","","","","",,,,,"",,,,"CodeableConcept.text",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
@@ -206,7 +206,7 @@ URIは本WGで定義する。","Need to be unambiguous about the source of the d
 
 コードの表示名。報告書などに記載する場合に使用する表示名。コードを複数指定した場合(標準コード、ローカルコード)、その一般的な表現。","Very often the text is the same as a displayName of one of the codings.
 
-【JP Core仕様】本プロファイルでは、表示名として必須とする。
+【JP Core仕様】このプロファイルでは、表示名として必須とする。
 
 多くの場合、coding.display と同一になるが、coding.display に異なる複数の表現が格納される場合を想定し、code間で共通の表現として必須とする。","The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.","","","","","","","",,,,,"",,,,"CodeableConcept.text",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C*E.9. But note many systems use C*E.2 for this","./originalText[mediaType/code=""text/plain""]/data"
@@ -214,7 +214,7 @@ URIは本WGで定義する。","Need to be unambiguous about the source of the d
 ","Who and/or what the observation is about　観察対象者","The patient, or group of patients, location, or device this observation is about and into whose record the observation is placed. If the actual focus of the observation is different from the subject (or a sample of, part, or region of the subject), the `focus` element or the `code` itself specifies the actual focus of the observation.
 
 検体検査の対象となる患者。","One would expect this element to be a cardinality of 1..1. The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.
-【JP Core仕様】本プロファイルでは、Patient 限定、かつ必須とする。","Observations have no value if you don't know who or what they're about.","","","","","","","",,,,,"",,,,"Observation.subject",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP Core仕様】このプロファイルでは、Patient 限定、かつ必須とする。","Observations have no value if you don't know who or what they're about.","","","","","","","",,,,,"",,,,"Observation.subject",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.subject","PID-3","participation[typeCode=RTGT]","FiveWs.subject[x]","FiveWs.subject"
 "Observation.focus","Observation.focus","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource]]}
 ","What the observation is about, when it is not about the subject of record　subject 要素が実際のobservationの対象でない場合に、observation の対象物。","The actual focus of an observation when it is not the patient of record representing something or someone associated with the patient such as a spouse, parent, fetus, or donor. For example, fetus observations in a mother's record.  The focus of an observation could also be an existing condition,  an intervention, the subject's diet,  another observation of the subject,  or a body structure such as tumor or implanted device.   An example use case would be using the Observation resource to capture whether the mother is trained to change her child's tracheostomy tube. In this example, the child is the patient of record and the mother is the focus.
@@ -230,7 +230,7 @@ URIは本WGで定義する。","Need to be unambiguous about the source of the d
 
 【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。
 
-※本プロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。","For some observations it may be important to know the link between an observation and a particular encounter.","","","","","","","",,,,,"",,,,"Observation.encounter",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+※このプロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。","For some observations it may be important to know the link between an observation and a particular encounter.","","","","","","","",,,,,"",,,,"Observation.encounter",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.context","PV1","inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]","FiveWs.context"
 "Observation.effective[x]","Observation.effective[x]","","Occurrence
 ","",1,1,"","","Y","dateTime {[]} {[]}
@@ -238,7 +238,7 @@ Period {[]} {[]}Timing {[]} {[]}","Clinically relevant time/time-period for obse
 
 検体検査の場合は、検体採取日時。","At least a date should be present unless this observation is a historical report.  For recording imprecise or ""fuzzy"" times (For example, a blood glucose measurement taken ""after breakfast"") use the [Timing](datatypes.html#timing) datatype which allow the measurement to be tied to regular life events.
 
-【JP Core仕様】本プロファイルでは、検体採取日時を設定し、必須とする。
+【JP Core仕様】このプロファイルでは、検体採取日時を設定し、必須とする。
 
 effectiveInstant
 
