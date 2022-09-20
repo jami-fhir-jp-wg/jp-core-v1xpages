@@ -3,7 +3,7 @@
 
 ヘルスケア製品およびサービスの償還または支払いに使用される可能性のある金融商品。 保険と自己負担の両方が含まれる。","The Coverage resource contains the insurance card level information, which is customary to provide on claims and other communications between providers and insurers.
 
-Coverageには、保険証レベルの情報が含まれている。これは、保険金請求やプロバイダーと保険会社間のその他の通信で提供するのが通例である。","","","","","","","","",,,,,"",,,,"Coverage",0,*,"","dom-2:If the resource is contained in another resource, it SHALL NOT contain nested Resources {contained.contained.empty()}
+Coverageには、保険証レベルの情報が含まれている。これは、保険金請求やプロバイダと保険会社間のその他の通信で提供するのが通例である。","","","","","","","","",,,,,"",,,,"Coverage",0,*,"","dom-2:If the resource is contained in another resource, it SHALL NOT contain nested Resources {contained.contained.empty()}
 dom-3:If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:If a resource is contained in another resource, it SHALL NOT have a security label {contained.meta.security.empty()}dom-6:A resource should have narrative for robust management {text.`div`.exists()}","Event","Entity. Role, or Act","Coverage"
 "Coverage.id","Coverage.id","","","",0,1,"","","Y","id {[]} {[]}
 ","Logical id of this artifact","The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.","The only time that a resource does not have an id is when it is being submitted to the server using a create operation.","","","","","","","","",,,,,"",,,,"Resource.id",0,1,"",""
@@ -50,7 +50,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
 このカバレッジに割り当てられた一意の識別子。","The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Certificate number, Personal Health Number or Case ID. May be constructed as the concatenation of the Coverage.SubscriberID and the Coverage.dependent.
 
-カバレッジのメイン（および場合によっては唯一の）識別子-多くの場合、メンバーID、証明書番号、個人の健康番号、またはケースIDと呼ばれる。
+カバレッジのメイン（および場合によっては唯一の）識別子-多くの場合、メンバID、証明書番号、個人の健康番号、またはケースIDと呼ばれる。
 
 【JP Core仕様】被保険者記号と番号と枝番を全角にした上でダブルコーテーションで囲い、カンマ区切りで連結する。
 
@@ -74,29 +74,29 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
 補償の種類：社会プログラム、医療計画、事故補償（労働者災害補償、自動車）、グループの健康、または個人または組織による支払い。","Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.
 
-すべてのターミノロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。
+すべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。
 
 【JP Core仕様】厚労省保険局の電子処方等で使用される保険種別コード（system=”urn:oid:1.2.392.100495.20.2.61”）として、https://www.mhlw.go.jp/content/10800000/000342368.pdf　の別表１１が使用できる。","The order of application of coverages is dependent on the types of coverage.
 
 カバレッジの適用順序は、カバレッジのタイプによって異なる。","","","","","","","",,"preferred","The type of insurance: public health, worker compensation; private accident, auto, private health, etc.) or a direct payment by an individual or organization.","http://hl7.org/fhir/ValueSet/coverage-type","",,,,"Coverage.type",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","FiveWs.class","IN1-15"
 "Coverage.policyHolder","Coverage.policyHolder","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
-","Owner of the policy　ポリシーの所有者","The party who 'owns' the insurance policy.
+","Owner of the policy　ポリシの所有者","The party who 'owns' the insurance policy.
 
 保険証券を「所有する」当事者。","For example: may be an individual, corporation or the subscriber's employer.
 
 例：個人、企業、または加入者の雇用主である可能性がある。","This provides employer information in the case of Worker's Compensation and other policies.
 
-これは、労働者災害補償およびその他のポリシーの場合に雇用者情報を提供する。","","","","","","","",,,,,"",,,,"Coverage.policyHolder",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+これは、労働者災害補償およびその他のポリシの場合に雇用者情報を提供する。","","","","","","","",,,,,"",,,,"Coverage.policyHolder",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","FiveWs.subject[x]","FiveWs.subject","D01 through D09","IN1-16, 18,  19-name of insured, address, date of birth","C.35"
 "Coverage.subscriber","Coverage.subscriber","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson]]}
 ","Subscriber to the policy　被保険者","The party who has signed-up for or 'owns' the contractual relationship to the policy or to whom the benefit of the policy for services rendered to them or their family is due.
 
-ポリシーにサインアップした、またはポリシーとの契約関係を「所有」している当事者、またはポリシーの利益が彼らまたはその家族に提供されることになっている当事者。","May be self or a parent in the case of dependents.
+ポリシにサインアップした、またはポリシとの契約関係を「所有」している当事者、またはポリシの利益が彼らまたはその家族に提供されることになっている当事者。","May be self or a parent in the case of dependents.
 
 扶養家族の場合、自己または親である可能性がある。","This is the party who is entitled to the benefits under the policy.
 
-これは、ポリシーに基づいて給付を受ける権利を有する当事者である。","","","","","","","",,,,,"",,,,"Coverage.subscriber",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+これは、ポリシに基づいて給付を受ける権利を有する当事者である。","","","","","","","",,,,,"",,,,"Coverage.subscriber",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","FiveWs.subject[x]","FiveWs.subject","D01 through D09","IN1-16, 18,  19-name of insured, address, date of birth","C.35"
 "Coverage.subscriberId","Coverage.subscriberId","","","",0,1,"","","Y","string {[]} {[]}
 ","ID assigned to the subscriber　被保険者に割り当てられたID","The insurer assigned ID for the Subscriber.
@@ -142,7 +142,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
 受益者（患者）と加入者の関係。","Typically, an individual uses policies which are theirs (relationship='self') before policies owned by others.
 
-一般的に、個人は、他人が所有するポリシーよりも、自分のポリシー（relationship='self'）を使用する。","To determine relationship between the patient and the subscriber to determine coordination of benefits.
+一般的に、個人は、他人が所有するポリシよりも、自分のポリシ（relationship='self'）を使用する。","To determine relationship between the patient and the subscriber to determine coordination of benefits.
 
 患者と加入者の関係を決定し、給付の調整を決定する。
 
@@ -239,7 +239,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Coverage.network","Coverage.network","","","",0,1,"","","Y","string {[]} {[]}
 ","Insurer network","The insurer-specific identifier for the insurer-defined network of providers to which the beneficiary may seek treatment which will be covered at the 'in-network' rate, otherwise 'out of network' terms and conditions apply.
 
-保険者が定義したプロバイダーの保険者定義ネットワークの保険者固有の識別子で、被保険者が「ネットワーク内」の料金でカバーされる治療を受けることができるが、そうでなければ「ネットワーク外」の条件が適用される。","","Used in referral for treatment and in claims processing.
+保険者が定義したプロバイダの保険者定義ネットワークの保険者固有の識別子で、被保険者が「ネットワーク内」の料金でカバーされる治療を受けることができるが、そうでなければ「ネットワーク外」の条件が適用される。","","Used in referral for treatment and in claims processing.
 
 治療のための紹介や請求処理の際に使用する。","","","","","","","",,,,,"",,,,"Coverage.network",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","D10"
@@ -247,7 +247,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 DeductibleExceptions","",0,*,"","","","BackboneElement {[]} {[]}
 ","Patient payments for services/products　サービスやプロダクトに対する患者支払い","A suite of codes indicating the cost category and associated amount which have been detailed in the policy and may have been  included on the health card.
 
-ポリシーに詳細が記載されており、ヘルスカードに含まれている可能性のあるコストカテゴリと関連する金額を示す一連のコード。","For example by knowing the patient visit co-pay, the provider can collect the amount prior to undertaking treatment.
+ポリシに詳細が記載されており、ヘルスカードに含まれている可能性のあるコストカテゴリと関連する金額を示す一連のコード。","For example by knowing the patient visit co-pay, the provider can collect the amount prior to undertaking treatment.
 
 例えば、患者の訪問時の自己負担額を知ることで、医療提供者は治療を行う前にその金額を回収することができる。
 
@@ -370,7 +370,7 @@ subrogation=trueの場合、この保険インスタンスは裁定のためで�
 "Coverage.contract","Coverage.contract","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Contract]]}
 ","Contract details　契約の詳細","The policy(s) which constitute this insurance coverage.
 
-この保険の適用範囲を構成するポリシー。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
+この保険の適用範囲を構成するポリシ。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
 
 参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","To reference the legally binding contract between the policy holder and the insurer.
 
