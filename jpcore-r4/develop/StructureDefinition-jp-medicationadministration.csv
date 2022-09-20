@@ -297,7 +297,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 qty-3:If a code for the unit is present, the system SHALL also be present {code.empty() or system.exists()}sqty-1:The comparator is not used on a SimpleQuantity {comparator.empty()}","n/a","PQ, IVL<PQ>, MO, CO, depending on the values","SN (see also Range) or CQ"
 "MedicationAdministration.dosage.rate[x]","MedicationAdministration.dosage.rate[x]","","","",0,1,"","","","Ratio {[]} {[]}
-","Dose quantity per unit of time　単位時間あたりの用量","Identifies the speed with which the medication was or will be introduced into the patient.  Typically, the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time, e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
+Quantity {[]} {[]}","Dose quantity per unit of time　単位時間あたりの用量","Identifies the speed with which the medication was or will be introduced into the patient.  Typically, the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time, e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
 
 薬が患者に導入された、または導入される予定の速度を識別する。
 通常、注入の速度。 1時間あたり100mlまたは100ml/時。単位時間あたりのレートとして表すこともできる。 2時間あたり500ml。その他の例：200mcg/分または200mcg/1分。 1リットル/8時間。","If the rate changes over time, and you want to capture this in MedicationAdministration, then each change should be captured as a distinct MedicationAdministration, with a specific MedicationAdministration.dosage.rate, and the date time when the rate change occurred. Typically, the MedicationAdministration.dosage.rate element is not used to convey an average rate.
@@ -309,6 +309,10 @@ qty-3:If a code for the unit is present, the system SHALL also be present {code.
 ","単位時間内での薬剤の容量","単位時間内での薬剤の容量","The Ratio datatype should only be used to express a relationship of two numbers if the relationship cannot be suitably expressed using a Quantity and a common unit.  Where the denominator value is known to be fixed to ""1"", Quantity should be used instead of Ratio.","","","","","","","","",,,,,"",,,,"MedicationAdministration.dosage.rate[x]",0,1,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 rat-1:Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present {(numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())}","n/a","RTO","N/A"
+"MedicationAdministration.dosage.rate[x]:rateQuantity","MedicationAdministration.dosage.rate[x]","rateQuantity","","",0,1,"","","","Quantity {[CanonicalType[http://hl7.org/fhir/StructureDefinition/SimpleQuantity]]} {[]}
+","投与速度(量/時間)を指定する","投与速度(量/時間)を指定する","The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.","","","","","","","","",,,,,"",,,,"MedicationAdministration.dosage.rate[x]",0,1,"ele-1
+","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+qty-3:If a code for the unit is present, the system SHALL also be present {code.empty() or system.exists()}sqty-1:The comparator is not used on a SimpleQuantity {comparator.empty()}","n/a","PQ, IVL<PQ>, MO, CO, depending on the values","SN (see also Range) or CQ"
 "MedicationAdministration.eventHistory","MedicationAdministration.eventHistory","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Provenance]]}
 ","A list of events of interest in the lifecycle　ライフサイクルで関心のあるイベントのリスト","A summary of the events of interest that have occurred, such as when the administration was verified.
 
