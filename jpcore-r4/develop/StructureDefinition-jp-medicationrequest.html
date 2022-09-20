@@ -1453,7 +1453,7 @@ Indicates the intended dispensing Organization specified by the prescriber" clas
 <h4 id="jp-core-medicationrequest独自で追加されたextension">JP Core MedicationRequest独自で追加されたExtension</h4>
 
 <table class="extension_description">
-  <tr>|服用開始日|服用開始日を格納する拡張|http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationRequest_DosageInstruction_PeriodOfUse|Period|
+  <tr>|服用開始日|服用開始日を格納する拡張|http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_PeriodOfUse|Period|
     <th>拡張</th>
     <th>説明</th>
     <th>URL</th>
@@ -1462,7 +1462,7 @@ Indicates the intended dispensing Organization specified by the prescriber" clas
   <tr>
     <td>実服用日数</td>
     <td>実服用日数を格納する拡張</td>
-    <td>http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationRequest_DosageInstruction_UsageDuration</td>
+    <td>http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_UsageDuration</td>
     <td>Duration</td>
   </tr>
   <tr>
@@ -1600,8 +1600,8 @@ Indicates the intended dispensing Organization specified by the prescriber" clas
 <p>療養担当則23条では、「保険医は、処方箋を交付する場合には、様式第二号若しくは第二号の二又はこれらに準ずる様式の処方箋に必要な事項を記載しなければならない。」とされており、外来処方、院内処方の区分を明示していない。したがって、個別のユースケースにおいては一部を省略されることも前提の上で、規格としてはこれに準拠すべきと考え、様式に収載されている以下の項目を追加した。</p>
 
 <ul>
-  <li>服用開始日の追加（拡張「JP_MedicationRequest_DosageInstruction_PeriodOfUse」を使用）</li>
-  <li>実服用日数の追加（拡張「JP_MedicationRequest_DosageInstruction_UsageDuration」を使用）</li>
+  <li>服用開始日の追加（拡張「JP_MedicationDosage_PeriodOfUse」を使用）</li>
+  <li>実服用日数の追加（拡張「JP_MedicationDosage_UsageDuration」を使用）</li>
   <li>頓用回数の追加（拡張「JP_MedicationRequest_DispenseRequest_ExpectedRepeatCount」を使用）</li>
   <li>調剤指示の追加（拡張「JP_MedicationRequest_DispenseRequest_InstructionForDispense」を使用）</li>
   <li>一日量処方への対応（doseInstruction.doseAndRate.rateRatioを使用）</li>
@@ -1894,7 +1894,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
 <p>MedicationRequestは薬剤をCodeableConceptとして1つまでしか持つか、Medicationリソースのreferenceをもつことしかできない。したがって、複数の薬剤を同一のRp番号で表現する場合にはMedicationRequestを繰り返すか、複数の薬剤をまとめたMedication Resourceのインスタンスを参照することとなる。ワーキンググループでの検討の結果、冗長とはなるがidentifierにRp番号と薬剤番号を記録することとし、MedicationRequestを繰り返すことで表現する方法を推奨することとした。</p>
 
 <h3 id="服用期間実服用日数の記述方法">服用期間、実服用日数の記述方法</h3>
-<p>服用期間は、dosageInstruction.dosageInstruction.timing.repeat.boundsDuration要素に、Duration型を使用して記録する。本要素に指定される日数は、服用開始日から服用終了日までの全日数である。そのため、隔日投与や指定曜日の投与の場合には、服用しない日も日数に含まれることになり、処方箋に記録される実服用日数とは異なる値が記録されることとなる。服用期間とは別に実服用日数を表現したい場合には、dosageInstruction要素に対して定義した拡張「JP_MedicationRequest_DosageInstruction_UsageDuration」を使用し、Duration型で記載する。</p>
+<p>服用期間は、dosageInstruction.dosageInstruction.timing.repeat.boundsDuration要素に、Duration型を使用して記録する。本要素に指定される日数は、服用開始日から服用終了日までの全日数である。そのため、隔日投与や指定曜日の投与の場合には、服用しない日も日数に含まれることになり、処方箋に記録される実服用日数とは異なる値が記録されることとなる。服用期間とは別に実服用日数を表現したい場合には、dosageInstruction要素に対して定義した拡張「JP_MedicationDosage_UsageDuration」を使用し、Duration型で記載する。</p>
 
 <p>Timingデータ型のrepeat.boundsDuration要素を使用した服用期間のインスタンス例を示す。</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"timing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1911,7 +1911,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
 <p>拡張「UsageDuration」を使用した実服用日数のインスタンス例を示す。</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationRequest_DosageInstruction_UsageDuration"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_UsageDuration"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"valueDuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
       </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"日"</span><span class="p">,</span><span class="w">
@@ -1923,10 +1923,10 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
 </span></code></pre></div></div>
 
 <h3 id="服用開始日の記述方法">服用開始日の記述方法</h3>
-<p>交互投与や漸増漸減などの用法で服用開始日を明示する必要がある場合には、dosageInstruction要素に対して定義した拡張「JP_MedicationRequest_DosageInstruction_PeriodOfUse」を使用し、Period型で開始日を記録する。</p>
+<p>交互投与や漸増漸減などの用法で服用開始日を明示する必要がある場合には、dosageInstruction要素に対して定義した拡張「JP_MedicationDosage_PeriodOfUse」を使用し、Period型で開始日を記録する。</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationRequest_DosageInstruction_PeriodOfUse"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_PeriodOfUse"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"valuePeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-01"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -2214,7 +2214,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationRequest_DosageInstruction_UsageDuration"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_UsageDuration"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"valueDuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
           </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"日"</span><span class="p">,</span><span class="w">
@@ -2357,7 +2357,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationRequest_DosageInstruction_UsageDuration"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_UsageDuration"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"valueDuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
           </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"日"</span><span class="p">,</span><span class="w">
@@ -2496,7 +2496,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationRequest_DosageInstruction_UsageDuration"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_UsageDuration"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"valueDuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
           </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"日"</span><span class="p">,</span><span class="w">
@@ -3032,7 +3032,7 @@ JAMI標準用法コードを使用する表現方法と、HL7 FHIR本来の表�
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Sep 20, 2022 01:36+0000">2022-09-20</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Sep 20, 2022 02:59+0000">2022-09-20</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

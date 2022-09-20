@@ -200,7 +200,7 @@ mad-1:SHALL have at least one of dosage.dose or dosage.rate[x] {dose.exists() or
 ","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
 ","",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"MedicationAdministration.dosage.extension:line","MedicationAdministration.dosage.extension","line","","",0,*,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationRequest_DosageInstruction_Line]]} {[]}
+"MedicationAdministration.dosage.extension:line","MedicationAdministration.dosage.extension","line","","",0,*,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_Line]]} {[]}
 ","指示ライン","指示ラインを格納する拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
@@ -348,7 +348,7 @@ Quantity {[]} {[]}","Dose quantity per unit of time　単位時間あたりの�
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 rat-1:Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present {(numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())}","n/a","RTO","N/A"
 "MedicationAdministration.dosage.rate[x]:rateQuantity","MedicationAdministration.dosage.rate[x]","rateQuantity","","",0,1,"","","","Quantity {[CanonicalType[http://hl7.org/fhir/StructureDefinition/SimpleQuantity]]} {[]}
-","投与速度(量/時間)を指定する","投与速度(量/時間)を指定する","The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.","","","","","","","","",,,,,"",,,,"MedicationAdministration.dosage.rate[x]",0,1,"ele-1
+","投与速度(流量)を指定する単位は流量を表す単位（e.g. 量/時間)を指定する","投与速度(流量)を指定する単位は流量を表す単位（e.g. 量/時間)を指定する","The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.","","","","","","","","",,,,,"",,,,"MedicationAdministration.dosage.rate[x]",0,1,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 qty-3:If a code for the unit is present, the system SHALL also be present {code.empty() or system.exists()}sqty-1:The comparator is not used on a SimpleQuantity {comparator.empty()}","n/a","PQ, IVL<PQ>, MO, CO, depending on the values","SN (see also Range) or CQ"
 "MedicationAdministration.eventHistory","MedicationAdministration.eventHistory","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Provenance]]}
