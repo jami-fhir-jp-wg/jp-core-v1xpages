@@ -4,7 +4,7 @@
 
 MedicationRequestリソースは、次の要素を持たなければならない。
 - status : ステータスは必須である。
-- intent : 意図は必須であり、JP Coreでは"intent" に固定される。
+- intent : 意図は必須である。
 - medicationReference : 医薬品の識別情報は必須であり、medicationReference.referenceが必ず存在しなければならない。JP Coreでは注射の医薬品情報は単一薬剤の場合も Medicationリソースとして記述し、MedicationRequest.contained属性に内包し、medicationCodeableConceptは使用しない。
 - subject :患者の参照情報は必須であり、subject.reference ないし subject.identifier が必ず存在しなければならない。
 - authoredOn : 処方依頼日時であり、JP Coreでは必須である。
@@ -632,7 +632,7 @@ HL7表0550 身体部位("http://terminology.hl7.org/CodeSystem/v2-0550")とHL7�
         "valueCodeableConcept": {
           "coding": [
             {
-              "system": "http://sample.com/CodeSystem/MedicationRequest-line",
+              "system": "http://jpfhir.jp/fhir/Examples/CodeSystem/JP_MedicationRequestDosageInstructionLine_CS",
               "code": "01",
               "display": "末梢ルートメイン１"
             }
