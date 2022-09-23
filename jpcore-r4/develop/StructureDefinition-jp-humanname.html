@@ -716,60 +716,116 @@ Summary
 
 <div style="display:inline-block" markdown="1">
 
-<h3 id="日本人の人名表記に関する説明">日本人の人名表記に関する説明</h3>
+<h2 id="人名表記に関する説明">人名表記に関する説明</h2>
+
+<h3 id="名前の表記">名前の表記</h3>
+
+<p>JP_HumanNameは名前の表記分類として<a href="http://hl7.org/fhir/R4/extension-iso21090-en-representation.html">iso21090-EN-representation extension</a>を0..1の多重度にて拡張として割り当てている。具体的な表記分類に利用されるコードは<a href="http://hl7.org/fhir/R4/valueset-name-v3-representation.html">valueset-name-v3-representation</a>のValueSetにて３つのコードが指定されている。</p>
 
 <ul>
-  <li>[nameRepresentationUse] のコードによって、以下のように区別する。
-    <ul>
-      <li>ABC ： 英語表記。日本語の場合、主にローマ字（ヘボン式）が格納される。</li>
-      <li>IDE ： 表意文字。主に漢字が使われる。</li>
-      <li>SYL ： 表音文字。全角カタカナで記載する。</li>
-    </ul>
-  </li>
+  <li>IDE ： 表意文字<br />
+  日本語の氏名では、主に漢字氏名に相当するエリアになる。漢字を利用していない氏名についてはひらがなやカタカナ、アルファベットも可能であるが全角を利用すること。</li>
+  <li>SYL ： 表音文字<br />
+  全角カタカナで記載する。</li>
+  <li>ABC ： アルファベット<br />
+  日本語の氏名の場合、主にローマ字を割り当てる。ローマ字の記述方法には、ヘボン式と訓令式があるが現在決まりはないが、一般にはヘボン式のほうが利用されることが多い。このエリアを検索等に利用する場合には、規則を決めておくことをお勧めする。</li>
 </ul>
 
-<p><br /></p>
+<h3 id="extensionが指定されない場合">Extensionが指定されない場合</h3>
+<p>JP Coreでは国外ベンダを考慮し、<a href="http://hl7.org/fhir/R4/extension-iso21090-en-representation.html">iso21090-EN-representation extension</a>の拡張は多重度0を許容している。実装ガイド作成の際は、アプリケーションの実装等やデータ収集の精度に関わる部分のため、どこまでを許容するかを検討したうえで多重度を変更するかどうかを検討すること。</p>
 
-<h4 id="各コードの書き方の例">各コードの書き方の例</h4>
+<h3 id="textの区切り文字">textの区切り文字</h3>
+
+<p>textには氏名全体を記述することにする。family, given組み合わせる場合の区切り文字は半角スペースで統一する(全角空白は利用しない)。</p>
+
+<h4 id="各コード">各コード</h4>
 
 <table>
   <thead>
     <tr>
-      <th>コード</th>
-      <th>text</th>
-      <th>family</th>
-      <th>given</th>
-      <th>備考</th>
+      <th style="text-align: left">コード</th>
+      <th style="text-align: left">text</th>
+      <th style="text-align: left">family</th>
+      <th style="text-align: left">given</th>
+      <th style="text-align: left">備考</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>IDE</td>
-      <td>山田 太郎</td>
-      <td>山田</td>
-      <td>太郎</td>
-      <td>主に漢字が使われる。</td>
+      <td style="text-align: left">IDE</td>
+      <td style="text-align: left">表意文字</td>
+      <td style="text-align: left">山田 太郎</td>
+      <td style="text-align: left">山田</td>
+      <td style="text-align: left">太郎</td>
     </tr>
     <tr>
-      <td>SYL</td>
-      <td>ヤマダ タロウ</td>
-      <td>ヤマダ</td>
-      <td>タロウ</td>
-      <td>全角カタカナで記載する。</td>
+      <td style="text-align: left">SYL</td>
+      <td style="text-align: left">表音文字</td>
+      <td style="text-align: left">ヤマダ タロウ</td>
+      <td style="text-align: left">ヤマダ</td>
+      <td style="text-align: left">タロウ</td>
     </tr>
     <tr>
-      <td>ABC</td>
-      <td>YAMADA TARO</td>
-      <td>YAMADA</td>
-      <td>Taro</td>
-      <td>日本語の場合、主にローマ字（ヘボン式）が格納される。</td>
+      <td style="text-align: left">ABC</td>
+      <td style="text-align: left">アルファベット</td>
+      <td style="text-align: left">YAMADA TARO</td>
+      <td style="text-align: left">YAMADA</td>
+      <td style="text-align: left">TARO</td>
     </tr>
   </tbody>
 </table>
 
-<ul>
-  <li>[注意] text要素の姓と名の間には必ず半角スペースを入れること。</li>
-</ul>
+<h4 id="リソースの記述例">リソースの記述例</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> "name" : [
+    {
+      "extension" : [
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation",
+          "valueCode" : "IDE"
+        }
+      ],
+      "use" : "usual",
+      "text" : "山田 太郎",
+      "family" : "山田",
+      "given" : [
+        "太郎"
+      ]
+    },
+    {
+      "extension" : [
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation",
+          "valueCode" : "SYL"
+        }
+      ],
+      "use" : "usual",
+      "text" : "ヤマダ タロウ",
+      "family" : "ヤマダ",
+      "given" : [
+        "タロウ"
+      ]
+    },
+    {
+      "extension" : [
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation",
+          "valueCode" : "ABC"
+        }
+      ],
+      "use" : "usual",
+      "text" : "YAMADA TARO",
+      "family" : "YAMADA",
+      "given" : [
+        "TARO"
+      ]
+    }
+  ],
+
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
 
 </div>
 
@@ -822,7 +878,7 @@ Summary
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Sep 23, 2022 08:06+0000">2022-09-23</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Sep 23, 2022 09:54+0000">2022-09-23</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
