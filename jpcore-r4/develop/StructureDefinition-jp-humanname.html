@@ -718,7 +718,7 @@ Summary
 
 <h2 id="人名表記に関する説明">人名表記に関する説明</h2>
 
-<h3 id="名前の表記">名前の表記</h3>
+<h3 id="表記分類">表記分類</h3>
 
 <p>JP_HumanNameは名前の表記分類として<a href="http://hl7.org/fhir/R4/extension-iso21090-en-representation.html">iso21090-EN-representation extension</a>を0..1の多重度にて拡張として割り当てている。具体的な表記分類に利用されるコードは<a href="http://hl7.org/fhir/R4/valueset-name-v3-representation.html">valueset-name-v3-representation</a>のValueSetにて３つのコードが指定されている。</p>
 
@@ -733,22 +733,22 @@ Summary
 
 <h3 id="iso21090-en-representation-extensionの多重度">iso21090-EN-representation extensionの多重度</h3>
 
-<p>JP Coreでは国外ベンダを考慮し、<a href="http://hl7.org/fhir/R4/extension-iso21090-en-representation.html">iso21090-EN-representation extension</a>の拡張は多重度0を許容している。実装ガイド作成の際は、アプリケーションの実装等やデータ収集の精度に関わる部分のため、どこまでを許容するかを検討した上で多重度を決定すること。</p>
+<p>JP Coreでは国外ベンダを考慮し、<a href="http://hl7.org/fhir/R4/extension-iso21090-en-representation.html">iso21090-EN-representation extension</a>の拡張は多重度0を許容している。実装ガイド作成の際は、アプリケーションの実装等やデータ収集の精度を考慮した上で多重度を決定すること。</p>
 
 <h3 id="textの区切り文字">textの区切り文字</h3>
 
-<p>textには氏名全体を記述することにする。family, given組み合わせる場合の区切り文字は半角スペースで統一する(全角空白は利用しない)。</p>
+<p>textには氏名全体を結合し格納する。family、given等の各組み合わせる時の区切り文字は検索時の利便性を考慮し、「半角スペース」で統一する(<strong>SHALL</strong>)。</p>
 
-<h4 id="各コード">各コード</h4>
+<h3 id="表記分類ごと記述">表記分類ごと記述</h3>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align: left">コード</th>
+      <th style="text-align: left">code</th>
+      <th style="text-align: left">説明</th>
       <th style="text-align: left">text</th>
       <th style="text-align: left">family</th>
       <th style="text-align: left">given</th>
-      <th style="text-align: left">備考</th>
     </tr>
   </thead>
   <tbody>
@@ -776,56 +776,55 @@ Summary
   </tbody>
 </table>
 
-<h4 id="リソースの記述例">リソースの記述例</h4>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> "name" : [
-    {
-      "extension" : [
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation",
-          "valueCode" : "IDE"
-        }
-      ],
-      "use" : "usual",
-      "text" : "山田 太郎",
-      "family" : "山田",
-      "given" : [
-        "太郎"
-      ]
-    },
-    {
-      "extension" : [
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation",
-          "valueCode" : "SYL"
-        }
-      ],
-      "use" : "usual",
-      "text" : "ヤマダ タロウ",
-      "family" : "ヤマダ",
-      "given" : [
-        "タロウ"
-      ]
-    },
-    {
-      "extension" : [
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation",
-          "valueCode" : "ABC"
-        }
-      ],
-      "use" : "usual",
-      "text" : "YAMADA TARO",
-      "family" : "YAMADA",
-      "given" : [
-        "TARO"
-      ]
-    }
-  ],
+<h3 id="リソースでの記述例">リソースでの記述例</h3>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"extension"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"valueCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"IDE"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"use"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"usual"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"山田 太郎"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"family"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"山田"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"given"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"太郎"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"extension"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"valueCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SYL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"use"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"usual"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ヤマダ タロウ"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"family"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ヤマダ"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"given"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"タロウ"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"extension"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"valueCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"use"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"usual"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"YAMADA TARO"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"family"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"YAMADA"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"given"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"TARO"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 
-</code></pre></div></div>
+</span></code></pre></div></div>
 
 <p><br />
-<br />
 <br /></p>
 
 </div>
@@ -879,7 +878,7 @@ Summary
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Sep 23, 2022 12:25+0000">2022-09-23</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Sep 24, 2022 09:02+0000">2022-09-24</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
