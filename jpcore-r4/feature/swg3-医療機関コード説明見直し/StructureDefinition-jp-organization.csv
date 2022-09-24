@@ -32,12 +32,15 @@ valueには都道府県番号2桁の値を格納し、systemには都道府県�
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Organization.extension:organizationCategory","Organization.extension","organizationCategory","","",0,1,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Organization_InsuranceOrganizationCategory]]} {[]}
-","点数表コード１桁（医科１、歯科３）を表現するExtension【詳細参照】","点数表コード１桁（医科１、歯科３）表現するためのExtension。 JP Core Organizationプロファイルで利用されることを想定しているが、他のリソースでも利用可能である","点数表コード１桁（医科1、歯科 3）。Identifier型の拡張  
+","点数表コード１桁（医科１、歯科３、調剤４、訪問看護ステーション６）を表現するExtension【詳細参照】","点数表コード１桁（医科１、歯科３）表現するためのExtension。 JP Core Organizationプロファイルで利用されることを想定しているが、他のリソースでも利用可能である","点数表コード１桁（医科１、歯科３、調剤４、訪問看護ステーション６）。Identifier型の拡張  
 「OrganizationCategory」を使用する。systemには点数表番号を表すOID「1.2.392.100495.20.3.22」を指定する。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Organization.extension:organizationNo","Organization.extension","organizationNo","","",0,1,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Organization_InsuranceOrganizationNo]]} {[]}
-","保険医療機関番号７桁を表現するExtension【詳細参照】","保険医療機関番号７桁を表現するためのExtension。 JP Core Organizationプロファイルで利用されることを想定しているが、他のリソースでも利用可能である","保険医療機関番号７桁。Identifier型の拡張「InsuranceOrganizationNo」を使用する。systemには医療機関コードを表すOID「1.2.392.100495.20.3.23」を指定する。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
+","医療機関コード（７桁）を表現するExtension【詳細参照】","保険医療機関番号７桁を表現するためのExtension。 JP Core Organizationプロファイルで利用されることを想定しているが、他のリソースでも利用可能である","医療機関コード（７桁）。Identifier型の拡張「InsuranceOrganizationNo」を使用する。  
+systemには医療機関コードを表すOID「1.2.392.100495.20.3.23」を指定する。  
+`医療機関コード（７桁）`の詳しい説明は、[こちらのリンク](StructureDefinition-jp-organization.html#医療機関コード１０桁)を参照すること。
+保険医療機関・薬局、訪問看護ステーション等でない場合は、本拡張は使用しない。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Organization.modifierExtension","Organization.modifierExtension","","extensions
@@ -49,11 +52,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Organization.identifier","Organization.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
 ","Identifies this organization  across multiple systems/複数のシステムでこの組織を識別【詳細参照】","Identifier for the organization that is used to identify the organization across multiple disparate systems.
 
-複数の異種システムにまたがって組織を識別するための識別子","もし適切なOID が存在しない場合で、その医療施設が保険医療機関の場合、特定健診・特定保健指導機関のルールに従い以下のルールで設定してもよい。
-
-医療施設が固有のOID を持っている場合は、そのOID を指定する。医療施設が保険医療機関の場合、特定健診・特定保健指導機関の医療機関コードの OID「1.2.392.200119.6.102.」の末尾に「[1]＋医療機関コード（10 桁）」を指定する。医療機関コードを持たない場合、「[9]＋当該施設の電話番号下 9 桁」を医療機関コードとする。
-
-例：医療機関コード「1312345670」の場合「1.2.392.200119.6.102.11312345670」","Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.
+複数の異種システムにまたがって組織を識別するための識別子","福祉医療関連施設と保険者組織はSlicingについてはJP Coreにて定義を行なっているため、定義に従いデータを格納すること。それ以外の組織については、利用する際には必要に応じて識別子を定義を行なうこと。","Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.
 
 組織は様々な ID で知られている。いくつかの機関では複数のIDを保持しており、ほとんどの機関では、組織に関する他の組織との交換のためにIDを収集している。","","","","","","","",,,,,"","value:system}
 ","",,"open","Organization.identifier",0,*,"org-1
@@ -85,10 +84,9 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","Organization that issued id (may be just text)","Organization that issued/manages the identifier.","The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.","","","","","","","","",,,,,"",,,,"Identifier.assigner",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","CX.4 / (CX.4,CX.9,CX.10)","II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper","./IdentifierIssuingAuthority"
 "Organization.identifier:medicalInstitutionCode","Organization.identifier","medicalInstitutionCode","","",0,*,"","","Y","Identifier {[]} {[]}
-","Identifies this organization  across multiple systems","Identifier for the organization that is used to identify the organization across multiple disparate systems.","福祉医療施設を区別するため医療機関機関コード（１０桁）を格納するためのIdentifier/Slicing定義。  
-systemはFixed Valueの```http://jpfhir.jp/fhir/Common/IdSystem/insurance-medical-institution-no```を使用する。　　
-valueは医療機関コード（１０桁）を使用する。 
-医療機関コード（１０桁）の詳細については[こちらのリンク](StructureDefinition-jp-organization.html#医療機関コード（１０桁）)を参照すること。 ","Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.","","","","","","","",,,,,"",,,,"Organization.identifier",0,*,"org-1
+","施設が福祉医療関連機関である場合に利用する識別子【詳細参照】","福祉医療施設を区別するため医療機関機関コード（１０桁）を格納するためのIdentifier/Slicing定義。","systemはFixed Valueの```http://jpfhir.jp/fhir/Common/IdSystem/insurance-medical-institution-no```を使用する。　
+value : ```医療機関コード（１０桁）```を使用する。 
+医療機関コード（１０桁）の詳細は[こちらのリンク](StructureDefinition-jp-organization.html#医療機関機関コード１０桁)を参照すること。 ","Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.","","","","","","","",,,,,"",,,,"Organization.identifier",0,*,"org-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","XON.10 / XON.3",".scopes[Role](classCode=IDENT)","./Identifiers","FiveWs.identifier"
 "Organization.identifier:medicalInstitutionCode.id","Organization.identifier.id","","","",0,1,"","","","string {[]} {[]}
