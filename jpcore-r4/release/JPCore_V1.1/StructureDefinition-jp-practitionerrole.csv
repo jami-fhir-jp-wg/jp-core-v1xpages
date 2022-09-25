@@ -48,10 +48,10 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 PractitionerRoleレコードがエラーで作成されたために使用されないことをマークできるようにする必要がある。","","This resource is generally assumed to be active if no value is provided for the active element","","","","","",,,,,"",,,,"PractitionerRole.active",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","STF-7",".statusCode","FiveWs.status"
 "PractitionerRole.period","PractitionerRole.period","","","",0,1,"","","Y","Period {[]} {[]}
-","The period during which the practitioner is authorized to perform in these role(s)　その人が、これらの役割（複数可）の医療従事者として行動することを許可されている期間。","The period during which the person is authorized to act as a practitioner in these role(s) for the organization.
+","The period during which the practitioner is authorized to perform in these role(s)　その人が、これらの役割（複数可）の医療従事者として行動することを許可されている期間","The period during which the person is authorized to act as a practitioner in these role(s) for the organization.
 
 その人が、組織のためにこれらの役割（複数可）の医療従事者として行動することを許可されている期間。","A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. ""the patient was an inpatient of the hospital for this time range"") or one value from the range applies (e.g. ""give to the patient between these two times"").
-Period is not used for a duration (a measure of elapsed time). See [Duration](datatypes.html#Duration).
+Period is not used for a duration (a measure of elapsed time). See [Duration](http://hl7.org/fhir/R4/datatypes.html#Duration).
 
 期間は時間の範囲を指定する。使用状況はその期間全体に適用されるか、範囲から1つの値が適用される。
 期間は、時間間隔（経過時間の測定値）には使用されない","Even after the agencies is revoked, the fact that it existed must still be recorded.
@@ -71,7 +71,7 @@ Period is not used for a duration (a measure of elapsed time). See [Duration](da
 参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","","","","","","","","",,,,,"",,,,"PractitionerRole.organization",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".scoper"
 "PractitionerRole.code","PractitionerRole.code","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
-","Roles which this practitioner may perform　この医療従事者が果たす役割","Roles which this practitioner is authorized to perform for the organization.
+","Roles which this practitioner may perform　この医療従事者が果たす役割【詳細参照】","Roles which this practitioner is authorized to perform for the organization.
 
 この医療従事者が組織のために実行することを許可されている役割。","A person may have more than one role.
 
@@ -79,7 +79,7 @@ Period is not used for a duration (a measure of elapsed time). See [Duration](da
 
 医師、看護職員、薬剤師、放射線技師、情報職員といった職種を格納する。
 以下のコード表を作成する。
-http://jpfhir.jp/fhir/Common/CodeSystem/JP_PractitionerRole_CS
+http://jpfhir.jp/fhir/core/CodeSystem/JP_PractitionerRole_CS
 
 SS-MIX2ではJHSR004 医療従事者の職種コードを採用
 コード 名称
@@ -91,7 +91,7 @@ NS-01 看護師
 NS-02 付添看護師
 NS-03 助産師","Need to know what authority the practitioner has - what can they do?
 
-プラクティショナーがどのような権限を持っているのかを知る必要がある - 何ができるのか？","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/Common/ValueSet/JP_ProcedurePerformerRole_VS","",,,,"PractitionerRole.code",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+practitionerがどのような権限を持っているのかを知る必要がある - 何ができるのか？","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/core/ValueSet/JP_ProcedurePerformerRole_VS","",,,,"PractitionerRole.code",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","PRD-1 / STF-18  / PRA-3  / PRT-4  / ROL-3 / ORC-12 / OBR-16 / PV1-7 / PV1-8 / PV1-9 / PV1-17",".code","(ServD maps Practitioners and Organizations via another entity, so this concept is not available)"
 "PractitionerRole.specialty","PractitionerRole.specialty","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
 ","Specific specialty of the practitioner","Specific specialty of the practitioner.
@@ -100,7 +100,7 @@ NS-03 助産師","Need to know what authority the practitioner has - what can th
 
 PractitionerRole.codeに格納した職種の専門領域を格納する。
 以下のコード表を作成する。
-http://jpfhir.jp/fhir/Common/CodeSystem/JP_PractionerRole_practicecodes","","","","","","","","",,"preferred","Specific specialty associated with the agency.","http://hl7.org/fhir/ValueSet/c80-practice-codes","",,,,"PractitionerRole.specialty",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+http://jpfhir.jp/fhir/core/CodeSystem/JP_PractionerRole_practicecodes","","","","","","","","",,"preferred","Specific specialty associated with the agency.","http://hl7.org/fhir/ValueSet/c80-practice-codes","",,,,"PractitionerRole.specialty",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","PRA-5",".player.HealthCareProvider[@classCode = 'PROV'].code","./Specialty"
 "PractitionerRole.location","PractitionerRole.location","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location]]}
 ","The location(s) at which this practitioner provides care　この医療従事者がケアを提供している場所","The location(s) at which this practitioner provides care.
@@ -184,7 +184,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "PractitionerRole.notAvailable.description","PractitionerRole.notAvailable.description","","","",1,1,"","","","string {[]} {[]}
 ","Reason presented to the user explaining why time not available","The reason that can be presented to the user as to why this time is not available.
 
-この時間が利用できない理由をユーザーに提示することができる。","","","","","","","","","",,,,,"",,,,"PractitionerRole.notAvailable.description",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+この時間が利用できない理由をユーザに提示することができる。","","","","","","","","","",,,,,"",,,,"PractitionerRole.notAvailable.description",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","n/a"
 "PractitionerRole.notAvailable.during","PractitionerRole.notAvailable.during","","","",0,1,"","","","Period {[]} {[]}
 ","Service not available from this date","Service is not available (seasonally or for a public holiday) from this date.

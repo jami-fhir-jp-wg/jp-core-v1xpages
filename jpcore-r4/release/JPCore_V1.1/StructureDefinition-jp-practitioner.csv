@@ -32,23 +32,24 @@ user content","",0,*,"","Y","","Extension {[]} {[]}
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "Practitioner.identifier","Practitioner.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
-","An identifier for the person as this agent","An identifier that applies to this person in this role.
+","An identifier for the person as this agent 【詳細参照】","An identifier that applies to this person in this role.
 
 ある役割の人に適用される識別子。","【JP Core仕様】IDの名前空間を表す Practitioner.identifier.systemと ID値そのものを表す Practitioner.identifier.value の組み合わせとして表現する。
 Practitioner.identifier.systemには、
-医師の場合、　urn:oid:1.2.392.100495.20.3.41.医療機関識別OID番号
-歯科医師の場合、urn:oid:1.2.392.100495.20.3.42.医療機関識別OID番号
-を使用する。
-医療機関識別OID番号は、医師IDの発行者である医療機関を識別するもので、保険医療機関の場合、都道府県番号２桁から始まる10桁の医療機関番号（都道府県2桁、保険点数表コード1桁、保険医療機関番号７桁を連結したもの）または、特定健診・特定保健指導機関の医療機関番号10桁の先頭に１をつけた11桁とする。
+医師の場合、　urn:oid:1.2.392.100495.20.3.41.医療機関識別OID番号  
+歯科医師の場合、urn:oid:1.2.392.100495.20.3.42.医療機関識別OID番号を使用する。  
+医師IDの発行者である医療機関を識別する「医療機関コード」については、[こちらのリンク](StructureDefinition-jp-organization.html#医療機関コード)を参照すること。医療機関識別OID番号については、医療機関コード10桁の先頭に１をつけた11桁とする。
 医療機関コードを持たない場合、「[9]＋当該施設の電話番号下 9 桁」を医療機関コードとして、その先頭に１をつけた11桁とする。
 
 例：医療機関コード「1312345670」での医師の場合「urn:oid:1.2.392.100495.20.3.41.11312345670」
 
-なお、rn:oid:1.2.392.100495.20.3.41　の部分は、厚生労働省 電子処方箋CDA 記述仕様第1版（平成30年7月）付表2 OID一覧において医師番号に割り当てられたOIDのURL型である。
+なお、rn:oid:1.2.392.100495.20.3.41　の部分は、「[処方情報 HL7FHIR 記述仕様](https://std.jpfhir.jp/stddoc/ePrescriptionDataFHIR_v1x.pdf)」表19 識別子名前空間一覧において処方医 IDに割り当てられたOIDのURL型である。
 
 地域医療連携ネットワークの地域医療従事者IDを指定する場合も同様に、地域医療従事者IDを識別する名前空間（IHE ITI PIX等で使用されるOID等）を system に使用することができる。
 
-医師、歯科医師以外の医療者のIDの名前空間を表す system 値は今後検討する。","Often, specific identities are assigned for the agent.
+医師、歯科医師以外の医療者のIDの名前空間を表す system 値はまだ未定のため、空白もしくは「ドメイン名/職員ID」などの識別コードを入れること。
+
+例：http://www.abd-hospital.co.jp/practitioner-system","Often, specific identities are assigned for the agent.
 
 多くの場合、エージェントには特定の識別子が割り当てられている。","","","","","","","",,,,,"",,,,"Practitioner.identifier",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","PRD-7 (or XCN.1)","./id","./Identifiers","FiveWs.identifier"
@@ -83,7 +84,7 @@ useプロパティの選択は、指定された単一の通常の名前があ�
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","XPN","n/a","EN (actually, PN)","ProviderName"
 "Practitioner.telecom","Practitioner.telecom","","","",0,*,"","","Y","ContactPoint {[]} {[]}
-","A contact detail for the practitioner (that apply to all roles)　電話番号やメールアドレスなど、従事者への詳細な連絡先。","A contact detail for the practitioner, e.g. a telephone number or an email address.
+","A contact detail for the practitioner (that apply to all roles)　電話番号やメールアドレスなど、従事者への詳細な連絡先","A contact detail for the practitioner, e.g. a telephone number or an email address.
 
 電話番号やメールアドレスなど、従事者への詳細な連絡先。","Person may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and to help with identification.  These typically will have home numbers, or mobile numbers that are not role specific.
 
@@ -116,7 +117,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Practitioner.telecom.period","Practitioner.telecom.period","","","",0,1,"","","Y","Period {[]} {[]}
 ","Time period when the contact point was/is in use","Time period when the contact point was/is in use.","A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. ""the patient was an inpatient of the hospital for this time range"") or one value from the range applies (e.g. ""give to the patient between these two times"").
 
-Period is not used for a duration (a measure of elapsed time). See [Duration](datatypes.html#Duration).
+Period is not used for a duration (a measure of elapsed time). See [Duration](http://hl7.org/fhir/R4/datatypes.html#Duration).
 期間は時間の範囲を指定する。使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、範囲から1つの値が適用されるか（たとえば、「この2回の間に患者に与える」）を指定する。
 期間は、時間間隔（経過時間の測定値）には使用されない。 [Duration]（datatypes.html＃Duration）を参照のこと。","","","","","","","","",,,,,"",,,,"ContactPoint.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","N/A","./usablePeriod[type=""IVL<TS>""]","./StartDate and ./EndDate"
@@ -173,7 +174,7 @@ Territory","",0,1,"","","Y","string {[]} {[]}
 "Practitioner.address.period","Practitioner.address.period","","","",0,1,"","","Y","Period {[]} {[]}
 ","Time period when address was/is in use","Time period when address was/is in use.","A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. ""the patient was an inpatient of the hospital for this time range"") or one value from the range applies (e.g. ""give to the patient between these two times"").
 
-Period is not used for a duration (a measure of elapsed time). See [Duration](datatypes.html#Duration).
+Period is not used for a duration (a measure of elapsed time). See [Duration](http://hl7.org/fhir/R4/datatypes.html#Duration).
 期間は時間の範囲を指定する。使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、範囲から1つの値が適用されるか（たとえば、「この2回の間に患者に与える」）を指定する。
 期間は、時間間隔（経過時間の測定値）には使用されない。 [Duration]（datatypes.html＃Duration）を参照のこと。","Allows addresses to be placed in historical context.","","","","","<valuePeriod xmlns=""http://hl7.org/fhir"">
   <start value=""2010-03-23""/>
@@ -203,7 +204,7 @@ Period is not used for a duration (a measure of elapsed time). See [Duration](da
 多くのEHRシステムは、患者や職員の画像をキャプチャする機能を持っている。新しいソーシャルメディアの利用にも対応している。","","","","","","","",,,,,"",,,,"Practitioner.photo",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","./subjectOf/ObservationEvent[code=""photo""]/value","./ImageURI (only supports the URI reference)"
 "Practitioner.qualification","Practitioner.qualification","","","",0,*,"","","","BackboneElement {[]} {[]}
-","Certification, licenses, or training pertaining to the provision of care　ケアの提供に関連する認定、ライセンス、またはトレーニング","The official certifications, training, and licenses that authorize or otherwise pertain to the provision of care by the practitioner.  For example, a medical license issued by a medical board authorizing the practitioner to practice medicine within a certain locality.
+","Certification, licenses, or training pertaining to the provision of care　ケアの提供に関連する認定、ライセンス、またはトレーニング 【詳細参照】","The official certifications, training, and licenses that authorize or otherwise pertain to the provision of care by the practitioner.  For example, a medical license issued by a medical board authorizing the practitioner to practice medicine within a certain locality.
 
 医療従事者によるケアの提供を認可する、あるいは関連する、公式の証明書、トレーニング、免許証等。
 例えば、医療委員会が発行した医師免許証は、認定された地域内で医療を行うことを開業医に許可するものである。","麻薬施用者免許番号、または医籍登録番号を格納するためのQualification/Slicing定義。
@@ -246,11 +247,11 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 
 資格が有効な期間。","A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. ""the patient was an inpatient of the hospital for this time range"") or one value from the range applies (e.g. ""give to the patient between these two times"").
 
-Period is not used for a duration (a measure of elapsed time). See [Duration](datatypes.html#Duration).
+Period is not used for a duration (a measure of elapsed time). See [Duration](http://hl7.org/fhir/R4/datatypes.html#Duration).
 
 使用のコンテキストは、範囲全体が適用されるか（例：「患者はこの時間範囲で病院の入院患者であった」）、範囲内の1つの値が適用されるか（例：「この2つの時間の間に患者に与える」）を指定する。
 
-期間は、期間(経過時間の尺度)には使用されない。[Duration](datatypes.html#Duration)を参照のこと。","Qualifications are often for a limited period of time, and can be revoked.
+期間は、期間(経過時間の尺度)には使用されない。[Duration](http://hl7.org/fhir/R4/datatypes.html#Duration)を参照のこと。","Qualifications are often for a limited period of time, and can be revoked.
 
 資格は期間限定のものが多く、取り消されることもある。","","","","","","","",,,,,"",,,,"Practitioner.qualification.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".playingEntity.playingRole[classCode=QUAL].effectiveTime","./Qualifications.StartDate and ./Qualifications.EndDate"
@@ -345,7 +346,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 - urn:oid:1.2.392.100495.20.3.32.147(沖縄県)","There are many sets  of identifiers.  To perform matching of two identifiers, we need to know what set we're dealing with. The system identifies a particular set of unique identifiers.","","","","","<valueUri xmlns=""http://hl7.org/fhir"" value=""http://www.acme.com/identifiers/patient""/>","","",,,,,"",,,,"Identifier.system",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","CX.4 / EI-2-4","II.root or Role.id.root","./IdentifierType"
 "Practitioner.qualification:narcoticPrescriptionLicenseNumber.identifier.value","Practitioner.qualification.identifier.value","","","",0,1,"","","Y","string {[]} {[]}
-","都道府県別　麻薬施用者免許番号","The portion of the identifier typically relevant to the user and which is unique within the context of the system.","都道府県別　麻薬施用者免許番号","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""123456""/>","","",,,,,"",,,,"Identifier.value",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","都道府県別　麻薬施用者免許番号 【詳細参照】","The portion of the identifier typically relevant to the user and which is unique within the context of the system.","都道府県別　麻薬施用者免許番号","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""123456""/>","","",,,,,"",,,,"Identifier.value",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","CX.1 / EI.1","II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)","./Value"
 "Practitioner.qualification:narcoticPrescriptionLicenseNumber.identifier.period","Practitioner.qualification.identifier.period","","","",0,1,"","","Y","Period {[]} {[]}
 ","Time period when id is/was valid for use","Time period during which identifier is/was valid for use.","","","","","","","","","",,,,,"",,,,"Identifier.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
@@ -356,10 +357,10 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Practitioner.qualification:narcoticPrescriptionLicenseNumber.code","Practitioner.qualification.code","","","",1,1,"","","","CodeableConcept {[]} {[]}
 ","Coded representation of the qualification","Coded representation of the qualification.","","","","","","<valueCodeableConcept xmlns=""http://hl7.org/fhir"">
   <coding>
-    <system value=""http://jpfhir.jp/fhir/Common/CodeSystem/JP_MedicalLicenseCertificate_CS""/>
+    <system value=""http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicalLicenseCertificate_CS""/>
     <code value=""narcotics-practitioner""/>
   </coding>
-</valueCodeableConcept>","","","",,"required","","http://jpfhir.jp/fhir/Common/ValueSet/JP_MedicalLicenseCertificate_VS","",,,,"Practitioner.qualification.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+</valueCodeableConcept>","","","",,"required","","http://jpfhir.jp/fhir/core/ValueSet/JP_MedicalLicenseCertificate_VS","",,,,"Practitioner.qualification.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".playingEntity.playingRole[classCode=QUAL].code","./Qualifications.Value"
 "Practitioner.qualification:narcoticPrescriptionLicenseNumber.period","Practitioner.qualification.period","","","",0,1,"","","","Period {[]} {[]}
 ","Period during which the qualification is valid","Period during which the qualification is valid.","","Qualifications are often for a limited period of time, and can be revoked.","","","","","","","",,,,,"",,,,"Practitioner.qualification.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
@@ -413,10 +414,10 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Practitioner.qualification:medicalRegistrationNumber.code","Practitioner.qualification.code","","","",1,1,"","","","CodeableConcept {[]} {[]}
 ","Coded representation of the qualification","Coded representation of the qualification.","","","","","","<valueCodeableConcept xmlns=""http://hl7.org/fhir"">
   <coding>
-    <system value=""http://jpfhir.jp/fhir/Common/CodeSystem/JP_MedicalLicenseCertificate_CS""/>
+    <system value=""http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicalLicenseCertificate_CS""/>
     <code value=""medical-registration""/>
   </coding>
-</valueCodeableConcept>","","","",,"required","","http://jpfhir.jp/fhir/Common/ValueSet/JP_MedicalLicenseCertificate_VS","",,,,"Practitioner.qualification.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+</valueCodeableConcept>","","","",,"required","","http://jpfhir.jp/fhir/core/ValueSet/JP_MedicalLicenseCertificate_VS","",,,,"Practitioner.qualification.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".playingEntity.playingRole[classCode=QUAL].code","./Qualifications.Value"
 "Practitioner.qualification:medicalRegistrationNumber.period","Practitioner.qualification.period","","","",0,1,"","","","Period {[]} {[]}
 ","Period during which the qualification is valid","Period during which the qualification is valid.","","Qualifications are often for a limited period of time, and can be revoked.","","","","","","","",,,,,"",,,,"Practitioner.qualification.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
@@ -425,7 +426,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","Organization that regulates and issues the qualification","Organization that regulates and issues the qualification.","","","","","","","","","",,,,,"",,,,"Practitioner.qualification.issuer",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".playingEntity.playingRole[classCode=QUAL].scoper"
 "Practitioner.communication","Practitioner.communication","","","",0,*,"","","","CodeableConcept {[]} {[]}
-","A language the practitioner can use in patient communication　医療従事者が患者とのコミュニケーションで使用できる言語。","A language the practitioner can use in patient communication.
+","A language the practitioner can use in patient communication　医療従事者が患者とのコミュニケーションで使用できる言語","A language the practitioner can use in patient communication.
 
 医療従事者が患者とのコミュニケーションで使用できる言語。","The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.
 

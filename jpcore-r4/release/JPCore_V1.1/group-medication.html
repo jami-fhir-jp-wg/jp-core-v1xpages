@@ -3,7 +3,8 @@
 <html xml:lang="ja" xmlns="http://www.w3.org/1999/xhtml" lang="ja">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>HL7.FHIR.JP.CORE\Medication Group - FHIR v4.0.1</title>
+    <!-- <title>HL7.FHIR.JP.CORE\Medication Group - FHIR v4.0.1</title> -->
+    <title>Medication Group - FHIR v4.0.1</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -112,6 +113,9 @@
         <a href="guide-stringSearch.html">文字列検索</a>
       </li>
       <li>
+        <a href="guide-precautions.html">利用上の注意事項</a>
+      </li>
+      <li>
         <a href="update_history.html">更新履歴</a>
       </li>
     </ul>
@@ -218,12 +222,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="StructureDefinition-jp-immunization-manufactureddate.html">JP_Immunization_ManufacturedDate</a></li>
   <li><a href="StructureDefinition-jp-medication-ingredient-drugno.html">JP_Medication_Ingredient_DrugNo</a></li>
   <li><a href="StructureDefinition-jp-medication-ingredientstrength-strengthtype.html">JP_Medication_IngredientStrength_StrengthType</a></li>
-  <li><a href="StructureDefinition-jp-medicationadministration-dosage-dosagecomment.html">JP_MedicationAdministration_Dosage_DosageComment</a></li>
-  <li><a href="StructureDefinition-jp-medicationadministration-dosage-linecomment.html">JP_MedicationAdministration_Dosage_LineComment</a></li>
-  <li><a href="StructureDefinition-jp-medicationadministration-dosagemethod-methodcomment.html">JP_MedicationAdministration_DosageMethod_MethodComment</a></li>
-  <li><a href="StructureDefinition-jp-medicationadministration-dosagerate-ratecomment.html">JP_MedicationAdministration_DosageRate_RateComment</a></li>
-  <li><a href="StructureDefinition-jp-medicationadministration-dosageroute-routecomment.html">JP_MedicationAdministration_DosageRoute_RouteComment</a></li>
-  <li><a href="StructureDefinition-jp-medicationadministration-dosagesite-sitecomment.html">JP_MedicationAdministration_DosageSite_SiteComment</a></li>
   <li><a href="StructureDefinition-jp-medicationadministration-location.html">JP_MedicationAdministration_Location</a></li>
   <li><a href="StructureDefinition-jp-medicationadministration-requestauthoredon.html">JP_MedicationAdministration_RequestAuthoredOn</a></li>
   <li><a href="StructureDefinition-jp-medicationadministration-requestdepartment.html">JP_MedicationAdministration_RequestDepartment</a></li>
@@ -232,10 +230,16 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="StructureDefinition-jp-medicationdispense-preparation.html">JP_MedicationDispense_Preparation</a></li>
   <li><a href="StructureDefinition-jp-medicationrequest-dispenserequest-expectedrepeatcount.html">JP_MedicationRequest_DispenseRequest_ExpectedRepeatCount</a></li>
   <li><a href="StructureDefinition-jp-medicationrequest-dispenserequest-instructionfordispense.html">JP_MedicationRequest_DispenseRequest_InstructionForDispense</a></li>
-  <li><a href="StructureDefinition-jp-medicationrequest-dosageinstruction-device.html">JP_MedicationRequest_DosageInstruction_Device</a></li>
-  <li><a href="StructureDefinition-jp-medicationrequest-dosageinstruction-line.html">JP_MedicationRequest_DosageInstruction_Line</a></li>
-  <li><a href="StructureDefinition-jp-medicationrequest-dosageinstruction-periodofuse.html">JP_MedicationRequest_DosageInstruction_PeriodOfUse</a></li>
-  <li><a href="StructureDefinition-jp-medicationrequest-dosageinstruction-usageduration.html">JP_MedicationRequest_DosageInstruction_UsageDuration</a></li>
+  <li><a href="StructureDefinition-jp-medicationdosage-device.html">JP_MedicationDosage_Device</a></li>
+  <li><a href="StructureDefinition-jp-medicationdosage-dosagecomment.html">JP_MedicationDosage_DosageComment</a></li>
+  <li><a href="StructureDefinition-jp-medicationdosage-line.html">JP_MedicationDosage_Line</a></li>
+  <li><a href="StructureDefinition-jp-medicationdosage-linecomment.html">JP_MedicationDosage_LineComment</a></li>
+  <li><a href="StructureDefinition-jp-medicationdosage-methodcomment.html">JP_MedicationDosage_MethodComment</a></li>
+  <li><a href="StructureDefinition-jp-medicationdosage-periodofuse.html">JP_MedicationDosage_PeriodOfUse</a></li>
+  <li><a href="StructureDefinition-jp-medicationdosage-ratecomment.html">JP_MedicationDosage_RateComment</a></li>
+  <li><a href="StructureDefinition-jp-medicationdosage-routecomment.html">JP_MedicationDosage_RouteComment</a></li>
+  <li><a href="StructureDefinition-jp-medicationdosage-sitecomment.html">JP_MedicationDosage_SiteComment</a></li>
+  <li><a href="StructureDefinition-jp-medicationdosage-usageduration.html">JP_MedicationDosage_UsageDuration</a></li>
 </ul>
 
 <!-- 本ファイル修正不可。-->
@@ -290,7 +294,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Sep 16, 2022 11:30+0000">2022-09-16</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sun, Sep 25, 2022 05:48+0000">2022-09-25</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

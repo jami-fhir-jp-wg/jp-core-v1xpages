@@ -20,7 +20,7 @@
   "name": "JP_DiagnosticReport_LabResult",
   "title": "JP Core DiagnosticReport LabResult Profile",
   "status": "active",
-  "date": "2022-09-16T11:30:59+00:00",
+  "date": "2022-09-26",
   "publisher": "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact": [
     {
@@ -492,7 +492,7 @@
         "path": "DiagnosticReport.identifier",
         "short": "Business identifier for report　レポートを識別するビジネス識別子",
         "definition": "Identifiers assigned to this report by the performer or other systems.\r\n実施者または他のシステムによってこのレポートに割り当てられた識別子。",
-        "comment": "Usually assigned by the Information System of the diagnostic service provider (filler id).\r\n発生源の検査室からこのレポートについてクエリを作成するとき、およびFHIRコンテキスト外のレポートにリンクするときに使用する識別子を知る必要がある。\r\n\r\n【JP Core仕様】レポートをユニークに識別する識別子。依頼者オーダー番号と関連付ける場合が多い。\r\n\r\n検体検査の特性として、複数の容器の結果を含む。容器ごと（厳密には項目ごと）に結果のタイミングは異なる場合がある。",
+        "comment": "Usually assigned by the Information System of the diagnostic service provider (filler id).\r\n発生源の検査室からこのレポートについてクエリを作成するとき、およびFHIRコンテキスト外のレポートにリンクするときに使用する識別子を知る必要がある。\r\n\r\n【JP Core仕様】レポートをユニークに識別する識別子。依頼者オーダ番号と関連付ける場合が多い。\r\n\r\n検体検査の特性として、複数の容器の結果を含む。容器ごと（厳密には項目ごと）に結果のタイミングは異なる場合がある。",
         "requirements": "発生源の検査室からこのレポートについてクエリを作成するとき、およびFHIRコンテキスト外のレポートにリンクするときに使用する識別子を知る必要がある。",
         "alias": [
           "ReportID",
@@ -808,7 +808,7 @@
         "path": "DiagnosticReport.code",
         "short": "この診断レポートの名前/コード。【詳細参照】",
         "definition": "この診断レポートを説明するコードまたは名前。",
-        "comment": "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミのロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】LOINCの臨床検査の分類コードを割り当てる。\r\n\r\n検査レポートの利用用途に合わせて、JLAC10のコードを振っても良い。",
+        "comment": "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】LOINCの臨床検査の分類コードを割り当てる。\r\n\r\n検査レポートの利用用途に合わせて、JLAC10のコードを振っても良い。",
         "alias": [
           "Type"
         ],
@@ -1183,8 +1183,8 @@
         "id": "DiagnosticReport.encounter",
         "path": "DiagnosticReport.encounter",
         "short": "依頼時におけるヘルスケアイベント（受診など）。【詳細参照】",
-        "definition": "このDiagnosticReportが対象とするヘルスケアイベント（患者とヘルスケアプロバイダーの相互関係など）。受診、入院、診察など。",
-        "comment": "This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).\r\n\r\n【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。\r\n\r\n※本プロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。",
+        "definition": "このDiagnosticReportが対象とするヘルスケアイベント（患者とヘルスケアプロバイダの相互関係など）。受診、入院、診察など。",
+        "comment": "This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).\r\n\r\n【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。\r\n\r\n※このプロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。",
         "requirements": "Links the request to the Encounter context.",
         "alias": [
           "Context"
@@ -1921,7 +1921,7 @@
         "path": "DiagnosticReport.conclusionCode",
         "short": "検査結果の臨床的結論（解釈）用のコード。【詳細参照】",
         "definition": "診断レポートの要約的な結論（解釈/印象）を表す1つ以上のコード。",
-        "comment": "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミのロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】原則使わない",
+        "comment": "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】原則使わない",
         "min": 0,
         "max": "*",
         "base": {
@@ -2025,7 +2025,7 @@
         "path": "DiagnosticReport.identifier",
         "short": "Business identifier for report　レポートを識別するビジネス識別子",
         "definition": "Identifiers assigned to this report by the performer or other systems.\r\n実施者または他のシステムによってこのレポートに割り当てられた識別子。",
-        "comment": "Usually assigned by the Information System of the diagnostic service provider (filler id).\r\n発生源の検査室からこのレポートについてクエリを作成するとき、およびFHIRコンテキスト外のレポートにリンクするときに使用する識別子を知る必要がある。\r\n\r\n【JP Core仕様】レポートをユニークに識別する識別子。依頼者オーダー番号と関連付ける場合が多い。\r\n\r\n検体検査の特性として、複数の容器の結果を含む。容器ごと（厳密には項目ごと）に結果のタイミングは異なる場合がある。"
+        "comment": "Usually assigned by the Information System of the diagnostic service provider (filler id).\r\n発生源の検査室からこのレポートについてクエリを作成するとき、およびFHIRコンテキスト外のレポートにリンクするときに使用する識別子を知る必要がある。\r\n\r\n【JP Core仕様】レポートをユニークに識別する識別子。依頼者オーダ番号と関連付ける場合が多い。\r\n\r\n検体検査の特性として、複数の容器の結果を含む。容器ごと（厳密には項目ごと）に結果のタイミングは異なる場合がある。"
       },
       {
         "id": "DiagnosticReport.basedOn",
@@ -2071,7 +2071,7 @@
       {
         "id": "DiagnosticReport.code",
         "path": "DiagnosticReport.code",
-        "comment": "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミのロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】LOINCの臨床検査の分類コードを割り当てる。\r\n\r\n検査レポートの利用用途に合わせて、JLAC10のコードを振っても良い。"
+        "comment": "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】LOINCの臨床検査の分類コードを割り当てる。\r\n\r\n検査レポートの利用用途に合わせて、JLAC10のコードを振っても良い。"
       },
       {
         "id": "DiagnosticReport.code.coding",
@@ -2118,7 +2118,7 @@
       {
         "id": "DiagnosticReport.encounter",
         "path": "DiagnosticReport.encounter",
-        "comment": "This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).\r\n\r\n【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。\r\n\r\n※本プロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。"
+        "comment": "This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).\r\n\r\n【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。\r\n\r\n※このプロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。"
       },
       {
         "id": "DiagnosticReport.effective[x]",
@@ -2188,7 +2188,7 @@
       {
         "id": "DiagnosticReport.conclusionCode",
         "path": "DiagnosticReport.conclusionCode",
-        "comment": "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミのロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】原則使わない"
+        "comment": "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】原則使わない"
       },
       {
         "id": "DiagnosticReport.presentedForm",

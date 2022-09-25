@@ -1,5 +1,5 @@
 "Id","Path","Slice Name","Alias(s)","Label","Min","Max","Must Support?","Is Modifier?","Is Summary?","Type(s)","Short","Definition","Comments","Requirements","Default Value","Meaning When Missing","Fixed Value","Pattern","Example","Minimum Value","Maximum Value","Maximum Length","Binding Strength","Binding Description","Binding Value Set","Code","Slicing Discriminator","Slicing Description","Slicing Ordered","Slicing Rules","Base Path","Base Min","Base Max","Condition(s)","Constraint(s)","Mapping: HL7 v2 Mapping","Mapping: RIM Mapping"
-"Range","Range","","","",0,*,"","","","","時間範囲指定された上限下限量","時間範囲指定された上限下限量","時間の上限量、下限量の範囲を持っている。単位指定された数量を割り当てている。","","","","","","","","",,,,,"",,,,"Range",0,*,"ele-1
+"Range","Range","","","",0,*,"","","","","範囲指定された時間の上限下限","範囲指定された時間の上限下限","時間の上限量、下限量の範囲を持っている。単位指定された数量を割り当てている。Low,Highの値は時間の単位当てはめる。","","","","","","","","",,,,,"",,,,"Range",0,*,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 rng-2:If present, low SHALL have a lower value than high {low.empty() or high.empty() or (low <= high)}","NR and also possibly SN (but see also quantity)","n/a","IVL<QTY[not(type=""TS"")]> [lowClosed=""true"" and highClosed=""true""]or URG<QTY[not(type=""TS"")]>"
 "Range.id","Range.id","","","",0,1,"","","","string {[]} {[]}
@@ -29,7 +29,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","単位時間の単位","A human-readable form of the unit.","","There are many representations for units of measure and in many contexts, particular representations are fixed and required. I.e. mcg for micrograms.","","","","","","","",,,,,"",,,,"Quantity.unit",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","(see OBX.6 etc.) / CQ.2","PQ.unit"
 "Range.low.system","Range.low.system","","","",0,1,"","","Y","uri {[]} {[]}
-","UCUMを識別するURL。","UCUMを識別するURL。固定値。","","Need to know the system that defines the coded form of the unit.","","","","","","","",,"preferred","","http://hl7.org/fhir/ValueSet/units-of-time","",,,,"Quantity.system",0,1,"qty-3
+","UCUMを識別するURL","UCUMを識別するURL。固定値。","","Need to know the system that defines the coded form of the unit.","","","","","","","",,"preferred","","http://hl7.org/fhir/ValueSet/units-of-time","",,,,"Quantity.system",0,1,"qty-3
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","(see OBX.6 etc.) / CQ.2","CO.codeSystem, PQ.translation.codeSystem"
 "Range.low.code","Range.low.code","","","",0,1,"","","Y","code {[]} {[]}
@@ -55,7 +55,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","単位時間の単位","A human-readable form of the unit.","","There are many representations for units of measure and in many contexts, particular representations are fixed and required. I.e. mcg for micrograms.","","","","","","","",,,,,"",,,,"Quantity.unit",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","(see OBX.6 etc.) / CQ.2","PQ.unit"
 "Range.high.system","Range.high.system","","","",0,1,"","","Y","uri {[]} {[]}
-","UCUMを識別するURL。","UCUMを識別するURL。固定値。","","Need to know the system that defines the coded form of the unit.","","","","","","","",,"preferred","","http://hl7.org/fhir/ValueSet/units-of-time","",,,,"Quantity.system",0,1,"qty-3
+","UCUMを識別するURL","UCUMを識別するURL。固定値。","","Need to know the system that defines the coded form of the unit.","","","","","","","",,"preferred","","http://hl7.org/fhir/ValueSet/units-of-time","",,,,"Quantity.system",0,1,"qty-3
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","(see OBX.6 etc.) / CQ.2","CO.codeSystem, PQ.translation.codeSystem"
 "Range.high.code","Range.high.code","","","",0,1,"","","Y","code {[]} {[]}

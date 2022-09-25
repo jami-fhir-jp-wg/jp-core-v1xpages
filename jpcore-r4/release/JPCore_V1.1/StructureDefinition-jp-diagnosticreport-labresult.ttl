@@ -27,7 +27,7 @@
   fhir:StructureDefinition.name [ fhir:value "JP_DiagnosticReport_LabResult"];
   fhir:StructureDefinition.title [ fhir:value "JP Core DiagnosticReport LabResult Profile"];
   fhir:StructureDefinition.status [ fhir:value "active"];
-  fhir:StructureDefinition.date [ fhir:value "2022-09-16T11:30:59+00:00"^^xsd:dateTime];
+  fhir:StructureDefinition.date [ fhir:value "2022-09-26"^^xsd:date];
   fhir:StructureDefinition.publisher [ fhir:value "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -548,7 +548,7 @@
        fhir:ElementDefinition.path [ fhir:value "DiagnosticReport.identifier" ];
        fhir:ElementDefinition.short [ fhir:value "Business identifier for report　レポートを識別するビジネス識別子" ];
        fhir:ElementDefinition.definition [ fhir:value "Identifiers assigned to this report by the performer or other systems.\r\n実施者または他のシステムによってこのレポートに割り当てられた識別子。" ];
-       fhir:ElementDefinition.comment [ fhir:value "Usually assigned by the Information System of the diagnostic service provider (filler id).\r\n発生源の検査室からこのレポートについてクエリを作成するとき、およびFHIRコンテキスト外のレポートにリンクするときに使用する識別子を知る必要がある。\r\n\r\n【JP Core仕様】レポートをユニークに識別する識別子。依頼者オーダー番号と関連付ける場合が多い。\r\n\r\n検体検査の特性として、複数の容器の結果を含む。容器ごと（厳密には項目ごと）に結果のタイミングは異なる場合がある。" ];
+       fhir:ElementDefinition.comment [ fhir:value "Usually assigned by the Information System of the diagnostic service provider (filler id).\r\n発生源の検査室からこのレポートについてクエリを作成するとき、およびFHIRコンテキスト外のレポートにリンクするときに使用する識別子を知る必要がある。\r\n\r\n【JP Core仕様】レポートをユニークに識別する識別子。依頼者オーダ番号と関連付ける場合が多い。\r\n\r\n検体検査の特性として、複数の容器の結果を含む。容器ごと（厳密には項目ごと）に結果のタイミングは異なる場合がある。" ];
        fhir:ElementDefinition.requirements [ fhir:value "発生源の検査室からこのレポートについてクエリを作成するとき、およびFHIRコンテキスト外のレポートにリンクするときに使用する識別子を知る必要がある。" ];
        fhir:ElementDefinition.alias [
          fhir:value "ReportID";
@@ -905,7 +905,7 @@
        fhir:ElementDefinition.path [ fhir:value "DiagnosticReport.code" ];
        fhir:ElementDefinition.short [ fhir:value "この診断レポートの名前/コード。【詳細参照】" ];
        fhir:ElementDefinition.definition [ fhir:value "この診断レポートを説明するコードまたは名前。" ];
-       fhir:ElementDefinition.comment [ fhir:value "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミのロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】LOINCの臨床検査の分類コードを割り当てる。\r\n\r\n検査レポートの利用用途に合わせて、JLAC10のコードを振っても良い。" ];
+       fhir:ElementDefinition.comment [ fhir:value "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】LOINCの臨床検査の分類コードを割り当てる。\r\n\r\n検査レポートの利用用途に合わせて、JLAC10のコードを振っても良い。" ];
        fhir:ElementDefinition.alias [
          fhir:value "Type";
          fhir:index 0
@@ -1288,8 +1288,8 @@
        fhir:Element.id [ fhir:value "DiagnosticReport.encounter" ];
        fhir:ElementDefinition.path [ fhir:value "DiagnosticReport.encounter" ];
        fhir:ElementDefinition.short [ fhir:value "依頼時におけるヘルスケアイベント（受診など）。【詳細参照】" ];
-       fhir:ElementDefinition.definition [ fhir:value "このDiagnosticReportが対象とするヘルスケアイベント（患者とヘルスケアプロバイダーの相互関係など）。受診、入院、診察など。" ];
-       fhir:ElementDefinition.comment [ fhir:value "This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).\r\n\r\n【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。\r\n\r\n※本プロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。" ];
+       fhir:ElementDefinition.definition [ fhir:value "このDiagnosticReportが対象とするヘルスケアイベント（患者とヘルスケアプロバイダの相互関係など）。受診、入院、診察など。" ];
+       fhir:ElementDefinition.comment [ fhir:value "This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).\r\n\r\n【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。\r\n\r\n※このプロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。" ];
        fhir:ElementDefinition.requirements [ fhir:value "Links the request to the Encounter context." ];
        fhir:ElementDefinition.alias [
          fhir:value "Context";
@@ -2120,7 +2120,7 @@
        fhir:ElementDefinition.path [ fhir:value "DiagnosticReport.conclusionCode" ];
        fhir:ElementDefinition.short [ fhir:value "検査結果の臨床的結論（解釈）用のコード。【詳細参照】" ];
        fhir:ElementDefinition.definition [ fhir:value "診断レポートの要約的な結論（解釈/印象）を表す1つ以上のコード。" ];
-       fhir:ElementDefinition.comment [ fhir:value "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミのロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】原則使わない" ];
+       fhir:ElementDefinition.comment [ fhir:value "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】原則使わない" ];
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ];
        fhir:ElementDefinition.max [ fhir:value "*" ];
        fhir:ElementDefinition.base [
@@ -2225,7 +2225,7 @@
        fhir:ElementDefinition.path [ fhir:value "DiagnosticReport.identifier" ];
        fhir:ElementDefinition.short [ fhir:value "Business identifier for report　レポートを識別するビジネス識別子" ];
        fhir:ElementDefinition.definition [ fhir:value "Identifiers assigned to this report by the performer or other systems.\r\n実施者または他のシステムによってこのレポートに割り当てられた識別子。" ];
-       fhir:ElementDefinition.comment [ fhir:value "Usually assigned by the Information System of the diagnostic service provider (filler id).\r\n発生源の検査室からこのレポートについてクエリを作成するとき、およびFHIRコンテキスト外のレポートにリンクするときに使用する識別子を知る必要がある。\r\n\r\n【JP Core仕様】レポートをユニークに識別する識別子。依頼者オーダー番号と関連付ける場合が多い。\r\n\r\n検体検査の特性として、複数の容器の結果を含む。容器ごと（厳密には項目ごと）に結果のタイミングは異なる場合がある。" ]
+       fhir:ElementDefinition.comment [ fhir:value "Usually assigned by the Information System of the diagnostic service provider (filler id).\r\n発生源の検査室からこのレポートについてクエリを作成するとき、およびFHIRコンテキスト外のレポートにリンクするときに使用する識別子を知る必要がある。\r\n\r\n【JP Core仕様】レポートをユニークに識別する識別子。依頼者オーダ番号と関連付ける場合が多い。\r\n\r\n検体検査の特性として、複数の容器の結果を含む。容器ごと（厳密には項目ごと）に結果のタイミングは異なる場合がある。" ]
      ], [
        fhir:index 2;
        fhir:Element.id [ fhir:value "DiagnosticReport.basedOn" ];
@@ -2269,7 +2269,7 @@
        fhir:index 6;
        fhir:Element.id [ fhir:value "DiagnosticReport.code" ];
        fhir:ElementDefinition.path [ fhir:value "DiagnosticReport.code" ];
-       fhir:ElementDefinition.comment [ fhir:value "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミのロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】LOINCの臨床検査の分類コードを割り当てる。\r\n\r\n検査レポートの利用用途に合わせて、JLAC10のコードを振っても良い。" ]
+       fhir:ElementDefinition.comment [ fhir:value "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】LOINCの臨床検査の分類コードを割り当てる。\r\n\r\n検査レポートの利用用途に合わせて、JLAC10のコードを振っても良い。" ]
      ], [
        fhir:index 7;
        fhir:Element.id [ fhir:value "DiagnosticReport.code.coding" ];
@@ -2317,7 +2317,7 @@
        fhir:index 10;
        fhir:Element.id [ fhir:value "DiagnosticReport.encounter" ];
        fhir:ElementDefinition.path [ fhir:value "DiagnosticReport.encounter" ];
-       fhir:ElementDefinition.comment [ fhir:value "This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).\r\n\r\n【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。\r\n\r\n※本プロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。" ]
+       fhir:ElementDefinition.comment [ fhir:value "This will typically be the encounter the event occurred within, but some events may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter (e.g. pre-admission laboratory tests).\r\n\r\n【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。\r\n\r\n※このプロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。" ]
      ], [
        fhir:index 11;
        fhir:Element.id [ fhir:value "DiagnosticReport.effective[x]" ];
@@ -2388,7 +2388,7 @@
        fhir:index 22;
        fhir:Element.id [ fhir:value "DiagnosticReport.conclusionCode" ];
        fhir:ElementDefinition.path [ fhir:value "DiagnosticReport.conclusionCode" ];
-       fhir:ElementDefinition.comment [ fhir:value "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミのロジーの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】原則使わない" ]
+       fhir:ElementDefinition.comment [ fhir:value "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と事前・事後の用語作成（pre- and post-coordination）との関係を管理するための独自の構造を提供する必要がある。\r\n\r\n【JP Core仕様】原則使わない" ]
      ], [
        fhir:index 23;
        fhir:Element.id [ fhir:value "DiagnosticReport.presentedForm" ];
