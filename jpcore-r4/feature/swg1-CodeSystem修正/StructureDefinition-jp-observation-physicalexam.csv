@@ -72,7 +72,7 @@ ObservationをEncounterにencounter要素を使ってリンクする。もうひ
 
 observationの対象物を記述する。 observation の名前で呼ばれることもある。","*All* code-value and, if present, component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.
 
-【JP Core仕様】所見の有無を表すコード（固定値）","Knowing what kind of observation is being made is essential to understanding the observation.","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/Common/ValueSet/JP_PhysicalExamCode_VS","",,,,"Observation.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP Core仕様】所見の有無を表すコード（固定値）","Knowing what kind of observation is being made is essential to understanding the observation.","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/core/ValueSet/JP_PhysicalExamCode_VS","",,,,"Observation.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.code","< 363787002 |Observable entity| OR < 386053000 |Evaluation procedure|","OBX-3","code","FiveWs.what[x]","116680003 |Is a|"
 "Observation.code.id","Observation.code.id","","","",0,1,"","","","string {[]} {[]}
 ","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
@@ -87,7 +87,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","C*E.1-8, C*E.10-22","union(., ./translation)"
 "Observation.code.coding:physicalExamCode","Observation.code.coding","physicalExamCode","","",0,1,"","","Y","Coding {[]} {[]}
 ","身体所見項目コード。本ユースケースにおける項目コード推奨値をスライスにて示している。【詳細参照】","身体所見項目コード。本ユースケースにおける項目コード推奨値をスライスにて示している。","推奨項目コードは必須ではない、派生先によるコード体系を作成し割り振ることを否定しない","Allows for alternative encodings within a code system, and translations to other code systems.","","","","<valueCoding xmlns=""http://hl7.org/fhir"">
-  <system value=""http://jpfhir.jp/fhir/Common/CodeSystem/JP_PhysicalExamCode_CS""/>
+  <system value=""http://jpfhir.jp/fhir/core/CodeSystem/JP_PhysicalExamCode_CS""/>
   <code value=""physical-findings""/>
   <display value=""Physical Findings""/>
 </valueCoding>","","","",,,,,"",,,,"CodeableConcept.coding",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
@@ -169,10 +169,10 @@ The alternate way is to use the value element for actual observations and use th
 フリーテキストの追加情報を提供できる必要がある。","","","","","","","",,,,,"",,,,"Observation.note",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","NTE.3 (partner NTE to OBX, or sometimes another (child?) OBX)","subjectOf.observationEvent[code=""annotation""].value"
 "Observation.bodySite","Observation.bodySite","","","",0,1,"","","","CodeableConcept {[]} {[]}
-","Bindingについてはユースケースに応じて各プロファイルで定義すること","Indicates the site on the subject's body where the observation was made (i.e. the target site).","ICD-11","","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/Common/ValueSet/JP_ObservationPhysicalExamBodySite_VS","",,,,"Observation.bodySite",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Bindingについてはユースケースに応じて各プロファイルで定義すること","Indicates the site on the subject's body where the observation was made (i.e. the target site).","ICD-11","","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/core/ValueSet/JP_ObservationPhysicalExamBodySite_VS","",,,,"Observation.bodySite",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","< 123037004 |Body structure|","OBX-20","targetSiteCode","718497002 |Inherent location|"
 "Observation.method","Observation.method","","","",0,1,"","","","CodeableConcept {[]} {[]}
-","Bindingについてはユースケースに応じて各プロファイルで定義すること","Indicates the mechanism used to perform the observation.","MEDIS症状・所見マスターの「診察方法」","In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/Common/ValueSet/JP_ObservationPhysicalExamMethod_VS","",,,,"Observation.method",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Bindingについてはユースケースに応じて各プロファイルで定義すること","Indicates the mechanism used to perform the observation.","MEDIS症状・所見マスターの「診察方法」","In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/core/ValueSet/JP_ObservationPhysicalExamMethod_VS","",,,,"Observation.method",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","OBX-17","methodCode"
 "Observation.specimen","Observation.specimen","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Specimen]]}
 ","Specimen used for this observation　観察（観測、検査）に使われた検体材料","The specimen that was used when this observation was made.
@@ -255,7 +255,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Observation.component.code","Observation.component.code","","","",1,1,"","","Y","CodeableConcept {[]} {[]}
 ","Type of component observation (code / type)","Describes what was observed. Sometimes this is called the observation ""code"".","*All* code-value and  component.code-component.value pairs need to be taken into account to correctly understand the meaning of the observation.
 
-【JP Core仕様】具体的な所見を表すコード（固定値）","Knowing what kind of observation is being made is essential to understanding the observation.","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/Common/ValueSet/JP_PhysicalExamCode_VS","",,,,"Observation.component.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+【JP Core仕様】具体的な所見を表すコード（固定値）","Knowing what kind of observation is being made is essential to understanding the observation.","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/core/ValueSet/JP_PhysicalExamCode_VS","",,,,"Observation.component.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","< 363787002 |Observable entity| OR < 386053000 |Evaluation procedure|","OBX-3","code","FiveWs.what[x]"
 "Observation.component.code.id","Observation.component.code.id","","","",0,1,"","","","string {[]} {[]}
 ","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
@@ -270,7 +270,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","C*E.1-8, C*E.10-22","union(., ./translation)"
 "Observation.component.code.coding:physicalExamCode","Observation.component.code.coding","physicalExamCode","","",0,1,"","","Y","Coding {[]} {[]}
 ","身体所見項目コード。本ユースケースにおける項目コード推奨値をスライスにて示している。【詳細参照】","身体所見項目コード。本ユースケースにおける項目コード推奨値をスライスにて示している。","推奨項目コードは必須ではない、派生先によるコード体系を作成し割り振ることを否定しない","Allows for alternative encodings within a code system, and translations to other code systems.","","","","<valueCoding xmlns=""http://hl7.org/fhir"">
-  <system value=""http://jpfhir.jp/fhir/Common/CodeSystem/JP_PhysicalExamCode_CS""/>
+  <system value=""http://jpfhir.jp/fhir/core/CodeSystem/JP_PhysicalExamCode_CS""/>
   <code value=""detailed-physical-findings""/>
   <display value=""Detailed Physical Findings""/>
 </valueCoding>","","","",,,,,"",,,,"CodeableConcept.coding",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
