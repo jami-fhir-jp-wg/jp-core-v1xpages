@@ -32,23 +32,21 @@ user content","",0,*,"","Y","","Extension {[]} {[]}
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "Practitioner.identifier","Practitioner.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
-","An identifier for the person as this agent 【詳細参照】","An identifier that applies to this person in this role.
+","An identifier for the person as this agent Practitionerリソースに対する識別子【詳細参照】","An identifier that applies to this person in this role.
 
-ある役割の人に適用される識別子。","【JP Core仕様】IDの名前空間を表す Practitioner.identifier.systemと ID値そのものを表す Practitioner.identifier.value の組み合わせとして表現する。
-Practitioner.identifier.systemには、
-医師の場合、　urn:oid:1.2.392.100495.20.3.41.医療機関識別OID番号  
-歯科医師の場合、urn:oid:1.2.392.100495.20.3.42.医療機関識別OID番号を使用する。  
-医師IDの発行者である医療機関を識別する「医療機関コード」については、[こちらのリンク](StructureDefinition-jp-organization.html#医療機関コード)を参照すること。医療機関識別OID番号については、医療機関コード10桁の先頭に１をつけた11桁とする。
-医療機関コードを持たない場合、「[9]＋当該施設の電話番号下 9 桁」を医療機関コードとして、その先頭に１をつけた11桁とする。
+ある役割の人に適用される識別子。","【JP Core仕様】IDの名前空間を表す Practitioner.identifier.systemと ID値そのものを表す Practitioner.identifier.value の組み合わせとして表現する。  
+Practitioner.identifier.systemは以下の割り当てる。
 
-例：医療機関コード「1312345670」での医師の場合「urn:oid:1.2.392.100495.20.3.41.11312345670」
+- 医師の場合 : urn:oid:1.2.392.100495.20.3.41.医療機関識別OID番号  
+- 歯科医師の場合、urn:oid:1.2.392.100495.20.3.42.医療機関識別OID番号
 
-なお、rn:oid:1.2.392.100495.20.3.41　の部分は、「[処方情報 HL7FHIR 記述仕様](https://std.jpfhir.jp/stddoc/ePrescriptionDataFHIR_v1x.pdf)」表19 識別子名前空間一覧において処方医 IDに割り当てられたOIDのURL型である。
+医療機関識別OID番号は患者IDの発行者である施設を識別するものであり、医療機関コード（１０桁）の先頭に１をつけた11桁とする。医療機関コード（１０桁）の詳細については[こちらのリンク](StructureDefinition-jp-organization.html#医療機関コード１０桁)を参照すること。  
+例：医療機関コード「1312345670」での医師の場合「urn:oid:1.2.392.100495.20.3.41.11312345670」  
 
-地域医療連携ネットワークの地域医療従事者IDを指定する場合も同様に、地域医療従事者IDを識別する名前空間（IHE ITI PIX等で使用されるOID等）を system に使用することができる。
+なお、rn:oid:1.2.392.100495.20.3.41 の部分は、「[処方情報 HL7FHIR 記述仕様](https://std.jpfhir.jp/stddoc/ePrescriptionDataFHIR_v1x.pdf)」表19 識別子名前空間一覧において処方医 IDに割り当てられたOIDのURL型である。  
 
-医師、歯科医師以外の医療者のIDの名前空間を表す system 値はまだ未定のため、空白もしくは「ドメイン名/職員ID」などの識別コードを入れること。
-
+地域医療連携ネットワークの地域医療従事者IDを指定する場合も同様に、地域医療従事者IDを識別する名前空間（IHE ITI PIX等で使用されるOID等）を system に使用することができる。  
+医師、歯科医師以外の医療者のIDの名前空間を表す system 値はまだ未定のため、空白もしくは「ドメイン名/PractitionerのSystem発行キー」などの識別コードを入れること。  
 例：http://www.abd-hospital.co.jp/practitioner-system","Often, specific identities are assigned for the agent.
 
 多くの場合、エージェントには特定の識別子が割り当てられている。","","","","","","","",,,,,"",,,,"Practitioner.identifier",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
@@ -295,8 +293,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","CX.5","Role.code or implied by context"
 "Practitioner.qualification:narcoticPrescriptionLicenseNumber.identifier.system","Practitioner.qualification.identifier.system","","","",0,1,"","","Y","uri {[]} {[]}
 ","麻薬施用者免許番号OIDを格納。OIDは右記のルールに従う。urn:oid:1.2.392.100495.20.3.32.[1(固定)+都道府県番号(２桁)] 【詳細参照】","麻薬施用者免許番号OIDを格納。OIDは右記のルールに従う。urn:oid:1.2.392.100495.20.3.32.[1(固定)+都道府県番号(２桁)]","麻薬施用者免許番号OIDを格納。OIDは右記のルールに従う。urn:oid:1.2.392.100495.20.3.32.[1(固定)+都道府県番号(２桁)]。  
-都道府県毎のOIDを以下に示す。
-
+都道府県毎のOIDを以下に示す。  
 - urn:oid:1.2.392.100495.20.3.32.101(北海道)
 - urn:oid:1.2.392.100495.20.3.32.102(青森県)
 - urn:oid:1.2.392.100495.20.3.32.103(岩手県)

@@ -983,8 +983,10 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
                <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;IDの名前空間を表す Patient.identifier.system と ID値そのものを表す Patient.identifier.value の組み合わせとして表現する。  
 Patient.identifier.system には、urn:oid:1.2.392.100495.20.3.51.医療機関識別OID番号を使用する。  
-医療機関識別OID番号は患者IDの発行者である医療機関の識別するものである。保険医療機関の場合、都道府県番号２桁から始まる10桁の医療機関コードまたは、特定健診・特定保健指導機関の医療機関コード10桁の先頭に１をつけた11桁とする。医療機関コードの詳細については[こちらのリンク](StructureDefinition-jp-organization.html#医療機関コード)を参照すること。  
-例：医療機関コード「1312345670」の場合「urn:oid:1.2.392.100495.20.3.51.11312345670」  
+医療機関識別OID番号は患者IDの発行者である機関の医療機関コード（１０桁）の先頭に１をつけた11桁とする。医療機関コード（１０桁）の詳細は[こちらのリンク](StructureDefinition-jp-organization.html#医療機関コード１０桁)を参照すること。  
+```
+例：医療機関コード「1312345670」の場合「urn:oid:1.2.392.100495.20.3.51.11312345670」
+```
 
 なお、urn:oid:1.2.392.100495.20.3.51の部分は、「[処方情報 HL7FHIR 記述仕様](https://std.jpfhir.jp/stddoc/ePrescriptionDataFHIR_v1x.pdf)」表19 識別子名前空間一覧において医療機関等の患者IDとして割り当てられたOIDのURL型である。地域医療連携ネットワークの地域患者IDを指定する場合も同様に、地域患者IDを識別する名前空間（IHE ITI PIX等で使用されるOID等）をsystemに使用することができる。&quot;/&gt;
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.requirements">requirements</a>
@@ -1232,12 +1234,13 @@ IDの種別をValueSet(Identifier Type Codes)より選択する。
                   <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;Establishes the namespace for the value - that is, a URL that describes a set values that are unique.&quot;/&gt;
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
                <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;Identifier.system is always case sensitive.  
-IDの名前空間を表す。
-医療機関固有の患者ID（カルテNo）を表現する場合、system には、患者IDの発行者である医療機関を識別するuriを指定する。  
-医療機関を識別するために使用するOID について、もし適切なOID が存在しない場合で、その医療施設が保険医療機関の場合、特定健診・特定保健指導機関のルールに従い以下のルールで設定してもよい。  
-医療施設が固有のOID を持っている場合は、そのOID を指定する。医療施設が保険医療機関の場合、特定健診・特定保健指導機関の医療機関コードの OID「1.2.392.200119.6.102.」の末尾に「[1]＋医療機関コード（10 桁）」を指定する。医療機関コードを持たない場合、「[9]＋当該施設の電話番号下 9 桁」を医療機関コードとする。  
-例：医療機関コード「1312345670」の場合「1.2.392.200119.6.102.11312345670」  
-Patient.identifier.system は、uri 型のため、実際にインスタンスに設定される値は、上記の例であれば urn:oid:1.2.392.200119.6.102.11312345670 とする。&quot;/&gt;
+Patient.identifier.system には、urn:oid:1.2.392.100495.20.3.51.医療機関識別OID番号を使用する。  
+医療機関識別OID番号は患者IDの発行者である機関の医療機関コード（１０桁）の先頭に１をつけた11桁とする。医療機関コード（１０桁）の詳細は[こちらのリンク](StructureDefinition-jp-organization.html#医療機関コード１０桁)を参照すること。  
+```
+例：医療機関コード「1312345670」の場合「urn:oid:1.2.392.100495.20.3.51.11312345670」
+```
+
+なお、urn:oid:1.2.392.100495.20.3.51の部分は、「[処方情報 HL7FHIR 記述仕様](https://std.jpfhir.jp/stddoc/ePrescriptionDataFHIR_v1x.pdf)」表19 識別子名前空間一覧において医療機関等の患者IDとして割り当てられたOIDのURL型である。地域医療連携ネットワークの地域患者IDを指定する場合も同様に、地域患者IDを識別する名前空間（IHE ITI PIX等で使用されるOID等）をsystemに使用することができる。&quot;/&gt;
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.requirements">requirements</a>
                     <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;There are many sets  of identifiers.  To perform matching of two identifiers, we need to know what set we're dealing with. The system identifies a particular set of unique identifiers.&quot;/&gt;
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.min">min</a> <a href="http://hl7.org/fhir/R4/datatypes.html#unsignedInt">value</a>=&quot;0&quot;/&gt;
@@ -4230,8 +4233,10 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
                <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;IDの名前空間を表す Patient.identifier.system と ID値そのものを表す Patient.identifier.value の組み合わせとして表現する。  
 Patient.identifier.system には、urn:oid:1.2.392.100495.20.3.51.医療機関識別OID番号を使用する。  
-医療機関識別OID番号は患者IDの発行者である医療機関の識別するものである。保険医療機関の場合、都道府県番号２桁から始まる10桁の医療機関コードまたは、特定健診・特定保健指導機関の医療機関コード10桁の先頭に１をつけた11桁とする。医療機関コードの詳細については[こちらのリンク](StructureDefinition-jp-organization.html#医療機関コード)を参照すること。  
-例：医療機関コード「1312345670」の場合「urn:oid:1.2.392.100495.20.3.51.11312345670」  
+医療機関識別OID番号は患者IDの発行者である機関の医療機関コード（１０桁）の先頭に１をつけた11桁とする。医療機関コード（１０桁）の詳細は[こちらのリンク](StructureDefinition-jp-organization.html#医療機関コード１０桁)を参照すること。  
+```
+例：医療機関コード「1312345670」の場合「urn:oid:1.2.392.100495.20.3.51.11312345670」
+```
 
 なお、urn:oid:1.2.392.100495.20.3.51の部分は、「[処方情報 HL7FHIR 記述仕様](https://std.jpfhir.jp/stddoc/ePrescriptionDataFHIR_v1x.pdf)」表19 識別子名前空間一覧において医療機関等の患者IDとして割り当てられたOIDのURL型である。地域医療連携ネットワークの地域患者IDを指定する場合も同様に、地域患者IDを識別する名前空間（IHE ITI PIX等で使用されるOID等）をsystemに使用することができる。&quot;/&gt;
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.requirements">requirements</a>
@@ -4271,12 +4276,13 @@ IDの種別をValueSet(Identifier Type Codes)より選択する。
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;The namespace for the identifier value 【詳細参照】&quot;/&gt;
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
                <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;Identifier.system is always case sensitive.  
-IDの名前空間を表す。
-医療機関固有の患者ID（カルテNo）を表現する場合、system には、患者IDの発行者である医療機関を識別するuriを指定する。  
-医療機関を識別するために使用するOID について、もし適切なOID が存在しない場合で、その医療施設が保険医療機関の場合、特定健診・特定保健指導機関のルールに従い以下のルールで設定してもよい。  
-医療施設が固有のOID を持っている場合は、そのOID を指定する。医療施設が保険医療機関の場合、特定健診・特定保健指導機関の医療機関コードの OID「1.2.392.200119.6.102.」の末尾に「[1]＋医療機関コード（10 桁）」を指定する。医療機関コードを持たない場合、「[9]＋当該施設の電話番号下 9 桁」を医療機関コードとする。  
-例：医療機関コード「1312345670」の場合「1.2.392.200119.6.102.11312345670」  
-Patient.identifier.system は、uri 型のため、実際にインスタンスに設定される値は、上記の例であれば urn:oid:1.2.392.200119.6.102.11312345670 とする。&quot;/&gt;
+Patient.identifier.system には、urn:oid:1.2.392.100495.20.3.51.医療機関識別OID番号を使用する。  
+医療機関識別OID番号は患者IDの発行者である機関の医療機関コード（１０桁）の先頭に１をつけた11桁とする。医療機関コード（１０桁）の詳細は[こちらのリンク](StructureDefinition-jp-organization.html#医療機関コード１０桁)を参照すること。  
+```
+例：医療機関コード「1312345670」の場合「urn:oid:1.2.392.100495.20.3.51.11312345670」
+```
+
+なお、urn:oid:1.2.392.100495.20.3.51の部分は、「[処方情報 HL7FHIR 記述仕様](https://std.jpfhir.jp/stddoc/ePrescriptionDataFHIR_v1x.pdf)」表19 識別子名前空間一覧において医療機関等の患者IDとして割り当てられたOIDのURL型である。地域医療連携ネットワークの地域患者IDを指定する場合も同様に、地域患者IDを識別する名前空間（IHE ITI PIX等で使用されるOID等）をsystemに使用することができる。&quot;/&gt;
     &lt;/element&gt;
     &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Patient.identifier.value&quot;&gt;
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Patient.identifier.value&quot;/&gt;
@@ -4978,7 +4984,7 @@ Jurisdictions may decide that they can profile this down to 1 if desired, or 1 p
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Sep 26, 2022 00:42+0000">2022-09-26</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Sep 26, 2022 03:36+0000">2022-09-26</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
