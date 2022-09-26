@@ -353,11 +353,12 @@ A human language.</p>
   <tr><td>Note</td><td>This is a business identifier, not a resource identifier (see <a href="http://hl7.org/fhir/R4/resource.html#identifiers">discussion</a>)</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..*</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#Identifier">Identifier</a></td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
   <tr><td>Requirements</td><td><p>ImagingStudyに1つ以上のシリーズ要素が存在する場合、1つのDICOMスタディUID識別子が存在する必要がある（[DICOM PS 3.3 C.7.2]（https://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.2.html）を参照） 。</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>StudyInstanceUID, AccessionNumber</td></tr>
   <tr><td>Comments</td><td><p>DICOMスタディインスタンスUIDのエンコードについては、[Imaging Study Implementation Notes]（imagingstudy.html＃notes）の説明を参照。アクセッション番号はACSN識別子タイプを使用する必要がある。</p>
-<p>【JP-Core仕様】Study Instance UIDは必須、その他は任意。</p>
+<p>【JP-Core仕様】Study Instance UIDは画像が存在する場合に必須、その他は任意。StudyInstanceUID (0020,000D)</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -370,6 +371,7 @@ The status of the ImagingStudy.</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#code">code</a></td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#ismodifier">Is Modifier</a></td><td>true</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
   <tr><td>Comments</td><td><p>不明(unknown)は「その他」を表すものではない。定義されたステータスの1つを適用する必要がある。不明(unknown)は、オーサリングシステムが現在のステータスを確認できない場合に使用される。</p>
 <p>【JP-Core仕様】リソースの状態。</p>
 </td></tr>
@@ -395,6 +397,8 @@ Type of acquired data in the instance.</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>1..1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="StructureDefinition-jp-patient.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient">JP_Patient</a> | <a href="http://hl7.org/fhir/R4/device.html" title="http://hl7.org/fhir/StructureDefinition/Device">Device</a> | <a href="http://hl7.org/fhir/R4/group.html" title="http://hl7.org/fhir/StructureDefinition/Group">Group</a>)</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Must Support Types</a></td><td>No must-support rules about the choice of types/profiles</td></tr>
   <tr><td>Comments</td><td><p>QAファントムはDeviceリソースとして記録できる。複数の被験者（マウスなど）の場合はGroupリソースで記録できる。</p>
 <p>・患者(Patient)リソースを参照。</p>
 <p>・DICOMタグ値を参照する場合は、tag mappingの通りグループ0010（患者情報に関連する情報を扱うグループ）を参照。</p>
@@ -648,6 +652,7 @@ The reason for the study.</p>
 Type of acquired data in the instance.</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#Coding">Coding</a></td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Modality</td></tr>
   <tr><td>Comments</td><td><p>コードは、列挙型またはコードリストで、SNOMED CTなどの非常に正式な定義まで、非常に柔軟に定義できる。ただしJP CoreではSNOMED CTを推奨しない。詳細については、HL7v3コア原則を参照。</p>
 <p>当該シリーズのモダリティコード。1シリーズ1モダリティ（1つのシリーズの中に複数のモダリティが混在することはない）。</p>
@@ -802,6 +807,8 @@ The type of involvement of the performer.</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>1..1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a>(<a href="StructureDefinition-jp-practitioner.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner">JP_Practitioner</a> | <a href="StructureDefinition-jp-practitionerrole.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole">JP_PractitionerRole</a> | <a href="StructureDefinition-jp-organization.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization">JP_Organization</a> | <a href="http://hl7.org/fhir/R4/careteam.html" title="http://hl7.org/fhir/StructureDefinition/CareTeam">CareTeam</a> | <a href="StructureDefinition-jp-patient.html" title="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient">JP_Patient</a> | <a href="http://hl7.org/fhir/R4/device.html" title="http://hl7.org/fhir/StructureDefinition/Device">Device</a> | <a href="http://hl7.org/fhir/R4/relatedperson.html" title="http://hl7.org/fhir/StructureDefinition/RelatedPerson">RelatedPerson</a>)</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Must Support Types</a></td><td>No must-support rules about the choice of types/profiles</td></tr>
   <tr><td>Comments</td><td><p>【JP Core仕様】組織または撮影者</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
@@ -849,6 +856,7 @@ The type of involvement of the performer.</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>1..1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#id">id</a></td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
   <tr><td>Requirements</td><td><p>DICOM SOP Instance UID.</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>SOPInstanceUID</td></tr>
@@ -867,6 +875,7 @@ The type of involvement of the performer.</p>
 The sopClass for the instance.</p>
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#Coding">Coding</a></td></tr>
+  <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Must Support</a></td><td>true</td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>SOPClassUID</td></tr>
   <tr><td>Comments</td><td><p>【JP Core仕様】SOPクラスUID。DICOMタグマッピングにある値をそのまま設定。</p>
 </td></tr>
@@ -952,7 +961,7 @@ The sopClass for the instance.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Sep 26, 2022 03:36+0000">2022-09-26</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Sep 26, 2022 13:48+0000">2022-09-26</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
