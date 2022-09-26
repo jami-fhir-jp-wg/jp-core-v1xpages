@@ -339,7 +339,7 @@ JP Core Organizationプロファイルで利用されることを想定してい
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1 This element is affected by the following invariants: ele-1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/extensibility.html#Extension">Extension</a>(<a href="StructureDefinition-jp-organization-prefectureno.html" title="[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Organization_PrefectureNo]]">JP_Organization_PrefectureNo</a>)  (Extension Type: <a href="http://hl7.org/fhir/R4/datatypes.html#Coding">Coding</a>)</td></tr>
-  <tr><td>Comments</td><td><p>都道府県番号２桁。Identifier型の拡張を使用する。
+  <tr><td>Comments</td><td><p>都道府県番号２桁。Identifier型の拡張を使用する。<br />
 valueには都道府県番号2桁の値を格納し、systemには都道府県番号を表すOID「1.2.392.100495.20.3.21」を指定する。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
@@ -350,9 +350,8 @@ valueには都道府県番号2桁の値を格納し、systemには都道府県�
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1 This element is affected by the following invariants: ele-1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/extensibility.html#Extension">Extension</a>(<a href="StructureDefinition-jp-organization-insuranceorganizationcategory.html" title="[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Organization_InsuranceOrganizationCategory]]">JP_Organization_InsuranceOrganizationCategory</a>)  (Extension Type: <a href="http://hl7.org/fhir/R4/datatypes.html#Coding">Coding</a>)</td></tr>
-  <tr><td>Comments</td><td><p>点数表コード１桁（医科1、歯科 3）。Identifier型の拡張
-「OrganizationCategory」を使用する。systemには点数表番号
-を表すOID「1.2.392.100495.20.3.22」を指定する。</p>
+  <tr><td>Comments</td><td><p>点数表コード１桁（医科１、非保険検診施設２、歯科３、調剤４、訪問看護ステーション６）。Identifier型の拡張<br />
+「OrganizationCategory」を使用する。systemには点数表番号を表すOID「1.2.392.100495.20.3.22」を指定する。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))<br/><b title="Formal Invariant Identifier">ext-1</b>: Must have either extensions or value[x], not both (: extension.exists() != value.exists())</td></tr>
@@ -362,9 +361,15 @@ valueには都道府県番号2桁の値を格納し、systemには都道府県�
 </td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..1 This element is affected by the following invariants: ele-1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/extensibility.html#Extension">Extension</a>(<a href="StructureDefinition-jp-organization-insuranceorganizationno.html" title="[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Organization_InsuranceOrganizationNo]]">JP_Organization_InsuranceOrganizationNo</a>)  (Extension Type: <a href="http://hl7.org/fhir/R4/datatypes.html#Identifier">Identifier</a>)</td></tr>
-  <tr><td>Comments</td><td><p>保険医療機関番号７桁。Identifier型の拡張
-「InsuranceOrganizationNo」を使用する。systemには医療機関コードを
-表すOID「1.2.392.100495.20.3.23」を指定する。</p>
+  <tr><td>Comments</td><td><p>医療機関コード（７桁）。Identifier型の拡張「InsuranceOrganizationNo」を使用する。<br />
+systemには医療機関コードを表すOID「1.2.392.100495.20.3.23」を指定する。
+valueには下記の値を格納する。</p>
+<ul>
+<li>保険医療機関・保険薬局 : <code>医療機関コード（７桁）</code></li>
+<li>非保険の特定健診・特定保健指導機関 : <code>機関コード（７桁）</code></li>
+</ul>
+<p>医療機関コードの詳しい説明は、<a href="StructureDefinition-jp-organization.html#医療機関コード１０桁">こちらのリンク</a>を参照すること。<br />
+なお上記に該当しない施設は、本拡張は使用しない。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))<br/><b title="Formal Invariant Identifier">ext-1</b>: Must have either extensions or value[x], not both (: extension.exists() != value.exists())</td></tr>
@@ -392,9 +397,7 @@ valueには都道府県番号2桁の値を格納し、systemには都道府県�
   <tr><td>Requirements</td><td><p>Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.</p>
 <p>組織は様々な ID で知られている。いくつかの機関では複数のIDを保持しており、ほとんどの機関では、組織に関する他の組織との交換のためにIDを収集している。</p>
 </td></tr>
-  <tr><td>Comments</td><td><p>もし適切なOID が存在しない場合で、その医療施設が保険医療機関の場合、特定健診・特定保健指導機関のルールに従い以下のルールで設定してもよい。</p>
-<p>医療施設が固有のOID を持っている場合は、そのOID を指定する。医療施設が保険医療機関の場合、特定健診・特定保健指導機関の医療機関コードの OID「1.2.392.200119.6.102.」の末尾に「[1]＋医療機関コード（10 桁）」を指定する。医療機関コードを持たない場合、「[9]＋当該施設の電話番号下 9 桁」を医療機関コードとする。</p>
-<p>例：医療機関コード「1312345670」の場合「1.2.392.200119.6.102.11312345670」</p>
+  <tr><td>Comments</td><td><p>福祉医療関連施設と保険者組織はSlicingについてはJP Coreにて定義を行なっているため、定義に従いデータを格納すること。それ以外の組織については、利用する際には必要に応じて識別子を定義を行なうこと。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -486,31 +489,16 @@ A coded type for an identifier that can be used to determine which identifier to
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
   <tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="Organization.identifier:medicalInstitutionCode"> </a><span style="color: grey">22.</span> <b>Organization.identifier:medicalInstitutionCode</b><a href="#Organization.identifier:medicalInstitutionCode" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="16" class="self-link" height="16"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></span></td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/profiling.html#slicing">SliceName</a></td><td>medicalInstitutionCode</td></tr>
-  <tr><td>Definition</td><td><p>Identifier for the organization that is used to identify the organization across multiple disparate systems.</p>
+  <tr><td>Definition</td><td><p>福祉医療施設を区別するため医療機関コード（１０桁）を格納するためのIdentifier/Slicing定義。</p>
 </td></tr>
   <tr><td>Note</td><td>This is a business identifier, not a resource identifier (see <a href="http://hl7.org/fhir/R4/resource.html#identifiers">discussion</a>)</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Control</a></td><td>0..* This element is affected by the following invariants: org-1</td></tr>
   <tr><td><a href="http://hl7.org/fhir/R4/datatypes.html">Type</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#Identifier">Identifier</a></td></tr>
   <tr><td>Requirements</td><td><p>Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.</p>
 </td></tr>
-  <tr><td>Comments</td><td><p>処方箋等の発行医療機関コードを格納するためのIdentifier/Slicing定義。</p>
-<p>systemはFixed Valueの</p>
-<pre><code>http://jpfhir.jp/fhir/core/IdSystem/insurance-medical-institution-no
-</code></pre>
-<p>を使用する。</p>
-<p>記載の様式(Wikipediaより転載)</p>
-<p>記載されている10桁の内訳は以下の通りである。</p>
-<p>　・最初の2桁 全国地方公共団体コードの都道府県コード（ISO 3166-2:JP）</p>
-<p>　　・都道府県ごとの番号。</p>
-<p>　・3桁目 点数表番号</p>
-<p>　　・医科は「1」。歯科は「3」。</p>
-<p>　　　・したがって、同一の病院または診療所に医科と歯科が併存する場合にはそれぞれ別のコードが与えられる。</p>
-<p>　　　・そのため、レセプトコンピュータでは一医療機関に対して医科と歯科の両方のコードを設定できるようになっている。</p>
-<p>　　　・ちなみに処方箋は発行されないが、「4」は調剤、「5」は老人保健施設、「6」は訪問看護ステーションである。</p>
-<p>　　・下7桁 医療機関コード</p>
-<p>　　　・地区（2桁）+番号（4桁）+チェックディジット（1桁）で構成される。</p>
-<p>　・7桁の医療機関コードについて</p>
-<p>　　各地域を所管する厚生労働省の地方支分部局である地方厚生局のホームページ等で確認できる。</p>
+  <tr><td>Comments</td><td><p>systemはFixed Valueの<code>http://jpfhir.jp/fhir/Common/IdSystem/insurance-medical-institution-no</code>を使用する。　
+value : <code>医療機関コード（１０桁）</code>を使用する。
+医療機関コード（１０桁）の詳細は<a href="StructureDefinition-jp-organization.html#医療機関コード１０桁">こちらのリンク</a>を参照すること。</p>
 </td></tr>
   <tr><td>Invariants</td><td><b>Defined on this element</b><br/>
 <b title="Formal Invariant Identifier">ele-1</b>: All FHIR elements must have a @value or children (: hasValue() or (children().count() &gt; id.count()))</td></tr>
@@ -964,7 +952,7 @@ The purpose for which you would contact a contact party.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sun, Sep 25, 2022 14:12+0000">2022-09-25</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Sep 26, 2022 03:18+0000">2022-09-26</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
