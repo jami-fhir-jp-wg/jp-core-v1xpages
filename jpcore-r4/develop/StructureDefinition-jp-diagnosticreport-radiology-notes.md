@@ -26,7 +26,7 @@ imagingStudyエレメントはCardinalityが0..1だが、放射線レポート�
 
 ### Extensions定義
 
- 本リソースで追加定義された拡張はない。
+ 本プロファイルで追加定義された拡張はない。
 
 ## 注意事項
 
@@ -173,7 +173,7 @@ Conclusionやコード化された診断結果は各々がレポートを構成�
 
 次の検索パラメータは必須でサポートされなければならない。
 
-1. identifier 検索パラメータを使用して、オーダIDなどの識別子によるDiagnosticReportの検索をサポートしなければならない（**SHALL**）。
+1. identifier 検索パラメータを使用して、オーダIDなどの識別子によるDiagnosticReportの検索をサポートしなければならない（**SHALL**）
 
    ```
    GET [base]/DiagnosticReport?identifier={system|}[code]
