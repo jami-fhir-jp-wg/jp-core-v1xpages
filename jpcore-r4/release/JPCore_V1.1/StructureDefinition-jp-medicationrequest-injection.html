@@ -1355,19 +1355,19 @@ Indicates the intended dispensing Organization specified by the prescriber" clas
 
 <p>MedicationRequestリソースは、次の要素を持たなければならない。</p>
 <ul>
-  <li>status : ステータスは必須である。</li>
-  <li>intent : 意図は必須である。</li>
-  <li>medicationReference : 医薬品の識別情報は必須であり、medicationReference.referenceが必ず存在しなければならない。JP Coreでは注射の医薬品情報は単一薬剤の場合も Medicationリソースとして記述し、MedicationRequest.contained属性に内包し、medicationCodeableConceptは使用しない。</li>
-  <li>subject :患者の参照情報は必須であり、subject.reference ないし subject.identifier が必ず存在しなければならない。</li>
-  <li>authoredOn : 処方依頼日時であり、JP Coreでは必須である。</li>
-  <li>dosageInstruction.text : フリーテキストの用法指示であり、JP Coreでは必須である。</li>
-  <li>dosageInstruction.timing : 投薬タイミングを記録し、JP Coreでは必須である。</li>
+  <li>status : ステータスは必須である</li>
+  <li>intent : 意図は必須である</li>
+  <li>medicationReference : 医薬品の識別情報は必須でありmedicationReference.referenceが必ず存在しなければならない、JP Coreでは注射の医薬品情報は単一薬剤の場合も Medicationリソースとして記述し、MedicationRequest.contained属性に内包しmedicationCodeableConceptは使用しない</li>
+  <li>subject :患者の参照情報は必須であり、subject.referenceないしsubject.identifierが必ず存在しなければならない</li>
+  <li>authoredOn : 処方依頼日時であり、JP Coreでは必須である</li>
+  <li>dosageInstruction.text : フリーテキストの用法指示であり、JP Coreでは必須である</li>
+  <li>dosageInstruction.timing : 投薬タイミングを記録し、JP Coreでは必須である</li>
 </ul>
 
 <p>MedicationRequestリソースに内包されるMedicationリソースでは、次の要素を持たなければならない。</p>
 <ul>
-  <li>ingredient.itemCodeableConcept : 医薬品の識別情報であり、JP Coreでは必須である。</li>
-  <li>ingredient.strength : 医薬品の投与量であり、JP Coreでは必須である。</li>
+  <li>ingredient.itemCodeableConcept : 医薬品の識別情報であり、JP Coreでは必須である</li>
+  <li>ingredient.strength : 医薬品の投与量であり、JP Coreでは必須である</li>
 </ul>
 
 <h3 id="extensions定義">Extensions定義</h3>
@@ -1666,7 +1666,7 @@ Indicates the intended dispensing Organization specified by the prescriber" clas
 
 <ol>
   <li>
-    <p>identifier 検索パラメータを使用して、オーダIDなどの識別子によるMedicationRequestの検索をサポートしなければならない（SHALL）。</p>
+    <p>identifier 検索パラメータを使用して、オーダIDなどの識別子によるMedicationRequestの検索をサポートしなければならない（SHALL）</p>
 
     <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/MedicationRequest?identifier={system|}[code]
 </code></pre></div>    </div>
@@ -1686,7 +1686,7 @@ Indicates the intended dispensing Organization specified by the prescriber" clas
 
 <ol>
   <li>
-    <p>patient 検索パラメータを使用して、患者のリファレンス情報によるMedicationRequestの検索をサポートすることが望ましい（<strong>SHOULD</strong>）。</p>
+    <p>patient 検索パラメータを使用して、患者のリファレンス情報によるMedicationRequestの検索をサポートすることが望ましい（<strong>SHOULD</strong>）</p>
 
     <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/MedicationRequest?patient=[id]
 GET [base]/MedicationRequest?patient=[url]
@@ -1700,7 +1700,7 @@ GET [base]/MedicationRequest?patient=[url]
     <p>リソースIDが123456の患者のMedicationRequestリソースを含むBundleを検索する。</p>
   </li>
   <li>
-    <p>patient,date 検索パラメータを使用して、患者のリファレンス情報と投薬日によるMedicationRequestの検索をサポートすることが望ましい（<strong>SHOULD</strong>）。</p>
+    <p>patient,date 検索パラメータを使用して、患者のリファレンス情報と投薬日によるMedicationRequestの検索をサポートすることが望ましい（<strong>SHOULD</strong>）</p>
 
     <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/MedicationRequest?patient=[id]&amp;date=[date]
 GET [base]/MedicationRequest?patient=[url]&amp;date=[date]
@@ -1714,7 +1714,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;date=[date]
     <p>リソースIDが123456の患者の2013-01-14に服用するMedicationRequestリソースを含むBundleを検索する。</p>
   </li>
   <li>
-    <p>patient,authoredon 検索パラメータを使用して、患者のリファレンス情報と依頼日によるMedicationRequestの検索をサポートすることが望ましい（<strong>SHOULD</strong>）。</p>
+    <p>patient,authoredon 検索パラメータを使用して、患者のリファレンス情報と依頼日によるMedicationRequestの検索をサポートすることが望ましい（<strong>SHOULD</strong>）</p>
 
     <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/MedicationRequest?patient=[id]&amp;authoredon=[date]
 GET [base]/MedicationRequest?patient=[url]&amp;authoredon=[date]
@@ -1742,7 +1742,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;authoredon=[date]
     <p>$everything：[base]/MedicationRequest/[id]/$everything</p>
 
     <ul>
-      <li>この操作が呼び出された特定のMedicationRequestに関連する全ての情報を返す。</li>
+      <li>この操作が呼び出された特定のMedicationRequestに関連する全ての情報を返す</li>
     </ul>
   </li>
 </ul>
@@ -2512,7 +2512,7 @@ HL7 V2の使用者定義表0164 投薬装置を使用してもよい。</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Sep 28, 2022 05:36+0000">2022-09-28</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Sep 29, 2022 03:29+0000">2022-09-29</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
