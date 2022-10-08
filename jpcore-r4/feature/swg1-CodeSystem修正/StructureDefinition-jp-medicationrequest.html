@@ -1503,22 +1503,22 @@ Indicates the intended dispensing Organization specified by the prescriber" clas
     <tr>
       <td>医薬品</td>
       <td>HOT7</td>
-      <td>$JP_MedicationCodeHOT7_CS</td>
+      <td>urn:oid:1.2.392.200119.4.403.2</td>
     </tr>
     <tr>
       <td>医薬品</td>
       <td>HOT9</td>
-      <td>$JP_MedicationCodeHOT9_CS</td>
+      <td>urn:oid:1.2.392.200119.4.403.1</td>
     </tr>
     <tr>
       <td>医薬品</td>
       <td>HOT13</td>
-      <td>$JP_MedicationCodeHOT13_CS</td>
+      <td>urn:oid:1.2.392.200119.4.402.1</td>
     </tr>
     <tr>
       <td>医薬品</td>
       <td>YJコード</td>
-      <td>$JP_MedicationCodeYJ_CS</td>
+      <td>urn:oid:1.2.392.100495.20.1.73</td>
     </tr>
     <tr>
       <td>医薬品</td>
@@ -1622,6 +1622,7 @@ Indicates the intended dispensing Organization specified by the prescriber" clas
       <th>パラメータ</th>
       <th>型</th>
       <th>例</th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
@@ -1630,36 +1631,42 @@ Indicates the intended dispensing Organization specified by the prescriber" clas
       <td>identifier</td>
       <td>token</td>
       <td>GET [base]/MedicationRequest?identifier=http://myhospital.com/fhir/medication|1234567890</td>
+      <td> </td>
     </tr>
     <tr>
       <td>SHOULD</td>
       <td>patient</td>
       <td>reference</td>
       <td>GET [base]/MedicationRequest?patient=123456</td>
+      <td> </td>
     </tr>
     <tr>
       <td>SHOULD</td>
       <td>patient,date</td>
       <td>reference,date</td>
       <td>GET [base]/MedicationRequest?patient=123456&amp;date=eq2013-01-14</td>
+      <td> </td>
     </tr>
     <tr>
       <td>SHOULD</td>
       <td>patient,authoredon</td>
       <td>reference,date</td>
       <td>GET [base]/MedicationRequest?patient=123456&amp;authoredon=eq2013-01-14</td>
+      <td> </td>
     </tr>
     <tr>
       <td>SHOULD</td>
       <td>patient,jp-medication-start</td>
       <td>date</td>
       <td>GET [base]/MedicationRequest?patient=123456&amp;jp-meditation-start=eq2013-03-21</td>
+      <td> </td>
     </tr>
     <tr>
       <td>MAY</td>
       <td>date,authoredon,category,code,requester</td>
       <td>date,date,token,token,token</td>
-      <td>GET [base]/MedicationRequest?code=$JP_MedicationCodeHOT9_CS|105271807</td>
+      <td>GET [base]/MedicationRequest?code=urn:oid:1.2.392.200119.4.403.1</td>
+      <td>105271807</td>
     </tr>
   </tbody>
 </table>
@@ -1938,9 +1945,9 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
 <h3 id="１回量と１日量の記述方法">１回量と１日量の記述方法</h3>
 <p>2010年1月に医療ミス防止の観点から、慣例として普及していた一日量処方ではなく、1回量処方を推奨するという「内服薬処方せんの記載方法の在り方に関する検討会報告書」が厚生労働省から出された。そもそも、HL7 FHIRでは1回量処方を前提としていることから、本ワーキンググループでも、1回量処方のみの対応で良いとの意見も出た。しかし、8年経過した＝ても処方箋の8割が一日量処方を使用しているとの報告があり、システムによっては1回量処方に対応していないことから一日量処方にも対応することとした。</p>
 
-<p>1回量は、dosageInstruction.doseAndRate.doseQuantity要素 にSimpleQuantity型で記述する。単位コードには、医薬品単位略号（urn:oid:1.2.392.100495.20.2.101）を使用する。</p>
+<p>1回量は、dosageInstruction.doseAndRate.doseQuantity要素 にSimpleQuantity型で記述する。単位コードには、医薬品単位略号を使用する。</p>
 
-<p>また、処方期間の中で1日量が常に一定となる場合には、1回量に加えて1日量の記録も可能とし、dosageInstruction.doseAndRate.rateRatio 要素に Ratio型で記録する。Ratio型は比を扱うデータ型で、分母にあたる dosageInstruction.doseAndRate.rateRatio.denominator 要素には投与量の基準となる期間、つまり、1日量の場合は「1日」をQuantity型で指定する。単位には、単位コードUCUM（http://unitsofmeasure.org）より、「日」を表す単位コード「d」を使用する。分子にあたる dosageInstruction.doseAndRate.rateRatio.numerator要素には、1回量と同様の記法で、1日投与量をQuantity型で指定する。</p>
+<p>また、処方期間の中で1日量が常に一定となる場合には、1回量に加えて1日量の記録も可能とし、dosageInstruction.doseAndRate.rateRatio 要素に Ratio型で記録する。Ratio型は比を扱うデータ型で、分母にあたる dosageInstruction.doseAndRate.rateRatio.denominator 要素には投与量の基準となる期間、つまり、1日量の場合は「1日」をQuantity型で指定する。単位には、単位コードUCUMより、「日」を表す単位コード「d」を使用する。分子にあたる dosageInstruction.doseAndRate.rateRatio.numerator要素には、1回量と同様の記法で、1日投与量をQuantity型で指定する。</p>
 
 <p>投与量「1回1錠（1日3錠）」を記録したインスタンス例を示す。</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"doseAndRate"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1970,7 +1977,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
 <p>doseQuantityエレメントは省略可能(0..1)である。</p>
 
 <h3 id="力価区分の記述方法">力価区分の記述方法</h3>
-<p>用量は製剤量で記述することを基本とするが、必要に応じて原薬量指定も可能とする。この識別は、dosageInstruction.doseAndRate.type 要素に、力価区分コード（urn:oid:1.2.392.100495.20.2.22）を指定することで行い、製剤量は「1」、原薬量は「2」とする。本要素は、安全性のため省略せずに必須とする。</p>
+<p>用量は製剤量で記述することを基本とするが、必要に応じて原薬量指定も可能とする。この識別は、dosageInstruction.doseAndRate.type 要素に、力価区分コードを指定することで行い、製剤量は「1」、原薬量は「2」とする。本要素は、安全性のため省略せずに必須とする。</p>
 
 <p>投与量「1回1錠（1日3錠）」を製剤量で記録したインスタンス例を示す。</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"dosageInstruction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2013,7 +2020,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
 </span></code></pre></div></div>
 
 <h3 id="調剤量の記述方法">調剤量の記述方法</h3>
-<p>調剤量はdispenseRequest.quantityに、SimpleQuantity型で記録する。単位コードには、投与量と同様に医薬品単位略号（urn:oid:1.2.392.100495.20.2.101）を使用する。21錠（1日3錠×7日分）を調剤する場合のインスタンス例を以下に示す。</p>
+<p>調剤量はdispenseRequest.quantityに、SimpleQuantity型で記録する。単位コードには、投与量と同様に医薬品単位略号を使用する。21錠（1日3錠×7日分）を調剤する場合のインスタンス例を以下に示す。</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"dispenseRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
@@ -2232,7 +2239,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
     </span><span class="nl">"medicationCodeableConcept"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$JP_MedicationCodeHOT9_CS"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200119.4.403.1"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"105271807"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"プレドニン錠５ｍｇ"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -2375,7 +2382,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
     </span><span class="nl">"medicationCodeableConcept"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$JP_MedicationCodeHOT9_CS"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200119.4.403.1"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"105271807"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"プレドニン錠５ｍｇ"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -2518,7 +2525,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
     </span><span class="nl">"medicationCodeableConcept"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$JP_MedicationCodeHOT9_CS"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200119.4.403.1"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"105271807"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"プレドニン錠５ｍｇ"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -2663,7 +2670,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
   </span><span class="nl">"medicationCodeableConcept"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$JP_MedicationCodeHOT9_CS"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200119.4.403.1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"105271807"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"プレドニン錠５ｍｇ"</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -3046,7 +3053,7 @@ JAMI標準用法コードを使用する表現方法と、HL7 FHIR本来の表�
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Oct 8, 2022 03:06+0000">2022-10-08</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Oct 8, 2022 09:05+0000">2022-10-08</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
