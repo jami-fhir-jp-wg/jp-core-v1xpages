@@ -1895,22 +1895,22 @@ inpatient | outpatient | community
     <tr>
       <td>医薬品</td>
       <td>HOT7</td>
-      <td>urn:oid:1.2.392.200119.4.403.</td>
+      <td>$JP_MedicationCodeHOT7_CS</td>
     </tr>
     <tr>
       <td>医薬品</td>
       <td>HOT9</td>
-      <td>urn:oid:1.2.392.200119.4.403.1</td>
+      <td>$JP_MedicationCodeHOT9_CS</td>
     </tr>
     <tr>
       <td>医薬品</td>
       <td>HOT13</td>
-      <td>urn:oid:1.2.392.200119.4.402.1</td>
+      <td>$JP_MedicationCodeHOT13_CS</td>
     </tr>
     <tr>
       <td>医薬品</td>
       <td>YJコード</td>
-      <td>urn:oid:1.2.392.100495.20.1.73</td>
+      <td>$JP_MedicationCodeYJ_CS</td>
     </tr>
     <tr>
       <td>医薬品</td>
@@ -2012,7 +2012,7 @@ inpatient | outpatient | community
       <td>MAY</td>
       <td>effective-time,medication,performer,request</td>
       <td>date,reference,reference,reference</td>
-      <td>GET [base]/MedicationAdministration?medication.ingredient-code=urn:oid:1.2.392.200119.4.403.1|105271807</td>
+      <td>GET [base]/MedicationAdministration?medication.ingredient-code=$JP_MedicationCodeHOT9_CS|105271807</td>
     </tr>
   </tbody>
 </table>
@@ -2220,7 +2220,7 @@ GET [base]/MedicationAdministration?patient=[url]&amp;effective-time=[date]
 
 <h3 id="投与薬剤投与量の記述方法">投与薬剤、投与量の記述方法</h3>
 <p>１回の投与薬剤と投与量は、RP内の薬剤が１薬剤の場合も混注などで複数の薬剤を含む場合も、すべての薬剤を記述したMedicationリソースを contained 属性に内包し、それをMedicationRequest.medicationReference属性で参照するようにする。
-Medicationリソースのingredient.itemCodeableConcept要素にCodeableConcept型で各薬剤の識別情報を記述し、ingredient.strength.numerator要素に１回あたりの含有量を記述する。薬剤を識別するコードはHOT7(“urn:oid:1.2.392.100495.20.2.73”)、HOT9(“urn:oid:1.2.392.200119.4.403.1”)、YJコード(“urn:oid:1.2.392.100495.20.1.73”)を推奨するが、ローカルコードを使用してもよい。含有量の単位コードは MERIT-9（”urn:oid:1.2.392.100495.20.2.101”）を使用する。ingredient.strength.denominatorには固定値「１回」をMERIT-9（”urn:oid:1.2.392.100495.20.2.101”）を使用して指定する。
+Medicationリソースのingredient.itemCodeableConcept要素にCodeableConcept型で各薬剤の識別情報を記述し、ingredient.strength.numerator要素に１回あたりの含有量を記述する。薬剤を識別するコードはHOT7、HOT9、YJコードを推奨するが、ローカルコードを使用してもよい。含有量の単位コードは MERIT-9を使用する。ingredient.strength.denominatorには固定値「１回」をMERIT-9を使用して指定する。
 dosage.dose要素には、情報が得られる場合には全体の容量をUCUM(<code class="highlighter-rouge">http://unitsofmeasure.org</code>)を使用してmL単位で指定する。</p>
 
 <h3 id="投薬管理ステータス">投薬管理ステータス</h3>
@@ -2784,7 +2784,7 @@ HL7表0550 身体部位(“http://terminology.hl7.org/CodeSystem/v2-0550”)とH
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 6, 2022 09:01+0000">2022-10-06</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Oct 8, 2022 02:07+0000">2022-10-08</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
