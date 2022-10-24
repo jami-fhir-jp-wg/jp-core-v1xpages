@@ -1,4 +1,3 @@
-<br/>
 本プロファイルは、医療従事者に関する情報の登録や検索、取得のために 、FHIR Practitioner リソースを使用するにあたっての、最低限の制約を記述したものである。Practitioner リソースに対して本プロファイルに準拠する場合に必須となる要素や、サポートすべき拡張、用語、検索パラメータを定義する。
 
 ## 背景および想定シナリオ
@@ -29,86 +28,5 @@ PractitionerRole リソースは、医療従事者が、特定の組織におい
 
 
 
-## 関連するプロファイル
-
-
-JP Practitioner リソースは、以下のリソースから直接参照される。
-
- - Annotation
- - Signature
- - Account
- - AdverseEvent
- - AllergyIntolerance
- - Appointment
- - AppointmentResponse
- - AuditEvent
- - Basic
- - BiologicallyDerivedProduct
- - CarePlan
- - CareTeam
- - CatalogEntry
- - ChargeItem
- - Claim
- - ClaimResponse
- - ClinicalImpression
- - Communication
- - CommunicationRequest
- - Composition
- - Condition
- - Consent
- - Contract
- - CoverageEligibilityRequest
- - CoverageEligibilityResponse
- - DetectedIssue
- - DeviceRequest
- - DeviceUseStatement
- - DiagnosticReport
- - DocumentManifest
- - DocumentReference
- - Encounter
- - EnrollmentRequest
- - EnrollmentResponse
- - EpisodeOfCare
- - ExplanationOfBenefit
- - Flag
- - Goal
- - Group
- - ImagingStudy
- - Immunization
- - Invoice
- - Linkage
- - List
- - MeasureReport
- - Media
- - MedicationAdministration
- - MedicationDispense
- - MedicationRequest
- - MedicationStatement
- - MessageHeader
- - NutritionOrder
- - Observation
- - Patient
- - PaymentNotice
- - PaymentReconciliation
- - Person
- - PractitionerRole
- - Procedure
- - Provenance
- - QuestionnaireResponse
- - RequestGroup
- - ResearchStudy
- - RiskAssessment
- - Schedule
- - ServiceRequest
- - Specimen
- - SupplyDelivery
- - SupplyRequest
- - Task
- - VerificationResult
- - VisionPrescription
-
-JP Practitioner リソースは、以下のリソースを直接参照する。
-
-- Organization 
 
 ## プロファイル定義

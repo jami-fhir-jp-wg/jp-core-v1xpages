@@ -4,16 +4,14 @@
 * [JP_Coverage_InsuredPersonNumber_SP]
 * [JP_Coverage_InsuredPersonSubNumber_SP]
 * [JP_Coverage_InsuredPersonSymbol_SP]
-* [JP_Observation_BodySite_BodySitePosition_SP]
+* [JP_MedicationRequest_Start_SP]
 * [JP_Organization_InsuranceOrganizationCategory_SP]
 * [JP_Organization_InsuranceOrganizationNo_SP]
 * [JP_Organization_PrefectureNo_SP]
-* [JP_Patient_Race_SP]
-* [JP_Patient_KanjiName_SP]
-* [JP_Patient_KanaName_SP]
+* [JP_Patient_KanaSort_SP]
 
 ### FHIR Base 定義済み検索パラメーター
-FHIR Baseにて定義済み検索パラメータ([Defined Search Parameters](https://fhir-ru.github.io/searchparameter-registry.html))が記載されており、相互運用性の高めるためにもこれを利用することを推奨する(***SHOULD***)。<br/>
+FHIR Baseにて定義済み検索パラメータ([Defined Search Parameters](https://fhir-ru.github.io/searchparameter-registry.html))が記載されており、相互運用性の高めるためにもこれを利用することを推奨する(**SHOULD**)。<br/>
 定義済み検索パラメータは``` http://hl7.org/fhir/SearchParameter/[id] ```の命名規則の定義URLにて利用可能である。
 
 

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE HTML>
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html xml:lang="ja" xmlns="http://www.w3.org/1999/xhtml" lang="ja">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>HL7.FHIR.JP.CORE\CapabilityStatement - FHIR v4.0.1</title>
+    <!-- <title>HL7.FHIR.JP.CORE\CapabilityStatement - FHIR v4.0.1</title> -->
+    <title>CapabilityStatement - FHIR v4.0.1</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -50,14 +51,14 @@
 
         <div id="project-nav">
           <a id="project-logo" no-external="true" href="https://www.jami.jp/">
-           <img height="60" alt="Visit JAMI website" src="assets/images/jami-logo.png"/>
+           <img height="65" alt="Visit JAMI website" src="assets/images/jami-logo.svg"/>
           </a>
         </div>
 
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">HL7 FHIR JP Core ImplementationGuide</span>
             <br/>
-            <span style="display:inline-block;">1.1.0a - ci-build
+            <span style="display:inline-block;">1.1.0 - release
 
 
 
@@ -110,6 +111,12 @@
       </li>
       <li>
         <a href="guide-stringSearch.html">文字列検索</a>
+      </li>
+      <li>
+        <a href="guide-precautions.html">利用上の注意事項</a>
+      </li>
+      <li>
+        <a href="update_history.html">更新履歴</a>
       </li>
     </ul>
   </li>
@@ -173,7 +180,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.1.0a). See the <a href="http://jpfhir.jp/fhir/core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.1.0). See the <a href="http://jpfhir.jp/fhir/core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>CapabilityStatement</h2>
   
 
@@ -191,44 +198,79 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
-  <li><a href="#capability-statement策定時注意事項" id="markdown-toc-capability-statement策定時注意事項">Capability Statement策定時注意事項</a></li>
+  <li><a href="#capability-statement作成" id="markdown-toc-capability-statement作成">Capability Statement作成</a></li>
   <li><a href="#検索パラメータsearch-parameter定義" id="markdown-toc-検索パラメータsearch-parameter定義">検索パラメータ(Search Parameter)定義</a></li>
-  <li><a href="#capablity-statementサンプル" id="markdown-toc-capablity-statementサンプル">Capablity Statementサンプル</a></li>
+  <li><a href="#capability-statementの実装例" id="markdown-toc-capability-statementの実装例">Capability Statementの実装例</a></li>
 </ul>
 
 </div>
-<h1>作成中</h1>
-
 <p>CapablityStatementは、実際のユースケースに応じて各アクタがどのような振る舞いや機能を有しているかを外部向けに公開するためのものである。<br />
 JP Coreを派生したサイトでは、アクタ毎にこれらの機能定義を作成し、コンフォーマンスとして提示することを推奨する(<strong><em>SHOULD</em></strong>)。<br />
-Capability Statementを構成する要素に対し策定時の注意事項や要求レベルについて記載をするとともに、サンプル定義を提示する。</p>
+ここではCapability Statementを構成する要素に対し策定時の注意事項や要求レベルについて記載をするとともに、各サイトでCapability Statementを作成する際の参考として作成例を提示する。</p>
 
-<h3 id="capability-statement策定時注意事項">Capability Statement策定時注意事項</h3>
-<h4 id="定義対象">定義対象</h4>
-<p>データ受け渡し等を行う場合、送受信の両方のアクタについてCapability Statementを記載とすることが出来る。一般的にServer側へのCapabilityStatement定義され、Client側は必要に応じて記載する。役割やデータの受け渡しのフローにより、アクタが多数になる場合もある。その場合はそれぞれにCapability Statement</p>
+<h3 id="capability-statement作成">Capability Statement作成</h3>
+<h4 id="アクタ選出">アクタ選出</h4>
+<p>データ受け渡し等を行う場合、送受信の両方のアクタについてCapability Statementを記載とすることが出来る。一般的にServer側へのCapabilityStatement定義され、Client側は必要に応じて記載する。役割やデータの受け渡しのフローにより、アクタが複数になる場合、それぞれのアクタにてCapability Statementの記載を検討する。</p>
 
 <h4 id="対象プロファイルprofile">対象プロファイル(Profile)</h4>
-<p>ユースケースより対象となるプロファイル(Profile)を洗い出しを行ないます。FHIR BASEにある定義済み検索パラメータ(<a href="https://fhir-ru.github.io/searchparameter-registry.html">Defined Search Parameters</a>)を利用すること、機能要件はFHIR BASEにて共通に提供されることから、FHIR BASE定義のプロファイル(Profile)を対象するのが一般的である。派生先プロファイル(profile)を利用できるようにするためには、サポートプロファイル(Supported Profile)に登録する必要がある。</p>
+<p>ユースケースより対象となるプロファイル(Profile)を洗い出しを行ないます。JP Coreで定義されているプロファイル場合は、これを優先して利用する。JP Coreで定義されていないプロファイルについても記載することは可能であり、FHIR BASEを初めてとして、他のImplementation Guideより適切なプロファイルを選択する。</p>
 
 <h4 id="インタラクション">インタラクション</h4>
-<p>各プロファイル(Profile)に対して、どのようなインタラクションを提供するかを決定します。
-| インタラクション| 説明 |
-|—|—|
-|create| 新規作成 |
-|search-type| 指定されたタイプのすべてのリソース |
-|read| 現在状態の検索 |
-|vread| 履歴検索 |
-|update| 新規作成,更新 |
-|patch| 更新 |
-|delete| 削除 |
-|history-instance| 特定のリソースの変更履歴を取得します。 |
-|history-type| 特定のタイプのすべてのリソースの変更履歴を取得します。 |</p>
+<p>各プロファイル(Profile)に対して、どのようなインタラクションを提供するかを決定します。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>インタラクション</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>create</td>
+      <td>新規作成</td>
+    </tr>
+    <tr>
+      <td>search-type</td>
+      <td>指定されたタイプのすべてのリソース</td>
+    </tr>
+    <tr>
+      <td>read</td>
+      <td>現在状態の検索</td>
+    </tr>
+    <tr>
+      <td>vread</td>
+      <td>履歴検索</td>
+    </tr>
+    <tr>
+      <td>update</td>
+      <td>新規作成,更新</td>
+    </tr>
+    <tr>
+      <td>patch</td>
+      <td>更新</td>
+    </tr>
+    <tr>
+      <td>delete</td>
+      <td>削除</td>
+    </tr>
+    <tr>
+      <td>history-instance</td>
+      <td>特定のリソースの変更履歴を取得します。</td>
+    </tr>
+    <tr>
+      <td>history-type</td>
+      <td>特定のタイプのすべてのリソースの変更履歴を取得します。</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3 id="検索パラメータsearch-parameter定義">検索パラメータ(Search Parameter)定義</h3>
 <h4 id="対象検索パラメータの列挙">対象検索パラメータの列挙</h4>
-<p>FHIR BASEにある定義済み検索パラメータ(<a href="https://fhir-ru.github.io/searchparameter-registry.html">Defined Search Parameters</a>)や<a href="group-searchParameter.html">JP Coreで定義された検索パラメータ</a>の中より、適合するものがないかを確認しあればこれを採用します。もし適合するものが見つからない場合、独自にSearch Parameterを定義した上で追加します。</p>
+<p>FHIR BASEにある定義済み検索パラメータ(<a href="https://fhir-ru.github.io/searchparameter-registry.html">Defined Search Parameters</a>)や<a href="group-searchParameter.html">JP Coreで定義された検索パラメータ</a>の中より、適合するものがないかを確認しあればこれを採用します。
+もし適合するものが見つからない場合、独自にSearch Parameterを定義した上で追加します。</p>
 
-<h2 id="capablity-statementサンプル">Capablity Statementサンプル</h2>
+<h2 id="capability-statementの実装例">Capability Statementの実装例</h2>
 <ul>
   <li>
     <p>ユースケース<br />
@@ -249,7 +291,7 @@ Capability Statementを構成する要素に対し策定時の注意事項や要
   <tbody>
     <tr>
       <td>Server</td>
-      <td>FHIR準拠したサーバで、Resouceを永続化して保持ししているものに対して検索のサービスを提供する。</td>
+      <td>FHIR準拠したサーバで、Resourceを永続化して保持ししているものに対して検索のサービスを提供する。</td>
     </tr>
     <tr>
       <td>Client</td>
@@ -264,6 +306,8 @@ Capability Statementを構成する要素に対し策定時の注意事項や要
 <h4 id="client-capabilitystatement">Client CapabilityStatement</h4>
 <p><a href="CapabilityStatement-jp-client-capabilitystatement.html">JP Core Client Capability Statement</a></p>
 
+<!-- 本ファイル修正不可。-->
+<!-- リソース追加・変更はruby script/markdownlink_creator.mdを実行にて反映される -->
 <!-- Temporary changes to fix formatting for changelog -->
 <style>
   ul.new-content {
@@ -286,6 +330,8 @@ Capability Statementを構成する要素に対し策定時の注意事項や要
 <!-- CodeSystem -->
 
 <!-- ValueSet -->
+
+<!-- Example -->
 
 
 
@@ -312,7 +358,7 @@ Capability Statementを構成する要素に対し策定時の注意事項や要
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Apr 6, 2022 04:15+0000">2022-04-06</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 24, 2022 03:02+0000">2022-10-24</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

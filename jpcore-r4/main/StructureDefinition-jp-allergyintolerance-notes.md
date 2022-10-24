@@ -2,42 +2,13 @@
 
 本プロファイルに準拠するためには、次の項目の値が存在しなければならない。
 
-- code : アレルギーまたは不耐性の種類を示すコード。
-- patient : 本リソースを有する患者。
+- patient : 本リソースを所有する患者
 
 ### Extensions定義
 
-- Extensions定義はない
-
-### 用語定義
-
-
-| Path                            | 定義                               | バインディング強度 | バリューセット |
-| ------------------------------- | ---------------------------------- | ------------------ | -------------- |
-|AllergyIntolerance.clinicalStatus| このアレルギー・不耐性の臨床的なステータス。 | Required          | active, inactive, resolved <br/> http://hl7.org/fhir/ValueSet/allergyintolerance-clinical |
-|AllergyIntolerance.verificationStatus| 特定された物質（医薬品を含む）に対する反応の傾向や潜在的なリスクに関連する確実性。 | Required | unconfirmed, confirmed, refuted, entered-in-error <br/> http://hl7.org/fhir/ValueSet/allergyintolerance-verification |
-|AllergyIntolerance.type| 副作用リスクの原因にある生理学的メカニズムの種類 | Required | allergy, intolerance <br/> http://hl7.org/fhir/ValueSet/allergy-intolerance-type |
-|AllergyIntolerance.category| 特定された原因物質のカテゴリ | Required |  jp_food, jp_medication, jp_environment_others <br/> http://jpfhir.jp/fhir/CodeSystem/*** (予定)| 
-|AllergyIntolerance.criticality| 特定されたアレルギー物質に対する反応の、潜在的な臨床的危害または深刻さの推定 | Required | low, high, unable-to-assess <br/> http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality |
-|AllergyIntolerance.code| アレルゲンのコード | Example | <a href="https://docs.google.com/spreadsheets/d/1BhL5XbaxycmGLRHzh-kdTvOrdPJ8-SZPOYvrOiL1pLE/edit#gid=1994452004" target="_blank"> JPCoreアレルギー用語（JFAGY） </a> <br/> http://jpfhir.jp/fhir/CodeSystem/*** (予定)|
-|AllergyIntolerance.reaction.substance| アレルギー不耐症の原因と考えられた特定の物質（医薬品を含む）の識別情報 | Example | 未定 | 
-|AllergyIntolerance.reaction.manifestation| 有害事象イベントにおいて観測される、または関連する臨床症状および/または兆候 |Example | 未定 |
-|AllergyIntolerance.reaction.severity|有害事象イベントの重症度の臨床評価 | Required | mild, moderate, seevere <br/> http://hl7.org/fhir/ValueSet/reaction-event-severity |
-|AllergyIntolerance.reaction.exposureRoute| 被験者が物質にさらされた経路の説明 | Example | 未定 <a href="https://docs.google.com/spreadsheets/d/1ry7_dtM4CS_dh6BC7AGRUPm8SKrswnkBfuh8uu1MspQ/edit#gid=0" target="_blank"> （参考用：SNOMEDの和訳） </a> <br/> http://jpfhir.jp/fhir/CodeSystem/*** (予定)　 |
-
-### 制約一覧
-
-- 制約はない
+ 本プロファイルで追加定義された拡張はない。
 
 ## 利用方法
-
-### インタラクション一覧
-
-| コンフォーマンス | インタラクション                            |
-| ---------------- | ------------------------------------------- |
-| SHALL（必須）    | search-type、read                        |
-| SHOULD（推奨）   | vread、history-instance                  |
-| MAY（利用可能）  | create、update、patch、delete、history-type |
 
 ### OperationおよびSearch Parameter 一覧
 
@@ -45,163 +16,162 @@
 
 | コンフォーマンス | パラメータ    | 型     | 例                                                           |
 | ---------------- | ------------- | ------ | ------------------------------------------------------------ |
-| SHALL            | patient    | reference  | GET [base]/AllergyIntolerance?patient=123456 |
-| SHALL            | patient,date | reference,date | GET [base]/AllergyIntolerance?patient=123456&date=ge2021-08-24 |
-| SHOULD           | patient,clinicalstatus | reference,code | GET [base]/AllergyIntolerance?patient=123456&clinicalstatus=active |
-| SHOULD           | patient,verificationstatus | reference,code | GET [base]/AllergyIntolerance?patient=123456&verificationstatus=confirmed |
-| SHOULD           | patient,type | reference,code | GET [base]/AllergyIntolerance?patient=123456&type=allergy |
-| SHOULD           | patient,category | reference,code | GET [base]/AllergyIntolerance?patient=123456&category=jp_food |
-| SHOULD           | patient,criticality | reference,code | GET [base]/AllergyIntolerance?patient=123456&criticality=high |
+| SHALL            | identifier    | token      | GET [base]/AllergyIntolerance?identifier=http://myhospital.com/fhir/allergyintolerance\|123 |
+| SHOULD           | patient       | reference  | GET [base]/AllergyIntolerance?patient=Patient/123 |
+| MAY              | patient,date  | reference,date | GET [base]/AllergyIntolerance?patient=Patient/123&date=ge2021-08-24 |
+| MAY              | patient,clinicalstatus | reference,code | GET [base]/AllergyIntolerance?patient=Patient/123&clinicalstatus=active |
+| MAY              | patient,verificationstatus | reference,code | GET [base]/AllergyIntolerance?patient=Patient/123&verificationstatus=confirmed |
+| MAY              | patient,type | reference,code | GET [base]/AllergyIntolerance?patient=Patient/123&type=allergy |
+| MAY              | patient,category | reference,code | GET [base]/AllergyIntolerance?patient=Patient/123&category=food |
+| MAY              | patient,criticality | reference,code | GET [base]/AllergyIntolerance?patient=Patient/123&criticality=high |
 
 ##### 必須検索パラメータ
 
-本プロファイルに準拠するためには、以下の検索パラメータをサポートしなければならない（SHALL）。
+本プロファイルに準拠するためには、以下の検索パラメータをサポートしなければならない（**SHALL**）
 
-1. 検索パラメータpatientを指定し、該当するすべてのAllergyIntoleranceを検索。
+1. 検索パラメータidentifierを指定し、レコードIDなどの識別子によりAllergyIntoleranceを検索
 
-   http
-   GET [base]/AllergyIntolerance?patient={Type/}[id]
-
-   
+   ```
+   GET [base]/AllergyIntolerance?identifier={system|}[code]
+   ```
    例：
+   ```
+   GET [base]/AllergyIntolerance?identifier=http://myhospital.com/fhir/allergyintolerance|123
+   ```
 
-   http
-   GET [base]/AllergyIntolerance?patient=123456
-   
-
-   指定された患者のすべてのAllergyIntoleranceを含むBundleを返却する。
-
-2. 検索パラメータpatientとdateの組みを指定し、該当するすべてのAllergyIntoleranceを検索。
-
-  * dateに対する次の比較演算子のサポートを含む: gt,lt,ge,le
-  * AND検索のオプションのサポートを含む (例えば.date=[date]&date=[date]]&...)
-    http
-    GET [base]/AllergyIntolerance?patient={Type/}[id]&date={gt|lt|ge|le}[date]{&date={gt|lt|ge|le}[date]&...}
-    
-
-    例：
-
-    http
-    GET [base]/AllergyIntolerance?patinet=123456&date=ge2021-08-24
-    
-
-    指定された患者および日付のすべてのAllergyIntoleranceを含むBundleを返却する。
-
+   指定された識別子に一致するAllergyIntoleranceリソースを含むBundleを検索する。
 
 ##### 推奨検索パラメータ
 
-本プロファイルに準拠するためには、以下の検索パラメータをサポートすることが推奨（SHOULD）される。
+本プロファイルに準拠するためには、以下の検索パラメータをサポートすることが推奨される（SHOULD）
 
-1. 検索パラメータpatientとclinicalstatusの組みを指定し、該当するすべてのAllergyIntoleranceを検索。
-  * OR検索のサポートを含む(例えば clinicalstatus={system|}[code],{system|}[code],...)
+1. 検索パラメータpatientを指定し、該当するすべてのAllergyIntoleranceを検索
 
-    http
-    GET [base]/AllergyIntolerance?patient={Type/}[id]&clinicalstatus={system|}[code]{,{system|}[code],...}
+   ```
+   GET [base]/AllergyIntolerance?patient={reference}
+   ```
+   例：
+   ```
+   GET [base]/AllergyIntolerance?patient=Patient/123
+   ```
+
+   指定された患者のすべてのAllergyIntoleranceを含むBundleを返却する。
+
+##### 追加検索パラメータ
+
+オプションとして次の検索パラメータをサポートすることができる（MAY）
+
+1. 検索パラメータpatientとdateの組みを指定し、該当するすべてのAllergyIntoleranceを検索
+
+    * dateに対する次の比較演算子のサポートを含む: gt,lt,ge,le
+    * AND検索のオプションのサポートを含む (例えば.date=[date]&date=[date]]&...)
     
-
+    ```
+    GET [base]/AllergyIntolerance?patient={reference}&date={gt|lt|ge|le}[date]{&date={gt|lt|ge|le}[date]&...}
+    ```
     例：
-
-    http
-    GET [base]/AllergyIntolerance?patient=123456&clinicalstatus=active
+    ```
+    GET [base]/AllergyIntolerance?patient=Patient/123&date=ge2021-08-24
+    ```
     
+    指定された患者および日付のすべてのAllergyIntoleranceを含むBundleを返却する。
 
-    http
-    GET [base]/AllergyIntolerance?patient=123456&clinicalstatus=http://hl7.org/fhir/ValueSet/allergyintoleranceclinical|active
+2. 検索パラメータpatientとclinicalstatusの組みを指定し、該当するすべてのAllergyIntoleranceを検索
+
+    * OR検索のサポートを含む(例えば clinicalstatus={system\|}[code],{system\|}[code],...)
     
-
+    ```
+    GET [base]/AllergyIntolerance?patient={reference}&clinicalstatus={system|}[code]{,{system|}[code],...}
+    ```
+    例：
+    ```
+    GET [base]/AllergyIntolerance?patient=Patient/123&clinicalstatus=active
+    ```
+    ```
+    GET [base]/AllergyIntolerance?patient=Patient/123&clinicalstatus=http://hl7.org/fhir/ValueSet/allergyintoleranceclinical|active
+    ```
+    
     指定された患者およびステータスのすべてのAllergyIntoleranceを含むBundleを返却する。
 
-2. 検索パラメータpatientとverificationstatus組みを指定し、該当するすべてのAllergyIntoleranceを検索。
-  * OR検索のサポートを含む(例えば verificationstatus={system|}[code],{system|}[code],...)
+3. 検索パラメータpatientとverificationstatus組みを指定し、該当するすべてのAllergyIntoleranceを検索
 
-    http
-    GET [base]/AllergyIntolerance?patient={Type/}[id]&verificationstatus={system|}[code]{,{system|}[code],...}
+    * OR検索のサポートを含む(例えば verificationstatus={system\|}[code],{system\|}[code],...)
     
-
+    ```
+    GET [base]/AllergyIntolerance?patient={reference}&verificationstatus={system|}[code]{,{system|}[code],...}
+    ```
     例：
-
-    http
-    GET [base]/AllergyIntolerance?patient=123456&verificationstatus=confirmed
+    ```
+    GET [base]/AllergyIntolerance?patient=Patient/123&verificationstatus=confirmed
+    ```
+    ```
+    GET [base]/AllergyIntolerance?patient=Patient/123&verificationstatus=http://hl7.org/fhir/ValueSet/allergyintoleranceverification|confirmed
+    ```
     
-
-    http
-    GET [base]/AllergyIntolerance?patient=123456&verificationstatus=http://hl7.org/fhir/ValueSet/allergyintoleranceverification|confirmed
-    
-
     指定された患者およびステータスのすべてのAllergyIntoleranceを含むBundleを返却する。
 
-3. 検索パラメータpatientとtype組みを指定し、該当するすべてのAllergyIntoleranceを検索。
-  * OR検索のサポートを含む(例えば type={system|}[code],{system|}[code],...)
+4. 検索パラメータpatientとtype組みを指定し、該当するすべてのAllergyIntoleranceを検索
 
-    http
-    GET [base]/AllergyIntolerance?patient={Type/}[id]&type={system|}[code]{,{system|}[code],...}
+    * OR検索のサポートを含む(例えば type={system\|}[code],{system\|}[code],...)
     
-
+    ```
+    GET [base]/AllergyIntolerance?patient={reference}&type={system|}[code]{,{system|}[code],...}
+    ```
     例：
-
-    http
-    GET [base]/AllergyIntolerance?patient=123456&type=allergy
+    ```
+    GET [base]/AllergyIntolerance?patient=Patient/123&type=allergy
+    ```
+    ```
+    GET [base]/AllergyIntolerance?patient=Patient/123&category=http://hl7.org/fhir/ValueSet/allergy-intolerance-type|allergy
+    ```
     
-
-    http
-    GET [base]/AllergyIntolerance?patient=123456&category=http://hl7.org/fhir/ValueSet/allergy-intolerance-type|allergy
-    
-
     指定された患者およびステータスのすべてのAllergyIntoleranceを含むBundleを返却する。
 
-4. 検索パラメータpatientとcategory組みを指定し、該当するすべてのAllergyIntoleranceを検索。
-  * OR検索のサポートを含む(例えば category={system|}[code],{system|}[code],...)
+5. 検索パラメータpatientとcategory組みを指定し、該当するすべてのAllergyIntoleranceを検索
 
-    http
-    GET [base]/AllergyIntolerance?patient={Type/}[id]&category={system|}[code]{,{system|}[code],...}
+    * OR検索のサポートを含む(例えば category={system\|}[code],{system\|}[code],...)
     
-
+    ```
+    GET [base]/AllergyIntolerance?patient={reference}&category={system|}[code]{,{system|}[code],...}
+    ```
     例：
+    ```
+    GET [base]/AllergyIntolerance?patient=Patient/123&category=food
+    ```
+    ```
+    GET [base]/AllergyIntolerance?patient=Patient/123&category=http://hl7.org/fhir/ValueSet/condition-category|food
+    ``` 
+  
+  指定された患者およびステータスのすべてのAllergyIntoleranceを含むBundleを返却する。
 
-    http
-    GET [base]/AllergyIntolerance?patient=123456&category=jp_food
+1. 検索パラメータpatientとcriticality組みを指定し、該当するすべてのAllergyIntoleranceを検索
+
+    * OR検索のサポートを含む(例えば criticality={system\|}[code],{system\|}[code],...)
     
-
-    http
-    GET [base]/AllergyIntolerance?patient=123456&category=http://jpfhir.jp/fhir/CodeSystem/***|jp_food
-    
-
-    指定された患者およびステータスのすべてのAllergyIntoleranceを含むBundleを返却する。
-
-5. 検索パラメータpatientとcriticality組みを指定し、該当するすべてのAllergyIntoleranceを検索。
-  * OR検索のサポートを含む(例えば criticality={system|}[code],{system|}[code],...)
-
-    http
-    GET [base]/AllergyIntolerance?patient={Type/}[id]&criticality={system|}[code]{,{system|}[code],...}
-    
-
-    例：
-
-    http
-    GET [base]/AllergyIntolerance?patient=123456&criticality=high
-    
-
-    http
-    GET [base]/AllergyIntolerance?patient=123456&criticality=http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality|high
-    
-
-    指定された患者およびステータスのすべてのAllergyIntoleranceを含むBundleを返却する。
+      ```
+      GET [base]/AllergyIntolerance?patient={reference}&criticality={system|}[code]{,{system|}[code],...}
+      ```
+      例：
+      ```
+      GET [base]/AllergyIntolerance?patient=Patient/123&&criticality=high
+      ```
+      ```
+      GET [base]/AllergyIntolerance?patient=Patient/123&criticality=http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality|high
+      ```
+      
+      指定された患者およびステータスのすべてのAllergyIntoleranceを含むBundleを返却する。
 
 ##### オプション検索パラメータ 
 
-- オプション検索パラメータはない
+ 本プロファイルで追加定義されたオプション検索パラメータはない。
 
-#### Operation一覧
+#### サンプル
 
-- Operation一覧はない
+* [**食物アレルギー（小麦）**][jp-allergyintolerance-example-1]
 
 ## 注意事項
 
-- 未定
-
-## その他、参考文献・リンク等
-
-- 未定
-
-
-
+- 例えば、患者に「既知のアレルギー・なし」が記録されている状態で、新規に「カニアレルギー・あり」の記録を追加する際には「既知のアレルギー・なし」の記録を削除すべきである。同様に、患者に「カニアレルギー・あり」が記録されている状態で「既知のアレルギー・なし」を記録しようとした際には、システムはこの矛盾を検出するべきである。
+- アレルギーの否定を表現する方法について。本プロファイルが継承するプロファイル（AllergyIntolerance R4.0.1）では「既知のアレルギー・なし」を表現するために、No known allergy（SNOMED-CT:716186003）等を用いることが例示されている。一方で、本プロファイルの要素であるcodeのバインド先として例示する[JP Core AllergyIntolerance Value Set](https://jami-fhir-jp-wg.github.io/jp-core-v1xpages/jpcore-r4/develop/ValueSet-jp-allergyintolerance-vs.html)には「既知のアレルギー・なし」等に相当する表現がない。そのため、本プロファイルを継承するプロファイルが、[JP Core AllergyIntolerance Value Set](https://jami-fhir-jp-wg.github.io/jp-core-v1xpages/jpcore-r4/develop/ValueSet-jp-allergyintolerance-vs.html)を利用する場合には、否定されたアレルギーを表現するために、アレルギーの有無を区別する要素を追加するなどの措置を取ることを想定している。なお、本プロファイルはこのValue Setの利用を要求・推奨するものではないため、他のValue Setを使う選択肢もある。
+- いずれについても詳細は、[Negated Allergies and Intolerances](https://hl7.org/fhir/R4/allergyintolerance.html#9.1.3.3)を参照のこと。
+{% include markdown-link-references.md %}
