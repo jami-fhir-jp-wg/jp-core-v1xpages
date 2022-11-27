@@ -1,0 +1,296 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://jpfhir.jp/fhir/core/DiagnosticReport/jp-diagnosticreport-labresult-example-1> a fhir:DiagnosticReport;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "jp-diagnosticreport-labresult-example-1"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_LabResult";
+       fhir:index 0;
+       fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_LabResult>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2><span title=\"Codes: {http://loinc.org 11502-2}\">Laboratory report</span> (<span title=\"Codes: {http://terminology.hl7.org/CodeSystem/v2-0074 LAB}\">Laboratory</span>) </h2><table class=\"grid\"><tr><td>Subject</td><td><b>山田 太郎</b> male, DoB: 1970-01-01 ( id: 00000010)</td></tr><tr><td>When For</td><td>2021-08-25 08:30:00+0900</td></tr><tr><td>Reported</td><td>2021-03-04 11:45:33+1100</td></tr><tr><td>Identifier:</td><td> id: 5234342</td></tr></table><p><b>Report Details</b></p><table class=\"grid\"><tr><td><b>Code</b></td><td><b>Value</b></td><td><b>Reference Range</b></td><td><b>Flags</b></td><td><b>When For</b></td></tr><tr><td colspan=\"5\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"5\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"5\"><i>This Observation could not be resolved</i></td></tr></table></div>"
+  ];
+  fhir:DomainResource.contained [
+     a fhir:Observation;
+     fhir:index 0;
+     fhir:Resource.id [ fhir:value "inner-observation-labresult-1" ];
+     fhir:Resource.meta [
+       fhir:Meta.profile [
+         fhir:value "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_LabResult";
+         fhir:index 0;
+         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_LabResult>
+       ]
+     ];
+     fhir:Observation.status [ fhir:value "final" ];
+     fhir:Observation.category [
+       fhir:index 0;
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/observation-category" ];
+         fhir:Coding.code [ fhir:value "laboratory" ]
+       ]
+     ];
+     fhir:Observation.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://abc-hospital.local/fhir/Observation/localcode" ];
+         fhir:Coding.code [ fhir:value "123" ];
+         fhir:Coding.display [ fhir:value "ヘモグロビン" ]
+       ], [
+         fhir:index 1;
+         fhir:Coding.system [ fhir:value "urn:oid:1.2.392.200119.4.504" ];
+         fhir:Coding.code [ fhir:value "2A990000001930953" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "ヘモグロビン" ]
+     ];
+     fhir:Observation.subject [
+       fhir:link <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1>;
+       fhir:Reference.reference [ fhir:value "Patient/jp-patient-example-1" ]
+     ];
+     fhir:Observation.effectiveDateTime [ fhir:value "2021-03-04T08:30:00+11:00"^^xsd:dateTime ];
+     fhir:Observation.performer [
+       fhir:index 0;
+       fhir:link <http://jpfhir.jp/fhir/core/Organization/jp-organization-example-hospital>;
+       fhir:Reference.reference [ fhir:value "Organization/jp-organization-example-hospital" ];
+       fhir:Reference.display [ fhir:value "健康第一病院" ]
+     ];
+     fhir:Observation.valueQuantity [
+       fhir:Quantity.value [ fhir:value "176"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "g/L" ];
+       fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+       fhir:Quantity.code [ fhir:value "g/L" ]
+     ];
+     fhir:Observation.specimen [
+       fhir:link <http://jpfhir.jp/fhir/core/Specimen/jp-specimen-example-2>;
+       fhir:Reference.reference [ fhir:value "Specimen/jp-specimen-example-2" ]
+     ];
+     fhir:Observation.referenceRange [
+       fhir:index 0;
+       fhir:Observation.referenceRange.low [
+         fhir:Quantity.value [ fhir:value "135"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "g/L" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "g/L" ]
+       ];
+       fhir:Observation.referenceRange.high [
+         fhir:Quantity.value [ fhir:value "180"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "g/L" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "g/L" ]
+       ]
+     ]
+  ], [
+     a fhir:Observation;
+     fhir:index 1;
+     fhir:Resource.id [ fhir:value "inner-observation-labresult-2" ];
+     fhir:Resource.meta [
+       fhir:Meta.profile [
+         fhir:value "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_LabResult";
+         fhir:index 0;
+         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_LabResult>
+       ]
+     ];
+     fhir:Observation.status [ fhir:value "final" ];
+     fhir:Observation.category [
+       fhir:index 0;
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/observation-category" ];
+         fhir:Coding.code [ fhir:value "laboratory" ]
+       ]
+     ];
+     fhir:Observation.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://abc-hospital.local/fhir/Observation/localcode" ];
+         fhir:Coding.code [ fhir:value "456" ];
+         fhir:Coding.display [ fhir:value "赤血球数" ]
+       ], [
+         fhir:index 1;
+         fhir:Coding.system [ fhir:value "urn:oid:1.2.392.200119.4.504" ];
+         fhir:Coding.code [ fhir:value "2A990000001992051" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "赤血球数" ]
+     ];
+     fhir:Observation.subject [
+       fhir:link <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1>;
+       fhir:Reference.reference [ fhir:value "Patient/jp-patient-example-1" ]
+     ];
+     fhir:Observation.effectiveDateTime [ fhir:value "2021-03-04T08:30:00+11:00"^^xsd:dateTime ];
+     fhir:Observation.performer [
+       fhir:index 0;
+       fhir:link <http://jpfhir.jp/fhir/core/Organization/jp-organization-example-hospital>;
+       fhir:Reference.reference [ fhir:value "Organization/jp-organization-example-hospital" ];
+       fhir:Reference.display [ fhir:value "健康第一病院" ]
+     ];
+     fhir:Observation.valueQuantity [
+       fhir:Quantity.value [ fhir:value "5.9"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "10*6/uL" ];
+       fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+       fhir:Quantity.code [ fhir:value "10*6/uL" ]
+     ];
+     fhir:Observation.specimen [
+       fhir:link <http://jpfhir.jp/fhir/core/Specimen/jp-specimen-example-2>;
+       fhir:Reference.reference [ fhir:value "Specimen/jp-specimen-example-2" ]
+     ];
+     fhir:Observation.referenceRange [
+       fhir:index 0;
+       fhir:Observation.referenceRange.low [
+         fhir:Quantity.value [ fhir:value "4.2"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "10*6./L" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "10*6/uL" ]
+       ];
+       fhir:Observation.referenceRange.high [
+         fhir:Quantity.value [ fhir:value "6"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "10*6./L" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "10*6/uL" ]
+       ]
+     ]
+  ], [
+     a fhir:Observation;
+     fhir:index 2;
+     fhir:Resource.id [ fhir:value "inner-observation-labresult-3" ];
+     fhir:Resource.meta [
+       fhir:Meta.profile [
+         fhir:value "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_LabResult";
+         fhir:index 0;
+         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_LabResult>
+       ]
+     ];
+     fhir:Observation.status [ fhir:value "final" ];
+     fhir:Observation.category [
+       fhir:index 0;
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/observation-category" ];
+         fhir:Coding.code [ fhir:value "laboratory" ]
+       ]
+     ];
+     fhir:Observation.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://abc-hospital.local/fhir/Observation/localcode" ];
+         fhir:Coding.code [ fhir:value "789" ];
+         fhir:Coding.display [ fhir:value "ヘマトクリット" ]
+       ], [
+         fhir:index 1;
+         fhir:Coding.system [ fhir:value "urn:oid:1.2.392.200119.4.504" ];
+         fhir:Coding.code [ fhir:value "2A990000001930954" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "ヘマトクリット" ]
+     ];
+     fhir:Observation.subject [
+       fhir:link <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1>;
+       fhir:Reference.reference [ fhir:value "Patient/jp-patient-example-1" ]
+     ];
+     fhir:Observation.effectiveDateTime [ fhir:value "2021-03-04T08:30:00+11:00"^^xsd:dateTime ];
+     fhir:Observation.performer [
+       fhir:index 0;
+       fhir:link <http://jpfhir.jp/fhir/core/Organization/jp-organization-example-hospital>;
+       fhir:Reference.reference [ fhir:value "Organization/jp-organization-example-hospital" ];
+       fhir:Reference.display [ fhir:value "健康第一病院" ]
+     ];
+     fhir:Observation.valueQuantity [
+       fhir:Quantity.value [ fhir:value "55"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "%" ]
+     ];
+     fhir:Observation.interpretation [
+       fhir:index 0;
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation" ];
+         fhir:Coding.code [ fhir:value "H" ]
+       ]
+     ];
+     fhir:Observation.specimen [
+       fhir:link <http://jpfhir.jp/fhir/core/Specimen/jp-specimen-example-2>;
+       fhir:Reference.reference [ fhir:value "Specimen/jp-specimen-example-2" ]
+     ];
+     fhir:Observation.referenceRange [
+       fhir:index 0;
+       fhir:Observation.referenceRange.low [
+         fhir:Quantity.value [ fhir:value "38"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "%" ]
+       ];
+       fhir:Observation.referenceRange.high [
+         fhir:Quantity.value [ fhir:value "52"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "%" ]
+       ]
+     ]
+  ];
+  fhir:DiagnosticReport.identifier [
+     fhir:index 0;
+     fhir:Identifier.system [ fhir:value "http://abc-hospital.local/fhir/lab/reportid" ];
+     fhir:Identifier.value [ fhir:value "5234342" ]
+  ];
+  fhir:DiagnosticReport.status [ fhir:value "final"];
+  fhir:DiagnosticReport.category [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v2-0074" ];
+       fhir:Coding.code [ fhir:value "LAB" ]
+     ]
+  ];
+  fhir:DiagnosticReport.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:11502-2;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "11502-2" ];
+       fhir:Coding.display [ fhir:value "Laboratory report" ]
+     ]
+  ];
+  fhir:DiagnosticReport.subject [
+     fhir:link <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1>;
+     fhir:Reference.reference [ fhir:value "Patient/jp-patient-example-1" ]
+  ];
+  fhir:DiagnosticReport.encounter [
+     fhir:link <http://jpfhir.jp/fhir/core/Encounter/jp-encounter-example-1>;
+     fhir:Reference.reference [ fhir:value "Encounter/jp-encounter-example-1" ]
+  ];
+  fhir:DiagnosticReport.effectiveDateTime [ fhir:value "2021-08-25T08:30:00+09:00"^^xsd:dateTime];
+  fhir:DiagnosticReport.issued [ fhir:value "2021-03-04T11:45:33+11:00"^^xsd:dateTime];
+  fhir:DiagnosticReport.performer [
+     fhir:index 0;
+     fhir:link <http://jpfhir.jp/fhir/core/Organization/jp-organization-example-hospital>;
+     fhir:Reference.reference [ fhir:value "Organization/jp-organization-example-hospital" ];
+     fhir:Reference.display [ fhir:value "健康第一病院" ]
+  ];
+  fhir:DiagnosticReport.result [
+     fhir:index 0;
+     fhir:Reference.reference [ fhir:value "#inner-observation-labresult-1" ]
+  ], [
+     fhir:index 1;
+     fhir:Reference.reference [ fhir:value "#inner-observation-labresult-2" ]
+  ], [
+     fhir:index 2;
+     fhir:Reference.reference [ fhir:value "#inner-observation-labresult-3" ]
+  ];
+  fhir:DiagnosticReport.presentedForm [
+     fhir:index 0;
+     fhir:Attachment.contentType [ fhir:value "application/pdf" ];
+     fhir:Attachment.language [ fhir:value "ja-JP" ];
+     fhir:Attachment.data [ fhir:value "JVBERi0xLjUNCiW1tbW1DQoxIDAgb2JqDQo8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFIvTGFuZyhqYS1KUCkgL1N0cnVjdFRyZWVSb290IDEzIDAgUi9NYXJrSW5mbzw8L01hcmtlZCB0cnVlPj4+Pg0KZW5kb2JqDQoyIDAgb2JqDQo8PC9UeXBlL1BhZ2VzL0NvdW50IDEvS2lkc1sgMyAwIFJdID4+DQplbmRvYmoNCjMgMCBvYmoN"^^xsd:base64Binary ];
+     fhir:Attachment.title [ fhir:value "検査結果PDFレポート" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://jpfhir.jp/fhir/core/DiagnosticReport/jp-diagnosticreport-labresult-example-1.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
