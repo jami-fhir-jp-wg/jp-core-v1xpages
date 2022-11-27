@@ -1,0 +1,77 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://jpfhir.jp/fhir/core/Observation/jp-observation-vitalsigns-example-1> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "jp-observation-vitalsigns-example-1"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_VitalSigns";
+       fhir:index 0;
+       fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_VitalSigns>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b><a name=\"jp-observation-vitalsigns-example-1\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"jp-observation-vitalsigns-example-1\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-jp-observation-vitalsigns.html\">JP Core Observation VitalSigns Profile</a></p></div><p><b>status</b>: final</p><p><b>category</b>: 呼吸機能 <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (JP_ObservationVitalSignsCategory_CS#respiratory-function)</span></p><p><b>code</b>: 呼吸数 <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (localcode#abc-local-456; <a href=\"https://loinc.org/\">LOINC</a>#9279-1 \"Respiratory rate\"; unknown#31001369)</span></p><p><b>subject</b>: <a href=\"Patient-jp-patient-example-1.html\">Patient/jp-patient-example-1</a> \" 山田\"</p><p><b>encounter</b>: <a href=\"Encounter-jp-encounter-example-1.html\">Encounter/jp-encounter-example-1</a></p><p><b>effective</b>: 2021-10-19 10:00:00+0900</p><p><b>performer</b>: <a href=\"Practitioner-jp-practitioner-example-male-2.html\">Practitioner/jp-practitioner-example-male-2</a> \" 愛知\"</p><p><b>value</b>: 400 回</p></div>"
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.category [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationVitalSignsCategory_CS" ];
+       fhir:Coding.code [ fhir:value "respiratory-function" ];
+       fhir:Coding.display [ fhir:value "呼吸機能" ]
+     ]
+  ];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://abc-hospital.local/fhir/Observation/localcode" ];
+       fhir:Coding.code [ fhir:value "abc-local-456" ];
+       fhir:Coding.display [ fhir:value "呼吸数" ]
+     ], [
+       fhir:index 1;
+       a loinc:9279-1;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "9279-1" ];
+       fhir:Coding.display [ fhir:value "Respiratory rate" ]
+     ], [
+       fhir:index 2;
+       fhir:Coding.system [ fhir:value "urn:oid:1.2.392.200119.4.804" ];
+       fhir:Coding.code [ fhir:value "31001369" ];
+       fhir:Coding.display [ fhir:value "呼吸数" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1>;
+     fhir:Reference.reference [ fhir:value "Patient/jp-patient-example-1" ]
+  ];
+  fhir:Observation.encounter [
+     fhir:link <http://jpfhir.jp/fhir/core/Encounter/jp-encounter-example-1>;
+     fhir:Reference.reference [ fhir:value "Encounter/jp-encounter-example-1" ]
+  ];
+  fhir:Observation.effectiveDateTime [ fhir:value "2021-10-19T10:00:00+09:00"^^xsd:dateTime];
+  fhir:Observation.performer [
+     fhir:index 0;
+     fhir:link <http://jpfhir.jp/fhir/core/Practitioner/jp-practitioner-example-male-2>;
+     fhir:Reference.reference [ fhir:value "Practitioner/jp-practitioner-example-male-2" ]
+  ];
+  fhir:Observation.valueQuantity [
+     fhir:Quantity.value [ fhir:value "400"^^xsd:decimal ];
+     fhir:Quantity.unit [ fhir:value "回" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://jpfhir.jp/fhir/core/Observation/jp-observation-vitalsigns-example-1.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

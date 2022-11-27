@@ -1,0 +1,65 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://jpfhir.jp/fhir/core/Coverage/jp-coverage-example-1> a fhir:Coverage;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "jp-coverage-example-1"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Coverage";
+       fhir:index 0;
+       fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Coverage>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Coverage</b><a name=\"jp-coverage-example-1\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Coverage \"jp-coverage-example-1\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-jp-coverage.html\">JP Core Coverage Profile</a></p></div><p><b>JP Core Coverage InsuredPersonSymbol Extension</b>: １２－３４</p><p><b>JP Core Coverage InsuredPersonNumber Extension</b>: ５６７８</p><p><b>JP Core Coverage InsuredPersonSubNumber Extension</b>: ００</p><p><b>identifier</b>: id: \"１２－３４\",\"５６７８\",\"００\"</p><p><b>status</b>: active</p><p><b>type</b>: public healthcare <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/5.0.0/CodeSystem-v3-ActCode.html\">ActCode</a>#PUBLICPOL)</span></p><p><b>subscriberId</b>: \"１２－３４\",\"５６７８\"</p><p><b>beneficiary</b>: <a href=\"Patient-jp-patient-example-1.html\">Patient/jp-patient-example-1</a> \" 山田\"</p><p><b>dependent</b>: ００</p><p><b>payor</b>: <a href=\"Organization-jp-organization-example-payer.html\">Organization/jp-organization-example-payer</a> \"ひまわり健康保険組合\"</p></div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSymbol" ];
+     fhir:Extension.valueString [ fhir:value "１２－３４" ]
+  ], [
+     fhir:index 1;
+     fhir:Extension.url [ fhir:value "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonNumber" ];
+     fhir:Extension.valueString [ fhir:value "５６７８" ]
+  ], [
+     fhir:index 2;
+     fhir:Extension.url [ fhir:value "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSubNumber" ];
+     fhir:Extension.valueString [ fhir:value "００" ]
+  ];
+  fhir:Coverage.identifier [
+     fhir:index 0;
+     fhir:Identifier.value [ fhir:value "\"１２－３４\",\"５６７８\",\"００\"" ]
+  ];
+  fhir:Coverage.status [ fhir:value "active"];
+  fhir:Coverage.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ActCode" ];
+       fhir:Coding.code [ fhir:value "PUBLICPOL" ]
+     ]
+  ];
+  fhir:Coverage.subscriberId [ fhir:value "\"１２－３４\",\"５６７８\""];
+  fhir:Coverage.beneficiary [
+     fhir:link <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1>;
+     fhir:Reference.reference [ fhir:value "Patient/jp-patient-example-1" ]
+  ];
+  fhir:Coverage.dependent [ fhir:value "００"];
+  fhir:Coverage.payor [
+     fhir:index 0;
+     fhir:link <http://jpfhir.jp/fhir/core/Organization/jp-organization-example-payer>;
+     fhir:Reference.reference [ fhir:value "Organization/jp-organization-example-payer" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://jpfhir.jp/fhir/core/Coverage/jp-coverage-example-1.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
