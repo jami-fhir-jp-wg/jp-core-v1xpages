@@ -165,6 +165,23 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 inpatient | outpatient | community
  (http://terminology.hl7.org/CodeSystem/medication-admin-category)","","","","","","","","","",,"preferred","A coded concept describing where the medication administered is expected to occur.","http://hl7.org/fhir/ValueSet/medication-admin-category","",,,,"MedicationAdministration.category",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=""type of medication usage""].value"
+"MedicationAdministration.category.id","MedicationAdministration.category.id","","","",0,1,"","","","string {[]} {[]}
+","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"MedicationAdministration.category.extension","MedicationAdministration.category.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
+","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+"MedicationAdministration.category.coding","MedicationAdministration.category.coding","","","",0,*,"","","Y","Coding {[]} {[]}
+","Code defined by a terminology system","A reference to a code defined by a terminology system.","Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true.","Allows for alternative encodings within a code system, and translations to other code systems.","","","","<valueCoding xmlns=""http://hl7.org/fhir"">
+  <system value=""http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationFeeScoreCategory_CS""/>
+  <code value=""medication""/>
+  <display value=""投薬""/>
+</valueCoding>","","","",,,,,"",,,,"CodeableConcept.coding",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","union(., ./translation)","C*E.1-8, C*E.10-22"
+"MedicationAdministration.category.text","MedicationAdministration.category.text","","","",0,1,"","","Y","string {[]} {[]}
+","Plain text representation of the concept","A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.","Very often the text is the same as a displayName of one of the codings.","The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.","","","","","","","",,,,,"",,,,"CodeableConcept.text",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","./originalText[mediaType/code=""text/plain""]/data","C*E.9. But note many systems use C*E.2 for this"
 "MedicationAdministration.medication[x]","MedicationAdministration.medication[x]","","","",1,1,"","","Y","CodeableConcept {[]} {[]}
 ","What medication was supplied　医薬品","Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
 
