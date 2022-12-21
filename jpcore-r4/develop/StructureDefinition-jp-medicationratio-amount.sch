@@ -9,25 +9,4 @@
     you may need to use this schematron fragment to build a, 
     single schematron that validates contained resources (if you have any) 
   -->
-  <sch:pattern>
-    <sch:title>Ratio.extension</sch:title>
-    <sch:rule context="f:Ratio/f:extension">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children</sch:assert>
-      <sch:assert test="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])">Must have either extensions or value[x], not both</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>Ratio.numerator</sch:title>
-    <sch:rule context="f:Ratio/f:numerator">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">If a code for the unit is present, the system SHALL also be present (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:title>Ratio.denominator</sch:title>
-    <sch:rule context="f:Ratio/f:denominator">
-      <sch:assert test="@value|f:*|h:div">All FHIR elements must have a @value or children (inherited)</sch:assert>
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">If a code for the unit is present, the system SHALL also be present (inherited)</sch:assert>
-    </sch:rule>
-  </sch:pattern>
 </sch:schema>
