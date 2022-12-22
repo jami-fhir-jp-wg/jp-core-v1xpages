@@ -41,7 +41,7 @@ end
 # エントリーポイント
 # ==========================
 delDirs = []
-for im in Dir.glob('./*/*/*_index.yml').concat(Dir.glob('./*/*/*/*_index.yml'))
+for im in Dir.glob('./*/*/_index.yml').concat(Dir.glob('./*/*/*/_index.yml'))
     File.open(im) do |f|
         h = YAML.load(f)
 
