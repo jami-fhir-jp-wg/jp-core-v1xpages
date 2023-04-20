@@ -5,44 +5,55 @@
 
 # - resource -------------------------------------------------------------------
 
-<http://jpfhir.jp/fhir/core/ValueSet/jp-procedure-condition-vs> a fhir:ValueSet ;
-  fhir:nodeRole fhir:treeRoot ;
-  fhir:id [ fhir:v "jp-procedure-condition-vs"] ; # 
-  fhir:text [
-     fhir:status [ fhir:v "generated" ] ;
-     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Include all codes defined in <a href=\"CodeSystem-jp-undefined-cs.html\"><code>http://jpfhir.jp/fhir/core/CodeSystem/JP_Undefined_CS</code></a></li></ul></div>"
-  ] ; # 
-  fhir:url [ fhir:v "http://jpfhir.jp/fhir/core/ValueSet/JP_ProcedureCondition_VS"^^xsd:anyURI] ; # 
-  fhir:version [ fhir:v "1.1.1"] ; # 
-  fhir:name [ fhir:v "JP_ProcedureCondition_VS"] ; # 
-  fhir:title [ fhir:v "JP Core Procedure Condition ValueSet"] ; # 
-  fhir:status [ fhir:v "active"] ; # 
-  fhir:experimental [ fhir:v "false"^^xsd:boolean] ; # 
-  fhir:date [ fhir:v "2022-10-24"^^xsd:date] ; # 
-  fhir:publisher [ fhir:v "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"] ; # 
-  fhir:contact ( [
-     fhir:name [ fhir:v "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)" ] ;
-     fhir:telecom ( [
-       fhir:system [ fhir:v "url" ] ;
-       fhir:value [ fhir:v "http://jpfhir.jp" ]
-     ] [
-       fhir:system [ fhir:v "email" ] ;
-       fhir:value [ fhir:v "office@hlfhir.jp" ]
-     ] )
-  ] ) ; # 
-  fhir:description [ fhir:v "処置中もしくは処置の後に発生した合併症を示すコード(Condition/Problem/Diagnosis)の値セット"] ; # 
-  fhir:jurisdiction ( [
-     fhir:coding ( [
-       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
-       fhir:code [ fhir:v "JPN" ]
-     ] )
-  ] ) ; # 
-  fhir:copyright [ fhir:v "Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG"] ; # 
-  fhir:compose [
-     fhir:include ( [
-       fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_Undefined_CS"^^xsd:anyURI ]
-     ] )
+<http://jpfhir.jp/fhir/core/ValueSet/jp-procedure-condition-vs> a fhir:ValueSet;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "jp-procedure-condition-vs"]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Include all codes defined in <a href=\"CodeSystem-jp-undefined-cs.html\"><code>http://jpfhir.jp/fhir/core/CodeSystem/JP_Undefined_CS</code></a></li></ul></div>"
+  ]; # 
+  fhir:ValueSet.url [ fhir:value "http://jpfhir.jp/fhir/core/ValueSet/JP_ProcedureCondition_VS"]; # 
+  fhir:ValueSet.version [ fhir:value "1.1.1"]; # 
+  fhir:ValueSet.name [ fhir:value "JP_ProcedureCondition_VS"]; # 
+  fhir:ValueSet.title [ fhir:value "JP Core Procedure Condition ValueSet"]; # 
+  fhir:ValueSet.status [ fhir:value "active"]; # 
+  fhir:ValueSet.experimental [ fhir:value "false"^^xsd:boolean]; # 
+  fhir:ValueSet.date [ fhir:value "2022-10-24"^^xsd:date]; # 
+  fhir:ValueSet.publisher [ fhir:value "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"]; # 
+  fhir:ValueSet.contact [
+     fhir:index 0;
+     fhir:ContactDetail.name [ fhir:value "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)" ];
+     fhir:ContactDetail.telecom [
+       fhir:index 0;
+       fhir:ContactPoint.system [ fhir:value "url" ];
+       fhir:ContactPoint.value [ fhir:value "http://jpfhir.jp" ]
+     ], [
+       fhir:index 1;
+       fhir:ContactPoint.system [ fhir:value "email" ];
+       fhir:ContactPoint.value [ fhir:value "office@hlfhir.jp" ]
+     ]
+  ]; # 
+  fhir:ValueSet.description [ fhir:value "処置中もしくは処置の後に発生した合併症を示すコード(Condition/Problem/Diagnosis)の値セット"]; # 
+  fhir:ValueSet.jurisdiction [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ];
+       fhir:Coding.code [ fhir:value "JPN" ]
+     ]
+  ]; # 
+  fhir:ValueSet.copyright [ fhir:value "Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG"]; # 
+  fhir:ValueSet.compose [
+     fhir:ValueSet.compose.include [
+       fhir:index 0;
+       fhir:ValueSet.compose.include.system [ fhir:value "http://jpfhir.jp/fhir/core/CodeSystem/JP_Undefined_CS" ]
+     ]
   ] . # 
+
+# - ontology header ------------------------------------------------------------
+
+<http://jpfhir.jp/fhir/core/ValueSet/jp-procedure-condition-vs.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
 
 # -------------------------------------------------------------------------------------
 

@@ -5,80 +5,101 @@
 
 # - resource -------------------------------------------------------------------
 
-<http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1> a fhir:Patient ;
-  fhir:nodeRole fhir:treeRoot ;
-  fhir:id [ fhir:v "jp-patient-example-1"] ; # 
-  fhir:meta [
-     fhir:profile ( [
-       fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient"^^xsd:anyURI ;
+<http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1> a fhir:Patient;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "jp-patient-example-1"]; # 
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient";
+       fhir:index 0;
        fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient>
-     ] )
-  ] ; # 
-  fhir:text [
-     fhir:status [ fhir:v "generated" ] ;
-     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\"><b>山田 太郎</b> male, DoB: 1970-01-01 ( id: 00000010)</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Alternate names (see the one above)\">Alt. Name:</td><td colspan=\"3\">ヤマダ タロウ</td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Ways to contact the Patient\">Contact Details:</td><td colspan=\"3\"><ul><li>ph: 0312345678(HOME)</li><li>東京都新宿区</li></ul></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"The registered place of birth of the patient. A sytem may use the address.text if they don't store the birthPlace address in discrete elements.\"><a href=\"http://hl7.org/fhir/R4/extension-patient-birthplace.html\">Birth Place:</a></td><td colspan=\"3\"><ul><li>東京 </li></ul></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"人種(Race)に関する情報を格納するためのExtension。\"><a href=\"StructureDefinition-jp-patient-race.html\">JP Core Patient Race Extension:</a></td><td colspan=\"3\"><ul><li><span title=\"Codes: {http://terminology.hl7.org/CodeSystem/v3-Race 2039-6}\">Japanese</span></li></ul></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"The patient's professed religious affiliations.\"><a href=\"http://hl7.org/fhir/R4/extension-patient-religion.html\">religion:</a></td><td colspan=\"3\"><ul><li><span title=\"Codes: {http://terminology.hl7.org/CodeSystem/v3-ReligiousAffiliation 1046}\">Shinto</span></li></ul></td></tr></table></div>"
-  ] ; # 
-  fhir:extension ( [
-     fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/patient-religion"^^xsd:anyURI ] ;
-     fhir:value [
-       a fhir:CodeableConcept ;
-       fhir:coding ( [
-         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-ReligiousAffiliation"^^xsd:anyURI ] ;
-         fhir:code [ fhir:v "1046" ] ;
-         fhir:display [ fhir:v "Shinto" ]
-       ] )
      ]
-  ] [
-     fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/patient-birthPlace"^^xsd:anyURI ] ;
-     fhir:value [
-       a fhir:Address ;
-       fhir:state [ fhir:v "東京" ]
+  ]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\"><b>山田 太郎</b> male, DoB: 1970-01-01 ( id: 00000010)</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Alternate names (see the one above)\">Alt. Name:</td><td colspan=\"3\">ヤマダ タロウ</td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Ways to contact the Patient\">Contact Details:</td><td colspan=\"3\"><ul><li>ph: 0312345678(HOME)</li><li>東京都新宿区</li></ul></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"The registered place of birth of the patient. A sytem may use the address.text if they don't store the birthPlace address in discrete elements.\"><a href=\"http://hl7.org/fhir/R4/extension-patient-birthplace.html\">Birth Place:</a></td><td colspan=\"3\"><ul><li>東京 </li></ul></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"人種(Race)に関する情報を格納するためのExtension。\"><a href=\"StructureDefinition-jp-patient-race.html\">JP Core Patient Race Extension:</a></td><td colspan=\"3\"><ul><li><span title=\"Codes: {http://terminology.hl7.org/CodeSystem/v3-Race 2039-6}\">Japanese</span></li></ul></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"The patient's professed religious affiliations.\"><a href=\"http://hl7.org/fhir/R4/extension-patient-religion.html\">religion:</a></td><td colspan=\"3\"><ul><li><span title=\"Codes: {http://terminology.hl7.org/CodeSystem/v3-ReligiousAffiliation 1046}\">Shinto</span></li></ul></td></tr></table></div>"
+  ]; # 
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/patient-religion" ];
+     fhir:Extension.valueCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ReligiousAffiliation" ];
+         fhir:Coding.code [ fhir:value "1046" ];
+         fhir:Coding.display [ fhir:value "Shinto" ]
+       ]
      ]
-  ] [
-     fhir:url [ fhir:v "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Patient_Race"^^xsd:anyURI ] ;
-     fhir:value [
-       a fhir:CodeableConcept ;
-       fhir:coding ( [
-         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-Race"^^xsd:anyURI ] ;
-         fhir:code [ fhir:v "2039-6" ] ;
-         fhir:display [ fhir:v "Japanese" ]
-       ] )
+  ], [
+     fhir:index 1;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/patient-birthPlace" ];
+     fhir:Extension.valueAddress [
+       fhir:Address.state [ fhir:value "東京" ]
      ]
-  ] ) ; # 
-  fhir:identifier ( [
-     fhir:system [ fhir:v "urn:oid:1.2.392.100495.20.3.51.11311234567"^^xsd:anyURI ] ;
-     fhir:value [ fhir:v "00000010" ]
-  ] ) ; # 
-  fhir:name ( [
-     fhir:extension ( [
-       fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation"^^xsd:anyURI ] ;
-       fhir:value [ fhir:v "IDE" ]
-     ] ) ;
-     fhir:use [ fhir:v "usual" ] ;
-     fhir:text [ fhir:v "山田 太郎" ] ;
-     fhir:family [ fhir:v "山田" ] ;
-     fhir:given ( [ fhir:v "太郎" ] )
-  ] [
-     fhir:extension ( [
-       fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation"^^xsd:anyURI ] ;
-       fhir:value [ fhir:v "SYL" ]
-     ] ) ;
-     fhir:use [ fhir:v "usual" ] ;
-     fhir:text [ fhir:v "ヤマダ タロウ" ] ;
-     fhir:family [ fhir:v "ヤマダ" ] ;
-     fhir:given ( [ fhir:v "タロウ" ] )
-  ] ) ; # 
-  fhir:telecom ( [
-     fhir:system [ fhir:v "phone" ] ;
-     fhir:value [ fhir:v "0312345678" ] ;
-     fhir:use [ fhir:v "home" ]
-  ] ) ; # 
-  fhir:gender [ fhir:v "male"] ; # 
-  fhir:birthDate [ fhir:v "1970-01-01"^^xsd:date] ; # 
-  fhir:address ( [
-     fhir:text [ fhir:v "東京都新宿区" ] ;
-     fhir:postalCode [ fhir:v "1600023" ]
-  ] ) . # 
+  ], [
+     fhir:index 2;
+     fhir:Extension.url [ fhir:value "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Patient_Race" ];
+     fhir:Extension.valueCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-Race" ];
+         fhir:Coding.code [ fhir:value "2039-6" ];
+         fhir:Coding.display [ fhir:value "Japanese" ]
+       ]
+     ]
+  ]; # 
+  fhir:Patient.identifier [
+     fhir:index 0;
+     fhir:Identifier.system [ fhir:value "urn:oid:1.2.392.100495.20.3.51.11311234567" ];
+     fhir:Identifier.value [ fhir:value "00000010" ]
+  ]; # 
+  fhir:Patient.name [
+     fhir:index 0;
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation" ];
+       fhir:Extension.valueCode [ fhir:value "IDE" ]
+     ];
+     fhir:HumanName.use [ fhir:value "usual" ];
+     fhir:HumanName.text [ fhir:value "山田 太郎" ];
+     fhir:HumanName.family [ fhir:value "山田" ];
+     fhir:HumanName.given [
+       fhir:value "太郎";
+       fhir:index 0
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation" ];
+       fhir:Extension.valueCode [ fhir:value "SYL" ]
+     ];
+     fhir:HumanName.use [ fhir:value "usual" ];
+     fhir:HumanName.text [ fhir:value "ヤマダ タロウ" ];
+     fhir:HumanName.family [ fhir:value "ヤマダ" ];
+     fhir:HumanName.given [
+       fhir:value "タロウ";
+       fhir:index 0
+     ]
+  ]; # 
+  fhir:Patient.telecom [
+     fhir:index 0;
+     fhir:ContactPoint.system [ fhir:value "phone" ];
+     fhir:ContactPoint.value [ fhir:value "0312345678" ];
+     fhir:ContactPoint.use [ fhir:value "home" ]
+  ]; # 
+  fhir:Patient.gender [ fhir:value "male"]; # 
+  fhir:Patient.birthDate [ fhir:value "1970-01-01"^^xsd:date]; # 
+  fhir:Patient.address [
+     fhir:index 0;
+     fhir:Address.text [ fhir:value "東京都新宿区" ];
+     fhir:Address.postalCode [ fhir:value "1600023" ]
+  ] . # 
+
+# - ontology header ------------------------------------------------------------
+
+<http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
 
 # -------------------------------------------------------------------------------------
 
