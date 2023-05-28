@@ -70,7 +70,7 @@
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -78,7 +78,7 @@
       <constraint>
         <key value="qty-3"/>
         <severity value="error"/>
-        <human value="If a code for the unit is present, the system SHALL also be present"/>
+        <human value="ユニットのコードが存在する場合、システムも存在するものとします / If a code for the unit is present, the system SHALL also be present"/>
         <expression value="code.empty() or system.exists()"/>
         <xpath value="not(exists(f:code)) or exists(f:system)"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Quantity"/>
@@ -100,8 +100,8 @@
     <element id="Quantity.id">
       <path value="Quantity.id"/>
       <representation value="xmlAttr"/>
-      <short value="Unique id for inter-element referencing"/>
-      <definition value="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."/>
+      <short value="要素間参照のための一意のID / Unique id for inter-element referencing"/>
+      <definition value="リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -132,9 +132,9 @@
         <description value="Extensions are always sliced by (at least) url"/>
         <rules value="open"/>
       </slicing>
-      <short value="Additional content defined by implementations"/>
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
-      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
+      <short value="実装で定義された追加のコンテンツ / Additional content defined by implementations"/>
+      <definition value="要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
+      <comment value="拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
       <alias value="extensions"/>
       <alias value="user content"/>
       <min value="0"/>
@@ -150,7 +150,7 @@
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -158,7 +158,7 @@
       <constraint>
         <key value="ext-1"/>
         <severity value="error"/>
-        <human value="Must have either extensions or value[x], not both"/>
+        <human value="両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
@@ -175,7 +175,7 @@
       <short value="（精度が暗示された）数値"/>
       <definition value="計測された量。精度を含めた値が暗示される。"/>
       <comment value="暗示された精度については常に尊重すべきである。貨幣計算では制度に関する独自のルールがある（会計についての標準的な教科書を参照すること）。"/>
-      <requirements value="Precision is handled implicitly in almost all cases of measurement."/>
+      <requirements value="精度は、測定のほとんどすべての場合に暗黙的に処理されます。 / Precision is handled implicitly in almost all cases of measurement."/>
       <min value="1"/>
       <max value="1"/>
       <base>
@@ -189,7 +189,7 @@
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -221,24 +221,24 @@
       <type>
         <code value="code"/>
       </type>
-      <meaningWhenMissing value="If there is no comparator, then there is no modification of the value"/>
+      <meaningWhenMissing value="コンパレータがない場合、値の変更はありません / If there is no comparator, then there is no modification of the value"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
       <isModifier value="true"/>
-      <isModifierReason value="This is labeled as &quot;Is Modifier&quot; because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value"/>
+      <isModifierReason value="これは、コンパレータが値の解釈を大幅に変更するため、「IS修飾子」とラベル付けされています。コンパレータがない場合、値の変更はありません / This is labeled as &quot;Is Modifier&quot; because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value"/>
       <isSummary value="true"/>
       <binding>
         <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
           <valueString value="QuantityComparator"/>
         </extension>
         <strength value="required"/>
-        <description value="How the Quantity should be understood and represented."/>
+        <description value="量を理解し、表現する方法。 / How the Quantity should be understood and represented."/>
         <valueSet value="http://hl7.org/fhir/ValueSet/quantity-comparator|4.0.1"/>
       </binding>
       <mapping>
@@ -272,7 +272,7 @@
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -308,7 +308,7 @@
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
@@ -329,7 +329,7 @@
       <short value="単位のコード化された形式、【JP Core仕様】MERIT9医薬品単位略号マスタコードを推奨"/>
       <definition value="単位のコード化された形式、【JP Core仕様】MERIT9医薬品単位略号マスタコードを推奨(**SHOULD**)"/>
       <comment value="単位のコード化された形式、【JP Core仕様】MERIT9医薬品単位略号マスタコードを推奨(**SHOULD**)されるが、ローカルコード等を利用することも可能とする"/>
-      <requirements value="Need a computable form of the unit that is fixed across all forms. UCUM provides this for quantities, but SNOMED CT provides many units of interest."/>
+      <requirements value="すべてのフォームに固定されたユニットの計算可能な形式が必要です。UCUMはこれを数量で提供しますが、Snomed CTは多くの関心のある単位を提供します。 / Need a computable form of the unit that is fixed across all forms. UCUM provides this for quantities, but SNOMED CT provides many units of interest."/>
       <min value="1"/>
       <max value="1"/>
       <base>
@@ -343,7 +343,7 @@
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>

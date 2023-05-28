@@ -91,7 +91,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "dom-2" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "If the resource is contained in another resource, it SHALL NOT contain nested Resources" ] ;
+         fhir:human [ fhir:v "もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen)." ] ;
          fhir:expression [ fhir:v "contained.contained.empty()" ] ;
          fhir:xpath [ fhir:v "not(parent::f:contained and f:contained)" ] ;
          fhir:source [
@@ -101,7 +101,7 @@
        ] [
          fhir:key [ fhir:v "dom-3" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource" ] ;
+         fhir:human [ fhir:v "もしリソースが他のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含まれるリソースに参照されるべきです。" ] ;
          fhir:expression [ fhir:v "contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()" ] ;
          fhir:xpath [ fhir:v "not(exists(for $id in f:contained/*/f:id/@value return $contained[not(parent::*/descendant::f:reference/@value=concat('#', $contained/*/id/@value) or descendant::f:reference[@value='#'])]))" ] ;
          fhir:source [
@@ -111,7 +111,7 @@
        ] [
          fhir:key [ fhir:v "dom-4" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated" ] ;
+         fhir:human [ fhir:v "もしリソースが別のリソースの中に含まれる場合、meta.versionIdまたはmeta.lastUpdatedを持つべきではありません。" ] ;
          fhir:expression [ fhir:v "contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()" ] ;
          fhir:xpath [ fhir:v "not(exists(f:contained/*/f:meta/f:versionId)) and not(exists(f:contained/*/f:meta/f:lastUpdated))" ] ;
          fhir:source [
@@ -121,7 +121,7 @@
        ] [
          fhir:key [ fhir:v "dom-5" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "If a resource is contained in another resource, it SHALL NOT have a security label" ] ;
+         fhir:human [ fhir:v "「もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。」" ] ;
          fhir:expression [ fhir:v "contained.meta.security.empty()" ] ;
          fhir:xpath [ fhir:v "not(exists(f:contained/*/f:meta/f:security))" ] ;
          fhir:source [
@@ -138,7 +138,7 @@
          ] ) ;
          fhir:key [ fhir:v "dom-6" ] ;
          fhir:severity [ fhir:v "warning" ] ;
-         fhir:human [ fhir:v "A resource should have narrative for robust management" ] ;
+         fhir:human [ fhir:v "「資源は堅牢な管理のために物語を持つべきである。」" ] ;
          fhir:expression [ fhir:v "text.`div`.exists()" ] ;
          fhir:xpath [ fhir:v "exists(f:text/h:div)" ] ;
          fhir:source [
@@ -161,9 +161,9 @@
      ] [
        fhir:id [ fhir:v "Media.id" ] ;
        fhir:path [ fhir:v "Media.id" ] ;
-       fhir:short [ fhir:v "Logical id of this artifact" ] ;
-       fhir:definition [ fhir:v "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes." ] ;
-       fhir:comment [ fhir:v "The only time that a resource does not have an id is when it is being submitted to the server using a create operation." ] ;
+       fhir:short [ fhir:v "このアーティファクトの論理ID" ] ;
+       fhir:definition [ fhir:v "「リソースのURLで使用される論理ID。一度割り当てられたら、この値は変更されません。」" ] ;
+       fhir:comment [ fhir:v "「リソースにIDがないのは、作成操作を使用してサーバーに送信されているときだけです。」" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -183,8 +183,8 @@
      ] [
        fhir:id [ fhir:v "Media.meta" ] ;
        fhir:path [ fhir:v "Media.meta" ] ;
-       fhir:short [ fhir:v "Metadata about the resource" ] ;
-       fhir:definition [ fhir:v "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource." ] ;
+       fhir:short [ fhir:v "「リソースに関するメタデータ」" ] ;
+       fhir:definition [ fhir:v "リソースに関するメタデータ。これはインフラストラクチャによって維持されるコンテンツです。 コンテンツの変更は、リソースのバージョン変更と常に関連しているわけではありません。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -198,7 +198,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -211,9 +211,9 @@
      ] [
        fhir:id [ fhir:v "Media.implicitRules" ] ;
        fhir:path [ fhir:v "Media.implicitRules" ] ;
-       fhir:short [ fhir:v "A set of rules under which this content was created" ] ;
-       fhir:definition [ fhir:v "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc." ] ;
-       fhir:comment [ fhir:v "Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element. Often, when used, the URL is a reference to an implementation guide that defines these special rules as part of it's narrative along with other profiles, value sets, etc." ] ;
+       fhir:short [ fhir:v "このコンテンツが作成されたルールセット" ] ;
+       fhir:definition [ fhir:v "「リソース構築時に遵守された一連のルールを指すものであり、コンテンツを処理する際に理解する必要があります。しばしば、特別なルールを定義する実装ガイドとその他のプロファイルなどを含むものです。」" ] ;
+       fhir:comment [ fhir:v "このルールセットを主張することで、取引先の限られた集団にしか内容を理解させることができず、長期的にはデータの有用性が制限されます。しかしながら、現存するヘルスエコシステムは高度に分断化しており、一般的に計算可能な形式でデータを定義、収集、交換する準備が整っていません。できる限り、実装者および/または仕様ライターはこの要素の使用を避けるべきです。使用する場合、URLは、そのナラティブとともに他のプロファイル、値セットなどを含む実装ガイドを定義する参照となります。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -227,7 +227,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -241,9 +241,9 @@
      ] [
        fhir:id [ fhir:v "Media.language" ] ;
        fhir:path [ fhir:v "Media.language" ] ;
-       fhir:short [ fhir:v "Language of the resource content" ] ;
-       fhir:definition [ fhir:v "The base language in which the resource is written." ] ;
-       fhir:comment [ fhir:v "Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource. Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute)." ] ;
+       fhir:short [ fhir:v "「リソースコンテンツの言語」(Risōsukontentsu no gengo)" ] ;
+       fhir:definition [ fhir:v "「リソースが書かれている基本言語。」" ] ;
+       fhir:comment [ fhir:v "言語はインデックスとアクセシビリティをサポートするために提供されます（通常、テキスト読み上げなどのサービスは言語タグを使用します）。物語のHTML言語タグは、物語に適用されます。リソース上の言語タグは、リソース内のデータから生成される他のプレゼンテーションの言語を指定するために使用できます。すべてのコンテンツが基本言語である必要はありません。Resource.languageは自動的に物語に適用されたと想定してはいけません。言語が指定されている場合、HTMLのdiv要素にも指定する必要があります（xml：langとhtml lang属性の関係に関する情報はHTML5の規則を参照）。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -257,7 +257,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -282,7 +282,7 @@
            fhir:value [ fhir:v "true"^^xsd:boolean ]
          ] ) ;
          fhir:strength [ fhir:v "preferred" ] ;
-         fhir:description [ fhir:v "A human language." ] ;
+         fhir:description [ fhir:v "「人間の言語。」(Ningen no gengo.)" ] ;
          fhir:valueSet [
            fhir:v "http://hl7.org/fhir/ValueSet/languages"^^xsd:anyURI ;
            fhir:link <http://hl7.org/fhir/ValueSet/languages>
@@ -291,9 +291,9 @@
      ] [
        fhir:id [ fhir:v "Media.text" ] ;
        fhir:path [ fhir:v "Media.text" ] ;
-       fhir:short [ fhir:v "Text summary of the resource, for human interpretation" ] ;
-       fhir:definition [ fhir:v "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety." ] ;
-       fhir:comment [ fhir:v "Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative. In some cases, a resource may only have text with little or no additional discrete data (as long as all minOccurs=1 elements are satisfied).  This may be necessary for data from legacy systems where information is captured as a \"text blob\" or where text is additionally entered raw or narrated and encoded information is added later." ] ;
+       fhir:short [ fhir:v "「人間の解釈のためのリソースのテキスト要約」" ] ;
+       fhir:definition [ fhir:v "「リソースの要約を含む人が読めるナビゲーションであり、リソースの内容を人に表現するために使用できます。ナビゲーションはすべての構造化されたデータをエンコードする必要はありませんが、人間がナビゲーションを読むだけで「臨床的に安全」であるために十分な詳細を含む必要があります。リソース定義には、臨床的な安全性を確保するためにナビゲーションで表現する必要があるコンテンツが定義される場合があります。」" ] ;
+       fhir:comment [ fhir:v "含まれるリソースには説明がありません。含まれないリソースには説明が必要です。場合によっては、リソースが少量のデータしか含まず、テキストだけで表現されることがあります（minOccurs = 1要素がすべて満たされている限り）。これは、情報が「テキストの塊」としてキャプチャされるレガシーシステムからのデータや、テキストが生またはナレーションされて符号化された情報が後で追加される場合に必要な場合があります。" ] ;
        fhir:alias ( [ fhir:v "narrative" ] [ fhir:v "html" ] [ fhir:v "xhtml" ] [ fhir:v "display" ] ) ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
@@ -308,7 +308,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -325,9 +325,9 @@
      ] [
        fhir:id [ fhir:v "Media.contained" ] ;
        fhir:path [ fhir:v "Media.contained" ] ;
-       fhir:short [ fhir:v "Contained, inline Resources" ] ;
-       fhir:definition [ fhir:v "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope." ] ;
-       fhir:comment [ fhir:v "This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again. Contained resources may have profiles and tags In their meta elements, but SHALL NOT have security labels." ] ;
+       fhir:short [ fhir:v "「含まれている、インラインのリソース」(Fukuma rete iru, inrain no risōsu)" ] ;
+       fhir:definition [ fhir:v "「これらのリソースは、それらを含むリソースから独立した存在を持ちません。それらは独立して識別することはできず、独自の独立したトランザクション範囲を持つこともできません。」" ] ;
+       fhir:comment [ fhir:v "「コンテンツが適切に識別できる場合には、これを行うべきではありません。識別が失われると、再び復元することは非常に困難であり（文脈に依存します）、メタ要素にプロファイルとタグを持つことができますが、セキュリティのラベルを持っていてはいけません。」" ] ;
        fhir:alias ( [ fhir:v "inline resources" ] [ fhir:v "anonymous resources" ] [ fhir:v "contained resources" ] ) ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
@@ -348,9 +348,9 @@
      ] [
        fhir:id [ fhir:v "Media.extension" ] ;
        fhir:path [ fhir:v "Media.extension" ] ;
-       fhir:short [ fhir:v "Additional content defined by implementations" ] ;
-       fhir:definition [ fhir:v "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ] ;
-       fhir:comment [ fhir:v "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ] ;
+       fhir:short [ fhir:v "実装によって定義される追加コンテンツ" ] ;
+       fhir:definition [ fhir:v "「リソースの基本的な定義の一部ではない追加情報を表すために使用することができます。拡張機能の使用を安全かつ管理可能にするために、定義と使用の一定のガバナンスが適用されます。実装者はどんな拡張機能でも定義できますが、拡張機能の定義の一部として満たす必要がある要件があります」" ] ;
+       fhir:comment [ fhir:v "どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。" ] ;
        fhir:alias ( [ fhir:v "extensions" ] [ fhir:v "user content" ] ) ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
@@ -365,7 +365,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -375,7 +375,7 @@
        ] [
          fhir:key [ fhir:v "ext-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "Must have either extensions or value[x], not both" ] ;
+         fhir:human [ fhir:v "「拡張機能または値[x]のいずれかが必要です。両方ではありません。」" ] ;
          fhir:expression [ fhir:v "extension.exists() != value.exists()" ] ;
          fhir:xpath [ fhir:v "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ] ;
          fhir:source [
@@ -392,9 +392,9 @@
      ] [
        fhir:id [ fhir:v "Media.modifierExtension" ] ;
        fhir:path [ fhir:v "Media.modifierExtension" ] ;
-       fhir:short [ fhir:v "Extensions that cannot be ignored" ] ;
-       fhir:definition [ fhir:v "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)." ] ;
-       fhir:comment [ fhir:v "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ] ;
+       fhir:short [ fhir:v "無視できない拡張機能 (Mushi dekinai kakuchou kinou)" ] ;
+       fhir:definition [ fhir:v "「リソースの基本的な定義に含まれない、要素の理解や、それを含む要素の子孫の理解を修正する追加情報を表すためにも使用されることがあります。通常、修飾要素は否定や修飾を提供します。拡張機能の使用を安全で管理しやすくするために、拡張機能の定義と使用に対して厳格な統治が適用されます。実装者は拡張機能を定義することが許可されていますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張をチェックする必要があります。修飾子拡張は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味も変更できません）。」" ] ;
+       fhir:comment [ fhir:v "どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。" ] ;
        fhir:requirements [ fhir:v "Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension)." ] ;
        fhir:alias ( [ fhir:v "extensions" ] [ fhir:v "user content" ] ) ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
@@ -410,7 +410,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -420,7 +420,7 @@
        ] [
          fhir:key [ fhir:v "ext-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "Must have either extensions or value[x], not both" ] ;
+         fhir:human [ fhir:v "「拡張機能または値[x]のいずれかが必要です。両方ではありません。」" ] ;
          fhir:expression [ fhir:v "extension.exists() != value.exists()" ] ;
          fhir:xpath [ fhir:v "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ] ;
          fhir:source [
@@ -440,7 +440,7 @@
        fhir:path [ fhir:v "Media.identifier" ] ;
        fhir:short [ fhir:v "製品またはシステムが管理する、施設内で画像（JPEG等）、映像（MPEG等）、音声ファイルなどのメディアを一意に識別するためのID。" ] ;
        fhir:definition [ fhir:v "製品またはシステムが管理する、施設内で画像（JPEG等）、映像（MPEG等）、音声ファイルなどのメディアを一意に識別するためのID。" ] ;
-       fhir:comment [ fhir:v "The identifier label and use can be used to determine what kind of identifier it is." ] ;
+       fhir:comment [ fhir:v "\"識別子のラベルと使用法によって、どの種類の識別子であるかを判断することができます。\"" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
        fhir:base [
@@ -454,7 +454,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -506,7 +506,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -548,7 +548,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -584,7 +584,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -601,7 +601,7 @@
            fhir:value [ fhir:v "MediaStatus" ]
          ] ) ;
          fhir:strength [ fhir:v "required" ] ;
-         fhir:description [ fhir:v "Codes identifying the lifecycle stage of an event." ] ;
+         fhir:description [ fhir:v "\"イベントのライフサイクルの段階を識別するコード。\"" ] ;
          fhir:valueSet [
            fhir:v "http://hl7.org/fhir/ValueSet/event-status|4.0.1"^^xsd:anyURI ;
            fhir:link <http://hl7.org/fhir/ValueSet/event-status|4.0.1>
@@ -640,7 +640,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -656,7 +656,7 @@
            fhir:value [ fhir:v "MediaType" ]
          ] ) ;
          fhir:strength [ fhir:v "extensible" ] ;
-         fhir:description [ fhir:v "Codes for high level media categories." ] ;
+         fhir:description [ fhir:v "高水準メディアカテゴリのコード。" ] ;
          fhir:valueSet [
            fhir:v "http://hl7.org/fhir/ValueSet/media-type"^^xsd:anyURI ;
            fhir:link <http://hl7.org/fhir/ValueSet/media-type>
@@ -688,7 +688,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -704,7 +704,7 @@
            fhir:value [ fhir:v "MediaModality" ]
          ] ) ;
          fhir:strength [ fhir:v "example" ] ;
-         fhir:description [ fhir:v "Detailed information about the type of the image - its kind, purpose, or the kind of equipment used to generate it." ] ;
+         fhir:description [ fhir:v "「画像の種類に関する詳細情報-種類、目的、または生成に使用される機器の種類についての情報。」" ] ;
          fhir:valueSet [
            fhir:v "http://hl7.org/fhir/ValueSet/media-modality"^^xsd:anyURI ;
            fhir:link <http://hl7.org/fhir/ValueSet/media-modality>
@@ -742,7 +742,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -758,7 +758,7 @@
            fhir:value [ fhir:v "MediaView" ]
          ] ) ;
          fhir:strength [ fhir:v "example" ] ;
-         fhir:description [ fhir:v "Imaging view (projection) used when collecting an image." ] ;
+         fhir:description [ fhir:v "画像を収集する際に使用される投影イメージングビュー。" ] ;
          fhir:valueSet [
            fhir:v "http://hl7.org/fhir/ValueSet/media-view"^^xsd:anyURI ;
            fhir:link <http://hl7.org/fhir/ValueSet/media-view>
@@ -791,7 +791,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -843,7 +843,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -885,7 +885,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -924,7 +924,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -985,7 +985,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -1027,7 +1027,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -1043,7 +1043,7 @@
            fhir:value [ fhir:v "MediaReason" ]
          ] ) ;
          fhir:strength [ fhir:v "example" ] ;
-         fhir:description [ fhir:v "The reason for the media." ] ;
+         fhir:description [ fhir:v "メディアの理由。" ] ;
          fhir:valueSet [
            fhir:v "http://hl7.org/fhir/ValueSet/procedure-reason"^^xsd:anyURI ;
            fhir:link <http://hl7.org/fhir/ValueSet/procedure-reason>
@@ -1078,7 +1078,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -1094,7 +1094,7 @@
            fhir:value [ fhir:v "BodySite" ]
          ] ) ;
          fhir:strength [ fhir:v "example" ] ;
-         fhir:description [ fhir:v "Codes describing anatomical locations. May include laterality." ] ;
+         fhir:description [ fhir:v "解剖学的位置を記述するコード。左右対称性を含む場合があります。" ] ;
          fhir:valueSet [
            fhir:v "http://hl7.org/fhir/ValueSet/body-site"^^xsd:anyURI ;
            fhir:link <http://hl7.org/fhir/ValueSet/body-site>
@@ -1129,7 +1129,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -1175,7 +1175,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -1214,7 +1214,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -1250,7 +1250,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -1286,7 +1286,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -1305,7 +1305,7 @@
        fhir:path [ fhir:v "Media.duration" ] ;
        fhir:short [ fhir:v "ビデオ映像・音声向けの、秒単位の録画・記録時間。" ] ;
        fhir:definition [ fhir:v "ビデオ映像・音声向けの、秒単位の録画・記録時間。" ] ;
-       fhir:comment [ fhir:v "The duration might differ from occurrencePeriod if recording was paused." ] ;
+       fhir:comment [ fhir:v "「録画が一時停止した場合、期間が発生期間と異なる場合があります。」" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -1319,7 +1319,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -1341,7 +1341,7 @@
        fhir:path [ fhir:v "Media.content" ] ;
        fhir:short [ fhir:v "埋め込まれたメディアの実際のコンテンツ、またはメディアソースファイルへの直接参照。" ] ;
        fhir:definition [ fhir:v "埋め込まれたメディアの実際のコンテンツ、またはメディアソースファイルへの直接参照。" ] ;
-       fhir:comment [ fhir:v "Recommended content types: image/jpeg, image/png, image/tiff, video/mpeg, audio/mp4, application/dicom. Application/dicom can contain the transfer syntax as a parameter.  For media that covers a period of time (video/sound), the content.creationTime is the end time. Creation time is used for tracking, organizing versions and searching." ] ;
+       fhir:comment [ fhir:v "推奨コンテンツタイプ：image/jpeg、image/png、image/tiff、video/mpeg、audio/mp4、application/dicom。application/dicomには転送構文をパラメータとして含めることができます。時間をカバーするメディア（動画/音声）の場合、content.creationTimeは終了時間です。作成時間は追跡、バージョンの整理および検索に使用されます。" ] ;
        fhir:min [ fhir:v "1"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -1355,7 +1355,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
@@ -1374,7 +1374,7 @@
        fhir:path [ fhir:v "Media.note" ] ;
        fhir:short [ fhir:v "メディアについてのコメント。" ] ;
        fhir:definition [ fhir:v "メディアについてのコメント。" ] ;
-       fhir:comment [ fhir:v "Not to be used for observations, conclusions, etc. Instead use an [Observation](http://hl7.org/fhir/R4/observation.html) based on the Media/ImagingStudy resource." ] ;
+       fhir:comment [ fhir:v "「観察、結論などに使用しないでください。代わりに、Media/ImagingStudyリソースに基づく[観察]を使用してください。」" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
        fhir:base [
@@ -1388,7 +1388,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
          fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
