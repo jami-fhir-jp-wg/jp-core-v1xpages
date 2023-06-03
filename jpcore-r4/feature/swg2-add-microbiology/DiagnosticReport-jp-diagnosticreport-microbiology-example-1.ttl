@@ -17,16 +17,412 @@
   ] ; # 
   fhir:text [
      fhir:status [ fhir:v "generated" ] ;
-     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2><span title=\"Codes: {http://loinc.org 18725-2}\">Microbiology studies</span> (<span title=\"Codes: {http://loinc.org LP7819-8}\">微生物検査</span>) </h2><table class=\"grid\"><tr><td>Subject</td><td><b>山田 太郎</b> male, DoB: 1970-01-01 ( id: 00000010)</td></tr><tr><td>When For</td><td>2021-03-04 08:30:00+1100</td></tr><tr><td>Reported</td><td>2021-03-04 11:45:33+1100</td></tr><tr><td>Identifier:</td><td> id: 1234567 (use: USUAL)</td></tr></table><p><b>Report Details</b></p><table class=\"grid\"><tr><td><b>Code</b></td><td><b>Value</b></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr></table></div>"
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2><span title=\"Codes: {http://loinc.org 18725-2}\">Microbiology studies</span> (<span title=\"Codes: {http://loinc.org LP7819-8}\">微生物検査</span>) </h2><table class=\"grid\"><tr><td>Subject</td><td><b>山田 太郎</b> male, DoB: 1970-01-01 ( id: 00000010)</td></tr><tr><td>When For</td><td>2021-03-04 08:30:00+1100</td></tr><tr><td>Reported</td><td>2021-03-04 11:45:33+1100</td></tr><tr><td>Identifier:</td><td> id: 1234567 (use: USUAL)</td></tr></table><p><b>Report Details</b></p><table class=\"grid\"><tr><td><b>Code</b></td><td><b>Value</b></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr></table></div>"
   ] ; # 
+  fhir:contained ( [
+     a fhir:ServiceRequest ;
+     fhir:id [ fhir:v "jp-servicerequest-example-1" ] ;
+     fhir:status [ fhir:v "active" ] ;
+     fhir:intent [ fhir:v "original-order" ] ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://abc-hospital.local/fhir/ObservationOrder/localcode"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "12345678" ]
+       ] ) ;
+       fhir:text [ fhir:v "尿検査" ]
+     ] ;
+     fhir:subject [
+       fhir:link <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1> ;
+       fhir:reference [ fhir:v "Patient/jp-patient-example-1" ]
+     ] ;
+     fhir:encounter [
+       fhir:link <http://jpfhir.jp/fhir/core/Encounter/jp-encounter-example-1> ;
+       fhir:reference [ fhir:v "Encounter/jp-encounter-example-1" ]
+     ] ;
+     fhir:occurrence [ fhir:v "2021-10-10T17:39:00+09:00"^^xsd:dateTime ] ;
+     fhir:requester [
+       fhir:link <http://jpfhir.jp/fhir/core/Practitioner/jp-practitioner-example-female-1> ;
+       fhir:reference [ fhir:v "Practitioner/jp-practitioner-example-female-1" ]
+     ] ;
+     fhir:performer ( [
+       fhir:link <http://jpfhir.jp/fhir/core/Practitioner/jp-practitioner-example-male-2> ;
+       fhir:reference [ fhir:v "Practitioner/jp-practitioner-example-male-2" ]
+     ] )
+  ] [
+     a fhir:Organization ;
+     fhir:id [ fhir:v "jp-organization-example-inspection" ] ;
+     fhir:meta [
+       fhir:profile ( [
+         fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization"^^xsd:anyURI ;
+         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization>
+       ] )
+     ] ;
+     fhir:identifier ( [
+       fhir:system [ fhir:v "abc-hospital.local/fhir/Organization/localcode"^^xsd:anyURI ] ;
+       fhir:value [ fhir:v "000-000-000" ]
+     ] ) ;
+     fhir:type ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/organization-type"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "team" ] ;
+         fhir:display [ fhir:v "Organizational team" ]
+       ] )
+     ] ) ;
+     fhir:name [ fhir:v "ひまわりＡＢＣ検査株式会社健康保険組合" ]
+  ] [
+     a fhir:Observation ;
+     fhir:id [ fhir:v "gram-strain1" ] ;
+     fhir:meta [
+       fhir:profile ( [
+         fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"^^xsd:anyURI ;
+         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology>
+       ] )
+     ] ;
+     fhir:status [ fhir:v "final" ] ;
+     fhir:category ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "laboratory" ] ;
+         fhir:display [ fhir:v "Laboratory" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         a loinc:18725-2 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "18725-2" ] ;
+         fhir:display [ fhir:v "Microbiology studies" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "gram-stain" ] ;
+         fhir:display [ fhir:v "Gram stain" ]
+       ] )
+     ] ) ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "urn:oid:1.2.392.200119.4.504"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "6A010000006170449" ] ;
+         fhir:display [ fhir:v "塗抹鏡検(一般細菌)" ]
+       ] [
+         fhir:system [ fhir:v "urn:EXAMPLE_LOCAL_CODE"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "6A0100000061704Z1" ] ;
+         fhir:display [ fhir:v "塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義1(白血球)" ]
+       ] ) ;
+       fhir:text [ fhir:v "白血球" ]
+     ] ;
+     fhir:value [ fhir:v "1+" ]
+  ] [
+     a fhir:Observation ;
+     fhir:id [ fhir:v "gram-strain2" ] ;
+     fhir:meta [
+       fhir:profile ( [
+         fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"^^xsd:anyURI ;
+         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology>
+       ] )
+     ] ;
+     fhir:status [ fhir:v "final" ] ;
+     fhir:category ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "laboratory" ] ;
+         fhir:display [ fhir:v "Laboratory" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         a loinc:18725-2 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "18725-2" ] ;
+         fhir:display [ fhir:v "Microbiology studies" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "gram-stain" ] ;
+         fhir:display [ fhir:v "Grams stain" ]
+       ] )
+     ] ) ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "urn:oid:1.2.392.200119.4.504"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "6A010000006170449" ] ;
+         fhir:display [ fhir:v "塗抹鏡検(一般細菌)" ]
+       ] [
+         fhir:system [ fhir:v "urn:EXAMPLE_LOCAL_CODE"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "6A0100000061704Z2" ] ;
+         fhir:display [ fhir:v "塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義2(上皮細胞)" ]
+       ] ) ;
+       fhir:text [ fhir:v "上皮細胞" ]
+     ] ;
+     fhir:value [ fhir:v "少数" ]
+  ] [
+     a fhir:Observation ;
+     fhir:id [ fhir:v "gram-strain3" ] ;
+     fhir:meta [
+       fhir:profile ( [
+         fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"^^xsd:anyURI ;
+         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology>
+       ] )
+     ] ;
+     fhir:status [ fhir:v "final" ] ;
+     fhir:category ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "laboratory" ] ;
+         fhir:display [ fhir:v "Laboratory" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         a loinc:18725-2 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "18725-2" ] ;
+         fhir:display [ fhir:v "Microbiology studies" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "gram-stain" ] ;
+         fhir:display [ fhir:v "Grams stain" ]
+       ] )
+     ] ) ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "urn:oid:1.2.392.200119.4.504"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "6A010000006170449" ] ;
+         fhir:display [ fhir:v "塗抹鏡検(一般細菌)" ]
+       ] [
+         fhir:system [ fhir:v "urn:EXAMPLE_LOCAL_CODE"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "6A0100000061704Z3" ] ;
+         fhir:display [ fhir:v "塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義3(グラム陽性球菌（GPC）)" ]
+       ] ) ;
+       fhir:text [ fhir:v "グラム陽性球菌（GPC）" ]
+     ] ;
+     fhir:value [ fhir:v "1+" ]
+  ] [
+     a fhir:Observation ;
+     fhir:id [ fhir:v "gram-strain4" ] ;
+     fhir:meta [
+       fhir:profile ( [
+         fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"^^xsd:anyURI ;
+         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology>
+       ] )
+     ] ;
+     fhir:status [ fhir:v "final" ] ;
+     fhir:category ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "laboratory" ] ;
+         fhir:display [ fhir:v "Laboratory" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         a loinc:18725-2 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "18725-2" ] ;
+         fhir:display [ fhir:v "Microbiology studies" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "gram-stain" ] ;
+         fhir:display [ fhir:v "Grams stain" ]
+       ] )
+     ] ) ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "urn:oid:1.2.392.200119.4.504"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "6A010000006170449" ] ;
+         fhir:display [ fhir:v "塗抹鏡検(一般細菌)" ]
+       ] [
+         fhir:system [ fhir:v "urn:EXAMPLE_LOCAL_CODE"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "6A0100000061704Z4" ] ;
+         fhir:display [ fhir:v "塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義4(グラム陽性桿菌（GPR）)" ]
+       ] ) ;
+       fhir:text [ fhir:v "グラム陽性桿菌（GPR）" ]
+     ] ;
+     fhir:value [ fhir:v "少数" ]
+  ] [
+     a fhir:Observation ;
+     fhir:id [ fhir:v "organism-panels1" ] ;
+     fhir:meta [
+       fhir:profile ( [
+         fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"^^xsd:anyURI ;
+         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology>
+       ] )
+     ] ;
+     fhir:status [ fhir:v "final" ] ;
+     fhir:category ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "laboratory" ] ;
+         fhir:display [ fhir:v "Laboratory" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         a loinc:18725-2 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "18725-2" ] ;
+         fhir:display [ fhir:v "Microbiology studies" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "organism-panels" ] ;
+         fhir:display [ fhir:v "Organism panels" ]
+       ] )
+     ] ) ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "urn:oid:1.2.392.200119.4.504"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "6B010000006174149" ] ;
+         fhir:display [ fhir:v "培養同定(一般細菌)" ]
+       ] ) ;
+       fhir:text [ fhir:v "培養同定(一般細菌)" ]
+     ] ;
+     fhir:hasMember ( [
+       fhir:link <http://jpfhir.jp/fhir/core/Observation/organism-id1> ;
+       fhir:reference [ fhir:v "Observation/organism-id1" ]
+     ] [
+       fhir:link <http://jpfhir.jp/fhir/core/Observation/susceptibility-panels1> ;
+       fhir:reference [ fhir:v "Observation/susceptibility-panels1" ]
+     ] )
+  ] [
+     a fhir:Observation ;
+     fhir:id [ fhir:v "organism-panels2" ] ;
+     fhir:meta [
+       fhir:profile ( [
+         fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"^^xsd:anyURI ;
+         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology>
+       ] )
+     ] ;
+     fhir:status [ fhir:v "final" ] ;
+     fhir:category ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "laboratory" ] ;
+         fhir:display [ fhir:v "Laboratory" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         a loinc:18725-2 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "18725-2" ] ;
+         fhir:display [ fhir:v "Microbiology studies" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "organism-panels" ] ;
+         fhir:display [ fhir:v "Organism panels" ]
+       ] )
+     ] ) ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "urn:oid:1.2.392.200119.4.504"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "6B010000006174149" ] ;
+         fhir:display [ fhir:v "培養同定(一般細菌)" ]
+       ] ) ;
+       fhir:text [ fhir:v "培養同定(一般細菌)" ]
+     ] ;
+     fhir:hasMember ( [
+       fhir:link <http://jpfhir.jp/fhir/core/Observation/organism-id2> ;
+       fhir:reference [ fhir:v "Observation/organism-id2" ]
+     ] [
+       fhir:link <http://jpfhir.jp/fhir/core/Observation/susceptibility-panels2> ;
+       fhir:reference [ fhir:v "Observation/susceptibility-panels2" ]
+     ] )
+  ] [
+     a fhir:Observation ;
+     fhir:id [ fhir:v "organism-panels3" ] ;
+     fhir:meta [
+       fhir:profile ( [
+         fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"^^xsd:anyURI ;
+         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology>
+       ] )
+     ] ;
+     fhir:status [ fhir:v "final" ] ;
+     fhir:category ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "laboratory" ] ;
+         fhir:display [ fhir:v "Laboratory" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         a loinc:18725-2 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "18725-2" ] ;
+         fhir:display [ fhir:v "Microbiology studies" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "organism-panels" ] ;
+         fhir:display [ fhir:v "Organism panels" ]
+       ] )
+     ] ) ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "urn:oid:1.2.392.200119.4.504"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "6B010000006174149" ] ;
+         fhir:display [ fhir:v "培養同定(一般細菌)" ]
+       ] ) ;
+       fhir:text [ fhir:v "培養同定(一般細菌)" ]
+     ] ;
+     fhir:hasMember ( [
+       fhir:link <http://jpfhir.jp/fhir/core/Observation/organism-id3> ;
+       fhir:reference [ fhir:v "Observation/organism-id3" ]
+     ] )
+  ] [
+     a fhir:Observation ;
+     fhir:id [ fhir:v "organism-panels4" ] ;
+     fhir:meta [
+       fhir:profile ( [
+         fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"^^xsd:anyURI ;
+         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology>
+       ] )
+     ] ;
+     fhir:status [ fhir:v "final" ] ;
+     fhir:category ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "laboratory" ] ;
+         fhir:display [ fhir:v "Laboratory" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         a loinc:18725-2 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "18725-2" ] ;
+         fhir:display [ fhir:v "Microbiology studies" ]
+       ] )
+     ] [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "organism-panels" ] ;
+         fhir:display [ fhir:v "Organism panels" ]
+       ] )
+     ] ) ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "urn:oid:1.2.392.200119.4.504"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "6B010000006174149" ] ;
+         fhir:display [ fhir:v "培養同定(一般細菌)" ]
+       ] ) ;
+       fhir:text [ fhir:v "培養同定(一般細菌)" ]
+     ] ;
+     fhir:hasMember ( [
+       fhir:link <http://jpfhir.jp/fhir/core/Observation/organism-id4> ;
+       fhir:reference [ fhir:v "Observation/organism-id4" ]
+     ] )
+  ] ) ; # 
   fhir:identifier ( [
      fhir:use [ fhir:v "usual" ] ;
      fhir:system [ fhir:v "http://abc-hospital.local/fhir/mb/reportid"^^xsd:anyURI ] ;
      fhir:value [ fhir:v "1234567" ]
   ] ) ; # 
   fhir:basedOn ( [
-     fhir:link <http://jpfhir.jp/fhir/core/ServiceRequest/order1> ;
-     fhir:reference [ fhir:v "ServiceRequest/order1" ]
+     fhir:reference [ fhir:v "#jp-servicerequest-example-1" ]
   ] ) ; # 
   fhir:status [ fhir:v "final"] ; # 
   fhir:category ( [
@@ -56,44 +452,35 @@
   fhir:effective [ fhir:v "2021-03-04T08:30:00+11:00"^^xsd:dateTime] ; # 
   fhir:issued [ fhir:v "2021-03-04T11:45:33+11:00"^^xsd:dateTime] ; # 
   fhir:performer ( [
-     fhir:link <http://jpfhir.jp/fhir/core/Organization/0001-1111> ;
-     fhir:reference [ fhir:v "Organization/0001-1111" ] ;
+     fhir:reference [ fhir:v "#jp-organization-example-inspection" ] ;
      fhir:display [ fhir:v "株式会社ＡＢＣ検査" ]
   ] ) ; # 
   fhir:resultsInterpreter ( [
-     fhir:link <http://jpfhir.jp/fhir/core/Practitioner/person1> ;
-     fhir:reference [ fhir:v "Practitioner/person1" ] ;
-     fhir:display [ fhir:v "検査タロウ" ]
+     fhir:link <http://jpfhir.jp/fhir/core/Practitioner/jp-practitioner-example-female-1> ;
+     fhir:reference [ fhir:v "Practitioner/jp-practitioner-example-female-1" ] ;
+     fhir:display [ fhir:v "福岡 花子" ]
   ] ) ; # 
   fhir:specimen ( [
-     fhir:link <http://jpfhir.jp/fhir/core/Specimen/specimen1> ;
-     fhir:reference [ fhir:v "Specimen/specimen1" ] ;
+     fhir:link <http://jpfhir.jp/fhir/core/Specimen/jp-specimen-example-3> ;
+     fhir:reference [ fhir:v "Specimen/jp-specimen-example-3" ] ;
      fhir:display [ fhir:v "喀痰" ]
   ] ) ; # 
   fhir:result ( [
-     fhir:link <http://jpfhir.jp/fhir/core/Observation/gram-strain1> ;
-     fhir:reference [ fhir:v "Observation/gram-strain1" ]
+     fhir:reference [ fhir:v "#gram-strain1" ]
   ] [
-     fhir:link <http://jpfhir.jp/fhir/core/Observation/gram-strain2> ;
-     fhir:reference [ fhir:v "Observation/gram-strain2" ]
+     fhir:reference [ fhir:v "#gram-strain2" ]
   ] [
-     fhir:link <http://jpfhir.jp/fhir/core/Observation/gram-strain3> ;
-     fhir:reference [ fhir:v "Observation/gram-strain3" ]
+     fhir:reference [ fhir:v "#gram-strain3" ]
   ] [
-     fhir:link <http://jpfhir.jp/fhir/core/Observation/gram-strain4> ;
-     fhir:reference [ fhir:v "Observation/gram-strain4" ]
+     fhir:reference [ fhir:v "#gram-strain4" ]
   ] [
-     fhir:link <http://jpfhir.jp/fhir/core/Observation/organism-panels1> ;
-     fhir:reference [ fhir:v "Observation/organism-panels1" ]
+     fhir:reference [ fhir:v "#organism-panels1" ]
   ] [
-     fhir:link <http://jpfhir.jp/fhir/core/Observation/organism-panels2> ;
-     fhir:reference [ fhir:v "Observation/organism-panels2" ]
+     fhir:reference [ fhir:v "#organism-panels2" ]
   ] [
-     fhir:link <http://jpfhir.jp/fhir/core/Observation/organism-panels3> ;
-     fhir:reference [ fhir:v "Observation/organism-panels3" ]
+     fhir:reference [ fhir:v "#organism-panels3" ]
   ] [
-     fhir:link <http://jpfhir.jp/fhir/core/Observation/organism-panels4> ;
-     fhir:reference [ fhir:v "Observation/organism-panels4" ]
+     fhir:reference [ fhir:v "#organism-panels4" ]
   ] ) ; # 
   fhir:presentedForm ( [
      fhir:contentType [ fhir:v "application/pdf" ] ;

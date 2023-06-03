@@ -6,15 +6,408 @@
     <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Microbiology"/>
   </meta>
   <text>
-    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><h2><span title="Codes: {http://loinc.org 18725-2}">Microbiology studies</span> (<span title="Codes: {http://loinc.org LP7819-8}">微生物検査</span>) </h2><table class="grid"><tr><td>Subject</td><td><b>山田 太郎</b> male, DoB: 1970-01-01 ( id: 00000010)</td></tr><tr><td>When For</td><td>2021-03-04 08:30:00+1100</td></tr><tr><td>Reported</td><td>2021-03-04 11:45:33+1100</td></tr><tr><td>Identifier:</td><td> id: 1234567 (use: USUAL)</td></tr></table><p><b>Report Details</b></p><table class="grid"><tr><td><b>Code</b></td><td><b>Value</b></td></tr><tr><td colspan="2"><i>Observation</i></td></tr><tr><td colspan="2"><i>Observation</i></td></tr><tr><td colspan="2"><i>Observation</i></td></tr><tr><td colspan="2"><i>Observation</i></td></tr><tr><td colspan="2"><i>Observation</i></td></tr><tr><td colspan="2"><i>Observation</i></td></tr><tr><td colspan="2"><i>Observation</i></td></tr><tr><td colspan="2"><i>Observation</i></td></tr></table></div>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><h2><span title="Codes: {http://loinc.org 18725-2}">Microbiology studies</span> (<span title="Codes: {http://loinc.org LP7819-8}">微生物検査</span>) </h2><table class="grid"><tr><td>Subject</td><td><b>山田 太郎</b> male, DoB: 1970-01-01 ( id: 00000010)</td></tr><tr><td>When For</td><td>2021-03-04 08:30:00+1100</td></tr><tr><td>Reported</td><td>2021-03-04 11:45:33+1100</td></tr><tr><td>Identifier:</td><td> id: 1234567 (use: USUAL)</td></tr></table><p><b>Report Details</b></p><table class="grid"><tr><td><b>Code</b></td><td><b>Value</b></td></tr><tr><td colspan="2"><i>This Observation could not be resolved</i></td></tr><tr><td colspan="2"><i>This Observation could not be resolved</i></td></tr><tr><td colspan="2"><i>This Observation could not be resolved</i></td></tr><tr><td colspan="2"><i>This Observation could not be resolved</i></td></tr><tr><td colspan="2"><i>This Observation could not be resolved</i></td></tr><tr><td colspan="2"><i>This Observation could not be resolved</i></td></tr><tr><td colspan="2"><i>This Observation could not be resolved</i></td></tr><tr><td colspan="2"><i>This Observation could not be resolved</i></td></tr></table></div>
   </text>
+  <contained>
+    <ServiceRequest>
+      <id value="jp-servicerequest-example-1"/>
+      <status value="active"/>
+      <intent value="original-order"/>
+      <code>
+        <coding>
+          <system value="http://abc-hospital.local/fhir/ObservationOrder/localcode"/>
+          <code value="12345678"/>
+        </coding>
+        <text value="尿検査"/>
+      </code>
+      <subject>
+        <reference value="Patient/jp-patient-example-1"/>
+      </subject>
+      <encounter>
+        <reference value="Encounter/jp-encounter-example-1"/>
+      </encounter>
+      <occurrenceDateTime value="2021-10-10T17:39:00+09:00"/>
+      <requester>
+        <reference value="Practitioner/jp-practitioner-example-female-1"/>
+      </requester>
+      <performer>
+        <reference value="Practitioner/jp-practitioner-example-male-2"/>
+      </performer>
+    </ServiceRequest>
+  </contained>
+  <contained>
+    <Organization>
+      <id value="jp-organization-example-inspection"/>
+      <meta>
+        <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization"/>
+      </meta>
+      <identifier>
+        <system value="abc-hospital.local/fhir/Organization/localcode"/>
+        <value value="000-000-000"/>
+      </identifier>
+      <type>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+          <code value="team"/>
+          <display value="Organizational team"/>
+        </coding>
+      </type>
+      <name value="ひまわりＡＢＣ検査株式会社健康保険組合"/>
+    </Organization>
+  </contained>
+  <contained>
+    <Observation>
+      <id value="gram-strain1"/>
+      <meta>
+        <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"/>
+      </meta>
+      <status value="final"/>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"/>
+          <code value="laboratory"/>
+          <display value="Laboratory"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="18725-2"/>
+          <display value="Microbiology studies"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"/>
+          <code value="gram-stain"/>
+          <display value="Gram stain"/>
+        </coding>
+      </category>
+      <code>
+        <coding>
+          <system value="urn:oid:1.2.392.200119.4.504"/>
+          <code value="6A010000006170449"/>
+          <display value="塗抹鏡検(一般細菌)"/>
+        </coding>
+        <coding>
+          <system value="urn:EXAMPLE_LOCAL_CODE"/>
+          <code value="6A0100000061704Z1"/>
+          <display value="塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義1(白血球)"/>
+        </coding>
+        <text value="白血球"/>
+      </code>
+      <valueString value="1+"/>
+    </Observation>
+  </contained>
+  <contained>
+    <Observation>
+      <id value="gram-strain2"/>
+      <meta>
+        <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"/>
+      </meta>
+      <status value="final"/>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"/>
+          <code value="laboratory"/>
+          <display value="Laboratory"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="18725-2"/>
+          <display value="Microbiology studies"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"/>
+          <code value="gram-stain"/>
+          <display value="Grams stain"/>
+        </coding>
+      </category>
+      <code>
+        <coding>
+          <system value="urn:oid:1.2.392.200119.4.504"/>
+          <code value="6A010000006170449"/>
+          <display value="塗抹鏡検(一般細菌)"/>
+        </coding>
+        <coding>
+          <system value="urn:EXAMPLE_LOCAL_CODE"/>
+          <code value="6A0100000061704Z2"/>
+          <display value="塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義2(上皮細胞)"/>
+        </coding>
+        <text value="上皮細胞"/>
+      </code>
+      <valueString value="少数"/>
+    </Observation>
+  </contained>
+  <contained>
+    <Observation>
+      <id value="gram-strain3"/>
+      <meta>
+        <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"/>
+      </meta>
+      <status value="final"/>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"/>
+          <code value="laboratory"/>
+          <display value="Laboratory"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="18725-2"/>
+          <display value="Microbiology studies"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"/>
+          <code value="gram-stain"/>
+          <display value="Grams stain"/>
+        </coding>
+      </category>
+      <code>
+        <coding>
+          <system value="urn:oid:1.2.392.200119.4.504"/>
+          <code value="6A010000006170449"/>
+          <display value="塗抹鏡検(一般細菌)"/>
+        </coding>
+        <coding>
+          <system value="urn:EXAMPLE_LOCAL_CODE"/>
+          <code value="6A0100000061704Z3"/>
+          <display value="塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義3(グラム陽性球菌（GPC）)"/>
+        </coding>
+        <text value="グラム陽性球菌（GPC）"/>
+      </code>
+      <valueString value="1+"/>
+    </Observation>
+  </contained>
+  <contained>
+    <Observation>
+      <id value="gram-strain4"/>
+      <meta>
+        <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"/>
+      </meta>
+      <status value="final"/>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"/>
+          <code value="laboratory"/>
+          <display value="Laboratory"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="18725-2"/>
+          <display value="Microbiology studies"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"/>
+          <code value="gram-stain"/>
+          <display value="Grams stain"/>
+        </coding>
+      </category>
+      <code>
+        <coding>
+          <system value="urn:oid:1.2.392.200119.4.504"/>
+          <code value="6A010000006170449"/>
+          <display value="塗抹鏡検(一般細菌)"/>
+        </coding>
+        <coding>
+          <system value="urn:EXAMPLE_LOCAL_CODE"/>
+          <code value="6A0100000061704Z4"/>
+          <display value="塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義4(グラム陽性桿菌（GPR）)"/>
+        </coding>
+        <text value="グラム陽性桿菌（GPR）"/>
+      </code>
+      <valueString value="少数"/>
+    </Observation>
+  </contained>
+  <contained>
+    <Observation>
+      <id value="organism-panels1"/>
+      <meta>
+        <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"/>
+      </meta>
+      <status value="final"/>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"/>
+          <code value="laboratory"/>
+          <display value="Laboratory"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="18725-2"/>
+          <display value="Microbiology studies"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"/>
+          <code value="organism-panels"/>
+          <display value="Organism panels"/>
+        </coding>
+      </category>
+      <code>
+        <coding>
+          <system value="urn:oid:1.2.392.200119.4.504"/>
+          <code value="6B010000006174149"/>
+          <display value="培養同定(一般細菌)"/>
+        </coding>
+        <text value="培養同定(一般細菌)"/>
+      </code>
+      <hasMember>
+        <reference value="Observation/organism-id1"/>
+      </hasMember>
+      <hasMember>
+        <reference value="Observation/susceptibility-panels1"/>
+      </hasMember>
+    </Observation>
+  </contained>
+  <contained>
+    <Observation>
+      <id value="organism-panels2"/>
+      <meta>
+        <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"/>
+      </meta>
+      <status value="final"/>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"/>
+          <code value="laboratory"/>
+          <display value="Laboratory"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="18725-2"/>
+          <display value="Microbiology studies"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"/>
+          <code value="organism-panels"/>
+          <display value="Organism panels"/>
+        </coding>
+      </category>
+      <code>
+        <coding>
+          <system value="urn:oid:1.2.392.200119.4.504"/>
+          <code value="6B010000006174149"/>
+          <display value="培養同定(一般細菌)"/>
+        </coding>
+        <text value="培養同定(一般細菌)"/>
+      </code>
+      <hasMember>
+        <reference value="Observation/organism-id2"/>
+      </hasMember>
+      <hasMember>
+        <reference value="Observation/susceptibility-panels2"/>
+      </hasMember>
+    </Observation>
+  </contained>
+  <contained>
+    <Observation>
+      <id value="organism-panels3"/>
+      <meta>
+        <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"/>
+      </meta>
+      <status value="final"/>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"/>
+          <code value="laboratory"/>
+          <display value="Laboratory"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="18725-2"/>
+          <display value="Microbiology studies"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"/>
+          <code value="organism-panels"/>
+          <display value="Organism panels"/>
+        </coding>
+      </category>
+      <code>
+        <coding>
+          <system value="urn:oid:1.2.392.200119.4.504"/>
+          <code value="6B010000006174149"/>
+          <display value="培養同定(一般細菌)"/>
+        </coding>
+        <text value="培養同定(一般細菌)"/>
+      </code>
+      <hasMember>
+        <reference value="Observation/organism-id3"/>
+      </hasMember>
+    </Observation>
+  </contained>
+  <contained>
+    <Observation>
+      <id value="organism-panels4"/>
+      <meta>
+        <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"/>
+      </meta>
+      <status value="final"/>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"/>
+          <code value="laboratory"/>
+          <display value="Laboratory"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="18725-2"/>
+          <display value="Microbiology studies"/>
+        </coding>
+      </category>
+      <category>
+        <coding>
+          <system value="http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"/>
+          <code value="organism-panels"/>
+          <display value="Organism panels"/>
+        </coding>
+      </category>
+      <code>
+        <coding>
+          <system value="urn:oid:1.2.392.200119.4.504"/>
+          <code value="6B010000006174149"/>
+          <display value="培養同定(一般細菌)"/>
+        </coding>
+        <text value="培養同定(一般細菌)"/>
+      </code>
+      <hasMember>
+        <reference value="Observation/organism-id4"/>
+      </hasMember>
+    </Observation>
+  </contained>
   <identifier>
     <use value="usual"/>
     <system value="http://abc-hospital.local/fhir/mb/reportid"/>
     <value value="1234567"/>
   </identifier>
   <basedOn>
-    <reference value="ServiceRequest/order1"/>
+    <reference value="#jp-servicerequest-example-1"/>
   </basedOn>
   <status value="final"/>
   <category>
@@ -40,40 +433,40 @@
   <effectiveDateTime value="2021-03-04T08:30:00+11:00"/>
   <issued value="2021-03-04T11:45:33+11:00"/>
   <performer>
-    <reference value="Organization/0001-1111"/>
+    <reference value="#jp-organization-example-inspection"/>
     <display value="株式会社ＡＢＣ検査"/>
   </performer>
   <resultsInterpreter>
-    <reference value="Practitioner/person1"/>
-    <display value="検査タロウ"/>
+    <reference value="Practitioner/jp-practitioner-example-female-1"/>
+    <display value="福岡 花子"/>
   </resultsInterpreter>
   <specimen>
-    <reference value="Specimen/specimen1"/>
+    <reference value="Specimen/jp-specimen-example-3"/>
     <display value="喀痰"/>
   </specimen>
   <result>
-    <reference value="Observation/gram-strain1"/>
+    <reference value="#gram-strain1"/>
   </result>
   <result>
-    <reference value="Observation/gram-strain2"/>
+    <reference value="#gram-strain2"/>
   </result>
   <result>
-    <reference value="Observation/gram-strain3"/>
+    <reference value="#gram-strain3"/>
   </result>
   <result>
-    <reference value="Observation/gram-strain4"/>
+    <reference value="#gram-strain4"/>
   </result>
   <result>
-    <reference value="Observation/organism-panels1"/>
+    <reference value="#organism-panels1"/>
   </result>
   <result>
-    <reference value="Observation/organism-panels2"/>
+    <reference value="#organism-panels2"/>
   </result>
   <result>
-    <reference value="Observation/organism-panels3"/>
+    <reference value="#organism-panels3"/>
   </result>
   <result>
-    <reference value="Observation/organism-panels4"/>
+    <reference value="#organism-panels4"/>
   </result>
   <presentedForm>
     <contentType value="application/pdf"/>

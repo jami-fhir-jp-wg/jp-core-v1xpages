@@ -6,15 +6,398 @@
   },
   "text" : {
     "status" : "generated",
-    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2><span title=\"Codes: {http://loinc.org 18725-2}\">Microbiology studies</span> (<span title=\"Codes: {http://loinc.org LP7819-8}\">微生物検査</span>) </h2><table class=\"grid\"><tr><td>Subject</td><td><b>山田 太郎</b> male, DoB: 1970-01-01 ( id:\u00a000000010)</td></tr><tr><td>When For</td><td>2021-03-04 08:30:00+1100</td></tr><tr><td>Reported</td><td>2021-03-04 11:45:33+1100</td></tr><tr><td>Identifier:</td><td> id:\u00a01234567\u00a0(use:\u00a0USUAL)</td></tr></table><p><b>Report Details</b></p><table class=\"grid\"><tr><td><b>Code</b></td><td><b>Value</b></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr><tr><td colspan=\"2\"><i>Observation</i></td></tr></table></div>"
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2><span title=\"Codes: {http://loinc.org 18725-2}\">Microbiology studies</span> (<span title=\"Codes: {http://loinc.org LP7819-8}\">微生物検査</span>) </h2><table class=\"grid\"><tr><td>Subject</td><td><b>山田 太郎</b> male, DoB: 1970-01-01 ( id:\u00a000000010)</td></tr><tr><td>When For</td><td>2021-03-04 08:30:00+1100</td></tr><tr><td>Reported</td><td>2021-03-04 11:45:33+1100</td></tr><tr><td>Identifier:</td><td> id:\u00a01234567\u00a0(use:\u00a0USUAL)</td></tr></table><p><b>Report Details</b></p><table class=\"grid\"><tr><td><b>Code</b></td><td><b>Value</b></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr><tr><td colspan=\"2\"><i>This Observation could not be resolved</i></td></tr></table></div>"
   },
+  "contained" : [{
+    "resourceType" : "ServiceRequest",
+    "id" : "jp-servicerequest-example-1",
+    "status" : "active",
+    "intent" : "original-order",
+    "code" : {
+      "coding" : [{
+        "system" : "http://abc-hospital.local/fhir/ObservationOrder/localcode",
+        "code" : "12345678"
+      }],
+      "text" : "尿検査"
+    },
+    "subject" : {
+      "reference" : "Patient/jp-patient-example-1"
+    },
+    "encounter" : {
+      "reference" : "Encounter/jp-encounter-example-1"
+    },
+    "occurrenceDateTime" : "2021-10-10T17:39:00+09:00",
+    "requester" : {
+      "reference" : "Practitioner/jp-practitioner-example-female-1"
+    },
+    "performer" : [{
+      "reference" : "Practitioner/jp-practitioner-example-male-2"
+    }]
+  },
+  {
+    "resourceType" : "Organization",
+    "id" : "jp-organization-example-inspection",
+    "meta" : {
+      "profile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization"]
+    },
+    "identifier" : [{
+      "system" : "abc-hospital.local/fhir/Organization/localcode",
+      "value" : "000-000-000"
+    }],
+    "type" : [{
+      "coding" : [{
+        "system" : "http://terminology.hl7.org/CodeSystem/organization-type",
+        "code" : "team",
+        "display" : "Organizational team"
+      }]
+    }],
+    "name" : "ひまわりＡＢＣ検査株式会社健康保険組合"
+  },
+  {
+    "resourceType" : "Observation",
+    "id" : "gram-strain1",
+    "meta" : {
+      "profile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"]
+    },
+    "status" : "final",
+    "category" : [{
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+        "code" : "laboratory",
+        "display" : "Laboratory"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://loinc.org",
+        "code" : "18725-2",
+        "display" : "Microbiology studies"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS",
+        "code" : "gram-stain",
+        "display" : "Gram stain"
+      }]
+    }],
+    "code" : {
+      "coding" : [{
+        "system" : "urn:oid:1.2.392.200119.4.504",
+        "code" : "6A010000006170449",
+        "display" : "塗抹鏡検(一般細菌)"
+      },
+      {
+        "system" : "urn:EXAMPLE_LOCAL_CODE",
+        "code" : "6A0100000061704Z1",
+        "display" : "塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義1(白血球)"
+      }],
+      "text" : "白血球"
+    },
+    "valueString" : "1+"
+  },
+  {
+    "resourceType" : "Observation",
+    "id" : "gram-strain2",
+    "meta" : {
+      "profile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"]
+    },
+    "status" : "final",
+    "category" : [{
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+        "code" : "laboratory",
+        "display" : "Laboratory"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://loinc.org",
+        "code" : "18725-2",
+        "display" : "Microbiology studies"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS",
+        "code" : "gram-stain",
+        "display" : "Grams stain"
+      }]
+    }],
+    "code" : {
+      "coding" : [{
+        "system" : "urn:oid:1.2.392.200119.4.504",
+        "code" : "6A010000006170449",
+        "display" : "塗抹鏡検(一般細菌)"
+      },
+      {
+        "system" : "urn:EXAMPLE_LOCAL_CODE",
+        "code" : "6A0100000061704Z2",
+        "display" : "塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義2(上皮細胞)"
+      }],
+      "text" : "上皮細胞"
+    },
+    "valueString" : "少数"
+  },
+  {
+    "resourceType" : "Observation",
+    "id" : "gram-strain3",
+    "meta" : {
+      "profile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"]
+    },
+    "status" : "final",
+    "category" : [{
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+        "code" : "laboratory",
+        "display" : "Laboratory"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://loinc.org",
+        "code" : "18725-2",
+        "display" : "Microbiology studies"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS",
+        "code" : "gram-stain",
+        "display" : "Grams stain"
+      }]
+    }],
+    "code" : {
+      "coding" : [{
+        "system" : "urn:oid:1.2.392.200119.4.504",
+        "code" : "6A010000006170449",
+        "display" : "塗抹鏡検(一般細菌)"
+      },
+      {
+        "system" : "urn:EXAMPLE_LOCAL_CODE",
+        "code" : "6A0100000061704Z3",
+        "display" : "塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義3(グラム陽性球菌（GPC）)"
+      }],
+      "text" : "グラム陽性球菌（GPC）"
+    },
+    "valueString" : "1+"
+  },
+  {
+    "resourceType" : "Observation",
+    "id" : "gram-strain4",
+    "meta" : {
+      "profile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"]
+    },
+    "status" : "final",
+    "category" : [{
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+        "code" : "laboratory",
+        "display" : "Laboratory"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://loinc.org",
+        "code" : "18725-2",
+        "display" : "Microbiology studies"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS",
+        "code" : "gram-stain",
+        "display" : "Grams stain"
+      }]
+    }],
+    "code" : {
+      "coding" : [{
+        "system" : "urn:oid:1.2.392.200119.4.504",
+        "code" : "6A010000006170449",
+        "display" : "塗抹鏡検(一般細菌)"
+      },
+      {
+        "system" : "urn:EXAMPLE_LOCAL_CODE",
+        "code" : "6A0100000061704Z4",
+        "display" : "塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義4(グラム陽性桿菌（GPR）)"
+      }],
+      "text" : "グラム陽性桿菌（GPR）"
+    },
+    "valueString" : "少数"
+  },
+  {
+    "resourceType" : "Observation",
+    "id" : "organism-panels1",
+    "meta" : {
+      "profile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"]
+    },
+    "status" : "final",
+    "category" : [{
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+        "code" : "laboratory",
+        "display" : "Laboratory"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://loinc.org",
+        "code" : "18725-2",
+        "display" : "Microbiology studies"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS",
+        "code" : "organism-panels",
+        "display" : "Organism panels"
+      }]
+    }],
+    "code" : {
+      "coding" : [{
+        "system" : "urn:oid:1.2.392.200119.4.504",
+        "code" : "6B010000006174149",
+        "display" : "培養同定(一般細菌)"
+      }],
+      "text" : "培養同定(一般細菌)"
+    },
+    "hasMember" : [{
+      "reference" : "Observation/organism-id1"
+    },
+    {
+      "reference" : "Observation/susceptibility-panels1"
+    }]
+  },
+  {
+    "resourceType" : "Observation",
+    "id" : "organism-panels2",
+    "meta" : {
+      "profile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"]
+    },
+    "status" : "final",
+    "category" : [{
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+        "code" : "laboratory",
+        "display" : "Laboratory"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://loinc.org",
+        "code" : "18725-2",
+        "display" : "Microbiology studies"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS",
+        "code" : "organism-panels",
+        "display" : "Organism panels"
+      }]
+    }],
+    "code" : {
+      "coding" : [{
+        "system" : "urn:oid:1.2.392.200119.4.504",
+        "code" : "6B010000006174149",
+        "display" : "培養同定(一般細菌)"
+      }],
+      "text" : "培養同定(一般細菌)"
+    },
+    "hasMember" : [{
+      "reference" : "Observation/organism-id2"
+    },
+    {
+      "reference" : "Observation/susceptibility-panels2"
+    }]
+  },
+  {
+    "resourceType" : "Observation",
+    "id" : "organism-panels3",
+    "meta" : {
+      "profile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"]
+    },
+    "status" : "final",
+    "category" : [{
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+        "code" : "laboratory",
+        "display" : "Laboratory"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://loinc.org",
+        "code" : "18725-2",
+        "display" : "Microbiology studies"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS",
+        "code" : "organism-panels",
+        "display" : "Organism panels"
+      }]
+    }],
+    "code" : {
+      "coding" : [{
+        "system" : "urn:oid:1.2.392.200119.4.504",
+        "code" : "6B010000006174149",
+        "display" : "培養同定(一般細菌)"
+      }],
+      "text" : "培養同定(一般細菌)"
+    },
+    "hasMember" : [{
+      "reference" : "Observation/organism-id3"
+    }]
+  },
+  {
+    "resourceType" : "Observation",
+    "id" : "organism-panels4",
+    "meta" : {
+      "profile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Microbiology"]
+    },
+    "status" : "final",
+    "category" : [{
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+        "code" : "laboratory",
+        "display" : "Laboratory"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://loinc.org",
+        "code" : "18725-2",
+        "display" : "Microbiology studies"
+      }]
+    },
+    {
+      "coding" : [{
+        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS",
+        "code" : "organism-panels",
+        "display" : "Organism panels"
+      }]
+    }],
+    "code" : {
+      "coding" : [{
+        "system" : "urn:oid:1.2.392.200119.4.504",
+        "code" : "6B010000006174149",
+        "display" : "培養同定(一般細菌)"
+      }],
+      "text" : "培養同定(一般細菌)"
+    },
+    "hasMember" : [{
+      "reference" : "Observation/organism-id4"
+    }]
+  }],
   "identifier" : [{
     "use" : "usual",
     "system" : "http://abc-hospital.local/fhir/mb/reportid",
     "value" : "1234567"
   }],
   "basedOn" : [{
-    "reference" : "ServiceRequest/order1"
+    "reference" : "#jp-servicerequest-example-1"
   }],
   "status" : "final",
   "category" : [{
@@ -40,40 +423,40 @@
   "effectiveDateTime" : "2021-03-04T08:30:00+11:00",
   "issued" : "2021-03-04T11:45:33+11:00",
   "performer" : [{
-    "reference" : "Organization/0001-1111",
+    "reference" : "#jp-organization-example-inspection",
     "display" : "株式会社ＡＢＣ検査"
   }],
   "resultsInterpreter" : [{
-    "reference" : "Practitioner/person1",
-    "display" : "検査タロウ"
+    "reference" : "Practitioner/jp-practitioner-example-female-1",
+    "display" : "福岡 花子"
   }],
   "specimen" : [{
-    "reference" : "Specimen/specimen1",
+    "reference" : "Specimen/jp-specimen-example-3",
     "display" : "喀痰"
   }],
   "result" : [{
-    "reference" : "Observation/gram-strain1"
+    "reference" : "#gram-strain1"
   },
   {
-    "reference" : "Observation/gram-strain2"
+    "reference" : "#gram-strain2"
   },
   {
-    "reference" : "Observation/gram-strain3"
+    "reference" : "#gram-strain3"
   },
   {
-    "reference" : "Observation/gram-strain4"
+    "reference" : "#gram-strain4"
   },
   {
-    "reference" : "Observation/organism-panels1"
+    "reference" : "#organism-panels1"
   },
   {
-    "reference" : "Observation/organism-panels2"
+    "reference" : "#organism-panels2"
   },
   {
-    "reference" : "Observation/organism-panels3"
+    "reference" : "#organism-panels3"
   },
   {
-    "reference" : "Observation/organism-panels4"
+    "reference" : "#organism-panels4"
   }],
   "presentedForm" : [{
     "contentType" : "application/pdf",
