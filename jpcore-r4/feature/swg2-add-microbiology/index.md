@@ -36,7 +36,7 @@ JP Core FHIRコンテンツ: JP Coreで利用するFHIRの詳細について記�
   * Observation （検査）
     * [JP Core Observation Common （共通）プロファイル][JP_Observation_Common]
     * [JP Core Observation LabResult （検体検査）プロファイル][JP_Observation_LabResult]
-    * [JP Core Observation Microbiology （細菌検査結果）プロファイル][JP_Observation_Microbiology]
+    * [JP Core Observation Microbiology （微生物学検査結果）プロファイル][JP_Observation_Microbiology]
     * [JP Core Observation VitalSigns （バイタルサイン）プロファイル][JP_Observation_VitalSigns]
     * [JP Core Observation BodyMeasurement （身体計測）プロファイル][JP_Observation_BodyMeasurement]
     * [JP Core Observation PhysicalExam （身体所見）プロファイル][JP_Observation_PhysicalExam]
@@ -47,7 +47,7 @@ JP Core FHIRコンテンツ: JP Coreで利用するFHIRの詳細について記�
   * DiagnosticReport （診断レポート)
     * [JP Core DiagnosticReport Common （共通）プロファイル][JP_DiagnosticReport_Common]
     * [JP Core DiagnosticReport LabResult （検体検査レポート）プロファイル][JP_DiagnosticReport_LabResult]
-    * [JP Core DiagnosticReport Microbiology （細菌検査レポート）プロファイル][JP_DiagnosticReport_Microbiology]
+    * [JP Core DiagnosticReport Microbiology （微生物学検査レポート）プロファイル][JP_DiagnosticReport_Microbiology]
     * [JP Core DiagnosticReport Radiology （放射線検査レポート）プロファイル][JP_DiagnosticReport_Radiology]
     * [JP Core DiagnosticReport Endoscopy （内視鏡レポート）プロファイル][JP_DiagnosticReport_Endoscopy]
 * [Clinicalグループ（診療）](group-clinical.html)
@@ -96,7 +96,7 @@ JP Coreは以下の方々、および各サーブワーキンググループの�
 * SWG2：Diagnostics and Observations
   * リーダ：キヤノンメディカルシステムズ㈱　塩川 康成
   * サブリーダ：㈱ケーアイエス　平山 照幸
-  * メンバ：東京大学　横田慎一郎、富士通㈱　石原 正樹、(株)セールスフォース・ジャパン　上中進太郎、㈱エイアンドティー　千葉 信行、㈱NTTデータ　川田 剛、H.U.グループホールディングス㈱　和田 征剛、岩手医科大学　田中 良一、大船中央病院　青木 陽介、北海道科学大学　谷川 琢海、旭川医科大学　谷 祐児
+  * メンバ：東京大学　横田慎一郎、富士通㈱　石原 正樹、(株)セールスフォース・ジャパン　上中進太郎、㈱エイアンドティー　千葉 信行、㈱NTTデータ　川田 剛、H.U.グループホールディングス㈱　和田 征剛、岩手医科大学　田中 良一、大船中央病院　青木 陽介、北海道科学大学　谷川 琢海、旭川医科大学　谷 祐児、京都大学　山口 泉、東京大学　三谷 知広、今井 健、国立保健医療科学院　小林 慎治、オリンパスメディカルシステムズ㈱　尾崎 孝史、富士フイルムホールディングス㈱　龍田 岳一
 
 * SWG3： Patient Administration
   * リーダ：日本HL7協会 檀原 一之
