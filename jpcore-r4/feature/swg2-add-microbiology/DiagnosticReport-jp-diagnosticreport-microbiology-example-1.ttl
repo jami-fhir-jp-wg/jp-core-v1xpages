@@ -225,7 +225,7 @@
        fhir:coding ( [
          fhir:system [ fhir:v "urn:oid:1.2.392.200119.4.504"^^xsd:anyURI ] ;
          fhir:code [ fhir:v "6B010000006174149" ] ;
-         fhir:display [ fhir:v "培養同定(一般細菌)" ]
+         fhir:display [ fhir:v "培養同定(一般細菌)_喀痰_培養検査_別紙報告" ]
        ] ) ;
        fhir:text [ fhir:v "培養同定(一般細菌)" ]
      ] ;
@@ -268,7 +268,7 @@
        fhir:coding ( [
          fhir:system [ fhir:v "urn:oid:1.2.392.200119.4.504"^^xsd:anyURI ] ;
          fhir:code [ fhir:v "6B010000006174149" ] ;
-         fhir:display [ fhir:v "培養同定(一般細菌)" ]
+         fhir:display [ fhir:v "培養同定(一般細菌)_喀痰_培養検査_別紙報告" ]
        ] ) ;
        fhir:text [ fhir:v "培養同定(一般細菌)" ]
      ] ;
@@ -311,7 +311,7 @@
        fhir:coding ( [
          fhir:system [ fhir:v "urn:oid:1.2.392.200119.4.504"^^xsd:anyURI ] ;
          fhir:code [ fhir:v "6B010000006174149" ] ;
-         fhir:display [ fhir:v "培養同定(一般細菌)" ]
+         fhir:display [ fhir:v "培養同定(一般細菌)_喀痰_培養検査_別紙報告" ]
        ] ) ;
        fhir:text [ fhir:v "培養同定(一般細菌)" ]
      ] ;
@@ -352,7 +352,7 @@
        fhir:coding ( [
          fhir:system [ fhir:v "urn:oid:1.2.392.200119.4.504"^^xsd:anyURI ] ;
          fhir:code [ fhir:v "6B010000006174149" ] ;
-         fhir:display [ fhir:v "培養同定(一般細菌)" ]
+         fhir:display [ fhir:v "培養同定(一般細菌)_喀痰_培養検査_別紙報告" ]
        ] ) ;
        fhir:text [ fhir:v "培養同定(一般細菌)" ]
      ] ;
@@ -2611,6 +2611,35 @@
          fhir:display [ fhir:v "Susceptible" ]
        ] )
      ] )
+  ] [
+     a fhir:ServiceRequest ;
+     fhir:id [ fhir:v "jp-servicerequest-example-1" ] ;
+     fhir:status [ fhir:v "active" ] ;
+     fhir:intent [ fhir:v "original-order" ] ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://abc-hospital.local/fhir/ObservationOrder/localcode"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "12345678" ]
+       ] ) ;
+       fhir:text [ fhir:v "尿検査" ]
+     ] ;
+     fhir:subject [
+       fhir:link <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1> ;
+       fhir:reference [ fhir:v "Patient/jp-patient-example-1" ]
+     ] ;
+     fhir:encounter [
+       fhir:link <http://jpfhir.jp/fhir/core/Encounter/jp-encounter-example-1> ;
+       fhir:reference [ fhir:v "Encounter/jp-encounter-example-1" ]
+     ] ;
+     fhir:occurrence [ fhir:v "2021-10-10T17:39:00+09:00"^^xsd:dateTime ] ;
+     fhir:requester [
+       fhir:link <http://jpfhir.jp/fhir/core/Practitioner/jp-practitioner-example-female-1> ;
+       fhir:reference [ fhir:v "Practitioner/jp-practitioner-example-female-1" ]
+     ] ;
+     fhir:performer ( [
+       fhir:link <http://jpfhir.jp/fhir/core/Practitioner/jp-practitioner-example-male-2> ;
+       fhir:reference [ fhir:v "Practitioner/jp-practitioner-example-male-2" ]
+     ] )
   ] ) ; # 
   fhir:identifier ( [
      fhir:use [ fhir:v "usual" ] ;
@@ -2618,8 +2647,7 @@
      fhir:value [ fhir:v "1234567" ]
   ] ) ; # 
   fhir:basedOn ( [
-     fhir:link <http://jpfhir.jp/fhir/core/ServiceRequest/jp-servicerequest-example-1> ;
-     fhir:reference [ fhir:v "ServiceRequest/jp-servicerequest-example-1" ]
+     fhir:reference [ fhir:v "#jp-servicerequest-example-1" ]
   ] ) ; # 
   fhir:status [ fhir:v "final"] ; # 
   fhir:category ( [
