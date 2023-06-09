@@ -1082,10 +1082,16 @@ BodySite等でDICOMでmappingされているSNOMED-CTをCodeSystemとして利�
       <td><code class="language-plaintext highlighter-rouge">GET [base]/ImagingStudy?patient=123</code></td>
     </tr>
     <tr>
-      <td>SHOULD</td>
+      <td>MAY</td>
       <td>patient,modality</td>
       <td>reference,token</td>
       <td><code class="language-plaintext highlighter-rouge">GET [base]/ImagingStudy?patient=123&amp;modality=CT</code></td>
+    </tr>
+    <tr>
+      <td>SHOULD</td>
+      <td>patient, series.modality</td>
+      <td>reference, token</td>
+      <td><code class="language-plaintext highlighter-rouge">GET [base]/ImagingStudy?patient=123&amp;series.modality=CT</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
@@ -1101,9 +1107,15 @@ BodySite等でDICOMでmappingされているSNOMED-CTをCodeSystemとして利�
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td>patient,started,modality,bodysite</td>
+      <td>patient,started,series.modality,bodysite</td>
       <td>reference,date,token,token</td>
-      <td><code class="language-plaintext highlighter-rouge">GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-18&amp;modality=CT&amp;bodysite=T-15460</code></td>
+      <td><code class="language-plaintext highlighter-rouge">GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-18&amp;series.modality=CT&amp;bodysite=T-15460</code></td>
+    </tr>
+    <tr>
+      <td>SHOULD</td>
+      <td>patient, started, series.modality</td>
+      <td>reference, date, token</td>
+      <td><code class="language-plaintext highlighter-rouge">GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-18&amp;series.modality=CT</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
@@ -1135,14 +1147,14 @@ ImagingStudyリソースでは検索の多様性が求められるため、必�
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123
 </code></pre></div></div>
 
-<p>2.モダリティ中心の検索：対象患者（= Patientリソース）と撮影に使用されたモダリティを条件とした検索をサポートすることが望ましい</p>
+<p>2.モダリティ中心の検索：対象患者（= Patientリソース）と撮影に使用されたモダリティを条件とした検索をサポートすることが望ましい （studyのモダリティはDICOMで必須で無くseriesのモダリティが必須のため、以下の例はseries.modalityを使用。FHIR JP Coreではseries.modalityに設定されているモダリティ情報をmodalityに列挙することを想定しており、その場合modalityを検索パラメータとして利用してよい（<strong>MAY</strong>））</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}&amp;modality={token}
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}&amp;series.modality={token}
 </code></pre></div></div>
 
 <p>例：</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123&amp;modality=CT
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123&amp;series.modality=CT
 </code></pre></div></div>
 
 <p>3.部位中心の検索：対象患者（= Patientリソース）と撮影の対象となった撮影部位を条件とした検索をサポートすることが望ましい</p>
@@ -1177,12 +1189,12 @@ ImagingStudyリソースでは検索の多様性が求められるため、必�
 
 <p>6.複数の条件を組み合わせた検索：対象患者（= Patientリソース）、撮影の日時、撮影に使用されたモダリティ、撮影の対象となった撮影部位を条件とした検索をサポートすることが望ましい</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}&amp;started={date}&amp;modality={token}&amp;bodysite={token}
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}&amp;started={date}&amp;series.modality={token}&amp;bodysite={token}
 </code></pre></div></div>
 
 <p>例：</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-18&amp;modality=CT&amp;bodysite=T-15460
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-18&amp;series.modality=CT&amp;bodysite=T-15460
 </code></pre></div></div>
 
 <p>7.来院情報中心の検索：来院情報（= Encounterリソース）を条件とした検索をサポートすることが望ましい</p>
@@ -1285,7 +1297,7 @@ ImagingStudyリソースでは検索の多様性が求められるため、必�
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jun 9, 2023 01:41+0000">2023-06-09</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jun 9, 2023 02:24+0000">2023-06-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
