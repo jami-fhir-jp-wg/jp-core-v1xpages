@@ -335,9 +335,11 @@
 
 <p>現バージョンの本プロファイルでは原虫及びウイルスについては対象として想定していないが、診療報酬点数表に於いては「細菌培養同定検査は、抗酸菌を除く一般細菌、真菌、原虫等を対象として培養を行い、同定検査を行うことを原則とする。」と記載されており、原虫についても細菌検査の対象に含めることが必要になるケースがあり得ると考えられる。</p>
 
-<p>微生物培養検査の結果を示すDiagnosticReportはFHIR R4でも複数の例が提示され、R5ではさらに異なる構造が例示されていることからも分かるように、複雑な構造を有しています。<br />
-JP CoreではR4における<a href="https://hl7.org/fhir/R4/diagnosticreport-examples.html#10.3.7.1.1">Micro Isolate and Sensitivities-1</a>をベースにプロファイルを作成しましたが、ユースケースによってはうまく整合しない場合があるかもしれません。<br />
-そのような場合は、どのような問題が生じたか<a href="https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues">報告</a>をお願いします。v1.2ではそれらの意見を統合した上で再検討する見込みです。</p>
+<h2 id="本プロファイルの成熟度">本プロファイルの成熟度</h2>
+<p>本プロファイルは、Trial Useとして公開する。
+微生物培養検査の結果を示すDiagnosticReportはFHIR R4でも複数の例が提示され、R5ではさらに異なる構造が例示されていることからも分かるように、複雑な構造を有している。<br />
+JP CoreではR4における<a href="https://hl7.org/fhir/R4/diagnosticreport-examples.html#10.3.7.1.1">Micro Isolate and Sensitivities-1</a>をベースにプロファイルを作成したが、ユースケースによってはうまく整合しない場合がある可能性を否めない。<br />
+もし問題があった場合は、どのような問題が生じたか<a href="https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues">報告</a>をお願いしたい。v1.2ではそれらの意見を統合した上で再検討する予定である。</p>
 
 <h2 id="プロファイル定義">プロファイル定義</h2>
 
@@ -936,11 +938,11 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
 <ul>
   <li>status : 検体検査情報項目の状態は必須である</li>
+  <li>category : レポートを作成した臨床分野、部門、または診断サービスを分類するコード。LP7819-8 “微生物検査” 固定</li>
   <li>code : このリソースは何の検体検査情報項目であるかを示すため必須である</li>
 </ul>
 
 <h3 id="extensions定義">Extensions定義</h3>
-
 <p>本プロファイルで追加定義された拡張はない。</p>
 
 <h2 id="利用方法">利用方法</h2>
@@ -951,50 +953,59 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
 <p>微生物学的検査結果ユースケースのSearch Parameter一覧は共通情報プロファイルとは異なり以下の通りである。</p>
 
+<p>| コンフォーマンス | パラメータ | 型 | 説明 | 表現型 |　例　|
+| — | — | — | — | — | — |</p>
+
 <table>
-  <thead>
-    <tr>
-      <th>コンフォーマンス</th>
-      <th>パラメータ</th>
-      <th>型</th>
-      <th>例</th>
-    </tr>
-  </thead>
   <tbody>
     <tr>
       <td>SHALL</td>
       <td>identifier</td>
+      <td>token</td>
+      <td>レポートに割り当てられた識別子</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>MAY</td>
+      <td>based-on</td>
       <td>reference</td>
-      <td><code class="language-plaintext highlighter-rouge">GET [base]/identifier?id=[id]</code></td>
+      <td>オーダ情報への参照</td>
+      <td>DiagnosticReport.basedOn (<a href="https://hl7.org/fhir/R4/servicerequest.html">ServiceRequest</a>)</td>
+      <td><code class="language-plaintext highlighter-rouge">GET [base]/DiagnosticReport?based-on=ServiceRequest/12345</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td>category, date, code</td>
-      <td>reference, date, reference</td>
-      <td><code class="language-plaintext highlighter-rouge">GET [base]?category=[category]</code></td>
+      <td>category</td>
+      <td>token</td>
+      <td>レポート種別</td>
+      <td>DiagnosticReport.category (<a href="ValueSet-jp-diagnosticreportcategory-vs.html">JP Core DiagnosticReport Category ValueSet</a>) (デフォルト：<a href="https://loinc.org/LP7819-8/">LP7819-8</a>)</td>
+      <td><code class="language-plaintext highlighter-rouge">GET [base]/DiagnosticReport?category=LP7819-8</code></td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td>category, value-quantity</td>
-      <td>reference</td>
-      <td><code class="language-plaintext highlighter-rouge">GET [base]?category=[category]</code></td>
+      <td>date</td>
+      <td>date</td>
+      <td>レポート作成日</td>
+      <td>DiagnosticReport.effectiveDate</td>
+      <td> </td>
     </tr>
     <tr>
       <td>SHOULD</td>
-      <td>category, value-quantity, code, specimen, patient</td>
+      <td>patient</td>
       <td>reference</td>
-      <td><code class="language-plaintext highlighter-rouge">GET [base]?category=[category]</code></td>
-    </tr>
-    <tr>
-      <td>SHOULD</td>
-      <td>patient, date, based-on</td>
-      <td>reference</td>
-      <td><code class="language-plaintext highlighter-rouge">GET [base]?category=[category]</code></td>
+      <td>レポートの対象患者</td>
+      <td>DiagnosticReport.subject.where(resolve() is Patient) (<a href="StructureDefinition-jp-patient.html">Patient</a>)</td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
 
 <h3 id="サンプル">サンプル</h3>
+
+<ul>
+  <li><a href="DiagnosticReport-jp-diagnosticreport-microbiology-example-1.html"><strong>一般細菌検査レポート</strong></a></li>
+</ul>
 
 <h2 id="注意事項">注意事項</h2>
 <h3 id="微生物検査結果培養同定と感受性のネスト構造">微生物検査結果　培養・同定と感受性のネスト構造</h3>
@@ -1084,7 +1095,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sun, Jun 11, 2023 04:29+0000">2023-06-11</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sun, Jun 11, 2023 06:47+0000">2023-06-11</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
