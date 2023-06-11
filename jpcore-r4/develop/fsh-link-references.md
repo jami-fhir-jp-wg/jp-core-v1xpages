@@ -19,9 +19,11 @@
 [jp-diagnosticreport-endoscopy-example-1]: DiagnosticReport-jp-diagnosticreport-endoscopy-example-1.html
 [JP_DiagnosticReport_Endoscopy]: StructureDefinition-jp-diagnosticreport-endoscopy.html
 [JP_DiagnosticReport_LabResult]: StructureDefinition-jp-diagnosticreport-labresult.html
+[JP_DiagnosticReport_Microbiology]: StructureDefinition-jp-diagnosticreport-microbiology.html
 [jp-diagnosticreport-radiology-example-1]: DiagnosticReport-jp-diagnosticreport-radiology-example-1.html
 [JP_DiagnosticReport_Radiology]: StructureDefinition-jp-diagnosticreport-radiology.html
 [jp-diagnosticreport-labresult-example-1]: DiagnosticReport-jp-diagnosticreport-labresult-example-1.html
+[jp-diagnosticreport-microbiology-example-1]: DiagnosticReport-jp-diagnosticreport-microbiology-example-1.html
 [JP_DocumentCodes_CS]: CodeSystem-jp-documentcodes-cs.html
 [JP_DocumentCodes_Endoscopy_VS]: ValueSet-jp-DocumentCodes-Endoscopy-vs.html
 [jp-encounter-example-1]: Encounter-jp-encounter-example-1.html
@@ -143,6 +145,12 @@
 [JP_MedicationRequest_Injection]: StructureDefinition-jp-medicationrequest-injection.html
 [JP_MedicationRequest]: StructureDefinition-jp-medicationrequest.html
 [JP_MedicationUsageInjection_VS]: ValueSet-jp-medication-usage-injection-vs.html
+[JP_Microbiology_AntiMicrobialDrug_CS]: CodeSystem-jp-microbiology-anti-microbial-drug-cs.html
+[JP_Microbiology_AntiMicrobialDrug_VS]: ValueSet-jp-microbiology-anti-microbial-drug-vs.html
+[JP_Microbiology_InfectiousAgent_VS]: ValueSet-jp-microbiology-infectious-agent-vs.html
+[JP_Microbiology_InfectiousAgent_CS]: CodeSystem-jp-microbiology-infectious-agent-cs.html
+[JP_MicrobiologyCategory_CS]: CodeSystem-jp-microbiology-category-cs.html
+[JP_MicrobiologyCategory_VS]: ValueSet-jp-microbiology-category-vs.html
 [JP_ObservationBodyMeasurementCategory_CS]: CodeSystem-jp-observation-bodymeasurement-category-cs.html
 [JP_ObservationBodyMeasurementCategory_VS]: ValueSet-jp-observation-bodymeasurement-category-vs.html
 [JP_ObservationBodyMeasurementCode_CS]: CodeSystem-jp-observation-bodymeasurement-code-cs.html
@@ -173,6 +181,7 @@
 [jp-organization-example-payer]: Organization-jp-organization-example-payer.html
 [jp-organization-example-clinic]: Organization-jp-organization-example-clinic.html
 [jp-organization-example-hospital]: Organization-jp-organization-example-hospital.html
+[jp-organization-example-inspection]: Organization-jp-organization-example-inspection.html
 [JP_Organization_InsuranceOrganizationCategory]: StructureDefinition-jp-organization-insuranceorganizationcategory.html
 [JP_Organization_InsuranceOrganizationNo]: StructureDefinition-jp-organization-insuranceorganizationno.html
 [JP_Organization_PrefectureNo]: StructureDefinition-jp-organization-prefectureno.html
@@ -215,6 +224,7 @@
 [JP_RadiologyModality_VS]: ValueSet-jp-radiologymodality-vs.html
 [JP_SimpleObservationCategory_CS]: CodeSystem-jp-simpleobservationcategory-cs.html
 [JP_SimpleObservationCategory_VS]: ValueSet-jp-simpleobservationcategory-vs.html
+[jp-specimen-example-3]: Specimen-jp-specimen-example-3.html
 [jp-specimen-example-1]: Specimen-jp-specimen-example-1.html
 [jp-specimen-example-2]: Specimen-jp-specimen-example-2.html
 [JP_Undefined_CS]: CodeSystem-jp-undefined-cs.html
