@@ -234,6 +234,7 @@
 [jp-coverage-insuredpersonsubnumber-sp]: SearchParameter-jp-coverage-insuredpersonsubnumber-sp.html
 [jp-coverage-insuredpersonsymbol-sp]: SearchParameter-jp-coverage-insuredpersonsymbol-sp.html
 [jp-department-ssmix-namingsystem]: NamingSystem-jp-department-ssmix-namingsystem.html
+[jp-endoscopyterminology-codes-jed-namingsystem]: NamingSystem-jp-endoscopyterminology-codes-jed-namingsystem.html
 [jp-medicalfeescoretype-namingsystem]: NamingSystem-jp-medicalfeescoretype-namingsystem.html
 [jp-medicationbodysitejamiexternal-namingsystem]: NamingSystem-jp-medicationbodysitejamiexternal-namingsystem.html
 [jp-medicationcodecommon-namingsystem]: NamingSystem-jp-medicationcodecommon-namingsystem.html
@@ -250,6 +251,8 @@
 [jp-medicationunitmerit9-namingsystem]: NamingSystem-jp-medicationunitmerit9-namingsystem.html
 [jp-medicationusagejami-namingsystem]: NamingSystem-jp-medicationusagejami-namingsystem.html
 [jp-medicationusagejamiadditional-namingsystem]: NamingSystem-jp-medicationusagejamiadditional-namingsystem.html
+[jp-microbiology-anti-microbial-drug-namingsystem]: NamingSystem-jp-microbiology-anti-microbial-drug-namingsystem.html
+[jp-microbiology-infectious-agent-namingsystem]: NamingSystem-jp-microbiology-infectious-agent-namingsystem.html
 [jp-observation-jlac10-namingsystem]: NamingSystem-jp-observation-jlac10-namingsystem.html
 [jp-observation-vitalsignscode-namingsystem]: NamingSystem-jp-observation-vitalsignscode-namingsystem.html
 [jp-organization-insuranceorganizationcategory-sp]: SearchParameter-jp-organization-insuranceorganizationcategory-sp.html
