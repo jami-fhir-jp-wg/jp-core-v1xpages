@@ -62,11 +62,11 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">HL7 FHIR JP Core ImplementationGuide</span>
             <br/>
-            <span style="display:inline-block;">1.1.1 - ci-build
+            <span style="display:inline-block;">1.1.2 - ci-build
 
 
 
-  <img alt="Japan flag" src="assets/images/jpn.svg" height="16" title="Japan"/>
+  <img alt="Japan flag" src="assets/images/jp.svg" height="16" title="Japan"/>
 
 
             </span>
@@ -177,7 +177,7 @@
           <div class="inner-wrapper">
 
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.1.1). See the <a href="http://jpfhir.jp/fhir/core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.1.2). See the <a href="http://jpfhir.jp/fhir/core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   
 
 
@@ -258,7 +258,7 @@
     </tr>
     <tr>
       <td><i>Version</i></td>
-      <td><span class="copy-text">1.1.1<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Radiology|1.1.1"/></span></td>
+      <td><span class="copy-text">1.1.2<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Radiology|1.1.2"/></span></td>
     </tr>
     
 
@@ -280,7 +280,7 @@
   <td><i>Status</i></td>
   <td>Active
     
-      ( 2023-03-24 )
+      ( 2023-06-26 )
     </td>
 </tr>
 
@@ -1137,75 +1137,57 @@ ImagingStudyリソースでは検索の多様性が求められるため、必�
 
 <p>次の検索パラメータはサポートすることが推奨される。（<strong>SHOULD</strong>）</p>
 
-<p>1.患者中心での検索：対象患者（= Patientリソース）を条件とした検索をサポートすることが望ましい</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}
-</code></pre></div></div>
-
-<p>例：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123
-</code></pre></div></div>
-
-<p>2.モダリティ中心の検索：対象患者（= Patientリソース）と撮影に使用されたモダリティを条件とした検索をサポートすることが望ましい （studyのモダリティはDICOMで必須で無くseriesのモダリティが必須のため、以下の例はseries.modalityを使用。FHIR JP Coreではseries.modalityに設定されているモダリティ情報をmodalityに列挙することを想定しており、その場合modalityを検索パラメータとして利用してよい（<strong>MAY</strong>））</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}&amp;series.modality={token}
-</code></pre></div></div>
-
-<p>例：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123&amp;series.modality=CT
-</code></pre></div></div>
-
-<p>3.部位中心の検索：対象患者（= Patientリソース）と撮影の対象となった撮影部位を条件とした検索をサポートすることが望ましい</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}&amp;bodysite={token}
-</code></pre></div></div>
-
-<p>例：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123&amp;bodysite=T-15460
-</code></pre></div></div>
-
-<p>4.日付中心の検索：対象患者（= Patientリソース）と撮影の日時を条件とした検索をサポートすることが望ましい</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}&amp;started={date}
-</code></pre></div></div>
-
-<p>例：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-25
-</code></pre></div></div>
-
-<p>5.日付中心の検索：対象患者（= Patientリソース）と撮影の日時を条件とした検索をサポートすることが望ましい</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}&amp;started={date}
-</code></pre></div></div>
-
-<p>例：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-25
-</code></pre></div></div>
-
-<p>6.複数の条件を組み合わせた検索：対象患者（= Patientリソース）、撮影の日時、撮影に使用されたモダリティ、撮影の対象となった撮影部位を条件とした検索をサポートすることが望ましい</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient={reference}&amp;started={date}&amp;series.modality={token}&amp;bodysite={token}
-</code></pre></div></div>
-
-<p>例：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-18&amp;series.modality=CT&amp;bodysite=T-15460
-</code></pre></div></div>
-
-<p>7.来院情報中心の検索：来院情報（= Encounterリソース）を条件とした検索をサポートすることが望ましい</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?encounter={reference}
-</code></pre></div></div>
-
-<p>例：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/ImagingStudy?encounter=456
-</code></pre></div></div>
+<ol>
+  <li>患者中心での検索：対象患者（= Patientリソース）を条件とした検索をサポートすることが望ましい
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/ImagingStudy?patient={reference}
+</code></pre></div>    </div>
+    <p>例：</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/ImagingStudy?patient=123
+</code></pre></div>    </div>
+  </li>
+  <li>モダリティ中心の検索：対象患者（= Patientリソース）と撮影に使用されたモダリティを条件とした検索をサポートすることが望ましい （studyのモダリティはDICOMで必須で無くseriesのモダリティが必須のため、以下の例はseries.modalityを使用。FHIR JP Coreではseries.modalityに設定されているモダリティ情報をmodalityに列挙することを想定しており、その場合modalityを検索パラメータとして利用してよい（<strong>MAY</strong>））
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/ImagingStudy?patient={reference}&amp;series.modality={token}
+</code></pre></div>    </div>
+    <p>例：</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/ImagingStudy?patient=123&amp;series.modality=CT
+</code></pre></div>    </div>
+  </li>
+  <li>部位中心の検索：対象患者（= Patientリソース）と撮影の対象となった撮影部位を条件とした検索をサポートすることが望ましい
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/ImagingStudy?patient={reference}&amp;bodysite={token}
+</code></pre></div>    </div>
+    <p>例：</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/ImagingStudy?patient=123&amp;bodysite=T-15460
+</code></pre></div>    </div>
+  </li>
+  <li>日付中心の検索：対象患者（= Patientリソース）と撮影の日時を条件とした検索をサポートすることが望ましい
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/ImagingStudy?patient={reference}&amp;started={date}
+</code></pre></div>    </div>
+    <p>例：</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-25
+</code></pre></div>    </div>
+  </li>
+  <li>日付中心の検索：対象患者（= Patientリソース）と撮影の日時を条件とした検索をサポートすることが望ましい
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/ImagingStudy?patient={reference}&amp;started={date}
+</code></pre></div>    </div>
+    <p>例：</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-25
+</code></pre></div>    </div>
+  </li>
+  <li>複数の条件を組み合わせた検索：対象患者（= Patientリソース）、撮影の日時、撮影に使用されたモダリティ、撮影の対象となった撮影部位を条件とした検索をサポートすることが望ましい
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/ImagingStudy?patient={reference}&amp;started={date}&amp;series.modality={token}&amp;bodysite={token}
+</code></pre></div>    </div>
+    <p>例：</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/ImagingStudy?patient=123&amp;started=eq2021-06-18&amp;series.modality=CT&amp;bodysite=T-15460
+</code></pre></div>    </div>
+  </li>
+  <li>来院情報中心の検索：来院情報（= Encounterリソース）を条件とした検索をサポートすることが望ましい
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/ImagingStudy?encounter={reference}
+</code></pre></div>    </div>
+    <p>例：</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/ImagingStudy?encounter=456
+</code></pre></div>    </div>
+  </li>
+</ol>
 
 <h5 id="オプション検索パラメータ">オプション検索パラメータ</h5>
 
@@ -1297,7 +1279,7 @@ ImagingStudyリソースでは検索の多様性が求められるため、必�
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jun 16, 2023 00:47+0000">2023-06-16</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Jun 17, 2023 05:36+0000">2023-06-17</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
