@@ -1,33 +1,42 @@
 ***v1.1.2***  
-主にパブリックコメントやIssue等の指摘を受け、この対応を実施した
+パブリックコメントやIssue等の指摘を中心に不具合やわかりにくい点について改善を行った。また内視鏡検査および微生物学的検査関連のプロファイルを新規に追加した。主な変更点は以下のとおりである。
 
 * 全般
+  * 実装ガイドの依存関係利用しているライセンス等の情報を総合ガイダンスのページに追加した
   * 誤字・脱字等の見直しを行なった
-  * 参照先のリンクの見直しを行なった
-  * 「である」調に一部なっていないものがあったため修正
+  * 参照先リンクに一部の間違いがあったためこれを訂正した
+  * 「である」調に一部なっていないものがあったため訂正した
+  * Exampleにある時間を日本時間ベースに修正
+  * Slicing定義タイプがpatternからvalueへ変更可能なものはvalueを使うように変更した
 
-* プロファイル
-  * Observation関連
-    * Observation派生プロファイルを検索出来るように、Categoryに検索用固定値を必須でいれることとした  
-    ※本件はv1.1.0,v1.1.1で作成したものと互換性が保たれないため注意のこと
-    * JP_Observation_Commonのコメント見直しを行なった
-    * 微生物学検査関連プロファイルの追加  
-      * JP_Observation_Microbiology
-      * JP_DiagnosticReport_Microbiology
-  * ImagingStudyおよびDiagnosticReport関連
-    * DiagnosticReport派生プロファイルを検索出来るように、Categoryに検索用固定値を必須でいれることとした  
-    ※本件はv1.1.0,v1.1.1で作成したものと互換性が保たれないため注意のこと
+* プロファイル関連
+  * Observation
+    * Observation派生プロファイルを区別出来るようにCategoryにプロファイル毎に固定値を必須でいれることとした  
+    これにあわせて検索例やExample等を修正した  
+    ※本件はv1.1.0, v1.1.1で作成したものと互換性が保たれないため注意のこと
+    * 微生物学検査関連プロファイルの追加    
+      * `JP_Observation_Microbiology`
+    * `JP_Observation_Common`のshort, definition等のコメントをわかりやすいように修正した
+  * DiagnosticReport
+    * DiagnosticReport派生プロファイルを区別出来るように、Categoryにプロファイル毎に固定値を必須でいれることとした  
+    これにあわせて検索例やExample等を修正した  
+    ※本件はv1.1.0, v1.1.1で作成したものと互換性が保たれないため注意のこと
     * 内視鏡関連プロファイルの追加
-      * JP_ImagingStudy_EndoScopy
-      * JP_DiagnosticReport_EndoScopy
-    * JP_DiagnosticReport_Common の shortおよびdefinitionの記述を整理した
-    * JP_DiagnosticReport_Radiologyのcategoryおよびcodeエレメントの定義を更新した、また読影医・確定医の専門医資格情報に関する記述を追加した
-  * Medication関連
-    * JP_MedicationRequest, JP_MedicationRequest_Injectionに対し、JP_MedicationDispense_Preparation拡張定義が誤って定義されていたため、これを削除した
-  * Patient関連
+      * `JP_DiagnosticReport_Endoscopy`
+    * 微生物学検査関連プロファイルの追加    
+      * `JP_DiagnosticReport_Microbiology`
+    * `JP_DiagnosticReport_Common` の shortおよびdefinitionの記述を整理した
+    * `JP_DiagnosticReport_Radiology`のcategoryおよびcodeエレメントの定義を更新した、また読影医・確定医の専門医資格情報に関する記述を追加した
+  * ImagingStudy
+    * 内視鏡関連プロファイルの追加
+      * `JP_ImagingStudy_Endoscopy`  
+    * `JP_ImagingStudy_Radiology`の説明を見直し、進捗に関する記述の追加やSearchParameterの要求レベル等を修正した、またExampleのテキストエリアの見直した
+  * Medication
+    * `JP_MedicationRequest`, `JP_MedicationRequest_Injection`に対し、`JP_MedicationDispense_Preparation`拡張定義が誤って定義されていたため、これを削除した
+  * Patient
     * プロファイルにJP Coreとしての例をExample Jp:として表示を追加した
 
-* Terminology関連(CodeSystem、ValueSet)
+* Terminology関連
   * 定義追加  
   プロファイル追加、ObservationおよびDiagnosticReportのCategory再定義により下記のTerminology関連プロファイルの追加を行なった
     * JP Core Endoscopy JED CodeSystem

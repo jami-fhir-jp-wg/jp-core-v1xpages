@@ -25,7 +25,8 @@
 [jp-diagnosticreport-labresult-example-1]: DiagnosticReport-jp-diagnosticreport-labresult-example-1.html
 [jp-diagnosticreport-microbiology-example-1]: DiagnosticReport-jp-diagnosticreport-microbiology-example-1.html
 [JP_DocumentCodes_CS]: CodeSystem-jp-documentcodes-cs.html
-[JP_DocumentCodes_Endoscopy_VS]: ValueSet-jp-DocumentCodes-Endoscopy-vs.html
+[JP_DocumentCodes_DiagnosticReport_VS]: ValueSet-jp-documentcodes-diagnosticreport-vs.html
+[JP_DocumentCodes_Endoscopy_VS]: ValueSet-jp-documentcodes-endoscopy-vs.html
 [jp-encounter-example-1]: Encounter-jp-encounter-example-1.html
 [JP_Encounter]: StructureDefinition-jp-encounter.html
 [JP_EndoscopyTerminologyCodesJED_CS]: CodeSystem-jp-endoscopyterminology-codes-jed-cs.html
@@ -151,6 +152,7 @@
 [JP_Microbiology_InfectiousAgent_CS]: CodeSystem-jp-microbiology-infectious-agent-cs.html
 [JP_MicrobiologyCategory_CS]: CodeSystem-jp-microbiology-category-cs.html
 [JP_MicrobiologyCategory_VS]: ValueSet-jp-microbiology-category-vs.html
+[JP_ObservationCategory_Microbiology_VS]: ValueSet-jp-microbiology-category-laboratory-vs.html
 [JP_ObservationBodyMeasurementCategory_CS]: CodeSystem-jp-observation-bodymeasurement-category-cs.html
 [JP_ObservationBodyMeasurementCategory_VS]: ValueSet-jp-observation-bodymeasurement-category-vs.html
 [JP_ObservationBodyMeasurementCode_CS]: CodeSystem-jp-observation-bodymeasurement-code-cs.html
