@@ -1,7 +1,6 @@
 [endpoint-dicom-wadors-example]: Endpoint-endpoint-dicom-wadors-example.html
 [jp-allergyintolerance-example-1]: AllergyIntolerance-jp-allergyintolerance-example-1.html
 [JP_AllergyIntolerance]: StructureDefinition-jp-allergyintolerance.html
-[JP_AllergyIntolerance_VS]: ValueSet-jp-allergyintolerance-vs.html
 [jp-condition-example-1]: Condition-jp-condition-example-1.html
 [JP_Condition]: StructureDefinition-jp-condition.html
 [JP_ConditionSeverity_VS]: ValueSet-jp-condition-severity-vs.html
