@@ -590,6 +590,14 @@ Summary
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path(s)</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
 <tr><td>con-1</td><td>error</td><td>Condition.stage</td><td>ステージには要約または評価が必要です。<br/>: summary.exists() or assessment.exists()</td><td></td></tr>
 <tr><td>con-2</td><td>error</td><td>Condition.evidence</td><td>証拠にはコードまたは詳細が必要です。<br/>: code.exists() or detail.exists()</td><td></td></tr>
+<tr><td>con-3</td><td>best practice</td><td>Condition</td><td>「verificationStatus」が「entered-in-error」でなく、「category」が「problem-list-item」である場合、「condition.clinicalStatus」が存在している必要があります。」<br/>: clinicalStatus.exists() or verificationStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-ver-status' and code = 'entered-in-error').exists() or category.select($this='problem-list-item').empty()</td><td></td></tr>
+<tr><td>con-4</td><td>error</td><td>Condition</td><td>もし状態が軽減された場合、臨床状態は不活動、解決、または寛解でなければなりません。<br/>: abatement.empty() or clinicalStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-clinical' and (code='resolved' or code='remission' or code='inactive')).exists()</td><td></td></tr>
+<tr><td>con-5</td><td>error</td><td>Condition</td><td>「verificationStatusがentered-in-errorである場合、condition.clinicalStatusは存在してはなりません。」<br/>: verificationStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-ver-status' and code='entered-in-error').empty() or clinicalStatus.empty()</td><td></td></tr>
+<tr><td>dom-2</td><td>error</td><td>Condition</td><td>もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen).<br/>: contained.contained.empty()</td><td></td></tr>
+<tr><td>dom-3</td><td>error</td><td>Condition</td><td>もしリソースが他のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含まれるリソースに参照されるべきです。<br/>: contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()</td><td></td></tr>
+<tr><td>dom-4</td><td>error</td><td>Condition</td><td>もしリソースが別のリソースの中に含まれる場合、meta.versionIdまたはmeta.lastUpdatedを持つべきではありません。<br/>: contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()</td><td></td></tr>
+<tr><td>dom-5</td><td>error</td><td>Condition</td><td>「もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。」<br/>: contained.meta.security.empty()</td><td></td></tr>
+<tr><td>dom-6</td><td>best practice</td><td>Condition</td><td>「資源は堅牢な管理のために物語を持つべきである。」<br/>: text.`div`.exists()</td><td></td></tr>
 <tr><td>ele-1</td><td>error</td><td>**ALL** elements</td><td>すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
 <tr><td>ext-1</td><td>error</td><td>**ALL** extensions</td><td>「拡張機能または値[x]のいずれかが必要です。両方ではありません。」<br/>: extension.exists() != value.exists()</td><td></td></tr>
 </table>
@@ -1000,6 +1008,14 @@ Summary
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path(s)</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
 <tr><td>con-1</td><td>error</td><td>Condition.stage</td><td>ステージには要約または評価が必要です。<br/>: summary.exists() or assessment.exists()</td><td></td></tr>
 <tr><td>con-2</td><td>error</td><td>Condition.evidence</td><td>証拠にはコードまたは詳細が必要です。<br/>: code.exists() or detail.exists()</td><td></td></tr>
+<tr><td>con-3</td><td>best practice</td><td>Condition</td><td>「verificationStatus」が「entered-in-error」でなく、「category」が「problem-list-item」である場合、「condition.clinicalStatus」が存在している必要があります。」<br/>: clinicalStatus.exists() or verificationStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-ver-status' and code = 'entered-in-error').exists() or category.select($this='problem-list-item').empty()</td><td></td></tr>
+<tr><td>con-4</td><td>error</td><td>Condition</td><td>もし状態が軽減された場合、臨床状態は不活動、解決、または寛解でなければなりません。<br/>: abatement.empty() or clinicalStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-clinical' and (code='resolved' or code='remission' or code='inactive')).exists()</td><td></td></tr>
+<tr><td>con-5</td><td>error</td><td>Condition</td><td>「verificationStatusがentered-in-errorである場合、condition.clinicalStatusは存在してはなりません。」<br/>: verificationStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-ver-status' and code='entered-in-error').empty() or clinicalStatus.empty()</td><td></td></tr>
+<tr><td>dom-2</td><td>error</td><td>Condition</td><td>もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen).<br/>: contained.contained.empty()</td><td></td></tr>
+<tr><td>dom-3</td><td>error</td><td>Condition</td><td>もしリソースが他のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含まれるリソースに参照されるべきです。<br/>: contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()</td><td></td></tr>
+<tr><td>dom-4</td><td>error</td><td>Condition</td><td>もしリソースが別のリソースの中に含まれる場合、meta.versionIdまたはmeta.lastUpdatedを持つべきではありません。<br/>: contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()</td><td></td></tr>
+<tr><td>dom-5</td><td>error</td><td>Condition</td><td>「もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。」<br/>: contained.meta.security.empty()</td><td></td></tr>
+<tr><td>dom-6</td><td>best practice</td><td>Condition</td><td>「資源は堅牢な管理のために物語を持つべきである。」<br/>: text.`div`.exists()</td><td></td></tr>
 <tr><td>ele-1</td><td>error</td><td>**ALL** elements</td><td>すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
 <tr><td>ext-1</td><td>error</td><td>**ALL** extensions</td><td>「拡張機能または値[x]のいずれかが必要です。両方ではありません。」<br/>: extension.exists() != value.exists()</td><td></td></tr>
 </table>
@@ -1301,7 +1317,7 @@ Summary
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jul 18, 2023 21:23+0000">2023-07-18</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 29, 2023 09:52+0000">2023-08-29</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
