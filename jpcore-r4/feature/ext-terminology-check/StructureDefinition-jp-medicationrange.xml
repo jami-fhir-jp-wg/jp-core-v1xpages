@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="jp-medicationrange"/>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml">Placeholder</div>
+  </text>
+  <url value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRange"/>
+  <version value="1.1.2"/>
+  <name value="JP_MedicationRange"/>
+  <title value="JP Core Medication Range DataType"/>
+  <status value="active"/>
+  <date value="2023-06-26"/>
+  <publisher value="FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"/>
+  <contact>
+    <name value="FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://jpfhir.jp"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="office@hlfhir.jp"/>
+    </telecom>
+  </contact>
+  <description value="このデータタイプはRange DataTypeに対して、薬剤量の上限下限に関する定義を行なったものである"/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="JP"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG"/>
+  <fhirVersion value="4.0.1"/>
+  <mapping>
+    <identity value="v2"/>
+    <uri value="http://hl7.org/v2"/>
+    <name value="HL7 v2 Mapping"/>
+  </mapping>
+  <mapping>
+    <identity value="rim"/>
+    <uri value="http://hl7.org/v3"/>
+    <name value="RIM Mapping"/>
+  </mapping>
+  <kind value="complex-type"/>
+  <abstract value="false"/>
+  <type value="Range"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Range"/>
+  <derivation value="constraint"/>
+  <snapshot>
+    <element id="Range">
+      <path value="Range"/>
+      <short value="薬剤の単位指定された上限下限量"/>
+      <definition value="薬剤の単位指定された上限下限量"/>
+      <comment value="薬剤の上限量、下限量の範囲を持っている。単位指定された数量を割り当てている。"/>
+      <min value="0"/>
+      <max value="*"/>
+      <base>
+        <path value="Range"/>
+        <min value="0"/>
+        <max value="*"/>
+      </base>
+      <condition value="ele-1"/>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <constraint>
+        <key value="rng-2"/>
+        <severity value="error"/>
+        <human value="存在する場合、低い値は高よりも低い値を持つものとします / If present, low SHALL have a lower value than high"/>
+        <expression value="low.empty() or high.empty() or (low &lt;= high)"/>
+        <xpath value="not(exists(f:low/f:value/@value)) or not(exists(f:high/f:value/@value)) or (number(f:low/f:value/@value) &lt;= number(f:high/f:value/@value))"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Range"/>
+      </constraint>
+      <isModifier value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+      <mapping>
+        <identity value="v2"/>
+        <map value="NR and also possibly SN (but see also quantity)"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="IVL&lt;QTY[not(type=&quot;TS&quot;)]&gt; [lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]or URG&lt;QTY[not(type=&quot;TS&quot;)]&gt;"/>
+      </mapping>
+    </element>
+    <element id="Range.id">
+      <path value="Range.id"/>
+      <representation value="xmlAttr"/>
+      <short value="要素間参照のための一意のID / Unique id for inter-element referencing"/>
+      <definition value="リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Element.id"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+    </element>
+    <element id="Range.extension">
+      <path value="Range.extension"/>
+      <slicing>
+        <discriminator>
+          <type value="value"/>
+          <path value="url"/>
+        </discriminator>
+        <description value="Extensions are always sliced by (at least) url"/>
+        <rules value="open"/>
+      </slicing>
+      <short value="実装で定義された追加のコンテンツ / Additional content defined by implementations"/>
+      <definition value="要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
+      <comment value="拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
+      <alias value="extensions"/>
+      <alias value="user content"/>
+      <min value="0"/>
+      <max value="*"/>
+      <base>
+        <path value="Element.extension"/>
+        <min value="0"/>
+        <max value="*"/>
+      </base>
+      <type>
+        <code value="Extension"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <constraint>
+        <key value="ext-1"/>
+        <severity value="error"/>
+        <human value="両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both"/>
+        <expression value="extension.exists() != value.exists()"/>
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+    </element>
+    <element id="Range.low">
+      <path value="Range.low"/>
+      <short value="薬剤の上限量"/>
+      <definition value="薬剤に関する数量と単位を定めた簡易データイプ"/>
+      <comment value="薬剤に関する簡易的な数量と単位を定めている。ValueおよびCodeを必須とし、comparatorは記述不可。単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)"/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Range.low"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="Quantity"/>
+        <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationSimpleQuantity"/>
+      </type>
+      <condition value="ele-1"/>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <constraint>
+        <key value="qty-3"/>
+        <severity value="error"/>
+        <human value="ユニットのコードが存在する場合、システムも存在するものとします / If a code for the unit is present, the system SHALL also be present"/>
+        <expression value="code.empty() or system.exists()"/>
+        <xpath value="not(exists(f:code)) or exists(f:system)"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Quantity"/>
+      </constraint>
+      <constraint>
+        <key value="sqty-1"/>
+        <severity value="error"/>
+        <human value="コンパレータは、単純なQuantityで使用されません / The comparator is not used on a SimpleQuantity"/>
+        <expression value="comparator.empty()"/>
+        <xpath value="not(exists(f:comparator))"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/SimpleQuantity"/>
+      </constraint>
+      <isModifier value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+      <mapping>
+        <identity value="v2"/>
+        <map value="SN (see also Range) or CQ"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="PQ, IVL&lt;PQ&gt;, MO, CO, depending on the values"/>
+      </mapping>
+    </element>
+    <element id="Range.high">
+      <path value="Range.high"/>
+      <short value="薬剤に関する数量と単位を定めた簡易データイプ"/>
+      <definition value="薬剤に関する数量と単位を定めた簡易データイプ"/>
+      <comment value="薬剤に関する簡易的な数量と単位を定めている。ValueおよびCodeを必須とし、comparatorは記述不可。単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)"/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Range.high"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="Quantity"/>
+        <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationSimpleQuantity"/>
+      </type>
+      <condition value="ele-1"/>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <constraint>
+        <key value="qty-3"/>
+        <severity value="error"/>
+        <human value="ユニットのコードが存在する場合、システムも存在するものとします / If a code for the unit is present, the system SHALL also be present"/>
+        <expression value="code.empty() or system.exists()"/>
+        <xpath value="not(exists(f:code)) or exists(f:system)"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Quantity"/>
+      </constraint>
+      <constraint>
+        <key value="sqty-1"/>
+        <severity value="error"/>
+        <human value="コンパレータは、単純なQuantityで使用されません / The comparator is not used on a SimpleQuantity"/>
+        <expression value="comparator.empty()"/>
+        <xpath value="not(exists(f:comparator))"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/SimpleQuantity"/>
+      </constraint>
+      <isModifier value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+      <mapping>
+        <identity value="v2"/>
+        <map value="SN (see also Range) or CQ"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="PQ, IVL&lt;PQ&gt;, MO, CO, depending on the values"/>
+      </mapping>
+    </element>
+  </snapshot>
+  <differential>
+    <element id="Range">
+      <path value="Range"/>
+      <short value="薬剤の単位指定された上限下限量"/>
+      <definition value="薬剤の単位指定された上限下限量"/>
+      <comment value="薬剤の上限量、下限量の範囲を持っている。単位指定された数量を割り当てている。"/>
+    </element>
+    <element id="Range.low">
+      <path value="Range.low"/>
+      <short value="薬剤の上限量"/>
+      <type>
+        <code value="Quantity"/>
+        <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationSimpleQuantity"/>
+      </type>
+    </element>
+    <element id="Range.high">
+      <path value="Range.high"/>
+      <type>
+        <code value="Quantity"/>
+        <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationSimpleQuantity"/>
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>
