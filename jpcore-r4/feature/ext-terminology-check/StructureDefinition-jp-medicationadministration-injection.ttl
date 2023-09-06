@@ -5,7 +5,7 @@
 
 # - resource -------------------------------------------------------------------
 
-<http://jpfhir.jp/fhir/core/ImplementationGuide-hl7.fhir.jp.core/StructureDefinition/jp-medicationadministration-injection> a fhir:StructureDefinition ;
+<http://jpfhir.jp/fhir/core/StructureDefinition/jp-medicationadministration-injection> a fhir:StructureDefinition ;
   fhir:nodeRole fhir:treeRoot ;
   fhir:id [ fhir:v "jp-medicationadministration-injection"] ; # 
   fhir:text [
@@ -4315,7 +4315,7 @@
            fhir:path [ fhir:v "$this" ]
          ] ) ;
          fhir:ordered [ fhir:v "false"^^xsd:boolean ] ;
-         fhir:rules [ fhir:v "open" ]
+         fhir:rules [ fhir:v "closed" ]
        ] ;
        fhir:short [ fhir:v "Dose quantity per unit of time　単位時間あたりの用量" ] ;
        fhir:definition [ fhir:v "Identifies the speed with which the medication was or will be introduced into the patient.  Typically, the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time, e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.\r\n\r\n薬が患者に導入された、または導入される予定の速度を識別する。\r\n通常、注入の速度。 1時間あたり100mlまたは100ml/時。単位時間あたりのレートとして表すこともできる。 2時間あたり500ml。その他の例：200mcg/分または200mcg/1分。 1リットル/8時間。" ] ;
@@ -4355,6 +4355,60 @@
        ] [
          fhir:identity [ fhir:v "rim" ] ;
          fhir:map [ fhir:v ".rateQuantity" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "MedicationAdministration.dosage.rate[x]:rateRatio" ] ;
+       fhir:path [ fhir:v "MedicationAdministration.dosage.rate[x]" ] ;
+       fhir:sliceName [ fhir:v "rateRatio" ] ;
+       fhir:short [ fhir:v "単位時間内での薬剤の容量" ] ;
+       fhir:definition [ fhir:v "単位時間内での薬剤の容量" ] ;
+       fhir:comment [ fhir:v "比率データタイプは、関係を数量と共通単位を使用して適切に表現できない場合にのみ、2つの数値の関係を表現するために使用する必要があります。分母値が「1」に固定されていることが知られている場合、比率ではなく数量を使用する必要があります。 / The Ratio datatype should only be used to express a relationship of two numbers if the relationship cannot be suitably expressed using a Quantity and a common unit.  Where the denominator value is known to be fixed to \"1\", Quantity should be used instead of Ratio." ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "1" ] ;
+       fhir:base [
+         fhir:path [ fhir:v "MedicationAdministration.dosage.rate[x]" ] ;
+         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+         fhir:max [ fhir:v "1" ]
+       ] ;
+       fhir:type ( [
+         fhir:code [ fhir:v "Ratio"^^xsd:anyURI ] ;
+         fhir:profile ( [
+           fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRatio_DosePerPeriod"^^xsd:anyURI ;
+           fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRatio_DosePerPeriod>
+         ] )
+       ] ) ;
+       fhir:condition ( [ fhir:v "ele-1" ] ) ;
+       fhir:constraint ( [
+         fhir:key [ fhir:v "ele-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children" ] ;
+         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
+         fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ] [
+         fhir:key [ fhir:v "rat-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "分子と分母の両方が存在するか、両方が存在します。両方が欠席している場合、いくつかの拡張が存在するものとします / Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present" ] ;
+         fhir:expression [ fhir:v "(numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())" ] ;
+         fhir:xpath [ fhir:v "(count(f:numerator) = count(f:denominator)) and ((count(f:numerator) > 0) or (count(f:extension) > 0))" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Ratio"^^xsd:anyURI ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Ratio>
+         ]
+       ] ) ;
+       fhir:isModifier [ fhir:v "false"^^xsd:boolean ] ;
+       fhir:mapping ( [
+         fhir:identity [ fhir:v "rim" ] ;
+         fhir:map [ fhir:v "n/a" ]
+       ] [
+         fhir:identity [ fhir:v "v2" ] ;
+         fhir:map [ fhir:v "N/A" ]
+       ] [
+         fhir:identity [ fhir:v "rim" ] ;
+         fhir:map [ fhir:v "RTO" ]
        ] )
      ] [
        fhir:id [ fhir:v "MedicationAdministration.dosage.rate[x]:rateQuantity" ] ;
@@ -4745,6 +4799,19 @@
        fhir:short [ fhir:v "Dose quantity per unit of time　単位時間あたりの用量" ] ;
        fhir:definition [ fhir:v "Identifies the speed with which the medication was or will be introduced into the patient.  Typically, the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time, e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.\r\n\r\n薬が患者に導入された、または導入される予定の速度を識別する。\r\n通常、注入の速度。 1時間あたり100mlまたは100ml/時。単位時間あたりのレートとして表すこともできる。 2時間あたり500ml。その他の例：200mcg/分または200mcg/1分。 1リットル/8時間。" ] ;
        fhir:comment [ fhir:v "If the rate changes over time, and you want to capture this in MedicationAdministration, then each change should be captured as a distinct MedicationAdministration, with a specific MedicationAdministration.dosage.rate, and the date time when the rate change occurred. Typically, the MedicationAdministration.dosage.rate element is not used to convey an average rate.\r\n\r\nレートが時間の経過とともに変化し、これをMedicationAdministrationで記述する場合は、各変更を、特定のMedicationAdministration.dosage.rateと、レート変更が発生した日時を使用して、個別のMedicationAdministrationとして記述する必要がある。通常、MedicationAdministration.dosage.rate要素は、平均レートを伝達するためには使用されない。" ]
+     ] [
+       fhir:id [ fhir:v "MedicationAdministration.dosage.rate[x]:rateRatio" ] ;
+       fhir:path [ fhir:v "MedicationAdministration.dosage.rate[x]" ] ;
+       fhir:sliceName [ fhir:v "rateRatio" ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "1" ] ;
+       fhir:type ( [
+         fhir:code [ fhir:v "Ratio"^^xsd:anyURI ] ;
+         fhir:profile ( [
+           fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRatio_DosePerPeriod"^^xsd:anyURI ;
+           fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRatio_DosePerPeriod>
+         ] )
+       ] )
      ] [
        fhir:id [ fhir:v "MedicationAdministration.dosage.rate[x]:rateQuantity" ] ;
        fhir:path [ fhir:v "MedicationAdministration.dosage.rate[x]" ] ;
