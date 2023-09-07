@@ -618,10 +618,15 @@
        fhir:isModifier [ fhir:v "false"^^xsd:boolean ] ;
        fhir:isSummary [ fhir:v "true"^^xsd:boolean ] ;
        fhir:binding [
-         fhir:strength [ fhir:v "preferred" ] ;
+         fhir:extension ( [
+           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"^^xsd:anyURI ] ;
+           fhir:value [ fhir:v "DiagnosticServiceSection" ]
+         ] ) ;
+         fhir:strength [ fhir:v "example" ] ;
+         fhir:description [ fhir:v "診断サービスセクションのコード。 / Codes for diagnostic service sections." ] ;
          fhir:valueSet [
-           fhir:v "http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS"^^xsd:anyURI ;
-           fhir:link <http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS>
+           fhir:v "http://hl7.org/fhir/ValueSet/diagnostic-service-sections"^^xsd:anyURI ;
+           fhir:link <http://hl7.org/fhir/ValueSet/diagnostic-service-sections>
          ]
        ] ;
        fhir:mapping ( [
@@ -1513,14 +1518,7 @@
        fhir:path [ fhir:v "DiagnosticReport.category" ] ;
        fhir:short [ fhir:v "診断レポートを作成した臨床分野、部門、または診断サービス（心臓病学、生化学、血液学、放射線医学など）を分類するコード【詳細参照】" ] ;
        fhir:definition [ fhir:v "診断レポートを作成した臨床分野、部門、または診断サービス（心臓病学、生化学、血液学、放射線医学など）を分類するコード" ] ;
-       fhir:comment [ fhir:v "これは、検索、並べ替え、および表示の目的で使用される。" ] ;
-       fhir:binding [
-         fhir:strength [ fhir:v "preferred" ] ;
-         fhir:valueSet [
-           fhir:v "http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS"^^xsd:anyURI ;
-           fhir:link <http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS>
-         ]
-       ]
+       fhir:comment [ fhir:v "これは、検索、並べ替え、および表示の目的で使用される。" ]
      ] [
        fhir:id [ fhir:v "DiagnosticReport.code" ] ;
        fhir:path [ fhir:v "DiagnosticReport.code" ] ;

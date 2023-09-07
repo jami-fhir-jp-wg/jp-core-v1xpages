@@ -629,10 +629,15 @@
        fhir:isModifier [ fhir:v "false"^^xsd:boolean ] ;
        fhir:isSummary [ fhir:v "true"^^xsd:boolean ] ;
        fhir:binding [
-         fhir:strength [ fhir:v "preferred" ] ;
+         fhir:extension ( [
+           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"^^xsd:anyURI ] ;
+           fhir:value [ fhir:v "DiagnosticServiceSection" ]
+         ] ) ;
+         fhir:strength [ fhir:v "example" ] ;
+         fhir:description [ fhir:v "診断サービスセクションのコード。 / Codes for diagnostic service sections." ] ;
          fhir:valueSet [
-           fhir:v "http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS"^^xsd:anyURI ;
-           fhir:link <http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS>
+           fhir:v "http://hl7.org/fhir/ValueSet/diagnostic-service-sections"^^xsd:anyURI ;
+           fhir:link <http://hl7.org/fhir/ValueSet/diagnostic-service-sections>
          ]
        ] ;
        fhir:mapping ( [
@@ -2061,6 +2066,7 @@
        fhir:type ( [
          fhir:code [ fhir:v "string"^^xsd:anyURI ]
        ] ) ;
+       fhir:pattern [ fhir:v "画像検査報告書" ] ;
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
@@ -3076,6 +3082,10 @@
        fhir:path [ fhir:v "DiagnosticReport.code.coding.code" ] ;
        fhir:min [ fhir:v "1"^^xsd:nonNegativeInteger ] ;
        fhir:fixed [ fhir:v "18748-4" ]
+     ] [
+       fhir:id [ fhir:v "DiagnosticReport.code.coding:radiologyReportCode.display" ] ;
+       fhir:path [ fhir:v "DiagnosticReport.code.coding.display" ] ;
+       fhir:pattern [ fhir:v "画像検査報告書" ]
      ] [
        fhir:id [ fhir:v "DiagnosticReport.subject" ] ;
        fhir:path [ fhir:v "DiagnosticReport.subject" ] ;

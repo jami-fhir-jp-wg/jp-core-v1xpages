@@ -1115,19 +1115,19 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
       <td>MAY</td>
       <td>patient,category,code,value-quantity</td>
       <td>reference,token,token,quantity</td>
-      <td>GET [base]/Observation?patient=123&amp;category=vital-signs&amp;code=http://loinc.org|8867-4&amp;value-quantity=gt40</td>
+      <td>GET [base]/Observation?patient=123&amp;category=vital-signs&amp;code=http://jpfhir/fhir/core/CodeSystem/loinc.org|8867-4&amp;value-quantity=gt40</td>
     </tr>
     <tr>
       <td>MAY</td>
       <td>patient,category,code,value-quantity,date</td>
       <td>reference,token,token,quantity,date</td>
-      <td>GET [base]/Observation?patient=123&amp;category=vital-signs&amp;code=http://loinc.org|8867-4&amp;value-quantity=gt40&amp;date=le2020-12-31</td>
+      <td>GET [base]/Observation?patient=123&amp;category=vital-signs&amp;code=http://jpfhir/fhir/core/CodeSystem/loinc.org|8867-4&amp;value-quantity=gt40&amp;date=le2020-12-31</td>
     </tr>
     <tr>
       <td>MAY</td>
       <td>patient,category,code,value-quantity,encounter</td>
       <td>reference,token,token,quantity,encounter</td>
-      <td>GET [base]/Observation?patient=123&amp;category=vital-signs&amp;code=http://loinc.org|8867-4&amp;value-quantity=gt40&amp;encounter=456</td>
+      <td>GET [base]/Observation?patient=123&amp;category=vital-signs&amp;code=http://jpfhir/fhir/core/CodeSystem/loinc.org|8867-4&amp;value-quantity=gt40&amp;encounter=456</td>
     </tr>
   </tbody>
 </table>
@@ -1173,7 +1173,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
 <p>例：患者123の心拍数が40超えのバイタルサインを取得したい場合</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?patient=123&amp;category=vital-signs&amp;code=http://loinc.org|8867-4&amp;value-quantity=gt40
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?patient=123&amp;category=vital-signs&amp;code=http://jpfhir/fhir/core/CodeSystem/loinc.org|8867-4&amp;value-quantity=gt40
 </code></pre></div></div>
 
 <p>2.項目中心の検索：subject（= 複数のPatientリソース：母集団としての患者範囲）、category（対象カテゴリ）、code（対象項目）、value[x].valueQuantity（値条件）、effective[x].effectiveDateTime または .effectivePeriod（期間範囲）での検索をサポートすることが望ましい。（MAY）</p>
@@ -1187,7 +1187,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
 <p>例：患者123の心拍数が40超えかつ2020年12月31日以前のバイタルサインを取得したい場合</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?patient=123&amp;category=vital-signs&amp;code=http://loinc.org|8867-4&amp;value-quantity=gt40&amp;date=le2020-12-31
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?patient=123&amp;category=vital-signs&amp;code=http://jpfhir/fhir/core/CodeSystem/loinc.org|8867-4&amp;value-quantity=gt40&amp;date=le2020-12-31
 </code></pre></div></div>
 
 <p>3.訪問診療等の検索：subject（= 複数のPatientリソース：母集団としての患者範囲）、category（対象カテゴリ）、code（対象項目）、value[x].valueQuantity（値条件）、encounter（= Encounterリソース：対象医療行為）での検索をサポートすることが望ましい。（MAY）</p>
@@ -1199,7 +1199,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
 <p>例：患者123の心拍数が40超えかつ2020年12月31日以前で診療456の時のバイタルサインを取得したい場合</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?patient=123&amp;category=vital-signs&amp;code=http://loinc.org|8867-4&amp;value-quantity=gt40&amp;date=le2020-12-31&amp;encounter=456
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   GET [base]/Observation?patient=123&amp;category=vital-signs&amp;code=http://jpfhir/fhir/core/CodeSystem/loinc.org|8867-4&amp;value-quantity=gt40&amp;date=le2020-12-31&amp;encounter=456
 </code></pre></div></div>
 
 <h4 id="operation一覧">Operation一覧</h4>
@@ -1410,7 +1410,7 @@ Observation.component（検査コンポーネント）、 Observation.hasMember�
  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
    </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://loinc.org"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir/fhir/core/CodeSystem/loinc.org"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"74076-1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"関与する薬物または物質"</span><span class="w">
    </span><span class="p">}</span><span class="w">
@@ -1420,7 +1420,7 @@ Observation.component（検査コンポーネント）、 Observation.hasMember�
  </span><span class="nl">"valueCodeableConcept"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
    </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://loinc.org"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir/fhir/core/CodeSystem/loinc.org"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">" LA20343-2"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"その他の物質: 特定が必要"</span><span class="w">
    </span><span class="p">}</span><span class="w">
@@ -1494,7 +1494,7 @@ Observation.component（検査コンポーネント）、 Observation.hasMember�
 </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
  </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-   </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://loinc.org"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir/fhir/core/CodeSystem/loinc.org"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6689-4"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"血糖値[質量/体積]--食後2時間値"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -1515,12 +1515,12 @@ Observation.component（検査コンポーネント）、 Observation.hasMember�
 </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
  </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-   </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://loinc.org"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir/fhir/core/CodeSystem/loinc.org"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59408-5"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"パルスオキシメータによる動脈血酸素飽和度"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-   </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://loinc.org"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir/fhir/core/CodeSystem/loinc.org"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20564-1"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"血中酸素飽和度"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -1678,7 +1678,7 @@ Observation.component（検査コンポーネント）、 Observation.hasMember�
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Aug 30, 2023 02:41+0000">2023-08-30</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package hl7.fhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Sep 7, 2023 00:53+0000">2023-09-07</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)"></span>
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
