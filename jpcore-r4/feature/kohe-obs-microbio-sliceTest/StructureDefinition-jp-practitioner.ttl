@@ -675,8 +675,9 @@
      ] [
        fhir:id [ fhir:v "Practitioner.telecom.system" ] ;
        fhir:path [ fhir:v "Practitioner.telecom.system" ] ;
-       fhir:short [ fhir:v "電話 | ファックス | メール | ページャー | URL | SMS | その他" ] ;
+       fhir:short [ fhir:v "phone | fax | email | pager | url | sms | other 【JP_Patient.telecomを参照。】" ] ;
        fhir:definition [ fhir:v "連絡先用通信フォーム - どの通信システムを使用するには接点が必要ですか。" ] ;
+       fhir:comment [ fhir:v "連絡先の種別をValueSet(ContactPointSystem)より選択する。  　- phone : 電話　- fax : Fax 　- email : 電子メール　- pager : ポケットベル　- url : 電話、ファックス、ポケットベル、または電子メールアドレスではなく、URLとして表される連絡先。これはWebサイト、ブログ、Skype、Twitter、Facebookなどのさまざまな機関または個人の連絡先を対象としている。電子メールアドレスには使用しないこと。　- sms : SMSメッセージの送信に使用できる連絡先（携帯電話、一部の固定電話など）  　- other : 電話、Fax、ポケットベル、または電子メールアドレスではなく、URLとして表現できない連絡先。例：内部メールアドレス。これは、URLとして表現できる連絡先（Skype、Twitter、Facebookなど）には使用しないこと。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -728,7 +729,7 @@
        fhir:path [ fhir:v "Practitioner.telecom.value" ] ;
        fhir:short [ fhir:v "実際の連絡先の詳細" ] ;
        fhir:definition [ fhir:v "指定されたコミュニケーションシステムに意味がある形式での実際の連絡先の詳細（電話番号または電子メールアドレス）を提供してください。" ] ;
-       fhir:comment [ fhir:v "\"電話番号の内線や、その連絡先の使用に関するメモなど、追加のテキストデータが値に含まれる場合があります。\"" ] ;
+       fhir:comment [ fhir:v "連絡先の番号やメールアドレス" ] ;
        fhir:requirements [ fhir:v "Need to support legacy numbers that are not in a tightly controlled format." ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
@@ -766,9 +767,9 @@
      ] [
        fhir:id [ fhir:v "Practitioner.telecom.use" ] ;
        fhir:path [ fhir:v "Practitioner.telecom.use" ] ;
-       fhir:short [ fhir:v "「家 | 仕事 | 一時的 | 古い | 携帯電話 - この連絡先の目的」(Ie | Shigoto | Ichijiteki | Furui | Keitaidenwa - Kono renrakusaki no mokuteki)" ] ;
+       fhir:short [ fhir:v "home | work | temp | old | mobile - 連絡先の用途等 【JP_Patient.telecomを参照。】" ] ;
        fhir:definition [ fhir:v "「接点の目的を特定する。」(Setten no mokuteki wo tokutei suru.)" ] ;
-       fhir:comment [ fhir:v "「アプリケーションは、一時的なものまたは古いものであると明示しない限り、連絡先が最新であると想定できます。」" ] ;
+       fhir:comment [ fhir:v "患者の連絡先の種別をValueSet(ContactPointUse)より選択する。  一時的なものまたは古いものであると明示しない限り、連絡先が最新とみなされる。\n　- home : 自宅\n　- work : 職場\n　- temp : 一時的\n　- old : 以前の\n　- mobile : モバイル機器" ] ;
        fhir:requirements [ fhir:v "Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose." ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
@@ -821,7 +822,7 @@
        fhir:path [ fhir:v "Practitioner.telecom.rank" ] ;
        fhir:short [ fhir:v "「使用の優先順位を指定してください（1が最も優先度が高い）」" ] ;
        fhir:definition [ fhir:v "「一連のコンタクトを使う上で好ましい順序を指定します。ランク値が低いContactPointsの方が、ランク値が高いものよりも優先されます。」" ] ;
-       fhir:comment [ fhir:v "「ランクは、インスタンス内で連絡先が表示される順序に必ずしも従わないことに注意してください。」" ] ;
+       fhir:comment [ fhir:v "連絡先の使用順序（1 = 最高）" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -857,7 +858,7 @@
        fhir:path [ fhir:v "Practitioner.telecom.period" ] ;
        fhir:short [ fhir:v "「コンタクトポイントが使用されている時間帯」" ] ;
        fhir:definition [ fhir:v "「接点が使用されていた/現在使用中である時間期間」" ] ;
-       fhir:comment [ fhir:v "期間は時間の範囲を指定する。使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、範囲から1つの値が適用されるか（たとえば、「この2回の間に患者に与える」）を指定する。\r\n期間は、時間間隔（経過時間の測定値）には使用されない。 [Duration]（datatypes.html＃Duration）を参照のこと。" ] ;
+       fhir:comment [ fhir:v "連絡先が使用されていた/されている期間" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -896,7 +897,7 @@
        fhir:path [ fhir:v "Practitioner.address" ] ;
        fhir:short [ fhir:v "役割が特定されていない従事者の住所（通常は自宅の住所）" ] ;
        fhir:definition [ fhir:v "役割が特定されていない従事者の住所（通常は自宅の住所）。\r\n勤務先の住所は通常、役割に依存するため、このプロパティには入力されない。" ] ;
-       fhir:comment [ fhir:v "PractitionerRoleにアドレス値が付いていないのは、この目的のためにロケーションプロパティを使用することが想定されているからである（アドレスが付いている）。\r\n\r\n要素の説明は、JP_Patient.address を参照。" ] ;
+       fhir:comment [ fhir:v "患者は、異なる用途または適用可能な期間で複数の住所を持っている可能性がある。\r\n\r\n【JP Core仕様】FHIRデータ型仕様に従って、以下の案とした。  \n　- 住所が構造化されている場合、住所パート Address.country、Address.postalcode、Address.state、Address.city、Address.line に分割して記載する\n　- 住所が構造化されていない場合は、Address.text に記述する\n　- 各住所パートとtext は、両方存在してもよい" ] ;
        fhir:requirements [ fhir:v "医療従事者の自宅/メールアドレスは、従業員管理のために必要とされることが多く、また、一部のロスタリングサービスでは、開始点（医療従事者の自宅）が計算に使用されることがある。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
@@ -1012,9 +1013,9 @@
      ] [
        fhir:id [ fhir:v "Practitioner.address.use" ] ;
        fhir:path [ fhir:v "Practitioner.address.use" ] ;
-       fhir:short [ fhir:v "ホーム|作業|温度|古い|請求 - この住所の目的 / home | work | temp | old | billing - purpose of this address" ] ;
-       fhir:definition [ fhir:v "このアドレスの目的。 / The purpose of this address." ] ;
-       fhir:comment [ fhir:v "アプリケーションは、一時的または古いものであると明示的に言わない限り、住所が最新であると想定できます。 / Applications can assume that an address is current unless it explicitly says that it is temporary or old." ] ;
+       fhir:short [ fhir:v "home | work | temp | old | billing - purpose of this address　住所の用途 【JP_Patient.address参照】" ] ;
+       fhir:definition [ fhir:v "The purpose of this address.\r\n住所の用途" ] ;
+       fhir:comment [ fhir:v "住所の用途をValueSet(AddressUse)より選択する。  \n- home : 自宅\n- work : 職場\n- temp : 一時的\n- old : 以前の\n- billing : 請求書、インボイス、領収書などの送付用" ] ;
        fhir:requirements [ fhir:v "多くのリストから適切なアドレスを選択できるようにします。 / Allows an appropriate address to be chosen from a list of many." ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
@@ -1065,9 +1066,9 @@
      ] [
        fhir:id [ fhir:v "Practitioner.address.type" ] ;
        fhir:path [ fhir:v "Practitioner.address.type" ] ;
-       fhir:short [ fhir:v "郵便|物理|両方 / postal | physical | both" ] ;
-       fhir:definition [ fhir:v "物理的な住所（アクセスできるもの）と郵送先住所（例：POボックスやアドレスのケア）を区別します。ほとんどのアドレスは両方です。 / Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both." ] ;
-       fhir:comment [ fhir:v "住所の定義は、「住所は物理的な場所ではなく、郵便アドレスを記述することを目的としている」と述べています。ただし、多くのアプリケーションは、住所が訪問できる場所であるという二重の目的を持っているかどうか、有効な配達先であるかどうかを追跡し、郵便アドレスは物理的な場所のプロキシとしてよく使用されます（[場所]（場所を参照してください。HTML＃）リソース）。 / The definition of Address states that \"address is intended to describe postal addresses, not physical locations\". However, many applications track whether an address has a dual purpose of being a location that can be visited as well as being a valid delivery destination, and Postal addresses are often used as proxies for physical locations (also see the [Location](http://hl7.org/fhir/R4/location.html#) resource)." ] ;
+       fhir:short [ fhir:v "postal | physical | both 【JP_Patient.address参照】" ] ;
+       fhir:definition [ fhir:v "住所（訪問できる住所）と郵送先住所（私書箱や気付住所など）を区別する。ほとんどのアドレスは両方。" ] ;
+       fhir:comment [ fhir:v "住所の種類をValueSet(AddressType)より選択する。  \n- postal : 郵送先 - 私書箱、気付の住所\n- physical : 訪れることのできる物理的な住所\n- both : postalとphysicalの両方" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -1116,9 +1117,9 @@
      ] [
        fhir:id [ fhir:v "Practitioner.address.text" ] ;
        fhir:path [ fhir:v "Practitioner.address.text" ] ;
-       fhir:short [ fhir:v "アドレスのテキスト表現 / Text representation of the address" ] ;
-       fhir:definition [ fhir:v "アドレス全体を指定する必要があるため、例えば郵便ラベルで。これは、特定の部分の代わりに、または特定の部分と同様に提供される場合があります。 / Specifies the entire address as it should be displayed e.g. on a postal label. This may be provided instead of or as well as the specific parts." ] ;
-       fhir:comment [ fhir:v "テキスト表現とパーツの両方を提供できます。アドレスを更新するアプリケーションは、テキストとパーツの両方が存在する場合、一部に見つからないテキストにコンテンツが含まれていないことを保証するものとします。 / Can provide both a text representation and parts. Applications updating an address SHALL ensure that  when both text and parts are present,  no content is included in the text that isn't found in a part." ] ;
+       fhir:short [ fhir:v "住所のテキスト表現 【JP_Patient.address参照】" ] ;
+       fhir:definition [ fhir:v "表示するアドレス全体を指定する  \n例：郵便ラベル。これは、特定の部品の代わりに、または特定の部品と同様に提供される場合がある。" ] ;
+       fhir:comment [ fhir:v "テキスト表現とパーツの両方を提供できる。アドレスを更新するアプリケーションは、テキストとパーツの両方が存在する場合、パーツにないコンテンツはテキストに含まれないようにする必要がある。  \n- 住所を(都道府県や市町村などに)分離して管理していない場合は、textに入れる。  \n- 住所を(都道府県や市町村などに)分離して管理している場合でも、まとめてtextに入れること。  \n- 郵便番号は含めない。  \n\n例：東京都文京区本郷7-3-1" ] ;
        fhir:requirements [ fhir:v "レンダリング可能で、不コード化されていないフォーム。 / A renderable, unencoded form." ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
@@ -1129,6 +1130,10 @@
        ] ;
        fhir:type ( [
          fhir:code [ fhir:v "string"^^xsd:anyURI ]
+       ] ) ;
+       fhir:example ( [
+         fhir:label [ fhir:v "Jp" ] ;
+         fhir:value [ fhir:v "東京都文京区本郷7-3-1" ]
        ] ) ;
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
@@ -1156,8 +1161,9 @@
      ] [
        fhir:id [ fhir:v "Practitioner.address.line" ] ;
        fhir:path [ fhir:v "Practitioner.address.line" ] ;
-       fhir:short [ fhir:v "ストリート名、番号、方向＆P.O。ボックスなど / Street name, number, direction & P.O. Box etc." ] ;
-       fhir:definition [ fhir:v "このコンポーネントには、家番号、アパート番号、ストリート名、通りの方向、P.O。ボックス番号、配信ヒント、および同様のアドレス情報。 / This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information." ] ;
+       fhir:short [ fhir:v "ストリート名や番地など 【JP_Patient.address参照】" ] ;
+       fhir:definition [ fhir:v "このコンポーネントには、家番号、アパート番号、通りの名前、通りの方向、P.O。が含まれる。ボックス番号、配達のヒント、および同様の住所情報など。" ] ;
+       fhir:comment [ fhir:v "【JP Core仕様】state要素とcity要素で表現しなかったそのあとの住所部分を番地以降の部分も含めてすべていれる。  \n英数字は半角でも全角でもよい。文字列の前後および途中に空白文字を含めないこと。  \n繰り返し要素が許されているので、区切りを表現したい場合には、複数要素に分けて格納してもよい。  \n\n例：本郷7-3-1  \n例：大字石神９７６  \n例：藤崎町大字藤崎字西村1-2 春山荘201号室" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
        fhir:base [
@@ -1169,6 +1175,10 @@
          fhir:code [ fhir:v "string"^^xsd:anyURI ]
        ] ) ;
        fhir:orderMeaning [ fhir:v "The order in which lines should appear in an address label" ] ;
+       fhir:example ( [
+         fhir:label [ fhir:v "Jp" ] ;
+         fhir:value [ fhir:v "本郷7-3-1" ]
+       ] ) ;
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
@@ -1198,8 +1208,9 @@
      ] [
        fhir:id [ fhir:v "Practitioner.address.city" ] ;
        fhir:path [ fhir:v "Practitioner.address.city" ] ;
-       fhir:short [ fhir:v "都市、町などの名前。 / Name of city, town etc." ] ;
-       fhir:definition [ fhir:v "都市、町、郊外、村、またはその他のコミュニティまたは配達センターの名前。 / The name of the city, town, suburb, village or other community or delivery center." ] ;
+       fhir:short [ fhir:v "市区町村名 【JP_Patient.address参照】" ] ;
+       fhir:definition [ fhir:v "n市、町、郊外、村、その他のコミュニティまたは配達センターの名前。" ] ;
+       fhir:comment [ fhir:v "１MBを超えないこと。  【JP Core仕様】郡市区町村部分だけを「郡」「市」「区」「町」「村」などの文字を含めて設定する。 例：文京区" ] ;
        fhir:alias ( [ fhir:v "Municpality" ] ) ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
@@ -1210,6 +1221,10 @@
        ] ;
        fhir:type ( [
          fhir:code [ fhir:v "string"^^xsd:anyURI ]
+       ] ) ;
+       fhir:example ( [
+         fhir:label [ fhir:v "Jp" ] ;
+         fhir:value [ fhir:v "文京区" ]
        ] ) ;
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
@@ -1240,9 +1255,9 @@
      ] [
        fhir:id [ fhir:v "Practitioner.address.district" ] ;
        fhir:path [ fhir:v "Practitioner.address.district" ] ;
-       fhir:short [ fhir:v "地区名（別名郡） / District name (aka county)" ] ;
+       fhir:short [ fhir:v "地区名 【JP_Patient.address参照】" ] ;
        fhir:definition [ fhir:v "管理エリア（郡）の名前。 / The name of the administrative area (county)." ] ;
-       fhir:comment [ fhir:v "地区は郡として知られていることもありますが、一部の地域では「郡」は都市（自治体）の代わりに使用されているため、代わりに郡の名前を都市で伝える必要があります。 / District is sometimes known as county, but in some regions 'county' is used in place of city (municipality), so county name should be conveyed in city instead." ] ;
+       fhir:comment [ fhir:v "【JP Core仕様】日本の住所では使用しない。" ] ;
        fhir:alias ( [ fhir:v "County" ] ) ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
@@ -1277,8 +1292,9 @@
      ] [
        fhir:id [ fhir:v "Practitioner.address.state" ] ;
        fhir:path [ fhir:v "Practitioner.address.state" ] ;
-       fhir:short [ fhir:v "国のサブユニット（略語OK） / Sub-unit of country (abbreviations ok)" ] ;
-       fhir:definition [ fhir:v "連邦政府が組織された国に限られた主権を持つ国のサブユニット。コードが一般的に使用されている場合（たとえば、2文字の状態コードなど）、コードを使用できます。 / Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (e.g. US 2 letter state codes)." ] ;
+       fhir:short [ fhir:v "国の次の地区単位 【JP_Patient.address参照】" ] ;
+       fhir:definition [ fhir:v "国の主権が制限されている国のサブユニット。日本の場合、都道府県名。" ] ;
+       fhir:comment [ fhir:v "１MBを超えないこと。  都道府県名。「都」「道」「府」「県」のそれぞれの文字を含める。 例：東京都" ] ;
        fhir:alias ( [ fhir:v "Province" ] [ fhir:v "Territory" ] ) ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
@@ -1289,6 +1305,10 @@
        ] ;
        fhir:type ( [
          fhir:code [ fhir:v "string"^^xsd:anyURI ]
+       ] ) ;
+       fhir:example ( [
+         fhir:label [ fhir:v "Jp" ] ;
+         fhir:value [ fhir:v "東京都" ]
        ] ) ;
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
@@ -1319,8 +1339,9 @@
      ] [
        fhir:id [ fhir:v "Practitioner.address.postalCode" ] ;
        fhir:path [ fhir:v "Practitioner.address.postalCode" ] ;
-       fhir:short [ fhir:v "エリアの郵便番号 / Postal code for area" ] ;
+       fhir:short [ fhir:v "郵便番号 【JP_Patient.address参照】" ] ;
        fhir:definition [ fhir:v "郵便サービスによって定義された地域を指定する郵便番号。 / A postal code designating a region defined by the postal service." ] ;
+       fhir:comment [ fhir:v "郵便番号。日本の郵便番号の場合には3桁数字とハイフン1文字と4桁数字からなる半角８文字、または最初の3桁だけの3文字のいずれかとする。 例：113-8655" ] ;
        fhir:alias ( [ fhir:v "Zip" ] ) ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
@@ -1331,6 +1352,10 @@
        ] ;
        fhir:type ( [
          fhir:code [ fhir:v "string"^^xsd:anyURI ]
+       ] ) ;
+       fhir:example ( [
+         fhir:label [ fhir:v "Jp" ] ;
+         fhir:value [ fhir:v "113-8655" ]
        ] ) ;
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
@@ -1361,9 +1386,9 @@
      ] [
        fhir:id [ fhir:v "Practitioner.address.country" ] ;
        fhir:path [ fhir:v "Practitioner.address.country" ] ;
-       fhir:short [ fhir:v "国（例えばISO 3166 2または3文字のコードにすることができます） / Country (e.g. can be ISO 3166 2 or 3 letter code)" ] ;
-       fhir:definition [ fhir:v "国 - 一般的に理解されるか、一般的に受け入れられている国。 / Country - a nation as commonly understood or generally accepted." ] ;
-       fhir:comment [ fhir:v "ISO 3166 3文字コードは、人間の読み取り可能な国名の代わりに使用できます。 / ISO 3166 3 letter codes can be used in place of a human readable country name." ] ;
+       fhir:short [ fhir:v "国名またはISO 3166コード　(ISO 3166 2 or 3文字こーど)" ] ;
+       fhir:definition [ fhir:v "国-一般的に理解されている、または一般的に受け入れられている国の国名かコード。" ] ;
+       fhir:comment [ fhir:v "ISO 3166 3文字コードは、人間が読める国名の代わりに使用する。  ISO 3166の2文字または3文字のコード.  日本であれば、jpまたはjpn" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -1403,10 +1428,10 @@
      ] [
        fhir:id [ fhir:v "Practitioner.address.period" ] ;
        fhir:path [ fhir:v "Practitioner.address.period" ] ;
-       fhir:short [ fhir:v "アドレスが使用されていた期間 / Time period when address was/is in use" ] ;
-       fhir:definition [ fhir:v "アドレスが使用されていた期間。 / Time period when address was/is in use." ] ;
-       fhir:comment [ fhir:v "期間は時間の範囲を指定する。使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、範囲から1つの値が適用されるか（たとえば、「この2回の間に患者に与える」）を指定する。\r\n期間は、時間間隔（経過時間の測定値）には使用されない。 [Duration]（datatypes.html＃Duration）を参照のこと。" ] ;
-       fhir:requirements [ fhir:v "アドレスを歴史的な文脈に配置できるようにします。 / Allows addresses to be placed in historical context." ] ;
+       fhir:short [ fhir:v "住所が使用されていた（いる）期間" ] ;
+       fhir:definition [ fhir:v "住所が使用されていた（いる）期間" ] ;
+       fhir:comment [ fhir:v "住所が使用されていた/されている期間。 期間は時間の範囲を指定する。使用状況はその期間全体に適用されるか、範囲から1つの値が適用される。  期間は、時間間隔（経過時間の測定値）には使用されない。" ] ;
+       fhir:requirements [ fhir:v "アドレスを履歴上の文脈に配置できるようにします。 / Allows addresses to be placed in historical context." ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -2156,7 +2181,7 @@
      ] [
        fhir:id [ fhir:v "Practitioner.qualification:narcoticPrescriptionLicenseNumber.identifier.use" ] ;
        fhir:path [ fhir:v "Practitioner.qualification.identifier.use" ] ;
-       fhir:short [ fhir:v "通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)" ] ;
+       fhir:short [ fhir:v "通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)" ] ;
        fhir:definition [ fhir:v "この識別子の目的。 / The purpose of this identifier." ] ;
        fhir:comment [ fhir:v "アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." ] ;
        fhir:requirements [ fhir:v "特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." ] ;
@@ -2805,7 +2830,7 @@
      ] [
        fhir:id [ fhir:v "Practitioner.qualification:medicalRegistrationNumber.identifier.use" ] ;
        fhir:path [ fhir:v "Practitioner.qualification.identifier.use" ] ;
-       fhir:short [ fhir:v "通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)" ] ;
+       fhir:short [ fhir:v "通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)" ] ;
        fhir:definition [ fhir:v "この識別子の目的。 / The purpose of this identifier." ] ;
        fhir:comment [ fhir:v "アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." ] ;
        fhir:requirements [ fhir:v "特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." ] ;
@@ -3289,20 +3314,112 @@
        fhir:comment [ fhir:v "異なる用途や適用される期間に応じて複数の連絡方法を持っている可能性がある。本人に緊急に連絡を取るためのオプションが必要な場合があり、また本人の身元確認に役立つ場合がある。これらは通常、自宅の電話番号、または役割が特定されていない携帯電話番号を持つことになる。\r\n\r\n要素の説明は、JP_Patient.telecomを参照。" ] ;
        fhir:requirements [ fhir:v "医療従事者が持っているかもしれない任意の役割ごとに独立した連絡方法を知る必要がある。" ]
      ] [
+       fhir:id [ fhir:v "Practitioner.telecom.system" ] ;
+       fhir:path [ fhir:v "Practitioner.telecom.system" ] ;
+       fhir:short [ fhir:v "phone | fax | email | pager | url | sms | other 【JP_Patient.telecomを参照。】" ] ;
+       fhir:comment [ fhir:v "連絡先の種別をValueSet(ContactPointSystem)より選択する。  　- phone : 電話　- fax : Fax 　- email : 電子メール　- pager : ポケットベル　- url : 電話、ファックス、ポケットベル、または電子メールアドレスではなく、URLとして表される連絡先。これはWebサイト、ブログ、Skype、Twitter、Facebookなどのさまざまな機関または個人の連絡先を対象としている。電子メールアドレスには使用しないこと。　- sms : SMSメッセージの送信に使用できる連絡先（携帯電話、一部の固定電話など）  　- other : 電話、Fax、ポケットベル、または電子メールアドレスではなく、URLとして表現できない連絡先。例：内部メールアドレス。これは、URLとして表現できる連絡先（Skype、Twitter、Facebookなど）には使用しないこと。" ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.telecom.value" ] ;
+       fhir:path [ fhir:v "Practitioner.telecom.value" ] ;
+       fhir:comment [ fhir:v "連絡先の番号やメールアドレス" ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.telecom.use" ] ;
+       fhir:path [ fhir:v "Practitioner.telecom.use" ] ;
+       fhir:short [ fhir:v "home | work | temp | old | mobile - 連絡先の用途等 【JP_Patient.telecomを参照。】" ] ;
+       fhir:comment [ fhir:v "患者の連絡先の種別をValueSet(ContactPointUse)より選択する。  一時的なものまたは古いものであると明示しない限り、連絡先が最新とみなされる。\n　- home : 自宅\n　- work : 職場\n　- temp : 一時的\n　- old : 以前の\n　- mobile : モバイル機器" ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.telecom.rank" ] ;
+       fhir:path [ fhir:v "Practitioner.telecom.rank" ] ;
+       fhir:comment [ fhir:v "連絡先の使用順序（1 = 最高）" ]
+     ] [
        fhir:id [ fhir:v "Practitioner.telecom.period" ] ;
        fhir:path [ fhir:v "Practitioner.telecom.period" ] ;
-       fhir:comment [ fhir:v "期間は時間の範囲を指定する。使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、範囲から1つの値が適用されるか（たとえば、「この2回の間に患者に与える」）を指定する。\r\n期間は、時間間隔（経過時間の測定値）には使用されない。 [Duration]（datatypes.html＃Duration）を参照のこと。" ]
+       fhir:comment [ fhir:v "連絡先が使用されていた/されている期間" ]
      ] [
        fhir:id [ fhir:v "Practitioner.address" ] ;
        fhir:path [ fhir:v "Practitioner.address" ] ;
        fhir:short [ fhir:v "役割が特定されていない従事者の住所（通常は自宅の住所）" ] ;
        fhir:definition [ fhir:v "役割が特定されていない従事者の住所（通常は自宅の住所）。\r\n勤務先の住所は通常、役割に依存するため、このプロパティには入力されない。" ] ;
-       fhir:comment [ fhir:v "PractitionerRoleにアドレス値が付いていないのは、この目的のためにロケーションプロパティを使用することが想定されているからである（アドレスが付いている）。\r\n\r\n要素の説明は、JP_Patient.address を参照。" ] ;
+       fhir:comment [ fhir:v "患者は、異なる用途または適用可能な期間で複数の住所を持っている可能性がある。\r\n\r\n【JP Core仕様】FHIRデータ型仕様に従って、以下の案とした。  \n　- 住所が構造化されている場合、住所パート Address.country、Address.postalcode、Address.state、Address.city、Address.line に分割して記載する\n　- 住所が構造化されていない場合は、Address.text に記述する\n　- 各住所パートとtext は、両方存在してもよい" ] ;
        fhir:requirements [ fhir:v "医療従事者の自宅/メールアドレスは、従業員管理のために必要とされることが多く、また、一部のロスタリングサービスでは、開始点（医療従事者の自宅）が計算に使用されることがある。" ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.address.use" ] ;
+       fhir:path [ fhir:v "Practitioner.address.use" ] ;
+       fhir:short [ fhir:v "home | work | temp | old | billing - purpose of this address　住所の用途 【JP_Patient.address参照】" ] ;
+       fhir:definition [ fhir:v "The purpose of this address.\r\n住所の用途" ] ;
+       fhir:comment [ fhir:v "住所の用途をValueSet(AddressUse)より選択する。  \n- home : 自宅\n- work : 職場\n- temp : 一時的\n- old : 以前の\n- billing : 請求書、インボイス、領収書などの送付用" ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.address.type" ] ;
+       fhir:path [ fhir:v "Practitioner.address.type" ] ;
+       fhir:short [ fhir:v "postal | physical | both 【JP_Patient.address参照】" ] ;
+       fhir:definition [ fhir:v "住所（訪問できる住所）と郵送先住所（私書箱や気付住所など）を区別する。ほとんどのアドレスは両方。" ] ;
+       fhir:comment [ fhir:v "住所の種類をValueSet(AddressType)より選択する。  \n- postal : 郵送先 - 私書箱、気付の住所\n- physical : 訪れることのできる物理的な住所\n- both : postalとphysicalの両方" ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.address.text" ] ;
+       fhir:path [ fhir:v "Practitioner.address.text" ] ;
+       fhir:short [ fhir:v "住所のテキスト表現 【JP_Patient.address参照】" ] ;
+       fhir:definition [ fhir:v "表示するアドレス全体を指定する  \n例：郵便ラベル。これは、特定の部品の代わりに、または特定の部品と同様に提供される場合がある。" ] ;
+       fhir:comment [ fhir:v "テキスト表現とパーツの両方を提供できる。アドレスを更新するアプリケーションは、テキストとパーツの両方が存在する場合、パーツにないコンテンツはテキストに含まれないようにする必要がある。  \n- 住所を(都道府県や市町村などに)分離して管理していない場合は、textに入れる。  \n- 住所を(都道府県や市町村などに)分離して管理している場合でも、まとめてtextに入れること。  \n- 郵便番号は含めない。  \n\n例：東京都文京区本郷7-3-1" ] ;
+       fhir:example ( [
+         fhir:label [ fhir:v "Jp" ] ;
+         fhir:value [ fhir:v "東京都文京区本郷7-3-1" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.address.line" ] ;
+       fhir:path [ fhir:v "Practitioner.address.line" ] ;
+       fhir:short [ fhir:v "ストリート名や番地など 【JP_Patient.address参照】" ] ;
+       fhir:definition [ fhir:v "このコンポーネントには、家番号、アパート番号、通りの名前、通りの方向、P.O。が含まれる。ボックス番号、配達のヒント、および同様の住所情報など。" ] ;
+       fhir:comment [ fhir:v "【JP Core仕様】state要素とcity要素で表現しなかったそのあとの住所部分を番地以降の部分も含めてすべていれる。  \n英数字は半角でも全角でもよい。文字列の前後および途中に空白文字を含めないこと。  \n繰り返し要素が許されているので、区切りを表現したい場合には、複数要素に分けて格納してもよい。  \n\n例：本郷7-3-1  \n例：大字石神９７６  \n例：藤崎町大字藤崎字西村1-2 春山荘201号室" ] ;
+       fhir:example ( [
+         fhir:label [ fhir:v "Jp" ] ;
+         fhir:value [ fhir:v "本郷7-3-1" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.address.city" ] ;
+       fhir:path [ fhir:v "Practitioner.address.city" ] ;
+       fhir:short [ fhir:v "市区町村名 【JP_Patient.address参照】" ] ;
+       fhir:definition [ fhir:v "n市、町、郊外、村、その他のコミュニティまたは配達センターの名前。" ] ;
+       fhir:comment [ fhir:v "１MBを超えないこと。  【JP Core仕様】郡市区町村部分だけを「郡」「市」「区」「町」「村」などの文字を含めて設定する。 例：文京区" ] ;
+       fhir:example ( [
+         fhir:label [ fhir:v "Jp" ] ;
+         fhir:value [ fhir:v "文京区" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.address.district" ] ;
+       fhir:path [ fhir:v "Practitioner.address.district" ] ;
+       fhir:short [ fhir:v "地区名 【JP_Patient.address参照】" ] ;
+       fhir:comment [ fhir:v "【JP Core仕様】日本の住所では使用しない。" ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.address.state" ] ;
+       fhir:path [ fhir:v "Practitioner.address.state" ] ;
+       fhir:short [ fhir:v "国の次の地区単位 【JP_Patient.address参照】" ] ;
+       fhir:definition [ fhir:v "国の主権が制限されている国のサブユニット。日本の場合、都道府県名。" ] ;
+       fhir:comment [ fhir:v "１MBを超えないこと。  都道府県名。「都」「道」「府」「県」のそれぞれの文字を含める。 例：東京都" ] ;
+       fhir:example ( [
+         fhir:label [ fhir:v "Jp" ] ;
+         fhir:value [ fhir:v "東京都" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.address.postalCode" ] ;
+       fhir:path [ fhir:v "Practitioner.address.postalCode" ] ;
+       fhir:short [ fhir:v "郵便番号 【JP_Patient.address参照】" ] ;
+       fhir:comment [ fhir:v "郵便番号。日本の郵便番号の場合には3桁数字とハイフン1文字と4桁数字からなる半角８文字、または最初の3桁だけの3文字のいずれかとする。 例：113-8655" ] ;
+       fhir:example ( [
+         fhir:label [ fhir:v "Jp" ] ;
+         fhir:value [ fhir:v "113-8655" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.address.country" ] ;
+       fhir:path [ fhir:v "Practitioner.address.country" ] ;
+       fhir:short [ fhir:v "国名またはISO 3166コード　(ISO 3166 2 or 3文字こーど)" ] ;
+       fhir:definition [ fhir:v "国-一般的に理解されている、または一般的に受け入れられている国の国名かコード。" ] ;
+       fhir:comment [ fhir:v "ISO 3166 3文字コードは、人間が読める国名の代わりに使用する。  ISO 3166の2文字または3文字のコード.  日本であれば、jpまたはjpn" ]
      ] [
        fhir:id [ fhir:v "Practitioner.address.period" ] ;
        fhir:path [ fhir:v "Practitioner.address.period" ] ;
-       fhir:comment [ fhir:v "期間は時間の範囲を指定する。使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、範囲から1つの値が適用されるか（たとえば、「この2回の間に患者に与える」）を指定する。\r\n期間は、時間間隔（経過時間の測定値）には使用されない。 [Duration]（datatypes.html＃Duration）を参照のこと。" ]
+       fhir:short [ fhir:v "住所が使用されていた（いる）期間" ] ;
+       fhir:definition [ fhir:v "住所が使用されていた（いる）期間" ] ;
+       fhir:comment [ fhir:v "住所が使用されていた/されている期間。 期間は時間の範囲を指定する。使用状況はその期間全体に適用されるか、範囲から1つの値が適用される。  期間は、時間間隔（経過時間の測定値）には使用されない。" ]
      ] [
        fhir:id [ fhir:v "Practitioner.gender" ] ;
        fhir:path [ fhir:v "Practitioner.gender" ] ;

@@ -2044,9 +2044,15 @@ Practitioner.identifier.systemは以下の割り当てる。
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.telecom.system&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;電話 | ファックス | メール | ページャー | URL | SMS | その他&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a>
+
+             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;phone | fax | email | pager | url | sms | other 【JP_Patient.telecomを参照。】&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;連絡先用通信フォーム - どの通信システムを使用するには接点が必要ですか。&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
+
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;連絡先の種別をValueSet(ContactPointSystem)より選択する。  　- phone : 電話　- fax : Fax 　- email : 電子メール　- pager : ポケットベル　- url : 電話、ファックス、ポケットベル、または電子メールアドレスではなく、URLとして表される連絡先。これはWebサイト、ブログ、Skype、Twitter、Facebookなどのさまざまな機関または個人の連絡先を対象としている。電子メールアドレスには使用しないこと。　- sms : SMSメッセージの送信に使用できる連絡先（携帯電話、一部の固定電話など）  　- other : 電話、Fax、ポケットベル、または電子メールアドレスではなく、URLとして表現できない連絡先。例：内部メールアドレス。これは、URLとして表現できる連絡先（Skype、Twitter、Facebookなど）には使用しないこと。&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.min">min</a> <a href="http://hl7.org/fhir/R4/datatypes.html#unsignedInt">value</a>=&quot;0&quot;/&gt;
 
@@ -2148,9 +2154,7 @@ Practitioner.identifier.systemは以下の割り当てる。
 
                   <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;指定されたコミュニケーションシステムに意味がある形式での実際の連絡先の詳細（電話番号または電子メールアドレス）を提供してください。&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
-
-               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;&amp;quot;電話番号の内線や、その連絡先の使用に関するメモなど、追加のテキストデータが値に含まれる場合があります。&amp;quot;&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;連絡先の番号やメールアドレス&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.requirements">requirements</a>
 
@@ -2230,13 +2234,23 @@ Practitioner.identifier.systemは以下の割り当てる。
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a>
 
-             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;「家 | 仕事 | 一時的 | 古い | 携帯電話 - この連絡先の目的」(Ie | Shigoto | Ichijiteki | Furui | Keitaidenwa - Kono renrakusaki no mokuteki)&quot;/&gt;
+             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;home | work | temp | old | mobile - 連絡先の用途等 【JP_Patient.telecomを参照。】&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;「接点の目的を特定する。」(Setten no mokuteki wo tokutei suru.)&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
 
-               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;「アプリケーションは、一時的なものまたは古いものであると明示しない限り、連絡先が最新であると想定できます。」&quot;/&gt;
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;患者の連絡先の種別をValueSet(ContactPointUse)より選択する。  一時的なものまたは古いものであると明示しない限り、連絡先が最新とみなされる。
+
+　- home : 自宅
+
+　- work : 職場
+
+　- temp : 一時的
+
+　- old : 以前の
+
+　- mobile : モバイル機器&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.requirements">requirements</a>
 
@@ -2344,7 +2358,7 @@ Practitioner.identifier.systemは以下の割り当てる。
 
                   <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;「一連のコンタクトを使う上で好ましい順序を指定します。ランク値が低いContactPointsの方が、ランク値が高いものよりも優先されます。」&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;「ランクは、インスタンス内で連絡先が表示される順序に必ずしも従わないことに注意してください。」&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;連絡先の使用順序（1 = 最高）&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.min">min</a> <a href="http://hl7.org/fhir/R4/datatypes.html#unsignedInt">value</a>=&quot;0&quot;/&gt;
 
@@ -2414,11 +2428,7 @@ Practitioner.identifier.systemは以下の割り当てる。
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;「接点が使用されていた/現在使用中である時間期間」&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
-
-               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;期間は時間の範囲を指定する。使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、範囲から1つの値が適用されるか（たとえば、「この2回の間に患者に与える」）を指定する。
-
-期間は、時間間隔（経過時間の測定値）には使用されない。 [Duration]（datatypes.html＃Duration）を参照のこと。&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;連絡先が使用されていた/されている期間&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.min">min</a> <a href="http://hl7.org/fhir/R4/datatypes.html#unsignedInt">value</a>=&quot;0&quot;/&gt;
 
@@ -2502,11 +2512,17 @@ Practitioner.identifier.systemは以下の割り当てる。
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
 
-               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;PractitionerRoleにアドレス値が付いていないのは、この目的のためにロケーションプロパティを使用することが想定されているからである（アドレスが付いている）。
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;患者は、異なる用途または適用可能な期間で複数の住所を持っている可能性がある。
 
 
 
-要素の説明は、JP_Patient.address を参照。&quot;/&gt;
+【JP Core仕様】FHIRデータ型仕様に従って、以下の案とした。  
+
+　- 住所が構造化されている場合、住所パート Address.country、Address.postalcode、Address.state、Address.city、Address.line に分割して記載する
+
+　- 住所が構造化されていない場合は、Address.text に記述する
+
+　- 各住所パートとtext は、両方存在してもよい&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.requirements">requirements</a>
 
@@ -2754,13 +2770,25 @@ Practitioner.identifier.systemは以下の割り当てる。
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a>
 
-             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;ホーム|作業|温度|古い|請求 - この住所の目的 / home | work | temp | old | billing - purpose of this address&quot;/&gt;
+             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;home | work | temp | old | billing - purpose of this address　住所の用途 【JP_Patient.address参照】&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;このアドレスの目的。 / The purpose of this address.&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;The purpose of this address.
+
+住所の用途&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
 
-               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;アプリケーションは、一時的または古いものであると明示的に言わない限り、住所が最新であると想定できます。 / Applications can assume that an address is current unless it explicitly says that it is temporary or old.&quot;/&gt;
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;住所の用途をValueSet(AddressUse)より選択する。  
+
+- home : 自宅
+
+- work : 職場
+
+- temp : 一時的
+
+- old : 以前の
+
+- billing : 請求書、インボイス、領収書などの送付用&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.requirements">requirements</a>
 
@@ -2862,15 +2890,19 @@ Practitioner.identifier.systemは以下の割り当てる。
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.type&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;郵便|物理|両方 / postal | physical | both&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;postal | physical | both 【JP_Patient.address参照】&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a>
-
-                  <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;物理的な住所（アクセスできるもの）と郵送先住所（例：POボックスやアドレスのケア）を区別します。ほとんどのアドレスは両方です。 / Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;住所（訪問できる住所）と郵送先住所（私書箱や気付住所など）を区別する。ほとんどのアドレスは両方。&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
 
-               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;住所の定義は、「住所は物理的な場所ではなく、郵便アドレスを記述することを目的としている」と述べています。ただし、多くのアプリケーションは、住所が訪問できる場所であるという二重の目的を持っているかどうか、有効な配達先であるかどうかを追跡し、郵便アドレスは物理的な場所のプロキシとしてよく使用されます（[場所]（場所を参照してください。HTML＃）リソース）。 / The definition of Address states that &amp;quot;address is intended to describe postal addresses, not physical locations&amp;quot;. However, many applications track whether an address has a dual purpose of being a location that can be visited as well as being a valid delivery destination, and Postal addresses are often used as proxies for physical locations (also see the [Location](http://hl7.org/fhir/R4/location.html#) resource).&quot;/&gt;
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;住所の種類をValueSet(AddressType)より選択する。  
+
+- postal : 郵送先 - 私書箱、気付の住所
+
+- physical : 訪れることのできる物理的な住所
+
+- both : postalとphysicalの両方&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.min">min</a> <a href="http://hl7.org/fhir/R4/datatypes.html#unsignedInt">value</a>=&quot;0&quot;/&gt;
 
@@ -2966,15 +2998,27 @@ Practitioner.identifier.systemは以下の割り当てる。
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.text&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;アドレスのテキスト表現 / Text representation of the address&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;住所のテキスト表現 【JP_Patient.address参照】&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a>
 
-                  <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;アドレス全体を指定する必要があるため、例えば郵便ラベルで。これは、特定の部分の代わりに、または特定の部分と同様に提供される場合があります。 / Specifies the entire address as it should be displayed e.g. on a postal label. This may be provided instead of or as well as the specific parts.&quot;/&gt;
+                  <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;表示するアドレス全体を指定する  
+
+例：郵便ラベル。これは、特定の部品の代わりに、または特定の部品と同様に提供される場合がある。&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
 
-               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;テキスト表現とパーツの両方を提供できます。アドレスを更新するアプリケーションは、テキストとパーツの両方が存在する場合、一部に見つからないテキストにコンテンツが含まれていないことを保証するものとします。 / Can provide both a text representation and parts. Applications updating an address SHALL ensure that  when both text and parts are present,  no content is included in the text that isn't found in a part.&quot;/&gt;
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;テキスト表現とパーツの両方を提供できる。アドレスを更新するアプリケーションは、テキストとパーツの両方が存在する場合、パーツにないコンテンツはテキストに含まれないようにする必要がある。  
+
+- 住所を(都道府県や市町村などに)分離して管理していない場合は、textに入れる。  
+
+- 住所を(都道府県や市町村などに)分離して管理している場合でも、まとめてtextに入れること。  
+
+- 郵便番号は含めない。  
+
+
+
+例：東京都文京区本郷7-3-1&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.requirements">requirements</a>
 
@@ -2999,6 +3043,14 @@ Practitioner.identifier.systemは以下の割り当てる。
         &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.type.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;string&quot;/&gt;
 
       &lt;/type&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example">example</a>&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.label">label</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Jp&quot;/&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.value[x]">valueString</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;東京都文京区本郷7-3-1&quot;/&gt;
+
+      &lt;/example&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.constraint">constraint</a>&gt;
 
@@ -3054,13 +3106,27 @@ Practitioner.identifier.systemは以下の割り当てる。
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.line&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a>
-
-             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;ストリート名、番号、方向＆P.O。ボックスなど / Street name, number, direction &amp;amp; P.O. Box etc.&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;ストリート名や番地など 【JP_Patient.address参照】&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a>
 
-                  <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;このコンポーネントには、家番号、アパート番号、ストリート名、通りの方向、P.O。ボックス番号、配信ヒント、および同様のアドレス情報。 / This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information.&quot;/&gt;
+                  <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;このコンポーネントには、家番号、アパート番号、通りの名前、通りの方向、P.O。が含まれる。ボックス番号、配達のヒント、および同様の住所情報など。&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
+
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;【JP Core仕様】state要素とcity要素で表現しなかったそのあとの住所部分を番地以降の部分も含めてすべていれる。  
+
+英数字は半角でも全角でもよい。文字列の前後および途中に空白文字を含めないこと。  
+
+繰り返し要素が許されているので、区切りを表現したい場合には、複数要素に分けて格納してもよい。  
+
+
+
+例：本郷7-3-1  
+
+例：大字石神９７６  
+
+例：藤崎町大字藤崎字西村1-2 春山荘201号室&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.min">min</a> <a href="http://hl7.org/fhir/R4/datatypes.html#unsignedInt">value</a>=&quot;0&quot;/&gt;
 
@@ -3085,6 +3151,14 @@ Practitioner.identifier.systemは以下の割り当てる。
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.orderMeaning">orderMeaning</a>
 
                     <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;The order in which lines should appear in an address label&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example">example</a>&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.label">label</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Jp&quot;/&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.value[x]">valueString</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;本郷7-3-1&quot;/&gt;
+
+      &lt;/example&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.constraint">constraint</a>&gt;
 
@@ -3150,11 +3224,13 @@ Practitioner.identifier.systemは以下の割り当てる。
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.city&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;都市、町などの名前。 / Name of city, town etc.&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;市区町村名 【JP_Patient.address参照】&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a>
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;n市、町、郊外、村、その他のコミュニティまたは配達センターの名前。&quot;/&gt;
 
-                  <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;都市、町、郊外、村、またはその他のコミュニティまたは配達センターの名前。 / The name of the city, town, suburb, village or other community or delivery center.&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
+
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;１MBを超えないこと。  【JP Core仕様】郡市区町村部分だけを「郡」「市」「区」「町」「村」などの文字を含めて設定する。 例：文京区&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.alias">alias</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Municpality&quot;/&gt;
 
@@ -3177,6 +3253,14 @@ Practitioner.identifier.systemは以下の割り当てる。
         &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.type.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;string&quot;/&gt;
 
       &lt;/type&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example">example</a>&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.label">label</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Jp&quot;/&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.value[x]">valueString</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;文京区&quot;/&gt;
+
+      &lt;/example&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.constraint">constraint</a>&gt;
 
@@ -3240,15 +3324,13 @@ Practitioner.identifier.systemは以下の割り当てる。
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.district&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;地区名（別名郡） / District name (aka county)&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;地区名 【JP_Patient.address参照】&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a>
 
                   <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;管理エリア（郡）の名前。 / The name of the administrative area (county).&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
-
-               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;地区は郡として知られていることもありますが、一部の地域では「郡」は都市（自治体）の代わりに使用されているため、代わりに郡の名前を都市で伝える必要があります。 / District is sometimes known as county, but in some regions 'county' is used in place of city (municipality), so county name should be conveyed in city instead.&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;【JP Core仕様】日本の住所では使用しない。&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.alias">alias</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;County&quot;/&gt;
 
@@ -3318,11 +3400,11 @@ Practitioner.identifier.systemは以下の割り当てる。
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.state&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;国のサブユニット（略語OK） / Sub-unit of country (abbreviations ok)&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;国の次の地区単位 【JP_Patient.address参照】&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a>
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;国の主権が制限されている国のサブユニット。日本の場合、都道府県名。&quot;/&gt;
 
-                  <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;連邦政府が組織された国に限られた主権を持つ国のサブユニット。コードが一般的に使用されている場合（たとえば、2文字の状態コードなど）、コードを使用できます。 / Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (e.g. US 2 letter state codes).&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;１MBを超えないこと。  都道府県名。「都」「道」「府」「県」のそれぞれの文字を含める。 例：東京都&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.alias">alias</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Province&quot;/&gt;
 
@@ -3347,6 +3429,14 @@ Practitioner.identifier.systemは以下の割り当てる。
         &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.type.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;string&quot;/&gt;
 
       &lt;/type&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example">example</a>&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.label">label</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Jp&quot;/&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.value[x]">valueString</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;東京都&quot;/&gt;
+
+      &lt;/example&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.constraint">constraint</a>&gt;
 
@@ -3410,11 +3500,15 @@ Practitioner.identifier.systemは以下の割り当てる。
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.postalCode&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;エリアの郵便番号 / Postal code for area&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;郵便番号 【JP_Patient.address参照】&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a>
 
                   <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;郵便サービスによって定義された地域を指定する郵便番号。 / A postal code designating a region defined by the postal service.&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
+
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;郵便番号。日本の郵便番号の場合には3桁数字とハイフン1文字と4桁数字からなる半角８文字、または最初の3桁だけの3文字のいずれかとする。 例：113-8655&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.alias">alias</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Zip&quot;/&gt;
 
@@ -3437,6 +3531,14 @@ Practitioner.identifier.systemは以下の割り当てる。
         &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.type.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;string&quot;/&gt;
 
       &lt;/type&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example">example</a>&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.label">label</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Jp&quot;/&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.value[x]">valueString</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;113-8655&quot;/&gt;
+
+      &lt;/example&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.constraint">constraint</a>&gt;
 
@@ -3500,17 +3602,13 @@ Practitioner.identifier.systemは以下の割り当てる。
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.country&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a>
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;国名またはISO 3166コード　(ISO 3166 2 or 3文字こーど)&quot;/&gt;
 
-             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;国（例えばISO 3166 2または3文字のコードにすることができます） / Country (e.g. can be ISO 3166 2 or 3 letter code)&quot;/&gt;
-
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a>
-
-                  <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;国 - 一般的に理解されるか、一般的に受け入れられている国。 / Country - a nation as commonly understood or generally accepted.&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;国-一般的に理解されている、または一般的に受け入れられている国の国名かコード。&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
 
-               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;ISO 3166 3文字コードは、人間の読み取り可能な国名の代わりに使用できます。 / ISO 3166 3 letter codes can be used in place of a human readable country name.&quot;/&gt;
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;ISO 3166 3文字コードは、人間が読める国名の代わりに使用する。  ISO 3166の2文字または3文字のコード.  日本であれば、jpまたはjpn&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.min">min</a> <a href="http://hl7.org/fhir/R4/datatypes.html#unsignedInt">value</a>=&quot;0&quot;/&gt;
 
@@ -3594,21 +3692,17 @@ Practitioner.identifier.systemは以下の割り当てる。
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.period&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;アドレスが使用されていた期間 / Time period when address was/is in use&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;住所が使用されていた（いる）期間&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a>
-
-                  <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;アドレスが使用されていた期間。 / Time period when address was/is in use.&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;住所が使用されていた（いる）期間&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
 
-               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;期間は時間の範囲を指定する。使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、範囲から1つの値が適用されるか（たとえば、「この2回の間に患者に与える」）を指定する。
-
-期間は、時間間隔（経過時間の測定値）には使用されない。 [Duration]（datatypes.html＃Duration）を参照のこと。&quot;/&gt;
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;住所が使用されていた/されている期間。 期間は時間の範囲を指定する。使用状況はその期間全体に適用されるか、範囲から1つの値が適用される。  期間は、時間間隔（経過時間の測定値）には使用されない。&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.requirements">requirements</a>
 
-                    <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;アドレスを歴史的な文脈に配置できるようにします。 / Allows addresses to be placed in historical context.&quot;/&gt;
+                    <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;アドレスを履歴上の文脈に配置できるようにします。 / Allows addresses to be placed in historical context.&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.min">min</a> <a href="http://hl7.org/fhir/R4/datatypes.html#unsignedInt">value</a>=&quot;0&quot;/&gt;
 
@@ -5244,7 +5338,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a>
 
-             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)&quot;/&gt;
+             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;この識別子の目的。 / The purpose of this identifier.&quot;/&gt;
 
@@ -6756,7 +6850,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a>
 
-             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)&quot;/&gt;
+             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;この識別子の目的。 / The purpose of this identifier.&quot;/&gt;
 
@@ -7842,15 +7936,65 @@ Practitioner.identifier.systemは以下の割り当てる。
 
     &lt;/element&gt;
 
+    &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Practitioner.telecom.system&quot;&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.telecom.system&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a>
+
+             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;phone | fax | email | pager | url | sms | other 【JP_Patient.telecomを参照。】&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
+
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;連絡先の種別をValueSet(ContactPointSystem)より選択する。  　- phone : 電話　- fax : Fax 　- email : 電子メール　- pager : ポケットベル　- url : 電話、ファックス、ポケットベル、または電子メールアドレスではなく、URLとして表される連絡先。これはWebサイト、ブログ、Skype、Twitter、Facebookなどのさまざまな機関または個人の連絡先を対象としている。電子メールアドレスには使用しないこと。　- sms : SMSメッセージの送信に使用できる連絡先（携帯電話、一部の固定電話など）  　- other : 電話、Fax、ポケットベル、または電子メールアドレスではなく、URLとして表現できない連絡先。例：内部メールアドレス。これは、URLとして表現できる連絡先（Skype、Twitter、Facebookなど）には使用しないこと。&quot;/&gt;
+
+    &lt;/element&gt;
+
+    &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Practitioner.telecom.value&quot;&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.telecom.value&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;連絡先の番号やメールアドレス&quot;/&gt;
+
+    &lt;/element&gt;
+
+    &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Practitioner.telecom.use&quot;&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.telecom.use&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a>
+
+             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;home | work | temp | old | mobile - 連絡先の用途等 【JP_Patient.telecomを参照。】&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
+
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;患者の連絡先の種別をValueSet(ContactPointUse)より選択する。  一時的なものまたは古いものであると明示しない限り、連絡先が最新とみなされる。
+
+　- home : 自宅
+
+　- work : 職場
+
+　- temp : 一時的
+
+　- old : 以前の
+
+　- mobile : モバイル機器&quot;/&gt;
+
+    &lt;/element&gt;
+
+    &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Practitioner.telecom.rank&quot;&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.telecom.rank&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;連絡先の使用順序（1 = 最高）&quot;/&gt;
+
+    &lt;/element&gt;
+
     &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Practitioner.telecom.period&quot;&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.telecom.period&quot;/&gt;
 
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
-
-               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;期間は時間の範囲を指定する。使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、範囲から1つの値が適用されるか（たとえば、「この2回の間に患者に与える」）を指定する。
-
-期間は、時間間隔（経過時間の測定値）には使用されない。 [Duration]（datatypes.html＃Duration）を参照のこと。&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;連絡先が使用されていた/されている期間&quot;/&gt;
 
     &lt;/element&gt;
 
@@ -7868,11 +8012,17 @@ Practitioner.identifier.systemは以下の割り当てる。
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
 
-               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;PractitionerRoleにアドレス値が付いていないのは、この目的のためにロケーションプロパティを使用することが想定されているからである（アドレスが付いている）。
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;患者は、異なる用途または適用可能な期間で複数の住所を持っている可能性がある。
 
 
 
-要素の説明は、JP_Patient.address を参照。&quot;/&gt;
+【JP Core仕様】FHIRデータ型仕様に従って、以下の案とした。  
+
+　- 住所が構造化されている場合、住所パート Address.country、Address.postalcode、Address.state、Address.city、Address.line に分割して記載する
+
+　- 住所が構造化されていない場合は、Address.text に記述する
+
+　- 各住所パートとtext は、両方存在してもよい&quot;/&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.requirements">requirements</a>
 
@@ -7880,15 +8030,223 @@ Practitioner.identifier.systemは以下の割り当てる。
 
     &lt;/element&gt;
 
+    &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Practitioner.address.use&quot;&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.use&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a>
+
+             <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;home | work | temp | old | billing - purpose of this address　住所の用途 【JP_Patient.address参照】&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;The purpose of this address.
+
+住所の用途&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
+
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;住所の用途をValueSet(AddressUse)より選択する。  
+
+- home : 自宅
+
+- work : 職場
+
+- temp : 一時的
+
+- old : 以前の
+
+- billing : 請求書、インボイス、領収書などの送付用&quot;/&gt;
+
+    &lt;/element&gt;
+
+    &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Practitioner.address.type&quot;&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.type&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;postal | physical | both 【JP_Patient.address参照】&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;住所（訪問できる住所）と郵送先住所（私書箱や気付住所など）を区別する。ほとんどのアドレスは両方。&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
+
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;住所の種類をValueSet(AddressType)より選択する。  
+
+- postal : 郵送先 - 私書箱、気付の住所
+
+- physical : 訪れることのできる物理的な住所
+
+- both : postalとphysicalの両方&quot;/&gt;
+
+    &lt;/element&gt;
+
+    &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Practitioner.address.text&quot;&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.text&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;住所のテキスト表現 【JP_Patient.address参照】&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a>
+
+                  <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;表示するアドレス全体を指定する  
+
+例：郵便ラベル。これは、特定の部品の代わりに、または特定の部品と同様に提供される場合がある。&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
+
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;テキスト表現とパーツの両方を提供できる。アドレスを更新するアプリケーションは、テキストとパーツの両方が存在する場合、パーツにないコンテンツはテキストに含まれないようにする必要がある。  
+
+- 住所を(都道府県や市町村などに)分離して管理していない場合は、textに入れる。  
+
+- 住所を(都道府県や市町村などに)分離して管理している場合でも、まとめてtextに入れること。  
+
+- 郵便番号は含めない。  
+
+
+
+例：東京都文京区本郷7-3-1&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example">example</a>&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.label">label</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Jp&quot;/&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.value[x]">valueString</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;東京都文京区本郷7-3-1&quot;/&gt;
+
+      &lt;/example&gt;
+
+    &lt;/element&gt;
+
+    &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Practitioner.address.line&quot;&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.line&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;ストリート名や番地など 【JP_Patient.address参照】&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a>
+
+                  <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;このコンポーネントには、家番号、アパート番号、通りの名前、通りの方向、P.O。が含まれる。ボックス番号、配達のヒント、および同様の住所情報など。&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
+
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;【JP Core仕様】state要素とcity要素で表現しなかったそのあとの住所部分を番地以降の部分も含めてすべていれる。  
+
+英数字は半角でも全角でもよい。文字列の前後および途中に空白文字を含めないこと。  
+
+繰り返し要素が許されているので、区切りを表現したい場合には、複数要素に分けて格納してもよい。  
+
+
+
+例：本郷7-3-1  
+
+例：大字石神９７６  
+
+例：藤崎町大字藤崎字西村1-2 春山荘201号室&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example">example</a>&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.label">label</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Jp&quot;/&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.value[x]">valueString</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;本郷7-3-1&quot;/&gt;
+
+      &lt;/example&gt;
+
+    &lt;/element&gt;
+
+    &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Practitioner.address.city&quot;&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.city&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;市区町村名 【JP_Patient.address参照】&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;n市、町、郊外、村、その他のコミュニティまたは配達センターの名前。&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
+
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;１MBを超えないこと。  【JP Core仕様】郡市区町村部分だけを「郡」「市」「区」「町」「村」などの文字を含めて設定する。 例：文京区&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example">example</a>&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.label">label</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Jp&quot;/&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.value[x]">valueString</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;文京区&quot;/&gt;
+
+      &lt;/example&gt;
+
+    &lt;/element&gt;
+
+    &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Practitioner.address.district&quot;&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.district&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;地区名 【JP_Patient.address参照】&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;【JP Core仕様】日本の住所では使用しない。&quot;/&gt;
+
+    &lt;/element&gt;
+
+    &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Practitioner.address.state&quot;&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.state&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;国の次の地区単位 【JP_Patient.address参照】&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;国の主権が制限されている国のサブユニット。日本の場合、都道府県名。&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;１MBを超えないこと。  都道府県名。「都」「道」「府」「県」のそれぞれの文字を含める。 例：東京都&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example">example</a>&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.label">label</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Jp&quot;/&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.value[x]">valueString</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;東京都&quot;/&gt;
+
+      &lt;/example&gt;
+
+    &lt;/element&gt;
+
+    &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Practitioner.address.postalCode&quot;&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.postalCode&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;郵便番号 【JP_Patient.address参照】&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
+
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;郵便番号。日本の郵便番号の場合には3桁数字とハイフン1文字と4桁数字からなる半角８文字、または最初の3桁だけの3文字のいずれかとする。 例：113-8655&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example">example</a>&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.label">label</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Jp&quot;/&gt;
+
+        &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.example.value[x]">valueString</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;113-8655&quot;/&gt;
+
+      &lt;/example&gt;
+
+    &lt;/element&gt;
+
+    &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Practitioner.address.country&quot;&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.country&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;国名またはISO 3166コード　(ISO 3166 2 or 3文字こーど)&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;国-一般的に理解されている、または一般的に受け入れられている国の国名かコード。&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
+
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;ISO 3166 3文字コードは、人間が読める国名の代わりに使用する。  ISO 3166の2文字または3文字のコード.  日本であれば、jpまたはjpn&quot;/&gt;
+
+    &lt;/element&gt;
+
     &lt;<a href="http://hl7.org/fhir/R4/structuredefinition.html#StructureDefinition.differential.element">element</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;Practitioner.address.period&quot;&gt;
 
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.path">path</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Practitioner.address.period&quot;/&gt;
 
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.short">short</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;住所が使用されていた（いる）期間&quot;/&gt;
+
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.definition">definition</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;住所が使用されていた（いる）期間&quot;/&gt;
+
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ElementDefinition#ElementDefinition.comment">comment</a>
 
-               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;期間は時間の範囲を指定する。使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、範囲から1つの値が適用されるか（たとえば、「この2回の間に患者に与える」）を指定する。
-
-期間は、時間間隔（経過時間の測定値）には使用されない。 [Duration]（datatypes.html＃Duration）を参照のこと。&quot;/&gt;
+               <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;住所が使用されていた/されている期間。 期間は時間の範囲を指定する。使用状況はその期間全体に適用されるか、範囲から1つの値が適用される。  期間は、時間間隔（経過時間の測定値）には使用されない。&quot;/&gt;
 
     &lt;/element&gt;
 
@@ -8482,7 +8840,7 @@ Practitioner.identifier.systemは以下の割り当てる。
 
         <p>
 
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Sep 9, 2023 04:07+0000">2023-09-09</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Sep 9, 2023 05:38+0000">2023-09-09</span>
 
           <br/>
 

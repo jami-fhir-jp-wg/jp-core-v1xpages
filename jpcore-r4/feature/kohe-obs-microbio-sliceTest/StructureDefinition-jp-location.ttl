@@ -415,9 +415,9 @@
      ] [
        fhir:id [ fhir:v "Location.identifier" ] ;
        fhir:path [ fhir:v "Location.identifier" ] ;
-       fhir:short [ fhir:v "ユニークなコードまたは番号は、その場所を利用者に識別します。" ] ;
-       fhir:definition [ fhir:v "ユーザーに場所を識別するためのユニークなコードまたは番号。" ] ;
-       fhir:requirements [ fhir:v "Organization label locations in registries, need to keep track of those." ] ;
+       fhir:short [ fhir:v "ユーザに場所を特定する一意のコードまたは番号" ] ;
+       fhir:definition [ fhir:v "ユーザに場所を特定する一意のコードまたは番号" ] ;
+       fhir:requirements [ fhir:v "登記内の組織ラベルの場所。これらを追跡する必要がある。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
        fhir:base [
@@ -451,8 +451,9 @@
      ] [
        fhir:id [ fhir:v "Location.status" ] ;
        fhir:path [ fhir:v "Location.status" ] ;
-       fhir:short [ fhir:v "活動中 | 凍結中 | 非活動中" ] ;
-       fhir:definition [ fhir:v "\"ステータスのプロパティはリソースの一般的な利用可能性をカバーし、現在の値は操作ステータスまたは場所に構成されたスケジュール/スロットによってカバーされる可能性があります。\"" ] ;
+       fhir:short [ fhir:v "active | suspended | inactive / アクティブ|中断|非アクティブ" ] ;
+       fhir:definition [ fhir:v "statusプロパティは、operationStatus、またはロケーションに構成されている場合はスケジュール/スロットによってカバーされる可能性がある現在の値ではなく、リソースの一般的な可用性をカバーする。" ] ;
+       fhir:comment [ fhir:v "FHIR文字列はサイズが1MBを超えてはならないことに注意すること" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -499,8 +500,9 @@
      ] [
        fhir:id [ fhir:v "Location.operationalStatus" ] ;
        fhir:path [ fhir:v "Location.operationalStatus" ] ;
-       fhir:short [ fhir:v "その場所の運営状況（通常はベッド/部屋についてのみ）" ] ;
-       fhir:definition [ fhir:v "運用状況は、ベッドにもっとも関連性の高い運用値（ただし，単独個室/ユニット/チェアなど、例えば隔離ユニット/透析チェアなどにも適用される）をカバーします。通常、汚染、ハウスキーピング、メンテナンスなどの作業を含む概念をカバーするものです。" ] ;
+       fhir:short [ fhir:v "ロケーションの運用ステータス（通常、ベッド/部屋のみ）" ] ;
+       fhir:definition [ fhir:v "稼働状況には、ベッドに最も関連する稼働値が含まれる（ただし、隔離ユニット/透析椅子などの部屋/ユニット/椅子などにも適用できる）。これは通常、汚染、ハウスキーピング、およびメンテナンスなどの他のアクティビティなどの概念をカバーしている。" ] ;
+       fhir:comment [ fhir:v "コードは、SNOMED CTなどの非常に形式的な定義まで、列挙またはコードリストで非常にカジュアルに定義できる。詳細については、HL7 v3コア原則を参照すること。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -546,9 +548,9 @@
      ] [
        fhir:id [ fhir:v "Location.name" ] ;
        fhir:path [ fhir:v "Location.name" ] ;
-       fhir:short [ fhir:v "「人による場所の名前」(hito ni yoru basho no namae)" ] ;
-       fhir:definition [ fhir:v "人間が使用する場所の名前。一意である必要はありません。" ] ;
-       fhir:comment [ fhir:v "場所の名前が変わった場合は、古い名前をエイリアス列に入れて、検索でまだ場所が見つけられるようにしてください。" ] ;
+       fhir:short [ fhir:v "人間が使用する場所の名前" ] ;
+       fhir:definition [ fhir:v "人間が使用する場所の名前。一意である必要はない。" ] ;
+       fhir:comment [ fhir:v "場所の名前が変更された場合は、古い名前をエイリアス列に入力して、検索で検索できるようにすることを検討すべきである。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -579,10 +581,10 @@
      ] [
        fhir:id [ fhir:v "Location.alias" ] ;
        fhir:path [ fhir:v "Location.alias" ] ;
-       fhir:short [ fhir:v "「過去にその場所が知られていたまたは知られている別の名前のリスト」" ] ;
-       fhir:definition [ fhir:v "「その場所が過去に知られていた別名のリスト。」" ] ;
-       fhir:comment [ fhir:v "エイリアス/歴史的な名称に関連する日付はありません。これは、名前が使用された時期を追跡するためではなく、古い名称でも場所を特定できるように検索を支援するためのものです。" ] ;
-       fhir:requirements [ fhir:v "Over time locations and organizations go through many changes and can be known by different names.\n\nFor searching knowing previous names that the location was known by can be very useful." ] ;
+       fhir:short [ fhir:v "その場所が過去に知られていた、または以前から知られていた別名のリスト" ] ;
+       fhir:definition [ fhir:v "その場所が過去に知られていた、または以前から知られていた別名のリスト" ] ;
+       fhir:comment [ fhir:v "エイリアス/歴史的な名前に関連付けられた日付はない。これは、名前がいつ使用されたかを追跡するためではなく、古い名前でも場所を特定できるように検索を支援するためのものである。" ] ;
+       fhir:requirements [ fhir:v "「時間の経過とともに、場所や組織は多くの変化を遂げ、さまざまな名前で知られるようになる。\r\n場所が知られている以前の名前を知っていることを検索することは非常に役に立つ。」" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
        fhir:base [
@@ -613,9 +615,10 @@
      ] [
        fhir:id [ fhir:v "Location.description" ] ;
        fhir:path [ fhir:v "Location.description" ] ;
-       fhir:short [ fhir:v "「場所についての追加の詳細情報であり、名前以上に場所を明確に特定するために表示できるもの」" ] ;
-       fhir:definition [ fhir:v "場所の説明は、場所を見つけたり参照したりするのに役立ちます。" ] ;
-       fhir:requirements [ fhir:v "Humans need additional information to verify a correct location has been identified." ] ;
+       fhir:short [ fhir:v "名前以外の場所を識別するための詳細情報として表示できる場所に関する追加の詳細" ] ;
+       fhir:definition [ fhir:v "場所の説明。場所の検索や参照に役立つ。" ] ;
+       fhir:comment [ fhir:v "FHIR文字列はサイズが1MBを超えてはならないことに注意すること" ] ;
+       fhir:requirements [ fhir:v "人間は、正しい場所が特定されたことを確認するために追加情報を必要とする。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -646,10 +649,10 @@
      ] [
        fhir:id [ fhir:v "Location.mode" ] ;
        fhir:path [ fhir:v "Location.mode" ] ;
-       fhir:short [ fhir:v "例|種類" ] ;
-       fhir:definition [ fhir:v "「リソースインスタンスが特定の場所を表すのか、場所のクラスを表すのかを示します。」" ] ;
-       fhir:comment [ fhir:v "「この場所は、場所の種類によって使用方法と理解方法が変化するため、修飾語としてラベル付けされます。」" ] ;
-       fhir:requirements [ fhir:v "When using a Location resource for scheduling or orders, we need to be able to refer to a class of Locations instead of a specific Location." ] ;
+       fhir:short [ fhir:v "instance | kind / インスタンス|種類" ] ;
+       fhir:definition [ fhir:v "リソースインスタンスが特定の場所を表すか、場所のクラスを表すかを示す。" ] ;
+       fhir:comment [ fhir:v "ロケーションがロケーションのクラスであるかどうかによって、その使用方法と理解方法が変わるため、これは修飾子としてラベル付けされる。" ] ;
+       fhir:requirements [ fhir:v "スケジュールや順番に場所リソースを使用する場合、特定の場所ではなく場所のクラスを参照できる必要がある。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -695,8 +698,9 @@
      ] [
        fhir:id [ fhir:v "Location.type" ] ;
        fhir:path [ fhir:v "Location.type" ] ;
-       fhir:short [ fhir:v "「実行される関数の種類」" ] ;
-       fhir:definition [ fhir:v "「場所で行われる機能のタイプを示します。」(Basho de okonawareru kinou no taipu wo shimesu.)" ] ;
+       fhir:short [ fhir:v "実行される機能のタイプ" ] ;
+       fhir:definition [ fhir:v "その場所で実行される機能のタイプを示す。" ] ;
+       fhir:comment [ fhir:v "すべての用語の使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と前後の調整間の関係を管理するための独自の構造を提供する必要がある。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
        fhir:base [
@@ -742,8 +746,8 @@
      ] [
        fhir:id [ fhir:v "Location.telecom" ] ;
        fhir:path [ fhir:v "Location.telecom" ] ;
-       fhir:short [ fhir:v "「場所の連絡先情報」" ] ;
-       fhir:definition [ fhir:v "場所で利用可能なコミュニケーション機器の連絡先詳細。これには電話番号、ファックス番号、携帯電話番号、メールアドレス、Webサイトが含まれる場合があります。" ] ;
+       fhir:short [ fhir:v "所在地の連絡先" ] ;
+       fhir:definition [ fhir:v "その場所で利用可能な通信機器の連絡先。これには、電話番号、ファックス番号、携帯電話番号、電子メールアドレス、ウェブサイトなどが含まれる。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
        fhir:base [
@@ -774,10 +778,10 @@
      ] [
        fhir:id [ fhir:v "Location.address" ] ;
        fhir:path [ fhir:v "Location.address" ] ;
-       fhir:short [ fhir:v "「物理的な場所」" ] ;
-       fhir:definition [ fhir:v "「物理的な位置」と言います。" ] ;
-       fhir:comment [ fhir:v "追加の住所は、別のロケーションリソースのインスタンスを使用するか、または組織を介して記録する必要があります。" ] ;
-       fhir:requirements [ fhir:v "If locations can be visited, we need to keep track of their address." ] ;
+       fhir:short [ fhir:v "物理的な場所" ] ;
+       fhir:definition [ fhir:v "物理的な場所。" ] ;
+       fhir:comment [ fhir:v "追加のアドレスは、Location リソースの別のインスタンスを使用して記録するか、Organization を介して記録する必要がある。" ] ;
+       fhir:requirements [ fhir:v "場所が訪問できる場合は、住所を把握しておく必要がある。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -808,9 +812,10 @@
      ] [
        fhir:id [ fhir:v "Location.physicalType" ] ;
        fhir:path [ fhir:v "Location.physicalType" ] ;
-       fhir:short [ fhir:v "場所の物理的形態 (Basho no butsuri-teki keitai)" ] ;
-       fhir:definition [ fhir:v "場所の物理的形式、例えば建物、部屋、車両、道路。 (Basho no butsuri-teki keitai, tatoeba tatemono, heya, sharyou, douro)" ] ;
-       fhir:requirements [ fhir:v "For purposes of showing relevant locations in queries, we need to categorize locations." ] ;
+       fhir:short [ fhir:v "場所の物理的な形態" ] ;
+       fhir:definition [ fhir:v "場所の物理的な形、例えば建物、部屋、車両、道路。" ] ;
+       fhir:comment [ fhir:v "すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。" ] ;
+       fhir:requirements [ fhir:v "クエリで関連する場所を表示するためには、場所を分類する必要がある。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -856,9 +861,9 @@
      ] [
        fhir:id [ fhir:v "Location.position" ] ;
        fhir:path [ fhir:v "Location.position" ] ;
-       fhir:short [ fhir:v "絶対的な地理的位置 (Zettaiteki na chiriteki ichi)" ] ;
-       fhir:definition [ fhir:v "「Location」の絶対的な地理的位置は、WGS84基準面を用いて表されます。(これはKMLで使用されている同じ座標系です。)" ] ;
-       fhir:requirements [ fhir:v "For mobile applications and automated route-finding knowing the exact location of the Location is required." ] ;
+       fhir:short [ fhir:v "絶対的な地理的位置" ] ;
+       fhir:definition [ fhir:v "WGS84 データム（KML で使用されている座標系と同じ）を用いて表現された Location の絶対地理的位置。" ] ;
+       fhir:requirements [ fhir:v "モバイルアプリケーションや自動化されたルート検索では、位置情報の正確な位置を知る必要がある。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -1005,8 +1010,9 @@
      ] [
        fhir:id [ fhir:v "Location.position.longitude" ] ;
        fhir:path [ fhir:v "Location.position.longitude" ] ;
-       fhir:short [ fhir:v "\"WGS84データムを使用した経度\" (WGS84データムをしようしたけいど)" ] ;
-       fhir:definition [ fhir:v "「経度。値の範囲と解釈は、KMLの経度要素のテキストと同じです（以下の注を参照）。」" ] ;
+       fhir:short [ fhir:v "WGS84データの経度" ] ;
+       fhir:definition [ fhir:v "経度。値の領域及び解釈は、KML の longitude 要素のテキストと同様である（後述）。" ] ;
+       fhir:comment [ fhir:v "IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。" ] ;
        fhir:min [ fhir:v "1"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -1037,8 +1043,9 @@
      ] [
        fhir:id [ fhir:v "Location.position.latitude" ] ;
        fhir:path [ fhir:v "Location.position.latitude" ] ;
-       fhir:short [ fhir:v "WGS84データムに基づく緯度" ] ;
-       fhir:definition [ fhir:v "緯度。値のドメインと解釈は、KMLの緯度要素のテキストと同じです（以下の注意事項を参照）。" ] ;
+       fhir:short [ fhir:v "WGS84データの緯度" ] ;
+       fhir:definition [ fhir:v "緯度。値領域及び解釈は、KML の latitude 要素のテキストと同様である（後述）。" ] ;
+       fhir:comment [ fhir:v "IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。" ] ;
        fhir:min [ fhir:v "1"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -1069,8 +1076,9 @@
      ] [
        fhir:id [ fhir:v "Location.position.altitude" ] ;
        fhir:path [ fhir:v "Location.position.altitude" ] ;
-       fhir:short [ fhir:v "「WGS84基準の高度」" ] ;
-       fhir:definition [ fhir:v "高度。値の範囲と解釈は、KMLの高度要素のテキストと同じです（以下の注釈を参照）。" ] ;
+       fhir:short [ fhir:v "WGS84データによる高度" ] ;
+       fhir:definition [ fhir:v "高度。値領域及び解釈は、KML の altitude 要素のテキストと同様である（後述）。" ] ;
+       fhir:comment [ fhir:v "IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -1101,10 +1109,10 @@
      ] [
        fhir:id [ fhir:v "Location.managingOrganization" ] ;
        fhir:path [ fhir:v "Location.managingOrganization" ] ;
-       fhir:short [ fhir:v "\"配備と維持の責任を負う組織\" (Haibei to iji no sekinin oou soshiki)" ] ;
-       fhir:definition [ fhir:v "場所の提供と保守に責任を負う組織。" ] ;
-       fhir:comment [ fhir:v "この場所がサービスを提供する組織階層の一部としても使用できます。これらのサービスは、HealthcareServiceリソースを通じて定義することができます。" ] ;
-       fhir:requirements [ fhir:v "Need to know who manages the location." ] ;
+       fhir:short [ fhir:v "プロビジョニングと維持管理を担当する組織" ] ;
+       fhir:definition [ fhir:v "場所のプロビジョニングと維持管理を担当する組織。" ] ;
+       fhir:comment [ fhir:v "これは、この場所がサービスを提供する組織階層の一部として使用することもできる。これらのサービスは、HealthcareServiceリソースを介して定義することができる。" ] ;
+       fhir:requirements [ fhir:v "場所を管理している人を知る必要がある。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -1115,8 +1123,8 @@
        fhir:type ( [
          fhir:code [ fhir:v "Reference"^^xsd:anyURI ] ;
          fhir:targetProfile ( [
-           fhir:v "http://hl7.org/fhir/StructureDefinition/Organization"^^xsd:anyURI ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Organization>
+           fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization"^^xsd:anyURI ;
+           fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization>
          ] )
        ] ) ;
        fhir:constraint ( [
@@ -1139,9 +1147,10 @@
      ] [
        fhir:id [ fhir:v "Location.partOf" ] ;
        fhir:path [ fhir:v "Location.partOf" ] ;
-       fhir:short [ fhir:v "「別の場所。この場所は物理的に一部です。」(Betsu no basho. Kono basho wa butsuri-teki ni ichibu desu.)" ] ;
-       fhir:definition [ fhir:v "「この場所が物理的に一部である別の場所」" ] ;
-       fhir:requirements [ fhir:v "For purposes of location, display and identification, knowing which locations are located within other locations is important." ] ;
+       fhir:short [ fhir:v "この場所が物理的に存在するもう一つの場所" ] ;
+       fhir:definition [ fhir:v "この場所が物理的に存在するもう一つの場所。" ] ;
+       fhir:comment [ fhir:v "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。" ] ;
+       fhir:requirements [ fhir:v "位置情報、表示、識別のためには、他のどの場所の内部にどの場所があるかを知ることが重要である。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -1156,8 +1165,8 @@
          ] ) ;
          fhir:code [ fhir:v "Reference"^^xsd:anyURI ] ;
          fhir:targetProfile ( [
-           fhir:v "http://hl7.org/fhir/StructureDefinition/Location"^^xsd:anyURI ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Location>
+           fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location"^^xsd:anyURI ;
+           fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location>
          ] )
        ] ) ;
        fhir:constraint ( [
@@ -1180,9 +1189,9 @@
      ] [
        fhir:id [ fhir:v "Location.hoursOfOperation" ] ;
        fhir:path [ fhir:v "Location.hoursOfOperation" ] ;
-       fhir:short [ fhir:v "「この場所は通常、週のどの日または時間にオープンしていますか？」 (Kono basho wa tsūjō, shū no dono hi matawa jikan ni ōpun shiteimasu ka?)" ] ;
-       fhir:definition [ fhir:v "この場所は週の何日/何時に通常開いていますか？(Kono basho wa shū no nan-nichi/nan-ji ni tsūjō aite imasu ka?)" ] ;
-       fhir:comment [ fhir:v "このタイプの情報は、施設が利用可能であると顧客に通知するディレクトリやウェブサイトによって一般的に公開されます。場所内の特定のサービスには、場所の時間よりも短く（または長く）なるかもしれない営業時間があります。" ] ;
+       fhir:short [ fhir:v "この場所は通常、1週間のうち何日/時間帯に営業している" ] ;
+       fhir:definition [ fhir:v "この場所が週に何日あるいは何時間オープンしているか。" ] ;
+       fhir:comment [ fhir:v "この種の情報は、一般的にディレクトリやウェブサイトに掲載されており、施設が利用可能な時間帯を顧客に通知している。\r\nその場所の特定のサービスは、その場所の時間よりも短い（または長い）独自の時間を持っている場合がある。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
        fhir:base [
@@ -1329,8 +1338,9 @@
      ] [
        fhir:id [ fhir:v "Location.hoursOfOperation.daysOfWeek" ] ;
        fhir:path [ fhir:v "Location.hoursOfOperation.daysOfWeek" ] ;
-       fhir:short [ fhir:v "月曜日｜火曜日｜水曜日｜木曜日｜金曜日｜土曜日｜日曜日" ] ;
-       fhir:definition [ fhir:v "「開始時間と終了時間の間で利用可能な曜日を示します。」" ] ;
+       fhir:short [ fhir:v "mon | tue | wed | thu | fri | sat | sun / 月｜火｜水｜木｜金｜土｜日" ] ;
+       fhir:definition [ fhir:v "開始時刻と終了時刻の間に利用可能な曜日を示す。" ] ;
+       fhir:comment [ fhir:v "FHIR文字列のサイズは1MBを超えてはならないことに注意すること。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
        fhir:base [
@@ -1373,8 +1383,8 @@
      ] [
        fhir:id [ fhir:v "Location.hoursOfOperation.allDay" ] ;
        fhir:path [ fhir:v "Location.hoursOfOperation.allDay" ] ;
-       fhir:short [ fhir:v "場所は一日中開いています。 (Basho wa ichinichijuu hiraiteimasu.)" ] ;
-       fhir:definition [ fhir:v "場所は一日中開いています。" ] ;
+       fhir:short [ fhir:v "その場所は終日営業している" ] ;
+       fhir:definition [ fhir:v "その場所は終日営業している。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -1405,8 +1415,8 @@
      ] [
        fhir:id [ fhir:v "Location.hoursOfOperation.openingTime" ] ;
        fhir:path [ fhir:v "Location.hoursOfOperation.openingTime" ] ;
-       fhir:short [ fhir:v "場所が開口する時間 (Basho ga kaiko suru jikan)" ] ;
-       fhir:definition [ fhir:v "場所が開く時間。" ] ;
+       fhir:short [ fhir:v "場所が開く時間" ] ;
+       fhir:definition [ fhir:v "場所が開く時間" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -1438,7 +1448,7 @@
        fhir:id [ fhir:v "Location.hoursOfOperation.closingTime" ] ;
        fhir:path [ fhir:v "Location.hoursOfOperation.closingTime" ] ;
        fhir:short [ fhir:v "場所が閉まる時間" ] ;
-       fhir:definition [ fhir:v "場所が閉まる時間。" ] ;
+       fhir:definition [ fhir:v "場所が閉まる時間" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -1469,8 +1479,8 @@
      ] [
        fhir:id [ fhir:v "Location.availabilityExceptions" ] ;
        fhir:path [ fhir:v "Location.availabilityExceptions" ] ;
-       fhir:short [ fhir:v "利用可能例外の説明 (りようかのうれいがいのせつめい) - Description of availability exceptions" ] ;
-       fhir:definition [ fhir:v "場所の開館時間が通常と異なる場合の説明（例：祝日の利用可能時間）。開館時間の詳細で説明されている通常のサイトの利用可能性のすべての例外を簡潔に説明すること。" ] ;
+       fhir:short [ fhir:v "利用可能の例外についての説明" ] ;
+       fhir:definition [ fhir:v "場所が私たちのものを開くときの説明は、通常、例えば、祝日の可用性とは異なる。\r\n営業時間に詳細な通常のサイトの利用可能性のすべての可能性のある例外を簡潔に説明する。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -1501,9 +1511,10 @@
      ] [
        fhir:id [ fhir:v "Location.endpoint" ] ;
        fhir:path [ fhir:v "Location.endpoint" ] ;
-       fhir:short [ fhir:v "サービスへのアクセスを提供する技術的なエンドポイントは、その場所で運用されます。" ] ;
-       fhir:definition [ fhir:v "場所で運用されるサービスへアクセスするためのテクニカルエンドポイント。" ] ;
-       fhir:requirements [ fhir:v "Organizations may have different systems at different locations that provide various services and need to be able to define the technical connection details for how to connect to them, and for what purpose." ] ;
+       fhir:short [ fhir:v "場所のために運営されているサービスへのアクセスを提供する技術的なエンドポイント" ] ;
+       fhir:definition [ fhir:v "場所のために運営されているサービスへのアクセスを提供する技術的なエンドポイント。" ] ;
+       fhir:comment [ fhir:v "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。" ] ;
+       fhir:requirements [ fhir:v "組織は、さまざまなサービスを提供するさまざまな場所に異なるシステムを持っている可能性があり、それらに接続する方法や目的のための技術的な接続の詳細を定義できる必要がある。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
        fhir:base [
@@ -1543,6 +1554,170 @@
        fhir:path [ fhir:v "Location" ] ;
        fhir:short [ fhir:v "物理的な場所の詳細情報と位置情報" ] ;
        fhir:definition [ fhir:v "サービスが提供され、リソースとそれに関わる人たちが存在する物理的な場所の詳細情報と位置情報。" ]
+     ] [
+       fhir:id [ fhir:v "Location.identifier" ] ;
+       fhir:path [ fhir:v "Location.identifier" ] ;
+       fhir:short [ fhir:v "ユーザに場所を特定する一意のコードまたは番号" ] ;
+       fhir:definition [ fhir:v "ユーザに場所を特定する一意のコードまたは番号" ] ;
+       fhir:requirements [ fhir:v "登記内の組織ラベルの場所。これらを追跡する必要がある。" ]
+     ] [
+       fhir:id [ fhir:v "Location.status" ] ;
+       fhir:path [ fhir:v "Location.status" ] ;
+       fhir:short [ fhir:v "active | suspended | inactive / アクティブ|中断|非アクティブ" ] ;
+       fhir:definition [ fhir:v "statusプロパティは、operationStatus、またはロケーションに構成されている場合はスケジュール/スロットによってカバーされる可能性がある現在の値ではなく、リソースの一般的な可用性をカバーする。" ] ;
+       fhir:comment [ fhir:v "FHIR文字列はサイズが1MBを超えてはならないことに注意すること" ]
+     ] [
+       fhir:id [ fhir:v "Location.operationalStatus" ] ;
+       fhir:path [ fhir:v "Location.operationalStatus" ] ;
+       fhir:short [ fhir:v "ロケーションの運用ステータス（通常、ベッド/部屋のみ）" ] ;
+       fhir:definition [ fhir:v "稼働状況には、ベッドに最も関連する稼働値が含まれる（ただし、隔離ユニット/透析椅子などの部屋/ユニット/椅子などにも適用できる）。これは通常、汚染、ハウスキーピング、およびメンテナンスなどの他のアクティビティなどの概念をカバーしている。" ] ;
+       fhir:comment [ fhir:v "コードは、SNOMED CTなどの非常に形式的な定義まで、列挙またはコードリストで非常にカジュアルに定義できる。詳細については、HL7 v3コア原則を参照すること。" ]
+     ] [
+       fhir:id [ fhir:v "Location.name" ] ;
+       fhir:path [ fhir:v "Location.name" ] ;
+       fhir:short [ fhir:v "人間が使用する場所の名前" ] ;
+       fhir:definition [ fhir:v "人間が使用する場所の名前。一意である必要はない。" ] ;
+       fhir:comment [ fhir:v "場所の名前が変更された場合は、古い名前をエイリアス列に入力して、検索で検索できるようにすることを検討すべきである。" ]
+     ] [
+       fhir:id [ fhir:v "Location.alias" ] ;
+       fhir:path [ fhir:v "Location.alias" ] ;
+       fhir:short [ fhir:v "その場所が過去に知られていた、または以前から知られていた別名のリスト" ] ;
+       fhir:definition [ fhir:v "その場所が過去に知られていた、または以前から知られていた別名のリスト" ] ;
+       fhir:comment [ fhir:v "エイリアス/歴史的な名前に関連付けられた日付はない。これは、名前がいつ使用されたかを追跡するためではなく、古い名前でも場所を特定できるように検索を支援するためのものである。" ] ;
+       fhir:requirements [ fhir:v "「時間の経過とともに、場所や組織は多くの変化を遂げ、さまざまな名前で知られるようになる。\r\n場所が知られている以前の名前を知っていることを検索することは非常に役に立つ。」" ]
+     ] [
+       fhir:id [ fhir:v "Location.description" ] ;
+       fhir:path [ fhir:v "Location.description" ] ;
+       fhir:short [ fhir:v "名前以外の場所を識別するための詳細情報として表示できる場所に関する追加の詳細" ] ;
+       fhir:definition [ fhir:v "場所の説明。場所の検索や参照に役立つ。" ] ;
+       fhir:comment [ fhir:v "FHIR文字列はサイズが1MBを超えてはならないことに注意すること" ] ;
+       fhir:requirements [ fhir:v "人間は、正しい場所が特定されたことを確認するために追加情報を必要とする。" ]
+     ] [
+       fhir:id [ fhir:v "Location.mode" ] ;
+       fhir:path [ fhir:v "Location.mode" ] ;
+       fhir:short [ fhir:v "instance | kind / インスタンス|種類" ] ;
+       fhir:definition [ fhir:v "リソースインスタンスが特定の場所を表すか、場所のクラスを表すかを示す。" ] ;
+       fhir:comment [ fhir:v "ロケーションがロケーションのクラスであるかどうかによって、その使用方法と理解方法が変わるため、これは修飾子としてラベル付けされる。" ] ;
+       fhir:requirements [ fhir:v "スケジュールや順番に場所リソースを使用する場合、特定の場所ではなく場所のクラスを参照できる必要がある。" ]
+     ] [
+       fhir:id [ fhir:v "Location.type" ] ;
+       fhir:path [ fhir:v "Location.type" ] ;
+       fhir:short [ fhir:v "実行される機能のタイプ" ] ;
+       fhir:definition [ fhir:v "その場所で実行される機能のタイプを示す。" ] ;
+       fhir:comment [ fhir:v "すべての用語の使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と前後の調整間の関係を管理するための独自の構造を提供する必要がある。" ]
+     ] [
+       fhir:id [ fhir:v "Location.telecom" ] ;
+       fhir:path [ fhir:v "Location.telecom" ] ;
+       fhir:short [ fhir:v "所在地の連絡先" ] ;
+       fhir:definition [ fhir:v "その場所で利用可能な通信機器の連絡先。これには、電話番号、ファックス番号、携帯電話番号、電子メールアドレス、ウェブサイトなどが含まれる。" ]
+     ] [
+       fhir:id [ fhir:v "Location.address" ] ;
+       fhir:path [ fhir:v "Location.address" ] ;
+       fhir:short [ fhir:v "物理的な場所" ] ;
+       fhir:definition [ fhir:v "物理的な場所。" ] ;
+       fhir:comment [ fhir:v "追加のアドレスは、Location リソースの別のインスタンスを使用して記録するか、Organization を介して記録する必要がある。" ] ;
+       fhir:requirements [ fhir:v "場所が訪問できる場合は、住所を把握しておく必要がある。" ]
+     ] [
+       fhir:id [ fhir:v "Location.physicalType" ] ;
+       fhir:path [ fhir:v "Location.physicalType" ] ;
+       fhir:short [ fhir:v "場所の物理的な形態" ] ;
+       fhir:definition [ fhir:v "場所の物理的な形、例えば建物、部屋、車両、道路。" ] ;
+       fhir:comment [ fhir:v "すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。" ] ;
+       fhir:requirements [ fhir:v "クエリで関連する場所を表示するためには、場所を分類する必要がある。" ]
+     ] [
+       fhir:id [ fhir:v "Location.position" ] ;
+       fhir:path [ fhir:v "Location.position" ] ;
+       fhir:short [ fhir:v "絶対的な地理的位置" ] ;
+       fhir:definition [ fhir:v "WGS84 データム（KML で使用されている座標系と同じ）を用いて表現された Location の絶対地理的位置。" ] ;
+       fhir:requirements [ fhir:v "モバイルアプリケーションや自動化されたルート検索では、位置情報の正確な位置を知る必要がある。" ]
+     ] [
+       fhir:id [ fhir:v "Location.position.longitude" ] ;
+       fhir:path [ fhir:v "Location.position.longitude" ] ;
+       fhir:short [ fhir:v "WGS84データの経度" ] ;
+       fhir:definition [ fhir:v "経度。値の領域及び解釈は、KML の longitude 要素のテキストと同様である（後述）。" ] ;
+       fhir:comment [ fhir:v "IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。" ]
+     ] [
+       fhir:id [ fhir:v "Location.position.latitude" ] ;
+       fhir:path [ fhir:v "Location.position.latitude" ] ;
+       fhir:short [ fhir:v "WGS84データの緯度" ] ;
+       fhir:definition [ fhir:v "緯度。値領域及び解釈は、KML の latitude 要素のテキストと同様である（後述）。" ] ;
+       fhir:comment [ fhir:v "IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。" ]
+     ] [
+       fhir:id [ fhir:v "Location.position.altitude" ] ;
+       fhir:path [ fhir:v "Location.position.altitude" ] ;
+       fhir:short [ fhir:v "WGS84データによる高度" ] ;
+       fhir:definition [ fhir:v "高度。値領域及び解釈は、KML の altitude 要素のテキストと同様である（後述）。" ] ;
+       fhir:comment [ fhir:v "IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。" ]
+     ] [
+       fhir:id [ fhir:v "Location.managingOrganization" ] ;
+       fhir:path [ fhir:v "Location.managingOrganization" ] ;
+       fhir:short [ fhir:v "プロビジョニングと維持管理を担当する組織" ] ;
+       fhir:definition [ fhir:v "場所のプロビジョニングと維持管理を担当する組織。" ] ;
+       fhir:comment [ fhir:v "これは、この場所がサービスを提供する組織階層の一部として使用することもできる。これらのサービスは、HealthcareServiceリソースを介して定義することができる。" ] ;
+       fhir:requirements [ fhir:v "場所を管理している人を知る必要がある。" ] ;
+       fhir:type ( [
+         fhir:code [ fhir:v "Reference"^^xsd:anyURI ] ;
+         fhir:targetProfile ( [
+           fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization"^^xsd:anyURI ;
+           fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization>
+         ] )
+       ] )
+     ] [
+       fhir:id [ fhir:v "Location.partOf" ] ;
+       fhir:path [ fhir:v "Location.partOf" ] ;
+       fhir:short [ fhir:v "この場所が物理的に存在するもう一つの場所" ] ;
+       fhir:definition [ fhir:v "この場所が物理的に存在するもう一つの場所。" ] ;
+       fhir:comment [ fhir:v "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。" ] ;
+       fhir:requirements [ fhir:v "位置情報、表示、識別のためには、他のどの場所の内部にどの場所があるかを知ることが重要である。" ] ;
+       fhir:type ( [
+         fhir:extension ( [
+           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/structuredefinition-hierarchy"^^xsd:anyURI ] ;
+           fhir:value [ fhir:v "true"^^xsd:boolean ]
+         ] ) ;
+         fhir:code [ fhir:v "Reference"^^xsd:anyURI ] ;
+         fhir:targetProfile ( [
+           fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location"^^xsd:anyURI ;
+           fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location>
+         ] )
+       ] )
+     ] [
+       fhir:id [ fhir:v "Location.hoursOfOperation" ] ;
+       fhir:path [ fhir:v "Location.hoursOfOperation" ] ;
+       fhir:short [ fhir:v "この場所は通常、1週間のうち何日/時間帯に営業している" ] ;
+       fhir:definition [ fhir:v "この場所が週に何日あるいは何時間オープンしているか。" ] ;
+       fhir:comment [ fhir:v "この種の情報は、一般的にディレクトリやウェブサイトに掲載されており、施設が利用可能な時間帯を顧客に通知している。\r\nその場所の特定のサービスは、その場所の時間よりも短い（または長い）独自の時間を持っている場合がある。" ]
+     ] [
+       fhir:id [ fhir:v "Location.hoursOfOperation.daysOfWeek" ] ;
+       fhir:path [ fhir:v "Location.hoursOfOperation.daysOfWeek" ] ;
+       fhir:short [ fhir:v "mon | tue | wed | thu | fri | sat | sun / 月｜火｜水｜木｜金｜土｜日" ] ;
+       fhir:definition [ fhir:v "開始時刻と終了時刻の間に利用可能な曜日を示す。" ] ;
+       fhir:comment [ fhir:v "FHIR文字列のサイズは1MBを超えてはならないことに注意すること。" ]
+     ] [
+       fhir:id [ fhir:v "Location.hoursOfOperation.allDay" ] ;
+       fhir:path [ fhir:v "Location.hoursOfOperation.allDay" ] ;
+       fhir:short [ fhir:v "その場所は終日営業している" ] ;
+       fhir:definition [ fhir:v "その場所は終日営業している。" ]
+     ] [
+       fhir:id [ fhir:v "Location.hoursOfOperation.openingTime" ] ;
+       fhir:path [ fhir:v "Location.hoursOfOperation.openingTime" ] ;
+       fhir:short [ fhir:v "場所が開く時間" ] ;
+       fhir:definition [ fhir:v "場所が開く時間" ]
+     ] [
+       fhir:id [ fhir:v "Location.hoursOfOperation.closingTime" ] ;
+       fhir:path [ fhir:v "Location.hoursOfOperation.closingTime" ] ;
+       fhir:definition [ fhir:v "場所が閉まる時間" ]
+     ] [
+       fhir:id [ fhir:v "Location.availabilityExceptions" ] ;
+       fhir:path [ fhir:v "Location.availabilityExceptions" ] ;
+       fhir:short [ fhir:v "利用可能の例外についての説明" ] ;
+       fhir:definition [ fhir:v "場所が私たちのものを開くときの説明は、通常、例えば、祝日の可用性とは異なる。\r\n営業時間に詳細な通常のサイトの利用可能性のすべての可能性のある例外を簡潔に説明する。" ]
+     ] [
+       fhir:id [ fhir:v "Location.endpoint" ] ;
+       fhir:path [ fhir:v "Location.endpoint" ] ;
+       fhir:short [ fhir:v "場所のために運営されているサービスへのアクセスを提供する技術的なエンドポイント" ] ;
+       fhir:definition [ fhir:v "場所のために運営されているサービスへのアクセスを提供する技術的なエンドポイント。" ] ;
+       fhir:comment [ fhir:v "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。" ] ;
+       fhir:requirements [ fhir:v "組織は、さまざまなサービスを提供するさまざまな場所に異なるシステムを持っている可能性があり、それらに接続する方法や目的のための技術的な接続の詳細を定義できる必要がある。" ]
      ] )
   ] . # 
 

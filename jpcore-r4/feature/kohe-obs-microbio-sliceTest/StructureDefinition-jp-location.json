@@ -388,9 +388,9 @@
     {
       "id" : "Location.identifier",
       "path" : "Location.identifier",
-      "short" : "ユニークなコードまたは番号は、その場所を利用者に識別します。",
-      "definition" : "ユーザーに場所を識別するためのユニークなコードまたは番号。",
-      "requirements" : "Organization label locations in registries, need to keep track of those.",
+      "short" : "ユーザに場所を特定する一意のコードまたは番号",
+      "definition" : "ユーザに場所を特定する一意のコードまたは番号",
+      "requirements" : "登記内の組織ラベルの場所。これらを追跡する必要がある。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -423,8 +423,9 @@
     {
       "id" : "Location.status",
       "path" : "Location.status",
-      "short" : "活動中 | 凍結中 | 非活動中",
-      "definition" : "\"ステータスのプロパティはリソースの一般的な利用可能性をカバーし、現在の値は操作ステータスまたは場所に構成されたスケジュール/スロットによってカバーされる可能性があります。\"",
+      "short" : "active | suspended | inactive / アクティブ|中断|非アクティブ",
+      "definition" : "statusプロパティは、operationStatus、またはロケーションに構成されている場合はスケジュール/スロットによってカバーされる可能性がある現在の値ではなく、リソースの一般的な可用性をカバーする。",
+      "comment" : "FHIR文字列はサイズが1MBを超えてはならないことに注意すること",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -467,8 +468,9 @@
     {
       "id" : "Location.operationalStatus",
       "path" : "Location.operationalStatus",
-      "short" : "その場所の運営状況（通常はベッド/部屋についてのみ）",
-      "definition" : "運用状況は、ベッドにもっとも関連性の高い運用値（ただし，単独個室/ユニット/チェアなど、例えば隔離ユニット/透析チェアなどにも適用される）をカバーします。通常、汚染、ハウスキーピング、メンテナンスなどの作業を含む概念をカバーするものです。",
+      "short" : "ロケーションの運用ステータス（通常、ベッド/部屋のみ）",
+      "definition" : "稼働状況には、ベッドに最も関連する稼働値が含まれる（ただし、隔離ユニット/透析椅子などの部屋/ユニット/椅子などにも適用できる）。これは通常、汚染、ハウスキーピング、およびメンテナンスなどの他のアクティビティなどの概念をカバーしている。",
+      "comment" : "コードは、SNOMED CTなどの非常に形式的な定義まで、列挙またはコードリストで非常にカジュアルに定義できる。詳細については、HL7 v3コア原則を参照すること。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -510,9 +512,9 @@
     {
       "id" : "Location.name",
       "path" : "Location.name",
-      "short" : "「人による場所の名前」(hito ni yoru basho no namae)",
-      "definition" : "人間が使用する場所の名前。一意である必要はありません。",
-      "comment" : "場所の名前が変わった場合は、古い名前をエイリアス列に入れて、検索でまだ場所が見つけられるようにしてください。",
+      "short" : "人間が使用する場所の名前",
+      "definition" : "人間が使用する場所の名前。一意である必要はない。",
+      "comment" : "場所の名前が変更された場合は、古い名前をエイリアス列に入力して、検索で検索できるようにすることを検討すべきである。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -541,10 +543,10 @@
     {
       "id" : "Location.alias",
       "path" : "Location.alias",
-      "short" : "「過去にその場所が知られていたまたは知られている別の名前のリスト」",
-      "definition" : "「その場所が過去に知られていた別名のリスト。」",
-      "comment" : "エイリアス/歴史的な名称に関連する日付はありません。これは、名前が使用された時期を追跡するためではなく、古い名称でも場所を特定できるように検索を支援するためのものです。",
-      "requirements" : "Over time locations and organizations go through many changes and can be known by different names.\n\nFor searching knowing previous names that the location was known by can be very useful.",
+      "short" : "その場所が過去に知られていた、または以前から知られていた別名のリスト",
+      "definition" : "その場所が過去に知られていた、または以前から知られていた別名のリスト",
+      "comment" : "エイリアス/歴史的な名前に関連付けられた日付はない。これは、名前がいつ使用されたかを追跡するためではなく、古い名前でも場所を特定できるように検索を支援するためのものである。",
+      "requirements" : "「時間の経過とともに、場所や組織は多くの変化を遂げ、さまざまな名前で知られるようになる。\r\n場所が知られている以前の名前を知っていることを検索することは非常に役に立つ。」",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -573,9 +575,10 @@
     {
       "id" : "Location.description",
       "path" : "Location.description",
-      "short" : "「場所についての追加の詳細情報であり、名前以上に場所を明確に特定するために表示できるもの」",
-      "definition" : "場所の説明は、場所を見つけたり参照したりするのに役立ちます。",
-      "requirements" : "Humans need additional information to verify a correct location has been identified.",
+      "short" : "名前以外の場所を識別するための詳細情報として表示できる場所に関する追加の詳細",
+      "definition" : "場所の説明。場所の検索や参照に役立つ。",
+      "comment" : "FHIR文字列はサイズが1MBを超えてはならないことに注意すること",
+      "requirements" : "人間は、正しい場所が特定されたことを確認するために追加情報を必要とする。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -604,10 +607,10 @@
     {
       "id" : "Location.mode",
       "path" : "Location.mode",
-      "short" : "例|種類",
-      "definition" : "「リソースインスタンスが特定の場所を表すのか、場所のクラスを表すのかを示します。」",
-      "comment" : "「この場所は、場所の種類によって使用方法と理解方法が変化するため、修飾語としてラベル付けされます。」",
-      "requirements" : "When using a Location resource for scheduling or orders, we need to be able to refer to a class of Locations instead of a specific Location.",
+      "short" : "instance | kind / インスタンス|種類",
+      "definition" : "リソースインスタンスが特定の場所を表すか、場所のクラスを表すかを示す。",
+      "comment" : "ロケーションがロケーションのクラスであるかどうかによって、その使用方法と理解方法が変わるため、これは修飾子としてラベル付けされる。",
+      "requirements" : "スケジュールや順番に場所リソースを使用する場合、特定の場所ではなく場所のクラスを参照できる必要がある。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -649,8 +652,9 @@
     {
       "id" : "Location.type",
       "path" : "Location.type",
-      "short" : "「実行される関数の種類」",
-      "definition" : "「場所で行われる機能のタイプを示します。」(Basho de okonawareru kinou no taipu wo shimesu.)",
+      "short" : "実行される機能のタイプ",
+      "definition" : "その場所で実行される機能のタイプを示す。",
+      "comment" : "すべての用語の使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と前後の調整間の関係を管理するための独自の構造を提供する必要がある。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -692,8 +696,8 @@
     {
       "id" : "Location.telecom",
       "path" : "Location.telecom",
-      "short" : "「場所の連絡先情報」",
-      "definition" : "場所で利用可能なコミュニケーション機器の連絡先詳細。これには電話番号、ファックス番号、携帯電話番号、メールアドレス、Webサイトが含まれる場合があります。",
+      "short" : "所在地の連絡先",
+      "definition" : "その場所で利用可能な通信機器の連絡先。これには、電話番号、ファックス番号、携帯電話番号、電子メールアドレス、ウェブサイトなどが含まれる。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -722,10 +726,10 @@
     {
       "id" : "Location.address",
       "path" : "Location.address",
-      "short" : "「物理的な場所」",
-      "definition" : "「物理的な位置」と言います。",
-      "comment" : "追加の住所は、別のロケーションリソースのインスタンスを使用するか、または組織を介して記録する必要があります。",
-      "requirements" : "If locations can be visited, we need to keep track of their address.",
+      "short" : "物理的な場所",
+      "definition" : "物理的な場所。",
+      "comment" : "追加のアドレスは、Location リソースの別のインスタンスを使用して記録するか、Organization を介して記録する必要がある。",
+      "requirements" : "場所が訪問できる場合は、住所を把握しておく必要がある。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -754,9 +758,10 @@
     {
       "id" : "Location.physicalType",
       "path" : "Location.physicalType",
-      "short" : "場所の物理的形態 (Basho no butsuri-teki keitai)",
-      "definition" : "場所の物理的形式、例えば建物、部屋、車両、道路。 (Basho no butsuri-teki keitai, tatoeba tatemono, heya, sharyou, douro)",
-      "requirements" : "For purposes of showing relevant locations in queries, we need to categorize locations.",
+      "short" : "場所の物理的な形態",
+      "definition" : "場所の物理的な形、例えば建物、部屋、車両、道路。",
+      "comment" : "すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。",
+      "requirements" : "クエリで関連する場所を表示するためには、場所を分類する必要がある。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -798,9 +803,9 @@
     {
       "id" : "Location.position",
       "path" : "Location.position",
-      "short" : "絶対的な地理的位置 (Zettaiteki na chiriteki ichi)",
-      "definition" : "「Location」の絶対的な地理的位置は、WGS84基準面を用いて表されます。(これはKMLで使用されている同じ座標系です。)",
-      "requirements" : "For mobile applications and automated route-finding knowing the exact location of the Location is required.",
+      "short" : "絶対的な地理的位置",
+      "definition" : "WGS84 データム（KML で使用されている座標系と同じ）を用いて表現された Location の絶対地理的位置。",
+      "requirements" : "モバイルアプリケーションや自動化されたルート検索では、位置情報の正確な位置を知る必要がある。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -941,8 +946,9 @@
     {
       "id" : "Location.position.longitude",
       "path" : "Location.position.longitude",
-      "short" : "\"WGS84データムを使用した経度\" (WGS84データムをしようしたけいど)",
-      "definition" : "「経度。値の範囲と解釈は、KMLの経度要素のテキストと同じです（以下の注を参照）。」",
+      "short" : "WGS84データの経度",
+      "definition" : "経度。値の領域及び解釈は、KML の longitude 要素のテキストと同様である（後述）。",
+      "comment" : "IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。",
       "min" : 1,
       "max" : "1",
       "base" : {
@@ -971,8 +977,9 @@
     {
       "id" : "Location.position.latitude",
       "path" : "Location.position.latitude",
-      "short" : "WGS84データムに基づく緯度",
-      "definition" : "緯度。値のドメインと解釈は、KMLの緯度要素のテキストと同じです（以下の注意事項を参照）。",
+      "short" : "WGS84データの緯度",
+      "definition" : "緯度。値領域及び解釈は、KML の latitude 要素のテキストと同様である（後述）。",
+      "comment" : "IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。",
       "min" : 1,
       "max" : "1",
       "base" : {
@@ -1001,8 +1008,9 @@
     {
       "id" : "Location.position.altitude",
       "path" : "Location.position.altitude",
-      "short" : "「WGS84基準の高度」",
-      "definition" : "高度。値の範囲と解釈は、KMLの高度要素のテキストと同じです（以下の注釈を参照）。",
+      "short" : "WGS84データによる高度",
+      "definition" : "高度。値領域及び解釈は、KML の altitude 要素のテキストと同様である（後述）。",
+      "comment" : "IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -1031,10 +1039,10 @@
     {
       "id" : "Location.managingOrganization",
       "path" : "Location.managingOrganization",
-      "short" : "\"配備と維持の責任を負う組織\" (Haibei to iji no sekinin oou soshiki)",
-      "definition" : "場所の提供と保守に責任を負う組織。",
-      "comment" : "この場所がサービスを提供する組織階層の一部としても使用できます。これらのサービスは、HealthcareServiceリソースを通じて定義することができます。",
-      "requirements" : "Need to know who manages the location.",
+      "short" : "プロビジョニングと維持管理を担当する組織",
+      "definition" : "場所のプロビジョニングと維持管理を担当する組織。",
+      "comment" : "これは、この場所がサービスを提供する組織階層の一部として使用することもできる。これらのサービスは、HealthcareServiceリソースを介して定義することができる。",
+      "requirements" : "場所を管理している人を知る必要がある。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -1044,7 +1052,7 @@
       },
       "type" : [{
         "code" : "Reference",
-        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Organization"]
+        "targetProfile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization"]
       }],
       "constraint" : [{
         "key" : "ele-1",
@@ -1064,9 +1072,10 @@
     {
       "id" : "Location.partOf",
       "path" : "Location.partOf",
-      "short" : "「別の場所。この場所は物理的に一部です。」(Betsu no basho. Kono basho wa butsuri-teki ni ichibu desu.)",
-      "definition" : "「この場所が物理的に一部である別の場所」",
-      "requirements" : "For purposes of location, display and identification, knowing which locations are located within other locations is important.",
+      "short" : "この場所が物理的に存在するもう一つの場所",
+      "definition" : "この場所が物理的に存在するもう一つの場所。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "requirements" : "位置情報、表示、識別のためには、他のどの場所の内部にどの場所があるかを知ることが重要である。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -1080,7 +1089,7 @@
           "valueBoolean" : true
         }],
         "code" : "Reference",
-        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Location"]
+        "targetProfile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location"]
       }],
       "constraint" : [{
         "key" : "ele-1",
@@ -1100,9 +1109,9 @@
     {
       "id" : "Location.hoursOfOperation",
       "path" : "Location.hoursOfOperation",
-      "short" : "「この場所は通常、週のどの日または時間にオープンしていますか？」 (Kono basho wa tsūjō, shū no dono hi matawa jikan ni ōpun shiteimasu ka?)",
-      "definition" : "この場所は週の何日/何時に通常開いていますか？(Kono basho wa shū no nan-nichi/nan-ji ni tsūjō aite imasu ka?)",
-      "comment" : "このタイプの情報は、施設が利用可能であると顧客に通知するディレクトリやウェブサイトによって一般的に公開されます。場所内の特定のサービスには、場所の時間よりも短く（または長く）なるかもしれない営業時間があります。",
+      "short" : "この場所は通常、1週間のうち何日/時間帯に営業している",
+      "definition" : "この場所が週に何日あるいは何時間オープンしているか。",
+      "comment" : "この種の情報は、一般的にディレクトリやウェブサイトに掲載されており、施設が利用可能な時間帯を顧客に通知している。\r\nその場所の特定のサービスは、その場所の時間よりも短い（または長い）独自の時間を持っている場合がある。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1243,8 +1252,9 @@
     {
       "id" : "Location.hoursOfOperation.daysOfWeek",
       "path" : "Location.hoursOfOperation.daysOfWeek",
-      "short" : "月曜日｜火曜日｜水曜日｜木曜日｜金曜日｜土曜日｜日曜日",
-      "definition" : "「開始時間と終了時間の間で利用可能な曜日を示します。」",
+      "short" : "mon | tue | wed | thu | fri | sat | sun / 月｜火｜水｜木｜金｜土｜日",
+      "definition" : "開始時刻と終了時刻の間に利用可能な曜日を示す。",
+      "comment" : "FHIR文字列のサイズは1MBを超えてはならないことに注意すること。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1282,8 +1292,8 @@
     {
       "id" : "Location.hoursOfOperation.allDay",
       "path" : "Location.hoursOfOperation.allDay",
-      "short" : "場所は一日中開いています。 (Basho wa ichinichijuu hiraiteimasu.)",
-      "definition" : "場所は一日中開いています。",
+      "short" : "その場所は終日営業している",
+      "definition" : "その場所は終日営業している。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -1312,8 +1322,8 @@
     {
       "id" : "Location.hoursOfOperation.openingTime",
       "path" : "Location.hoursOfOperation.openingTime",
-      "short" : "場所が開口する時間 (Basho ga kaiko suru jikan)",
-      "definition" : "場所が開く時間。",
+      "short" : "場所が開く時間",
+      "definition" : "場所が開く時間",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -1343,7 +1353,7 @@
       "id" : "Location.hoursOfOperation.closingTime",
       "path" : "Location.hoursOfOperation.closingTime",
       "short" : "場所が閉まる時間",
-      "definition" : "場所が閉まる時間。",
+      "definition" : "場所が閉まる時間",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -1372,8 +1382,8 @@
     {
       "id" : "Location.availabilityExceptions",
       "path" : "Location.availabilityExceptions",
-      "short" : "利用可能例外の説明 (りようかのうれいがいのせつめい) - Description of availability exceptions",
-      "definition" : "場所の開館時間が通常と異なる場合の説明（例：祝日の利用可能時間）。開館時間の詳細で説明されている通常のサイトの利用可能性のすべての例外を簡潔に説明すること。",
+      "short" : "利用可能の例外についての説明",
+      "definition" : "場所が私たちのものを開くときの説明は、通常、例えば、祝日の可用性とは異なる。\r\n営業時間に詳細な通常のサイトの利用可能性のすべての可能性のある例外を簡潔に説明する。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -1402,9 +1412,10 @@
     {
       "id" : "Location.endpoint",
       "path" : "Location.endpoint",
-      "short" : "サービスへのアクセスを提供する技術的なエンドポイントは、その場所で運用されます。",
-      "definition" : "場所で運用されるサービスへアクセスするためのテクニカルエンドポイント。",
-      "requirements" : "Organizations may have different systems at different locations that provide various services and need to be able to define the technical connection details for how to connect to them, and for what purpose.",
+      "short" : "場所のために運営されているサービスへのアクセスを提供する技術的なエンドポイント",
+      "definition" : "場所のために運営されているサービスへのアクセスを提供する技術的なエンドポイント。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "requirements" : "組織は、さまざまなサービスを提供するさまざまな場所に異なるシステムを持っている可能性があり、それらに接続する方法や目的のための技術的な接続の詳細を定義できる必要がある。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1438,6 +1449,188 @@
       "path" : "Location",
       "short" : "物理的な場所の詳細情報と位置情報",
       "definition" : "サービスが提供され、リソースとそれに関わる人たちが存在する物理的な場所の詳細情報と位置情報。"
+    },
+    {
+      "id" : "Location.identifier",
+      "path" : "Location.identifier",
+      "short" : "ユーザに場所を特定する一意のコードまたは番号",
+      "definition" : "ユーザに場所を特定する一意のコードまたは番号",
+      "requirements" : "登記内の組織ラベルの場所。これらを追跡する必要がある。"
+    },
+    {
+      "id" : "Location.status",
+      "path" : "Location.status",
+      "short" : "active | suspended | inactive / アクティブ|中断|非アクティブ",
+      "definition" : "statusプロパティは、operationStatus、またはロケーションに構成されている場合はスケジュール/スロットによってカバーされる可能性がある現在の値ではなく、リソースの一般的な可用性をカバーする。",
+      "comment" : "FHIR文字列はサイズが1MBを超えてはならないことに注意すること"
+    },
+    {
+      "id" : "Location.operationalStatus",
+      "path" : "Location.operationalStatus",
+      "short" : "ロケーションの運用ステータス（通常、ベッド/部屋のみ）",
+      "definition" : "稼働状況には、ベッドに最も関連する稼働値が含まれる（ただし、隔離ユニット/透析椅子などの部屋/ユニット/椅子などにも適用できる）。これは通常、汚染、ハウスキーピング、およびメンテナンスなどの他のアクティビティなどの概念をカバーしている。",
+      "comment" : "コードは、SNOMED CTなどの非常に形式的な定義まで、列挙またはコードリストで非常にカジュアルに定義できる。詳細については、HL7 v3コア原則を参照すること。"
+    },
+    {
+      "id" : "Location.name",
+      "path" : "Location.name",
+      "short" : "人間が使用する場所の名前",
+      "definition" : "人間が使用する場所の名前。一意である必要はない。",
+      "comment" : "場所の名前が変更された場合は、古い名前をエイリアス列に入力して、検索で検索できるようにすることを検討すべきである。"
+    },
+    {
+      "id" : "Location.alias",
+      "path" : "Location.alias",
+      "short" : "その場所が過去に知られていた、または以前から知られていた別名のリスト",
+      "definition" : "その場所が過去に知られていた、または以前から知られていた別名のリスト",
+      "comment" : "エイリアス/歴史的な名前に関連付けられた日付はない。これは、名前がいつ使用されたかを追跡するためではなく、古い名前でも場所を特定できるように検索を支援するためのものである。",
+      "requirements" : "「時間の経過とともに、場所や組織は多くの変化を遂げ、さまざまな名前で知られるようになる。\r\n場所が知られている以前の名前を知っていることを検索することは非常に役に立つ。」"
+    },
+    {
+      "id" : "Location.description",
+      "path" : "Location.description",
+      "short" : "名前以外の場所を識別するための詳細情報として表示できる場所に関する追加の詳細",
+      "definition" : "場所の説明。場所の検索や参照に役立つ。",
+      "comment" : "FHIR文字列はサイズが1MBを超えてはならないことに注意すること",
+      "requirements" : "人間は、正しい場所が特定されたことを確認するために追加情報を必要とする。"
+    },
+    {
+      "id" : "Location.mode",
+      "path" : "Location.mode",
+      "short" : "instance | kind / インスタンス|種類",
+      "definition" : "リソースインスタンスが特定の場所を表すか、場所のクラスを表すかを示す。",
+      "comment" : "ロケーションがロケーションのクラスであるかどうかによって、その使用方法と理解方法が変わるため、これは修飾子としてラベル付けされる。",
+      "requirements" : "スケジュールや順番に場所リソースを使用する場合、特定の場所ではなく場所のクラスを参照できる必要がある。"
+    },
+    {
+      "id" : "Location.type",
+      "path" : "Location.type",
+      "short" : "実行される機能のタイプ",
+      "definition" : "その場所で実行される機能のタイプを示す。",
+      "comment" : "すべての用語の使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と前後の調整間の関係を管理するための独自の構造を提供する必要がある。"
+    },
+    {
+      "id" : "Location.telecom",
+      "path" : "Location.telecom",
+      "short" : "所在地の連絡先",
+      "definition" : "その場所で利用可能な通信機器の連絡先。これには、電話番号、ファックス番号、携帯電話番号、電子メールアドレス、ウェブサイトなどが含まれる。"
+    },
+    {
+      "id" : "Location.address",
+      "path" : "Location.address",
+      "short" : "物理的な場所",
+      "definition" : "物理的な場所。",
+      "comment" : "追加のアドレスは、Location リソースの別のインスタンスを使用して記録するか、Organization を介して記録する必要がある。",
+      "requirements" : "場所が訪問できる場合は、住所を把握しておく必要がある。"
+    },
+    {
+      "id" : "Location.physicalType",
+      "path" : "Location.physicalType",
+      "short" : "場所の物理的な形態",
+      "definition" : "場所の物理的な形、例えば建物、部屋、車両、道路。",
+      "comment" : "すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。",
+      "requirements" : "クエリで関連する場所を表示するためには、場所を分類する必要がある。"
+    },
+    {
+      "id" : "Location.position",
+      "path" : "Location.position",
+      "short" : "絶対的な地理的位置",
+      "definition" : "WGS84 データム（KML で使用されている座標系と同じ）を用いて表現された Location の絶対地理的位置。",
+      "requirements" : "モバイルアプリケーションや自動化されたルート検索では、位置情報の正確な位置を知る必要がある。"
+    },
+    {
+      "id" : "Location.position.longitude",
+      "path" : "Location.position.longitude",
+      "short" : "WGS84データの経度",
+      "definition" : "経度。値の領域及び解釈は、KML の longitude 要素のテキストと同様である（後述）。",
+      "comment" : "IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。"
+    },
+    {
+      "id" : "Location.position.latitude",
+      "path" : "Location.position.latitude",
+      "short" : "WGS84データの緯度",
+      "definition" : "緯度。値領域及び解釈は、KML の latitude 要素のテキストと同様である（後述）。",
+      "comment" : "IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。"
+    },
+    {
+      "id" : "Location.position.altitude",
+      "path" : "Location.position.altitude",
+      "short" : "WGS84データによる高度",
+      "definition" : "高度。値領域及び解釈は、KML の altitude 要素のテキストと同様である（後述）。",
+      "comment" : "IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。"
+    },
+    {
+      "id" : "Location.managingOrganization",
+      "path" : "Location.managingOrganization",
+      "short" : "プロビジョニングと維持管理を担当する組織",
+      "definition" : "場所のプロビジョニングと維持管理を担当する組織。",
+      "comment" : "これは、この場所がサービスを提供する組織階層の一部として使用することもできる。これらのサービスは、HealthcareServiceリソースを介して定義することができる。",
+      "requirements" : "場所を管理している人を知る必要がある。",
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization"]
+      }]
+    },
+    {
+      "id" : "Location.partOf",
+      "path" : "Location.partOf",
+      "short" : "この場所が物理的に存在するもう一つの場所",
+      "definition" : "この場所が物理的に存在するもう一つの場所。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "requirements" : "位置情報、表示、識別のためには、他のどの場所の内部にどの場所があるかを知ることが重要である。",
+      "type" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-hierarchy",
+          "valueBoolean" : true
+        }],
+        "code" : "Reference",
+        "targetProfile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location"]
+      }]
+    },
+    {
+      "id" : "Location.hoursOfOperation",
+      "path" : "Location.hoursOfOperation",
+      "short" : "この場所は通常、1週間のうち何日/時間帯に営業している",
+      "definition" : "この場所が週に何日あるいは何時間オープンしているか。",
+      "comment" : "この種の情報は、一般的にディレクトリやウェブサイトに掲載されており、施設が利用可能な時間帯を顧客に通知している。\r\nその場所の特定のサービスは、その場所の時間よりも短い（または長い）独自の時間を持っている場合がある。"
+    },
+    {
+      "id" : "Location.hoursOfOperation.daysOfWeek",
+      "path" : "Location.hoursOfOperation.daysOfWeek",
+      "short" : "mon | tue | wed | thu | fri | sat | sun / 月｜火｜水｜木｜金｜土｜日",
+      "definition" : "開始時刻と終了時刻の間に利用可能な曜日を示す。",
+      "comment" : "FHIR文字列のサイズは1MBを超えてはならないことに注意すること。"
+    },
+    {
+      "id" : "Location.hoursOfOperation.allDay",
+      "path" : "Location.hoursOfOperation.allDay",
+      "short" : "その場所は終日営業している",
+      "definition" : "その場所は終日営業している。"
+    },
+    {
+      "id" : "Location.hoursOfOperation.openingTime",
+      "path" : "Location.hoursOfOperation.openingTime",
+      "short" : "場所が開く時間",
+      "definition" : "場所が開く時間"
+    },
+    {
+      "id" : "Location.hoursOfOperation.closingTime",
+      "path" : "Location.hoursOfOperation.closingTime",
+      "definition" : "場所が閉まる時間"
+    },
+    {
+      "id" : "Location.availabilityExceptions",
+      "path" : "Location.availabilityExceptions",
+      "short" : "利用可能の例外についての説明",
+      "definition" : "場所が私たちのものを開くときの説明は、通常、例えば、祝日の可用性とは異なる。\r\n営業時間に詳細な通常のサイトの利用可能性のすべての可能性のある例外を簡潔に説明する。"
+    },
+    {
+      "id" : "Location.endpoint",
+      "path" : "Location.endpoint",
+      "short" : "場所のために運営されているサービスへのアクセスを提供する技術的なエンドポイント",
+      "definition" : "場所のために運営されているサービスへのアクセスを提供する技術的なエンドポイント。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "requirements" : "組織は、さまざまなサービスを提供するさまざまな場所に異なるシステムを持っている可能性があり、それらに接続する方法や目的のための技術的な接続の詳細を定義できる必要がある。"
     }]
   }
 }
