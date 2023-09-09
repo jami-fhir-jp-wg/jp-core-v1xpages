@@ -544,7 +544,7 @@
       <slicing>
         <discriminator>
           <type value="value"/>
-          <path value="coding.system"/>
+          <path value="$this"/>
         </discriminator>
         <rules value="open"/>
       </slicing>
@@ -1038,6 +1038,13 @@
       <type>
         <code value="CodeableConcept"/>
       </type>
+      <fixedCodeableConcept>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="LP29693-6"/>
+          <display value="検体検査"/>
+        </coding>
+      </fixedCodeableConcept>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -1256,7 +1263,7 @@
       <definition value="カテゴリーコードシステムの識別URL"/>
       <comment value="uriは、oid（urn：oid：...）またはuuid（urn：uuid：...）である場合があります。OIDとUUIDは、HL7 OIDレジストリへの参照となります。それ以外の場合、URIは、FHIRの特別なURIを定義したHL7のリストから来るか、システムを明確かつ明確に確立する定義を参照する必要があります。 / The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should reference to some definition that establishes the system clearly and unambiguously."/>
       <requirements value="シンボルの定義のソースについて明確である必要があります。 / Need to be unambiguous about the source of the definition of the symbol."/>
-      <min value="1"/>
+      <min value="0"/>
       <max value="1"/>
       <base>
         <path value="Coding.system"/>
@@ -1266,7 +1273,6 @@
       <type>
         <code value="uri"/>
       </type>
-      <fixedUri value="http://loinc.org"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -1333,7 +1339,7 @@
       <short value="カテゴリーコード"/>
       <definition value="カテゴリーコード"/>
       <requirements value="システム内の特定のコードを参照する必要があります。 / Need to refer to a particular code in the system."/>
-      <min value="1"/>
+      <min value="0"/>
       <max value="1"/>
       <base>
         <path value="Coding.code"/>
@@ -1343,7 +1349,6 @@
       <type>
         <code value="code"/>
       </type>
-      <fixedCode value="LP29693-6"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -1385,7 +1390,6 @@
       <type>
         <code value="string"/>
       </type>
-      <patternString value="検体検査"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -2756,7 +2760,7 @@
       <slicing>
         <discriminator>
           <type value="value"/>
-          <path value="coding.system"/>
+          <path value="$this"/>
         </discriminator>
         <rules value="open"/>
       </slicing>
@@ -2770,24 +2774,17 @@
       <comment value="【JP Core仕様】レポートカテゴリーとして、LoincコードのLP29693-6(検体検査/LAB)を使用する。"/>
       <min value="1"/>
       <max value="1"/>
+      <fixedCodeableConcept>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="LP29693-6"/>
+          <display value="検体検査"/>
+        </coding>
+      </fixedCodeableConcept>
       <binding>
         <strength value="required"/>
         <valueSet value="http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS"/>
       </binding>
-    </element>
-    <element id="DiagnosticReport.category:laboratory.coding.system">
-      <path value="DiagnosticReport.category.coding.system"/>
-      <min value="1"/>
-      <fixedUri value="http://loinc.org"/>
-    </element>
-    <element id="DiagnosticReport.category:laboratory.coding.code">
-      <path value="DiagnosticReport.category.coding.code"/>
-      <min value="1"/>
-      <fixedCode value="LP29693-6"/>
-    </element>
-    <element id="DiagnosticReport.category:laboratory.coding.display">
-      <path value="DiagnosticReport.category.coding.display"/>
-      <patternString value="検体検査"/>
     </element>
     <element id="DiagnosticReport.code.coding">
       <path value="DiagnosticReport.code.coding"/>

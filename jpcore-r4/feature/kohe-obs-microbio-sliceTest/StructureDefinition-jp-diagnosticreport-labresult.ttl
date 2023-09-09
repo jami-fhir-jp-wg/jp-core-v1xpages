@@ -1,4 +1,5 @@
 @prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -594,7 +595,7 @@
        fhir:slicing [
          fhir:discriminator ( [
            fhir:type [ fhir:v "value" ] ;
-           fhir:path [ fhir:v "coding.system" ]
+           fhir:path [ fhir:v "$this" ]
          ] ) ;
          fhir:rules [ fhir:v "open" ]
        ] ;
@@ -1106,6 +1107,15 @@
        fhir:type ( [
          fhir:code [ fhir:v "CodeableConcept"^^xsd:anyURI ]
        ] ) ;
+       fhir:fixed [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           a loinc:LP29693-6 ;
+           fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "LP29693-6" ] ;
+           fhir:display [ fhir:v "検体検査" ]
+         ] )
+       ] ;
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
@@ -1339,7 +1349,7 @@
        fhir:definition [ fhir:v "カテゴリーコードシステムの識別URL" ] ;
        fhir:comment [ fhir:v "uriは、oid（urn：oid：...）またはuuid（urn：uuid：...）である場合があります。OIDとUUIDは、HL7 OIDレジストリへの参照となります。それ以外の場合、URIは、FHIRの特別なURIを定義したHL7のリストから来るか、システムを明確かつ明確に確立する定義を参照する必要があります。 / The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should reference to some definition that establishes the system clearly and unambiguously." ] ;
        fhir:requirements [ fhir:v "シンボルの定義のソースについて明確である必要があります。 / Need to be unambiguous about the source of the definition of the symbol." ] ;
-       fhir:min [ fhir:v "1"^^xsd:nonNegativeInteger ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
          fhir:path [ fhir:v "Coding.system" ] ;
@@ -1349,7 +1359,6 @@
        fhir:type ( [
          fhir:code [ fhir:v "uri"^^xsd:anyURI ]
        ] ) ;
-       fhir:fixed [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
@@ -1418,7 +1427,7 @@
        fhir:short [ fhir:v "カテゴリーコード" ] ;
        fhir:definition [ fhir:v "カテゴリーコード" ] ;
        fhir:requirements [ fhir:v "システム内の特定のコードを参照する必要があります。 / Need to refer to a particular code in the system." ] ;
-       fhir:min [ fhir:v "1"^^xsd:nonNegativeInteger ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
          fhir:path [ fhir:v "Coding.code" ] ;
@@ -1428,7 +1437,6 @@
        fhir:type ( [
          fhir:code [ fhir:v "code"^^xsd:anyURI ]
        ] ) ;
-       fhir:fixed [ fhir:v "LP29693-6" ] ;
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
@@ -1472,7 +1480,6 @@
        fhir:type ( [
          fhir:code [ fhir:v "string"^^xsd:anyURI ]
        ] ) ;
-       fhir:pattern [ fhir:v "検体検査" ] ;
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
@@ -2918,7 +2925,7 @@
        fhir:slicing [
          fhir:discriminator ( [
            fhir:type [ fhir:v "value" ] ;
-           fhir:path [ fhir:v "coding.system" ]
+           fhir:path [ fhir:v "$this" ]
          ] ) ;
          fhir:rules [ fhir:v "open" ]
        ] ;
@@ -2932,6 +2939,15 @@
        fhir:comment [ fhir:v "【JP Core仕様】レポートカテゴリーとして、LoincコードのLP29693-6(検体検査/LAB)を使用する。" ] ;
        fhir:min [ fhir:v "1"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
+       fhir:fixed [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           a loinc:LP29693-6 ;
+           fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "LP29693-6" ] ;
+           fhir:display [ fhir:v "検体検査" ]
+         ] )
+       ] ;
        fhir:binding [
          fhir:strength [ fhir:v "required" ] ;
          fhir:valueSet [
@@ -2939,20 +2955,6 @@
            fhir:link <http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS>
          ]
        ]
-     ] [
-       fhir:id [ fhir:v "DiagnosticReport.category:laboratory.coding.system" ] ;
-       fhir:path [ fhir:v "DiagnosticReport.category.coding.system" ] ;
-       fhir:min [ fhir:v "1"^^xsd:nonNegativeInteger ] ;
-       fhir:fixed [ fhir:v "http://loinc.org"^^xsd:anyURI ]
-     ] [
-       fhir:id [ fhir:v "DiagnosticReport.category:laboratory.coding.code" ] ;
-       fhir:path [ fhir:v "DiagnosticReport.category.coding.code" ] ;
-       fhir:min [ fhir:v "1"^^xsd:nonNegativeInteger ] ;
-       fhir:fixed [ fhir:v "LP29693-6" ]
-     ] [
-       fhir:id [ fhir:v "DiagnosticReport.category:laboratory.coding.display" ] ;
-       fhir:path [ fhir:v "DiagnosticReport.category.coding.display" ] ;
-       fhir:pattern [ fhir:v "検体検査" ]
      ] [
        fhir:id [ fhir:v "DiagnosticReport.code.coding" ] ;
        fhir:path [ fhir:v "DiagnosticReport.code.coding" ] ;

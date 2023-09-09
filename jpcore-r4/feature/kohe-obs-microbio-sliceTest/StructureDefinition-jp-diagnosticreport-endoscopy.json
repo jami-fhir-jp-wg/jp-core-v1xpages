@@ -564,7 +564,7 @@
       "slicing" : {
         "discriminator" : [{
           "type" : "value",
-          "path" : "coding.system"
+          "path" : "$this"
         }],
         "ordered" : false,
         "rules" : "open"
@@ -1077,6 +1077,13 @@
       "type" : [{
         "code" : "CodeableConcept"
       }],
+      "fixedCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "LP7796-8",
+          "display" : "内視鏡"
+        }]
+      },
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
@@ -1303,7 +1310,7 @@
       "definition" : "カテゴリーコードシステムの識別URL",
       "comment" : "uriは、oid（urn：oid：...）またはuuid（urn：uuid：...）である場合があります。OIDとUUIDは、HL7 OIDレジストリへの参照となります。それ以外の場合、URIは、FHIRの特別なURIを定義したHL7のリストから来るか、システムを明確かつ明確に確立する定義を参照する必要があります。 / The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should reference to some definition that establishes the system clearly and unambiguously.",
       "requirements" : "シンボルの定義のソースについて明確である必要があります。 / Need to be unambiguous about the source of the definition of the symbol.",
-      "min" : 1,
+      "min" : 0,
       "max" : "1",
       "base" : {
         "path" : "Coding.system",
@@ -1313,7 +1320,6 @@
       "type" : [{
         "code" : "uri"
       }],
-      "fixedUri" : "http://loinc.org",
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
@@ -1382,7 +1388,7 @@
       "short" : "カテゴリーコード",
       "definition" : "カテゴリーコード",
       "requirements" : "システム内の特定のコードを参照する必要があります。 / Need to refer to a particular code in the system.",
-      "min" : 1,
+      "min" : 0,
       "max" : "1",
       "base" : {
         "path" : "Coding.code",
@@ -1392,7 +1398,6 @@
       "type" : [{
         "code" : "code"
       }],
-      "fixedCode" : "LP7796-8",
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
@@ -1436,7 +1441,6 @@
       "type" : [{
         "code" : "string"
       }],
-      "patternString" : "内視鏡",
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
@@ -2371,7 +2375,7 @@
       "slicing" : {
         "discriminator" : [{
           "type" : "value",
-          "path" : "coding.system"
+          "path" : "$this"
         }],
         "ordered" : false,
         "rules" : "open"
@@ -2389,27 +2393,17 @@
       "comment" : "JP_DiagnosticReportCategory_VSの中から「LP7796-8」（Endoscopy（内視鏡））を指定する。",
       "min" : 1,
       "max" : "1",
+      "fixedCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "LP7796-8",
+          "display" : "内視鏡"
+        }]
+      },
       "binding" : {
         "strength" : "required",
         "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS"
       }
-    },
-    {
-      "id" : "DiagnosticReport.category:endoscopy.coding.system",
-      "path" : "DiagnosticReport.category.coding.system",
-      "min" : 1,
-      "fixedUri" : "http://loinc.org"
-    },
-    {
-      "id" : "DiagnosticReport.category:endoscopy.coding.code",
-      "path" : "DiagnosticReport.category.coding.code",
-      "min" : 1,
-      "fixedCode" : "LP7796-8"
-    },
-    {
-      "id" : "DiagnosticReport.category:endoscopy.coding.display",
-      "path" : "DiagnosticReport.category.coding.display",
-      "patternString" : "内視鏡"
     },
     {
       "id" : "DiagnosticReport.code",

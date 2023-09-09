@@ -545,7 +545,7 @@
       <slicing>
         <discriminator>
           <type value="value"/>
-          <path value="coding.system"/>
+          <path value="$this"/>
         </discriminator>
         <ordered value="false"/>
         <rules value="open"/>
@@ -1041,6 +1041,13 @@
       <type>
         <code value="CodeableConcept"/>
       </type>
+      <fixedCodeableConcept>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="LP29684-5"/>
+          <display value="放射線"/>
+        </coding>
+      </fixedCodeableConcept>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -1259,7 +1266,7 @@
       <definition value="カテゴリーコードシステムの識別URL"/>
       <comment value="uriは、oid（urn：oid：...）またはuuid（urn：uuid：...）である場合があります。OIDとUUIDは、HL7 OIDレジストリへの参照となります。それ以外の場合、URIは、FHIRの特別なURIを定義したHL7のリストから来るか、システムを明確かつ明確に確立する定義を参照する必要があります。 / The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should reference to some definition that establishes the system clearly and unambiguously."/>
       <requirements value="シンボルの定義のソースについて明確である必要があります。 / Need to be unambiguous about the source of the definition of the symbol."/>
-      <min value="1"/>
+      <min value="0"/>
       <max value="1"/>
       <base>
         <path value="Coding.system"/>
@@ -1269,7 +1276,6 @@
       <type>
         <code value="uri"/>
       </type>
-      <fixedUri value="http://loinc.org"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -1336,7 +1342,7 @@
       <short value="カテゴリーコード"/>
       <definition value="カテゴリーコード"/>
       <requirements value="システム内の特定のコードを参照する必要があります。 / Need to refer to a particular code in the system."/>
-      <min value="1"/>
+      <min value="0"/>
       <max value="1"/>
       <base>
         <path value="Coding.code"/>
@@ -1346,7 +1352,6 @@
       <type>
         <code value="code"/>
       </type>
-      <fixedCode value="LP29684-5"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -1388,7 +1393,6 @@
       <type>
         <code value="string"/>
       </type>
-      <patternString value="放射線"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -1731,7 +1735,7 @@
       <definition value="カテゴリーコードシステムの識別URL"/>
       <comment value="uriは、oid（urn：oid：...）またはuuid（urn：uuid：...）である場合があります。OIDとUUIDは、HL7 OIDレジストリへの参照となります。それ以外の場合、URIは、FHIRの特別なURIを定義したHL7のリストから来るか、システムを明確かつ明確に確立する定義を参照する必要があります。 / The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should reference to some definition that establishes the system clearly and unambiguously."/>
       <requirements value="シンボルの定義のソースについて明確である必要があります。 / Need to be unambiguous about the source of the definition of the symbol."/>
-      <min value="1"/>
+      <min value="0"/>
       <max value="1"/>
       <base>
         <path value="Coding.system"/>
@@ -1741,7 +1745,6 @@
       <type>
         <code value="uri"/>
       </type>
-      <fixedUri value="http://dicom.nema.org/resources/ontology/DCM"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -3245,7 +3248,7 @@
       <slicing>
         <discriminator>
           <type value="value"/>
-          <path value="coding.system"/>
+          <path value="$this"/>
         </discriminator>
         <ordered value="false"/>
         <rules value="open"/>
@@ -3261,24 +3264,17 @@
       <definition value="レポートを作成した臨床分野・部門、または診断サービス（CT, US, MRIなど）を分類するコード。 これは、検索、並べ替え、および表示の目的で使用される。【JP-Core仕様】放射線レポートは第1コードとして LP29684-5 を固定値として設定。第2コード以下にDICOMModalityコードを列挙することでレポートの対象検査内容を示す。"/>
       <min value="1"/>
       <max value="1"/>
+      <fixedCodeableConcept>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="LP29684-5"/>
+          <display value="放射線"/>
+        </coding>
+      </fixedCodeableConcept>
       <binding>
         <strength value="required"/>
         <valueSet value="http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS"/>
       </binding>
-    </element>
-    <element id="DiagnosticReport.category:radiology.coding.system">
-      <path value="DiagnosticReport.category.coding.system"/>
-      <min value="1"/>
-      <fixedUri value="http://loinc.org"/>
-    </element>
-    <element id="DiagnosticReport.category:radiology.coding.code">
-      <path value="DiagnosticReport.category.coding.code"/>
-      <min value="1"/>
-      <fixedCode value="LP29684-5"/>
-    </element>
-    <element id="DiagnosticReport.category:radiology.coding.display">
-      <path value="DiagnosticReport.category.coding.display"/>
-      <patternString value="放射線"/>
     </element>
     <element id="DiagnosticReport.category:radiology_sub">
       <path value="DiagnosticReport.category"/>
@@ -3291,11 +3287,6 @@
         <strength value="required"/>
         <valueSet value="http://jpfhir.jp/fhir/core/ValueSet/JP_RadiologyModality_VS"/>
       </binding>
-    </element>
-    <element id="DiagnosticReport.category:radiology_sub.coding.system">
-      <path value="DiagnosticReport.category.coding.system"/>
-      <min value="1"/>
-      <fixedUri value="http://dicom.nema.org/resources/ontology/DCM"/>
     </element>
     <element id="DiagnosticReport.category:radiology_sub.coding.code">
       <path value="DiagnosticReport.category.coding.code"/>
