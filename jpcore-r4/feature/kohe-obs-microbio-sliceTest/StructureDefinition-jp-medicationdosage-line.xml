@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="jp-medicationdosage-line"/>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml">Placeholder</div>
+  </text>
+  <url value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_Line"/>
+  <version value="1.1.2-dev"/>
+  <name value="JP_MedicationDosage_Line"/>
+  <title value="JP Core Medication Dosage Line Extension"/>
+  <status value="active"/>
+  <date value="2023-06-26"/>
+  <publisher value="FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"/>
+  <contact>
+    <name value="FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://jpfhir.jp"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="office@hlfhir.jp"/>
+    </telecom>
+  </contact>
+  <description value="指示ラインを格納するための拡張"/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="JP"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG"/>
+  <fhirVersion value="4.0.1"/>
+  <mapping>
+    <identity value="rim"/>
+    <uri value="http://hl7.org/v3"/>
+    <name value="RIM Mapping"/>
+  </mapping>
+  <kind value="complex-type"/>
+  <abstract value="false"/>
+  <context>
+    <type value="element"/>
+    <expression value="Dosage"/>
+  </context>
+  <context>
+    <type value="element"/>
+    <expression value="MedicationAdministration.dosage"/>
+  </context>
+  <type value="Extension"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+  <derivation value="constraint"/>
+  <snapshot>
+    <element id="Extension">
+      <path value="Extension"/>
+      <short value="指示ライン"/>
+      <definition value="指示ラインを格納する拡張"/>
+      <min value="0"/>
+      <max value="*"/>
+      <base>
+        <path value="Extension"/>
+        <min value="0"/>
+        <max value="*"/>
+      </base>
+      <condition value="ele-1"/>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <constraint>
+        <key value="ext-1"/>
+        <severity value="error"/>
+        <human value="両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both"/>
+        <expression value="extension.exists() != value.exists()"/>
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+      </constraint>
+      <isModifier value="false"/>
+    </element>
+    <element id="Extension.id">
+      <path value="Extension.id"/>
+      <representation value="xmlAttr"/>
+      <short value="要素間参照のための一意のID / Unique id for inter-element referencing"/>
+      <definition value="リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Element.id"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+    </element>
+    <element id="Extension.extension">
+      <path value="Extension.extension"/>
+      <slicing>
+        <discriminator>
+          <type value="value"/>
+          <path value="url"/>
+        </discriminator>
+        <description value="Extensions are always sliced by (at least) url"/>
+        <rules value="open"/>
+      </slicing>
+      <short value="Extension"/>
+      <definition value="An Extension"/>
+      <min value="0"/>
+      <max value="0"/>
+      <base>
+        <path value="Element.extension"/>
+        <min value="0"/>
+        <max value="*"/>
+      </base>
+      <type>
+        <code value="Extension"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <constraint>
+        <key value="ext-1"/>
+        <severity value="error"/>
+        <human value="両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both"/>
+        <expression value="extension.exists() != value.exists()"/>
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url"/>
+      <representation value="xmlAttr"/>
+      <short value="拡張機能の意味を識別します / identifies the meaning of the extension"/>
+      <definition value="拡張コードの定義のソース - 論理名またはURL。 / Source of the definition for the extension code - a logical name or a URL."/>
+      <comment value="定義は、拡張性コードの計算可能または人間が読み取る可能性のある定義を直接指している場合があります。または、他の仕様で宣言されているように、論理的なURIである場合があります。定義は、拡張機能を定義する構造定義のURIでなければなりません。 / The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension."/>
+      <min value="1"/>
+      <max value="1"/>
+      <base>
+        <path value="Extension.url"/>
+        <min value="1"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="uri"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
+      </type>
+      <fixedUri value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_Line"/>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="N/A"/>
+      </mapping>
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]"/>
+      <short value="拡張値の値 / Value of extension"/>
+      <definition value="拡張値の値 - データ型の制約付きセットの1つでなければなりません（リストの[拡張性]（拡張性]（拡張性。html）を参照）。 / Value of extension - must be one of a constrained set of the data types (see [Extensibility](http://hl7.org/fhir/R4/extensibility.html) for a list)."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Extension.value[x]"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="CodeableConcept"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="N/A"/>
+      </mapping>
+    </element>
+    <element id="Extension.value[x].id">
+      <path value="Extension.value[x].id"/>
+      <representation value="xmlAttr"/>
+      <short value="要素間参照のための一意のID / Unique id for inter-element referencing"/>
+      <definition value="リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Element.id"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+    </element>
+    <element id="Extension.value[x].extension">
+      <path value="Extension.value[x].extension"/>
+      <slicing>
+        <discriminator>
+          <type value="value"/>
+          <path value="url"/>
+        </discriminator>
+        <description value="Extensions are always sliced by (at least) url"/>
+        <rules value="open"/>
+      </slicing>
+      <short value="実装で定義された追加のコンテンツ / Additional content defined by implementations"/>
+      <definition value="要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
+      <comment value="拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
+      <alias value="extensions"/>
+      <alias value="user content"/>
+      <min value="0"/>
+      <max value="*"/>
+      <base>
+        <path value="Element.extension"/>
+        <min value="0"/>
+        <max value="*"/>
+      </base>
+      <type>
+        <code value="Extension"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <constraint>
+        <key value="ext-1"/>
+        <severity value="error"/>
+        <human value="両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both"/>
+        <expression value="extension.exists() != value.exists()"/>
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+    </element>
+    <element id="Extension.value[x].coding">
+      <path value="Extension.value[x].coding"/>
+      <short value="用語システムによって定義されたコード / Code defined by a terminology system"/>
+      <definition value="用語システムによって定義されたコードへの参照。 / A reference to a code defined by a terminology system."/>
+      <comment value="コードは、列挙されたCTなどの非常に正式な定義まで、列挙またはコードリストで非常にさりげなく定義される場合があります。詳細については、HL7 V3コアプリンシップを参照してください。コーディングの順序付けは未定義であり、意味を推測するために使用されません。一般に、せいぜい、コーディング値の1つのみがuserselected = trueとしてラベル付けされます。 / Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true."/>
+      <requirements value="コードシステム内の代替エンコーディング、および他のコードシステムへの翻訳が可能になります。 / Allows for alternative encodings within a code system, and translations to other code systems."/>
+      <min value="0"/>
+      <max value="*"/>
+      <base>
+        <path value="CodeableConcept.coding"/>
+        <min value="0"/>
+        <max value="*"/>
+      </base>
+      <type>
+        <code value="Coding"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <binding>
+        <strength value="example"/>
+        <valueSet value="http://jpfhir.jp/fhir/Examples/ValueSet/JP_MedicationRequestDosageInstructionLine_VS"/>
+      </binding>
+      <mapping>
+        <identity value="v2"/>
+        <map value="C*E.1-8, C*E.10-22"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="union(., ./translation)"/>
+      </mapping>
+      <mapping>
+        <identity value="orim"/>
+        <map value="fhir:CodeableConcept.coding rdfs:subPropertyOf dt:CD.coding"/>
+      </mapping>
+    </element>
+    <element id="Extension.value[x].text">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true"/>
+      </extension>
+      <path value="Extension.value[x].text"/>
+      <short value="コンセプトの単純なテキスト表現 / Plain text representation of the concept"/>
+      <definition value="データを入力したユーザー、および/またはユーザーの意図された意味を表すユーザーによって見られる/選択/発言された概念の人間の言語表現。 / A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user."/>
+      <comment value="多くの場合、テキストはコーディングの1つの表示名と同じです。 / Very often the text is the same as a displayName of one of the codings."/>
+      <requirements value="用語からのコードは、それらを使用する人間のすべてのニュアンスを使用して、常に正しい意味をキャプチャするとは限りません。または、適切なコードがまったくない場合があります。これらの場合、テキストはソースの完全な意味をキャプチャするために使用されます。 / The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="CodeableConcept.text"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="string"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="C*E.9. But note many systems use C*E.2 for this"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="./originalText[mediaType/code=&quot;text/plain&quot;]/data"/>
+      </mapping>
+      <mapping>
+        <identity value="orim"/>
+        <map value="fhir:CodeableConcept.text rdfs:subPropertyOf dt:CD.originalText"/>
+      </mapping>
+    </element>
+  </snapshot>
+  <differential>
+    <element id="Extension">
+      <path value="Extension"/>
+      <short value="指示ライン"/>
+      <definition value="指示ラインを格納する拡張"/>
+    </element>
+    <element id="Extension.extension">
+      <path value="Extension.extension"/>
+      <max value="0"/>
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url"/>
+      <fixedUri value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_Line"/>
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]"/>
+      <type>
+        <code value="CodeableConcept"/>
+      </type>
+    </element>
+    <element id="Extension.value[x].coding">
+      <path value="Extension.value[x].coding"/>
+      <binding>
+        <strength value="example"/>
+        <valueSet value="http://jpfhir.jp/fhir/Examples/ValueSet/JP_MedicationRequestDosageInstructionLine_VS"/>
+      </binding>
+    </element>
+  </differential>
+</StructureDefinition>
