@@ -66,7 +66,7 @@
     <element id="MedicationAdministration">
       <path value="MedicationAdministration"/>
       <short value="患者への薬剤投与記録"/>
-      <definition value="患者が薬剤を服用する、あるいは投与される事象を説明します。これは、錠剤を飲むだけだったり、長時間の点滴だったりすることがあります。関連するリソースは、この事象を許可された処方箋や、患者と医療従事者の具体的な出会いと結びつけます。"/>
+      <definition value="患者が薬剤を服用する、あるいは投与される事象を説明します。これは、錠剤を飲むだけだったり、長時間の点滴だったりすることがあります。関連するリソースは、この事象を許可された処方箋や、患者と医療従事者の具体的なEncounter（診察、受診、入退院など）と結びつけます。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -689,7 +689,7 @@
     </element>
     <element id="MedicationAdministration.identifier:rpNumber.use">
       <path value="MedicationAdministration.identifier.use"/>
-      <short value="通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)"/>
+      <short value="通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)"/>
       <definition value="この識別子の目的。 / The purpose of this identifier."/>
       <comment value="アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary."/>
       <requirements value="特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers."/>
@@ -1045,7 +1045,7 @@
     </element>
     <element id="MedicationAdministration.identifier:requestIdentifier.use">
       <path value="MedicationAdministration.identifier.use"/>
-      <short value="通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)"/>
+      <short value="通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)"/>
       <definition value="この識別子の目的。 / The purpose of this identifier."/>
       <comment value="アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary."/>
       <requirements value="特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers."/>
@@ -1289,8 +1289,8 @@
     </element>
     <element id="MedicationAdministration.instantiates">
       <path value="MedicationAdministration.instantiates"/>
-      <short value="Instantiates protocol or definition　プロトコルや定義のインスタンス化"/>
-      <definition value="A protocol, guideline, orderset, or other definition that was adhered to in whole or in part by this event.&#xD;&#xA;&#xD;&#xA;このイベントによって全体的または部分的に順守されたプロトコル、ガイドライン、オーダセット、またはその他の定義。"/>
+      <short value="プロトコルや定義のインスタンス化"/>
+      <definition value="このイベントによって全体的または部分的に順守されたプロトコル、ガイドライン、オーダセット、またはその他の定義。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -1322,8 +1322,8 @@
     </element>
     <element id="MedicationAdministration.partOf">
       <path value="MedicationAdministration.partOf"/>
-      <short value="Part of referenced event  親イベントへの参照"/>
-      <definition value="A larger event of which this particular event is a component or step.&#xD;&#xA;&#xD;&#xA;この特定のイベントがコンポーネントまたはステップであるようなより大きな親イベント。"/>
+      <short value="親イベントへの参照"/>
+      <definition value="この特定のイベントがコンポーネントまたはステップであるようなより大きな親イベント。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -1358,7 +1358,7 @@
     <element id="MedicationAdministration.status">
       <path value="MedicationAdministration.status"/>
       <short value="completed | stopped"/>
-      <definition value="Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions, it is possible for an administration to be started but not completed or it may be paused while some other process is under way.&#xD;&#xA;&#xD;&#xA;通常、管理が完了したことを示すように設定される。輸液などの長期にわたる投与では、投与を開始しても完了しない場合や、他のプロセスの進行中に一時停止する場合がある。&#xD;&#xA;&#xD;&#xA;【JP Core仕様】　completed or stopped に限定される。"/>
+      <definition value="通常、管理が完了したことを示すように設定される。輸液などの長期にわたる投与では、投与を開始しても完了しない場合や、他のプロセスの進行中に一時停止する場合がある。&#xD;&#xA;&#xD;&#xA;【JP Core仕様】　completed or stopped に限定される。"/>
       <comment value="この要素は修飾子としてラベル付けされています。なぜなら、ステータスには、リソースが現在無効であることを示すコードが含まれているためです。"/>
       <min value="1"/>
       <max value="1"/>
@@ -1408,9 +1408,8 @@
     </element>
     <element id="MedicationAdministration.statusReason">
       <path value="MedicationAdministration.statusReason"/>
-      <short value="Reason administration not performed　実施されていない理由"/>
-      <definition value="A code indicating why the administration was not performed.　投与が実施されていない理由を示すコード"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。"/>
+      <short value="実施されていない理由"/>
+      <definition value="投与が実施されていない理由を示すコード"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -1454,8 +1453,8 @@
     </element>
     <element id="MedicationAdministration.category">
       <path value="MedicationAdministration.category"/>
-      <short value="Type of medication usage　薬が使用される区分"/>
-      <definition value="Indicates where the medication is expected to be consumed or administered.&#xD;&#xA;&#xD;&#xA;薬が消費または投与されると予想される場所区分(入院、外来、家庭等)を示す。&#xD;&#xA;inpatient | outpatient | community&#xD;&#xA; (http://terminology.hl7.org/CodeSystem/medication-admin-category)"/>
+      <short value="薬が使用される区分"/>
+      <definition value="薬剤の摂取または投与が予想される場所を示します。"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1491,9 +1490,9 @@
     </element>
     <element id="MedicationAdministration.medication[x]">
       <path value="MedicationAdministration.medication[x]"/>
-      <short value="What medication was supplied　医薬品"/>
-      <definition value="Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.&#xD;&#xA;&#xD;&#xA;投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。"/>
-      <comment value="If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource.&#xD;&#xA;&#xD;&#xA;ひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。&#xD;&#xA;&#xD;&#xA;厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。&#xD;&#xA;&#xD;なお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。&#xD;&#xA;&#xD;ひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。&#xD;ただし、ひとつの処方薬を複数のコードで繰り返し記述する場合には、それらのコードが指し示す処方薬、医療材料は当然同一でなければならない。&#xD;また、処方を発行した医療機関内でのデータ利用のために、医療機関固有コード体系によるコード（ハウスコード、ローカルコード）の記述を含めてもよいが、その場合でも上述したいずれかの標準コードを同時に記述することが必要である。"/>
+      <short value="医薬品"/>
+      <definition value="投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。"/>
+      <comment value="ひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。&#xD;&#xA;&#xD;&#xA;厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。&#xD;&#xA;&#xD;なお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。&#xD;&#xA;&#xD;ひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。&#xD;ただし、ひとつの処方薬を複数のコードで繰り返し記述する場合には、それらのコードが指し示す処方薬、医療材料は当然同一でなければならない。&#xD;また、処方を発行した医療機関内でのデータ利用のために、医療機関固有コード体系によるコード（ハウスコード、ローカルコード）の記述を含めてもよいが、その場合でも上述したいずれかの標準コードを同時に記述することが必要である。"/>
       <min value="1"/>
       <max value="1"/>
       <base>
@@ -2651,18 +2650,18 @@
     </element>
     <element id="MedicationAdministration.instantiates">
       <path value="MedicationAdministration.instantiates"/>
-      <short value="Instantiates protocol or definition　プロトコルや定義のインスタンス化"/>
-      <definition value="A protocol, guideline, orderset, or other definition that was adhered to in whole or in part by this event.&#xD;&#xA;&#xD;&#xA;このイベントによって全体的または部分的に順守されたプロトコル、ガイドライン、オーダセット、またはその他の定義。"/>
+      <short value="プロトコルや定義のインスタンス化"/>
+      <definition value="このイベントによって全体的または部分的に順守されたプロトコル、ガイドライン、オーダセット、またはその他の定義。"/>
     </element>
     <element id="MedicationAdministration.partOf">
       <path value="MedicationAdministration.partOf"/>
-      <short value="Part of referenced event  親イベントへの参照"/>
-      <definition value="A larger event of which this particular event is a component or step.&#xD;&#xA;&#xD;&#xA;この特定のイベントがコンポーネントまたはステップであるようなより大きな親イベント。"/>
+      <short value="親イベントへの参照"/>
+      <definition value="この特定のイベントがコンポーネントまたはステップであるようなより大きな親イベント。"/>
     </element>
     <element id="MedicationAdministration.status">
       <path value="MedicationAdministration.status"/>
       <short value="completed | stopped"/>
-      <definition value="Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions, it is possible for an administration to be started but not completed or it may be paused while some other process is under way.&#xD;&#xA;&#xD;&#xA;通常、管理が完了したことを示すように設定される。輸液などの長期にわたる投与では、投与を開始しても完了しない場合や、他のプロセスの進行中に一時停止する場合がある。&#xD;&#xA;&#xD;&#xA;【JP Core仕様】　completed or stopped に限定される。"/>
+      <definition value="通常、管理が完了したことを示すように設定される。輸液などの長期にわたる投与では、投与を開始しても完了しない場合や、他のプロセスの進行中に一時停止する場合がある。&#xD;&#xA;&#xD;&#xA;【JP Core仕様】　completed or stopped に限定される。"/>
       <binding>
         <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
           <valueString value="MedicationAdministrationStatus"/>
@@ -2674,20 +2673,18 @@
     </element>
     <element id="MedicationAdministration.statusReason">
       <path value="MedicationAdministration.statusReason"/>
-      <short value="Reason administration not performed　実施されていない理由"/>
-      <definition value="A code indicating why the administration was not performed.　投与が実施されていない理由を示すコード"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。"/>
+      <short value="実施されていない理由"/>
+      <definition value="投与が実施されていない理由を示すコード"/>
     </element>
     <element id="MedicationAdministration.category">
       <path value="MedicationAdministration.category"/>
-      <short value="Type of medication usage　薬が使用される区分"/>
-      <definition value="Indicates where the medication is expected to be consumed or administered.&#xD;&#xA;&#xD;&#xA;薬が消費または投与されると予想される場所区分(入院、外来、家庭等)を示す。&#xD;&#xA;inpatient | outpatient | community&#xD;&#xA; (http://terminology.hl7.org/CodeSystem/medication-admin-category)"/>
+      <short value="薬が使用される区分"/>
     </element>
     <element id="MedicationAdministration.medication[x]">
       <path value="MedicationAdministration.medication[x]"/>
-      <short value="What medication was supplied　医薬品"/>
-      <definition value="Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.&#xD;&#xA;&#xD;&#xA;投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。"/>
-      <comment value="If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource.&#xD;&#xA;&#xD;&#xA;ひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。&#xD;&#xA;&#xD;&#xA;厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。&#xD;&#xA;&#xD;なお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。&#xD;&#xA;&#xD;ひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。&#xD;ただし、ひとつの処方薬を複数のコードで繰り返し記述する場合には、それらのコードが指し示す処方薬、医療材料は当然同一でなければならない。&#xD;また、処方を発行した医療機関内でのデータ利用のために、医療機関固有コード体系によるコード（ハウスコード、ローカルコード）の記述を含めてもよいが、その場合でも上述したいずれかの標準コードを同時に記述することが必要である。"/>
+      <short value="医薬品"/>
+      <definition value="投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。"/>
+      <comment value="ひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。&#xD;&#xA;&#xD;&#xA;厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。&#xD;&#xA;&#xD;なお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。&#xD;&#xA;&#xD;ひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。&#xD;ただし、ひとつの処方薬を複数のコードで繰り返し記述する場合には、それらのコードが指し示す処方薬、医療材料は当然同一でなければならない。&#xD;また、処方を発行した医療機関内でのデータ利用のために、医療機関固有コード体系によるコード（ハウスコード、ローカルコード）の記述を含めてもよいが、その場合でも上述したいずれかの標準コードを同時に記述することが必要である。"/>
     </element>
   </differential>
 </StructureDefinition>

@@ -67,7 +67,7 @@
       "id" : "MedicationAdministration",
       "path" : "MedicationAdministration",
       "short" : "患者への注射薬剤投与記録",
-      "definition" : "患者が薬剤を服用する、あるいは投与される事象を説明します。これは、錠剤を飲むだけだったり、長時間の点滴だったりすることがあります。関連するリソースは、この事象を許可された処方箋や、患者と医療従事者の具体的な出会いと結びつけます。",
+      "definition" : "患者が薬剤を服用する、あるいは投与される事象を説明します。これは、錠剤を飲むだけだったり、長時間の点滴だったりすることがあります。関連するリソースは、この事象を許可された処方箋や、患者と医療従事者の具体的なEncounter（診察、受診、入退院など）と結びつけます。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -750,7 +750,7 @@
     {
       "id" : "MedicationAdministration.identifier:rpNumber.use",
       "path" : "MedicationAdministration.identifier.use",
-      "short" : "通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
+      "short" : "通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
       "definition" : "この識別子の目的。 / The purpose of this identifier.",
       "comment" : "アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.",
       "requirements" : "特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
@@ -1119,7 +1119,7 @@
     {
       "id" : "MedicationAdministration.identifier:requestIdentifier.use",
       "path" : "MedicationAdministration.identifier.use",
-      "short" : "通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
+      "short" : "通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
       "definition" : "この識別子の目的。 / The purpose of this identifier.",
       "comment" : "アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.",
       "requirements" : "特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
@@ -1372,8 +1372,8 @@
     {
       "id" : "MedicationAdministration.instantiates",
       "path" : "MedicationAdministration.instantiates",
-      "short" : "Instantiates protocol or definition\u3000プロトコルや定義のインスタンス化",
-      "definition" : "A protocol, guideline, orderset, or other definition that was adhered to in whole or in part by this event.\r\n\r\nこのイベントによって全体的または部分的に順守されたプロトコル、ガイドライン、オーダセット、またはその他の定義。",
+      "short" : "プロトコルや定義のインスタンス化",
+      "definition" : "このイベントによって全体的または部分的に順守されたプロトコル、ガイドライン、オーダセット、またはその他の定義。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1406,8 +1406,8 @@
     {
       "id" : "MedicationAdministration.partOf",
       "path" : "MedicationAdministration.partOf",
-      "short" : "Part of referenced event  親イベントへの参照",
-      "definition" : "A larger event of which this particular event is a component or step.\r\n\r\nこの特定のイベントがコンポーネントまたはステップであるようなより大きな親イベント。",
+      "short" : "親イベントへの参照",
+      "definition" : "この特定のイベントがコンポーネントまたはステップであるようなより大きな親イベント。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1443,7 +1443,7 @@
       "id" : "MedicationAdministration.status",
       "path" : "MedicationAdministration.status",
       "short" : "completed | stopped",
-      "definition" : "Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions, it is possible for an administration to be started but not completed or it may be paused while some other process is under way.\r\n\r\n通常、管理が完了したことを示すように設定される。輸液などの長期にわたる投与では、投与を開始しても完了しない場合や、他のプロセスの進行中に一時停止する場合がある。\r\n\r\n【JP Core仕様】\u3000completed or stopped に限定される。",
+      "definition" : "通常、管理が完了したことを示すように設定される。輸液などの長期にわたる投与では、投与を開始しても完了しない場合や、他のプロセスの進行中に一時停止する場合がある。\r\n\r\n【JP Core仕様】\u3000completed or stopped に限定される。",
       "comment" : "この要素は修飾子としてラベル付けされています。なぜなら、ステータスには、リソースが現在無効であることを示すコードが含まれているためです。",
       "min" : 1,
       "max" : "1",
@@ -1495,9 +1495,8 @@
     {
       "id" : "MedicationAdministration.statusReason",
       "path" : "MedicationAdministration.statusReason",
-      "short" : "Reason administration not performed\u3000実施されていない理由",
-      "definition" : "A code indicating why the administration was not performed.\u3000投与が実施されていない理由を示すコード",
-      "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\n\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。",
+      "short" : "実施されていない理由",
+      "definition" : "投与が実施されていない理由を示すコード",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1543,8 +1542,8 @@
     {
       "id" : "MedicationAdministration.category",
       "path" : "MedicationAdministration.category",
-      "short" : "Type of medication usage\u3000薬が使用される区分",
-      "definition" : "Indicates where the medication is expected to be consumed or administered.\r\n\r\n薬が消費または投与されると予想される場所区分(入院、外来、家庭等)を示す。\r\ninpatient | outpatient | community\r\n (http://terminology.hl7.org/CodeSystem/medication-admin-category)",
+      "short" : "薬が使用される区分",
+      "definition" : "薬剤の摂取または投与が予想される場所を示します。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -1582,9 +1581,9 @@
     {
       "id" : "MedicationAdministration.medication[x]",
       "path" : "MedicationAdministration.medication[x]",
-      "short" : "What medication was supplied\u3000医薬品",
-      "definition" : "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.\r\n\r\n投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。",
-      "comment" : "If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource.\r\n\r\nひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。\r\n\r\n厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。\r\n\rなお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。\r\n\rひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。\rただし、ひとつの処方薬を複数のコードで繰り返し記述する場合には、それらのコードが指し示す処方薬、医療材料は当然同一でなければならない。\rまた、処方を発行した医療機関内でのデータ利用のために、医療機関固有コード体系によるコード（ハウスコード、ローカルコード）の記述を含めてもよいが、その場合でも上述したいずれかの標準コードを同時に記述することが必要である。",
+      "short" : "医薬品",
+      "definition" : "投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。",
+      "comment" : "ひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。\r\n\r\n厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。\r\n\rなお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。\r\n\rひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。\rただし、ひとつの処方薬を複数のコードで繰り返し記述する場合には、それらのコードが指し示す処方薬、医療材料は当然同一でなければならない。\rまた、処方を発行した医療機関内でのデータ利用のために、医療機関固有コード体系によるコード（ハウスコード、ローカルコード）の記述を含めてもよいが、その場合でも上述したいずれかの標準コードを同時に記述することが必要である。",
       "min" : 1,
       "max" : "1",
       "base" : {
@@ -2236,8 +2235,8 @@
     {
       "id" : "MedicationAdministration.dosage",
       "path" : "MedicationAdministration.dosage",
-      "short" : "Details of how medication was taken\u3000薬の服用方法の詳細",
-      "definition" : "Describes the medication dosage information details e.g. dose, rate, site, route, etc.\r\n投薬量情報の詳細を説明する。線量、率、場所、ルートなど。",
+      "short" : "薬の服用方法の詳細",
+      "definition" : "投薬量情報の詳細を説明する。線量、率、場所、ルートなど。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -2567,8 +2566,8 @@
     {
       "id" : "MedicationAdministration.dosage.text",
       "path" : "MedicationAdministration.dosage.text",
-      "short" : "Free text dosage instructions e.g. SIG\u3000フリーテキストの投与方法の説明\u3000SIG:用法",
-      "definition" : "Free text dosage can be used for cases where the dosage administered is too complex to code. When coded dosage is present, the free text dosage may still be present for display to humans.\r\rThe dosage instructions should reflect the dosage of the medication that was administered.\r\n\r\nフリーテキストの投与量用法は、投与される投与量や用法が複雑すぎてコーディングできない場合に使用できる。コード化された投与量や用法が存在する場合、フリーテキストの投与量や用法は、人間に表示するためにまだ存在している可能性がある。\r\n投与量や用法のこの指示は、実際に投与される薬の投与量や用法を反映する必要がある。",
+      "short" : "フリーテキストの投与方法の説明\u3000SIG:用法",
+      "definition" : "フリーテキストの投与量用法は、投与される投与量や用法が複雑すぎてコーディングできない場合に使用できる。コード化された投与量や用法が存在する場合、フリーテキストの投与量や用法は、人間に表示するためにまだ存在している可能性がある。\r\n投与量や用法のこの指示は、実際に投与される薬の投与量や用法を反映する必要がある。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -2597,9 +2596,9 @@
     {
       "id" : "MedicationAdministration.dosage.site",
       "path" : "MedicationAdministration.dosage.site",
-      "short" : "Body site administered to\u3000投与部位",
-      "definition" : "A coded specification of the anatomic site where the medication first entered the body.  For example, \"left arm\".\r\n\r\n薬が最初に体内に入った解剖学的部位のコード化された記述。たとえば、「左腕」。",
-      "comment" : "If the use case requires attributes from the BodySite resource (e.g. to identify and track separately) then use the standard extension [bodySite](extension-bodysite.html).  May be a summary code, or a reference to a very precise definition of the location, or both.\r\n\r\nユースケースでBodySiteリソースの属性が必要な場合（たとえば、個別に識別して追跡するため）、標準の拡張機能[bodySite]（extension-bodysite.html）を使用する。要約コード、または場所の非常に正確な定義への参照、あるいはその両方である可能性がある。",
+      "short" : "投与部位",
+      "definition" : "薬が最初に体内に入った解剖学的部位のコード化された記述。たとえば、「左腕」。",
+      "comment" : "ユースケースでBodySiteリソースの属性が必要な場合（たとえば、個別に識別して追跡するため）、標準の拡張機能[bodySite]（extension-bodysite.html）を使用する。要約コード、または場所の非常に正確な定義への参照、あるいはその両方である可能性がある。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -2868,9 +2867,8 @@
     {
       "id" : "MedicationAdministration.dosage.route",
       "path" : "MedicationAdministration.dosage.route",
-      "short" : "Path of substance into body\u3000体への投与経路",
-      "definition" : "A code specifying the route or physiological path of administration of a therapeutic agent into or onto the patient.  For example, topical, intravenous, etc.\r\n\r\n患者への、または患者への治療薬の投与経路または生理学的経路を指定するコード。たとえば、局所、静脈内など。",
-      "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\n\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。",
+      "short" : "体への投与経路",
+      "definition" : "患者への、または患者への治療薬の投与経路または生理学的経路を指定するコード。たとえば、局所、静脈内など。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -3997,8 +3995,8 @@
     {
       "id" : "MedicationAdministration.dosage.dose",
       "path" : "MedicationAdministration.dosage.dose",
-      "short" : "Amount of medication per dose\u3000用量あたりの投薬量",
-      "definition" : "The amount of the medication given at one administration event.   Use this value when the administration is essentially an instantaneous event such as a swallowing a tablet or giving an injection.\r\n\r\n1回の投与イベントで投与される薬剤の量。この値は、投与が錠剤の飲み込みや注射などの本質的に瞬間的なイベントである場合に使用する。",
+      "short" : "用量あたりの投薬量",
+      "definition" : "1回の投与イベントで投与される薬剤の量。この値は、投与が錠剤の飲み込みや注射などの本質的に瞬間的なイベントである場合に使用する。",
       "comment" : "薬剤に関する簡易的な数量と単位を定めている。ValueおよびCodeを必須とし、comparatorは記述不可。単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)",
       "min" : 0,
       "max" : "1",
@@ -4061,9 +4059,9 @@
         "ordered" : false,
         "rules" : "closed"
       },
-      "short" : "Dose quantity per unit of time\u3000単位時間あたりの用量",
-      "definition" : "Identifies the speed with which the medication was or will be introduced into the patient.  Typically, the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time, e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.\r\n\r\n薬が患者に導入された、または導入される予定の速度を識別する。\r\n通常、注入の速度。 1時間あたり100mlまたは100ml/時。単位時間あたりのレートとして表すこともできる。 2時間あたり500ml。その他の例：200mcg/分または200mcg/1分。 1リットル/8時間。",
-      "comment" : "If the rate changes over time, and you want to capture this in MedicationAdministration, then each change should be captured as a distinct MedicationAdministration, with a specific MedicationAdministration.dosage.rate, and the date time when the rate change occurred. Typically, the MedicationAdministration.dosage.rate element is not used to convey an average rate.\r\n\r\nレートが時間の経過とともに変化し、これをMedicationAdministrationで記述する場合は、各変更を、特定のMedicationAdministration.dosage.rateと、レート変更が発生した日時を使用して、個別のMedicationAdministrationとして記述する必要がある。通常、MedicationAdministration.dosage.rate要素は、平均レートを伝達するためには使用されない。",
+      "short" : "単位時間あたりの用量",
+      "definition" : "薬が患者に導入された、または導入される予定の速度を識別する。\r\n通常、注入の速度。 1時間あたり100mlまたは100ml/時。単位時間あたりのレートとして表すこともできる。 2時間あたり500ml。その他の例：200mcg/分または200mcg/1分。 1リットル/8時間。",
+      "comment" : "レートが時間の経過とともに変化し、これをMedicationAdministrationで記述する場合は、各変更を、特定のMedicationAdministration.dosage.rateと、レート変更が発生した日時を使用して、個別のMedicationAdministrationとして記述する必要がある。通常、MedicationAdministration.dosage.rate要素は、平均レートを伝達するためには使用されない。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -4206,8 +4204,8 @@
     {
       "id" : "MedicationAdministration.eventHistory",
       "path" : "MedicationAdministration.eventHistory",
-      "short" : "A list of events of interest in the lifecycle\u3000ライフサイクルで関心のあるイベントのリスト",
-      "definition" : "A summary of the events of interest that have occurred, such as when the administration was verified.\r\n\r\n投与が確認されたときなど、発生した関連のあるベントのサマリー。",
+      "short" : "ライフサイクルで関心のあるイベントのリスト",
+      "definition" : "投与が確認されたときなど、発生した関連のあるベントのサマリー。",
       "comment" : "この要請のすべてのバージョンの起源が含まれているわけではない可能性があります。ただし、「関連性」または重要と見なされるものに限定されます。それに含まれる証跡には、このリソースの現在のバージョンに関連するものは含まれません。 （そのプロバイナンスが「関連性のある」変更である場合、後の更新の一部として追加する必要があります。その時までは、このバージョンを指すプロバイナンスとして直接クエリできます。All Provenancesは、この要求の過去のバージョンを主題として持つ必要があります。",
       "min" : 0,
       "max" : "*",
@@ -4264,8 +4262,7 @@
     {
       "id" : "MedicationAdministration.dosage",
       "path" : "MedicationAdministration.dosage",
-      "short" : "Details of how medication was taken\u3000薬の服用方法の詳細",
-      "definition" : "Describes the medication dosage information details e.g. dose, rate, site, route, etc.\r\n投薬量情報の詳細を説明する。線量、率、場所、ルートなど。"
+      "definition" : "投薬量情報の詳細を説明する。線量、率、場所、ルートなど。"
     },
     {
       "id" : "MedicationAdministration.dosage.extension",
@@ -4337,15 +4334,15 @@
     {
       "id" : "MedicationAdministration.dosage.text",
       "path" : "MedicationAdministration.dosage.text",
-      "short" : "Free text dosage instructions e.g. SIG\u3000フリーテキストの投与方法の説明\u3000SIG:用法",
-      "definition" : "Free text dosage can be used for cases where the dosage administered is too complex to code. When coded dosage is present, the free text dosage may still be present for display to humans.\r\rThe dosage instructions should reflect the dosage of the medication that was administered.\r\n\r\nフリーテキストの投与量用法は、投与される投与量や用法が複雑すぎてコーディングできない場合に使用できる。コード化された投与量や用法が存在する場合、フリーテキストの投与量や用法は、人間に表示するためにまだ存在している可能性がある。\r\n投与量や用法のこの指示は、実際に投与される薬の投与量や用法を反映する必要がある。"
+      "short" : "フリーテキストの投与方法の説明\u3000SIG:用法",
+      "definition" : "フリーテキストの投与量用法は、投与される投与量や用法が複雑すぎてコーディングできない場合に使用できる。コード化された投与量や用法が存在する場合、フリーテキストの投与量や用法は、人間に表示するためにまだ存在している可能性がある。\r\n投与量や用法のこの指示は、実際に投与される薬の投与量や用法を反映する必要がある。"
     },
     {
       "id" : "MedicationAdministration.dosage.site",
       "path" : "MedicationAdministration.dosage.site",
-      "short" : "Body site administered to\u3000投与部位",
-      "definition" : "A coded specification of the anatomic site where the medication first entered the body.  For example, \"left arm\".\r\n\r\n薬が最初に体内に入った解剖学的部位のコード化された記述。たとえば、「左腕」。",
-      "comment" : "If the use case requires attributes from the BodySite resource (e.g. to identify and track separately) then use the standard extension [bodySite](extension-bodysite.html).  May be a summary code, or a reference to a very precise definition of the location, or both.\r\n\r\nユースケースでBodySiteリソースの属性が必要な場合（たとえば、個別に識別して追跡するため）、標準の拡張機能[bodySite]（extension-bodysite.html）を使用する。要約コード、または場所の非常に正確な定義への参照、あるいはその両方である可能性がある。",
+      "short" : "投与部位",
+      "definition" : "薬が最初に体内に入った解剖学的部位のコード化された記述。たとえば、「左腕」。",
+      "comment" : "ユースケースでBodySiteリソースの属性が必要な場合（たとえば、個別に識別して追跡するため）、標準の拡張機能[bodySite]（extension-bodysite.html）を使用する。要約コード、または場所の非常に正確な定義への参照、あるいはその両方である可能性がある。",
       "binding" : {
         "strength" : "preferred",
         "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_MedicationBodySiteJAMIExternal_VS"
@@ -4376,9 +4373,8 @@
     {
       "id" : "MedicationAdministration.dosage.route",
       "path" : "MedicationAdministration.dosage.route",
-      "short" : "Path of substance into body\u3000体への投与経路",
-      "definition" : "A code specifying the route or physiological path of administration of a therapeutic agent into or onto the patient.  For example, topical, intravenous, etc.\r\n\r\n患者への、または患者への治療薬の投与経路または生理学的経路を指定するコード。たとえば、局所、静脈内など。",
-      "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\n\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。",
+      "short" : "体への投与経路",
+      "definition" : "患者への、または患者への治療薬の投与経路または生理学的経路を指定するコード。たとえば、局所、静脈内など。",
       "binding" : {
         "strength" : "preferred",
         "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_MedicationRouteHL70162_VS"
@@ -4478,8 +4474,8 @@
     {
       "id" : "MedicationAdministration.dosage.dose",
       "path" : "MedicationAdministration.dosage.dose",
-      "short" : "Amount of medication per dose\u3000用量あたりの投薬量",
-      "definition" : "The amount of the medication given at one administration event.   Use this value when the administration is essentially an instantaneous event such as a swallowing a tablet or giving an injection.\r\n\r\n1回の投与イベントで投与される薬剤の量。この値は、投与が錠剤の飲み込みや注射などの本質的に瞬間的なイベントである場合に使用する。",
+      "short" : "用量あたりの投薬量",
+      "definition" : "1回の投与イベントで投与される薬剤の量。この値は、投与が錠剤の飲み込みや注射などの本質的に瞬間的なイベントである場合に使用する。",
       "type" : [{
         "code" : "Quantity",
         "profile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationSimpleQuantity"]
@@ -4496,9 +4492,9 @@
         "ordered" : false,
         "rules" : "open"
       },
-      "short" : "Dose quantity per unit of time\u3000単位時間あたりの用量",
-      "definition" : "Identifies the speed with which the medication was or will be introduced into the patient.  Typically, the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time, e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.\r\n\r\n薬が患者に導入された、または導入される予定の速度を識別する。\r\n通常、注入の速度。 1時間あたり100mlまたは100ml/時。単位時間あたりのレートとして表すこともできる。 2時間あたり500ml。その他の例：200mcg/分または200mcg/1分。 1リットル/8時間。",
-      "comment" : "If the rate changes over time, and you want to capture this in MedicationAdministration, then each change should be captured as a distinct MedicationAdministration, with a specific MedicationAdministration.dosage.rate, and the date time when the rate change occurred. Typically, the MedicationAdministration.dosage.rate element is not used to convey an average rate.\r\n\r\nレートが時間の経過とともに変化し、これをMedicationAdministrationで記述する場合は、各変更を、特定のMedicationAdministration.dosage.rateと、レート変更が発生した日時を使用して、個別のMedicationAdministrationとして記述する必要がある。通常、MedicationAdministration.dosage.rate要素は、平均レートを伝達するためには使用されない。"
+      "short" : "単位時間あたりの用量",
+      "definition" : "薬が患者に導入された、または導入される予定の速度を識別する。\r\n通常、注入の速度。 1時間あたり100mlまたは100ml/時。単位時間あたりのレートとして表すこともできる。 2時間あたり500ml。その他の例：200mcg/分または200mcg/1分。 1リットル/8時間。",
+      "comment" : "レートが時間の経過とともに変化し、これをMedicationAdministrationで記述する場合は、各変更を、特定のMedicationAdministration.dosage.rateと、レート変更が発生した日時を使用して、個別のMedicationAdministrationとして記述する必要がある。通常、MedicationAdministration.dosage.rate要素は、平均レートを伝達するためには使用されない。"
     },
     {
       "id" : "MedicationAdministration.dosage.rate[x]:rateRatio",
@@ -4527,8 +4523,8 @@
     {
       "id" : "MedicationAdministration.eventHistory",
       "path" : "MedicationAdministration.eventHistory",
-      "short" : "A list of events of interest in the lifecycle\u3000ライフサイクルで関心のあるイベントのリスト",
-      "definition" : "A summary of the events of interest that have occurred, such as when the administration was verified.\r\n\r\n投与が確認されたときなど、発生した関連のあるベントのサマリー。"
+      "short" : "ライフサイクルで関心のあるイベントのリスト",
+      "definition" : "投与が確認されたときなど、発生した関連のあるベントのサマリー。"
     }]
   }
 }

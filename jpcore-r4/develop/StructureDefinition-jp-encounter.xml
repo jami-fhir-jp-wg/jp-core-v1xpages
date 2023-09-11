@@ -60,8 +60,8 @@
   <snapshot>
     <element id="Encounter">
       <path value="Encounter"/>
-      <short value="An interaction during which services are provided to the patient / 患者にサービスが提供されている間の相互作用"/>
-      <definition value="An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.&#xD;&#xA;&#xD;&#xA;医療サービスの提供または患者の健康状態の評価を目的とした、患者と医療提供者との間の相互作用。Encounterと表現される。&#xD;&#xA;&#xD;&#xA;【JP Core仕様】外来受診、救急受診、入院、退院、対面診察、電話診察、など。"/>
+      <short value="患者にサービスが提供されている間の相互作用"/>
+      <definition value="医療サービスの提供または患者の健康状態の評価を目的とした、患者と医療提供者との間の相互作用。Encounterと表現される。&#xD;&#xA;&#xD;&#xA;【JP Core仕様】外来受診、救急受診、入院、退院、対面診察、電話診察、など。"/>
       <alias value="Visit"/>
       <min value="0"/>
       <max value="*"/>
@@ -423,8 +423,8 @@
     </element>
     <element id="Encounter.identifier">
       <path value="Encounter.identifier"/>
-      <short value="Identifier(s) by which this encounter is known / このEncounterが知られている識別子（複数可）【詳細参照】"/>
-      <definition value="Identifier(s) by which this encounter is known.&#xD;&#xA;&#xD;&#xA;このEncounterが知られている識別子（複数可）。"/>
+      <short value="このEncounterが知られている識別子（複数可）【詳細参照】"/>
+      <definition value="このEncounterが知られている識別子（複数可）。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -466,7 +466,7 @@
       <path value="Encounter.status"/>
       <short value="planned | arrived | triaged | in-progress | onleave | finished | cancelled + / 予定｜到着｜トリアージ｜進行中｜保留中｜終了｜キャンセル+【詳細参照】"/>
       <definition value="planned | arrived | triaged | in-progress | onleave | finished | cancelled +.&#xD;&#xA;&#xD;&#xA;予定｜到着｜トリアージ｜進行中｜保留中｜終了｜キャンセル+."/>
-      <comment value="Note that internal business rules will determine the appropriate transitions that may occur between statuses (and also classes).&#xD;&#xA;&#xD;&#xA;内部のビジネス・ルールは、ステータス(およびクラス)間で発生する可能性のある適切な遷移を検出することに注意すること。"/>
+      <comment value="内部のビジネス・ルールは、ステータス(およびクラス)間で発生する可能性のある適切な遷移を検出することに注意すること。"/>
       <min value="1"/>
       <max value="1"/>
       <base>
@@ -493,7 +493,7 @@
           <valueString value="EncounterStatus"/>
         </extension>
         <strength value="required"/>
-        <description value="「出会いの現状。」(Deai no genjou.)"/>
+        <description value="「Encounter（診察、受診、入退院など）の現状。」(Deai no genjou.)"/>
         <valueSet value="http://hl7.org/fhir/ValueSet/encounter-status|4.0.1"/>
       </binding>
       <mapping>
@@ -518,9 +518,9 @@
         <valueString value="StatusHistory"/>
       </extension>
       <path value="Encounter.statusHistory"/>
-      <short value="List of past encounter statuses / 過去のEncounterのステータス一覧【詳細参照】"/>
-      <definition value="The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.&#xD;&#xA;&#xD;&#xA;ステータス履歴(status History)は、リソースの歴史的なバージョンを読み込んだり、サーバに保存させたりすることなく、Encounterリソースがステータス履歴を含むことを可能にする。"/>
-      <comment value="The current status is always found in the current version of the resource, not the status history.&#xD;&#xA;&#xD;&#xA;現在のステータスは、ステータスの履歴ではなく、常にリソースの現在のバージョンにある。"/>
+      <short value="過去のEncounterのステータス一覧【詳細参照】"/>
+      <definition value="ステータス履歴(status History)は、リソースの歴史的なバージョンを読み込んだり、サーバに保存させたりすることなく、Encounterリソースがステータス履歴を含むことを可能にする。"/>
+      <comment value="現在のステータスは、ステータスの履歴ではなく、常にリソースの現在のバージョンにある。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -658,7 +658,7 @@
       <path value="Encounter.statusHistory.status"/>
       <short value="planned | arrived | triaged | in-progress | onleave | finished | cancelled + / 予定｜到着｜トリアージ｜進行中｜保留中｜終了｜キャンセル+."/>
       <definition value="planned | arrived | triaged | in-progress | onleave | finished | cancelled +.&#xD;&#xA;&#xD;&#xA;予定｜到着｜トリアージ｜進行中｜保留中｜終了｜キャンセル+."/>
-      <comment value="Note that FHIR strings SHALL NOT exceed 1MB in size&#xD;&#xA;&#xD;&#xA;FHIR 文字列のサイズは 1MB を超えてはならないことに注意すること。"/>
+      <comment value="文字列のサイズは 1MB を超えてはならないことに注意すること。"/>
       <min value="1"/>
       <max value="1"/>
       <base>
@@ -684,7 +684,7 @@
           <valueString value="EncounterStatus"/>
         </extension>
         <strength value="required"/>
-        <description value="「出会いの現状。」(Deai no genjou.)"/>
+        <description value="「Encounter（診察、受診、入退院など）の現状。」(Deai no genjou.)"/>
         <valueSet value="http://hl7.org/fhir/ValueSet/encounter-status|4.0.1"/>
       </binding>
       <mapping>
@@ -694,9 +694,9 @@
     </element>
     <element id="Encounter.statusHistory.period">
       <path value="Encounter.statusHistory.period"/>
-      <short value="The time that the episode was in the specified status / そのエピソードが指定された状態になっていた時間"/>
-      <definition value="The time that the episode was in the specified status.&#xD;&#xA;&#xD;&#xA;そのエピソードが指定された状態になっていた時間。"/>
-      <comment value="A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;).&#xA;&#xA;Period is not used for a duration (a measure of elapsed time). See [Duration](http://hl7.org/fhir/R4/datatypes.html#Duration).&#xD;&#xA;&#xD;&#xA;これは期間ではない-これは時間の尺度（別のタイプ）であり、時間の固定値で発生する期間である。 期間は時間の範囲を指定する。 使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、または範囲から1つの値が適用されるか（たとえば、「これら2回の間に患者に与える」）を指定する。 期間が必要な場合は、タイプをInterval | Durationとして指定する。"/>
+      <short value="そのエピソードが指定された状態になっていた時間"/>
+      <definition value="そのエピソードが指定された状態になっていた時間。"/>
+      <comment value="期間とは時間の範囲で指定される。範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、または範囲から1つの値が適用されるか（たとえば、「これら2回の間に患者に与える」）を指定する。 期間が必要な場合は、タイプをInterval | Durationとして指定する。"/>
       <min value="1"/>
       <max value="1"/>
       <base>
@@ -724,9 +724,9 @@
     </element>
     <element id="Encounter.class">
       <path value="Encounter.class"/>
-      <short value="Classification of patient encounter / 患者とのEncounterの分類【詳細参照】"/>
-      <definition value="Concepts representing classification of patient encounter such as ambulatory (outpatient), inpatient, emergency, home health or others due to local variations.&#xD;&#xA;&#xD;&#xA;外来（外来）、入院、救急、在宅医療、その他の地域差による患者Encounterの分類を表す概念。"/>
-      <comment value="Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.&#xD;&#xA;&#xD;&#xA;コードは列挙やコードリストの中で非常にカジュアルに定義されることもあれば、SNOMED CTのような非常にフォーマルな定義まである。 - 詳細はHL7 v3コア・プリンシプルを参照すること。"/>
+      <short value="患者とのEncounterの分類【詳細参照】"/>
+      <definition value="外来（外来）、入院、救急、在宅医療、その他の地域差による患者Encounterの分類を表す概念。"/>
+      <comment value="コードは列挙やコードリストの中で非常にカジュアルに定義されることもあれば、SNOMED CTのような非常にフォーマルな定義まである。 - 詳細はHL7 v3コア・プリンシプルを参照すること。"/>
       <min value="1"/>
       <max value="1"/>
       <base>
@@ -752,7 +752,7 @@
           <valueString value="EncounterClass"/>
         </extension>
         <strength value="extensible"/>
-        <description value="出会いの分類。 (Deai no bunrui.)"/>
+        <description value="Encounter（診察、受診、入退院など）の分類。 (Deai no bunrui.)"/>
         <valueSet value="http://terminology.hl7.org/ValueSet/v3-ActEncounterCode"/>
       </binding>
       <mapping>
@@ -773,8 +773,8 @@
         <valueString value="ClassHistory"/>
       </extension>
       <path value="Encounter.classHistory"/>
-      <short value="List of past encounter classes / 過去のEncounter classのリスト【詳細参照】"/>
-      <definition value="The class history permits the tracking of the encounters transitions without needing to go  through the resource history.  This would be used for a case where an admission starts of as an emergency encounter, then transitions into an inpatient scenario. Doing this and not restarting a new encounter ensures that any lab/diagnostic results can more easily follow the patient and not require re-processing and not get lost or cancelled during a kind of discharge from emergency to inpatient.&#xD;&#xA;&#xD;&#xA;クラスの履歴は、リソースの履歴を経由することなく、Encounterの遷移を追跡することを可能にする。これは、入院患者が緊急時にEncounterした後、入院患者のシナリオに移行する場合に使用される。このようにして、新しいEncounterを再開しないようにすることで、検査/診断結果がより簡単に患者を追跡することができ、再処理を必要とせず、救急から入院への退院の際に紛失したりキャンセルされたりすることがないことを保証する。"/>
+      <short value="過去のEncounter classのリスト【詳細参照】"/>
+      <definition value="クラスの履歴は、リソースの履歴を経由することなく、Encounterの遷移を追跡することを可能にする。これは、入院患者が緊急時にEncounterした後、入院患者のシナリオに移行する場合に使用される。このようにして、新しいEncounterを再開しないようにすることで、検査/診断結果がより簡単に患者を追跡することができ、再処理を必要とせず、救急から入院への退院の際に紛失したりキャンセルされたりすることがないことを保証する。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -912,7 +912,7 @@
       <path value="Encounter.classHistory.class"/>
       <short value="inpatient | outpatient | ambulatory | emergency + / 入院｜外来｜外来｜救急＋"/>
       <definition value="inpatient | outpatient | ambulatory | emergency +.&#xD;&#xA;&#xD;&#xA;入院｜外来｜外来｜救急＋。"/>
-      <comment value="Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.&#xD;&#xA;&#xD;&#xA;コードは列挙やコードリストの中で非常にカジュアルに定義されることもあれば、SNOMED CTのような非常にフォーマルな定義まである- 詳細はHL7 v3コア・プリンシプルを参照すること。"/>
+      <comment value="コードは列挙やコードリストの中で非常にカジュアルに定義されることもあれば、SNOMED CTのような非常にフォーマルな定義まである- 詳細はHL7 v3コア・プリンシプルを参照すること。"/>
       <min value="1"/>
       <max value="1"/>
       <base>
@@ -938,7 +938,7 @@
           <valueString value="EncounterClass"/>
         </extension>
         <strength value="extensible"/>
-        <description value="出会いの分類。 (Deai no bunrui.)"/>
+        <description value="Encounter（診察、受診、入退院など）の分類。 (Deai no bunrui.)"/>
         <valueSet value="http://terminology.hl7.org/ValueSet/v3-ActEncounterCode"/>
       </binding>
       <mapping>
@@ -948,9 +948,9 @@
     </element>
     <element id="Encounter.classHistory.period">
       <path value="Encounter.classHistory.period"/>
-      <short value="The time that the episode was in the specified class / 指定されたクラスにエピソードがあった時間"/>
-      <definition value="The time that the episode was in the specified class.&#xD;&#xA;&#xD;&#xA;指定されたクラスにエピソードがあった時間。"/>
-      <comment value="A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;).&#xA;&#xA;Period is not used for a duration (a measure of elapsed time). See [Duration](http://hl7.org/fhir/R4/datatypes.html#Duration).&#xD;&#xA;&#xD;&#xA;これは期間ではない-これは時間の尺度（別のタイプ）であり、時間の固定値で発生する期間である。 期間は時間の範囲を指定する。 使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、または範囲から1つの値が適用されるか（たとえば、「これら2回の間に患者に与える」）を指定する。 期間が必要な場合は、タイプをInterval | Durationとして指定する。"/>
+      <short value="指定されたクラスにエピソードがあった時間"/>
+      <definition value="指定されたクラスにエピソードがあった時間。"/>
+      <comment value="期間とは時間の範囲で指定される。範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、または範囲から1つの値が適用されるか（たとえば、「これら2回の間に患者に与える」）を指定する。 期間が必要な場合は、タイプをInterval | Durationとして指定する。"/>
       <min value="1"/>
       <max value="1"/>
       <base>
@@ -978,9 +978,9 @@
     </element>
     <element id="Encounter.type">
       <path value="Encounter.type"/>
-      <short value="Specific type of encounter / Encounterの具体的なタイプ【詳細参照】"/>
-      <definition value="Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation).&#xD;&#xA;&#xD;&#xA;具体的なEncounterの種類（メール相談、外科デイケア、熟練看護、リハビリテーションなど）"/>
-      <comment value="Since there are many ways to further classify encounters, this element is ..*.&#xD;&#xA;&#xD;&#xA;Encounterをさらに分類する方法はいろいろあるので、この要素は...*である。"/>
+      <short value="特定の種類のEncounter（診察、受診、入退院など） (tokutei no shurui no deai)"/>
+      <definition value="「特定のEncounter（診察、受診、入退院など）の種類（例：メール相談、手術日帰り、スキルド・ナーシング、リハビリテーション）」"/>
+      <comment value="「Encounter（診察、受診、入退院など）をさらに分類する方法が多数存在するため、この要素は0から複数の値をとる。」"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -1006,7 +1006,7 @@
           <valueString value="EncounterType"/>
         </extension>
         <strength value="example"/>
-        <description value="出会いのタイプ。 (Deai no taipu.)"/>
+        <description value="Encounter（診察、受診、入退院など）のタイプ。 (Deai no taipu.)"/>
         <valueSet value="http://hl7.org/fhir/ValueSet/encounter-type"/>
       </binding>
       <mapping>
@@ -1028,9 +1028,8 @@
     </element>
     <element id="Encounter.serviceType">
       <path value="Encounter.serviceType"/>
-      <short value="Specific type of service / 具体的なサービスの種類【詳細参照】"/>
-      <definition value="Broad categorization of the service that is to be provided (e.g. cardiology).&#xD;&#xA;&#xD;&#xA;提供されるサービスの大まかな分類（心臓病など）。"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。"/>
+      <short value="&quot;特定のサービスの種類&quot; (tokutei no saabisu no shurui)"/>
+      <definition value="提供されるサービスの広範な分類（例：心臓病学）"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1074,9 +1073,8 @@
     </element>
     <element id="Encounter.priority">
       <path value="Encounter.priority"/>
-      <short value="Indicates the urgency of the encounter / このEncounterの緊急性を示す【詳細参照】"/>
-      <definition value="Indicates the urgency of the encounter.&#xD;&#xA;&#xD;&#xA;このEncounterの緊急性を示す。"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。"/>
+      <short value="「Encounter（診察、受診、入退院など）の緊急性を示す」"/>
+      <definition value="Encounter（診察、受診、入退院など）の緊急性を示します。"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1102,7 +1100,7 @@
           <valueString value="Priority"/>
         </extension>
         <strength value="example"/>
-        <description value="出会いの緊急性を示します。"/>
+        <description value="Encounter（診察、受診、入退院など）の緊急性を示します。"/>
         <valueSet value="http://terminology.hl7.org/ValueSet/v3-ActPriority"/>
       </binding>
       <mapping>
@@ -1120,9 +1118,9 @@
     </element>
     <element id="Encounter.subject">
       <path value="Encounter.subject"/>
-      <short value="The patient or group present at the encounter / このEncounterに立ち会う患者またはグループ【詳細参照】"/>
-      <definition value="The patient or group present at the encounter.&#xD;&#xA;&#xD;&#xA;このEncounterに立ち会う患者またはグループ。"/>
-      <comment value="While the encounter is always about the patient, the patient might not actually be known in all contexts of use, and there may be a group of patients that could be anonymous (such as in a group therapy for Alcoholics Anonymous - where the recording of the encounter could be used for billing on the number of people/staff and not important to the context of the specific patients) or alternately in veterinary care a herd of sheep receiving treatment (where the animals are not individually tracked).&#xD;&#xA;&#xD;&#xA;このEncounterは常に患者に関するものであるが、患者は実際にはすべての使用状況で知られているわけではなく、匿名である可能性のある患者のグループが存在する可能性がある。（匿名のアルコール依存症の集団療法など-遭遇は、人数/スタッフの請求に使用でき、特定の患者の状況には重要ではない）"/>
+      <short value="対面時に出席している患者またはグループ"/>
+      <definition value="&quot;診察時に存在する患者またはグループ。&quot; (Shinsatsu ji ni sonzai suru kanja mata wa gurūpu.)"/>
+      <comment value="エンカウンターは常に患者に関するものですが、すべての使用状況で患者が実際に知られていない場合があり、匿名である可能性があります（例えばアルコール依存症のグループセラピーの場合- エンカウンターの記録が人数/スタッフの請求に使用され、特定の患者の文脈に重要ではない場合、または獣医治療では、個々に追跡されていない群れの羊が治療を受ける場合があります）。"/>
       <alias value="patient"/>
       <min value="0"/>
       <max value="1"/>
@@ -1169,9 +1167,8 @@
     </element>
     <element id="Encounter.episodeOfCare">
       <path value="Encounter.episodeOfCare"/>
-      <short value="Episode(s) of care that this encounter should be recorded against / このEncounterが記録されるべきケアのエピソード【詳細参照】"/>
-      <definition value="Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).&#xD;&#xA;&#xD;&#xA;特定のEncounterをケアの特定のエピソードの一部として分類する必要がある場合は、このフィールドを使用する必要がある。この関連付けにより、政府の報告、問題追跡、一般的な問題を介した関連付けなど、特定の目的のために関連するEncounterをグループ化することが容易になる。これらは通常、ケアのエピソードの後に​​作成され、ケアのエピソードを編集して別のEncounterを追加するのではなく、エントリ時にグループ化されるため、関連付けはEncounterに記録される（ケアのエピソードは数年にわたる場合がある）。"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;&#xD;&#xA;参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
+      <short value="「この遭遇が記録されるべきケアのエピソード」"/>
+      <definition value="「特定のエピソードの一部として特定のエンカウンターを分類する必要がある場合、このフィールドを使用する必要があります。この関連は、政府報告、問題追跡、共通の課題に関連するエンカウンターを特定の目的のためにグループ化するのに役立ちます。これらの関連は、通常、エピソードの後に作成され、新しいエンカウンターを追加するためにエピソードを編集するのではなく、入力時にグループ化されます（エピソードは数年にわたって広がる可能性があります）。」"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -1212,9 +1209,8 @@
     </element>
     <element id="Encounter.basedOn">
       <path value="Encounter.basedOn"/>
-      <short value="The ServiceRequest that initiated this encounter / このEncounterを開始したServiceRequest【詳細参照】"/>
-      <definition value="The request this encounter satisfies (e.g. incoming referral or procedure request).&#xD;&#xA;&#xD;&#xA;このEncounterが満たすリクエスト（例：入ってくる紹介または手続きリクエスト）。"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;&#xD;&#xA;参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
+      <short value="このEncounter（診察、受診、入退院など）を開始したサービスリクエスト"/>
+      <definition value="このEncounter（診察、受診、入退院など）が満たす要請（例：紹介依頼や手続き要請）"/>
       <alias value="incomingReferral"/>
       <min value="0"/>
       <max value="*"/>
@@ -1248,8 +1244,8 @@
     </element>
     <element id="Encounter.participant">
       <path value="Encounter.participant"/>
-      <short value="List of participants involved in the encounter / このEncounterに関わった参加者一覧【詳細参照】"/>
-      <definition value="The list of people responsible for providing the service.&#xD;&#xA;&#xD;&#xA;サービスを提供する責任がある人々のリスト。"/>
+      <short value="「遭遇に関わった参加者のリスト」 (Souguu ni kakawatta sankasha no risuto)"/>
+      <definition value="「サービスを提供する責任を持つ人々のリスト」"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -1393,9 +1389,9 @@
     </element>
     <element id="Encounter.participant.type">
       <path value="Encounter.participant.type"/>
-      <short value="Role of participant in encounter / このEncounterにおける参加者の役割"/>
-      <definition value="Role of participant in encounter.&#xD;&#xA;&#xD;&#xA;このEncounterにおける参加者の役割。"/>
-      <comment value="The participant type indicates how an individual participates in an encounter. It includes non-practitioner participants, and for practitioners this is to describe the action type in the context of this encounter (e.g. Admitting Dr, Attending Dr, Translator, Consulting Dr). This is different to the practitioner roles which are functional roles, derived from terms of employment, education, licensing, etc.&#xD;&#xA;&#xD;&#xA;参加者タイプは、個人がEncounterにどのように参加するかを示す。これには、開業医以外の参加者が含まれる。開業医の場合、これは、このEncounterのコンテキストでのアクションタイプを説明することである（例：入院医師、出席医師、翻訳者、コンサルティング医師）。これは、雇用、教育、ライセンスなどの条件から派生した機能的な役割である開業医の役割とは異なる。"/>
+      <short value="「Encounter（診察、受診、入退院など）における参加者の役割」"/>
+      <definition value="Encounter（診察、受診、入退院など）における参加者の役割。"/>
+      <comment value="参加者タイプは、個人がどのようにエンカウントに参加するかを示します。それには、非開業者の参加者が含まれ、開業者にとってはこのエンカウントの文脈でアクションタイプを説明することが含まれます（例：入院医師、診療医師、翻訳者、相談医師）。これは、雇用、教育、免許などの用語から派生した機能的な役割である開業者の役割とは異なります。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -1421,7 +1417,7 @@
           <valueString value="ParticipantType"/>
         </extension>
         <strength value="extensible"/>
-        <description value="出会いにおける参加者の役割。"/>
+        <description value="Encounter（診察、受診、入退院など）における参加者の役割。"/>
         <valueSet value="http://hl7.org/fhir/ValueSet/encounter-participant-type"/>
       </binding>
       <mapping>
@@ -1439,8 +1435,8 @@
     </element>
     <element id="Encounter.participant.period">
       <path value="Encounter.participant.period"/>
-      <short value="Period of time during the encounter that the participant participated / この参加者が参加したEncounterの中での期間"/>
-      <definition value="The period of time that the specified participant participated in the encounter. These can overlap or be sub-sets of the overall encounter's period.&#xD;&#xA;&#xD;&#xA;指定された参加者がEncounterに参加した期間。これらは重複することも、Encounter全体の期間のサブセットになることもある。"/>
+      <short value="参加者が参加したエンカウンターの期間"/>
+      <definition value="指定された参加者が出席した期間。これらは重複することがあり、全体的なエンカウント期間のサブセットになることもあります。"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1472,8 +1468,8 @@
     </element>
     <element id="Encounter.participant.individual">
       <path value="Encounter.participant.individual"/>
-      <short value="Persons involved in the encounter other than the patient / 患者以外のこのEncounterに関わった人"/>
-      <definition value="Persons involved in the encounter other than the patient.&#xD;&#xA;&#xD;&#xA;患者以外のこのEncounterに関わった人。"/>
+      <short value="「患者以外に関与する人」"/>
+      <definition value="「患者以外にEncounter（診察、受診、入退院など）に関わった人々。」(Kanja igai ni deai ni kakawatta hitobito.)"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1516,9 +1512,8 @@
     </element>
     <element id="Encounter.appointment">
       <path value="Encounter.appointment"/>
-      <short value="The appointment that scheduled this encounter / このEncounterをスケジュールした予定【詳細参照】"/>
-      <definition value="The appointment that scheduled this encounter.&#xD;&#xA;&#xD;&#xA;このEncounterをスケジュールした予定。"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;&#xD;&#xA;参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
+      <short value="「このEncounter（診察、受診、入退院など）を予定した予約」(Kono deai o yotei shita yoyaku)"/>
+      <definition value="「このEncounter（診察、受診、入退院など）を予定した約束。」"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -1555,9 +1550,9 @@
     </element>
     <element id="Encounter.period">
       <path value="Encounter.period"/>
-      <short value="The start and end time of the encounter / このEncounterの開始時間と終了時間【詳細参照】"/>
-      <definition value="The start and end time of the encounter.&#xD;&#xA;&#xD;&#xA;このEncounterの開始時間と終了時間。"/>
-      <comment value="If not (yet) known, the end of the Period may be omitted.&#xD;&#xA;&#xD;&#xA;（まだ）わからない場合は、期間の終了を省略できる。"/>
+      <short value="Encounter（診察、受診、入退院など）の始まりと終わりの時間"/>
+      <definition value="Encounter（診察、受診、入退院など）の開始時刻と終了時刻。"/>
+      <comment value="「もし、まだ知られていなければ、期間の終わりは省略できます。」"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1597,9 +1592,9 @@
     </element>
     <element id="Encounter.length">
       <path value="Encounter.length"/>
-      <short value="Quantity of time the encounter lasted (less time absent) / Encounterが続いた時間の量（欠席時間が少ない）【詳細参照】"/>
-      <definition value="Quantity of time the encounter lasted. This excludes the time during leaves of absence.&#xD;&#xA;&#xD;&#xA;このEncounterが続いた時間。これは休職中の時間を除外する。"/>
-      <comment value="May differ from the time the Encounter.period lasted because of leave of absence.&#xD;&#xA;&#xD;&#xA;休職のため、Encounter.periodが続いた時間とは異なる場合がある。"/>
+      <short value="Encounter（診察、受診、入退院など）が続いた時間（不在時間を差し引いた時間）"/>
+      <definition value="接触が続いた時間の量です。休暇中の時間は除かれます。"/>
+      <comment value="「休暇により、エンカウンター期間の時間が異なる場合があります。」"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1635,9 +1630,9 @@
     </element>
     <element id="Encounter.reasonCode">
       <path value="Encounter.reasonCode"/>
-      <short value="Coded reason the encounter takes place / Encounterの発生をコード化された理由の情報【詳細参照】"/>
-      <definition value="Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.&#xD;&#xA;&#xD;&#xA;受診理由をコードで表現したもの。入院の場合はコード化された入院診断名に使用することができる。"/>
-      <comment value="For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis).&#xD;&#xA;&#xD;&#xA;どれが主たる診断であったかを知る必要があるシステムでは、これらは標準のエクステンションであるprimaryDiagnosis（フラグではなくシーケンス値、1 = 主たる診断）でマークされる。"/>
+      <short value="「エンカウントが生じる理由がコード化されている」"/>
+      <definition value="Encounter（診察、受診、入退院など）が起こる理由をコードとして表現します。入院に関しては、コード化された入院診断に使用できます。"/>
+      <comment value="主要な診断を知る必要があるシステムには、標準拡張子primaryDiagnosis（フラグではなく、シーケンス値である1 = 主要な診断）でマークされます。"/>
       <alias value="Indication"/>
       <alias value="Admission diagnosis"/>
       <min value="0"/>
@@ -1665,7 +1660,7 @@
           <valueString value="EncounterReason"/>
         </extension>
         <strength value="preferred"/>
-        <description value="出会いが起こる理由。"/>
+        <description value="Encounter（診察、受診、入退院など）が起こる理由。"/>
         <valueSet value="http://hl7.org/fhir/ValueSet/encounter-reason"/>
       </binding>
       <mapping>
@@ -1687,9 +1682,9 @@
     </element>
     <element id="Encounter.reasonReference">
       <path value="Encounter.reasonReference"/>
-      <short value="Reason the encounter takes place (reference)　Encounterがあった理由【詳細参照】"/>
-      <definition value="Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.&#xD;&#xA;&#xD;&#xA;コードとして表現されたEncounterが起こった理由。入院の場合、これはコード化されたコード化された入院時診断に使用できる。"/>
-      <comment value="For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis).&#xD;&#xA;&#xD;&#xA;どれが主たる診断であったかを知る必要があるシステムでは、これらは標準のエクステンションであるprimaryDiagnosis（フラグではなくシーケンス値、1 = 主たる診断）でマークされる。"/>
+      <short value="Encounter（診察、受診、入退院など）が生じた理由（参照）(Deai ga shoujita riyuu (sanshou))"/>
+      <definition value="Encounter（診察、受診、入退院など）が起こる理由をコードとして表現します。入院に関しては、コード化された入院診断に使用できます。"/>
+      <comment value="主要な診断を知る必要があるシステムには、標準拡張子primaryDiagnosis（フラグではなく、シーケンス値である1 = 主要な診断）でマークされます。"/>
       <alias value="Indication"/>
       <alias value="Admission diagnosis"/>
       <min value="0"/>
@@ -1738,8 +1733,8 @@
         <valueString value="Diagnosis"/>
       </extension>
       <path value="Encounter.diagnosis"/>
-      <short value="The list of diagnosis relevant to this encounter / このEncounterに関連する診断名のリスト【詳細参照】"/>
-      <definition value="The list of diagnosis relevant to this encounter.&#xD;&#xA;&#xD;&#xA;このEncounterに関連する診断名のリスト"/>
+      <short value="この診察に関連する診断のリスト"/>
+      <definition value="「この対面に関連する診断リスト。」"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -1875,9 +1870,9 @@
     </element>
     <element id="Encounter.diagnosis.condition">
       <path value="Encounter.diagnosis.condition"/>
-      <short value="The diagnosis or procedure relevant to the encounter / Encounterに関連する診断または処置"/>
-      <definition value="Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure.&#xD;&#xA;&#xD;&#xA;受診理由（他のリソースからの情報を使用して指定されたもの）。入院の場合、これは入院診断名である。表現方法は通常、状態（evidence.detailで参照されている他のリソースを使用）、または処置である。"/>
-      <comment value="For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis).&#xD;&#xA;&#xD;&#xA;どちらが一次診断であったかを知る必要があるシステムでは、これらは標準のエクステンションであるprimaryDiagnosis（フラグではなくシーケンス値、1 = 一次診断）でマークされる。"/>
+      <short value="「エンカウンターに関連する診断または処置」"/>
+      <definition value="「エンカウンターが発生する理由は、他のリソースからの情報を使用して指定されます。入院の場合、これは入院診断です。指標は通常、状態（evidence.detailで参照される他のリソースで）またはプロシジャー（処置等）です。」"/>
+      <comment value="主要な診断を知る必要があるシステムには、標準拡張子primaryDiagnosis（フラグではなく、シーケンス値である1 = 主要な診断）でマークされます。"/>
       <alias value="Admission diagnosis"/>
       <alias value="discharge diagnosis"/>
       <alias value="indication"/>
@@ -1922,8 +1917,8 @@
     </element>
     <element id="Encounter.diagnosis.use">
       <path value="Encounter.diagnosis.use"/>
-      <short value="Role that this diagnosis has within the encounter (e.g. admission, billing, discharge …) / この診断名がある受診機会において持っている役割（例えば、入院、請求、退院...）"/>
-      <definition value="Role that this diagnosis has within the encounter (e.g. admission, billing, discharge …).&#xD;&#xA;&#xD;&#xA;この診断名がある受診機会において持っている役割（例えば、入院、請求、退院...）。"/>
+      <short value="この診断に対する役割（入院、請求、退院など）"/>
+      <definition value="この診断がEncounter（診察、受診、入退院など）の中で果たす役割（入院、請求、退院など）"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1962,8 +1957,8 @@
     </element>
     <element id="Encounter.diagnosis.rank">
       <path value="Encounter.diagnosis.rank"/>
-      <short value="Ranking of the diagnosis (for each role type) / 診断名の順位（役割別）"/>
-      <definition value="Ranking of the diagnosis (for each role type).&#xD;&#xA;&#xD;&#xA;診断名の順位（役割別）"/>
+      <short value="役割ごとの診断ランキング"/>
+      <definition value="「各役割タイプの診断ランキング」"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1991,9 +1986,9 @@
     </element>
     <element id="Encounter.account">
       <path value="Encounter.account"/>
-      <short value="The set of accounts that may be used for billing for this Encounter / あるEncounterの請求に使用される会計セット【詳細参照】"/>
-      <definition value="The set of accounts that may be used for billing for this Encounter.&#xD;&#xA;&#xD;&#xA;あるEncounterの請求に使用される会計セット。"/>
-      <comment value="The billing system may choose to allocate billable items associated with the Encounter to different referenced Accounts based on internal business rules.&#xD;&#xA;&#xD;&#xA;請求システムは、内部ルールに基づいて、ある受診機会に関連付けられた請求可能な項目を異なる参照先の会計に割り当てることができる。"/>
+      <short value="このエンカウンターの請求に使用できるアカウントのセット"/>
+      <definition value="このエンカウンターの請求に使用できるアカウントのセット。"/>
+      <comment value="請求システムは内部のビジネスルールに基づいて、Encounter（診察、受診、入退院など）に関連する請求可能なアイテムを複数の参照されたアカウントに割り当てることができます。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -2022,9 +2017,9 @@
     </element>
     <element id="Encounter.hospitalization">
       <path value="Encounter.hospitalization"/>
-      <short value="Details about the admission to a healthcare service/医療機関への入院に関する詳細【詳細参照】"/>
-      <definition value="Details about the admission to a healthcare service.&#xD;&#xA;&#xD;&#xA;医療機関への入院に関する詳細"/>
-      <comment value="An Encounter may cover more than just the inpatient stay. Contexts such as outpatients, community clinics, and aged care facilities are also included.&#xD;&#xD;The duration recorded in the period of this encounter covers the entire scope of this hospitalization record.&#xD;&#xA;&#xD;&#xA;Encounterは、入院患者の滞在の記録だけではない。外来患者、地域の診療所、高齢者施設などのコンテクストも含まれる。&#xD;&#xA;このEncounterの期間に記録された時間区間は、この入院記録の全範囲をカバーしている。"/>
+      <short value="「医療サービスの入院に関する詳細」"/>
+      <definition value="「医療サービスへの入院に関する詳細。」"/>
+      <comment value="「エンカウンター」は入院期間だけでなく、外来診療、地域クリニック、高齢者施設などの文脈も含まれる場合があります。&#xD;この「エンカウンター」の期間に記録される期間は、この入院記録の全範囲をカバーしています。"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -2160,8 +2155,8 @@
     </element>
     <element id="Encounter.hospitalization.preAdmissionIdentifier">
       <path value="Encounter.hospitalization.preAdmissionIdentifier"/>
-      <short value="Pre-admission identifier/入院前識別子"/>
-      <definition value="Pre-admission identifier.&#xD;&#xA;&#xD;&#xA;入院前識別子"/>
+      <short value="事前入院識別子 (Jizen nyugaku shikibetsushi)"/>
+      <definition value="「入院前の識別子」(Nyūgaku mae no shikibetsu-shi)"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -2193,9 +2188,8 @@
     </element>
     <element id="Encounter.hospitalization.origin">
       <path value="Encounter.hospitalization.origin"/>
-      <short value="The location/organization from which the patient came before admission/患者が入院する前に来院した場所/組織"/>
-      <definition value="The location/organization from which the patient came before admission.&#xD;&#xA;&#xD;&#xA;患者が入院する前に来院した場所/組織"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;&#xD;&#xA;参照は実際のFHIRリソースへの参照でなければならず、解決可能でなければならない。解決は URL からの検索、またはリソースタイプによって、絶対参照を正規の URL として扱い、ローカルのレジストリ/リポジトリで検索することで行うことができる。"/>
+      <short value="「入院前に患者がいた場所／組織」(nyūin zen ni kanja ga ita basho / soshiki)"/>
+      <definition value="「患者が入院する前に、どこの場所/組織から来たか。」"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -2225,9 +2219,8 @@
     </element>
     <element id="Encounter.hospitalization.admitSource">
       <path value="Encounter.hospitalization.admitSource"/>
-      <short value="From where patient was admitted (physician referral, transfer)/患者がどこから入院したか（医師の紹介、転院）"/>
-      <definition value="From where patient was admitted (physician referral, transfer).&#xD;&#xA;&#xD;&#xA;患者がどこから入院したか（医師の紹介、転院）&#xD;&#xA;例：他の病院からの転院、かかりつけ医からの紹介、この病院で産まれた、など"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。"/>
+      <short value="「患者が入院した場所（医師の紹介、転院）」"/>
+      <definition value="「患者がどこから入院したのか（医師の紹介、転院）」"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -2267,9 +2260,8 @@
     </element>
     <element id="Encounter.hospitalization.reAdmission">
       <path value="Encounter.hospitalization.reAdmission"/>
-      <short value="The type of hospital re-admission that has occurred (if any). If the value is absent, then this is not identified as a readmission / 発生した病院の再入院のタイプ（もしあれば）、値がない場合これは再入院として識別されない"/>
-      <definition value="Whether this hospitalization is a readmission and why if known.&#xD;&#xA;&#xD;&#xA;この入院が再入院であるかどうかと、わかっている場合はその理由。"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。"/>
+      <short value="発生した再入院のタイプ（あれば）。値がない場合は、再入院として識別されていないことを意味します。"/>
+      <definition value="「この入院が再入院かどうか、そしてその理由が分かっている場合はなぜか。」"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -2309,10 +2301,10 @@
     </element>
     <element id="Encounter.hospitalization.dietPreference">
       <path value="Encounter.hospitalization.dietPreference"/>
-      <short value="Diet preferences reported by the patient / 患者から報告された食事の好み"/>
-      <definition value="Diet preferences reported by the patient.&#xD;&#xA;&#xD;&#xA;患者から報告された食事の好み"/>
-      <comment value="For example, a patient may request both a dairy-free and nut-free diet preference (not mutually exclusive).&#xD;&#xA;&#xD;&#xA;例えば、患者は、乳製品を含まない食事とナッツ類を含まない食事の両方を希望することができる（相互に排他的ではない）。"/>
-      <requirements value="Used to track patient's diet restrictions and/or preference. For a complete description of the nutrition needs of a patient during their stay, one should use the nutritionOrder resource which links to Encounter.&#xD;&#xA;&#xD;&#xA;患者の食事制限および／または好み・嗜好を追跡するために使用される。滞在中の患者の栄養ニーズの完全な説明については、EncounterにリンクしているnutritionOrderリソースを使用する必要がある。"/>
+      <short value="患者が報告した食事の好み"/>
+      <definition value="患者が報告した食事の好み。"/>
+      <comment value="例えば、患者が乳製品フリーとナッツフリーの食事を希望することがあります（相反する要素ではありません）。"/>
+      <requirements value="Used to track patient's diet restrictions and/or preference. For a complete description of the nutrition needs of a patient during their stay, one should use the nutritionOrder resource which links to Encounter."/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -2352,9 +2344,8 @@
     </element>
     <element id="Encounter.hospitalization.specialCourtesy">
       <path value="Encounter.hospitalization.specialCourtesy"/>
-      <short value="Special courtesies (VIP, board member) / 特別待遇(VIP、役員)"/>
-      <definition value="Special courtesies (VIP, board member).&#xD;&#xA;&#xD;&#xA;特別待遇(VIP、役員)"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。"/>
+      <short value="特別な配慮（VIP、取締役）"/>
+      <definition value="特別なおもてなし（VIP、取締役）"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -2394,9 +2385,8 @@
     </element>
     <element id="Encounter.hospitalization.specialArrangement">
       <path value="Encounter.hospitalization.specialArrangement"/>
-      <short value="Wheelchair, translator, stretcher, etc. / 車椅子、トランスレータ、ストレッチャなど"/>
-      <definition value="Any special requests that have been made for this hospitalization encounter, such as the provision of specific equipment or other things.&#xD;&#xA;&#xD;&#xA;特定の器具の提供など、今回の入院の出会いのために特別な要望があったもの"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。"/>
+      <short value="車椅子、翻訳者、ストレッチャー、など。"/>
+      <definition value="「この入院の機会に行われた特別な要求、特定の装置などの提供などがある場合は。」"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -2436,9 +2426,8 @@
     </element>
     <element id="Encounter.hospitalization.destination">
       <path value="Encounter.hospitalization.destination"/>
-      <short value="Location/organization to which the patient is discharged / 患者が退院する場所・機関"/>
-      <definition value="Location/organization to which the patient is discharged.&#xD;&#xA;&#xD;&#xA;患者が退院する場所・機関"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;&#xD;&#xA;参照は実際のFHIRリソースへの参照でなければならず、解決可能でなければならない。解決は URL からの検索、またはリソースタイプによって、絶対参照を正規の URL として扱い、ローカルのレジストリ/リポジトリで検索することで行うことができる。"/>
+      <short value="患者が退院する場所/施設"/>
+      <definition value="患者が退院する場所/組織。 (Kanja ga taiin suru basho/soshiki.)"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -2472,9 +2461,8 @@
     </element>
     <element id="Encounter.hospitalization.dischargeDisposition">
       <path value="Encounter.hospitalization.dischargeDisposition"/>
-      <short value="Category or kind of location after discharge / 退院後の場所の区分や種類"/>
-      <definition value="Category or kind of location after discharge.&#xD;&#xA;&#xD;&#xA;退院後の場所の区分や種類。"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。"/>
+      <short value="「退院後の場所のカテゴリーまたは種類」"/>
+      <definition value="退院後の場所のカテゴリーまたは種類。"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -2514,9 +2502,9 @@
     </element>
     <element id="Encounter.location">
       <path value="Encounter.location"/>
-      <short value="List of locations where the patient has been / 患者がいたことのある場所の一覧【詳細参照】"/>
-      <definition value="List of locations where  the patient has been during this encounter.&#xD;&#xA;&#xD;&#xA;このEncounterの間に患者がいたことのある場所のリスト"/>
-      <comment value="Virtual encounters can be recorded in the Encounter by specifying a location reference to a location of type &quot;kind&quot; such as &quot;client's home&quot; and an encounter.class = &quot;virtual&quot;.&#xD;&#xA;&#xD;&#xA;仮想Encounterは、&quot;client's home &quot;のような &quot;kind &quot;型の場所を参照し、encounter.class = &quot;virtual &quot;を指定することで、Encounterに記録することができる。"/>
+      <short value="患者が行った場所のリスト"/>
+      <definition value="「この接触中に患者が滞在した場所のリスト」"/>
+      <comment value="「エンカウント」には、場所の種類である「クライアントの自宅」のような場所の参照を明示することで、バーチャルなエンカウントを記録できます。また、エンカウントクラスは「バーチャル」である必要があります。」"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -2652,9 +2640,8 @@
     </element>
     <element id="Encounter.location.location">
       <path value="Encounter.location.location"/>
-      <short value="Location the encounter takes place / Encounterの場所"/>
-      <definition value="The location where the encounter takes place.&#xD;&#xA;&#xD;&#xA;Encounterの舞台となる場所。"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;&#xD;&#xA;参照は実際のFHIRリソースへの参照でなければならず、解決可能でなければならない。解決は URL からの検索、またはリソースタイプによって、絶対参照を正規の URL として扱い、ローカルのレジストリ/リポジトリで検索することで行うことができる。"/>
+      <short value="Encounter（診察、受診、入退院など）の場所 (Deai no basho)"/>
+      <definition value="Encounter（診察、受診、入退院など）が起こる場所。"/>
       <min value="1"/>
       <max value="1"/>
       <base>
@@ -2696,8 +2683,8 @@
     <element id="Encounter.location.status">
       <path value="Encounter.location.status"/>
       <short value="計画中 | アクティブな | 予約済みの | 完了しました。"/>
-      <definition value="The status of the participants' presence at the specified location during the period specified. If the participant is no longer at the location, then the period will have an end date/time.&#xD;&#xA;&#xD;&#xA;指定された期間中の指定された場所での参加者の存在状況。参加者がその場所にいなくなった場合、その期間は終了日時を持つ。"/>
-      <comment value="When the patient is no longer active at a location, then the period end date is entered, and the status may be changed to completed.&#xD;&#xA;&#xD;&#xA;患者がその場所で活動しなくなった場合、期間終了日が入力され、ステータスが完了した状態に変更されることがある"/>
+      <definition value="指定された場所に参加者が期間中にいる状態。参加者が場所にいなくなった場合は、期間に終了日時が設定されます。"/>
+      <comment value="患者が場所でのアクティブな期間が終了したら、期間終了日が入力され、ステータスが完了に変更される場合があります。"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -2733,9 +2720,9 @@
     </element>
     <element id="Encounter.location.physicalType">
       <path value="Encounter.location.physicalType"/>
-      <short value="The physical type of the location (usually the level in the location hierarchy - bed room ward etc.) / 場所の物理的なタイプ（通常は場所の階層のレベル - ベッド・病室・病棟など）"/>
-      <definition value="This will be used to specify the required levels (bed/ward/room/etc.) desired to be recorded to simplify either messaging or query.&#xD;&#xA;&#xD;&#xA;これは、メッセージングまたはクエリのいずれかを簡素化するために記録したい必要なレベル（ベッド/ワード/ルーム/その他）を指定するために使用される。"/>
-      <comment value="This information is de-normalized from the Location resource to support the easier understanding of the encounter resource and processing in messaging or query.&#xA;&#xA;There may be many levels in the hierarchy, and this may only pic specific levels that are required for a specific usage scenario.&#xD;&#xA;&#xD;&#xA;この情報は、メッセージングやクエリでのEncounterリソースの理解や処理を容易にするために、Locationリソースから非正規化されている。&#xD;&#xA;&#xD;&#xA;階層には多くのレベルがあり、これは特定の使用シナリオに必要とされる特定のレベルのみをピックすることができる。"/>
+      <short value="場所の物理的なタイプ（通常は場所の階層のレベル、ベッドルームワードなど）"/>
+      <definition value="「これは、メッセージングまたはクエリを簡素化するために記録が必要なレベル（ベッド/病室/部屋など）を特定するために使用されます。」"/>
+      <comment value="この情報は、エンカウンターリソースの理解とメッセージングまたはクエリの処理をサポートするために、ロケーションリソースからデノーマライズされています。&#xA;&#xA;階層には多くのレベルがあり、特定の使用シナリオに必要な特定のレベルのみをピックアップすることができます。"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -2767,9 +2754,8 @@
     </element>
     <element id="Encounter.location.period">
       <path value="Encounter.location.period"/>
-      <short value="Time period during which the patient was present at the location / 患者がその場所にいた期間"/>
-      <definition value="Time period during which the patient was present at the location.&#xD;&#xA;&#xD;&#xA;その場所に患者がいた期間。"/>
-      <comment value="A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;).&#xA;&#xA;Period is not used for a duration (a measure of elapsed time). See [Duration](http://hl7.org/fhir/R4/datatypes.html#Duration).&#xD;&#xA;&#xD;&#xA;期間は時間の範囲を指定する。 使用のコンテキストは、範囲全体が適用されるかどうかを指定する (例: &quot;患者はこの時間範囲の病院の入院患者でした&quot; )。または、範囲から1つの値が適用される（例：「この2回の間に患者に与える」）。&#xD;&#xA;&#xD;&#xA;期間は、期間(経過時間の尺度)には使用されない。Duration](http://hl7.org/fhir/R4/datatypes.html#Duration)を参照のこと。"/>
+      <short value="「患者が場所にいた期間」"/>
+      <definition value="&quot;患者が場所にいた期間。&quot;"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -2797,9 +2783,8 @@
     </element>
     <element id="Encounter.serviceProvider">
       <path value="Encounter.serviceProvider"/>
-      <short value="The organization (facility) responsible for this encounter / このEncounterに責任を持つ組織（施設）【詳細参照】"/>
-      <definition value="The organization that is primarily responsible for this Encounter's services. This MAY be the same as the organization on the Patient record, however it could be different, such as if the actor performing the services was from an external organization (which may be billed separately) for an external consultation.  Refer to the example bundle showing an abbreviated set of Encounters for a colonoscopy.&#xD;&#xA;&#xD;&#xA;このEncounterのサービスに主に責任を持つ組織。これは、患者記録上の組織と同じであってもよいが、例えば、サービスを実行しているアクターが外部組織のものである場合（外部コンサルテーションのために別個に請求される場合がある）など、異なる可能性がある。 大腸内視鏡検査のためのEncounterの省略されたセットを示すバンドル例を参照のこと。"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;&#xD;&#xA;参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
+      <short value="このEncounter（診察、受診、入退院など）に責任を持つ組織（施設）"/>
+      <definition value="このエンカウンターのサービスを主に担当する組織。これは患者の記録にある組織と同じかもしれませんが、外部組織からサービスを提供するアクターがいる場合など、別の組織である可能性もあります(別途請求される可能性があります)。大腸内視鏡検査の簡略化されたエンカウンターのバンドルを参照してください。"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -2836,9 +2821,9 @@
     </element>
     <element id="Encounter.partOf">
       <path value="Encounter.partOf"/>
-      <short value="Another Encounter this encounter is part of / このEncounterが属するもう一つのEncounter【詳細参照】"/>
-      <definition value="Another Encounter of which this encounter is a part of (administratively or in time).&#xD;&#xA;&#xD;&#xA;このEncounterが（管理的に、あるいは時間的に）一部となっているもう一つのEncounter。"/>
-      <comment value="This is also used for associating a child's encounter back to the mother's encounter.&#xD;&#xD;Refer to the Notes section in the Patient resource for further details.&#xD;&#xA;&#xD;&#xA;子供の受診を母親の受診にさかのぼって連携するときにも使われる。&#xD;&#xA;（※出産時などを表していると思われる）&#xD;&#xA;詳細については、Patient ResourceのNotesセクションを参照のこと。"/>
+      <short value="「もう一度のEncounter（診察、受診、入退院など）。このEncounter（診察、受診、入退院など）は一部である。」"/>
+      <definition value="このEncounter（診察、受診、入退院など）が一部である、別のEncounter（診察、受診、入退院など）（手続き的にも時間的にも）。"/>
+      <comment value="「これは、子供の経験を母親の経験に関連付けるためにも使用されます。詳細については、患者リソースのノートセクションを参照してください。」"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -2876,8 +2861,8 @@
   <differential>
     <element id="Encounter">
       <path value="Encounter"/>
-      <short value="An interaction during which services are provided to the patient / 患者にサービスが提供されている間の相互作用"/>
-      <definition value="An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.&#xD;&#xA;&#xD;&#xA;医療サービスの提供または患者の健康状態の評価を目的とした、患者と医療提供者との間の相互作用。Encounterと表現される。&#xD;&#xA;&#xD;&#xA;【JP Core仕様】外来受診、救急受診、入院、退院、対面診察、電話診察、など。"/>
+      <short value="患者にサービスが提供されている間の相互作用"/>
+      <definition value="医療サービスの提供または患者の健康状態の評価を目的とした、患者と医療提供者との間の相互作用。Encounterと表現される。&#xD;&#xA;&#xD;&#xA;【JP Core仕様】外来受診、救急受診、入院、退院、対面診察、電話診察、など。"/>
     </element>
     <element id="Encounter.extension">
       <path value="Encounter.extension"/>
@@ -2904,118 +2889,67 @@
     </element>
     <element id="Encounter.identifier">
       <path value="Encounter.identifier"/>
-      <short value="Identifier(s) by which this encounter is known / このEncounterが知られている識別子（複数可）【詳細参照】"/>
-      <definition value="Identifier(s) by which this encounter is known.&#xD;&#xA;&#xD;&#xA;このEncounterが知られている識別子（複数可）。"/>
+      <short value="このEncounterが知られている識別子（複数可）【詳細参照】"/>
+      <definition value="このEncounterが知られている識別子（複数可）。"/>
     </element>
     <element id="Encounter.status">
       <path value="Encounter.status"/>
       <short value="planned | arrived | triaged | in-progress | onleave | finished | cancelled + / 予定｜到着｜トリアージ｜進行中｜保留中｜終了｜キャンセル+【詳細参照】"/>
       <definition value="planned | arrived | triaged | in-progress | onleave | finished | cancelled +.&#xD;&#xA;&#xD;&#xA;予定｜到着｜トリアージ｜進行中｜保留中｜終了｜キャンセル+."/>
-      <comment value="Note that internal business rules will determine the appropriate transitions that may occur between statuses (and also classes).&#xD;&#xA;&#xD;&#xA;内部のビジネス・ルールは、ステータス(およびクラス)間で発生する可能性のある適切な遷移を検出することに注意すること。"/>
-      <isModifierReason value="This element is labeled as a modifier because it is a status element that contains status entered-in-error which means that the resource should not be treated as valid / この要素は、リソースを有効なものとして扱うべきではないことを意味する status entered-in-error を含む status 要素であるため、修飾子としてラベル付けされる。"/>
+      <comment value="内部のビジネス・ルールは、ステータス(およびクラス)間で発生する可能性のある適切な遷移を検出することに注意すること。"/>
+      <isModifierReason value="この要素は、リソースを有効なものとして扱うべきではないことを意味する status entered-in-error を含む status 要素であるため、修飾子としてラベル付けされる。"/>
     </element>
     <element id="Encounter.statusHistory">
       <path value="Encounter.statusHistory"/>
-      <short value="List of past encounter statuses / 過去のEncounterのステータス一覧【詳細参照】"/>
-      <definition value="The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.&#xD;&#xA;&#xD;&#xA;ステータス履歴(status History)は、リソースの歴史的なバージョンを読み込んだり、サーバに保存させたりすることなく、Encounterリソースがステータス履歴を含むことを可能にする。"/>
-      <comment value="The current status is always found in the current version of the resource, not the status history.&#xD;&#xA;&#xD;&#xA;現在のステータスは、ステータスの履歴ではなく、常にリソースの現在のバージョンにある。"/>
+      <short value="過去のEncounterのステータス一覧【詳細参照】"/>
+      <definition value="ステータス履歴(status History)は、リソースの歴史的なバージョンを読み込んだり、サーバに保存させたりすることなく、Encounterリソースがステータス履歴を含むことを可能にする。"/>
+      <comment value="現在のステータスは、ステータスの履歴ではなく、常にリソースの現在のバージョンにある。"/>
     </element>
     <element id="Encounter.statusHistory.status">
       <path value="Encounter.statusHistory.status"/>
       <short value="planned | arrived | triaged | in-progress | onleave | finished | cancelled + / 予定｜到着｜トリアージ｜進行中｜保留中｜終了｜キャンセル+."/>
       <definition value="planned | arrived | triaged | in-progress | onleave | finished | cancelled +.&#xD;&#xA;&#xD;&#xA;予定｜到着｜トリアージ｜進行中｜保留中｜終了｜キャンセル+."/>
-      <comment value="Note that FHIR strings SHALL NOT exceed 1MB in size&#xD;&#xA;&#xD;&#xA;FHIR 文字列のサイズは 1MB を超えてはならないことに注意すること。"/>
+      <comment value="文字列のサイズは 1MB を超えてはならないことに注意すること。"/>
     </element>
     <element id="Encounter.statusHistory.period">
       <path value="Encounter.statusHistory.period"/>
-      <short value="The time that the episode was in the specified status / そのエピソードが指定された状態になっていた時間"/>
-      <definition value="The time that the episode was in the specified status.&#xD;&#xA;&#xD;&#xA;そのエピソードが指定された状態になっていた時間。"/>
-      <comment value="A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;).&#xA;&#xA;Period is not used for a duration (a measure of elapsed time). See [Duration](http://hl7.org/fhir/R4/datatypes.html#Duration).&#xD;&#xA;&#xD;&#xA;これは期間ではない-これは時間の尺度（別のタイプ）であり、時間の固定値で発生する期間である。 期間は時間の範囲を指定する。 使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、または範囲から1つの値が適用されるか（たとえば、「これら2回の間に患者に与える」）を指定する。 期間が必要な場合は、タイプをInterval | Durationとして指定する。"/>
+      <short value="そのエピソードが指定された状態になっていた時間"/>
+      <definition value="そのエピソードが指定された状態になっていた時間。"/>
+      <comment value="期間とは時間の範囲で指定される。範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、または範囲から1つの値が適用されるか（たとえば、「これら2回の間に患者に与える」）を指定する。 期間が必要な場合は、タイプをInterval | Durationとして指定する。"/>
     </element>
     <element id="Encounter.class">
       <path value="Encounter.class"/>
-      <short value="Classification of patient encounter / 患者とのEncounterの分類【詳細参照】"/>
-      <definition value="Concepts representing classification of patient encounter such as ambulatory (outpatient), inpatient, emergency, home health or others due to local variations.&#xD;&#xA;&#xD;&#xA;外来（外来）、入院、救急、在宅医療、その他の地域差による患者Encounterの分類を表す概念。"/>
-      <comment value="Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.&#xD;&#xA;&#xD;&#xA;コードは列挙やコードリストの中で非常にカジュアルに定義されることもあれば、SNOMED CTのような非常にフォーマルな定義まである。 - 詳細はHL7 v3コア・プリンシプルを参照すること。"/>
+      <short value="患者とのEncounterの分類【詳細参照】"/>
+      <definition value="外来（外来）、入院、救急、在宅医療、その他の地域差による患者Encounterの分類を表す概念。"/>
+      <comment value="コードは列挙やコードリストの中で非常にカジュアルに定義されることもあれば、SNOMED CTのような非常にフォーマルな定義まである。 - 詳細はHL7 v3コア・プリンシプルを参照すること。"/>
     </element>
     <element id="Encounter.classHistory">
       <path value="Encounter.classHistory"/>
-      <short value="List of past encounter classes / 過去のEncounter classのリスト【詳細参照】"/>
-      <definition value="The class history permits the tracking of the encounters transitions without needing to go  through the resource history.  This would be used for a case where an admission starts of as an emergency encounter, then transitions into an inpatient scenario. Doing this and not restarting a new encounter ensures that any lab/diagnostic results can more easily follow the patient and not require re-processing and not get lost or cancelled during a kind of discharge from emergency to inpatient.&#xD;&#xA;&#xD;&#xA;クラスの履歴は、リソースの履歴を経由することなく、Encounterの遷移を追跡することを可能にする。これは、入院患者が緊急時にEncounterした後、入院患者のシナリオに移行する場合に使用される。このようにして、新しいEncounterを再開しないようにすることで、検査/診断結果がより簡単に患者を追跡することができ、再処理を必要とせず、救急から入院への退院の際に紛失したりキャンセルされたりすることがないことを保証する。"/>
+      <short value="過去のEncounter classのリスト【詳細参照】"/>
+      <definition value="クラスの履歴は、リソースの履歴を経由することなく、Encounterの遷移を追跡することを可能にする。これは、入院患者が緊急時にEncounterした後、入院患者のシナリオに移行する場合に使用される。このようにして、新しいEncounterを再開しないようにすることで、検査/診断結果がより簡単に患者を追跡することができ、再処理を必要とせず、救急から入院への退院の際に紛失したりキャンセルされたりすることがないことを保証する。"/>
     </element>
     <element id="Encounter.classHistory.class">
       <path value="Encounter.classHistory.class"/>
       <short value="inpatient | outpatient | ambulatory | emergency + / 入院｜外来｜外来｜救急＋"/>
       <definition value="inpatient | outpatient | ambulatory | emergency +.&#xD;&#xA;&#xD;&#xA;入院｜外来｜外来｜救急＋。"/>
-      <comment value="Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.&#xD;&#xA;&#xD;&#xA;コードは列挙やコードリストの中で非常にカジュアルに定義されることもあれば、SNOMED CTのような非常にフォーマルな定義まである- 詳細はHL7 v3コア・プリンシプルを参照すること。"/>
+      <comment value="コードは列挙やコードリストの中で非常にカジュアルに定義されることもあれば、SNOMED CTのような非常にフォーマルな定義まである- 詳細はHL7 v3コア・プリンシプルを参照すること。"/>
     </element>
     <element id="Encounter.classHistory.period">
       <path value="Encounter.classHistory.period"/>
-      <short value="The time that the episode was in the specified class / 指定されたクラスにエピソードがあった時間"/>
-      <definition value="The time that the episode was in the specified class.&#xD;&#xA;&#xD;&#xA;指定されたクラスにエピソードがあった時間。"/>
-      <comment value="A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;).&#xA;&#xA;Period is not used for a duration (a measure of elapsed time). See [Duration](http://hl7.org/fhir/R4/datatypes.html#Duration).&#xD;&#xA;&#xD;&#xA;これは期間ではない-これは時間の尺度（別のタイプ）であり、時間の固定値で発生する期間である。 期間は時間の範囲を指定する。 使用状況は、範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、または範囲から1つの値が適用されるか（たとえば、「これら2回の間に患者に与える」）を指定する。 期間が必要な場合は、タイプをInterval | Durationとして指定する。"/>
-    </element>
-    <element id="Encounter.type">
-      <path value="Encounter.type"/>
-      <short value="Specific type of encounter / Encounterの具体的なタイプ【詳細参照】"/>
-      <definition value="Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation).&#xD;&#xA;&#xD;&#xA;具体的なEncounterの種類（メール相談、外科デイケア、熟練看護、リハビリテーションなど）"/>
-      <comment value="Since there are many ways to further classify encounters, this element is ..*.&#xD;&#xA;&#xD;&#xA;Encounterをさらに分類する方法はいろいろあるので、この要素は...*である。"/>
-    </element>
-    <element id="Encounter.serviceType">
-      <path value="Encounter.serviceType"/>
-      <short value="Specific type of service / 具体的なサービスの種類【詳細参照】"/>
-      <definition value="Broad categorization of the service that is to be provided (e.g. cardiology).&#xD;&#xA;&#xD;&#xA;提供されるサービスの大まかな分類（心臓病など）。"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。"/>
-    </element>
-    <element id="Encounter.priority">
-      <path value="Encounter.priority"/>
-      <short value="Indicates the urgency of the encounter / このEncounterの緊急性を示す【詳細参照】"/>
-      <definition value="Indicates the urgency of the encounter.&#xD;&#xA;&#xD;&#xA;このEncounterの緊急性を示す。"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。"/>
+      <short value="指定されたクラスにエピソードがあった時間"/>
+      <definition value="指定されたクラスにエピソードがあった時間。"/>
+      <comment value="期間とは時間の範囲で指定される。範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、または範囲から1つの値が適用されるか（たとえば、「これら2回の間に患者に与える」）を指定する。 期間が必要な場合は、タイプをInterval | Durationとして指定する。"/>
     </element>
     <element id="Encounter.subject">
       <path value="Encounter.subject"/>
-      <short value="The patient or group present at the encounter / このEncounterに立ち会う患者またはグループ【詳細参照】"/>
-      <definition value="The patient or group present at the encounter.&#xD;&#xA;&#xD;&#xA;このEncounterに立ち会う患者またはグループ。"/>
-      <comment value="While the encounter is always about the patient, the patient might not actually be known in all contexts of use, and there may be a group of patients that could be anonymous (such as in a group therapy for Alcoholics Anonymous - where the recording of the encounter could be used for billing on the number of people/staff and not important to the context of the specific patients) or alternately in veterinary care a herd of sheep receiving treatment (where the animals are not individually tracked).&#xD;&#xA;&#xD;&#xA;このEncounterは常に患者に関するものであるが、患者は実際にはすべての使用状況で知られているわけではなく、匿名である可能性のある患者のグループが存在する可能性がある。（匿名のアルコール依存症の集団療法など-遭遇は、人数/スタッフの請求に使用でき、特定の患者の状況には重要ではない）"/>
       <type>
         <code value="Reference"/>
         <targetProfile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient"/>
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/Group"/>
       </type>
     </element>
-    <element id="Encounter.episodeOfCare">
-      <path value="Encounter.episodeOfCare"/>
-      <short value="Episode(s) of care that this encounter should be recorded against / このEncounterが記録されるべきケアのエピソード【詳細参照】"/>
-      <definition value="Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).&#xD;&#xA;&#xD;&#xA;特定のEncounterをケアの特定のエピソードの一部として分類する必要がある場合は、このフィールドを使用する必要がある。この関連付けにより、政府の報告、問題追跡、一般的な問題を介した関連付けなど、特定の目的のために関連するEncounterをグループ化することが容易になる。これらは通常、ケアのエピソードの後に​​作成され、ケアのエピソードを編集して別のEncounterを追加するのではなく、エントリ時にグループ化されるため、関連付けはEncounterに記録される（ケアのエピソードは数年にわたる場合がある）。"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;&#xD;&#xA;参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
-    </element>
-    <element id="Encounter.basedOn">
-      <path value="Encounter.basedOn"/>
-      <short value="The ServiceRequest that initiated this encounter / このEncounterを開始したServiceRequest【詳細参照】"/>
-      <definition value="The request this encounter satisfies (e.g. incoming referral or procedure request).&#xD;&#xA;&#xD;&#xA;このEncounterが満たすリクエスト（例：入ってくる紹介または手続きリクエスト）。"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;&#xD;&#xA;参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
-    </element>
-    <element id="Encounter.participant">
-      <path value="Encounter.participant"/>
-      <short value="List of participants involved in the encounter / このEncounterに関わった参加者一覧【詳細参照】"/>
-      <definition value="The list of people responsible for providing the service.&#xD;&#xA;&#xD;&#xA;サービスを提供する責任がある人々のリスト。"/>
-    </element>
-    <element id="Encounter.participant.type">
-      <path value="Encounter.participant.type"/>
-      <short value="Role of participant in encounter / このEncounterにおける参加者の役割"/>
-      <definition value="Role of participant in encounter.&#xD;&#xA;&#xD;&#xA;このEncounterにおける参加者の役割。"/>
-      <comment value="The participant type indicates how an individual participates in an encounter. It includes non-practitioner participants, and for practitioners this is to describe the action type in the context of this encounter (e.g. Admitting Dr, Attending Dr, Translator, Consulting Dr). This is different to the practitioner roles which are functional roles, derived from terms of employment, education, licensing, etc.&#xD;&#xA;&#xD;&#xA;参加者タイプは、個人がEncounterにどのように参加するかを示す。これには、開業医以外の参加者が含まれる。開業医の場合、これは、このEncounterのコンテキストでのアクションタイプを説明することである（例：入院医師、出席医師、翻訳者、コンサルティング医師）。これは、雇用、教育、ライセンスなどの条件から派生した機能的な役割である開業医の役割とは異なる。"/>
-    </element>
-    <element id="Encounter.participant.period">
-      <path value="Encounter.participant.period"/>
-      <short value="Period of time during the encounter that the participant participated / この参加者が参加したEncounterの中での期間"/>
-      <definition value="The period of time that the specified participant participated in the encounter. These can overlap or be sub-sets of the overall encounter's period.&#xD;&#xA;&#xD;&#xA;指定された参加者がEncounterに参加した期間。これらは重複することも、Encounter全体の期間のサブセットになることもある。"/>
-    </element>
     <element id="Encounter.participant.individual">
       <path value="Encounter.participant.individual"/>
-      <short value="Persons involved in the encounter other than the patient / 患者以外のこのEncounterに関わった人"/>
-      <definition value="Persons involved in the encounter other than the patient.&#xD;&#xA;&#xD;&#xA;患者以外のこのEncounterに関わった人。"/>
       <type>
         <code value="Reference"/>
         <targetProfile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner"/>
@@ -3023,35 +2957,8 @@
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/RelatedPerson"/>
       </type>
     </element>
-    <element id="Encounter.appointment">
-      <path value="Encounter.appointment"/>
-      <short value="The appointment that scheduled this encounter / このEncounterをスケジュールした予定【詳細参照】"/>
-      <definition value="The appointment that scheduled this encounter.&#xD;&#xA;&#xD;&#xA;このEncounterをスケジュールした予定。"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;&#xD;&#xA;参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
-    </element>
-    <element id="Encounter.period">
-      <path value="Encounter.period"/>
-      <short value="The start and end time of the encounter / このEncounterの開始時間と終了時間【詳細参照】"/>
-      <definition value="The start and end time of the encounter.&#xD;&#xA;&#xD;&#xA;このEncounterの開始時間と終了時間。"/>
-      <comment value="If not (yet) known, the end of the Period may be omitted.&#xD;&#xA;&#xD;&#xA;（まだ）わからない場合は、期間の終了を省略できる。"/>
-    </element>
-    <element id="Encounter.length">
-      <path value="Encounter.length"/>
-      <short value="Quantity of time the encounter lasted (less time absent) / Encounterが続いた時間の量（欠席時間が少ない）【詳細参照】"/>
-      <definition value="Quantity of time the encounter lasted. This excludes the time during leaves of absence.&#xD;&#xA;&#xD;&#xA;このEncounterが続いた時間。これは休職中の時間を除外する。"/>
-      <comment value="May differ from the time the Encounter.period lasted because of leave of absence.&#xD;&#xA;&#xD;&#xA;休職のため、Encounter.periodが続いた時間とは異なる場合がある。"/>
-    </element>
-    <element id="Encounter.reasonCode">
-      <path value="Encounter.reasonCode"/>
-      <short value="Coded reason the encounter takes place / Encounterの発生をコード化された理由の情報【詳細参照】"/>
-      <definition value="Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.&#xD;&#xA;&#xD;&#xA;受診理由をコードで表現したもの。入院の場合はコード化された入院診断名に使用することができる。"/>
-      <comment value="For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis).&#xD;&#xA;&#xD;&#xA;どれが主たる診断であったかを知る必要があるシステムでは、これらは標準のエクステンションであるprimaryDiagnosis（フラグではなくシーケンス値、1 = 主たる診断）でマークされる。"/>
-    </element>
     <element id="Encounter.reasonReference">
       <path value="Encounter.reasonReference"/>
-      <short value="Reason the encounter takes place (reference)　Encounterがあった理由【詳細参照】"/>
-      <definition value="Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.&#xD;&#xA;&#xD;&#xA;コードとして表現されたEncounterが起こった理由。入院の場合、これはコード化されたコード化された入院時診断に使用できる。"/>
-      <comment value="For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis).&#xD;&#xA;&#xD;&#xA;どれが主たる診断であったかを知る必要があるシステムでは、これらは標準のエクステンションであるprimaryDiagnosis（フラグではなくシーケンス値、1 = 主たる診断）でマークされる。"/>
       <type>
         <code value="Reference"/>
         <targetProfile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition"/>
@@ -3060,146 +2967,39 @@
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation"/>
       </type>
     </element>
-    <element id="Encounter.diagnosis">
-      <path value="Encounter.diagnosis"/>
-      <short value="The list of diagnosis relevant to this encounter / このEncounterに関連する診断名のリスト【詳細参照】"/>
-      <definition value="The list of diagnosis relevant to this encounter.&#xD;&#xA;&#xD;&#xA;このEncounterに関連する診断名のリスト"/>
-    </element>
     <element id="Encounter.diagnosis.condition">
       <path value="Encounter.diagnosis.condition"/>
-      <short value="The diagnosis or procedure relevant to the encounter / Encounterに関連する診断または処置"/>
-      <definition value="Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure.&#xD;&#xA;&#xD;&#xA;受診理由（他のリソースからの情報を使用して指定されたもの）。入院の場合、これは入院診断名である。表現方法は通常、状態（evidence.detailで参照されている他のリソースを使用）、または処置である。"/>
-      <comment value="For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis).&#xD;&#xA;&#xD;&#xA;どちらが一次診断であったかを知る必要があるシステムでは、これらは標準のエクステンションであるprimaryDiagnosis（フラグではなくシーケンス値、1 = 一次診断）でマークされる。"/>
       <type>
         <code value="Reference"/>
         <targetProfile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition"/>
         <targetProfile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure"/>
       </type>
     </element>
-    <element id="Encounter.diagnosis.use">
-      <path value="Encounter.diagnosis.use"/>
-      <short value="Role that this diagnosis has within the encounter (e.g. admission, billing, discharge …) / この診断名がある受診機会において持っている役割（例えば、入院、請求、退院...）"/>
-      <definition value="Role that this diagnosis has within the encounter (e.g. admission, billing, discharge …).&#xD;&#xA;&#xD;&#xA;この診断名がある受診機会において持っている役割（例えば、入院、請求、退院...）。"/>
-    </element>
-    <element id="Encounter.diagnosis.rank">
-      <path value="Encounter.diagnosis.rank"/>
-      <short value="Ranking of the diagnosis (for each role type) / 診断名の順位（役割別）"/>
-      <definition value="Ranking of the diagnosis (for each role type).&#xD;&#xA;&#xD;&#xA;診断名の順位（役割別）"/>
-    </element>
-    <element id="Encounter.account">
-      <path value="Encounter.account"/>
-      <short value="The set of accounts that may be used for billing for this Encounter / あるEncounterの請求に使用される会計セット【詳細参照】"/>
-      <definition value="The set of accounts that may be used for billing for this Encounter.&#xD;&#xA;&#xD;&#xA;あるEncounterの請求に使用される会計セット。"/>
-      <comment value="The billing system may choose to allocate billable items associated with the Encounter to different referenced Accounts based on internal business rules.&#xD;&#xA;&#xD;&#xA;請求システムは、内部ルールに基づいて、ある受診機会に関連付けられた請求可能な項目を異なる参照先の会計に割り当てることができる。"/>
-    </element>
-    <element id="Encounter.hospitalization">
-      <path value="Encounter.hospitalization"/>
-      <short value="Details about the admission to a healthcare service/医療機関への入院に関する詳細【詳細参照】"/>
-      <definition value="Details about the admission to a healthcare service.&#xD;&#xA;&#xD;&#xA;医療機関への入院に関する詳細"/>
-      <comment value="An Encounter may cover more than just the inpatient stay. Contexts such as outpatients, community clinics, and aged care facilities are also included.&#xD;&#xD;The duration recorded in the period of this encounter covers the entire scope of this hospitalization record.&#xD;&#xA;&#xD;&#xA;Encounterは、入院患者の滞在の記録だけではない。外来患者、地域の診療所、高齢者施設などのコンテクストも含まれる。&#xD;&#xA;このEncounterの期間に記録された時間区間は、この入院記録の全範囲をカバーしている。"/>
-    </element>
-    <element id="Encounter.hospitalization.preAdmissionIdentifier">
-      <path value="Encounter.hospitalization.preAdmissionIdentifier"/>
-      <short value="Pre-admission identifier/入院前識別子"/>
-      <definition value="Pre-admission identifier.&#xD;&#xA;&#xD;&#xA;入院前識別子"/>
-    </element>
     <element id="Encounter.hospitalization.origin">
       <path value="Encounter.hospitalization.origin"/>
-      <short value="The location/organization from which the patient came before admission/患者が入院する前に来院した場所/組織"/>
-      <definition value="The location/organization from which the patient came before admission.&#xD;&#xA;&#xD;&#xA;患者が入院する前に来院した場所/組織"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;&#xD;&#xA;参照は実際のFHIRリソースへの参照でなければならず、解決可能でなければならない。解決は URL からの検索、またはリソースタイプによって、絶対参照を正規の URL として扱い、ローカルのレジストリ/リポジトリで検索することで行うことができる。"/>
       <type>
         <code value="Reference"/>
         <targetProfile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location"/>
         <targetProfile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization"/>
       </type>
-    </element>
-    <element id="Encounter.hospitalization.admitSource">
-      <path value="Encounter.hospitalization.admitSource"/>
-      <short value="From where patient was admitted (physician referral, transfer)/患者がどこから入院したか（医師の紹介、転院）"/>
-      <definition value="From where patient was admitted (physician referral, transfer).&#xD;&#xA;&#xD;&#xA;患者がどこから入院したか（医師の紹介、転院）&#xD;&#xA;例：他の病院からの転院、かかりつけ医からの紹介、この病院で産まれた、など"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。"/>
-    </element>
-    <element id="Encounter.hospitalization.reAdmission">
-      <path value="Encounter.hospitalization.reAdmission"/>
-      <short value="The type of hospital re-admission that has occurred (if any). If the value is absent, then this is not identified as a readmission / 発生した病院の再入院のタイプ（もしあれば）、値がない場合これは再入院として識別されない"/>
-      <definition value="Whether this hospitalization is a readmission and why if known.&#xD;&#xA;&#xD;&#xA;この入院が再入院であるかどうかと、わかっている場合はその理由。"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。"/>
-    </element>
-    <element id="Encounter.hospitalization.dietPreference">
-      <path value="Encounter.hospitalization.dietPreference"/>
-      <short value="Diet preferences reported by the patient / 患者から報告された食事の好み"/>
-      <definition value="Diet preferences reported by the patient.&#xD;&#xA;&#xD;&#xA;患者から報告された食事の好み"/>
-      <comment value="For example, a patient may request both a dairy-free and nut-free diet preference (not mutually exclusive).&#xD;&#xA;&#xD;&#xA;例えば、患者は、乳製品を含まない食事とナッツ類を含まない食事の両方を希望することができる（相互に排他的ではない）。"/>
-      <requirements value="Used to track patient's diet restrictions and/or preference. For a complete description of the nutrition needs of a patient during their stay, one should use the nutritionOrder resource which links to Encounter.&#xD;&#xA;&#xD;&#xA;患者の食事制限および／または好み・嗜好を追跡するために使用される。滞在中の患者の栄養ニーズの完全な説明については、EncounterにリンクしているnutritionOrderリソースを使用する必要がある。"/>
-    </element>
-    <element id="Encounter.hospitalization.specialCourtesy">
-      <path value="Encounter.hospitalization.specialCourtesy"/>
-      <short value="Special courtesies (VIP, board member) / 特別待遇(VIP、役員)"/>
-      <definition value="Special courtesies (VIP, board member).&#xD;&#xA;&#xD;&#xA;特別待遇(VIP、役員)"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。"/>
-    </element>
-    <element id="Encounter.hospitalization.specialArrangement">
-      <path value="Encounter.hospitalization.specialArrangement"/>
-      <short value="Wheelchair, translator, stretcher, etc. / 車椅子、トランスレータ、ストレッチャなど"/>
-      <definition value="Any special requests that have been made for this hospitalization encounter, such as the provision of specific equipment or other things.&#xD;&#xA;&#xD;&#xA;特定の器具の提供など、今回の入院の出会いのために特別な要望があったもの"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。"/>
     </element>
     <element id="Encounter.hospitalization.destination">
       <path value="Encounter.hospitalization.destination"/>
-      <short value="Location/organization to which the patient is discharged / 患者が退院する場所・機関"/>
-      <definition value="Location/organization to which the patient is discharged.&#xD;&#xA;&#xD;&#xA;患者が退院する場所・機関"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;&#xD;&#xA;参照は実際のFHIRリソースへの参照でなければならず、解決可能でなければならない。解決は URL からの検索、またはリソースタイプによって、絶対参照を正規の URL として扱い、ローカルのレジストリ/リポジトリで検索することで行うことができる。"/>
       <type>
         <code value="Reference"/>
         <targetProfile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location"/>
         <targetProfile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization"/>
       </type>
     </element>
-    <element id="Encounter.hospitalization.dischargeDisposition">
-      <path value="Encounter.hospitalization.dischargeDisposition"/>
-      <short value="Category or kind of location after discharge / 退院後の場所の区分や種類"/>
-      <definition value="Category or kind of location after discharge.&#xD;&#xA;&#xD;&#xA;退院後の場所の区分や種類。"/>
-      <comment value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.&#xD;&#xA;&#xD;&#xA;すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。"/>
-    </element>
-    <element id="Encounter.location">
-      <path value="Encounter.location"/>
-      <short value="List of locations where the patient has been / 患者がいたことのある場所の一覧【詳細参照】"/>
-      <definition value="List of locations where  the patient has been during this encounter.&#xD;&#xA;&#xD;&#xA;このEncounterの間に患者がいたことのある場所のリスト"/>
-      <comment value="Virtual encounters can be recorded in the Encounter by specifying a location reference to a location of type &quot;kind&quot; such as &quot;client's home&quot; and an encounter.class = &quot;virtual&quot;.&#xD;&#xA;&#xD;&#xA;仮想Encounterは、&quot;client's home &quot;のような &quot;kind &quot;型の場所を参照し、encounter.class = &quot;virtual &quot;を指定することで、Encounterに記録することができる。"/>
-    </element>
     <element id="Encounter.location.location">
       <path value="Encounter.location.location"/>
-      <short value="Location the encounter takes place / Encounterの場所"/>
-      <definition value="The location where the encounter takes place.&#xD;&#xA;&#xD;&#xA;Encounterの舞台となる場所。"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;&#xD;&#xA;参照は実際のFHIRリソースへの参照でなければならず、解決可能でなければならない。解決は URL からの検索、またはリソースタイプによって、絶対参照を正規の URL として扱い、ローカルのレジストリ/リポジトリで検索することで行うことができる。"/>
       <type>
         <code value="Reference"/>
         <targetProfile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location"/>
       </type>
     </element>
-    <element id="Encounter.location.status">
-      <path value="Encounter.location.status"/>
-      <definition value="The status of the participants' presence at the specified location during the period specified. If the participant is no longer at the location, then the period will have an end date/time.&#xD;&#xA;&#xD;&#xA;指定された期間中の指定された場所での参加者の存在状況。参加者がその場所にいなくなった場合、その期間は終了日時を持つ。"/>
-      <comment value="When the patient is no longer active at a location, then the period end date is entered, and the status may be changed to completed.&#xD;&#xA;&#xD;&#xA;患者がその場所で活動しなくなった場合、期間終了日が入力され、ステータスが完了した状態に変更されることがある"/>
-    </element>
-    <element id="Encounter.location.physicalType">
-      <path value="Encounter.location.physicalType"/>
-      <short value="The physical type of the location (usually the level in the location hierarchy - bed room ward etc.) / 場所の物理的なタイプ（通常は場所の階層のレベル - ベッド・病室・病棟など）"/>
-      <definition value="This will be used to specify the required levels (bed/ward/room/etc.) desired to be recorded to simplify either messaging or query.&#xD;&#xA;&#xD;&#xA;これは、メッセージングまたはクエリのいずれかを簡素化するために記録したい必要なレベル（ベッド/ワード/ルーム/その他）を指定するために使用される。"/>
-      <comment value="This information is de-normalized from the Location resource to support the easier understanding of the encounter resource and processing in messaging or query.&#xA;&#xA;There may be many levels in the hierarchy, and this may only pic specific levels that are required for a specific usage scenario.&#xD;&#xA;&#xD;&#xA;この情報は、メッセージングやクエリでのEncounterリソースの理解や処理を容易にするために、Locationリソースから非正規化されている。&#xD;&#xA;&#xD;&#xA;階層には多くのレベルがあり、これは特定の使用シナリオに必要とされる特定のレベルのみをピックすることができる。"/>
-    </element>
-    <element id="Encounter.location.period">
-      <path value="Encounter.location.period"/>
-      <short value="Time period during which the patient was present at the location / 患者がその場所にいた期間"/>
-      <definition value="Time period during which the patient was present at the location.&#xD;&#xA;&#xD;&#xA;その場所に患者がいた期間。"/>
-      <comment value="A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;).&#xA;&#xA;Period is not used for a duration (a measure of elapsed time). See [Duration](http://hl7.org/fhir/R4/datatypes.html#Duration).&#xD;&#xA;&#xD;&#xA;期間は時間の範囲を指定する。 使用のコンテキストは、範囲全体が適用されるかどうかを指定する (例: &quot;患者はこの時間範囲の病院の入院患者でした&quot; )。または、範囲から1つの値が適用される（例：「この2回の間に患者に与える」）。&#xD;&#xA;&#xD;&#xA;期間は、期間(経過時間の尺度)には使用されない。Duration](http://hl7.org/fhir/R4/datatypes.html#Duration)を参照のこと。"/>
-    </element>
     <element id="Encounter.serviceProvider">
       <path value="Encounter.serviceProvider"/>
-      <short value="The organization (facility) responsible for this encounter / このEncounterに責任を持つ組織（施設）【詳細参照】"/>
-      <definition value="The organization that is primarily responsible for this Encounter's services. This MAY be the same as the organization on the Patient record, however it could be different, such as if the actor performing the services was from an external organization (which may be billed separately) for an external consultation.  Refer to the example bundle showing an abbreviated set of Encounters for a colonoscopy.&#xD;&#xA;&#xD;&#xA;このEncounterのサービスに主に責任を持つ組織。これは、患者記録上の組織と同じであってもよいが、例えば、サービスを実行しているアクターが外部組織のものである場合（外部コンサルテーションのために別個に請求される場合がある）など、異なる可能性がある。 大腸内視鏡検査のためのEncounterの省略されたセットを示すバンドル例を参照のこと。"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;&#xD;&#xA;参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
       <type>
         <code value="Reference"/>
         <targetProfile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization"/>
@@ -3207,9 +3007,6 @@
     </element>
     <element id="Encounter.partOf">
       <path value="Encounter.partOf"/>
-      <short value="Another Encounter this encounter is part of / このEncounterが属するもう一つのEncounter【詳細参照】"/>
-      <definition value="Another Encounter of which this encounter is a part of (administratively or in time).&#xD;&#xA;&#xD;&#xA;このEncounterが（管理的に、あるいは時間的に）一部となっているもう一つのEncounter。"/>
-      <comment value="This is also used for associating a child's encounter back to the mother's encounter.&#xD;&#xD;Refer to the Notes section in the Patient resource for further details.&#xD;&#xA;&#xD;&#xA;子供の受診を母親の受診にさかのぼって連携するときにも使われる。&#xD;&#xA;（※出産時などを表していると思われる）&#xD;&#xA;詳細については、Patient ResourceのNotesセクションを参照のこと。"/>
       <type>
         <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-hierarchy">
           <valueBoolean value="true"/>

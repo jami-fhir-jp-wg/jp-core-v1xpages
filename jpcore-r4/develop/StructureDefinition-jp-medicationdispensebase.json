@@ -622,7 +622,7 @@
     {
       "id" : "MedicationDispense.identifier:rpNumber.use",
       "path" : "MedicationDispense.identifier.use",
-      "short" : "通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
+      "short" : "通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
       "definition" : "この識別子の目的。 / The purpose of this identifier.",
       "comment" : "アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.",
       "requirements" : "特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
@@ -995,7 +995,7 @@
     {
       "id" : "MedicationDispense.identifier:requestIdentifier.use",
       "path" : "MedicationDispense.identifier.use",
-      "short" : "通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
+      "short" : "通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
       "definition" : "この識別子の目的。 / The purpose of this identifier.",
       "comment" : "アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.",
       "requirements" : "特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
@@ -1248,8 +1248,8 @@
     {
       "id" : "MedicationDispense.partOf",
       "path" : "MedicationDispense.partOf",
-      "short" : "Event that dispense is part of 親イベントへの参照",
-      "definition" : "The procedure that trigger the dispense. \r\n\r\nこの調剤の契機となったProcedureリソースへの参照。",
+      "short" : "親イベントへの参照",
+      "definition" : "Tこの調剤の契機となったProcedureリソースへの参照。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1284,7 +1284,7 @@
       "id" : "MedicationDispense.status",
       "path" : "MedicationDispense.status",
       "short" : "preparation | in-progress | cancelled | on-hold | completed | entered-in-error | stopped | unknown 一連の調剤イベントの状態",
-      "definition" : "A code specifying the state of the set of dispense events.\r\n\r\n一連の調剤イベントの状態を指定するコード。",
+      "definition" : "一連の調剤イベントの状態を指定するコード。",
       "comment" : "この要素は、リソースを現在有効ではないとマークするコードが含まれているため、修飾子としてラベル付けされています。 / This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid.",
       "min" : 1,
       "max" : "1",
@@ -1336,8 +1336,8 @@
     {
       "id" : "MedicationDispense.statusReason[x]",
       "path" : "MedicationDispense.statusReason[x]",
-      "short" : "Why a dispense was not performed\u3000調剤が実行されなかった理由",
-      "definition" : "Indicates the reason why a dispense was not performed.\r\n\r\n調剤が実行されなかった理由を示す。",
+      "short" : "調剤が実行されなかった理由",
+      "definition" : "調剤が実行されなかった理由を示す。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -1383,8 +1383,8 @@
     {
       "id" : "MedicationDispense.category",
       "path" : "MedicationDispense.category",
-      "short" : "Type of medication dispense\u3000調剤タイプ",
-      "definition" : "Indicates the type of medication dispense (for example, where the medication is expected to be consumed or administered (i.e. inpatient or outpatient)).\r\n\r\n投薬のタイプを示す（たとえば、薬剤が消費または投与されると予想される場所（つまり、入院患者または外来患者））。\u3000入院、外来、退院、自宅など。",
+      "short" : "調剤タイプ",
+      "definition" : "投薬のタイプを示す（たとえば、薬剤が消費または投与されると予想される場所（つまり、入院患者または外来患者））。\u3000入院、外来、退院、自宅など。",
       "comment" : "このカテゴリを使用して、薬が消費される場所または他の種類のディスペンスが予想される場所を含めることができます。不変剤を使用して、プロファイリングするときに異なる値セットにバインドできます。 / The category can be used to include where the medication is expected to be consumed or other types of dispenses.  Invariants can be used to bind to different value sets when profiling to bind.",
       "min" : 0,
       "max" : "1",
@@ -1423,9 +1423,9 @@
     {
       "id" : "MedicationDispense.medication[x]",
       "path" : "MedicationDispense.medication[x]",
-      "short" : "What medication was supplied\u3000医薬品",
-      "definition" : "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.\r\n\r\n投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。",
-      "comment" : "If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource.\r\n\r\nひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。\r\n\r\n厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。\r\n\rなお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。\r\n\rひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。\rただし、ひとつの処方薬を複数のコードで繰り返し記述する場合には、それらのコードが指し示す処方薬、医療材料は当然同一でなければならない。\rまた、処方を発行した医療機関内でのデータ利用のために、医療機関固有コード体系によるコード（ハウスコード、ローカルコード）の記述を含めてもよいが、その場合でも上述したいずれかの標準コードを同時に記述することが必要である。",
+      "short" : "医薬品",
+      "definition" : "投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。",
+      "comment" : "ひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。\r\n\r\n厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。\r\n\rなお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。\r\n\rひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。\rただし、ひとつの処方薬を複数のコードで繰り返し記述する場合には、それらのコードが指し示す処方薬、医療材料は当然同一でなければならない。\rまた、処方を発行した医療機関内でのデータ利用のために、医療機関固有コード体系によるコード（ハウスコード、ローカルコード）の記述を含めてもよいが、その場合でも上述したいずれかの標準コードを同時に記述することが必要である。",
       "min" : 1,
       "max" : "1",
       "base" : {
@@ -1483,9 +1483,9 @@
     {
       "id" : "MedicationDispense.subject",
       "path" : "MedicationDispense.subject",
-      "short" : "Who received medication\u3000投与対象患者",
-      "definition" : "The person or animal or group receiving the medication.\r\n\r\n投与を受ける患者",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "short" : "投与対象患者",
+      "definition" : "投与を受ける患者",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
       "min" : 1,
       "max" : "1",
       "base" : {
@@ -1531,9 +1531,9 @@
     {
       "id" : "MedicationDispense.context",
       "path" : "MedicationDispense.context",
-      "short" : "Encounter / Episode associated with event\u3000調剤ベントに関連するEncounterやエピソード",
-      "definition" : "The encounter or episode of care that establishes the context for this event.\r\n\r\n調剤ベントに関連するEncounterやエピソードへの参照。",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "short" : "調剤ベントに関連するEncounterやエピソード",
+      "definition" : "調剤ベントに関連するEncounterやエピソードへの参照。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -1568,9 +1568,9 @@
     {
       "id" : "MedicationDispense.supportingInformation",
       "path" : "MedicationDispense.supportingInformation",
-      "short" : "Information that supports the dispensing of the medication\u3000薬の調剤をサポートする情報",
-      "definition" : "Additional information that supports the medication being dispensed.\r\n\r\n調剤される薬剤をサポートする追加情報への任意のリソースへの参照。",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "short" : "薬の調剤をサポートする情報",
+      "definition" : "調剤される薬剤をサポートする追加情報への任意のリソースへの参照。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1604,8 +1604,8 @@
     {
       "id" : "MedicationDispense.performer",
       "path" : "MedicationDispense.performer",
-      "short" : "Who performed event\u3000調剤を実施した人",
-      "definition" : "Indicates who or what performed the event.\r\n調剤した人を示す",
+      "short" : "調剤を実施した人",
+      "definition" : "調剤した人を示す",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1830,9 +1830,9 @@
     {
       "id" : "MedicationDispense.location",
       "path" : "MedicationDispense.location",
-      "short" : "Where the dispense occurred\u3000調剤実施場所",
-      "definition" : "The principal physical location where the dispense was performed. \r\n\r\n調剤が実施された場所を示すLocationリソースへの参照。",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "short" : "調剤実施場所",
+      "definition" : "調剤が実施された場所を示すLocationリソースへの参照。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -1862,8 +1862,8 @@
     {
       "id" : "MedicationDispense.authorizingPrescription",
       "path" : "MedicationDispense.authorizingPrescription",
-      "short" : "Medication order that authorizes the dispense\u3000調剤を正当化する元の処方オーダ",
-      "definition" : "Indicates the medication order that is being dispensed against.\r\n調剤の元になった処方オーダを表すMedicationRequestリソースへの参照。",
+      "short" : "調剤を正当化する元の処方オーダ",
+      "definition" : "調剤の元になった処方オーダを表すMedicationRequestリソースへの参照。",
       "comment" : "イベント論理モデルのベースンへのマップ。 / Maps to basedOn in Event logical model.",
       "min" : 0,
       "max" : "*",
@@ -1907,8 +1907,8 @@
       "id" : "MedicationDispense.type",
       "path" : "MedicationDispense.type",
       "short" : "実行される調剤イベント",
-      "definition" : "Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.\r\n実行される調剤イベントのタイプを示す。たとえば、トライアルフィル、トライアルの完了、部分フィル、緊急フィル、サンプルなどである。",
-      "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\n\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。",
+      "definition" : "実行される調剤イベントのタイプを示す。たとえば、トライアルフィル、トライアルの完了、部分フィル、緊急フィル、サンプルなどである。",
+      "comment" : "すべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -1954,9 +1954,9 @@
     {
       "id" : "MedicationDispense.quantity",
       "path" : "MedicationDispense.quantity",
-      "short" : "Trial fill, partial fill, emergency fill, etc. 払い出される薬剤の量",
+      "short" : "払い出される薬剤の量",
       "definition" : "調剤総量。\r\nJP Coreでは必須\r\n払い出される薬剤の量。計測単位を含む。",
-      "comment" : "The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.\r\n\r\n使用状況によって、これがどのような量であるか、したがってどのような単位を使用できるかが定義される場合がかなりある。使用状況によっては、比較演算子の値も制限される場合がある。",
+      "comment" : "使用状況によって、これがどのような量であるか、したがってどのような単位を使用できるかが定義される場合がかなりある。使用状況によっては、比較演算子の値も制限される場合がある。",
       "min" : 1,
       "max" : "1",
       "base" : {
@@ -2010,9 +2010,9 @@
     {
       "id" : "MedicationDispense.daysSupply",
       "path" : "MedicationDispense.daysSupply",
-      "short" : "Amount of medication expressed as a timing amount\u3000\u3000タイミングとして表される投薬量",
-      "definition" : "The amount of medication expressed as a timing amount.\r\n\r\nタイミングとして表される投薬量。すなわち、XX日分、XX回分などの数量。",
-      "comment" : "The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.\r\n\r\n使用状況によって、これがどのような量であるか、したがってどのような単位を使用できるかが定義される場合がかなりある。使用状況によっては、比較演算子の値も制限される場合がある。",
+      "short" : "タイミングとして表される投薬量",
+      "definition" : "タイミングとして表される投薬量。すなわち、XX日分、XX回分などの数量。",
+      "comment" : "使用状況によって、これがどのような量であるか、したがってどのような単位を使用できるかが定義される場合がかなりある。使用状況によっては、比較演算子の値も制限される場合がある。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -2066,8 +2066,8 @@
     {
       "id" : "MedicationDispense.whenPrepared",
       "path" : "MedicationDispense.whenPrepared",
-      "short" : "When product was packaged and reviewed\u3000調剤がパッケージ化され、レビューされた日時",
-      "definition" : "The time when the dispensed product was packaged and reviewed.\r\n\r\n調剤がパッケージ化され、レビューされた日時",
+      "short" : "調剤がパッケージ化され、レビューされた日時",
+      "definition" : "調剤がパッケージ化され、レビューされた日時",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -2104,8 +2104,8 @@
     {
       "id" : "MedicationDispense.whenHandedOver",
       "path" : "MedicationDispense.whenHandedOver",
-      "short" : "Medication order that authorizes the dispense\u3000払い出された日時",
-      "definition" : "The time the dispensed product was provided to the patient or their representative.\r\n\r\n必須。\r\n患者あるいはその代理人に払い出される薬剤が提供された日時。",
+      "short" : "払い出された日時",
+      "definition" : "必須。\r\n患者あるいはその代理人に払い出される薬剤が提供された日時。",
       "min" : 1,
       "max" : "1",
       "base" : {
@@ -2146,9 +2146,9 @@
     {
       "id" : "MedicationDispense.destination",
       "path" : "MedicationDispense.destination",
-      "short" : "Where the medication was sent\u3000薬が送られた場所",
-      "definition" : "Identification of the facility/location where the medication was shipped to, as part of the dispense event.\r\n\r\n調剤イベントの一環として、薬剤が出荷された行先先の施設/場所のLocationリソースへの参照。",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "short" : "薬が送られた場所",
+      "definition" : "調剤イベントの一環として、薬剤が出荷された行先先の施設/場所のLocationリソースへの参照。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -2186,9 +2186,9 @@
     {
       "id" : "MedicationDispense.receiver",
       "path" : "MedicationDispense.receiver",
-      "short" : "Who collected the medication\u3000 薬を受け取った人",
-      "definition" : "Identifies the person who picked up the medication.  This will usually be a patient or their caregiver, but some cases exist where it can be a healthcare professional.\r\n\r\n薬を受け取った人を識別する。これは通常、患者またはその介護者だが、医療専門家になる場合もある。",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "short" : "薬を受け取った人",
+      "definition" : "薬を受け取った人を識別する。これは通常、患者またはその介護者だが、医療専門家になる場合もある。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -2223,9 +2223,9 @@
     {
       "id" : "MedicationDispense.note",
       "path" : "MedicationDispense.note",
-      "short" : "Information about the dispense\u3000調剤に関する備考",
-      "definition" : "Extra information about the dispense that could not be conveyed in the other attributes.\r\n\r\n他の要素では伝達できなかった調剤に関する追加情報。",
-      "comment" : "For systems that do not have structured annotations, they can simply communicate a single annotation with no author or time.  This element may need to be included in narrative because of the potential for modifying information.  *Annotations SHOULD NOT* be used to communicate \"modifying\" information that could be computable. (This is a SHOULD because enforcing user behavior is nearly impossible).\r\n\r\n構造化された注釈（アノテーション）を持たないシステムの場合、作成者や時間なしで単一の注釈を簡単に伝達できる。情報を変更する可能性があるため、この要素をナラティブに含める必要がある場合がある。 \r\n*注釈は、計算機処理れきる「変更」情報を伝達するために使用されるべきではない*。 （ユーザの行動を強制することはほとんど不可能であるため、これはSHOULDとする）。",
+      "short" : "調剤に関する備考",
+      "definition" : "他の要素では伝達できなかった調剤に関する追加情報。",
+      "comment" : "構造化された注釈（アノテーション）を持たないシステムの場合、作成者や時間なしで単一の注釈を簡単に伝達できる。情報を変更する可能性があるため、この要素をナラティブに含める必要がある場合がある。 \r\n*注釈は、計算機処理れきる「変更」情報を伝達するために使用されるべきではない*。 （ユーザの行動を強制することはほとんど不可能であるため、これはSHOULDとする）。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -2297,8 +2297,8 @@
     {
       "id" : "MedicationDispense.substitution",
       "path" : "MedicationDispense.substitution",
-      "short" : "Whether a substitution was performed on the dispense\u3000調剤で置換が実行されたかどうか",
-      "definition" : "Indicates whether or not substitution was made as part of the dispense. In some cases, substitution will be expected but does not happen, in other cases substitution is not expected but does happen. This block explains what substitution did or did not happen and why. If nothing is specified, substitution was not done. \r\n 調剤の一部として置換が行われたかどうかを示す。場合によっては、置換が期待されるが発生しない場合もあれば、置換が予期されないが発生する場合もある。このブロックは、置換が行われたか行われなかったか、およびその理由を説明する。何も指定されていない場合、置換は行われていない。",
+      "short" : "調剤の一部として置換が行われたかどうかを示す。場合によっては、置換が期待されるが発生しない場合もあれば、置換が予期されないが発生する場合もある。このブロックは、置換が行われたか行われなかったか、およびその理由を説明する。何も指定されていない場合、置換は行われていない。",
+      "definition" : "代替が分配の一部として行われたかどうかを示します。場合によっては、代替が予想されますが、発生しませんが、他の場合には置換は予想されませんが、発生します。このブロックは、代替が何が起こったのか、起こらなかったのか、そしてその理由を説明しています。何も指定されていない場合、置換は行われませんでした。 / Indicates whether or not substitution was made as part of the dispense.  In some cases, substitution will be expected but does not happen, in other cases substitution is not expected but does happen.  This block explains what substitution did or did not happen and why.  If nothing is specified, substitution was not done.",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -2443,8 +2443,8 @@
     {
       "id" : "MedicationDispense.substitution.wasSubstituted",
       "path" : "MedicationDispense.substitution.wasSubstituted",
-      "short" : "Whether a substitution was or was not performed on the dispense\u3000調剤で置換が実行されたか、あるいはされていないかを'true'または'false'で表す",
-      "definition" : "True if the dispenser dispensed a different drug or product from what was prescribed. \r\n処方されたものとは異なる薬剤または製品を調剤した場合に、'true'を設定する。",
+      "short" : "調剤で置換が実行されたか、あるいはされていないかを'true'または'false'で表す",
+      "definition" : "処方されたものとは異なる薬剤または製品を調剤した場合に、'true'を設定する。",
       "min" : 1,
       "max" : "1",
       "base" : {
@@ -2473,9 +2473,8 @@
     {
       "id" : "MedicationDispense.substitution.type",
       "path" : "MedicationDispense.substitution.type",
-      "short" : "Code signifying whether a different drug was dispensed from what was prescribed\u3000処方されたものとは異なる薬が調剤されたかどうかを示すコード",
-      "definition" : "A code signifying whether a different drug was dispensed from what was prescribed.\r\n\r\n処方されたものとは異なる薬が調剤されたかどうかを示すコード。\r\nHL7 v3 Value Set ActSubstanceAdminSubstitutionCode\u3000から以下のコードが使用できる。 \r\nE: 別の生物学的同等および治療的に同等の製品で置換が行われたか、許可された。\r\nEC: 代替品が発生したか、次のような別の製品で許可されている：同じ有効成分を含むが異なる塩で処方された代替医薬品、同じ有効成分を持つエステル医薬品同等物、強度、剤形、投与経路.\r\nBC: 代替が発生したか、同等のブランド間で許可されてるが、ジェネリックでは許可されない。\r\nG: 代替が発生したか、同等のジェネリック間で許可されているが、ブランド間では許可されない。\r\nTE:同じ治療目的と安全性プロファイルを持つ別の製品で代替が発生したか、許可された。\r\nTB:ジェネリック医薬品ではなく、治療的に同等のブランド間で代替品が発生したか、許可されている\r\nTG:治療的に同等のジェネリック間で置換が発生したか、許可されているが、ブランドは許可されない。\r\nF:処方ガイドラインに準拠。\r\nN:置換は発生しなかったか、許可されていない。",
-      "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.",
+      "short" : "処方されたものとは異なる薬が調剤されたかどうかを示すコード",
+      "definition" : "処方されたものとは異なる薬が調剤されたかどうかを示すコード。\r\nHL7 v3 Value Set ActSubstanceAdminSubstitutionCode\u3000から以下のコードが使用できる。 \r\nE: 別の生物学的同等および治療的に同等の製品で置換が行われたか、許可された。\r\nEC: 代替品が発生したか、次のような別の製品で許可されている：同じ有効成分を含むが異なる塩で処方された代替医薬品、同じ有効成分を持つエステル医薬品同等物、強度、剤形、投与経路.\r\nBC: 代替が発生したか、同等のブランド間で許可されてるが、ジェネリックでは許可されない。\r\nG: 代替が発生したか、同等のジェネリック間で許可されているが、ブランド間では許可されない。\r\nTE:同じ治療目的と安全性プロファイルを持つ別の製品で代替が発生したか、許可された。\r\nTB:ジェネリック医薬品ではなく、治療的に同等のブランド間で代替品が発生したか、許可されている\r\nTG:治療的に同等のジェネリック間で置換が発生したか、許可されているが、ブランドは許可されない。\r\nF:処方ガイドラインに準拠。\r\nN:置換は発生しなかったか、許可されていない。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -2521,9 +2520,8 @@
     {
       "id" : "MedicationDispense.substitution.reason",
       "path" : "MedicationDispense.substitution.reason",
-      "short" : "Why was substitution made\u3000置換が実施された理由",
-      "definition" : "Indicates the reason for the substitution (or lack of substitution) from what was prescribed.\r\n\r\n処方されたものからの置換（または置換の欠如）の理由を示す。\r\nHL7 v3 Value Set SubstanceAdminSubstitutionReason\u3000では以下のコードが定義されている。\r\nCT:治療継続性確保のため、FP:処方方針、 OS: 在庫欠品、  RR:代替えを義務付けまたは禁止する規制要件に従った",
-      "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\n\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。",
+      "short" : "置換が実施された理由",
+      "definition" : "治療継続性確保のため、FP:処方方針、 OS: 在庫欠品、  RR:代替えを義務付けまたは禁止する規制要件に従った",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -2565,9 +2563,9 @@
     {
       "id" : "MedicationDispense.substitution.responsibleParty",
       "path" : "MedicationDispense.substitution.responsibleParty",
-      "short" : "Who is responsible for the substitution\u3000置換責任者",
-      "definition" : "The person or organization that has primary responsibility for the substitution.\r\n\r\n置換の主な責任を負う個人または組織。Practitioner   PractitionerRole リソースへの参照。",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "short" : "置換責任者",
+      "definition" : "置換の主な責任を負う個人または組織。Practitioner   PractitionerRole リソースへの参照。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -2602,9 +2600,9 @@
     {
       "id" : "MedicationDispense.detectedIssue",
       "path" : "MedicationDispense.detectedIssue",
-      "short" : "Clinical issue with action アクションを伴う臨床的問題",
-      "definition" : "Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. drug-drug interaction, duplicate therapy, dosage alert etc.\r\n\r\n患者に対する1つまたは複数のアクティブまたは提案された臨床アクションを伴う、またはそれらの間の実際のまたは潜在的な臨床問題を示す。例えば薬物間相互作用、重複治療、投与量アラートなど。\r\nDetectedIssue リソースへの参照。",
-      "comment" : "この要素には、意思決定支援システムまたは臨床医によって特定された検出された問題を含めることができ、問題に対処するために取られた手順に関する情報を含めることができます。 / This element can include a detected issue that has been identified either by a decision support system or by a clinician and may include information on the steps that were taken to address the issue.",
+      "short" : "アクションを伴う臨床的問題",
+      "definition" : "患者に対する1つまたは複数のアクティブまたは提案された臨床アクションを伴う、またはそれらの間の実際のまたは潜在的な臨床問題を示す。例えば薬物間相互作用、重複治療、投与量アラートなど。\r\nDetectedIssue リソースへの参照。",
+      "comment" : "この要素には、意思決定支援システムまたは臨床医によって特定された検出された問題を含めることができ、問題に対処するために取られたプロシジャー（処置等）に関する情報を含めることができます。 / This element can include a detected issue that has been identified either by a decision support system or by a clinician and may include information on the steps that were taken to address the issue.",
       "alias" : ["Contraindication",
       "Drug Utilization Review (DUR)",
       "Alert"],
@@ -2637,8 +2635,8 @@
     {
       "id" : "MedicationDispense.eventHistory",
       "path" : "MedicationDispense.eventHistory",
-      "short" : "A list of relevant lifecycle events\u3000関連するライフサイクルイベントのリスト",
-      "definition" : "A summary of the events of interest that have occurred, such as when the dispense was verified.\r\n\r\n調剤が確認されたときなど、発生した対象のイベントのサマリー。",
+      "short" : "関連するライフサイクルイベントのリスト",
+      "definition" : "調剤が確認されたときなど、発生した対象のイベントのサマリー。",
       "comment" : "これには、リクエストのすべてのバージョンの出所が含まれない場合があります。「関連性がある」または重要とみなされるもののみです。これには、この現在のバージョンのリソースに関連する出所を含めてはなりません。（その出所が「関連性のある」変更と見なされる場合、後の更新の一部として追加する必要があります。それまで、_revincludeを使用してこのバージョンを指す出所として直接照会することができます。この要求の歴史的バージョンは、彼らの主題として。）。 / This might not include provenances for all versions of the request – only those deemed “relevant” or important. This SHALL NOT include the Provenance associated with this current version of the resource. (If that provenance is deemed to be a “relevant” change, it will need to be added as part of a later update. Until then, it can be queried directly as the Provenance that points to this version using _revinclude All Provenances should have some historical version of this Request as their subject.).",
       "min" : 0,
       "max" : "*",
@@ -2761,8 +2759,8 @@
     {
       "id" : "MedicationDispense.partOf",
       "path" : "MedicationDispense.partOf",
-      "short" : "Event that dispense is part of 親イベントへの参照",
-      "definition" : "The procedure that trigger the dispense. \r\n\r\nこの調剤の契機となったProcedureリソースへの参照。",
+      "short" : "親イベントへの参照",
+      "definition" : "Tこの調剤の契機となったProcedureリソースへの参照。",
       "type" : [{
         "code" : "Reference",
         "targetProfile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure"]
@@ -2772,33 +2770,33 @@
       "id" : "MedicationDispense.status",
       "path" : "MedicationDispense.status",
       "short" : "preparation | in-progress | cancelled | on-hold | completed | entered-in-error | stopped | unknown 一連の調剤イベントの状態",
-      "definition" : "A code specifying the state of the set of dispense events.\r\n\r\n一連の調剤イベントの状態を指定するコード。"
+      "definition" : "一連の調剤イベントの状態を指定するコード。"
     },
     {
       "id" : "MedicationDispense.statusReason[x]",
       "path" : "MedicationDispense.statusReason[x]",
-      "short" : "Why a dispense was not performed\u3000調剤が実行されなかった理由",
-      "definition" : "Indicates the reason why a dispense was not performed.\r\n\r\n調剤が実行されなかった理由を示す。"
+      "short" : "調剤が実行されなかった理由",
+      "definition" : "調剤が実行されなかった理由を示す。"
     },
     {
       "id" : "MedicationDispense.category",
       "path" : "MedicationDispense.category",
-      "short" : "Type of medication dispense\u3000調剤タイプ",
-      "definition" : "Indicates the type of medication dispense (for example, where the medication is expected to be consumed or administered (i.e. inpatient or outpatient)).\r\n\r\n投薬のタイプを示す（たとえば、薬剤が消費または投与されると予想される場所（つまり、入院患者または外来患者））。\u3000入院、外来、退院、自宅など。"
+      "short" : "調剤タイプ",
+      "definition" : "投薬のタイプを示す（たとえば、薬剤が消費または投与されると予想される場所（つまり、入院患者または外来患者））。\u3000入院、外来、退院、自宅など。"
     },
     {
       "id" : "MedicationDispense.medication[x]",
       "path" : "MedicationDispense.medication[x]",
-      "short" : "What medication was supplied\u3000医薬品",
-      "definition" : "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.\r\n\r\n投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。",
-      "comment" : "If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource.\r\n\r\nひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。\r\n\r\n厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。\r\n\rなお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。\r\n\rひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。\rただし、ひとつの処方薬を複数のコードで繰り返し記述する場合には、それらのコードが指し示す処方薬、医療材料は当然同一でなければならない。\rまた、処方を発行した医療機関内でのデータ利用のために、医療機関固有コード体系によるコード（ハウスコード、ローカルコード）の記述を含めてもよいが、その場合でも上述したいずれかの標準コードを同時に記述することが必要である。"
+      "short" : "医薬品",
+      "definition" : "投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。",
+      "comment" : "ひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。\r\n\r\n厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。\r\n\rなお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。\r\n\rひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。\rただし、ひとつの処方薬を複数のコードで繰り返し記述する場合には、それらのコードが指し示す処方薬、医療材料は当然同一でなければならない。\rまた、処方を発行した医療機関内でのデータ利用のために、医療機関固有コード体系によるコード（ハウスコード、ローカルコード）の記述を含めてもよいが、その場合でも上述したいずれかの標準コードを同時に記述することが必要である。"
     },
     {
       "id" : "MedicationDispense.subject",
       "path" : "MedicationDispense.subject",
-      "short" : "Who received medication\u3000投与対象患者",
-      "definition" : "The person or animal or group receiving the medication.\r\n\r\n投与を受ける患者",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "short" : "投与対象患者",
+      "definition" : "投与を受ける患者",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
       "min" : 1,
       "type" : [{
         "code" : "Reference",
@@ -2808,9 +2806,9 @@
     {
       "id" : "MedicationDispense.context",
       "path" : "MedicationDispense.context",
-      "short" : "Encounter / Episode associated with event\u3000調剤ベントに関連するEncounterやエピソード",
-      "definition" : "The encounter or episode of care that establishes the context for this event.\r\n\r\n調剤ベントに関連するEncounterやエピソードへの参照。",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "short" : "調剤ベントに関連するEncounterやエピソード",
+      "definition" : "調剤ベントに関連するEncounterやエピソードへの参照。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
       "type" : [{
         "code" : "Reference",
         "targetProfile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Encounter",
@@ -2820,15 +2818,15 @@
     {
       "id" : "MedicationDispense.supportingInformation",
       "path" : "MedicationDispense.supportingInformation",
-      "short" : "Information that supports the dispensing of the medication\u3000薬の調剤をサポートする情報",
-      "definition" : "Additional information that supports the medication being dispensed.\r\n\r\n調剤される薬剤をサポートする追加情報への任意のリソースへの参照。",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"
+      "short" : "薬の調剤をサポートする情報",
+      "definition" : "調剤される薬剤をサポートする追加情報への任意のリソースへの参照。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"
     },
     {
       "id" : "MedicationDispense.performer",
       "path" : "MedicationDispense.performer",
-      "short" : "Who performed event\u3000調剤を実施した人",
-      "definition" : "Indicates who or what performed the event.\r\n調剤した人を示す"
+      "short" : "調剤を実施した人",
+      "definition" : "調剤した人を示す"
     },
     {
       "id" : "MedicationDispense.performer.actor",
@@ -2846,9 +2844,9 @@
     {
       "id" : "MedicationDispense.location",
       "path" : "MedicationDispense.location",
-      "short" : "Where the dispense occurred\u3000調剤実施場所",
-      "definition" : "The principal physical location where the dispense was performed. \r\n\r\n調剤が実施された場所を示すLocationリソースへの参照。",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "short" : "調剤実施場所",
+      "definition" : "調剤が実施された場所を示すLocationリソースへの参照。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
       "type" : [{
         "code" : "Reference",
         "targetProfile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location"]
@@ -2857,22 +2855,22 @@
     {
       "id" : "MedicationDispense.authorizingPrescription",
       "path" : "MedicationDispense.authorizingPrescription",
-      "short" : "Medication order that authorizes the dispense\u3000調剤を正当化する元の処方オーダ",
-      "definition" : "Indicates the medication order that is being dispensed against.\r\n調剤の元になった処方オーダを表すMedicationRequestリソースへの参照。"
+      "short" : "調剤を正当化する元の処方オーダ",
+      "definition" : "調剤の元になった処方オーダを表すMedicationRequestリソースへの参照。"
     },
     {
       "id" : "MedicationDispense.type",
       "path" : "MedicationDispense.type",
       "short" : "実行される調剤イベント",
-      "definition" : "Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.\r\n実行される調剤イベントのタイプを示す。たとえば、トライアルフィル、トライアルの完了、部分フィル、緊急フィル、サンプルなどである。",
-      "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\n\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。"
+      "definition" : "実行される調剤イベントのタイプを示す。たとえば、トライアルフィル、トライアルの完了、部分フィル、緊急フィル、サンプルなどである。",
+      "comment" : "すべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。"
     },
     {
       "id" : "MedicationDispense.quantity",
       "path" : "MedicationDispense.quantity",
-      "short" : "Trial fill, partial fill, emergency fill, etc. 払い出される薬剤の量",
+      "short" : "払い出される薬剤の量",
       "definition" : "調剤総量。\r\nJP Coreでは必須\r\n払い出される薬剤の量。計測単位を含む。",
-      "comment" : "The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.\r\n\r\n使用状況によって、これがどのような量であるか、したがってどのような単位を使用できるかが定義される場合がかなりある。使用状況によっては、比較演算子の値も制限される場合がある。",
+      "comment" : "使用状況によって、これがどのような量であるか、したがってどのような単位を使用できるかが定義される場合がかなりある。使用状況によっては、比較演算子の値も制限される場合がある。",
       "min" : 1,
       "type" : [{
         "code" : "Quantity",
@@ -2882,9 +2880,9 @@
     {
       "id" : "MedicationDispense.daysSupply",
       "path" : "MedicationDispense.daysSupply",
-      "short" : "Amount of medication expressed as a timing amount\u3000\u3000タイミングとして表される投薬量",
-      "definition" : "The amount of medication expressed as a timing amount.\r\n\r\nタイミングとして表される投薬量。すなわち、XX日分、XX回分などの数量。",
-      "comment" : "The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.\r\n\r\n使用状況によって、これがどのような量であるか、したがってどのような単位を使用できるかが定義される場合がかなりある。使用状況によっては、比較演算子の値も制限される場合がある。",
+      "short" : "タイミングとして表される投薬量",
+      "definition" : "タイミングとして表される投薬量。すなわち、XX日分、XX回分などの数量。",
+      "comment" : "使用状況によって、これがどのような量であるか、したがってどのような単位を使用できるかが定義される場合がかなりある。使用状況によっては、比較演算子の値も制限される場合がある。",
       "type" : [{
         "code" : "Quantity",
         "profile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationSimpleQuantity"]
@@ -2893,22 +2891,22 @@
     {
       "id" : "MedicationDispense.whenPrepared",
       "path" : "MedicationDispense.whenPrepared",
-      "short" : "When product was packaged and reviewed\u3000調剤がパッケージ化され、レビューされた日時",
-      "definition" : "The time when the dispensed product was packaged and reviewed.\r\n\r\n調剤がパッケージ化され、レビューされた日時"
+      "short" : "調剤がパッケージ化され、レビューされた日時",
+      "definition" : "調剤がパッケージ化され、レビューされた日時"
     },
     {
       "id" : "MedicationDispense.whenHandedOver",
       "path" : "MedicationDispense.whenHandedOver",
-      "short" : "Medication order that authorizes the dispense\u3000払い出された日時",
-      "definition" : "The time the dispensed product was provided to the patient or their representative.\r\n\r\n必須。\r\n患者あるいはその代理人に払い出される薬剤が提供された日時。",
+      "short" : "払い出された日時",
+      "definition" : "必須。\r\n患者あるいはその代理人に払い出される薬剤が提供された日時。",
       "min" : 1
     },
     {
       "id" : "MedicationDispense.destination",
       "path" : "MedicationDispense.destination",
-      "short" : "Where the medication was sent\u3000薬が送られた場所",
-      "definition" : "Identification of the facility/location where the medication was shipped to, as part of the dispense event.\r\n\r\n調剤イベントの一環として、薬剤が出荷された行先先の施設/場所のLocationリソースへの参照。",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "short" : "薬が送られた場所",
+      "definition" : "調剤イベントの一環として、薬剤が出荷された行先先の施設/場所のLocationリソースへの参照。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
       "type" : [{
         "code" : "Reference",
         "targetProfile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location"]
@@ -2917,9 +2915,9 @@
     {
       "id" : "MedicationDispense.receiver",
       "path" : "MedicationDispense.receiver",
-      "short" : "Who collected the medication\u3000 薬を受け取った人",
-      "definition" : "Identifies the person who picked up the medication.  This will usually be a patient or their caregiver, but some cases exist where it can be a healthcare professional.\r\n\r\n薬を受け取った人を識別する。これは通常、患者またはその介護者だが、医療専門家になる場合もある。",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "short" : "薬を受け取った人",
+      "definition" : "薬を受け取った人を識別する。これは通常、患者またはその介護者だが、医療専門家になる場合もある。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
       "type" : [{
         "code" : "Reference",
         "targetProfile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient",
@@ -2929,9 +2927,9 @@
     {
       "id" : "MedicationDispense.note",
       "path" : "MedicationDispense.note",
-      "short" : "Information about the dispense\u3000調剤に関する備考",
-      "definition" : "Extra information about the dispense that could not be conveyed in the other attributes.\r\n\r\n他の要素では伝達できなかった調剤に関する追加情報。",
-      "comment" : "For systems that do not have structured annotations, they can simply communicate a single annotation with no author or time.  This element may need to be included in narrative because of the potential for modifying information.  *Annotations SHOULD NOT* be used to communicate \"modifying\" information that could be computable. (This is a SHOULD because enforcing user behavior is nearly impossible).\r\n\r\n構造化された注釈（アノテーション）を持たないシステムの場合、作成者や時間なしで単一の注釈を簡単に伝達できる。情報を変更する可能性があるため、この要素をナラティブに含める必要がある場合がある。 \r\n*注釈は、計算機処理れきる「変更」情報を伝達するために使用されるべきではない*。 （ユーザの行動を強制することはほとんど不可能であるため、これはSHOULDとする）。"
+      "short" : "調剤に関する備考",
+      "definition" : "他の要素では伝達できなかった調剤に関する追加情報。",
+      "comment" : "構造化された注釈（アノテーション）を持たないシステムの場合、作成者や時間なしで単一の注釈を簡単に伝達できる。情報を変更する可能性があるため、この要素をナラティブに含める必要がある場合がある。 \r\n*注釈は、計算機処理れきる「変更」情報を伝達するために使用されるべきではない*。 （ユーザの行動を強制することはほとんど不可能であるため、これはSHOULDとする）。"
     },
     {
       "id" : "MedicationDispense.dosageInstruction",
@@ -2944,35 +2942,32 @@
     {
       "id" : "MedicationDispense.substitution",
       "path" : "MedicationDispense.substitution",
-      "short" : "Whether a substitution was performed on the dispense\u3000調剤で置換が実行されたかどうか",
-      "definition" : "Indicates whether or not substitution was made as part of the dispense. In some cases, substitution will be expected but does not happen, in other cases substitution is not expected but does happen. This block explains what substitution did or did not happen and why. If nothing is specified, substitution was not done. \r\n 調剤の一部として置換が行われたかどうかを示す。場合によっては、置換が期待されるが発生しない場合もあれば、置換が予期されないが発生する場合もある。このブロックは、置換が行われたか行われなかったか、およびその理由を説明する。何も指定されていない場合、置換は行われていない。"
+      "short" : "調剤の一部として置換が行われたかどうかを示す。場合によっては、置換が期待されるが発生しない場合もあれば、置換が予期されないが発生する場合もある。このブロックは、置換が行われたか行われなかったか、およびその理由を説明する。何も指定されていない場合、置換は行われていない。"
     },
     {
       "id" : "MedicationDispense.substitution.wasSubstituted",
       "path" : "MedicationDispense.substitution.wasSubstituted",
-      "short" : "Whether a substitution was or was not performed on the dispense\u3000調剤で置換が実行されたか、あるいはされていないかを'true'または'false'で表す",
-      "definition" : "True if the dispenser dispensed a different drug or product from what was prescribed. \r\n処方されたものとは異なる薬剤または製品を調剤した場合に、'true'を設定する。"
+      "short" : "調剤で置換が実行されたか、あるいはされていないかを'true'または'false'で表す",
+      "definition" : "処方されたものとは異なる薬剤または製品を調剤した場合に、'true'を設定する。"
     },
     {
       "id" : "MedicationDispense.substitution.type",
       "path" : "MedicationDispense.substitution.type",
-      "short" : "Code signifying whether a different drug was dispensed from what was prescribed\u3000処方されたものとは異なる薬が調剤されたかどうかを示すコード",
-      "definition" : "A code signifying whether a different drug was dispensed from what was prescribed.\r\n\r\n処方されたものとは異なる薬が調剤されたかどうかを示すコード。\r\nHL7 v3 Value Set ActSubstanceAdminSubstitutionCode\u3000から以下のコードが使用できる。 \r\nE: 別の生物学的同等および治療的に同等の製品で置換が行われたか、許可された。\r\nEC: 代替品が発生したか、次のような別の製品で許可されている：同じ有効成分を含むが異なる塩で処方された代替医薬品、同じ有効成分を持つエステル医薬品同等物、強度、剤形、投与経路.\r\nBC: 代替が発生したか、同等のブランド間で許可されてるが、ジェネリックでは許可されない。\r\nG: 代替が発生したか、同等のジェネリック間で許可されているが、ブランド間では許可されない。\r\nTE:同じ治療目的と安全性プロファイルを持つ別の製品で代替が発生したか、許可された。\r\nTB:ジェネリック医薬品ではなく、治療的に同等のブランド間で代替品が発生したか、許可されている\r\nTG:治療的に同等のジェネリック間で置換が発生したか、許可されているが、ブランドは許可されない。\r\nF:処方ガイドラインに準拠。\r\nN:置換は発生しなかったか、許可されていない。",
-      "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination."
+      "short" : "処方されたものとは異なる薬が調剤されたかどうかを示すコード",
+      "definition" : "処方されたものとは異なる薬が調剤されたかどうかを示すコード。\r\nHL7 v3 Value Set ActSubstanceAdminSubstitutionCode\u3000から以下のコードが使用できる。 \r\nE: 別の生物学的同等および治療的に同等の製品で置換が行われたか、許可された。\r\nEC: 代替品が発生したか、次のような別の製品で許可されている：同じ有効成分を含むが異なる塩で処方された代替医薬品、同じ有効成分を持つエステル医薬品同等物、強度、剤形、投与経路.\r\nBC: 代替が発生したか、同等のブランド間で許可されてるが、ジェネリックでは許可されない。\r\nG: 代替が発生したか、同等のジェネリック間で許可されているが、ブランド間では許可されない。\r\nTE:同じ治療目的と安全性プロファイルを持つ別の製品で代替が発生したか、許可された。\r\nTB:ジェネリック医薬品ではなく、治療的に同等のブランド間で代替品が発生したか、許可されている\r\nTG:治療的に同等のジェネリック間で置換が発生したか、許可されているが、ブランドは許可されない。\r\nF:処方ガイドラインに準拠。\r\nN:置換は発生しなかったか、許可されていない。"
     },
     {
       "id" : "MedicationDispense.substitution.reason",
       "path" : "MedicationDispense.substitution.reason",
-      "short" : "Why was substitution made\u3000置換が実施された理由",
-      "definition" : "Indicates the reason for the substitution (or lack of substitution) from what was prescribed.\r\n\r\n処方されたものからの置換（または置換の欠如）の理由を示す。\r\nHL7 v3 Value Set SubstanceAdminSubstitutionReason\u3000では以下のコードが定義されている。\r\nCT:治療継続性確保のため、FP:処方方針、 OS: 在庫欠品、  RR:代替えを義務付けまたは禁止する規制要件に従った",
-      "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\n\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。"
+      "short" : "置換が実施された理由",
+      "definition" : "治療継続性確保のため、FP:処方方針、 OS: 在庫欠品、  RR:代替えを義務付けまたは禁止する規制要件に従った"
     },
     {
       "id" : "MedicationDispense.substitution.responsibleParty",
       "path" : "MedicationDispense.substitution.responsibleParty",
-      "short" : "Who is responsible for the substitution\u3000置換責任者",
-      "definition" : "The person or organization that has primary responsibility for the substitution.\r\n\r\n置換の主な責任を負う個人または組織。Practitioner   PractitionerRole リソースへの参照。",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n\r\n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "short" : "置換責任者",
+      "definition" : "置換の主な責任を負う個人または組織。Practitioner   PractitionerRole リソースへの参照。",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
       "type" : [{
         "code" : "Reference",
         "targetProfile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner",
@@ -2982,14 +2977,14 @@
     {
       "id" : "MedicationDispense.detectedIssue",
       "path" : "MedicationDispense.detectedIssue",
-      "short" : "Clinical issue with action アクションを伴う臨床的問題",
-      "definition" : "Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. drug-drug interaction, duplicate therapy, dosage alert etc.\r\n\r\n患者に対する1つまたは複数のアクティブまたは提案された臨床アクションを伴う、またはそれらの間の実際のまたは潜在的な臨床問題を示す。例えば薬物間相互作用、重複治療、投与量アラートなど。\r\nDetectedIssue リソースへの参照。"
+      "short" : "アクションを伴う臨床的問題",
+      "definition" : "患者に対する1つまたは複数のアクティブまたは提案された臨床アクションを伴う、またはそれらの間の実際のまたは潜在的な臨床問題を示す。例えば薬物間相互作用、重複治療、投与量アラートなど。\r\nDetectedIssue リソースへの参照。"
     },
     {
       "id" : "MedicationDispense.eventHistory",
       "path" : "MedicationDispense.eventHistory",
-      "short" : "A list of relevant lifecycle events\u3000関連するライフサイクルイベントのリスト",
-      "definition" : "A summary of the events of interest that have occurred, such as when the dispense was verified.\r\n\r\n調剤が確認されたときなど、発生した対象のイベントのサマリー。"
+      "short" : "関連するライフサイクルイベントのリスト",
+      "definition" : "調剤が確認されたときなど、発生した対象のイベントのサマリー。"
     }]
   }
 }

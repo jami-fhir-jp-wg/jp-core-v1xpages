@@ -61,8 +61,8 @@
     "element" : [{
       "id" : "Organization",
       "path" : "Organization",
-      "short" : "A grouping of people or organizations with a common purpose/共通の目的を持った人や組織の集まり【詳細参照】",
-      "definition" : "A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc.\r\n\r\n集団行動の何らかの形での達成を目的として結成された、正式または非公式に認められた人々または組織のグループ。企業、機関、企業、部門、コミュニティグループ、医療実践グループ、支払者/保険者などが含まれる。",
+      "short" : "共通の目的を持った人や組織の集まり【詳細参照】",
+      "definition" : "集団行動の何らかの形での達成を目的として結成された、正式または非公式に認められた人々または組織のグループ。企業、機関、企業、部門、コミュニティグループ、医療実践グループ、支払者/保険者などが含まれる。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -532,10 +532,10 @@
         }],
         "rules" : "open"
       },
-      "short" : "Identifies this organization  across multiple systems/複数のシステムでこの組織を識別【詳細参照】",
-      "definition" : "Identifier for the organization that is used to identify the organization across multiple disparate systems.\r\n\r\n複数の異種システムにまたがって組織を識別するための識別子",
+      "short" : "複数のシステムでこの組織を識別【詳細参照】",
+      "definition" : "複数の異種システムにまたがって組織を識別するための識別子",
       "comment" : "福祉医療関連施設と保険者組織はSlicingについてはJP Coreにて定義を行なっているため、定義に従いデータを格納すること。それ以外の組織については、利用する際には必要に応じて識別子を定義を行なうこと。",
-      "requirements" : "Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.\r\n\r\n組織は様々な ID で知られている。いくつかの機関では複数のIDを保持しており、ほとんどの機関では、組織に関する他の組織との交換のためにIDを収集している。",
+      "requirements" : "組織は様々な ID で知られている。いくつかの機関では複数のIDを保持しており、ほとんどの機関では、組織に関する他の組織との交換のためにIDを収集している。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -653,7 +653,7 @@
     {
       "id" : "Organization.identifier.use",
       "path" : "Organization.identifier.use",
-      "short" : "通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
+      "short" : "通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
       "definition" : "この識別子の目的。 / The purpose of this identifier.",
       "comment" : "アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.",
       "requirements" : "特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
@@ -1027,7 +1027,7 @@
     {
       "id" : "Organization.identifier:medicalInstitutionCode.use",
       "path" : "Organization.identifier.use",
-      "short" : "通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
+      "short" : "通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
       "definition" : "この識別子の目的。 / The purpose of this identifier.",
       "comment" : "アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.",
       "requirements" : "特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
@@ -1402,7 +1402,7 @@
     {
       "id" : "Organization.identifier:insurerNumber.use",
       "path" : "Organization.identifier.use",
-      "short" : "通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
+      "short" : "通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
       "definition" : "この識別子の目的。 / The purpose of this identifier.",
       "comment" : "アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.",
       "requirements" : "特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
@@ -1655,10 +1655,10 @@
     {
       "id" : "Organization.active",
       "path" : "Organization.active",
-      "short" : "Whether the organization's record is still in active use / 組織の記録がまだ有効に使われているかどうか【詳細参照】",
-      "definition" : "Whether the organization's record is still in active use.\r\n\r\n組織の記録がまだ現役であるかどうか。",
-      "comment" : "This active flag is not intended to be used to mark an organization as temporarily closed or under construction. Instead the Location(s) within the Organization should have the suspended status. If further details of the reason for the suspension are required, then an extension on this element should be used.\n\nThis element is labeled as a modifier because it may be used to mark that the resource was created in error.\r\n\r\nこのアクティブフラグは、組織を一時的に閉鎖したり、工事中であることを示すために使用されることを意図していない。代わりに、組織内の場所(複数可)は、中断されたステータスを持っている必要がある。一時停止の理由の詳細が必要な場合は、この要素の拡張子を使用する必要がある。\r\n\r\nこの要素は、リソースがエラーで作成されたことをマークするために使用される可能性があるため、修飾子としてラベル付けされている。",
-      "requirements" : "Need a flag to indicate a record is no longer to be used and should generally be hidden for the user in the UI.\r\n\r\nレコードが使用されなくなったことを示すためのフラグが必要で、一般的にUIではユーザのために非表示にする必要がある。",
+      "short" : "組織の記録がまだ有効に使われているかどうか【詳細参照】",
+      "definition" : "このアクティブフラグは、組織を一時的に閉鎖したり、工事中であることを示すために使用されることを意図していない。代わりに、組織内の場所(複数可)は、中断されたステータスを持っている必要がある。一時停止の理由の詳細が必要な場合は、この要素の拡張子を使用する必要がある。\r\n\r\nこの要素は、リソースがエラーで作成されたことをマークするために使用される可能性があるため、修飾子としてラベル付けされている。",
+      "comment" : "このアクティブなフラグは、組織を一時的に閉鎖したり、建設中のマークとして使用するために意図されていません。代わりに、組織内の場所に中断ステータスを設定する必要があります。中断の理由の詳細が必要な場合は、この要素の拡張機能を使用する必要があります。\n\nこの要素は修飾子としてラベル付けされています。これは、リソースが誤って作成されたことを示すために使用できるためです。",
+      "requirements" : "レコードが使用されなくなったことを示すためのフラグが必要で、一般的にUIではユーザのために非表示にする必要がある。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -1701,10 +1701,10 @@
     {
       "id" : "Organization.type",
       "path" : "Organization.type",
-      "short" : "Kind of organization / 組織の種類【詳細参照】",
-      "definition" : "The kind(s) of organization that this is.\r\n\r\nその種類の組織。",
-      "comment" : "Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes\n\nWhen considering if multiple types are appropriate, you should evaluate if child organizations would be a more appropriate use of the concept, as different types likely are in different sub-areas of the organization. This is most likely to be used where type values have orthogonal values, such as a religious, academic and medical center.\n\nWe expect that some jurisdictions will profile this optionality to be a single cardinality.\r\n\r\n組織は、企業、病棟、セクション、臨床チーム、政府部門などにすることができる。多くのアプリケーションでは、コードは、特定の組織を識別するために使用されている（と言う、病棟）別の同じタイプのものとは対照的に - これらは識別子ではなく、コードである。\r\n\r\n複数のタイプが適切かどうかを検討する際には、異なるタイプが組織の異なるサブ領域に存在する可能性が高いため、子どもの組織の方がより適切な使用法であるかどうかを評価する必要がある。これは、宗教、学術、医療センターのように、タイプの価値観が直交する場合に使用される可能性が高い。\r\n\r\nいくつかの法域では、このオプション性を単一のカーディナリティとしてプロファイルすると予想される。",
-      "requirements" : "Need to be able to track the kind of organization that this is - different organization types have different uses.\r\n\r\nこれがある組織の種類を追跡することができる必要がある - 異なる組織の種類は、異なる用途を持っている。",
+      "short" : "組織の種類【詳細参照】",
+      "definition" : "その種類の組織。",
+      "comment" : "n組織は、企業、病棟、セクション、臨床チーム、政府部門などにすることができる。多くのアプリケーションでは、コードは、特定の組織を識別するために使用されている（と言う、病棟）別の同じタイプのものとは対照的に - これらは識別子ではなく、コードである。\r\n\r\n複数のタイプが適切かどうかを検討する際には、異なるタイプが組織の異なるサブ領域に存在する可能性が高いため、子どもの組織の方がより適切な使用法であるかどうかを評価する必要がある。これは、宗教、学術、医療センターのように、タイプの価値観が直交する場合に使用される可能性が高い。\r\n\r\nいくつかの法域では、このオプション性を単一のカーディナリティとしてプロファイルすると予想される。",
+      "requirements" : "これがある組織の種類を追跡することができる必要がある - 異なる組織の種類は、異なる用途を持っている。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1754,10 +1754,10 @@
     {
       "id" : "Organization.name",
       "path" : "Organization.name",
-      "short" : "Name used for the organization / 組織に使用されている名称【詳細参照】",
-      "definition" : "A name associated with the organization.\r\n\r\n組織に関連付けられた名前。",
-      "comment" : "If the name of an organization changes, consider putting the old name in the alias column so that it can still be located through searches.\r\n\r\n組織名が変更された場合は、旧名称をエイリアス欄に入れて検索で見つけられるようにすることを検討すべきである。",
-      "requirements" : "Need to use the name as the label of the organization.\r\n\r\n組織のラベルとして名前を使用する必要がある。",
+      "short" : "組織に使用されている名称【詳細参照】",
+      "definition" : "組織に関連付けられた名前。",
+      "comment" : "組織名が変更された場合は、旧名称をエイリアス欄に入れて検索で見つけられるようにすることを検討すべきである。",
+      "requirements" : "組織のラベルとして名前を使用する必要がある。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -1795,10 +1795,10 @@
     {
       "id" : "Organization.alias",
       "path" : "Organization.alias",
-      "short" : "A list of alternate names that the organization is known as, or was known as in the past / 組織が知られている、または過去に知られていた別名のリスト【詳細参照】",
-      "definition" : "A list of alternate names that the organization is known as, or was known as in the past.\r\n\r\n組織がその名で知られている、または過去にその名で知られていた代替名のリスト。",
-      "comment" : "There are no dates associated with the alias/historic names, as this is not intended to track when names were used, but to assist in searching so that older names can still result in identifying the organization.\r\n\r\nこれは、名前がいつ使用されたかを追跡することを目的としたものではなく、古い名前でも組織を特定できるように検索を支援することを目的としているため、別名や歴史的な名前に関連付けられた日付はない。",
-      "requirements" : "Over time locations and organizations go through many changes and can be known by different names.\n\nFor searching knowing previous names that the organization was known by can be very useful.\r\n\r\n時間の経過とともに、場所や組織はさまざまな変化を経て、さまざまな名前で知ることができる。\r\n\r\n組織が知っている前の名前を知るための検索には、非常に便利なことができる。",
+      "short" : "組織が知られている、または過去に知られていた別名のリスト【詳細参照】",
+      "definition" : "組織がその名で知られている、または過去にその名で知られていた代替名のリスト。",
+      "comment" : "これは、名前がいつ使用されたかを追跡することを目的としたものではなく、古い名前でも組織を特定できるように検索を支援することを目的としているため、別名や歴史的な名前に関連付けられた日付はない。",
+      "requirements" : "時間の経過とともに、場所や組織はさまざまな変化を経て、さまざまな名前で知ることができる。\r\n\r\n組織が知っている前の名前を知るための検索には、非常に便利なことができる。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1827,10 +1827,10 @@
     {
       "id" : "Organization.telecom",
       "path" : "Organization.telecom",
-      "short" : "A contact detail for the organization / 組織の連絡先詳細【詳細参照】",
-      "definition" : "A contact detail for the organization.\r\n\r\n組織の連絡先詳細",
-      "comment" : "The use code 'home' is not to be used. Note that these contacts are not the contact details of people who are employed by or represent the organization, but official contacts for the organization itself.\r\n\r\n使用コード「home」は使用しないこと。これらの連絡先は、組織に雇用されている人や組織を代表する人の連絡先ではなく、組織自体の公式な連絡先であることに注意すること。",
-      "requirements" : "Human contact for the organization.\r\n\r\n組織のヒューマンコンタクト。",
+      "short" : "組織の連絡先詳細【詳細参照】",
+      "definition" : "組織の連絡先詳細",
+      "comment" : "使用コード「home」は使用しないこと。これらの連絡先は、組織に雇用されている人や組織を代表する人の連絡先ではなく、組織自体の公式な連絡先であることに注意すること。",
+      "requirements" : "組織のヒューマンコンタクト。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1874,12 +1874,301 @@
       }]
     },
     {
+      "id" : "Organization.telecom.id",
+      "path" : "Organization.telecom.id",
+      "representation" : ["xmlAttr"],
+      "short" : "エレメント相互参照のためのユニークID",
+      "definition" : "リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Element.id",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+          "valueUrl" : "string"
+        }],
+        "code" : "http://hl7.org/fhirpath/System.String"
+      }],
+      "isModifier" : false,
+      "isSummary" : false,
+      "mapping" : [{
+        "identity" : "rim",
+        "map" : "n/a"
+      }]
+    },
+    {
+      "id" : "Organization.telecom.extension",
+      "path" : "Organization.telecom.extension",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "value",
+          "path" : "url"
+        }],
+        "description" : "拡張子は常にURLで切り片にされます。",
+        "rules" : "open"
+      },
+      "short" : "実装によって定義される追加コンテンツ",
+      "definition" : "「要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。」",
+      "comment" : "どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。",
+      "alias" : ["extensions",
+      "user content"],
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "Element.extension",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "Extension"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      },
+      {
+        "key" : "ext-1",
+        "severity" : "error",
+        "human" : "「拡張機能または値[x]のいずれかが必要です。両方ではありません。」",
+        "expression" : "extension.exists() != value.exists()",
+        "xpath" : "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Extension"
+      }],
+      "isModifier" : false,
+      "isSummary" : false,
+      "mapping" : [{
+        "identity" : "rim",
+        "map" : "n/a"
+      }]
+    },
+    {
+      "id" : "Organization.telecom.system",
+      "path" : "Organization.telecom.system",
+      "short" : "phone | fax | email | pager | url | sms | other 【JP_Patient.telecomを参照。】",
+      "definition" : "連絡先用通信フォーム - どの通信システムを使用するには接点が必要ですか。",
+      "comment" : "連絡先の種別をValueSet(ContactPointSystem)より選択する。  \u3000- phone : 電話\u3000- fax : Fax \u3000- email : 電子メール\u3000- pager : ポケットベル\u3000- url : 電話、ファックス、ポケットベル、または電子メールアドレスではなく、URLとして表される連絡先。これはWebサイト、ブログ、Skype、Twitter、Facebookなどのさまざまな機関または個人の連絡先を対象としている。電子メールアドレスには使用しないこと。\u3000- sms : SMSメッセージの送信に使用できる連絡先（携帯電話、一部の固定電話など）  \u3000- other : 電話、Fax、ポケットベル、または電子メールアドレスではなく、URLとして表現できない連絡先。例：内部メールアドレス。これは、URLとして表現できる連絡先（Skype、Twitter、Facebookなど）には使用しないこと。",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "ContactPoint.system",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "code"
+      }],
+      "condition" : ["cpt-2"],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "binding" : {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+          "valueString" : "ContactPointSystem"
+        }],
+        "strength" : "required",
+        "description" : "「連絡先のための通信フォーム。」",
+        "valueSet" : "http://hl7.org/fhir/ValueSet/contact-point-system|4.0.1"
+      },
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "XTN.3"
+      },
+      {
+        "identity" : "rim",
+        "map" : "./scheme"
+      },
+      {
+        "identity" : "servd",
+        "map" : "./ContactPointType"
+      }]
+    },
+    {
+      "id" : "Organization.telecom.value",
+      "path" : "Organization.telecom.value",
+      "short" : "実際の連絡先の詳細",
+      "definition" : "指定されたコミュニケーションシステムに意味がある形式での実際の連絡先の詳細（電話番号または電子メールアドレス）を提供してください。",
+      "comment" : "連絡先の番号やメールアドレス",
+      "requirements" : "Need to support legacy numbers that are not in a tightly controlled format.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "ContactPoint.value",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "string"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "XTN.1 (or XTN.12)"
+      },
+      {
+        "identity" : "rim",
+        "map" : "./url"
+      },
+      {
+        "identity" : "servd",
+        "map" : "./Value"
+      }]
+    },
+    {
+      "id" : "Organization.telecom.use",
+      "path" : "Organization.telecom.use",
+      "short" : "work | temp | old | mobile - 連絡先の用途等 【JP_Patient.telecomを参照。】homeは使用しないこと。",
+      "definition" : "「接点の目的を特定する。」(Setten no mokuteki wo tokutei suru.)",
+      "comment" : "患者の連絡先の種別をValueSet(ContactPointUse)より選択する。  一時的なものまたは古いものであると明示しない限り、連絡先が最新とみなされる。\n\u3000- work : 職場\n\u3000- temp : 一時的\n\u3000- old : 以前の\n\u3000- mobile : モバイル機器",
+      "requirements" : "Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "ContactPoint.use",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "code"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : true,
+      "isModifierReason" : "This is labeled as \"Is Modifier\" because applications should not mistake a temporary or old contact etc.for a current/permanent one",
+      "isSummary" : true,
+      "binding" : {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+          "valueString" : "ContactPointUse"
+        }],
+        "strength" : "required",
+        "description" : "「接点の使用。」(Setten no shiyō.)",
+        "valueSet" : "http://hl7.org/fhir/ValueSet/contact-point-use|4.0.1"
+      },
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "XTN.2 - but often indicated by field"
+      },
+      {
+        "identity" : "rim",
+        "map" : "unique(./use)"
+      },
+      {
+        "identity" : "servd",
+        "map" : "./ContactPointPurpose"
+      }]
+    },
+    {
+      "id" : "Organization.telecom.rank",
+      "path" : "Organization.telecom.rank",
+      "short" : "「使用の優先順位を指定してください（1が最も優先度が高い）」",
+      "definition" : "「一連のコンタクトを使う上で好ましい順序を指定します。ランク値が低いContactPointsの方が、ランク値が高いものよりも優先されます。」",
+      "comment" : "連絡先の使用順序（1 = 最高）",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "ContactPoint.rank",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "positiveInt"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "n/a"
+      },
+      {
+        "identity" : "rim",
+        "map" : "n/a"
+      }]
+    },
+    {
+      "id" : "Organization.telecom.period",
+      "path" : "Organization.telecom.period",
+      "short" : "「コンタクトポイントが使用されている時間帯」",
+      "definition" : "「接点が使用されていた/現在使用中である時間期間」",
+      "comment" : "連絡先が使用されていた/されている期間",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "ContactPoint.period",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "Period"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "N/A"
+      },
+      {
+        "identity" : "rim",
+        "map" : "./usablePeriod[type=\"IVL<TS>\"]"
+      },
+      {
+        "identity" : "servd",
+        "map" : "./StartDate and ./EndDate"
+      }]
+    },
+    {
       "id" : "Organization.address",
       "path" : "Organization.address",
-      "short" : "An address for the organization / 組織の住所【詳細参照】",
-      "definition" : "An address for the organization.\r\n\r\n組織の住所",
-      "comment" : "Organization may have multiple addresses with different uses or applicable periods. The use code 'home' is not to be used.\r\n\r\n組織は、用途や適用期間が異なる複数の住所を持っている場合がある。使用コード「home」は使用しないこと。",
-      "requirements" : "May need to keep track of the organization's addresses for contacting, billing or reporting requirements.\r\n\r\n連絡、請求、または報告のために、組織のアドレスを追跡する必要がある場合がある。",
+      "short" : "組織の住所【詳細参照】",
+      "definition" : "組織の住所",
+      "comment" : "組織は、用途や適用期間が異なる複数の住所を持っている場合がある。使用コード「home」は使用しないこと。",
+      "requirements" : "連絡、請求、または報告のために、組織のアドレスを追跡する必要がある場合がある。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1923,11 +2212,541 @@
       }]
     },
     {
+      "id" : "Organization.address.id",
+      "path" : "Organization.address.id",
+      "representation" : ["xmlAttr"],
+      "short" : "要素間参照のための一意のID / Unique id for inter-element referencing",
+      "definition" : "リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Element.id",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+          "valueUrl" : "string"
+        }],
+        "code" : "http://hl7.org/fhirpath/System.String"
+      }],
+      "isModifier" : false,
+      "isSummary" : false,
+      "mapping" : [{
+        "identity" : "rim",
+        "map" : "n/a"
+      }]
+    },
+    {
+      "id" : "Organization.address.extension",
+      "path" : "Organization.address.extension",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "value",
+          "path" : "url"
+        }],
+        "description" : "Extensions are always sliced by (at least) url",
+        "rules" : "open"
+      },
+      "short" : "実装で定義された追加のコンテンツ / Additional content defined by implementations",
+      "definition" : "要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+      "comment" : "拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+      "alias" : ["extensions",
+      "user content"],
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "Element.extension",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "Extension"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      },
+      {
+        "key" : "ext-1",
+        "severity" : "error",
+        "human" : "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both",
+        "expression" : "extension.exists() != value.exists()",
+        "xpath" : "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Extension"
+      }],
+      "isModifier" : false,
+      "isSummary" : false,
+      "mapping" : [{
+        "identity" : "rim",
+        "map" : "n/a"
+      }]
+    },
+    {
+      "id" : "Organization.address.use",
+      "path" : "Organization.address.use",
+      "short" : "work | temp | old | billing - purpose of this address\u3000住所の用途 【JP_Patient.address参照】使用コード「home」は使用しない。",
+      "definition" : "The purpose of this address.\r\n住所の用途",
+      "comment" : "住所の用途をValueSet(AddressUse)より選択する。  \n- work : 職場\n- temp : 一時的\n- old : 以前の\n- billing : 請求書、インボイス、領収書などの送付用",
+      "requirements" : "多くのリストから適切なアドレスを選択できるようにします。 / Allows an appropriate address to be chosen from a list of many.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Address.use",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "code"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : true,
+      "isModifierReason" : "これは、アプリケーションが一時的または古い住所などを間違えないでください。 / This is labeled as \"Is Modifier\" because applications should not mistake a temporary or old address etc.for a current/permanent one",
+      "isSummary" : true,
+      "binding" : {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+          "valueString" : "AddressUse"
+        }],
+        "strength" : "required",
+        "description" : "アドレスの使用。 / The use of an address.",
+        "valueSet" : "http://hl7.org/fhir/ValueSet/address-use|4.0.1"
+      },
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "XAD.7"
+      },
+      {
+        "identity" : "rim",
+        "map" : "unique(./use)"
+      },
+      {
+        "identity" : "servd",
+        "map" : "./AddressPurpose"
+      }]
+    },
+    {
+      "id" : "Organization.address.type",
+      "path" : "Organization.address.type",
+      "short" : "postal | physical | both 【JP_Patient.address参照】",
+      "definition" : "住所（訪問できる住所）と郵送先住所（私書箱や気付住所など）を区別する。ほとんどのアドレスは両方。",
+      "comment" : "住所の種類をValueSet(AddressType)より選択する。  \n- postal : 郵送先 - 私書箱、気付の住所\n- physical : 訪れることのできる物理的な住所\n- both : postalとphysicalの両方",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Address.type",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "code"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "binding" : {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+          "valueString" : "AddressType"
+        }],
+        "strength" : "required",
+        "description" : "アドレスのタイプ（物理 /郵便）。 / The type of an address (physical / postal).",
+        "valueSet" : "http://hl7.org/fhir/ValueSet/address-type|4.0.1"
+      },
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "XAD.18"
+      },
+      {
+        "identity" : "rim",
+        "map" : "unique(./use)"
+      },
+      {
+        "identity" : "vcard",
+        "map" : "address type parameter"
+      }]
+    },
+    {
+      "id" : "Organization.address.text",
+      "path" : "Organization.address.text",
+      "short" : "住所のテキスト表現 【JP_Patient.address参照】",
+      "definition" : "表示するアドレス全体を指定する  \n例：郵便ラベル。これは、特定の部品の代わりに、または特定の部品と同様に提供される場合がある。",
+      "comment" : "テキスト表現とパーツの両方を提供できる。アドレスを更新するアプリケーションは、テキストとパーツの両方が存在する場合、パーツにないコンテンツはテキストに含まれないようにする必要がある。  \n- 住所を(都道府県や市町村などに)分離して管理していない場合は、textに入れる。  \n- 住所を(都道府県や市町村などに)分離して管理している場合でも、まとめてtextに入れること。  \n- 郵便番号は含めない。  \n\n例：東京都文京区本郷7-3-1",
+      "requirements" : "レンダリング可能で、不コード化されていないフォーム。 / A renderable, unencoded form.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Address.text",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "string"
+      }],
+      "example" : [{
+        "label" : "Jp",
+        "valueString" : "東京都文京区本郷7-3-1"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "XAD.1 + XAD.2 + XAD.3 + XAD.4 + XAD.5 + XAD.6"
+      },
+      {
+        "identity" : "rim",
+        "map" : "./formatted"
+      },
+      {
+        "identity" : "vcard",
+        "map" : "address label parameter"
+      }]
+    },
+    {
+      "id" : "Organization.address.line",
+      "path" : "Organization.address.line",
+      "short" : "ストリート名や番地など 【JP_Patient.address参照】",
+      "definition" : "このコンポーネントには、家番号、アパート番号、通りの名前、通りの方向、P.O。が含まれる。ボックス番号、配達のヒント、および同様の住所情報など。",
+      "comment" : "【JP Core仕様】state要素とcity要素で表現しなかったそのあとの住所部分を番地以降の部分も含めてすべていれる。  \n英数字は半角でも全角でもよい。文字列の前後および途中に空白文字を含めないこと。  \n繰り返し要素が許されているので、区切りを表現したい場合には、複数要素に分けて格納してもよい。  \n\n例：本郷7-3-1  \n例：大字石神９７６  \n例：藤崎町大字藤崎字西村1-2 春山荘201号室",
+      "min" : 0,
+      "max" : "*",
+      "base" : {
+        "path" : "Address.line",
+        "min" : 0,
+        "max" : "*"
+      },
+      "type" : [{
+        "code" : "string"
+      }],
+      "orderMeaning" : "The order in which lines should appear in an address label",
+      "example" : [{
+        "label" : "Jp",
+        "valueString" : "本郷7-3-1"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "XAD.1 + XAD.2 (note: XAD.1 and XAD.2 have different meanings for a company address than for a person address)"
+      },
+      {
+        "identity" : "rim",
+        "map" : "AD.part[parttype = AL]"
+      },
+      {
+        "identity" : "vcard",
+        "map" : "street"
+      },
+      {
+        "identity" : "servd",
+        "map" : "./StreetAddress (newline delimitted)"
+      }]
+    },
+    {
+      "id" : "Organization.address.city",
+      "path" : "Organization.address.city",
+      "short" : "市区町村名 【JP_Patient.address参照】",
+      "definition" : "n市、町、郊外、村、その他のコミュニティまたは配達センターの名前。",
+      "comment" : "１MBを超えないこと。  【JP Core仕様】郡市区町村部分だけを「郡」「市」「区」「町」「村」などの文字を含めて設定する。 例：文京区",
+      "alias" : ["Municpality"],
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Address.city",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "string"
+      }],
+      "example" : [{
+        "label" : "Jp",
+        "valueString" : "文京区"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "XAD.3"
+      },
+      {
+        "identity" : "rim",
+        "map" : "AD.part[parttype = CTY]"
+      },
+      {
+        "identity" : "vcard",
+        "map" : "locality"
+      },
+      {
+        "identity" : "servd",
+        "map" : "./Jurisdiction"
+      }]
+    },
+    {
+      "id" : "Organization.address.district",
+      "path" : "Organization.address.district",
+      "short" : "地区名 【JP_Patient.address参照】",
+      "definition" : "管理エリア（郡）の名前。 / The name of the administrative area (county).",
+      "comment" : "【JP Core仕様】日本の住所では使用しない。",
+      "alias" : ["County"],
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Address.district",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "string"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "XAD.9"
+      },
+      {
+        "identity" : "rim",
+        "map" : "AD.part[parttype = CNT | CPA]"
+      }]
+    },
+    {
+      "id" : "Organization.address.state",
+      "path" : "Organization.address.state",
+      "short" : "国の次の地区単位 【JP_Patient.address参照】",
+      "definition" : "国の主権が制限されている国のサブユニット。日本の場合、都道府県名。",
+      "comment" : "１MBを超えないこと。  都道府県名。「都」「道」「府」「県」のそれぞれの文字を含める。 例：東京都",
+      "alias" : ["Province",
+      "Territory"],
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Address.state",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "string"
+      }],
+      "example" : [{
+        "label" : "Jp",
+        "valueString" : "東京都"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "XAD.4"
+      },
+      {
+        "identity" : "rim",
+        "map" : "AD.part[parttype = STA]"
+      },
+      {
+        "identity" : "vcard",
+        "map" : "region"
+      },
+      {
+        "identity" : "servd",
+        "map" : "./Region"
+      }]
+    },
+    {
+      "id" : "Organization.address.postalCode",
+      "path" : "Organization.address.postalCode",
+      "short" : "郵便番号 【JP_Patient.address参照】",
+      "definition" : "郵便サービスによって定義された地域を指定する郵便番号。 / A postal code designating a region defined by the postal service.",
+      "comment" : "郵便番号。日本の郵便番号の場合には3桁数字とハイフン1文字と4桁数字からなる半角８文字、または最初の3桁だけの3文字のいずれかとする。 例：113-8655",
+      "alias" : ["Zip"],
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Address.postalCode",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "string"
+      }],
+      "example" : [{
+        "label" : "Jp",
+        "valueString" : "113-8655"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "XAD.5"
+      },
+      {
+        "identity" : "rim",
+        "map" : "AD.part[parttype = ZIP]"
+      },
+      {
+        "identity" : "vcard",
+        "map" : "code"
+      },
+      {
+        "identity" : "servd",
+        "map" : "./PostalIdentificationCode"
+      }]
+    },
+    {
+      "id" : "Organization.address.country",
+      "path" : "Organization.address.country",
+      "short" : "国名またはISO 3166コード\u3000(ISO 3166 2 or 3文字こーど)",
+      "definition" : "国-一般的に理解されている、または一般的に受け入れられている国の国名かコード。",
+      "comment" : "ISO 3166 3文字コードは、人間が読める国名の代わりに使用する。  ISO 3166の2文字または3文字のコード.  日本であれば、jpまたはjpn",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Address.country",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "string"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "XAD.6"
+      },
+      {
+        "identity" : "rim",
+        "map" : "AD.part[parttype = CNT]"
+      },
+      {
+        "identity" : "vcard",
+        "map" : "country"
+      },
+      {
+        "identity" : "servd",
+        "map" : "./Country"
+      }]
+    },
+    {
+      "id" : "Organization.address.period",
+      "path" : "Organization.address.period",
+      "short" : "住所が使用されていた（いる）期間",
+      "definition" : "住所が使用されていた（いる）期間",
+      "comment" : "住所が使用されていた/されている期間。 期間は時間の範囲を指定する。使用状況はその期間全体に適用されるか、範囲から1つの値が適用される。  期間は、時間間隔（経過時間の測定値）には使用されない。",
+      "requirements" : "アドレスを履歴上の文脈に配置できるようにします。 / Allows addresses to be placed in historical context.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Address.period",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "Period"
+      }],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "v2",
+        "map" : "XAD.12 / XAD.13 + XAD.14"
+      },
+      {
+        "identity" : "rim",
+        "map" : "./usablePeriod[type=\"IVL<TS>\"]"
+      },
+      {
+        "identity" : "servd",
+        "map" : "./StartDate and ./EndDate"
+      }]
+    },
+    {
       "id" : "Organization.partOf",
       "path" : "Organization.partOf",
-      "short" : "The organization of which this organization forms a part【詳細参照】",
-      "definition" : "The organization of which this organization forms a part.\r\nこの組織が一部を構成する組織",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "short" : "【詳細参照】",
+      "definition" : "この組織が一部を構成する組織",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
       "requirements" : "Need to be able to track the hierarchy of organizations within an organization.",
       "min" : 0,
       "max" : "1",
@@ -1970,10 +2789,10 @@
     {
       "id" : "Organization.contact",
       "path" : "Organization.contact",
-      "short" : "Contact for the organization for a certain purpose\u3000特定の目的のための組織の連絡先【詳細参照】",
-      "definition" : "Contact for the organization for a certain purpose.\r\n特定の目的のための組織の連絡先",
-      "comment" : "Where multiple contacts for the same purpose are provided there is a standard extension that can be used to determine which one is the preferred contact to use.\r\n同じ目的で複数の連絡先が提供されている場合、どの連絡先を使用するのが好ましいかを判断するために使用できる標準の拡張extension がある。",
-      "requirements" : "Need to keep track of assigned contact points within bigger organization.\r\nより大きな組織内で割り当てられた連絡先を追跡する必要がある。",
+      "short" : "特定の目的のための組織の連絡先【詳細参照】",
+      "definition" : "特定の目的のための組織の連絡先",
+      "comment" : "同じ目的で複数の連絡先が提供されている場合、どの連絡先を使用するのが好ましいかを判断するために使用できる標準の拡張extension がある。",
+      "requirements" : "より大きな組織内で割り当てられた連絡先を追跡する必要がある。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -2154,9 +2973,9 @@
     {
       "id" : "Organization.contact.name",
       "path" : "Organization.contact.name",
-      "short" : "Name of a human - parts and usage\u3000人の名前情報、その一部分と使い方",
-      "definition" : "A human's name with the ability to identify parts and usage.\r\n\r\n識別のための人の名前情報",
-      "comment" : "Names may be changed, or repudiated, or people may have different names in different contexts. Names may be divided into parts of different type that have variable significance depending on context, though the division into parts does not always matter. With personal names, the different parts might or might not be imbued with some implicit meaning; various cultures associate different importance with the name parts and the degree to which systems must care about name parts around the world varies widely.\r\n\r\n名前が変更されたり、違っていると指摘されたり、コンテキストによって使われる名前が異なる場合がある。名前は、コンテキストに応じて重要性が異なるさまざまなタイプの部分に分割される場合があり、部分への分割は必ずしも重要ではない。個人名の場合、さまざまな部分に暗黙の意味が含まれている場合と含まれていない場合がある。さまざまな文化が名前の部分にさまざまな重要性を関連付けており、システムが世界中の名前の部分を気にする必要がある程度は大きく異なる。",
+      "short" : "人の名前情報、その一部分と使い方",
+      "definition" : "識別のための人の名前情報",
+      "comment" : "名前が変更されたり、違っていると指摘されたり、コンテキストによって使われる名前が異なる場合がある。名前は、コンテキストに応じて重要性が異なるさまざまなタイプの部分に分割される場合があり、部分への分割は必ずしも重要ではない。個人名の場合、さまざまな部分に暗黙の意味が含まれている場合と含まれていない場合がある。さまざまな文化が名前の部分にさまざまな重要性を関連付けており、システムが世界中の名前の部分を気にする必要がある程度は大きく異なる。",
       "requirements" : "Need to be able to track the person by name.",
       "min" : 0,
       "max" : "1",
@@ -2269,10 +3088,10 @@
     {
       "id" : "Organization.endpoint",
       "path" : "Organization.endpoint",
-      "short" : "Technical endpoints providing access to services operated for the organization\u3000\u3000組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント【詳細参照】",
-      "definition" : "Technical endpoints providing access to services operated for the organization.\r\n組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
-      "requirements" : "Organizations have multiple systems that provide various services and need to be able to define the technical connection details for how to connect to them, and for what purpose.\r\n組織にはさまざまなサービスを提供する複数のシステムがあり、それらに接続する方法と目的について、技術的な接続の詳細を定義できる必要がある。",
+      "short" : "組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント【詳細参照】",
+      "definition" : "組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "requirements" : "組織にはさまざまなサービスを提供する複数のシステムがあり、それらに接続する方法と目的について、技術的な接続の詳細を定義できる必要がある。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -2304,8 +3123,8 @@
     "element" : [{
       "id" : "Organization",
       "path" : "Organization",
-      "short" : "A grouping of people or organizations with a common purpose/共通の目的を持った人や組織の集まり【詳細参照】",
-      "definition" : "A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc.\r\n\r\n集団行動の何らかの形での達成を目的として結成された、正式または非公式に認められた人々または組織のグループ。企業、機関、企業、部門、コミュニティグループ、医療実践グループ、支払者/保険者などが含まれる。"
+      "short" : "共通の目的を持った人や組織の集まり【詳細参照】",
+      "definition" : "集団行動の何らかの形での達成を目的として結成された、正式または非公式に認められた人々または組織のグループ。企業、機関、企業、部門、コミュニティグループ、医療実践グループ、支払者/保険者などが含まれる。"
     },
     {
       "id" : "Organization.extension",
@@ -2367,10 +3186,10 @@
         }],
         "rules" : "open"
       },
-      "short" : "Identifies this organization  across multiple systems/複数のシステムでこの組織を識別【詳細参照】",
-      "definition" : "Identifier for the organization that is used to identify the organization across multiple disparate systems.\r\n\r\n複数の異種システムにまたがって組織を識別するための識別子",
+      "short" : "複数のシステムでこの組織を識別【詳細参照】",
+      "definition" : "複数の異種システムにまたがって組織を識別するための識別子",
       "comment" : "福祉医療関連施設と保険者組織はSlicingについてはJP Coreにて定義を行なっているため、定義に従いデータを格納すること。それ以外の組織については、利用する際には必要に応じて識別子を定義を行なうこと。",
-      "requirements" : "Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.\r\n\r\n組織は様々な ID で知られている。いくつかの機関では複数のIDを保持しており、ほとんどの機関では、組織に関する他の組織との交換のためにIDを収集している。"
+      "requirements" : "組織は様々な ID で知られている。いくつかの機関では複数のIDを保持しており、ほとんどの機関では、組織に関する他の組織との交換のためにIDを収集している。"
     },
     {
       "id" : "Organization.identifier.assigner",
@@ -2413,57 +3232,171 @@
     {
       "id" : "Organization.active",
       "path" : "Organization.active",
-      "short" : "Whether the organization's record is still in active use / 組織の記録がまだ有効に使われているかどうか【詳細参照】",
-      "definition" : "Whether the organization's record is still in active use.\r\n\r\n組織の記録がまだ現役であるかどうか。",
-      "comment" : "This active flag is not intended to be used to mark an organization as temporarily closed or under construction. Instead the Location(s) within the Organization should have the suspended status. If further details of the reason for the suspension are required, then an extension on this element should be used.\n\nThis element is labeled as a modifier because it may be used to mark that the resource was created in error.\r\n\r\nこのアクティブフラグは、組織を一時的に閉鎖したり、工事中であることを示すために使用されることを意図していない。代わりに、組織内の場所(複数可)は、中断されたステータスを持っている必要がある。一時停止の理由の詳細が必要な場合は、この要素の拡張子を使用する必要がある。\r\n\r\nこの要素は、リソースがエラーで作成されたことをマークするために使用される可能性があるため、修飾子としてラベル付けされている。",
-      "requirements" : "Need a flag to indicate a record is no longer to be used and should generally be hidden for the user in the UI.\r\n\r\nレコードが使用されなくなったことを示すためのフラグが必要で、一般的にUIではユーザのために非表示にする必要がある。"
+      "short" : "組織の記録がまだ有効に使われているかどうか【詳細参照】",
+      "definition" : "このアクティブフラグは、組織を一時的に閉鎖したり、工事中であることを示すために使用されることを意図していない。代わりに、組織内の場所(複数可)は、中断されたステータスを持っている必要がある。一時停止の理由の詳細が必要な場合は、この要素の拡張子を使用する必要がある。\r\n\r\nこの要素は、リソースがエラーで作成されたことをマークするために使用される可能性があるため、修飾子としてラベル付けされている。",
+      "requirements" : "レコードが使用されなくなったことを示すためのフラグが必要で、一般的にUIではユーザのために非表示にする必要がある。"
     },
     {
       "id" : "Organization.type",
       "path" : "Organization.type",
-      "short" : "Kind of organization / 組織の種類【詳細参照】",
-      "definition" : "The kind(s) of organization that this is.\r\n\r\nその種類の組織。",
-      "comment" : "Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes\n\nWhen considering if multiple types are appropriate, you should evaluate if child organizations would be a more appropriate use of the concept, as different types likely are in different sub-areas of the organization. This is most likely to be used where type values have orthogonal values, such as a religious, academic and medical center.\n\nWe expect that some jurisdictions will profile this optionality to be a single cardinality.\r\n\r\n組織は、企業、病棟、セクション、臨床チーム、政府部門などにすることができる。多くのアプリケーションでは、コードは、特定の組織を識別するために使用されている（と言う、病棟）別の同じタイプのものとは対照的に - これらは識別子ではなく、コードである。\r\n\r\n複数のタイプが適切かどうかを検討する際には、異なるタイプが組織の異なるサブ領域に存在する可能性が高いため、子どもの組織の方がより適切な使用法であるかどうかを評価する必要がある。これは、宗教、学術、医療センターのように、タイプの価値観が直交する場合に使用される可能性が高い。\r\n\r\nいくつかの法域では、このオプション性を単一のカーディナリティとしてプロファイルすると予想される。",
-      "requirements" : "Need to be able to track the kind of organization that this is - different organization types have different uses.\r\n\r\nこれがある組織の種類を追跡することができる必要がある - 異なる組織の種類は、異なる用途を持っている。"
+      "short" : "組織の種類【詳細参照】",
+      "definition" : "その種類の組織。",
+      "comment" : "n組織は、企業、病棟、セクション、臨床チーム、政府部門などにすることができる。多くのアプリケーションでは、コードは、特定の組織を識別するために使用されている（と言う、病棟）別の同じタイプのものとは対照的に - これらは識別子ではなく、コードである。\r\n\r\n複数のタイプが適切かどうかを検討する際には、異なるタイプが組織の異なるサブ領域に存在する可能性が高いため、子どもの組織の方がより適切な使用法であるかどうかを評価する必要がある。これは、宗教、学術、医療センターのように、タイプの価値観が直交する場合に使用される可能性が高い。\r\n\r\nいくつかの法域では、このオプション性を単一のカーディナリティとしてプロファイルすると予想される。",
+      "requirements" : "これがある組織の種類を追跡することができる必要がある - 異なる組織の種類は、異なる用途を持っている。"
     },
     {
       "id" : "Organization.name",
       "path" : "Organization.name",
-      "short" : "Name used for the organization / 組織に使用されている名称【詳細参照】",
-      "definition" : "A name associated with the organization.\r\n\r\n組織に関連付けられた名前。",
-      "comment" : "If the name of an organization changes, consider putting the old name in the alias column so that it can still be located through searches.\r\n\r\n組織名が変更された場合は、旧名称をエイリアス欄に入れて検索で見つけられるようにすることを検討すべきである。",
-      "requirements" : "Need to use the name as the label of the organization.\r\n\r\n組織のラベルとして名前を使用する必要がある。"
+      "short" : "組織に使用されている名称【詳細参照】",
+      "definition" : "組織に関連付けられた名前。",
+      "comment" : "組織名が変更された場合は、旧名称をエイリアス欄に入れて検索で見つけられるようにすることを検討すべきである。",
+      "requirements" : "組織のラベルとして名前を使用する必要がある。"
     },
     {
       "id" : "Organization.alias",
       "path" : "Organization.alias",
-      "short" : "A list of alternate names that the organization is known as, or was known as in the past / 組織が知られている、または過去に知られていた別名のリスト【詳細参照】",
-      "definition" : "A list of alternate names that the organization is known as, or was known as in the past.\r\n\r\n組織がその名で知られている、または過去にその名で知られていた代替名のリスト。",
-      "comment" : "There are no dates associated with the alias/historic names, as this is not intended to track when names were used, but to assist in searching so that older names can still result in identifying the organization.\r\n\r\nこれは、名前がいつ使用されたかを追跡することを目的としたものではなく、古い名前でも組織を特定できるように検索を支援することを目的としているため、別名や歴史的な名前に関連付けられた日付はない。",
-      "requirements" : "Over time locations and organizations go through many changes and can be known by different names.\n\nFor searching knowing previous names that the organization was known by can be very useful.\r\n\r\n時間の経過とともに、場所や組織はさまざまな変化を経て、さまざまな名前で知ることができる。\r\n\r\n組織が知っている前の名前を知るための検索には、非常に便利なことができる。"
+      "short" : "組織が知られている、または過去に知られていた別名のリスト【詳細参照】",
+      "definition" : "組織がその名で知られている、または過去にその名で知られていた代替名のリスト。",
+      "comment" : "これは、名前がいつ使用されたかを追跡することを目的としたものではなく、古い名前でも組織を特定できるように検索を支援することを目的としているため、別名や歴史的な名前に関連付けられた日付はない。",
+      "requirements" : "時間の経過とともに、場所や組織はさまざまな変化を経て、さまざまな名前で知ることができる。\r\n\r\n組織が知っている前の名前を知るための検索には、非常に便利なことができる。"
     },
     {
       "id" : "Organization.telecom",
       "path" : "Organization.telecom",
-      "short" : "A contact detail for the organization / 組織の連絡先詳細【詳細参照】",
-      "definition" : "A contact detail for the organization.\r\n\r\n組織の連絡先詳細",
-      "comment" : "The use code 'home' is not to be used. Note that these contacts are not the contact details of people who are employed by or represent the organization, but official contacts for the organization itself.\r\n\r\n使用コード「home」は使用しないこと。これらの連絡先は、組織に雇用されている人や組織を代表する人の連絡先ではなく、組織自体の公式な連絡先であることに注意すること。",
-      "requirements" : "Human contact for the organization.\r\n\r\n組織のヒューマンコンタクト。"
+      "short" : "組織の連絡先詳細【詳細参照】",
+      "definition" : "組織の連絡先詳細",
+      "comment" : "使用コード「home」は使用しないこと。これらの連絡先は、組織に雇用されている人や組織を代表する人の連絡先ではなく、組織自体の公式な連絡先であることに注意すること。",
+      "requirements" : "組織のヒューマンコンタクト。"
+    },
+    {
+      "id" : "Organization.telecom.system",
+      "path" : "Organization.telecom.system",
+      "short" : "phone | fax | email | pager | url | sms | other 【JP_Patient.telecomを参照。】",
+      "comment" : "連絡先の種別をValueSet(ContactPointSystem)より選択する。  \u3000- phone : 電話\u3000- fax : Fax \u3000- email : 電子メール\u3000- pager : ポケットベル\u3000- url : 電話、ファックス、ポケットベル、または電子メールアドレスではなく、URLとして表される連絡先。これはWebサイト、ブログ、Skype、Twitter、Facebookなどのさまざまな機関または個人の連絡先を対象としている。電子メールアドレスには使用しないこと。\u3000- sms : SMSメッセージの送信に使用できる連絡先（携帯電話、一部の固定電話など）  \u3000- other : 電話、Fax、ポケットベル、または電子メールアドレスではなく、URLとして表現できない連絡先。例：内部メールアドレス。これは、URLとして表現できる連絡先（Skype、Twitter、Facebookなど）には使用しないこと。"
+    },
+    {
+      "id" : "Organization.telecom.value",
+      "path" : "Organization.telecom.value",
+      "comment" : "連絡先の番号やメールアドレス"
+    },
+    {
+      "id" : "Organization.telecom.use",
+      "path" : "Organization.telecom.use",
+      "short" : "work | temp | old | mobile - 連絡先の用途等 【JP_Patient.telecomを参照。】homeは使用しないこと。",
+      "comment" : "患者の連絡先の種別をValueSet(ContactPointUse)より選択する。  一時的なものまたは古いものであると明示しない限り、連絡先が最新とみなされる。\n\u3000- work : 職場\n\u3000- temp : 一時的\n\u3000- old : 以前の\n\u3000- mobile : モバイル機器"
+    },
+    {
+      "id" : "Organization.telecom.rank",
+      "path" : "Organization.telecom.rank",
+      "comment" : "連絡先の使用順序（1 = 最高）"
+    },
+    {
+      "id" : "Organization.telecom.period",
+      "path" : "Organization.telecom.period",
+      "comment" : "連絡先が使用されていた/されている期間"
     },
     {
       "id" : "Organization.address",
       "path" : "Organization.address",
-      "short" : "An address for the organization / 組織の住所【詳細参照】",
-      "definition" : "An address for the organization.\r\n\r\n組織の住所",
-      "comment" : "Organization may have multiple addresses with different uses or applicable periods. The use code 'home' is not to be used.\r\n\r\n組織は、用途や適用期間が異なる複数の住所を持っている場合がある。使用コード「home」は使用しないこと。",
-      "requirements" : "May need to keep track of the organization's addresses for contacting, billing or reporting requirements.\r\n\r\n連絡、請求、または報告のために、組織のアドレスを追跡する必要がある場合がある。"
+      "short" : "組織の住所【詳細参照】",
+      "definition" : "組織の住所",
+      "comment" : "組織は、用途や適用期間が異なる複数の住所を持っている場合がある。使用コード「home」は使用しないこと。",
+      "requirements" : "連絡、請求、または報告のために、組織のアドレスを追跡する必要がある場合がある。"
+    },
+    {
+      "id" : "Organization.address.use",
+      "path" : "Organization.address.use",
+      "short" : "work | temp | old | billing - purpose of this address\u3000住所の用途 【JP_Patient.address参照】使用コード「home」は使用しない。",
+      "definition" : "The purpose of this address.\r\n住所の用途",
+      "comment" : "住所の用途をValueSet(AddressUse)より選択する。  \n- work : 職場\n- temp : 一時的\n- old : 以前の\n- billing : 請求書、インボイス、領収書などの送付用"
+    },
+    {
+      "id" : "Organization.address.type",
+      "path" : "Organization.address.type",
+      "short" : "postal | physical | both 【JP_Patient.address参照】",
+      "definition" : "住所（訪問できる住所）と郵送先住所（私書箱や気付住所など）を区別する。ほとんどのアドレスは両方。",
+      "comment" : "住所の種類をValueSet(AddressType)より選択する。  \n- postal : 郵送先 - 私書箱、気付の住所\n- physical : 訪れることのできる物理的な住所\n- both : postalとphysicalの両方"
+    },
+    {
+      "id" : "Organization.address.text",
+      "path" : "Organization.address.text",
+      "short" : "住所のテキスト表現 【JP_Patient.address参照】",
+      "definition" : "表示するアドレス全体を指定する  \n例：郵便ラベル。これは、特定の部品の代わりに、または特定の部品と同様に提供される場合がある。",
+      "comment" : "テキスト表現とパーツの両方を提供できる。アドレスを更新するアプリケーションは、テキストとパーツの両方が存在する場合、パーツにないコンテンツはテキストに含まれないようにする必要がある。  \n- 住所を(都道府県や市町村などに)分離して管理していない場合は、textに入れる。  \n- 住所を(都道府県や市町村などに)分離して管理している場合でも、まとめてtextに入れること。  \n- 郵便番号は含めない。  \n\n例：東京都文京区本郷7-3-1",
+      "example" : [{
+        "label" : "Jp",
+        "valueString" : "東京都文京区本郷7-3-1"
+      }]
+    },
+    {
+      "id" : "Organization.address.line",
+      "path" : "Organization.address.line",
+      "short" : "ストリート名や番地など 【JP_Patient.address参照】",
+      "definition" : "このコンポーネントには、家番号、アパート番号、通りの名前、通りの方向、P.O。が含まれる。ボックス番号、配達のヒント、および同様の住所情報など。",
+      "comment" : "【JP Core仕様】state要素とcity要素で表現しなかったそのあとの住所部分を番地以降の部分も含めてすべていれる。  \n英数字は半角でも全角でもよい。文字列の前後および途中に空白文字を含めないこと。  \n繰り返し要素が許されているので、区切りを表現したい場合には、複数要素に分けて格納してもよい。  \n\n例：本郷7-3-1  \n例：大字石神９７６  \n例：藤崎町大字藤崎字西村1-2 春山荘201号室",
+      "example" : [{
+        "label" : "Jp",
+        "valueString" : "本郷7-3-1"
+      }]
+    },
+    {
+      "id" : "Organization.address.city",
+      "path" : "Organization.address.city",
+      "short" : "市区町村名 【JP_Patient.address参照】",
+      "definition" : "n市、町、郊外、村、その他のコミュニティまたは配達センターの名前。",
+      "comment" : "１MBを超えないこと。  【JP Core仕様】郡市区町村部分だけを「郡」「市」「区」「町」「村」などの文字を含めて設定する。 例：文京区",
+      "example" : [{
+        "label" : "Jp",
+        "valueString" : "文京区"
+      }]
+    },
+    {
+      "id" : "Organization.address.district",
+      "path" : "Organization.address.district",
+      "short" : "地区名 【JP_Patient.address参照】",
+      "comment" : "【JP Core仕様】日本の住所では使用しない。"
+    },
+    {
+      "id" : "Organization.address.state",
+      "path" : "Organization.address.state",
+      "short" : "国の次の地区単位 【JP_Patient.address参照】",
+      "definition" : "国の主権が制限されている国のサブユニット。日本の場合、都道府県名。",
+      "comment" : "１MBを超えないこと。  都道府県名。「都」「道」「府」「県」のそれぞれの文字を含める。 例：東京都",
+      "example" : [{
+        "label" : "Jp",
+        "valueString" : "東京都"
+      }]
+    },
+    {
+      "id" : "Organization.address.postalCode",
+      "path" : "Organization.address.postalCode",
+      "short" : "郵便番号 【JP_Patient.address参照】",
+      "comment" : "郵便番号。日本の郵便番号の場合には3桁数字とハイフン1文字と4桁数字からなる半角８文字、または最初の3桁だけの3文字のいずれかとする。 例：113-8655",
+      "example" : [{
+        "label" : "Jp",
+        "valueString" : "113-8655"
+      }]
+    },
+    {
+      "id" : "Organization.address.country",
+      "path" : "Organization.address.country",
+      "short" : "国名またはISO 3166コード\u3000(ISO 3166 2 or 3文字こーど)",
+      "definition" : "国-一般的に理解されている、または一般的に受け入れられている国の国名かコード。",
+      "comment" : "ISO 3166 3文字コードは、人間が読める国名の代わりに使用する。  ISO 3166の2文字または3文字のコード.  日本であれば、jpまたはjpn"
+    },
+    {
+      "id" : "Organization.address.period",
+      "path" : "Organization.address.period",
+      "short" : "住所が使用されていた（いる）期間",
+      "definition" : "住所が使用されていた（いる）期間",
+      "comment" : "住所が使用されていた/されている期間。 期間は時間の範囲を指定する。使用状況はその期間全体に適用されるか、範囲から1つの値が適用される。  期間は、時間間隔（経過時間の測定値）には使用されない。"
     },
     {
       "id" : "Organization.partOf",
       "path" : "Organization.partOf",
-      "short" : "The organization of which this organization forms a part【詳細参照】",
-      "definition" : "The organization of which this organization forms a part.\r\nこの組織が一部を構成する組織",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "short" : "【詳細参照】",
+      "definition" : "この組織が一部を構成する組織",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
       "type" : [{
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-hierarchy",
@@ -2476,10 +3409,10 @@
     {
       "id" : "Organization.contact",
       "path" : "Organization.contact",
-      "short" : "Contact for the organization for a certain purpose\u3000特定の目的のための組織の連絡先【詳細参照】",
-      "definition" : "Contact for the organization for a certain purpose.\r\n特定の目的のための組織の連絡先",
-      "comment" : "Where multiple contacts for the same purpose are provided there is a standard extension that can be used to determine which one is the preferred contact to use.\r\n同じ目的で複数の連絡先が提供されている場合、どの連絡先を使用するのが好ましいかを判断するために使用できる標準の拡張extension がある。",
-      "requirements" : "Need to keep track of assigned contact points within bigger organization.\r\nより大きな組織内で割り当てられた連絡先を追跡する必要がある。"
+      "short" : "特定の目的のための組織の連絡先【詳細参照】",
+      "definition" : "特定の目的のための組織の連絡先",
+      "comment" : "同じ目的で複数の連絡先が提供されている場合、どの連絡先を使用するのが好ましいかを判断するために使用できる標準の拡張extension がある。",
+      "requirements" : "より大きな組織内で割り当てられた連絡先を追跡する必要がある。"
     },
     {
       "id" : "Organization.contact.name",
@@ -2492,10 +3425,10 @@
     {
       "id" : "Organization.endpoint",
       "path" : "Organization.endpoint",
-      "short" : "Technical endpoints providing access to services operated for the organization\u3000\u3000組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント【詳細参照】",
-      "definition" : "Technical endpoints providing access to services operated for the organization.\r\n組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント",
-      "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.\r\n参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
-      "requirements" : "Organizations have multiple systems that provide various services and need to be able to define the technical connection details for how to connect to them, and for what purpose.\r\n組織にはさまざまなサービスを提供する複数のシステムがあり、それらに接続する方法と目的について、技術的な接続の詳細を定義できる必要がある。"
+      "short" : "組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント【詳細参照】",
+      "definition" : "組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント",
+      "comment" : "参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
+      "requirements" : "組織にはさまざまなサービスを提供する複数のシステムがあり、それらに接続する方法と目的について、技術的な接続の詳細を定義できる必要がある。"
     }]
   }
 }

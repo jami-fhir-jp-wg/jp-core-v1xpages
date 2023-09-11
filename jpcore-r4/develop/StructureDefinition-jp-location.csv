@@ -1,8 +1,6 @@
 "Id","Path","Slice Name","Alias(s)","Label","Min","Max","Must Support?","Is Modifier?","Is Summary?","Type(s)","Short","Definition","Comments","Requirements","Default Value","Meaning When Missing","Fixed Value","Pattern","Example","Minimum Value","Maximum Value","Maximum Length","Binding Strength","Binding Description","Binding Value Set","Code","Slicing Discriminator","Slicing Description","Slicing Ordered","Slicing Rules","Base Path","Base Min","Base Max","Condition(s)","Constraint(s)","Mapping: RIM Mapping","Mapping: FiveWs Pattern Mapping"
 "Location","Location","","","",0,*,"","","","null {[]} {[]}
-","物理的な場所の詳細情報と位置情報","Details and position information for a physical place where services are provided and resources and participants may be stored, found, contained, or accommodated.
-
-サービスが提供され、リソースとそれに関わる人たちが存在する物理的な場所の詳細情報と位置情報。","","","","","","","","","",,,,,"",,,,"Location",0,*,"","dom-2:もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen). {contained.contained.empty()}
+","物理的な場所の詳細情報と位置情報","サービスが提供され、リソースとそれに関わる人たちが存在する物理的な場所の詳細情報と位置情報。","","","","","","","","","",,,,,"",,,,"Location",0,*,"","dom-2:もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen). {contained.contained.empty()}
 dom-3:もしリソースが他のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含まれるリソースに参照されるべきです。 {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:もしリソースが別のリソースの中に含まれる場合、meta.versionIdまたはmeta.lastUpdatedを持つべきではありません。 {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:「もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。」 {contained.meta.security.empty()}dom-6:「資源は堅牢な管理のために物語を持つべきである。」 {text.`div`.exists()}","Entity. Role, or Act",".Role[classCode=SDLC]"
 "Location.id","Location.id","","","",0,1,"","","Y","id {[]} {[]}
 ","このアーティファクトの論理ID","「リソースのURLで使用される論理ID。一度割り当てられたら、この値は変更されません。」","「リソースにIDがないのは、作成操作を使用してサーバーに送信されているときだけです。」","","","","","","","","",,,,,"",,,,"Resource.id",0,1,"",""
@@ -31,99 +29,41 @@ user content","",0,*,"","Y","","Extension {[]} {[]}
 ","無視できない拡張機能 (Mushi dekinai kakuchou kinou)","「リソースの基本的な定義に含まれない、要素の理解や、それを含む要素の子孫の理解を修正する追加情報を表すためにも使用されることがあります。通常、修飾要素は否定や修飾を提供します。拡張機能の使用を安全で管理しやすくするために、拡張機能の定義と使用に対して厳格な統治が適用されます。実装者は拡張機能を定義することが許可されていますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張をチェックする必要があります。修飾子拡張は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味も変更できません）。」","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ext-1:「拡張機能または値[x]のいずれかが必要です。両方ではありません。」 {extension.exists() != value.exists()}","N/A"
 "Location.identifier","Location.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
-","Unique code or number identifying the location to its users / ユーザに場所を特定する一意のコードまたは番号","Unique code or number identifying the location to its users.
-
-ユーザに場所を特定する一意のコードまたは番号","","Organization label locations in registries, need to keep track of those.
-
-登記内の組織ラベルの場所。これらを追跡する必要がある。","","","","","","","",,,,,"",,,,"Location.identifier",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","ユーザに場所を特定する一意のコードまたは番号","ユーザに場所を特定する一意のコードまたは番号","","登記内の組織ラベルの場所。これらを追跡する必要がある。","","","","","","","",,,,,"",,,,"Location.identifier",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".id","FiveWs.identifier"
 "Location.status","Location.status","","","",0,1,"","Y","Y","code {[]} {[]}
-","active | suspended | inactive / アクティブ|中断|非アクティブ","The status property covers the general availability of the resource, not the current value which may be covered by the operationStatus, or by a schedule/slots if they are configured for the location.
-
-statusプロパティは、operationStatus、またはロケーションに構成されている場合はスケジュール/スロットによってカバーされる可能性がある現在の値ではなく、リソースの一般的な可用性をカバーする。","Note that FHIR strings SHALL NOT exceed 1MB in size
-
-FHIR文字列はサイズが1MBを超えてはならないことに注意すること","","","","","","","","",,"required","「場所がまだ使用されているかどうかを示します。」(Basho ga mada shiyou sarete iru ka dou ka wo shimeshimasu.)","http://hl7.org/fhir/ValueSet/location-status|4.0.1","",,,,"Location.status",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","active | suspended | inactive / アクティブ|中断|非アクティブ","statusプロパティは、operationStatus、またはロケーションに構成されている場合はスケジュール/スロットによってカバーされる可能性がある現在の値ではなく、リソースの一般的な可用性をカバーする。","FHIR文字列はサイズが1MBを超えてはならないことに注意すること","","","","","","","","",,"required","「場所がまだ使用されているかどうかを示します。」(Basho ga mada shiyou sarete iru ka dou ka wo shimeshimasu.)","http://hl7.org/fhir/ValueSet/location-status|4.0.1","",,,,"Location.status",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".statusCode","FiveWs.status"
 "Location.operationalStatus","Location.operationalStatus","","","",0,1,"","","Y","Coding {[]} {[]}
-","The operational status of the location (typically only for a bed/room) / ロケーションの運用ステータス（通常、ベッド/部屋のみ）","The operational status covers operation values most relevant to beds (but can also apply to rooms/units/chairs/etc. such as an isolation unit/dialysis chair). This typically covers concepts such as contamination, housekeeping, and other activities like maintenance.
-
-稼働状況には、ベッドに最も関連する稼働値が含まれる（ただし、隔離ユニット/透析椅子などの部屋/ユニット/椅子などにも適用できる）。これは通常、汚染、ハウスキーピング、およびメンテナンスなどの他のアクティビティなどの概念をカバーしている。","Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.
-
-コードは、SNOMED CTなどの非常に形式的な定義まで、列挙またはコードリストで非常にカジュアルに定義できる。詳細については、HL7 v3コア原則を参照すること。","","","","","","","","",,"preferred","「通常ベッド/部屋が位置する場所の稼働状況」","http://terminology.hl7.org/ValueSet/v2-0116","",,,,"Location.operationalStatus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","ロケーションの運用ステータス（通常、ベッド/部屋のみ）","稼働状況には、ベッドに最も関連する稼働値が含まれる（ただし、隔離ユニット/透析椅子などの部屋/ユニット/椅子などにも適用できる）。これは通常、汚染、ハウスキーピング、およびメンテナンスなどの他のアクティビティなどの概念をカバーしている。","コードは、SNOMED CTなどの非常に形式的な定義まで、列挙またはコードリストで非常にカジュアルに定義できる。詳細については、HL7 v3コア原則を参照すること。","","","","","","","","",,"preferred","「通常ベッド/部屋が位置する場所の稼働状況」","http://terminology.hl7.org/ValueSet/v2-0116","",,,,"Location.operationalStatus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","n/a","FiveWs.status"
 "Location.name","Location.name","","","",0,1,"","","Y","string {[]} {[]}
-","Name of the location as used by humans / 人間が使用する場所の名前","Name of the location as used by humans. Does not need to be unique.
-
-人間が使用する場所の名前。一意である必要はない。","If the name of a location changes, consider putting the old name in the alias column so that it can still be located through searches.
-
-場所の名前が変更された場合は、古い名前をエイリアス列に入力して、検索で検索できるようにすることを検討すべきである。","","","","","","","","",,,,,"",,,,"Location.name",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","人間が使用する場所の名前","人間が使用する場所の名前。一意である必要はない。","場所の名前が変更された場合は、古い名前をエイリアス列に入力して、検索で検索できるようにすることを検討すべきである。","","","","","","","","",,,,,"",,,,"Location.name",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".name"
 "Location.alias","Location.alias","","","",0,*,"","","","string {[]} {[]}
-","A list of alternate names that the location is known as, or was known as, in the past / その場所が過去に知られていた、または以前から知られていた別名のリスト","A list of alternate names that the location is known as, or was known as, in the past.
-
-その場所が過去に知られていた、または以前から知られていた別名のリスト","There are no dates associated with the alias/historic names, as this is not intended to track when names were used, but to assist in searching so that older names can still result in identifying the location.
-
-エイリアス/歴史的な名前に関連付けられた日付はない。これは、名前がいつ使用されたかを追跡するためではなく、古い名前でも場所を特定できるように検索を支援するためのものである。","Over time locations and organizations go through many changes and can be known by different names.
-
-For searching knowing previous names that the location was known by can be very useful.
-
-「時間の経過とともに、場所や組織は多くの変化を遂げ、さまざまな名前で知られるようになる。
+","その場所が過去に知られていた、または以前から知られていた別名のリスト","その場所が過去に知られていた、または以前から知られていた別名のリスト","エイリアス/歴史的な名前に関連付けられた日付はない。これは、名前がいつ使用されたかを追跡するためではなく、古い名前でも場所を特定できるように検索を支援するためのものである。","「時間の経過とともに、場所や組織は多くの変化を遂げ、さまざまな名前で知られるようになる。
 場所が知られている以前の名前を知っていることを検索することは非常に役に立つ。」","","","","","","","",,,,,"",,,,"Location.alias",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".name"
 "Location.description","Location.description","","","",0,1,"","","Y","string {[]} {[]}
-","Additional details about the location that could be displayed as further information to identify the location beyond its name / 名前以外の場所を識別するための詳細情報として表示できる場所に関する追加の詳細","Description of the Location, which helps in finding or referencing the place.
-
-場所の説明。場所の検索や参照に役立つ。","Note that FHIR strings SHALL NOT exceed 1MB in size
-
-FHIR文字列はサイズが1MBを超えてはならないことに注意すること","Humans need additional information to verify a correct location has been identified.
-
-人間は、正しい場所が特定されたことを確認するために追加情報を必要とする。","","","","","","","",,,,,"",,,,"Location.description",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","名前以外の場所を識別するための詳細情報として表示できる場所に関する追加の詳細","場所の説明。場所の検索や参照に役立つ。","FHIR文字列はサイズが1MBを超えてはならないことに注意すること","人間は、正しい場所が特定されたことを確認するために追加情報を必要とする。","","","","","","","",,,,,"",,,,"Location.description",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".playingEntity[classCode=PLC determinerCode=INSTANCE].desc"
 "Location.mode","Location.mode","","","",0,1,"","","Y","code {[]} {[]}
-","instance | kind / インスタンス|種類","Indicates whether a resource instance represents a specific location or a class of locations.
-
-リソースインスタンスが特定の場所を表すか、場所のクラスを表すかを示す。","This is labeled as a modifier because whether or not the location is a class of locations changes how it can be used and understood.
-
-ロケーションがロケーションのクラスであるかどうかによって、その使用方法と理解方法が変わるため、これは修飾子としてラベル付けされる。","When using a Location resource for scheduling or orders, we need to be able to refer to a class of Locations instead of a specific Location.
-
-スケジュールや順番に場所リソースを使用する場合、特定の場所ではなく場所のクラスを参照できる必要がある。","","","","","","","",,"required","「リソースインスタンスが特定の場所を表すのか、場所のクラスを表すのかを示します。」","http://hl7.org/fhir/ValueSet/location-mode|4.0.1","",,,,"Location.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","instance | kind / インスタンス|種類","リソースインスタンスが特定の場所を表すか、場所のクラスを表すかを示す。","ロケーションがロケーションのクラスであるかどうかによって、その使用方法と理解方法が変わるため、これは修飾子としてラベル付けされる。","スケジュールや順番に場所リソースを使用する場合、特定の場所ではなく場所のクラスを参照できる必要がある。","","","","","","","",,"required","「リソースインスタンスが特定の場所を表すのか、場所のクラスを表すのかを示します。」","http://hl7.org/fhir/ValueSet/location-mode|4.0.1","",,,,"Location.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".playingEntity[classCode=PLC].determinerCode","FiveWs.class"
 "Location.type","Location.type","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
-","Type of function performed / 実行される機能のタイプ","Indicates the type of function performed at the location.
-
-その場所で実行される機能のタイプを示す。","Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.
-
-すべての用語の使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と前後の調整間の関係を管理するための独自の構造を提供する必要がある。","","","","","","","","",,"extensible","「場所で行われる機能のタイプを示します。」(Basho de okonawareru kinou no taipu wo shimesu.)","http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType","",,,,"Location.type",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","実行される機能のタイプ","その場所で実行される機能のタイプを示す。","すべての用語の使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と前後の調整間の関係を管理するための独自の構造を提供する必要がある。","","","","","","","","",,"extensible","「場所で行われる機能のタイプを示します。」(Basho de okonawareru kinou no taipu wo shimesu.)","http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType","",,,,"Location.type",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".code","FiveWs.class"
 "Location.telecom","Location.telecom","","","",0,*,"","","","ContactPoint {[]} {[]}
-","Contact details of the location / 所在地の連絡先","The contact details of communication devices available at the location. This can include phone numbers, fax numbers, mobile numbers, email addresses and web sites.
-
-その場所で利用可能な通信機器の連絡先。これには、電話番号、ファックス番号、携帯電話番号、電子メールアドレス、ウェブサイトなどが含まれる。","","","","","","","","","",,,,,"",,,,"Location.telecom",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","所在地の連絡先","その場所で利用可能な通信機器の連絡先。これには、電話番号、ファックス番号、携帯電話番号、電子メールアドレス、ウェブサイトなどが含まれる。","","","","","","","","","",,,,,"",,,,"Location.telecom",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".telecom"
 "Location.address","Location.address","","","",0,1,"","","","Address {[]} {[]}
-","Physical location / 物理的な場所","Physical location.
-
-物理的な場所。","Additional addresses should be recorded using another instance of the Location resource, or via the Organization.
-
-追加のアドレスは、Location リソースの別のインスタンスを使用して記録するか、Organization を介して記録する必要がある。","If locations can be visited, we need to keep track of their address.
-
-場所が訪問できる場合は、住所を把握しておく必要がある。","","","","","","","",,,,,"",,,,"Location.address",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","物理的な場所","物理的な場所。","追加のアドレスは、Location リソースの別のインスタンスを使用して記録するか、Organization を介して記録する必要がある。","場所が訪問できる場合は、住所を把握しておく必要がある。","","","","","","","",,,,,"",,,,"Location.address",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".addr"
 "Location.physicalType","Location.physicalType","","","",0,1,"","","Y","CodeableConcept {[]} {[]}
-","Physical form of the location / 場所の物理的な形態","Physical form of the location, e.g. building, room, vehicle, road.
-
-場所の物理的な形、例えば建物、部屋、車両、道路。","Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.
-
-すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。","For purposes of showing relevant locations in queries, we need to categorize locations.
-
-クエリで関連する場所を表示するためには、場所を分類する必要がある。","","","","","","","",,"example","場所の実体形態。","http://hl7.org/fhir/ValueSet/location-physical-type","",,,,"Location.physicalType",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","場所の物理的な形態","場所の物理的な形、例えば建物、部屋、車両、道路。","すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。","クエリで関連する場所を表示するためには、場所を分類する必要がある。","","","","","","","",,"example","場所の実体形態。","http://hl7.org/fhir/ValueSet/location-physical-type","",,,,"Location.physicalType",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".playingEntity [classCode=PLC].code","FiveWs.class"
 "Location.position","Location.position","","","",0,1,"","","","BackboneElement {[]} {[]}
-","The absolute geographic location / 絶対的な地理的位置","The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).
-
-WGS84 データム（KML で使用されている座標系と同じ）を用いて表現された Location の絶対地理的位置。","","For mobile applications and automated route-finding knowing the exact location of the Location is required.
-
-モバイルアプリケーションや自動化されたルート検索では、位置情報の正確な位置を知る必要がある。","","","","","","","",,,,,"",,,,"Location.position",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","絶対的な地理的位置","WGS84 データム（KML で使用されている座標系と同じ）を用いて表現された Location の絶対地理的位置。","","モバイルアプリケーションや自動化されたルート検索では、位置情報の正確な位置を知る必要がある。","","","","","","","",,,,,"",,,,"Location.position",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".playingEntity [classCode=PLC determinerCode=INSTANCE].positionText"
 "Location.position.id","Location.position.id","","","",0,1,"","","","string {[]} {[]}
 ","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
@@ -138,52 +78,22 @@ user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
 修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。」","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ext-1:「拡張機能または値[x]のいずれかが必要です。両方ではありません。」 {extension.exists() != value.exists()}","N/A"
 "Location.position.longitude","Location.position.longitude","","","",1,1,"","","","decimal {[]} {[]}
-","Longitude with WGS84 datum / WGS84データの経度","Longitude. The value domain and the interpretation are the same as for the text of the longitude element in KML (see notes below).
-
-経度。値の領域及び解釈は、KML の longitude 要素のテキストと同様である（後述）。","Do not use an IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (e.g. Java BigInteger)
-
-IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。","","","","","","","","",,,,,"",,,,"Location.position.longitude",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","WGS84データの経度","経度。値の領域及び解釈は、KML の longitude 要素のテキストと同様である（後述）。","IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。","","","","","","","","",,,,,"",,,,"Location.position.longitude",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","(RIM Opted not to map the sub-elements of GPS location, is now an OBS)"
 "Location.position.latitude","Location.position.latitude","","","",1,1,"","","","decimal {[]} {[]}
-","Latitude with WGS84 datum / WGS84データの緯度","Latitude. The value domain and the interpretation are the same as for the text of the latitude element in KML (see notes below).
-
-緯度。値領域及び解釈は、KML の latitude 要素のテキストと同様である（後述）。","Do not use an IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (e.g. Java BigInteger)
-
-IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。","","","","","","","","",,,,,"",,,,"Location.position.latitude",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","WGS84データの緯度","緯度。値領域及び解釈は、KML の latitude 要素のテキストと同様である（後述）。","IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。","","","","","","","","",,,,,"",,,,"Location.position.latitude",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","(RIM Opted not to map the sub-elements of GPS location, is now an OBS)"
 "Location.position.altitude","Location.position.altitude","","","",0,1,"","","","decimal {[]} {[]}
-","Altitude with WGS84 datum / WGS84データによる高度","Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML (see notes below).
-
-高度。値領域及び解釈は、KML の altitude 要素のテキストと同様である（後述）。","Do not use an IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (e.g. Java BigInteger)
-
-IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。","","","","","","","","",,,,,"",,,,"Location.position.altitude",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","WGS84データによる高度","高度。値領域及び解釈は、KML の altitude 要素のテキストと同様である（後述）。","IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。","","","","","","","","",,,,,"",,,,"Location.position.altitude",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","(RIM Opted not to map the sub-elements of GPS location, is now an OBS)"
 "Location.managingOrganization","Location.managingOrganization","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
-","Organization responsible for provisioning and upkeep / プロビジョニングと維持管理を担当する組織","The organization responsible for the provisioning and upkeep of the location.
-
-場所のプロビジョニングと維持管理を担当する組織。","This can also be used as the part of the organization hierarchy where this location provides services. These services can be defined through the HealthcareService resource.
-
-これは、この場所がサービスを提供する組織階層の一部として使用することもできる。これらのサービスは、HealthcareServiceリソースを介して定義することができる。","Need to know who manages the location.
-
-場所を管理している人を知る必要がある。","","","","","","","",,,,,"",,,,"Location.managingOrganization",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","プロビジョニングと維持管理を担当する組織","場所のプロビジョニングと維持管理を担当する組織。","これは、この場所がサービスを提供する組織階層の一部として使用することもできる。これらのサービスは、HealthcareServiceリソースを介して定義することができる。","場所を管理している人を知る必要がある。","","","","","","","",,,,,"",,,,"Location.managingOrganization",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".scopingEntity[classCode=ORG determinerKind=INSTANCE]"
 "Location.partOf","Location.partOf","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location]]}
-","Another Location this one is physically a part of / この場所が物理的に存在するもう一つの場所","Another Location of which this Location is physically a part of.
-
-この場所が物理的に存在するもう一つの場所。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
-
-参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","For purposes of location, display and identification, knowing which locations are located within other locations is important.
-
-位置情報、表示、識別のためには、他のどの場所の内部にどの場所があるかを知ることが重要である。","","","","","","","",,,,,"",,,,"Location.partOf",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","この場所が物理的に存在するもう一つの場所","この場所が物理的に存在するもう一つの場所。","参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","位置情報、表示、識別のためには、他のどの場所の内部にどの場所があるかを知ることが重要である。","","","","","","","",,,,,"",,,,"Location.partOf",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".inboundLink[typeCode=PART].source[classCode=SDLC]"
 "Location.hoursOfOperation","Location.hoursOfOperation","","","",0,*,"","","","BackboneElement {[]} {[]}
-","What days/times during a week is this location usually open / この場所は通常、1週間のうち何日/時間帯に営業している","What days/times during a week is this location usually open.
-
-この場所が週に何日あるいは何時間オープンしているか。","This type of information is commonly found published in directories and on websites informing customers when the facility is available.
-
-Specific services within the location may have their own hours which could be shorter (or longer) than the locations hours.
-
-この種の情報は、一般的にディレクトリやウェブサイトに掲載されており、施設が利用可能な時間帯を顧客に通知している。
+","この場所は通常、1週間のうち何日/時間帯に営業している","この場所が週に何日あるいは何時間オープンしているか。","この種の情報は、一般的にディレクトリやウェブサイトに掲載されており、施設が利用可能な時間帯を顧客に通知している。
 その場所の特定のサービスは、その場所の時間よりも短い（または長い）独自の時間を持っている場合がある。","","","","","","","","",,,,,"",,,,"Location.hoursOfOperation",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".effectiveTime"
 "Location.hoursOfOperation.id","Location.hoursOfOperation.id","","","",0,1,"","","","string {[]} {[]}
@@ -199,39 +109,21 @@ user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
 修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。」","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ext-1:「拡張機能または値[x]のいずれかが必要です。両方ではありません。」 {extension.exists() != value.exists()}","N/A"
 "Location.hoursOfOperation.daysOfWeek","Location.hoursOfOperation.daysOfWeek","","","",0,*,"","","","code {[]} {[]}
-","mon | tue | wed | thu | fri | sat | sun / 月｜火｜水｜木｜金｜土｜日","Indicates which days of the week are available between the start and end Times.
-
-開始時刻と終了時刻の間に利用可能な曜日を示す。","Note that FHIR strings SHALL NOT exceed 1MB in size
-
-FHIR文字列のサイズは1MBを超えてはならないことに注意すること。","","","","","","","","",,"required","曜日 (Youbi)","http://hl7.org/fhir/ValueSet/days-of-week|4.0.1","",,,,"Location.hoursOfOperation.daysOfWeek",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","mon | tue | wed | thu | fri | sat | sun / 月｜火｜水｜木｜金｜土｜日","開始時刻と終了時刻の間に利用可能な曜日を示す。","FHIR文字列のサイズは1MBを超えてはならないことに注意すること。","","","","","","","","",,"required","曜日 (Youbi)","http://hl7.org/fhir/ValueSet/days-of-week|4.0.1","",,,,"Location.hoursOfOperation.daysOfWeek",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".effectiveTime"
 "Location.hoursOfOperation.allDay","Location.hoursOfOperation.allDay","","","",0,1,"","","","boolean {[]} {[]}
-","The Location is open all day / その場所は終日営業している","The Location is open all day.
-
-その場所は終日営業している。","","","","","","","","","",,,,,"",,,,"Location.hoursOfOperation.allDay",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","その場所は終日営業している","その場所は終日営業している。","","","","","","","","","",,,,,"",,,,"Location.hoursOfOperation.allDay",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".effectiveTime"
 "Location.hoursOfOperation.openingTime","Location.hoursOfOperation.openingTime","","","",0,1,"","","","time {[]} {[]}
-","Time that the Location opens / 場所が開く時間","Time that the Location opens.
-
-場所が開く時間","","","","","","","","","",,,,,"",,,,"Location.hoursOfOperation.openingTime",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","場所が開く時間","場所が開く時間","","","","","","","","","",,,,,"",,,,"Location.hoursOfOperation.openingTime",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".effectiveTime"
 "Location.hoursOfOperation.closingTime","Location.hoursOfOperation.closingTime","","","",0,1,"","","","time {[]} {[]}
-","Time that the Location closes / 場所が閉まる時間","Time that the Location closes.
-
-場所が閉まる時間","","","","","","","","","",,,,,"",,,,"Location.hoursOfOperation.closingTime",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","場所が閉まる時間","場所が閉まる時間","","","","","","","","","",,,,,"",,,,"Location.hoursOfOperation.closingTime",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".effectiveTime"
 "Location.availabilityExceptions","Location.availabilityExceptions","","","",0,1,"","","","string {[]} {[]}
-","Description of availability exceptions / 利用可能の例外についての説明","A description of when the locations opening ours are different to normal, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as detailed in the opening hours Times.
-
-場所が私たちのものを開くときの説明は、通常、例えば、祝日の可用性とは異なる。
+","利用可能の例外についての説明","場所が私たちのものを開くときの説明は、通常、例えば、祝日の可用性とは異なる。
 営業時間に詳細な通常のサイトの利用可能性のすべての可能性のある例外を簡潔に説明する。","","","","","","","","","",,,,,"",,,,"Location.availabilityExceptions",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","n/a"
 "Location.endpoint","Location.endpoint","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Endpoint]]}
-","Technical endpoints providing access to services operated for the location / 場所のために運営されているサービスへのアクセスを提供する技術的なエンドポイント","Technical endpoints providing access to services operated for the location.
-
-場所のために運営されているサービスへのアクセスを提供する技術的なエンドポイント。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.
-
-参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","Organizations may have different systems at different locations that provide various services and need to be able to define the technical connection details for how to connect to them, and for what purpose.
-
-組織は、さまざまなサービスを提供するさまざまな場所に異なるシステムを持っている可能性があり、それらに接続する方法や目的のための技術的な接続の詳細を定義できる必要がある。","","","","","","","",,,,,"",,,,"Location.endpoint",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","場所のために運営されているサービスへのアクセスを提供する技術的なエンドポイント","場所のために運営されているサービスへのアクセスを提供する技術的なエンドポイント。","参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","組織は、さまざまなサービスを提供するさまざまな場所に異なるシステムを持っている可能性があり、それらに接続する方法や目的のための技術的な接続の詳細を定義できる必要がある。","","","","","","","",,,,,"",,,,"Location.endpoint",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","n/a"

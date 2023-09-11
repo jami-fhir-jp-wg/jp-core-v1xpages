@@ -60,8 +60,8 @@
   <snapshot>
     <element id="Organization">
       <path value="Organization"/>
-      <short value="A grouping of people or organizations with a common purpose/共通の目的を持った人や組織の集まり【詳細参照】"/>
-      <definition value="A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc.&#xD;&#xA;&#xD;&#xA;集団行動の何らかの形での達成を目的として結成された、正式または非公式に認められた人々または組織のグループ。企業、機関、企業、部門、コミュニティグループ、医療実践グループ、支払者/保険者などが含まれる。"/>
+      <short value="共通の目的を持った人や組織の集まり【詳細参照】"/>
+      <definition value="集団行動の何らかの形での達成を目的として結成された、正式または非公式に認められた人々または組織のグループ。企業、機関、企業、部門、コミュニティグループ、医療実践グループ、支払者/保険者などが含まれる。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -513,10 +513,10 @@
         </discriminator>
         <rules value="open"/>
       </slicing>
-      <short value="Identifies this organization  across multiple systems/複数のシステムでこの組織を識別【詳細参照】"/>
-      <definition value="Identifier for the organization that is used to identify the organization across multiple disparate systems.&#xD;&#xA;&#xD;&#xA;複数の異種システムにまたがって組織を識別するための識別子"/>
+      <short value="複数のシステムでこの組織を識別【詳細参照】"/>
+      <definition value="複数の異種システムにまたがって組織を識別するための識別子"/>
       <comment value="福祉医療関連施設と保険者組織はSlicingについてはJP Coreにて定義を行なっているため、定義に従いデータを格納すること。それ以外の組織については、利用する際には必要に応じて識別子を定義を行なうこと。"/>
-      <requirements value="Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.&#xD;&#xA;&#xD;&#xA;組織は様々な ID で知られている。いくつかの機関では複数のIDを保持しており、ほとんどの機関では、組織に関する他の組織との交換のためにIDを収集している。"/>
+      <requirements value="組織は様々な ID で知られている。いくつかの機関では複数のIDを保持しており、ほとんどの機関では、組織に関する他の組織との交換のためにIDを収集している。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -630,7 +630,7 @@
     </element>
     <element id="Organization.identifier.use">
       <path value="Organization.identifier.use"/>
-      <short value="通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)"/>
+      <short value="通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)"/>
       <definition value="この識別子の目的。 / The purpose of this identifier."/>
       <comment value="アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary."/>
       <requirements value="特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers."/>
@@ -991,7 +991,7 @@
     </element>
     <element id="Organization.identifier:medicalInstitutionCode.use">
       <path value="Organization.identifier.use"/>
-      <short value="通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)"/>
+      <short value="通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)"/>
       <definition value="この識別子の目的。 / The purpose of this identifier."/>
       <comment value="アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary."/>
       <requirements value="特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers."/>
@@ -1353,7 +1353,7 @@
     </element>
     <element id="Organization.identifier:insurerNumber.use">
       <path value="Organization.identifier.use"/>
-      <short value="通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)"/>
+      <short value="通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)"/>
       <definition value="この識別子の目的。 / The purpose of this identifier."/>
       <comment value="アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary."/>
       <requirements value="特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers."/>
@@ -1597,10 +1597,10 @@
     </element>
     <element id="Organization.active">
       <path value="Organization.active"/>
-      <short value="Whether the organization's record is still in active use / 組織の記録がまだ有効に使われているかどうか【詳細参照】"/>
-      <definition value="Whether the organization's record is still in active use.&#xD;&#xA;&#xD;&#xA;組織の記録がまだ現役であるかどうか。"/>
-      <comment value="This active flag is not intended to be used to mark an organization as temporarily closed or under construction. Instead the Location(s) within the Organization should have the suspended status. If further details of the reason for the suspension are required, then an extension on this element should be used.&#xA;&#xA;This element is labeled as a modifier because it may be used to mark that the resource was created in error.&#xD;&#xA;&#xD;&#xA;このアクティブフラグは、組織を一時的に閉鎖したり、工事中であることを示すために使用されることを意図していない。代わりに、組織内の場所(複数可)は、中断されたステータスを持っている必要がある。一時停止の理由の詳細が必要な場合は、この要素の拡張子を使用する必要がある。&#xD;&#xA;&#xD;&#xA;この要素は、リソースがエラーで作成されたことをマークするために使用される可能性があるため、修飾子としてラベル付けされている。"/>
-      <requirements value="Need a flag to indicate a record is no longer to be used and should generally be hidden for the user in the UI.&#xD;&#xA;&#xD;&#xA;レコードが使用されなくなったことを示すためのフラグが必要で、一般的にUIではユーザのために非表示にする必要がある。"/>
+      <short value="組織の記録がまだ有効に使われているかどうか【詳細参照】"/>
+      <definition value="このアクティブフラグは、組織を一時的に閉鎖したり、工事中であることを示すために使用されることを意図していない。代わりに、組織内の場所(複数可)は、中断されたステータスを持っている必要がある。一時停止の理由の詳細が必要な場合は、この要素の拡張子を使用する必要がある。&#xD;&#xA;&#xD;&#xA;この要素は、リソースがエラーで作成されたことをマークするために使用される可能性があるため、修飾子としてラベル付けされている。"/>
+      <comment value="このアクティブなフラグは、組織を一時的に閉鎖したり、建設中のマークとして使用するために意図されていません。代わりに、組織内の場所に中断ステータスを設定する必要があります。中断の理由の詳細が必要な場合は、この要素の拡張機能を使用する必要があります。&#xA;&#xA;この要素は修飾子としてラベル付けされています。これは、リソースが誤って作成されたことを示すために使用できるためです。"/>
+      <requirements value="レコードが使用されなくなったことを示すためのフラグが必要で、一般的にUIではユーザのために非表示にする必要がある。"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1642,10 +1642,10 @@
     </element>
     <element id="Organization.type">
       <path value="Organization.type"/>
-      <short value="Kind of organization / 組織の種類【詳細参照】"/>
-      <definition value="The kind(s) of organization that this is.&#xD;&#xA;&#xD;&#xA;その種類の組織。"/>
-      <comment value="Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes&#xA;&#xA;When considering if multiple types are appropriate, you should evaluate if child organizations would be a more appropriate use of the concept, as different types likely are in different sub-areas of the organization. This is most likely to be used where type values have orthogonal values, such as a religious, academic and medical center.&#xA;&#xA;We expect that some jurisdictions will profile this optionality to be a single cardinality.&#xD;&#xA;&#xD;&#xA;組織は、企業、病棟、セクション、臨床チーム、政府部門などにすることができる。多くのアプリケーションでは、コードは、特定の組織を識別するために使用されている（と言う、病棟）別の同じタイプのものとは対照的に - これらは識別子ではなく、コードである。&#xD;&#xA;&#xD;&#xA;複数のタイプが適切かどうかを検討する際には、異なるタイプが組織の異なるサブ領域に存在する可能性が高いため、子どもの組織の方がより適切な使用法であるかどうかを評価する必要がある。これは、宗教、学術、医療センターのように、タイプの価値観が直交する場合に使用される可能性が高い。&#xD;&#xA;&#xD;&#xA;いくつかの法域では、このオプション性を単一のカーディナリティとしてプロファイルすると予想される。"/>
-      <requirements value="Need to be able to track the kind of organization that this is - different organization types have different uses.&#xD;&#xA;&#xD;&#xA;これがある組織の種類を追跡することができる必要がある - 異なる組織の種類は、異なる用途を持っている。"/>
+      <short value="組織の種類【詳細参照】"/>
+      <definition value="その種類の組織。"/>
+      <comment value="n組織は、企業、病棟、セクション、臨床チーム、政府部門などにすることができる。多くのアプリケーションでは、コードは、特定の組織を識別するために使用されている（と言う、病棟）別の同じタイプのものとは対照的に - これらは識別子ではなく、コードである。&#xD;&#xA;&#xD;&#xA;複数のタイプが適切かどうかを検討する際には、異なるタイプが組織の異なるサブ領域に存在する可能性が高いため、子どもの組織の方がより適切な使用法であるかどうかを評価する必要がある。これは、宗教、学術、医療センターのように、タイプの価値観が直交する場合に使用される可能性が高い。&#xD;&#xA;&#xD;&#xA;いくつかの法域では、このオプション性を単一のカーディナリティとしてプロファイルすると予想される。"/>
+      <requirements value="これがある組織の種類を追跡することができる必要がある - 異なる組織の種類は、異なる用途を持っている。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -1693,10 +1693,10 @@
     </element>
     <element id="Organization.name">
       <path value="Organization.name"/>
-      <short value="Name used for the organization / 組織に使用されている名称【詳細参照】"/>
-      <definition value="A name associated with the organization.&#xD;&#xA;&#xD;&#xA;組織に関連付けられた名前。"/>
-      <comment value="If the name of an organization changes, consider putting the old name in the alias column so that it can still be located through searches.&#xD;&#xA;&#xD;&#xA;組織名が変更された場合は、旧名称をエイリアス欄に入れて検索で見つけられるようにすることを検討すべきである。"/>
-      <requirements value="Need to use the name as the label of the organization.&#xD;&#xA;&#xD;&#xA;組織のラベルとして名前を使用する必要がある。"/>
+      <short value="組織に使用されている名称【詳細参照】"/>
+      <definition value="組織に関連付けられた名前。"/>
+      <comment value="組織名が変更された場合は、旧名称をエイリアス欄に入れて検索で見つけられるようにすることを検討すべきである。"/>
+      <requirements value="組織のラベルとして名前を使用する必要がある。"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1733,10 +1733,10 @@
     </element>
     <element id="Organization.alias">
       <path value="Organization.alias"/>
-      <short value="A list of alternate names that the organization is known as, or was known as in the past / 組織が知られている、または過去に知られていた別名のリスト【詳細参照】"/>
-      <definition value="A list of alternate names that the organization is known as, or was known as in the past.&#xD;&#xA;&#xD;&#xA;組織がその名で知られている、または過去にその名で知られていた代替名のリスト。"/>
-      <comment value="There are no dates associated with the alias/historic names, as this is not intended to track when names were used, but to assist in searching so that older names can still result in identifying the organization.&#xD;&#xA;&#xD;&#xA;これは、名前がいつ使用されたかを追跡することを目的としたものではなく、古い名前でも組織を特定できるように検索を支援することを目的としているため、別名や歴史的な名前に関連付けられた日付はない。"/>
-      <requirements value="Over time locations and organizations go through many changes and can be known by different names.&#xA;&#xA;For searching knowing previous names that the organization was known by can be very useful.&#xD;&#xA;&#xD;&#xA;時間の経過とともに、場所や組織はさまざまな変化を経て、さまざまな名前で知ることができる。&#xD;&#xA;&#xD;&#xA;組織が知っている前の名前を知るための検索には、非常に便利なことができる。"/>
+      <short value="組織が知られている、または過去に知られていた別名のリスト【詳細参照】"/>
+      <definition value="組織がその名で知られている、または過去にその名で知られていた代替名のリスト。"/>
+      <comment value="これは、名前がいつ使用されたかを追跡することを目的としたものではなく、古い名前でも組織を特定できるように検索を支援することを目的としているため、別名や歴史的な名前に関連付けられた日付はない。"/>
+      <requirements value="時間の経過とともに、場所や組織はさまざまな変化を経て、さまざまな名前で知ることができる。&#xD;&#xA;&#xD;&#xA;組織が知っている前の名前を知るための検索には、非常に便利なことができる。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -1764,10 +1764,10 @@
     </element>
     <element id="Organization.telecom">
       <path value="Organization.telecom"/>
-      <short value="A contact detail for the organization / 組織の連絡先詳細【詳細参照】"/>
-      <definition value="A contact detail for the organization.&#xD;&#xA;&#xD;&#xA;組織の連絡先詳細"/>
-      <comment value="The use code 'home' is not to be used. Note that these contacts are not the contact details of people who are employed by or represent the organization, but official contacts for the organization itself.&#xD;&#xA;&#xD;&#xA;使用コード「home」は使用しないこと。これらの連絡先は、組織に雇用されている人や組織を代表する人の連絡先ではなく、組織自体の公式な連絡先であることに注意すること。"/>
-      <requirements value="Human contact for the organization.&#xD;&#xA;&#xD;&#xA;組織のヒューマンコンタクト。"/>
+      <short value="組織の連絡先詳細【詳細参照】"/>
+      <definition value="組織の連絡先詳細"/>
+      <comment value="使用コード「home」は使用しないこと。これらの連絡先は、組織に雇用されている人や組織を代表する人の連絡先ではなく、組織自体の公式な連絡先であることに注意すること。"/>
+      <requirements value="組織のヒューマンコンタクト。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -1810,12 +1810,291 @@
         <map value="./ContactPoints"/>
       </mapping>
     </element>
+    <element id="Organization.telecom.id">
+      <path value="Organization.telecom.id"/>
+      <representation value="xmlAttr"/>
+      <short value="エレメント相互参照のためのユニークID"/>
+      <definition value="リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。"/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Element.id"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+    </element>
+    <element id="Organization.telecom.extension">
+      <path value="Organization.telecom.extension"/>
+      <slicing>
+        <discriminator>
+          <type value="value"/>
+          <path value="url"/>
+        </discriminator>
+        <description value="拡張子は常にURLで切り片にされます。"/>
+        <rules value="open"/>
+      </slicing>
+      <short value="実装によって定義される追加コンテンツ"/>
+      <definition value="「要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。」"/>
+      <comment value="どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。"/>
+      <alias value="extensions"/>
+      <alias value="user content"/>
+      <min value="0"/>
+      <max value="*"/>
+      <base>
+        <path value="Element.extension"/>
+        <min value="0"/>
+        <max value="*"/>
+      </base>
+      <type>
+        <code value="Extension"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <constraint>
+        <key value="ext-1"/>
+        <severity value="error"/>
+        <human value="「拡張機能または値[x]のいずれかが必要です。両方ではありません。」"/>
+        <expression value="extension.exists() != value.exists()"/>
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+    </element>
+    <element id="Organization.telecom.system">
+      <path value="Organization.telecom.system"/>
+      <short value="phone | fax | email | pager | url | sms | other 【JP_Patient.telecomを参照。】"/>
+      <definition value="連絡先用通信フォーム - どの通信システムを使用するには接点が必要ですか。"/>
+      <comment value="連絡先の種別をValueSet(ContactPointSystem)より選択する。  　- phone : 電話　- fax : Fax 　- email : 電子メール　- pager : ポケットベル　- url : 電話、ファックス、ポケットベル、または電子メールアドレスではなく、URLとして表される連絡先。これはWebサイト、ブログ、Skype、Twitter、Facebookなどのさまざまな機関または個人の連絡先を対象としている。電子メールアドレスには使用しないこと。　- sms : SMSメッセージの送信に使用できる連絡先（携帯電話、一部の固定電話など）  　- other : 電話、Fax、ポケットベル、または電子メールアドレスではなく、URLとして表現できない連絡先。例：内部メールアドレス。これは、URLとして表現できる連絡先（Skype、Twitter、Facebookなど）には使用しないこと。"/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="ContactPoint.system"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="code"/>
+      </type>
+      <condition value="cpt-2"/>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="ContactPointSystem"/>
+        </extension>
+        <strength value="required"/>
+        <description value="「連絡先のための通信フォーム。」"/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/contact-point-system|4.0.1"/>
+      </binding>
+      <mapping>
+        <identity value="v2"/>
+        <map value="XTN.3"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="./scheme"/>
+      </mapping>
+      <mapping>
+        <identity value="servd"/>
+        <map value="./ContactPointType"/>
+      </mapping>
+    </element>
+    <element id="Organization.telecom.value">
+      <path value="Organization.telecom.value"/>
+      <short value="実際の連絡先の詳細"/>
+      <definition value="指定されたコミュニケーションシステムに意味がある形式での実際の連絡先の詳細（電話番号または電子メールアドレス）を提供してください。"/>
+      <comment value="連絡先の番号やメールアドレス"/>
+      <requirements value="Need to support legacy numbers that are not in a tightly controlled format."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="ContactPoint.value"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="string"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="XTN.1 (or XTN.12)"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="./url"/>
+      </mapping>
+      <mapping>
+        <identity value="servd"/>
+        <map value="./Value"/>
+      </mapping>
+    </element>
+    <element id="Organization.telecom.use">
+      <path value="Organization.telecom.use"/>
+      <short value="work | temp | old | mobile - 連絡先の用途等 【JP_Patient.telecomを参照。】homeは使用しないこと。"/>
+      <definition value="「接点の目的を特定する。」(Setten no mokuteki wo tokutei suru.)"/>
+      <comment value="患者の連絡先の種別をValueSet(ContactPointUse)より選択する。  一時的なものまたは古いものであると明示しない限り、連絡先が最新とみなされる。&#xA;　- work : 職場&#xA;　- temp : 一時的&#xA;　- old : 以前の&#xA;　- mobile : モバイル機器"/>
+      <requirements value="Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="ContactPoint.use"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="code"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="true"/>
+      <isModifierReason value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old contact etc.for a current/permanent one"/>
+      <isSummary value="true"/>
+      <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="ContactPointUse"/>
+        </extension>
+        <strength value="required"/>
+        <description value="「接点の使用。」(Setten no shiyō.)"/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/contact-point-use|4.0.1"/>
+      </binding>
+      <mapping>
+        <identity value="v2"/>
+        <map value="XTN.2 - but often indicated by field"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="unique(./use)"/>
+      </mapping>
+      <mapping>
+        <identity value="servd"/>
+        <map value="./ContactPointPurpose"/>
+      </mapping>
+    </element>
+    <element id="Organization.telecom.rank">
+      <path value="Organization.telecom.rank"/>
+      <short value="「使用の優先順位を指定してください（1が最も優先度が高い）」"/>
+      <definition value="「一連のコンタクトを使う上で好ましい順序を指定します。ランク値が低いContactPointsの方が、ランク値が高いものよりも優先されます。」"/>
+      <comment value="連絡先の使用順序（1 = 最高）"/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="ContactPoint.rank"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="positiveInt"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="n/a"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+    </element>
+    <element id="Organization.telecom.period">
+      <path value="Organization.telecom.period"/>
+      <short value="「コンタクトポイントが使用されている時間帯」"/>
+      <definition value="「接点が使用されていた/現在使用中である時間期間」"/>
+      <comment value="連絡先が使用されていた/されている期間"/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="ContactPoint.period"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="Period"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="N/A"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]"/>
+      </mapping>
+      <mapping>
+        <identity value="servd"/>
+        <map value="./StartDate and ./EndDate"/>
+      </mapping>
+    </element>
     <element id="Organization.address">
       <path value="Organization.address"/>
-      <short value="An address for the organization / 組織の住所【詳細参照】"/>
-      <definition value="An address for the organization.&#xD;&#xA;&#xD;&#xA;組織の住所"/>
-      <comment value="Organization may have multiple addresses with different uses or applicable periods. The use code 'home' is not to be used.&#xD;&#xA;&#xD;&#xA;組織は、用途や適用期間が異なる複数の住所を持っている場合がある。使用コード「home」は使用しないこと。"/>
-      <requirements value="May need to keep track of the organization's addresses for contacting, billing or reporting requirements.&#xD;&#xA;&#xD;&#xA;連絡、請求、または報告のために、組織のアドレスを追跡する必要がある場合がある。"/>
+      <short value="組織の住所【詳細参照】"/>
+      <definition value="組織の住所"/>
+      <comment value="組織は、用途や適用期間が異なる複数の住所を持っている場合がある。使用コード「home」は使用しないこと。"/>
+      <requirements value="連絡、請求、または報告のために、組織のアドレスを追跡する必要がある場合がある。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -1858,11 +2137,526 @@
         <map value="./PrimaryAddress and ./OtherAddresses"/>
       </mapping>
     </element>
+    <element id="Organization.address.id">
+      <path value="Organization.address.id"/>
+      <representation value="xmlAttr"/>
+      <short value="要素間参照のための一意のID / Unique id for inter-element referencing"/>
+      <definition value="リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Element.id"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+    </element>
+    <element id="Organization.address.extension">
+      <path value="Organization.address.extension"/>
+      <slicing>
+        <discriminator>
+          <type value="value"/>
+          <path value="url"/>
+        </discriminator>
+        <description value="Extensions are always sliced by (at least) url"/>
+        <rules value="open"/>
+      </slicing>
+      <short value="実装で定義された追加のコンテンツ / Additional content defined by implementations"/>
+      <definition value="要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
+      <comment value="拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
+      <alias value="extensions"/>
+      <alias value="user content"/>
+      <min value="0"/>
+      <max value="*"/>
+      <base>
+        <path value="Element.extension"/>
+        <min value="0"/>
+        <max value="*"/>
+      </base>
+      <type>
+        <code value="Extension"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <constraint>
+        <key value="ext-1"/>
+        <severity value="error"/>
+        <human value="両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both"/>
+        <expression value="extension.exists() != value.exists()"/>
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+    </element>
+    <element id="Organization.address.use">
+      <path value="Organization.address.use"/>
+      <short value="work | temp | old | billing - purpose of this address　住所の用途 【JP_Patient.address参照】使用コード「home」は使用しない。"/>
+      <definition value="The purpose of this address.&#xD;&#xA;住所の用途"/>
+      <comment value="住所の用途をValueSet(AddressUse)より選択する。  &#xA;- work : 職場&#xA;- temp : 一時的&#xA;- old : 以前の&#xA;- billing : 請求書、インボイス、領収書などの送付用"/>
+      <requirements value="多くのリストから適切なアドレスを選択できるようにします。 / Allows an appropriate address to be chosen from a list of many."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Address.use"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="code"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="true"/>
+      <isModifierReason value="これは、アプリケーションが一時的または古い住所などを間違えないでください。 / This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old address etc.for a current/permanent one"/>
+      <isSummary value="true"/>
+      <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="AddressUse"/>
+        </extension>
+        <strength value="required"/>
+        <description value="アドレスの使用。 / The use of an address."/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/address-use|4.0.1"/>
+      </binding>
+      <mapping>
+        <identity value="v2"/>
+        <map value="XAD.7"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="unique(./use)"/>
+      </mapping>
+      <mapping>
+        <identity value="servd"/>
+        <map value="./AddressPurpose"/>
+      </mapping>
+    </element>
+    <element id="Organization.address.type">
+      <path value="Organization.address.type"/>
+      <short value="postal | physical | both 【JP_Patient.address参照】"/>
+      <definition value="住所（訪問できる住所）と郵送先住所（私書箱や気付住所など）を区別する。ほとんどのアドレスは両方。"/>
+      <comment value="住所の種類をValueSet(AddressType)より選択する。  &#xA;- postal : 郵送先 - 私書箱、気付の住所&#xA;- physical : 訪れることのできる物理的な住所&#xA;- both : postalとphysicalの両方"/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Address.type"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="code"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="AddressType"/>
+        </extension>
+        <strength value="required"/>
+        <description value="アドレスのタイプ（物理 /郵便）。 / The type of an address (physical / postal)."/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/address-type|4.0.1"/>
+      </binding>
+      <mapping>
+        <identity value="v2"/>
+        <map value="XAD.18"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="unique(./use)"/>
+      </mapping>
+      <mapping>
+        <identity value="vcard"/>
+        <map value="address type parameter"/>
+      </mapping>
+    </element>
+    <element id="Organization.address.text">
+      <path value="Organization.address.text"/>
+      <short value="住所のテキスト表現 【JP_Patient.address参照】"/>
+      <definition value="表示するアドレス全体を指定する  &#xA;例：郵便ラベル。これは、特定の部品の代わりに、または特定の部品と同様に提供される場合がある。"/>
+      <comment value="テキスト表現とパーツの両方を提供できる。アドレスを更新するアプリケーションは、テキストとパーツの両方が存在する場合、パーツにないコンテンツはテキストに含まれないようにする必要がある。  &#xA;- 住所を(都道府県や市町村などに)分離して管理していない場合は、textに入れる。  &#xA;- 住所を(都道府県や市町村などに)分離して管理している場合でも、まとめてtextに入れること。  &#xA;- 郵便番号は含めない。  &#xA;&#xA;例：東京都文京区本郷7-3-1"/>
+      <requirements value="レンダリング可能で、不コード化されていないフォーム。 / A renderable, unencoded form."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Address.text"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="string"/>
+      </type>
+      <example>
+        <label value="Jp"/>
+        <valueString value="東京都文京区本郷7-3-1"/>
+      </example>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="XAD.1 + XAD.2 + XAD.3 + XAD.4 + XAD.5 + XAD.6"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="./formatted"/>
+      </mapping>
+      <mapping>
+        <identity value="vcard"/>
+        <map value="address label parameter"/>
+      </mapping>
+    </element>
+    <element id="Organization.address.line">
+      <path value="Organization.address.line"/>
+      <short value="ストリート名や番地など 【JP_Patient.address参照】"/>
+      <definition value="このコンポーネントには、家番号、アパート番号、通りの名前、通りの方向、P.O。が含まれる。ボックス番号、配達のヒント、および同様の住所情報など。"/>
+      <comment value="【JP Core仕様】state要素とcity要素で表現しなかったそのあとの住所部分を番地以降の部分も含めてすべていれる。  &#xA;英数字は半角でも全角でもよい。文字列の前後および途中に空白文字を含めないこと。  &#xA;繰り返し要素が許されているので、区切りを表現したい場合には、複数要素に分けて格納してもよい。  &#xA;&#xA;例：本郷7-3-1  &#xA;例：大字石神９７６  &#xA;例：藤崎町大字藤崎字西村1-2 春山荘201号室"/>
+      <min value="0"/>
+      <max value="*"/>
+      <base>
+        <path value="Address.line"/>
+        <min value="0"/>
+        <max value="*"/>
+      </base>
+      <type>
+        <code value="string"/>
+      </type>
+      <orderMeaning value="The order in which lines should appear in an address label"/>
+      <example>
+        <label value="Jp"/>
+        <valueString value="本郷7-3-1"/>
+      </example>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="XAD.1 + XAD.2 (note: XAD.1 and XAD.2 have different meanings for a company address than for a person address)"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="AD.part[parttype = AL]"/>
+      </mapping>
+      <mapping>
+        <identity value="vcard"/>
+        <map value="street"/>
+      </mapping>
+      <mapping>
+        <identity value="servd"/>
+        <map value="./StreetAddress (newline delimitted)"/>
+      </mapping>
+    </element>
+    <element id="Organization.address.city">
+      <path value="Organization.address.city"/>
+      <short value="市区町村名 【JP_Patient.address参照】"/>
+      <definition value="n市、町、郊外、村、その他のコミュニティまたは配達センターの名前。"/>
+      <comment value="１MBを超えないこと。  【JP Core仕様】郡市区町村部分だけを「郡」「市」「区」「町」「村」などの文字を含めて設定する。 例：文京区"/>
+      <alias value="Municpality"/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Address.city"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="string"/>
+      </type>
+      <example>
+        <label value="Jp"/>
+        <valueString value="文京区"/>
+      </example>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="XAD.3"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="AD.part[parttype = CTY]"/>
+      </mapping>
+      <mapping>
+        <identity value="vcard"/>
+        <map value="locality"/>
+      </mapping>
+      <mapping>
+        <identity value="servd"/>
+        <map value="./Jurisdiction"/>
+      </mapping>
+    </element>
+    <element id="Organization.address.district">
+      <path value="Organization.address.district"/>
+      <short value="地区名 【JP_Patient.address参照】"/>
+      <definition value="管理エリア（郡）の名前。 / The name of the administrative area (county)."/>
+      <comment value="【JP Core仕様】日本の住所では使用しない。"/>
+      <alias value="County"/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Address.district"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="string"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="XAD.9"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="AD.part[parttype = CNT | CPA]"/>
+      </mapping>
+    </element>
+    <element id="Organization.address.state">
+      <path value="Organization.address.state"/>
+      <short value="国の次の地区単位 【JP_Patient.address参照】"/>
+      <definition value="国の主権が制限されている国のサブユニット。日本の場合、都道府県名。"/>
+      <comment value="１MBを超えないこと。  都道府県名。「都」「道」「府」「県」のそれぞれの文字を含める。 例：東京都"/>
+      <alias value="Province"/>
+      <alias value="Territory"/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Address.state"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="string"/>
+      </type>
+      <example>
+        <label value="Jp"/>
+        <valueString value="東京都"/>
+      </example>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="XAD.4"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="AD.part[parttype = STA]"/>
+      </mapping>
+      <mapping>
+        <identity value="vcard"/>
+        <map value="region"/>
+      </mapping>
+      <mapping>
+        <identity value="servd"/>
+        <map value="./Region"/>
+      </mapping>
+    </element>
+    <element id="Organization.address.postalCode">
+      <path value="Organization.address.postalCode"/>
+      <short value="郵便番号 【JP_Patient.address参照】"/>
+      <definition value="郵便サービスによって定義された地域を指定する郵便番号。 / A postal code designating a region defined by the postal service."/>
+      <comment value="郵便番号。日本の郵便番号の場合には3桁数字とハイフン1文字と4桁数字からなる半角８文字、または最初の3桁だけの3文字のいずれかとする。 例：113-8655"/>
+      <alias value="Zip"/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Address.postalCode"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="string"/>
+      </type>
+      <example>
+        <label value="Jp"/>
+        <valueString value="113-8655"/>
+      </example>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="XAD.5"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="AD.part[parttype = ZIP]"/>
+      </mapping>
+      <mapping>
+        <identity value="vcard"/>
+        <map value="code"/>
+      </mapping>
+      <mapping>
+        <identity value="servd"/>
+        <map value="./PostalIdentificationCode"/>
+      </mapping>
+    </element>
+    <element id="Organization.address.country">
+      <path value="Organization.address.country"/>
+      <short value="国名またはISO 3166コード　(ISO 3166 2 or 3文字こーど)"/>
+      <definition value="国-一般的に理解されている、または一般的に受け入れられている国の国名かコード。"/>
+      <comment value="ISO 3166 3文字コードは、人間が読める国名の代わりに使用する。  ISO 3166の2文字または3文字のコード.  日本であれば、jpまたはjpn"/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Address.country"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="string"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="XAD.6"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="AD.part[parttype = CNT]"/>
+      </mapping>
+      <mapping>
+        <identity value="vcard"/>
+        <map value="country"/>
+      </mapping>
+      <mapping>
+        <identity value="servd"/>
+        <map value="./Country"/>
+      </mapping>
+    </element>
+    <element id="Organization.address.period">
+      <path value="Organization.address.period"/>
+      <short value="住所が使用されていた（いる）期間"/>
+      <definition value="住所が使用されていた（いる）期間"/>
+      <comment value="住所が使用されていた/されている期間。 期間は時間の範囲を指定する。使用状況はその期間全体に適用されるか、範囲から1つの値が適用される。  期間は、時間間隔（経過時間の測定値）には使用されない。"/>
+      <requirements value="アドレスを履歴上の文脈に配置できるようにします。 / Allows addresses to be placed in historical context."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Address.period"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="Period"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="XAD.12 / XAD.13 + XAD.14"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]"/>
+      </mapping>
+      <mapping>
+        <identity value="servd"/>
+        <map value="./StartDate and ./EndDate"/>
+      </mapping>
+    </element>
     <element id="Organization.partOf">
       <path value="Organization.partOf"/>
-      <short value="The organization of which this organization forms a part【詳細参照】"/>
-      <definition value="The organization of which this organization forms a part.&#xD;&#xA;この組織が一部を構成する組織"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
+      <short value="【詳細参照】"/>
+      <definition value="この組織が一部を構成する組織"/>
+      <comment value="参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
       <requirements value="Need to be able to track the hierarchy of organizations within an organization."/>
       <min value="0"/>
       <max value="1"/>
@@ -1903,10 +2697,10 @@
     </element>
     <element id="Organization.contact">
       <path value="Organization.contact"/>
-      <short value="Contact for the organization for a certain purpose　特定の目的のための組織の連絡先【詳細参照】"/>
-      <definition value="Contact for the organization for a certain purpose.&#xD;&#xA;特定の目的のための組織の連絡先"/>
-      <comment value="Where multiple contacts for the same purpose are provided there is a standard extension that can be used to determine which one is the preferred contact to use.&#xD;&#xA;同じ目的で複数の連絡先が提供されている場合、どの連絡先を使用するのが好ましいかを判断するために使用できる標準の拡張extension がある。"/>
-      <requirements value="Need to keep track of assigned contact points within bigger organization.&#xD;&#xA;より大きな組織内で割り当てられた連絡先を追跡する必要がある。"/>
+      <short value="特定の目的のための組織の連絡先【詳細参照】"/>
+      <definition value="特定の目的のための組織の連絡先"/>
+      <comment value="同じ目的で複数の連絡先が提供されている場合、どの連絡先を使用するのが好ましいかを判断するために使用できる標準の拡張extension がある。"/>
+      <requirements value="より大きな組織内で割り当てられた連絡先を追跡する必要がある。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -2080,9 +2874,9 @@
     </element>
     <element id="Organization.contact.name">
       <path value="Organization.contact.name"/>
-      <short value="Name of a human - parts and usage　人の名前情報、その一部分と使い方"/>
-      <definition value="A human's name with the ability to identify parts and usage.&#xD;&#xA;&#xD;&#xA;識別のための人の名前情報"/>
-      <comment value="Names may be changed, or repudiated, or people may have different names in different contexts. Names may be divided into parts of different type that have variable significance depending on context, though the division into parts does not always matter. With personal names, the different parts might or might not be imbued with some implicit meaning; various cultures associate different importance with the name parts and the degree to which systems must care about name parts around the world varies widely.&#xD;&#xA;&#xD;&#xA;名前が変更されたり、違っていると指摘されたり、コンテキストによって使われる名前が異なる場合がある。名前は、コンテキストに応じて重要性が異なるさまざまなタイプの部分に分割される場合があり、部分への分割は必ずしも重要ではない。個人名の場合、さまざまな部分に暗黙の意味が含まれている場合と含まれていない場合がある。さまざまな文化が名前の部分にさまざまな重要性を関連付けており、システムが世界中の名前の部分を気にする必要がある程度は大きく異なる。"/>
+      <short value="人の名前情報、その一部分と使い方"/>
+      <definition value="識別のための人の名前情報"/>
+      <comment value="名前が変更されたり、違っていると指摘されたり、コンテキストによって使われる名前が異なる場合がある。名前は、コンテキストに応じて重要性が異なるさまざまなタイプの部分に分割される場合があり、部分への分割は必ずしも重要ではない。個人名の場合、さまざまな部分に暗黙の意味が含まれている場合と含まれていない場合がある。さまざまな文化が名前の部分にさまざまな重要性を関連付けており、システムが世界中の名前の部分を気にする必要がある程度は大きく異なる。"/>
       <requirements value="Need to be able to track the person by name."/>
       <min value="0"/>
       <max value="1"/>
@@ -2192,10 +2986,10 @@
     </element>
     <element id="Organization.endpoint">
       <path value="Organization.endpoint"/>
-      <short value="Technical endpoints providing access to services operated for the organization　　組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント【詳細参照】"/>
-      <definition value="Technical endpoints providing access to services operated for the organization.&#xD;&#xA;組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
-      <requirements value="Organizations have multiple systems that provide various services and need to be able to define the technical connection details for how to connect to them, and for what purpose.&#xD;&#xA;組織にはさまざまなサービスを提供する複数のシステムがあり、それらに接続する方法と目的について、技術的な接続の詳細を定義できる必要がある。"/>
+      <short value="組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント【詳細参照】"/>
+      <definition value="組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント"/>
+      <comment value="参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
+      <requirements value="組織にはさまざまなサービスを提供する複数のシステムがあり、それらに接続する方法と目的について、技術的な接続の詳細を定義できる必要がある。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -2226,8 +3020,8 @@
   <differential>
     <element id="Organization">
       <path value="Organization"/>
-      <short value="A grouping of people or organizations with a common purpose/共通の目的を持った人や組織の集まり【詳細参照】"/>
-      <definition value="A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc.&#xD;&#xA;&#xD;&#xA;集団行動の何らかの形での達成を目的として結成された、正式または非公式に認められた人々または組織のグループ。企業、機関、企業、部門、コミュニティグループ、医療実践グループ、支払者/保険者などが含まれる。"/>
+      <short value="共通の目的を持った人や組織の集まり【詳細参照】"/>
+      <definition value="集団行動の何らかの形での達成を目的として結成された、正式または非公式に認められた人々または組織のグループ。企業、機関、企業、部門、コミュニティグループ、医療実践グループ、支払者/保険者などが含まれる。"/>
     </element>
     <element id="Organization.extension">
       <path value="Organization.extension"/>
@@ -2284,10 +3078,10 @@
         </discriminator>
         <rules value="open"/>
       </slicing>
-      <short value="Identifies this organization  across multiple systems/複数のシステムでこの組織を識別【詳細参照】"/>
-      <definition value="Identifier for the organization that is used to identify the organization across multiple disparate systems.&#xD;&#xA;&#xD;&#xA;複数の異種システムにまたがって組織を識別するための識別子"/>
+      <short value="複数のシステムでこの組織を識別【詳細参照】"/>
+      <definition value="複数の異種システムにまたがって組織を識別するための識別子"/>
       <comment value="福祉医療関連施設と保険者組織はSlicingについてはJP Coreにて定義を行なっているため、定義に従いデータを格納すること。それ以外の組織については、利用する際には必要に応じて識別子を定義を行なうこと。"/>
-      <requirements value="Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.&#xD;&#xA;&#xD;&#xA;組織は様々な ID で知られている。いくつかの機関では複数のIDを保持しており、ほとんどの機関では、組織に関する他の組織との交換のためにIDを収集している。"/>
+      <requirements value="組織は様々な ID で知られている。いくつかの機関では複数のIDを保持しており、ほとんどの機関では、組織に関する他の組織との交換のためにIDを収集している。"/>
     </element>
     <element id="Organization.identifier.assigner">
       <path value="Organization.identifier.assigner"/>
@@ -2324,51 +3118,150 @@
     </element>
     <element id="Organization.active">
       <path value="Organization.active"/>
-      <short value="Whether the organization's record is still in active use / 組織の記録がまだ有効に使われているかどうか【詳細参照】"/>
-      <definition value="Whether the organization's record is still in active use.&#xD;&#xA;&#xD;&#xA;組織の記録がまだ現役であるかどうか。"/>
-      <comment value="This active flag is not intended to be used to mark an organization as temporarily closed or under construction. Instead the Location(s) within the Organization should have the suspended status. If further details of the reason for the suspension are required, then an extension on this element should be used.&#xA;&#xA;This element is labeled as a modifier because it may be used to mark that the resource was created in error.&#xD;&#xA;&#xD;&#xA;このアクティブフラグは、組織を一時的に閉鎖したり、工事中であることを示すために使用されることを意図していない。代わりに、組織内の場所(複数可)は、中断されたステータスを持っている必要がある。一時停止の理由の詳細が必要な場合は、この要素の拡張子を使用する必要がある。&#xD;&#xA;&#xD;&#xA;この要素は、リソースがエラーで作成されたことをマークするために使用される可能性があるため、修飾子としてラベル付けされている。"/>
-      <requirements value="Need a flag to indicate a record is no longer to be used and should generally be hidden for the user in the UI.&#xD;&#xA;&#xD;&#xA;レコードが使用されなくなったことを示すためのフラグが必要で、一般的にUIではユーザのために非表示にする必要がある。"/>
+      <short value="組織の記録がまだ有効に使われているかどうか【詳細参照】"/>
+      <definition value="このアクティブフラグは、組織を一時的に閉鎖したり、工事中であることを示すために使用されることを意図していない。代わりに、組織内の場所(複数可)は、中断されたステータスを持っている必要がある。一時停止の理由の詳細が必要な場合は、この要素の拡張子を使用する必要がある。&#xD;&#xA;&#xD;&#xA;この要素は、リソースがエラーで作成されたことをマークするために使用される可能性があるため、修飾子としてラベル付けされている。"/>
+      <requirements value="レコードが使用されなくなったことを示すためのフラグが必要で、一般的にUIではユーザのために非表示にする必要がある。"/>
     </element>
     <element id="Organization.type">
       <path value="Organization.type"/>
-      <short value="Kind of organization / 組織の種類【詳細参照】"/>
-      <definition value="The kind(s) of organization that this is.&#xD;&#xA;&#xD;&#xA;その種類の組織。"/>
-      <comment value="Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes&#xA;&#xA;When considering if multiple types are appropriate, you should evaluate if child organizations would be a more appropriate use of the concept, as different types likely are in different sub-areas of the organization. This is most likely to be used where type values have orthogonal values, such as a religious, academic and medical center.&#xA;&#xA;We expect that some jurisdictions will profile this optionality to be a single cardinality.&#xD;&#xA;&#xD;&#xA;組織は、企業、病棟、セクション、臨床チーム、政府部門などにすることができる。多くのアプリケーションでは、コードは、特定の組織を識別するために使用されている（と言う、病棟）別の同じタイプのものとは対照的に - これらは識別子ではなく、コードである。&#xD;&#xA;&#xD;&#xA;複数のタイプが適切かどうかを検討する際には、異なるタイプが組織の異なるサブ領域に存在する可能性が高いため、子どもの組織の方がより適切な使用法であるかどうかを評価する必要がある。これは、宗教、学術、医療センターのように、タイプの価値観が直交する場合に使用される可能性が高い。&#xD;&#xA;&#xD;&#xA;いくつかの法域では、このオプション性を単一のカーディナリティとしてプロファイルすると予想される。"/>
-      <requirements value="Need to be able to track the kind of organization that this is - different organization types have different uses.&#xD;&#xA;&#xD;&#xA;これがある組織の種類を追跡することができる必要がある - 異なる組織の種類は、異なる用途を持っている。"/>
+      <short value="組織の種類【詳細参照】"/>
+      <definition value="その種類の組織。"/>
+      <comment value="n組織は、企業、病棟、セクション、臨床チーム、政府部門などにすることができる。多くのアプリケーションでは、コードは、特定の組織を識別するために使用されている（と言う、病棟）別の同じタイプのものとは対照的に - これらは識別子ではなく、コードである。&#xD;&#xA;&#xD;&#xA;複数のタイプが適切かどうかを検討する際には、異なるタイプが組織の異なるサブ領域に存在する可能性が高いため、子どもの組織の方がより適切な使用法であるかどうかを評価する必要がある。これは、宗教、学術、医療センターのように、タイプの価値観が直交する場合に使用される可能性が高い。&#xD;&#xA;&#xD;&#xA;いくつかの法域では、このオプション性を単一のカーディナリティとしてプロファイルすると予想される。"/>
+      <requirements value="これがある組織の種類を追跡することができる必要がある - 異なる組織の種類は、異なる用途を持っている。"/>
     </element>
     <element id="Organization.name">
       <path value="Organization.name"/>
-      <short value="Name used for the organization / 組織に使用されている名称【詳細参照】"/>
-      <definition value="A name associated with the organization.&#xD;&#xA;&#xD;&#xA;組織に関連付けられた名前。"/>
-      <comment value="If the name of an organization changes, consider putting the old name in the alias column so that it can still be located through searches.&#xD;&#xA;&#xD;&#xA;組織名が変更された場合は、旧名称をエイリアス欄に入れて検索で見つけられるようにすることを検討すべきである。"/>
-      <requirements value="Need to use the name as the label of the organization.&#xD;&#xA;&#xD;&#xA;組織のラベルとして名前を使用する必要がある。"/>
+      <short value="組織に使用されている名称【詳細参照】"/>
+      <definition value="組織に関連付けられた名前。"/>
+      <comment value="組織名が変更された場合は、旧名称をエイリアス欄に入れて検索で見つけられるようにすることを検討すべきである。"/>
+      <requirements value="組織のラベルとして名前を使用する必要がある。"/>
     </element>
     <element id="Organization.alias">
       <path value="Organization.alias"/>
-      <short value="A list of alternate names that the organization is known as, or was known as in the past / 組織が知られている、または過去に知られていた別名のリスト【詳細参照】"/>
-      <definition value="A list of alternate names that the organization is known as, or was known as in the past.&#xD;&#xA;&#xD;&#xA;組織がその名で知られている、または過去にその名で知られていた代替名のリスト。"/>
-      <comment value="There are no dates associated with the alias/historic names, as this is not intended to track when names were used, but to assist in searching so that older names can still result in identifying the organization.&#xD;&#xA;&#xD;&#xA;これは、名前がいつ使用されたかを追跡することを目的としたものではなく、古い名前でも組織を特定できるように検索を支援することを目的としているため、別名や歴史的な名前に関連付けられた日付はない。"/>
-      <requirements value="Over time locations and organizations go through many changes and can be known by different names.&#xA;&#xA;For searching knowing previous names that the organization was known by can be very useful.&#xD;&#xA;&#xD;&#xA;時間の経過とともに、場所や組織はさまざまな変化を経て、さまざまな名前で知ることができる。&#xD;&#xA;&#xD;&#xA;組織が知っている前の名前を知るための検索には、非常に便利なことができる。"/>
+      <short value="組織が知られている、または過去に知られていた別名のリスト【詳細参照】"/>
+      <definition value="組織がその名で知られている、または過去にその名で知られていた代替名のリスト。"/>
+      <comment value="これは、名前がいつ使用されたかを追跡することを目的としたものではなく、古い名前でも組織を特定できるように検索を支援することを目的としているため、別名や歴史的な名前に関連付けられた日付はない。"/>
+      <requirements value="時間の経過とともに、場所や組織はさまざまな変化を経て、さまざまな名前で知ることができる。&#xD;&#xA;&#xD;&#xA;組織が知っている前の名前を知るための検索には、非常に便利なことができる。"/>
     </element>
     <element id="Organization.telecom">
       <path value="Organization.telecom"/>
-      <short value="A contact detail for the organization / 組織の連絡先詳細【詳細参照】"/>
-      <definition value="A contact detail for the organization.&#xD;&#xA;&#xD;&#xA;組織の連絡先詳細"/>
-      <comment value="The use code 'home' is not to be used. Note that these contacts are not the contact details of people who are employed by or represent the organization, but official contacts for the organization itself.&#xD;&#xA;&#xD;&#xA;使用コード「home」は使用しないこと。これらの連絡先は、組織に雇用されている人や組織を代表する人の連絡先ではなく、組織自体の公式な連絡先であることに注意すること。"/>
-      <requirements value="Human contact for the organization.&#xD;&#xA;&#xD;&#xA;組織のヒューマンコンタクト。"/>
+      <short value="組織の連絡先詳細【詳細参照】"/>
+      <definition value="組織の連絡先詳細"/>
+      <comment value="使用コード「home」は使用しないこと。これらの連絡先は、組織に雇用されている人や組織を代表する人の連絡先ではなく、組織自体の公式な連絡先であることに注意すること。"/>
+      <requirements value="組織のヒューマンコンタクト。"/>
+    </element>
+    <element id="Organization.telecom.system">
+      <path value="Organization.telecom.system"/>
+      <short value="phone | fax | email | pager | url | sms | other 【JP_Patient.telecomを参照。】"/>
+      <comment value="連絡先の種別をValueSet(ContactPointSystem)より選択する。  　- phone : 電話　- fax : Fax 　- email : 電子メール　- pager : ポケットベル　- url : 電話、ファックス、ポケットベル、または電子メールアドレスではなく、URLとして表される連絡先。これはWebサイト、ブログ、Skype、Twitter、Facebookなどのさまざまな機関または個人の連絡先を対象としている。電子メールアドレスには使用しないこと。　- sms : SMSメッセージの送信に使用できる連絡先（携帯電話、一部の固定電話など）  　- other : 電話、Fax、ポケットベル、または電子メールアドレスではなく、URLとして表現できない連絡先。例：内部メールアドレス。これは、URLとして表現できる連絡先（Skype、Twitter、Facebookなど）には使用しないこと。"/>
+    </element>
+    <element id="Organization.telecom.value">
+      <path value="Organization.telecom.value"/>
+      <comment value="連絡先の番号やメールアドレス"/>
+    </element>
+    <element id="Organization.telecom.use">
+      <path value="Organization.telecom.use"/>
+      <short value="work | temp | old | mobile - 連絡先の用途等 【JP_Patient.telecomを参照。】homeは使用しないこと。"/>
+      <comment value="患者の連絡先の種別をValueSet(ContactPointUse)より選択する。  一時的なものまたは古いものであると明示しない限り、連絡先が最新とみなされる。&#xA;　- work : 職場&#xA;　- temp : 一時的&#xA;　- old : 以前の&#xA;　- mobile : モバイル機器"/>
+    </element>
+    <element id="Organization.telecom.rank">
+      <path value="Organization.telecom.rank"/>
+      <comment value="連絡先の使用順序（1 = 最高）"/>
+    </element>
+    <element id="Organization.telecom.period">
+      <path value="Organization.telecom.period"/>
+      <comment value="連絡先が使用されていた/されている期間"/>
     </element>
     <element id="Organization.address">
       <path value="Organization.address"/>
-      <short value="An address for the organization / 組織の住所【詳細参照】"/>
-      <definition value="An address for the organization.&#xD;&#xA;&#xD;&#xA;組織の住所"/>
-      <comment value="Organization may have multiple addresses with different uses or applicable periods. The use code 'home' is not to be used.&#xD;&#xA;&#xD;&#xA;組織は、用途や適用期間が異なる複数の住所を持っている場合がある。使用コード「home」は使用しないこと。"/>
-      <requirements value="May need to keep track of the organization's addresses for contacting, billing or reporting requirements.&#xD;&#xA;&#xD;&#xA;連絡、請求、または報告のために、組織のアドレスを追跡する必要がある場合がある。"/>
+      <short value="組織の住所【詳細参照】"/>
+      <definition value="組織の住所"/>
+      <comment value="組織は、用途や適用期間が異なる複数の住所を持っている場合がある。使用コード「home」は使用しないこと。"/>
+      <requirements value="連絡、請求、または報告のために、組織のアドレスを追跡する必要がある場合がある。"/>
+    </element>
+    <element id="Organization.address.use">
+      <path value="Organization.address.use"/>
+      <short value="work | temp | old | billing - purpose of this address　住所の用途 【JP_Patient.address参照】使用コード「home」は使用しない。"/>
+      <definition value="The purpose of this address.&#xD;&#xA;住所の用途"/>
+      <comment value="住所の用途をValueSet(AddressUse)より選択する。  &#xA;- work : 職場&#xA;- temp : 一時的&#xA;- old : 以前の&#xA;- billing : 請求書、インボイス、領収書などの送付用"/>
+    </element>
+    <element id="Organization.address.type">
+      <path value="Organization.address.type"/>
+      <short value="postal | physical | both 【JP_Patient.address参照】"/>
+      <definition value="住所（訪問できる住所）と郵送先住所（私書箱や気付住所など）を区別する。ほとんどのアドレスは両方。"/>
+      <comment value="住所の種類をValueSet(AddressType)より選択する。  &#xA;- postal : 郵送先 - 私書箱、気付の住所&#xA;- physical : 訪れることのできる物理的な住所&#xA;- both : postalとphysicalの両方"/>
+    </element>
+    <element id="Organization.address.text">
+      <path value="Organization.address.text"/>
+      <short value="住所のテキスト表現 【JP_Patient.address参照】"/>
+      <definition value="表示するアドレス全体を指定する  &#xA;例：郵便ラベル。これは、特定の部品の代わりに、または特定の部品と同様に提供される場合がある。"/>
+      <comment value="テキスト表現とパーツの両方を提供できる。アドレスを更新するアプリケーションは、テキストとパーツの両方が存在する場合、パーツにないコンテンツはテキストに含まれないようにする必要がある。  &#xA;- 住所を(都道府県や市町村などに)分離して管理していない場合は、textに入れる。  &#xA;- 住所を(都道府県や市町村などに)分離して管理している場合でも、まとめてtextに入れること。  &#xA;- 郵便番号は含めない。  &#xA;&#xA;例：東京都文京区本郷7-3-1"/>
+      <example>
+        <label value="Jp"/>
+        <valueString value="東京都文京区本郷7-3-1"/>
+      </example>
+    </element>
+    <element id="Organization.address.line">
+      <path value="Organization.address.line"/>
+      <short value="ストリート名や番地など 【JP_Patient.address参照】"/>
+      <definition value="このコンポーネントには、家番号、アパート番号、通りの名前、通りの方向、P.O。が含まれる。ボックス番号、配達のヒント、および同様の住所情報など。"/>
+      <comment value="【JP Core仕様】state要素とcity要素で表現しなかったそのあとの住所部分を番地以降の部分も含めてすべていれる。  &#xA;英数字は半角でも全角でもよい。文字列の前後および途中に空白文字を含めないこと。  &#xA;繰り返し要素が許されているので、区切りを表現したい場合には、複数要素に分けて格納してもよい。  &#xA;&#xA;例：本郷7-3-1  &#xA;例：大字石神９７６  &#xA;例：藤崎町大字藤崎字西村1-2 春山荘201号室"/>
+      <example>
+        <label value="Jp"/>
+        <valueString value="本郷7-3-1"/>
+      </example>
+    </element>
+    <element id="Organization.address.city">
+      <path value="Organization.address.city"/>
+      <short value="市区町村名 【JP_Patient.address参照】"/>
+      <definition value="n市、町、郊外、村、その他のコミュニティまたは配達センターの名前。"/>
+      <comment value="１MBを超えないこと。  【JP Core仕様】郡市区町村部分だけを「郡」「市」「区」「町」「村」などの文字を含めて設定する。 例：文京区"/>
+      <example>
+        <label value="Jp"/>
+        <valueString value="文京区"/>
+      </example>
+    </element>
+    <element id="Organization.address.district">
+      <path value="Organization.address.district"/>
+      <short value="地区名 【JP_Patient.address参照】"/>
+      <comment value="【JP Core仕様】日本の住所では使用しない。"/>
+    </element>
+    <element id="Organization.address.state">
+      <path value="Organization.address.state"/>
+      <short value="国の次の地区単位 【JP_Patient.address参照】"/>
+      <definition value="国の主権が制限されている国のサブユニット。日本の場合、都道府県名。"/>
+      <comment value="１MBを超えないこと。  都道府県名。「都」「道」「府」「県」のそれぞれの文字を含める。 例：東京都"/>
+      <example>
+        <label value="Jp"/>
+        <valueString value="東京都"/>
+      </example>
+    </element>
+    <element id="Organization.address.postalCode">
+      <path value="Organization.address.postalCode"/>
+      <short value="郵便番号 【JP_Patient.address参照】"/>
+      <comment value="郵便番号。日本の郵便番号の場合には3桁数字とハイフン1文字と4桁数字からなる半角８文字、または最初の3桁だけの3文字のいずれかとする。 例：113-8655"/>
+      <example>
+        <label value="Jp"/>
+        <valueString value="113-8655"/>
+      </example>
+    </element>
+    <element id="Organization.address.country">
+      <path value="Organization.address.country"/>
+      <short value="国名またはISO 3166コード　(ISO 3166 2 or 3文字こーど)"/>
+      <definition value="国-一般的に理解されている、または一般的に受け入れられている国の国名かコード。"/>
+      <comment value="ISO 3166 3文字コードは、人間が読める国名の代わりに使用する。  ISO 3166の2文字または3文字のコード.  日本であれば、jpまたはjpn"/>
+    </element>
+    <element id="Organization.address.period">
+      <path value="Organization.address.period"/>
+      <short value="住所が使用されていた（いる）期間"/>
+      <definition value="住所が使用されていた（いる）期間"/>
+      <comment value="住所が使用されていた/されている期間。 期間は時間の範囲を指定する。使用状況はその期間全体に適用されるか、範囲から1つの値が適用される。  期間は、時間間隔（経過時間の測定値）には使用されない。"/>
     </element>
     <element id="Organization.partOf">
       <path value="Organization.partOf"/>
-      <short value="The organization of which this organization forms a part【詳細参照】"/>
-      <definition value="The organization of which this organization forms a part.&#xD;&#xA;この組織が一部を構成する組織"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
+      <short value="【詳細参照】"/>
+      <definition value="この組織が一部を構成する組織"/>
+      <comment value="参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
       <type>
         <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-hierarchy">
           <valueBoolean value="true"/>
@@ -2379,10 +3272,10 @@
     </element>
     <element id="Organization.contact">
       <path value="Organization.contact"/>
-      <short value="Contact for the organization for a certain purpose　特定の目的のための組織の連絡先【詳細参照】"/>
-      <definition value="Contact for the organization for a certain purpose.&#xD;&#xA;特定の目的のための組織の連絡先"/>
-      <comment value="Where multiple contacts for the same purpose are provided there is a standard extension that can be used to determine which one is the preferred contact to use.&#xD;&#xA;同じ目的で複数の連絡先が提供されている場合、どの連絡先を使用するのが好ましいかを判断するために使用できる標準の拡張extension がある。"/>
-      <requirements value="Need to keep track of assigned contact points within bigger organization.&#xD;&#xA;より大きな組織内で割り当てられた連絡先を追跡する必要がある。"/>
+      <short value="特定の目的のための組織の連絡先【詳細参照】"/>
+      <definition value="特定の目的のための組織の連絡先"/>
+      <comment value="同じ目的で複数の連絡先が提供されている場合、どの連絡先を使用するのが好ましいかを判断するために使用できる標準の拡張extension がある。"/>
+      <requirements value="より大きな組織内で割り当てられた連絡先を追跡する必要がある。"/>
     </element>
     <element id="Organization.contact.name">
       <path value="Organization.contact.name"/>
@@ -2393,10 +3286,10 @@
     </element>
     <element id="Organization.endpoint">
       <path value="Organization.endpoint"/>
-      <short value="Technical endpoints providing access to services operated for the organization　　組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント【詳細参照】"/>
-      <definition value="Technical endpoints providing access to services operated for the organization.&#xD;&#xA;組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント"/>
-      <comment value="References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.&#xD;&#xA;参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
-      <requirements value="Organizations have multiple systems that provide various services and need to be able to define the technical connection details for how to connect to them, and for what purpose.&#xD;&#xA;組織にはさまざまなサービスを提供する複数のシステムがあり、それらに接続する方法と目的について、技術的な接続の詳細を定義できる必要がある。"/>
+      <short value="組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント【詳細参照】"/>
+      <definition value="組織のために運営されているサービスへのアクセスを提供する技術的エンドポイント"/>
+      <comment value="参照は、実際のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。"/>
+      <requirements value="組織にはさまざまなサービスを提供する複数のシステムがあり、それらに接続する方法と目的について、技術的な接続の詳細を定義できる必要がある。"/>
     </element>
   </differential>
 </StructureDefinition>

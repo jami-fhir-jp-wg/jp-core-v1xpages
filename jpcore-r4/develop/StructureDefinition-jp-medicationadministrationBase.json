@@ -67,7 +67,7 @@
       "id" : "MedicationAdministration",
       "path" : "MedicationAdministration",
       "short" : "患者への薬剤投与記録",
-      "definition" : "患者が薬剤を服用する、あるいは投与される事象を説明します。これは、錠剤を飲むだけだったり、長時間の点滴だったりすることがあります。関連するリソースは、この事象を許可された処方箋や、患者と医療従事者の具体的な出会いと結びつけます。",
+      "definition" : "患者が薬剤を服用する、あるいは投与される事象を説明します。これは、錠剤を飲むだけだったり、長時間の点滴だったりすることがあります。関連するリソースは、この事象を許可された処方箋や、患者と医療従事者の具体的なEncounter（診察、受診、入退院など）と結びつけます。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -714,7 +714,7 @@
     {
       "id" : "MedicationAdministration.identifier:rpNumber.use",
       "path" : "MedicationAdministration.identifier.use",
-      "short" : "通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
+      "short" : "通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
       "definition" : "この識別子の目的。 / The purpose of this identifier.",
       "comment" : "アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.",
       "requirements" : "特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
@@ -1083,7 +1083,7 @@
     {
       "id" : "MedicationAdministration.identifier:requestIdentifier.use",
       "path" : "MedicationAdministration.identifier.use",
-      "short" : "通常|公式|温度|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
+      "short" : "通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)",
       "definition" : "この識別子の目的。 / The purpose of this identifier.",
       "comment" : "アプリケーションは、識別子が一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.",
       "requirements" : "特定の使用のコンテキストが一連の識別子の中から選択される適切な識別子を許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
@@ -1336,8 +1336,8 @@
     {
       "id" : "MedicationAdministration.instantiates",
       "path" : "MedicationAdministration.instantiates",
-      "short" : "Instantiates protocol or definition\u3000プロトコルや定義のインスタンス化",
-      "definition" : "A protocol, guideline, orderset, or other definition that was adhered to in whole or in part by this event.\r\n\r\nこのイベントによって全体的または部分的に順守されたプロトコル、ガイドライン、オーダセット、またはその他の定義。",
+      "short" : "プロトコルや定義のインスタンス化",
+      "definition" : "このイベントによって全体的または部分的に順守されたプロトコル、ガイドライン、オーダセット、またはその他の定義。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1370,8 +1370,8 @@
     {
       "id" : "MedicationAdministration.partOf",
       "path" : "MedicationAdministration.partOf",
-      "short" : "Part of referenced event  親イベントへの参照",
-      "definition" : "A larger event of which this particular event is a component or step.\r\n\r\nこの特定のイベントがコンポーネントまたはステップであるようなより大きな親イベント。",
+      "short" : "親イベントへの参照",
+      "definition" : "この特定のイベントがコンポーネントまたはステップであるようなより大きな親イベント。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1407,7 +1407,7 @@
       "id" : "MedicationAdministration.status",
       "path" : "MedicationAdministration.status",
       "short" : "completed | stopped",
-      "definition" : "Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions, it is possible for an administration to be started but not completed or it may be paused while some other process is under way.\r\n\r\n通常、管理が完了したことを示すように設定される。輸液などの長期にわたる投与では、投与を開始しても完了しない場合や、他のプロセスの進行中に一時停止する場合がある。\r\n\r\n【JP Core仕様】\u3000completed or stopped に限定される。",
+      "definition" : "通常、管理が完了したことを示すように設定される。輸液などの長期にわたる投与では、投与を開始しても完了しない場合や、他のプロセスの進行中に一時停止する場合がある。\r\n\r\n【JP Core仕様】\u3000completed or stopped に限定される。",
       "comment" : "この要素は修飾子としてラベル付けされています。なぜなら、ステータスには、リソースが現在無効であることを示すコードが含まれているためです。",
       "min" : 1,
       "max" : "1",
@@ -1459,9 +1459,8 @@
     {
       "id" : "MedicationAdministration.statusReason",
       "path" : "MedicationAdministration.statusReason",
-      "short" : "Reason administration not performed\u3000実施されていない理由",
-      "definition" : "A code indicating why the administration was not performed.\u3000投与が実施されていない理由を示すコード",
-      "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\n\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。",
+      "short" : "実施されていない理由",
+      "definition" : "投与が実施されていない理由を示すコード",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1507,8 +1506,8 @@
     {
       "id" : "MedicationAdministration.category",
       "path" : "MedicationAdministration.category",
-      "short" : "Type of medication usage\u3000薬が使用される区分",
-      "definition" : "Indicates where the medication is expected to be consumed or administered.\r\n\r\n薬が消費または投与されると予想される場所区分(入院、外来、家庭等)を示す。\r\ninpatient | outpatient | community\r\n (http://terminology.hl7.org/CodeSystem/medication-admin-category)",
+      "short" : "薬が使用される区分",
+      "definition" : "薬剤の摂取または投与が予想される場所を示します。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -1546,9 +1545,9 @@
     {
       "id" : "MedicationAdministration.medication[x]",
       "path" : "MedicationAdministration.medication[x]",
-      "short" : "What medication was supplied\u3000医薬品",
-      "definition" : "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.\r\n\r\n投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。",
-      "comment" : "If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource.\r\n\r\nひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。\r\n\r\n厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。\r\n\rなお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。\r\n\rひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。\rただし、ひとつの処方薬を複数のコードで繰り返し記述する場合には、それらのコードが指し示す処方薬、医療材料は当然同一でなければならない。\rまた、処方を発行した医療機関内でのデータ利用のために、医療機関固有コード体系によるコード（ハウスコード、ローカルコード）の記述を含めてもよいが、その場合でも上述したいずれかの標準コードを同時に記述することが必要である。",
+      "short" : "医薬品",
+      "definition" : "投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。",
+      "comment" : "ひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。\r\n\r\n厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。\r\n\rなお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。\r\n\rひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。\rただし、ひとつの処方薬を複数のコードで繰り返し記述する場合には、それらのコードが指し示す処方薬、医療材料は当然同一でなければならない。\rまた、処方を発行した医療機関内でのデータ利用のために、医療機関固有コード体系によるコード（ハウスコード、ローカルコード）の記述を含めてもよいが、その場合でも上述したいずれかの標準コードを同時に記述することが必要である。",
       "min" : 1,
       "max" : "1",
       "base" : {
@@ -2754,20 +2753,20 @@
     {
       "id" : "MedicationAdministration.instantiates",
       "path" : "MedicationAdministration.instantiates",
-      "short" : "Instantiates protocol or definition\u3000プロトコルや定義のインスタンス化",
-      "definition" : "A protocol, guideline, orderset, or other definition that was adhered to in whole or in part by this event.\r\n\r\nこのイベントによって全体的または部分的に順守されたプロトコル、ガイドライン、オーダセット、またはその他の定義。"
+      "short" : "プロトコルや定義のインスタンス化",
+      "definition" : "このイベントによって全体的または部分的に順守されたプロトコル、ガイドライン、オーダセット、またはその他の定義。"
     },
     {
       "id" : "MedicationAdministration.partOf",
       "path" : "MedicationAdministration.partOf",
-      "short" : "Part of referenced event  親イベントへの参照",
-      "definition" : "A larger event of which this particular event is a component or step.\r\n\r\nこの特定のイベントがコンポーネントまたはステップであるようなより大きな親イベント。"
+      "short" : "親イベントへの参照",
+      "definition" : "この特定のイベントがコンポーネントまたはステップであるようなより大きな親イベント。"
     },
     {
       "id" : "MedicationAdministration.status",
       "path" : "MedicationAdministration.status",
       "short" : "completed | stopped",
-      "definition" : "Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions, it is possible for an administration to be started but not completed or it may be paused while some other process is under way.\r\n\r\n通常、管理が完了したことを示すように設定される。輸液などの長期にわたる投与では、投与を開始しても完了しない場合や、他のプロセスの進行中に一時停止する場合がある。\r\n\r\n【JP Core仕様】\u3000completed or stopped に限定される。",
+      "definition" : "通常、管理が完了したことを示すように設定される。輸液などの長期にわたる投与では、投与を開始しても完了しない場合や、他のプロセスの進行中に一時停止する場合がある。\r\n\r\n【JP Core仕様】\u3000completed or stopped に限定される。",
       "binding" : {
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
@@ -2781,22 +2780,20 @@
     {
       "id" : "MedicationAdministration.statusReason",
       "path" : "MedicationAdministration.statusReason",
-      "short" : "Reason administration not performed\u3000実施されていない理由",
-      "definition" : "A code indicating why the administration was not performed.\u3000投与が実施されていない理由を示すコード",
-      "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.\r\n\r\nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。"
+      "short" : "実施されていない理由",
+      "definition" : "投与が実施されていない理由を示すコード"
     },
     {
       "id" : "MedicationAdministration.category",
       "path" : "MedicationAdministration.category",
-      "short" : "Type of medication usage\u3000薬が使用される区分",
-      "definition" : "Indicates where the medication is expected to be consumed or administered.\r\n\r\n薬が消費または投与されると予想される場所区分(入院、外来、家庭等)を示す。\r\ninpatient | outpatient | community\r\n (http://terminology.hl7.org/CodeSystem/medication-admin-category)"
+      "short" : "薬が使用される区分"
     },
     {
       "id" : "MedicationAdministration.medication[x]",
       "path" : "MedicationAdministration.medication[x]",
-      "short" : "What medication was supplied\u3000医薬品",
-      "definition" : "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.\r\n\r\n投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。",
-      "comment" : "If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example, if you require form or lot number, then you must reference the Medication resource.\r\n\r\nひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。\r\n\r\n厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。\r\n\rなお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。\r\n\rひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。\rただし、ひとつの処方薬を複数のコードで繰り返し記述する場合には、それらのコードが指し示す処方薬、医療材料は当然同一でなければならない。\rまた、処方を発行した医療機関内でのデータ利用のために、医療機関固有コード体系によるコード（ハウスコード、ローカルコード）の記述を含めてもよいが、その場合でも上述したいずれかの標準コードを同時に記述することが必要である。"
+      "short" : "医薬品",
+      "definition" : "投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。",
+      "comment" : "ひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。\r\n\r\n厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。\r\n\rなお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。\r\n\rひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。\rただし、ひとつの処方薬を複数のコードで繰り返し記述する場合には、それらのコードが指し示す処方薬、医療材料は当然同一でなければならない。\rまた、処方を発行した医療機関内でのデータ利用のために、医療機関固有コード体系によるコード（ハウスコード、ローカルコード）の記述を含めてもよいが、その場合でも上述したいずれかの標準コードを同時に記述することが必要である。"
     }]
   }
 }
