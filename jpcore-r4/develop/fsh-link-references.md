@@ -1,6 +1,7 @@
 [endpoint-dicom-wadors-example]: Endpoint-endpoint-dicom-wadors-example.html
 [jp-allergyintolerance-example-1]: AllergyIntolerance-jp-allergyintolerance-example-1.html
 [JP_AllergyIntolerance]: StructureDefinition-jp-allergyintolerance.html
+[jp-client-capabilitystatement]: CapabilityStatement-jp-client-capabilitystatement.html
 [jp-condition-example-1]: Condition-jp-condition-example-1.html
 [JP_Condition]: StructureDefinition-jp-condition.html
 [JP_ConditionSeverity_VS]: ValueSet-jp-condition-severity-vs.html
@@ -176,6 +177,7 @@
 [JP_ProcedureReason_VS]: ValueSet-jp-procedure-reason-vs.html
 [jp-practitionerrole-example-1]: PractitionerRole-jp-practitionerrole-example-1.html
 [JP_RadiologyModality_VS]: ValueSet-jp-radiologymodality-vs.html
+[jp-server-capabilitystatement]: CapabilityStatement-jp-server-capabilitystatement.html
 [JP_SimpleObservationCategory_CS]: CodeSystem-jp-simpleobservationcategory-cs.html
 [JP_SimpleObservationCategory_VS]: ValueSet-jp-simpleobservationcategory-vs.html
 [jp-specimen-example-3]: Specimen-jp-specimen-example-3.html
@@ -183,7 +185,6 @@
 [jp-specimen-example-2]: Specimen-jp-specimen-example-2.html
 [JP_Undefined_CS]: CodeSystem-jp-undefined-cs.html
 [JP_Undefined_VS]: ValueSet-jp-undefined-vs.html
-[jp-client-capabilitystatement]: CapabilityStatement-jp-client-capabilitystatement.html
 [jp-coverage-insuredpersonnumber-sp]: SearchParameter-jp-coverage-insuredpersonnumber-sp.html
 [jp-coverage-insuredpersonsubnumber-sp]: SearchParameter-jp-coverage-insuredpersonsubnumber-sp.html
 [jp-coverage-insuredpersonsymbol-sp]: SearchParameter-jp-coverage-insuredpersonsymbol-sp.html
@@ -214,4 +215,3 @@
 [jp-organization-prefectureno-sp]: SearchParameter-jp-organization-prefectureno-sp.html
 [jp-patient-kanasort-sp]: SearchParameter-jp-patient-kanasort-sp.html
 [jp-prefecturenumber-namingsystem]: NamingSystem-jp-prefecturenumber-namingsystem.html
-[jp-server-capabilitystatement]: CapabilityStatement-jp-server-capabilitystatement.html

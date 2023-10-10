@@ -3,7 +3,8 @@
 <ImplementationGuide xmlns="http://hl7.org/fhir">
   <id value="jpfhir.jp.core"/>
   <text>
-    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml">Placeholder</div>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><h2>FHIRJPCoreImplementationGuide</h2><p>The official URL for this implementation guide is: </p><pre>http://jpfhir.jp/fhir/core/ImplementationGuide/jpfhir.jp.core</pre><div><p>日本医療情報学会(JAMI) NeXEHRS課題研究会「HL7®FHIR® 日本実装検討WG」で作成した日本国内におけるベースとなるJP Core実装ガイドのドラフトVer.1.1.2 です。</p>
+</div></div>
   </text>
   <url value="http://jpfhir.jp/fhir/core/ImplementationGuide/jpfhir.jp.core"/>
   <version value="1.1.2-dev"/>
@@ -40,7 +41,7 @@
     </extension>
     <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
     <packageId value="hl7.terminology.r4"/>
-    <version value="5.2.0"/>
+    <version value="5.3.0"/>
   </dependsOn>
   <dependsOn id="hl7ext">
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment">
@@ -2099,6 +2100,14 @@
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
         <valueString value="apply-context"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-wg"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
@@ -4189,6 +4198,14 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
+        <valueCode value="apply-wg"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
         <valueCode value="fmm-definition"/>
       </extension>
       <extension url="value">
@@ -4250,6 +4267,17 @@
       </reference>
       <name value="JP Core AllergyIntolerance Profile"/>
       <description value="このプロファイルはAllergyIntoleranceリソースに対して、患者のアレルギー不耐症に関するデータを送受信するための制約と拡張を定めるものである。"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/jp-client-capabilitystatement"/>
+      </reference>
+      <name value="JP Core Client CapabilityStatement"/>
+      <description value="JP Core実装ガイドを利用したサイトを作成する際にクライアント側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -6179,6 +6207,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/jp-server-capabilitystatement"/>
+      </reference>
+      <name value="JP Core Server CapabilityStatement"/>
+      <description value="JP Core実装ガイドを利用したサイトを作成する際にサーバ側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="CodeSystem"/>
       </extension>
       <reference>
@@ -6252,17 +6291,6 @@
       </reference>
       <name value="JP Core Undefined ValueSet"/>
       <description value="未定義の値セット。使用する予定のコードシステムが利用できない場合や方針未決定の場合に割り振る特別なリソースである。"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="CapabilityStatement"/>
-      </extension>
-      <reference>
-        <reference value="CapabilityStatement/jp-client-capabilitystatement"/>
-      </reference>
-      <name value="jp-client-capabilitystatement"/>
-      <description value="JP Core実装ガイドを利用したサイトを作成する際にクライアント側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -6593,17 +6621,6 @@
       </reference>
       <name value="jp-prefecturenumber-namingsystem"/>
       <description value="JP Core PrefectureNumber NamingSystem"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="CapabilityStatement"/>
-      </extension>
-      <reference>
-        <reference value="CapabilityStatement/jp-server-capabilitystatement"/>
-      </reference>
-      <name value="jp-server-capabilitystatement"/>
-      <description value="JP Core実装ガイドを利用したサイトを作成する際にサーバ側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。"/>
       <exampleBoolean value="false"/>
     </resource>
     <page>

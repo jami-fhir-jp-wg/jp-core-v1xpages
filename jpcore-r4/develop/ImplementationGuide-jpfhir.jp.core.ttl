@@ -10,7 +10,7 @@
   fhir:id [ fhir:v "jpfhir.jp.core"] ; # 
   fhir:text [
      fhir:status [ fhir:v "extensions" ] ;
-     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\">Placeholder</div>"
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>FHIRJPCoreImplementationGuide</h2><p>The official URL for this implementation guide is: </p><pre>http://jpfhir.jp/fhir/core/ImplementationGuide/jpfhir.jp.core</pre><div><p>日本医療情報学会(JAMI) NeXEHRS課題研究会「HL7®FHIR® 日本実装検討WG」で作成した日本国内におけるベースとなるJP Core実装ガイドのドラフトVer.1.1.2 です。</p>\n</div></div>"
   ] ; # 
   fhir:url [ fhir:v "http://jpfhir.jp/fhir/core/ImplementationGuide/jpfhir.jp.core"^^xsd:anyURI] ; # 
   fhir:version [ fhir:v "1.1.2-dev"] ; # 
@@ -51,7 +51,7 @@
        fhir:link <http://terminology.hl7.org/ImplementationGuide/hl7.terminology>
      ] ;
      fhir:packageId [ fhir:v "hl7.terminology.r4" ] ;
-     fhir:version [ fhir:v "5.2.0" ]
+     fhir:version [ fhir:v "5.3.0" ]
   ] [
      fhir:id [ fhir:v "hl7ext" ] ;
      fhir:extension ( [
@@ -2373,6 +2373,15 @@
        fhir:extension ( [
          fhir:url [ fhir:v "code"^^xsd:anyURI ] ;
          fhir:value [ fhir:v "apply-context" ]
+       ] [
+         fhir:url [ fhir:v "value"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "true" ]
+       ] ) ;
+       fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"^^xsd:anyURI ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "code"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "apply-wg" ]
        ] [
          fhir:url [ fhir:v "value"^^xsd:anyURI ] ;
          fhir:value [ fhir:v "true" ]
@@ -4724,6 +4733,15 @@
      ] [
        fhir:extension ( [
          fhir:url [ fhir:v "code"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "apply-wg" ]
+       ] [
+         fhir:url [ fhir:v "value"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "true" ]
+       ] ) ;
+       fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"^^xsd:anyURI ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "code"^^xsd:anyURI ] ;
          fhir:value [ fhir:v "fmm-definition" ]
        ] [
          fhir:url [ fhir:v "value"^^xsd:anyURI ] ;
@@ -4796,6 +4814,18 @@
        ] ;
        fhir:name [ fhir:v "JP Core AllergyIntolerance Profile" ] ;
        fhir:description [ fhir:v "このプロファイルはAllergyIntoleranceリソースに対して、患者のアレルギー不耐症に関するデータを送受信するための制約と拡張を定めるものである。" ] ;
+       fhir:example [ fhir:v "false"^^xsd:boolean ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "CapabilityStatement" ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <http://jpfhir.jp/fhir/core/CapabilityStatement/jp-client-capabilitystatement> ;
+         fhir:reference [ fhir:v "CapabilityStatement/jp-client-capabilitystatement" ]
+       ] ;
+       fhir:name [ fhir:v "JP Core Client CapabilityStatement" ] ;
+       fhir:description [ fhir:v "JP Core実装ガイドを利用したサイトを作成する際にクライアント側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。" ] ;
        fhir:example [ fhir:v "false"^^xsd:boolean ]
      ] [
        fhir:extension ( [
@@ -7029,6 +7059,18 @@
      ] [
        fhir:extension ( [
          fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "CapabilityStatement" ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <http://jpfhir.jp/fhir/core/CapabilityStatement/jp-server-capabilitystatement> ;
+         fhir:reference [ fhir:v "CapabilityStatement/jp-server-capabilitystatement" ]
+       ] ;
+       fhir:name [ fhir:v "JP Core Server CapabilityStatement" ] ;
+       fhir:description [ fhir:v "JP Core実装ガイドを利用したサイトを作成する際にサーバ側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。" ] ;
+       fhir:example [ fhir:v "false"^^xsd:boolean ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
          fhir:value [ fhir:v "CodeSystem" ]
        ] ) ;
        fhir:reference [
@@ -7109,18 +7151,6 @@
        ] ;
        fhir:name [ fhir:v "JP Core Undefined ValueSet" ] ;
        fhir:description [ fhir:v "未定義の値セット。使用する予定のコードシステムが利用できない場合や方針未決定の場合に割り振る特別なリソースである。" ] ;
-       fhir:example [ fhir:v "false"^^xsd:boolean ]
-     ] [
-       fhir:extension ( [
-         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
-         fhir:value [ fhir:v "CapabilityStatement" ]
-       ] ) ;
-       fhir:reference [
-         fhir:link <http://jpfhir.jp/fhir/core/CapabilityStatement/jp-client-capabilitystatement> ;
-         fhir:reference [ fhir:v "CapabilityStatement/jp-client-capabilitystatement" ]
-       ] ;
-       fhir:name [ fhir:v "jp-client-capabilitystatement" ] ;
-       fhir:description [ fhir:v "JP Core実装ガイドを利用したサイトを作成する際にクライアント側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。" ] ;
        fhir:example [ fhir:v "false"^^xsd:boolean ]
      ] [
        fhir:extension ( [
@@ -7481,18 +7511,6 @@
        ] ;
        fhir:name [ fhir:v "jp-prefecturenumber-namingsystem" ] ;
        fhir:description [ fhir:v "JP Core PrefectureNumber NamingSystem" ] ;
-       fhir:example [ fhir:v "false"^^xsd:boolean ]
-     ] [
-       fhir:extension ( [
-         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
-         fhir:value [ fhir:v "CapabilityStatement" ]
-       ] ) ;
-       fhir:reference [
-         fhir:link <http://jpfhir.jp/fhir/core/CapabilityStatement/jp-server-capabilitystatement> ;
-         fhir:reference [ fhir:v "CapabilityStatement/jp-server-capabilitystatement" ]
-       ] ;
-       fhir:name [ fhir:v "jp-server-capabilitystatement" ] ;
-       fhir:description [ fhir:v "JP Core実装ガイドを利用したサイトを作成する際にサーバ側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。" ] ;
        fhir:example [ fhir:v "false"^^xsd:boolean ]
      ] ) ;
      fhir:page [

@@ -3,7 +3,7 @@
   "id" : "jpfhir.jp.core",
   "text" : {
     "status" : "extensions",
-    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">Placeholder</div>"
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>FHIRJPCoreImplementationGuide</h2><p>The official URL for this implementation guide is: </p><pre>http://jpfhir.jp/fhir/core/ImplementationGuide/jpfhir.jp.core</pre><div><p>日本医療情報学会(JAMI) NeXEHRS課題研究会「HL7®FHIR® 日本実装検討WG」で作成した日本国内におけるベースとなるJP Core実装ガイドのドラフトVer.1.1.2 です。</p>\n</div></div>"
   },
   "url" : "http://jpfhir.jp/fhir/core/ImplementationGuide/jpfhir.jp.core",
   "version" : "1.1.2-dev",
@@ -42,7 +42,7 @@
     }],
     "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
     "packageId" : "hl7.terminology.r4",
-    "version" : "5.2.0"
+    "version" : "5.3.0"
   },
   {
     "id" : "hl7ext",
@@ -2870,6 +2870,17 @@
       "extension" : [{
         "url" : "code",
         "valueString" : "apply-context"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-wg"
       },
       {
         "url" : "value",
@@ -5744,6 +5755,17 @@
     {
       "extension" : [{
         "url" : "code",
+        "valueCode" : "apply-wg"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
         "valueCode" : "fmm-definition"
       },
       {
@@ -5819,6 +5841,18 @@
       },
       "name" : "JP Core AllergyIntolerance Profile",
       "description" : "このプロファイルはAllergyIntoleranceリソースに対して、患者のアレルギー不耐症に関するデータを送受信するための制約と拡張を定めるものである。",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CapabilityStatement"
+      }],
+      "reference" : {
+        "reference" : "CapabilityStatement/jp-client-capabilitystatement"
+      },
+      "name" : "JP Core Client CapabilityStatement",
+      "description" : "JP Core実装ガイドを利用したサイトを作成する際にクライアント側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。",
       "exampleBoolean" : false
     },
     {
@@ -7924,6 +7958,18 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CapabilityStatement"
+      }],
+      "reference" : {
+        "reference" : "CapabilityStatement/jp-server-capabilitystatement"
+      },
+      "name" : "JP Core Server CapabilityStatement",
+      "description" : "JP Core実装ガイドを利用したサイトを作成する際にサーバ側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
       }],
       "reference" : {
@@ -8003,18 +8049,6 @@
       },
       "name" : "JP Core Undefined ValueSet",
       "description" : "未定義の値セット。使用する予定のコードシステムが利用できない場合や方針未決定の場合に割り振る特別なリソースである。",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "CapabilityStatement"
-      }],
-      "reference" : {
-        "reference" : "CapabilityStatement/jp-client-capabilitystatement"
-      },
-      "name" : "jp-client-capabilitystatement",
-      "description" : "JP Core実装ガイドを利用したサイトを作成する際にクライアント側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。",
       "exampleBoolean" : false
     },
     {
@@ -8375,18 +8409,6 @@
       },
       "name" : "jp-prefecturenumber-namingsystem",
       "description" : "JP Core PrefectureNumber NamingSystem",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "CapabilityStatement"
-      }],
-      "reference" : {
-        "reference" : "CapabilityStatement/jp-server-capabilitystatement"
-      },
-      "name" : "jp-server-capabilitystatement",
-      "description" : "JP Core実装ガイドを利用したサイトを作成する際にサーバ側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。",
       "exampleBoolean" : false
     }],
     "page" : {
