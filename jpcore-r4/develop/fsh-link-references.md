@@ -215,3 +215,13 @@
 [jp-organization-prefectureno-sp]: SearchParameter-jp-organization-prefectureno-sp.html
 [jp-patient-kanasort-sp]: SearchParameter-jp-patient-kanasort-sp.html
 [jp-prefecturenumber-namingsystem]: NamingSystem-jp-prefecturenumber-namingsystem.html
+[JP_Binary]: StructureDefinition-JP-Binary.html
+[JP_Consent]: StructureDefinition-JP-Consent.html
+[JP_Device]: StructureDefinition-JP-Device.html
+[JP_DeviceUseStatement]: StructureDefinition-JP-DeviceUseStatement.html
+[JP_DocumentReference]: StructureDefinition-JP-DocumentReference.html
+[JP_RelatedPerson]: StructureDefinition-JP-RelatedPerson.html
+[JP_ResearchStudy]: StructureDefinition-JP-ResearchStudy.html
+[JP_ResearchSubject]: StructureDefinition-JP-ResearchSubject.html
+[JP_ServiceRequest]: StructureDefinition-JP-ServiceRequest.html
+[JP_Specimen]: StructureDefinition-JP-Specimen.html
