@@ -216,6 +216,7 @@
 [jp-patient-kanasort-sp]: SearchParameter-jp-patient-kanasort-sp.html
 [jp-prefecturenumber-namingsystem]: NamingSystem-jp-prefecturenumber-namingsystem.html
 [JP_Binary]: StructureDefinition-JP-Binary.html
+[JP_CarePlan]: StructureDefinition-JP-CarePlan.html
 [JP_Consent]: StructureDefinition-JP-Consent.html
 [JP_Device]: StructureDefinition-JP-Device.html
 [JP_DeviceUseStatement]: StructureDefinition-JP-DeviceUseStatement.html
