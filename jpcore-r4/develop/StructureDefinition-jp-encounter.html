@@ -2426,7 +2426,7 @@ Summary
 
       <td>token</td>
 
-      <td>GET [base]/Encounter?date=http://hl7.org/fhir/sid/jpsys\20210415?patient=http://hl7.org/fhir/sid/jpsys|123456</td>
+      <td>GET [base]/Encounter?date=eq2021-04-15?patient=http://hl7.org/fhir/sid/jpsys|123456</td>
 
     </tr>
 
@@ -2438,7 +2438,7 @@ Summary
 
       <td>token</td>
 
-      <td>GET [base]/Encounter?class=http://hl7.org/fhir/sid/jpsys\EMER?patient=http://hl7.org/fhir/sid/jpsys|123456</td>
+      <td>GET [base]/Encounter?class=http://terminology.hl7.org/CodeSystem/v3-ActCode|EMER?patient=http://hl7.org/fhir/sid/jpsys|123456</td>
 
     </tr>
 
@@ -2450,7 +2450,7 @@ Summary
 
       <td>token</td>
 
-      <td>GET [base]/Encounter?patient=http://hl7.org/fhir/sid/jpsys|123456?type=http://hl7.org/fhir/sid/jpsys\ADMS</td>
+      <td>GET [base]/Encounter?patient=http://hl7.org/fhir/sid/jpsys|123456&amp;type=http://terminology.hl7.org/CodeSystem/encounter-type|ADMS</td>
 
     </tr>
 
@@ -2462,7 +2462,7 @@ Summary
 
       <td>token</td>
 
-      <td>GET [base]/Encounter?patient=http://hl7.org/fhir/sid/jpsys|123456?status=http://hl7.org/fhir/sid/jpsys\arrived</td>
+      <td>GET [base]/Encounter?patient=http://hl7.org/fhir/sid/jpsys|123456?status=arrived</td>
 
     </tr>
 
@@ -2476,15 +2476,11 @@ Summary
 
 
 
-<p>次の検索パラメータをサポートすることが望ましい。(<strong>SHOULD</strong>)</p>
-
-
-
 <ol>
 
   <li>
 
-    <p>identifier 検索パラメータを使用して、診察番号等の識別子によるEncounterの検索をサポートすることが望ましい（<strong>SHOULD</strong>）</p>
+    <p>identifier 検索パラメータを使用して、診察番号等の識別子によるEncounterの検索をサポートしなければならない（<strong>SHALL</strong>）</p>
 
 
 
@@ -2509,6 +2505,158 @@ Summary
   </li>
 
 </ol>
+
+
+
+<h5 id="推奨検索パラメータ">推奨検索パラメータ</h5>
+
+
+
+<p>次の検索パラメータをサポートすることが望ましい。</p>
+
+
+
+<ol>
+
+  <li>
+
+    <p>patient 検索パラメータを使用して、識別子によるEncounterの検索をサポートすることが望ましい（<strong>SHOULD</strong>）</p>
+
+
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Encounter?patient={reference}
+
+</code></pre></div>    </div>
+
+
+
+    <p>例：</p>
+
+
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Encounter?patient=http://hl7.org/fhir/sid/jpsys\|123456
+
+</code></pre></div>    </div>
+
+
+
+    <p>指定されたpatientに一致するEncounterリソースを含むBundleを検索する。</p>
+
+  </li>
+
+  <li>
+
+    <p>date, patient  検索パラメータを使用して、識別子によるEncounterの検索をサポートすることが望ましい（<strong>SHOULD</strong>）</p>
+
+
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Encounter?date={date}&amp;patient={reference}
+
+</code></pre></div>    </div>
+
+
+
+    <p>例：</p>
+
+
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Encounter?date=eq2021-04-15?patient=http://hl7.org/fhir/sid/jpsys\|123456
+
+</code></pre></div>    </div>
+
+
+
+    <p>指定されたdate,patientに一致するEncounterリソースを含むBundleを検索する。</p>
+
+  </li>
+
+  <li>
+
+    <p>class, patient  検索パラメータを使用して、識別子によるEncounterの検索をサポートすることが望ましい（<strong>SHOULD</strong>）</p>
+
+
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Encounter?class={token}&amp;patient={reference}
+
+</code></pre></div>    </div>
+
+
+
+    <p>例：</p>
+
+
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Encounter?class=http://terminology.hl7.org/CodeSystem/v3-ActCode\|EMER?patient=http://hl7.org/fhir/sid/jpsys\|123456 
+
+</code></pre></div>    </div>
+
+
+
+    <p>指定されたclass,patientに一致するEncounterリソースを含むBundleを検索する。</p>
+
+  </li>
+
+  <li>
+
+    <p>patient, type  検索パラメータを使用して、識別子によるEncounterの検索をサポートすることが望ましい（<strong>SHOULD</strong>）</p>
+
+
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Encounter?patient={reference}&amp;type={token}
+
+</code></pre></div>    </div>
+
+
+
+    <p>例：</p>
+
+
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Encounter?patient=http://hl7.org/fhir/sid/jpsys\|123456?type=http://terminology.hl7.org/CodeSystem/encounter-type\|ADMS 
+
+</code></pre></div>    </div>
+
+
+
+    <p>指定されたpatient, typeに一致するEncounterリソースを含むBundleを検索する。</p>
+
+  </li>
+
+  <li>
+
+    <p>patient, status  検索パラメータを使用して、識別子によるEncounterの検索をサポートすることが望ましい（<strong>SHOULD</strong>）</p>
+
+
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Encounter?patient={reference}&amp;status={token}
+
+</code></pre></div>    </div>
+
+
+
+    <p>例：</p>
+
+
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Encounter?patient=http://hl7.org/fhir/sid/jpsys\|123456?status=arrive 
+
+</code></pre></div>    </div>
+
+
+
+    <p>指定されたpatient, statusに一致するEncounterリソースを含むBundleを検索する。</p>
+
+  </li>
+
+</ol>
+
+
+
+<h5 id="必須検索パラメータ-1">必須検索パラメータ</h5>
+
+
+
+<p>次の検索パラメータをサポートすることが望ましい。(<strong>SHOULD</strong>)</p>
 
 
 
@@ -2944,7 +3092,7 @@ Summary
 
         <p>
 
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 24, 2023 00:39+0000">2023-10-24</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 25, 2023 04:26+0000">2023-10-25</span>
 
           <br/>
 
