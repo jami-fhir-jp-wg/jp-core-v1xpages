@@ -1,10 +1,8 @@
 "Id","Path","Slice Name","Alias(s)","Label","Min","Max","Must Support?","Is Modifier?","Is Summary?","Type(s)","Short","Definition","Comments","Requirements","Default Value","Meaning When Missing","Fixed Value","Pattern","Example","Minimum Value","Maximum Value","Maximum Length","Binding Strength","Binding Description","Binding Value Set","Code","Slicing Discriminator","Slicing Description","Slicing Ordered","Slicing Rules","Base Path","Base Min","Base Max","Condition(s)","Constraint(s)","Mapping: Workflow Pattern","Mapping: HL7 v2 Mapping","Mapping: RIM Mapping","Mapping: FiveWs Pattern Mapping"
 "DiagnosticReport","DiagnosticReport","","Report
 TestResultResultsLabsLaboratory","",0,*,"","","","null {[]} {[]}
-","診断レポート-依頼情報、１項目単位の結果、画像、解釈、およびフォーマットされたレポートの組み合わせ　【JP Core仕様】画像結果レポートのプロフィール【詳細参照】","患者、患者のグループ、デバイス、場所、これらから派生した検体に対して実行された診断的検査の結果と解釈。レポートには、依頼情報や依頼者情報などの臨床コンテキスト（文脈）、および１項目単位の結果、画像、テキストとコード化された解釈、および診断レポートのフォーマットされた表現のいくつかの組み合わせが含まれる。
-
-【JP Core仕様】画像結果レポートのプロフィール","これは単一のレポートをキャプチャすることを目的としており、複数のレポートをカバーする要約情報の表示に使用するのには適していない。たとえば、このリソースは、検査結果の累積レポート形式やシーケンスの詳細な構造化レポート用に作られていない。
-
+","診断レポート-依頼情報、１項目単位の結果、画像、解釈、およびフォーマットされたレポートの組み合わせ　【JP Core仕様】画像結果レポートのプロフィール【詳細参照】","患者、患者のグループ、デバイス、場所、これらから派生した検体に対して実行された診断的検査の結果と解釈。レポートには、依頼情報や依頼者情報などの臨床コンテキスト（文脈）、および１項目単位の結果、画像、テキストとコード化された解釈、および診断レポートのフォーマットされた表現のいくつかの組み合わせが含まれる。  
+【JP Core仕様】画像結果レポートのプロフィール","これは単一のレポートをキャプチャすることを目的としており、複数のレポートをカバーする要約情報の表示に使用するのには適していない。たとえば、このリソースは、検査結果の累積レポート形式やシーケンスの詳細な構造化レポート用に作られていない。  
 【JP Core仕様】DiagnosticReportリソースの共通プロフィール","","","","","","","","",,,,,"",,,,"DiagnosticReport",0,*,"","dom-2:リソースが別のリソースに含まれている場合、ネストされたリソースを含めてはなりません / If the resource is contained in another resource, it SHALL NOT contain nested Resources {contained.contained.empty()}
 dom-3:リソースが別のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含有リソースを参照するものとします / If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:リソースが別のリソースに含まれている場合、meta.versionidまたはmeta.lastupdatedを持たないものとします / If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:別のリソースにリソースが含まれている場合、セキュリティラベルはありません / If a resource is contained in another resource, it SHALL NOT have a security label {contained.meta.security.empty()}dom-6:リソースには、堅牢な管理のための叙述(Narative)が必要です / A resource should have narrative for robust management {text.`div`.exists()}","Event","ORU -> OBR","Entity. Role, or Act","Observation[classCode=OBS, moodCode=EVN]"
 "DiagnosticReport.id","DiagnosticReport.id","","","",0,1,"","","Y","id {[]} {[]}
@@ -39,23 +37,19 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "DiagnosticReport.identifier","DiagnosticReport.identifier","","ReportID
 Filler IDPlacer ID","",0,*,"","","Y","Identifier {[]} {[]}
-","実行者/実施者または他のシステムによって、この診断レポートに割り当てられた識別子【詳細参照】","実行者または他のシステムによってこのレポートに割り当てられた識別子。","通常は診断サービスプロバイダの情報システムにより設定される。
-
-【JP Core仕様】レポート番号
-
+","実行者/実施者または他のシステムによって、この診断レポートに割り当てられた識別子【詳細参照】","実行者または他のシステムによってこのレポートに割り当てられた識別子。","通常は診断サービスプロバイダの情報システムにより設定される。  
+【JP Core仕様】レポート番号  
 （放射線情報システム(RIS)による発番が想定されるが、施設によって電子カルテ等のオーダ番号を使う場合もあり得る）","このレポートについてクエリを実行するとき、およびFHIRコンテキスト外のレポートにリンクするときにどの識別子を使用するかを知る必要がある","","","","","","","",,,,,"",,,,"DiagnosticReport.identifier",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.identifier","OBR-51/ for globally unique filler ID  - OBR-3 , For non-globally unique filler-id the flller/placer number must be combined with the universal service Id -  OBR-2(if present)+OBR-3+OBR-4","id","FiveWs.identifier"
 "DiagnosticReport.basedOn","DiagnosticReport.basedOn","","Request
 ","",0,*,"Y","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/CarePlan], CanonicalType[http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRequest], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRequest_Injection], CanonicalType[http://hl7.org/fhir/StructureDefinition/NutritionOrder], CanonicalType[http://hl7.org/fhir/StructureDefinition/ServiceRequest]]}
-","レポート作成サービスに対する要求の詳細【詳細参照】","検査や診断の依頼の元になったもの。通常はServiceRequestあるいはCarePlan（治験や抗がん剤投与等により検査を行うことが必須の場合、根拠となった事象を追記することは制限しない）","通常は１つのリクエストに対し１つの検査結果となるが、状況によって１つのリクエストに対し複数の検査結果が要求され、複数のレポートが作成される場合もあるので注意すること。
-
+","レポート作成サービスに対する要求の詳細【詳細参照】","検査や診断の依頼の元になったもの。通常はServiceRequestあるいはCarePlan（治験や抗がん剤投与等により検査を行うことが必須の場合、根拠となった事象を追記することは制限しない）","通常は１つのリクエストに対し１つの検査結果となるが、状況によって１つのリクエストに対し複数の検査結果が要求され、複数のレポートが作成される場合もあるので注意すること。  
 【JP Core仕様】オーダ発生元の ServiceRequest または CarePlan への参照（多くの場合はServiceRequest（オーダ）が存在するが、オーダが発生しない検査も想定される。）","このエレメントによりレポートの認可をトレースしたり、レポート作成サービスに対する提案や推奨事項を追跡することができる。","","","","","","","",,,,,"",,,,"DiagnosticReport.basedOn",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.basedOn","ORC? OBR-2/3?","outboundRelationship[typeCode=FLFS].target"
 "DiagnosticReport.status","DiagnosticReport.status","","","",1,1,"","Y","Y","code {[]} {[]}
-","診断レポートの状態【詳細参照】","診断レポートの状態。以下のいずれかが設定される。registered | partial | preliminary | final | amended | corrected | appended | cancelled | entered-in-error | unknown","FHIRのstringsは1MBを越えてはならない（SHALL NOT）ことに留意すること。
-
-【JP Core仕様】・診断レポートのステータス
-
+","診断レポートの状態【詳細参照】","診断レポートの状態。以下のいずれかが設定される。registered | partial | preliminary | final | amended | corrected | appended | cancelled | entered-in-error | unknown","FHIRのstringsは1MBを越えてはならない（SHALL NOT）ことに留意すること。  
+【JP Core仕様】  
+・診断レポートのステータス  
 ・定義通りの選択肢（例：preliminary 一次読影, final 二次読影（完了）等）を利用。","診断サービスではルーチンに仮確定あるいは不完全なレポートが発生することがある。また、しばしば前に発行されたレポートが取り消されることもある。","","","","","","","",,"required","診断レポートのステータス。 / The status of the diagnostic report.","http://hl7.org/fhir/ValueSet/diagnostic-report-status|4.0.1","",,,,"DiagnosticReport.status",1,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.status","OBR-25 (not 1:1 mapping)","statusCode  Note: final and amended are distinguished by whether observation is the subject of a ControlAct event of type ""revise""","FiveWs.status"
 "DiagnosticReport.category","DiagnosticReport.category","","Department
@@ -226,60 +220,48 @@ ext-1:両方ではなく、拡張または値[x]が必要です / Must have eith
 ","C*E.9. But note many systems use C*E.2 for this","./originalText[mediaType/code=""text/plain""]/data"
 "DiagnosticReport.subject","DiagnosticReport.subject","","Patient
 ","",0,1,"Y","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/Group], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location]]}
-","診断レポートの対象患者に関する情報【詳細参照】","レポートの対象。 必ずでは無いが、通常、これには「患者」が該当する。","参照は実際のFHIRリソースへの参照であり、解決可能である必要がある。解決はURLから取得するか、または、リソースタイプが利用できる場合は絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索する。
-
+","診断レポートの対象患者に関する情報【詳細参照】","レポートの対象。 必ずでは無いが、通常、これには「患者」が該当する。","参照は実際のFHIRリソースへの参照であり、解決可能である必要がある。解決はURLから取得するか、または、リソースタイプが利用できる場合は絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索する。  
 【JP Core仕様】Patient リソースを参照","対象のコンテキストが必要である。","","","","","","","",,,,,"",,,,"DiagnosticReport.subject",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.subject","PID-3 (no HL7 v2 mapping for Group or Device)","participation[typeCode=SBJ]","FiveWs.subject[x]","FiveWs.subject"
 "DiagnosticReport.encounter","DiagnosticReport.encounter","","Context
 ","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Encounter]]}
-","診断レポートが関係するヘルスケアイベントに関する情報【詳細参照】","この診断レポートが関するヘルスケアイベント。","これは通常、レポートの作成が発生するEncounterだが、一部のイベントはEncounterの正式な完了の前または後に開始される場合がある（例えば入院前の検査）。その場合でも（入院に関連して検査が行われる場合など）、Encounterのコンテキストに関連付けられる。
-
+","診断レポートが関係するヘルスケアイベントに関する情報【詳細参照】","この診断レポートが関するヘルスケアイベント。","これは通常、レポートの作成が発生するEncounterだが、一部のイベントはEncounterの正式な完了の前または後に開始される場合がある（例えば入院前の検査）。その場合でも（入院に関連して検査が行われる場合など）、Encounterのコンテキストに関連付けられる。  
 【JP Core仕様】このレポートを書く切っ掛けとなる Encounterリソース（例：術前検査の場合、術前訪問） を参照","Encounterコンテキストへのリンクが必要である","","","","","","","",,,,,"",,,,"DiagnosticReport.encounter",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.encounter","PV1-19","inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]","FiveWs.context"
 "DiagnosticReport.effective[x]","DiagnosticReport.effective[x]","","Observation time
 Effective TimeOccurrence","",0,1,"Y","","Y","dateTime {[]} {[]}
-","診断レポートの作成日時【詳細参照】","観測値が関連する時間または期間。レポートの対象が患者である場合、これは通常、読影開始の時間であり、日付/時刻自体のみが提供される。","診断手順が患者に対して実行された場合、これは実行された時間を示す。
-
-【JP Core仕様】レポート作成日時
-
+","診断レポートの作成日時【詳細参照】","観測値が関連する時間または期間。レポートの対象が患者である場合、これは通常、読影開始の時間であり、日付/時刻自体のみが提供される。","診断手順が患者に対して実行された場合、これは実行された時間を示す。  
+【JP Core仕様】レポート作成日時  
 （DateTimeを採用し、Periodは不使用）","このレポートを提出/提示するために、患者履歴のどこにあるかを知る必要があります。 / Need to know where in the patient history to file/present this report.","","","","","","","",,,,,"",,,,"DiagnosticReport.effective[x]",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.occurrence[x]","OBR-7","effectiveTime","FiveWs.done[x]"
 "DiagnosticReport.issued","DiagnosticReport.issued","","Date published
 Date IssuedDate Verified","",0,1,"Y","","Y","instant {[]} {[]}
-","このバージョンの診断レポートが医療者に提供/確定された日時【詳細参照】","このバージョンのレポートがプロバイダに提供された日時。通常、レポートがレビューおよび検証された後になる。","リソース自体の更新時間とは異なる場合がある。これは、レポートの実際のリリース時間ではなく、レコード（場合によってはセカンダリコピー）のステータスであるため。
-
+","このバージョンの診断レポートが医療者に提供/確定された日時【詳細参照】","このバージョンのレポートがプロバイダに提供された日時。通常、レポートがレビューおよび検証された後になる。","リソース自体の更新時間とは異なる場合がある。これは、レポートの実際のリリース時間ではなく、レコード（場合によってはセカンダリコピー）のステータスであるため。  
 【JP Core仕様】レポート確定日時","臨床医は、レポートがリリースされた日付を確認できる必要がある。","","","","","","","",,,,,"",,,,"DiagnosticReport.issued",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","OBR-22","participation[typeCode=VRF or AUT].time","FiveWs.recorded"
 "DiagnosticReport.performer","DiagnosticReport.performer","","Laboratory
 ServicePractitionerDepartmentCompanyAuthorized byDirector","",0,*,"Y","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner]]}
-","診断レポートの作成発行に責任をもつ診断サービス/担当者に関する情報【詳細参照】","レポートの発行を担当するもの。","臨床診断レポートに対して責任を持つもの.
-
-【JP Core仕様】レポート確定者
-
+","診断レポートの作成発行に責任をもつ診断サービス/担当者に関する情報【詳細参照】","レポートの発行を担当するもの。","臨床診断レポートに対して責任を持つもの.  
+【JP Core仕様】レポート確定者  
 （責任としては performer > resultsInterpreter という関係性）","結果に関する問い合わせがある場合は、誰に連絡を取るべきかを知る必要がある。また、データ二次分析のためにレポートの発生源を追跡する必要が生じる場合もある。","","","","","","","",,,,,"",,,,"DiagnosticReport.performer",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.performer.actor","PRT-8 (where this PRT-4-Participation = ""PO"")",".participation[typeCode=PRF]","FiveWs.actor"
 "DiagnosticReport.resultsInterpreter","DiagnosticReport.resultsInterpreter","","Analyzed by
 Reported by","",0,*,"Y","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner]]}
-","診断レポートの結論と解釈に責任を持つ医療者/組織に関する情報【詳細参照】","レポートの結論や読影に関わる医師や組織","必ずしも診断レポートに対して責任を持つものを示すわけでは無い。
-
+","診断レポートの結論と解釈に責任を持つ医療者/組織に関する情報【詳細参照】","レポートの結論や読影に関わる医師や組織","必ずしも診断レポートに対して責任を持つものを示すわけでは無い。  
 【JP Core仕様】但し、一次読影や二次読影などの役割 (Practitioner Roll) の指定方法はペンディング","結果に関する問い合わせがある場合は、誰に連絡を取るべきかを知る必要がある。また、データ二次分析のためにレポートの発生源を追跡する必要が生じる場合もある。","","","","","","","",,,,,"",,,,"DiagnosticReport.resultsInterpreter",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.performer.actor","OBR-32, PRT-8 (where this PRT-4-Participation = ""PI"")",".participation[typeCode=PRF]","FiveWs.actor"
 "DiagnosticReport.specimen","DiagnosticReport.specimen","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Specimen]]}
-","【JP Core仕様】未使用
-
-・画像ガイド下生検で得られる検体の可能性は有り得るが、放射線レポートでは特には規定しない【詳細参照】","診断レポートの対象となる検体","【JP Core仕様】未使用
-
+","【JP Core仕様】未使用  
+・画像ガイド下生検で得られる検体の可能性は有り得るが、放射線レポートでは特には規定しない【詳細参照】","診断レポートの対象となる検体","【JP Core仕様】未使用  
 ・画像ガイド下生検で得られる検体の可能性は有り得るが、本項目は病理レポートで利用されることを想定し、放射線レポートでは特には規定しない","レポートの対象となる取集された検体についての情報をレポートできる必要がある。","","","","","","","",,,,,"",,,,"DiagnosticReport.specimen",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","SPM","participation[typeCode=SBJ]"
 "DiagnosticReport.result","DiagnosticReport.result","","Data
 Atomic ValueResultAtomic resultDataTestAnalyteBatteryOrganizer","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Observation]]}
-","診断レポートの一部となるObservationリソース【詳細参照】","【JP Core仕様】計測情報などの付随所見をObservationリソースとして定義できるが、該当するコードが定義できないため放射線レポートでは未定義とする。関連する検体検査結果（腎機能や感染症情報等）を保持することは可能。","Observationはさらにobservationを含むことができる。
-
+","診断レポートの一部となるObservationリソース【詳細参照】","【JP Core仕様】計測情報などの付随所見をObservationリソースとして定義できるが、該当するコードが定義できないため放射線レポートでは未定義とする。関連する検体検査結果（腎機能や感染症情報等）を保持することは可能。","Observationはさらにobservationを含むことができる。  
 【JP Core仕様】計測情報などの付随所見をObservationリソースとして定義できるが、該当するコードが定義できないため放射線レポートでは未定義とする。関連する検体検査結果（腎機能や感染症情報等）を保持することは可能。","結果のグループ化が任意だが、意味のある個別の結果または結果のグループをサポートする必要がある。","","","","","","","",,,,,"",,,,"DiagnosticReport.result",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","OBXs","outboundRelationship[typeCode=COMP].target"
 "DiagnosticReport.imagingStudy","DiagnosticReport.imagingStudy","","","",0,*,"Y","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Radiology]]}
-","診断レポートに関連づけれられたDICOM検査画像に関する情報【詳細参照】","実行された画像検査の完全な詳細に関する1つあるいは複数のリンク。通常、これは DICOM対応モダリティによって実行されるイメージングだが、DICOMであることが必須ではない。完全に有効な PACS ビューアは、この情報を使用してソース イメージのビューを提供できる。","【JP Core仕様】・対象となるImagingStudyリソースを参照
-
+","診断レポートに関連づけれられたDICOM検査画像に関する情報【詳細参照】","実行された画像検査の完全な詳細に関する1つあるいは複数のリンク。通常、これは DICOM対応モダリティによって実行されるイメージングだが、DICOMであることが必須ではない。完全に有効な PACS ビューアは、この情報を使用してソース イメージのビューを提供できる。","【JP Core仕様】・対象となるImagingStudyリソースを参照  
 ・放射線レポートでは検査実施後には必須（複数もあり得る）","","","","","","","","",,,,,"",,,,"DiagnosticReport.imagingStudy",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","outboundRelationship[typeCode=COMP].target[classsCode=DGIMG, moodCode=EVN]"
 "DiagnosticReport.media","DiagnosticReport.media","","DICOM
@@ -301,30 +283,24 @@ user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","修飾子拡張機能により、安全に無視できる大部分の拡張機能と明確に区別できるように、安全に無視できない拡張機能が可能になります。これにより、実装者が拡張の存在を禁止する必要性を排除することにより、相互運用性が促進されます。詳細については、[修飾子拡張の定義]（拡張性.html＃modifierextension）を参照してください。 / Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "DiagnosticReport.media.comment","DiagnosticReport.media.comment","","","",0,1,"","","","string {[]} {[]}
-","画像についてのコメント（例：説明） / Comment about the image (e.g. explanation)","イメージに関するコメント。通常、これは画像が含まれる理由を説明したり、依頼者の注意を重要な内容に引き付けるために使用される。","コメントは、画像と共に表示される。レポートでは画像の内容に関する追加の議論が、DiagnosticReport.textやDiagnosticReport.conclusionなどの他のセクションに含まれるのが一般的である。
-
+","画像についてのコメント（例：説明） / Comment about the image (e.g. explanation)","イメージに関するコメント。通常、これは画像が含まれる理由を説明したり、依頼者の注意を重要な内容に引き付けるために使用される。","コメントは、画像と共に表示される。レポートでは画像の内容に関する追加の議論が、DiagnosticReport.textやDiagnosticReport.conclusionなどの他のセクションに含まれるのが一般的である。  
 【JP Core仕様】キーイメージの説明","レポート作成者は、レポートに含まれる各画像についてコメントを付け加える","","","","","","","",,,,,"",,,,"DiagnosticReport.media.comment",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=""annotation""].value"
 "DiagnosticReport.media.link","DiagnosticReport.media.link","","","",1,1,"Y","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Media]]}
-","画像ソースへの参照 / Reference to the image source","イメージ ソースへの参照。","参照は実際のFHIRリソースへの参照であり、解決可能である必要がある。解決はURLから取得するか、または、リソースタイプが利用できる場合は絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索する。
-
+","画像ソースへの参照 / Reference to the image source","イメージ ソースへの参照。","参照は実際のFHIRリソースへの参照であり、解決可能である必要がある。解決はURLから取得するか、または、リソースタイプが利用できる場合は絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索する。  
 【JP Core仕様】キーイメージの参照先","","","","","","","","",,,,,"",,,,"DiagnosticReport.media.link",1,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".value.reference"
 "DiagnosticReport.conclusion","DiagnosticReport.conclusion","","Report
 ","",0,1,"Y","","","string {[]} {[]}
-","簡潔かつ臨床的な文脈で表現した診断レポートの要約結論（解釈、インプレッション）","診断報告書の簡潔かつ臨床的に文脈化された要約結論(interpretation/impression)","FHIRのstringsは1MBを越えてはならない（SHALL NOT）ことに留意すること。
-
+","簡潔かつ臨床的な文脈で表現した診断レポートの要約結論（解釈、インプレッション）","診断報告書の簡潔かつ臨床的に文脈化された要約結論(interpretation/impression)","FHIRのstringsは1MBを越えてはならない（SHALL NOT）ことに留意すること。  
 【JP Core仕様】放射線レポートの結果/結論/インプレッションの文章を記載","基本的な結果で、失われない結論を提供する必要がある。","","","","","","","",,,,,"",,,,"DiagnosticReport.conclusion",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","OBX","inboundRelationship[typeCode=""SPRT""].source[classCode=OBS, moodCode=EVN, code=LOINC:48767-8].value (type=ST)"
 "DiagnosticReport.conclusionCode","DiagnosticReport.conclusionCode","","","",0,*,"","","","CodeableConcept {[]} {[]}
-","診断レポートの要約結論（解釈、インプレッション）を表すコード【詳細参照】","診断レポートの要約の結論 (interpretation/impression) を表す 1 つ以上のコード。","すべての用語の使用がこの一般的なパターンに適合するわけではない。 場合によっては、モデルにcodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係と事前調整および事後調整を管理するための独自の構造を提供する必要がある。 
-
-【JP Core仕様】・放射線レポートの所見の結論となるコードを設定。
-
+","診断レポートの要約結論（解釈、インプレッション）を表すコード【詳細参照】","診断レポートの要約の結論 (interpretation/impression) を表す 1 つ以上のコード。","すべての用語の使用がこの一般的なパターンに適合するわけではない。 場合によっては、モデルにcodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係と事前調整および事後調整を管理するための独自の構造を提供する必要がある。   
+【JP Core仕様】・放射線レポートの所見の結論となるコードを設定。  
 ・例えば、ICD 病名コード","","","","","","","","",,"example","レポートの補助として提供される診断コード。 / Diagnosis codes provided as adjuncts to the report.","http://hl7.org/fhir/ValueSet/clinical-findings","",,,,"DiagnosticReport.conclusionCode",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","OBX","inboundRelationship[typeCode=SPRT].source[classCode=OBS, moodCode=EVN, code=LOINC:54531-9].value (type=CD)"
 "DiagnosticReport.presentedForm","DiagnosticReport.presentedForm","","","",0,*,"Y","","","Attachment {[]} {[]}
-","診断サービス/担当者によって発行された診断レポート全体のコンテンツ（例えばPDFファイルなど）【詳細参照】","診断サービスによって発行された結果全体のリッチ テキスト表現。複数の形式は許可されるが、意味的に等価である必要がある。","""application/pdf"" がこのコンテキストで最も信頼性が高く、相互運用可能なアプリケーションとして推奨される。
-
+","診断サービス/担当者によって発行された診断レポート全体のコンテンツ（例えばPDFファイルなど）【詳細参照】","診断サービスによって発行された結果全体のリッチ テキスト表現。複数の形式は許可されるが、意味的に等価である必要がある。","""application/pdf"" がこのコンテキストで最も信頼性が高く、相互運用可能なアプリケーションとして推奨される。  
 【JP Core仕様】添付するXHTMLやPDFなどの文書","臨床での再現性を担保するために、独自の完全にフォーマットされたレポートを提供可能である。","","","","","","","",,,,,"",,,,"DiagnosticReport.presentedForm",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","OBX","text (type=ED)"

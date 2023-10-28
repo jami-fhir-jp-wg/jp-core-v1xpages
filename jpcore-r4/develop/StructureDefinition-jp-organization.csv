@@ -36,11 +36,11 @@ ext-1:両方ではなく、拡張または値[x]が必要です / Must have eith
 ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Organization.extension:organizationNo","Organization.extension","organizationNo","","",0,1,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Organization_InsuranceOrganizationNo]]} {[]}
 ","医療機関コード（７桁）を表現するExtension【詳細参照】","保険医療機関番号７桁を表現するためのExtension。 JP Core Organizationプロファイルで利用されることを想定しているが、他のリソースでも利用可能である","医療機関コード（７桁）。Identifier型の拡張「InsuranceOrganizationNo」を使用する。  
-systemには医療機関コードを表すOID「1.2.392.100495.20.3.23」を指定する。
+systemには医療機関コードを表すOID「1.2.392.100495.20.3.23」を指定する。  
 valueには下記の値を格納する。  
-- 保険医療機関・保険薬局 : `医療機関コード（７桁）`
-- 非保険の特定健診・特定保健指導機関 : `機関コード（７桁）`
-
+　- 保険医療機関・保険薬局 : `医療機関コード（７桁）`  
+　- 非保険の特定健診・特定保健指導機関 : `機関コード（７桁）`  
+　  
 医療機関コードの詳しい説明は、Organizationプロファイルの医療機関コード１０桁の説明を参照すること。  
 なお上記に該当しない施設は、本拡張は使用しない。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
 ","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
@@ -80,8 +80,8 @@ ext-1:両方ではなく、拡張または値[x]が必要です / Must have eith
 ","IDを発行した組織（単なるテキストである可能性があります） / Organization that issued id (may be just text)","識別子を発行/管理する組織。 / Organization that issued/manages the identifier.","識別子は、.reference要素を省略し、割り当て組織に関する名前またはその他のテキスト情報を反映した.display要素のみを含む場合があります。 / The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.","","","","","","","","",,,,,"",,,,"Identifier.assigner",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","CX.4 / (CX.4,CX.9,CX.10)","II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper","./IdentifierIssuingAuthority"
 "Organization.identifier:medicalInstitutionCode","Organization.identifier","medicalInstitutionCode","","",0,*,"","","Y","Identifier {[]} {[]}
-","施設が福祉医療関連機関である場合に利用する識別子【詳細参照】","福祉医療施設を区別するため医療機関コード（１０桁）を格納するためのIdentifier/Slicing定義。","systemはFixed Valueの```http://jpfhir.jp/fhir/core/IdSystem/insurance-medical-institution-no```を使用する。　
-value : ```医療機関コード（１０桁）```を使用する。 
+","施設が福祉医療関連機関である場合に利用する識別子【詳細参照】","福祉医療施設を区別するため医療機関コード（１０桁）を格納するためのIdentifier/Slicing定義。","systemはFixed Valueの```http://jpfhir.jp/fhir/core/IdSystem/insurance-medical-institution-no```を使用する。  
+value : ```医療機関コード（１０桁）```を使用する。  
 医療機関コード（１０桁）の詳細はOrganizationプロファイルの医療機関コード１０桁の説明を参照すること。 ","Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.","","","","","","","",,,,,"",,,,"Organization.identifier",0,*,"org-1
 ","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","XON.10 / XON.3",".scopes[Role](classCode=IDENT)","./Identifiers","FiveWs.identifier"
@@ -111,7 +111,7 @@ ext-1:両方ではなく、拡張または値[x]が必要です / Must have eith
 ","IDを発行した組織（単なるテキストである可能性があります） / Organization that issued id (may be just text)","識別子を発行/管理する組織。 / Organization that issued/manages the identifier.","識別子は、.reference要素を省略し、割り当て組織に関する名前またはその他のテキスト情報を反映した.display要素のみを含む場合があります。 / The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.","","","","","","","","",,,,,"",,,,"Identifier.assigner",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","CX.4 / (CX.4,CX.9,CX.10)","II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper","./IdentifierIssuingAuthority"
 "Organization.identifier:insurerNumber","Organization.identifier","insurerNumber","","",0,*,"","","Y","Identifier {[]} {[]}
-","この組織を複数のシステムで識別する","異なる複数のシステム上で組織を識別するために使用される組織の識別子","健康保険組合などの保険者の保険者番号を表現する際のIdentifier表現に使用する
+","この組織を複数のシステムで識別する","異なる複数のシステム上で組織を識別するために使用される組織の識別子","健康保険組合などの保険者の保険者番号を表現する際のIdentifier表現に使用する  
 system要素には保険者番号を示すOID""urn:oid:1.2.392.100495.20.3.61""を指定する。","Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.","","","","","","","",,,,,"",,,,"Organization.identifier",0,*,"org-1
 ","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","XON.10 / XON.3",".scopes[Role](classCode=IDENT)","./Identifiers","FiveWs.identifier"
@@ -141,17 +141,14 @@ ext-1:両方ではなく、拡張または値[x]が必要です / Must have eith
 ","IDを発行した組織（単なるテキストである可能性があります） / Organization that issued id (may be just text)","識別子を発行/管理する組織。 / Organization that issued/manages the identifier.","識別子は、.reference要素を省略し、割り当て組織に関する名前またはその他のテキスト情報を反映した.display要素のみを含む場合があります。 / The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.","","","","","","","","",,,,,"",,,,"Identifier.assigner",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","CX.4 / (CX.4,CX.9,CX.10)","II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper","./IdentifierIssuingAuthority"
 "Organization.active","Organization.active","","","",0,1,"","Y","Y","boolean {[]} {[]}
-","組織の記録がまだ有効に使われているかどうか【詳細参照】","このアクティブフラグは、組織を一時的に閉鎖したり、工事中であることを示すために使用されることを意図していない。代わりに、組織内の場所(複数可)は、中断されたステータスを持っている必要がある。一時停止の理由の詳細が必要な場合は、この要素の拡張子を使用する必要がある。
-
+","組織の記録がまだ有効に使われているかどうか【詳細参照】","このアクティブフラグは、組織を一時的に閉鎖したり、工事中であることを示すために使用されることを意図していない。代わりに、組織内の場所(複数可)は、中断されたステータスを持っている必要がある。一時停止の理由の詳細が必要な場合は、この要素の拡張子を使用する必要がある。  
 この要素は、リソースがエラーで作成されたことをマークするために使用される可能性があるため、修飾子としてラベル付けされている。","このアクティブなフラグは、組織を一時的に閉鎖したり、建設中のマークとして使用するために意図されていません。代わりに、組織内の場所に中断ステータスを設定する必要があります。中断の理由の詳細が必要な場合は、この要素の拡張機能を使用する必要があります。
 
 この要素は修飾子としてラベル付けされています。これは、リソースが誤って作成されたことを示すために使用できるためです。","レコードが使用されなくなったことを示すためのフラグが必要で、一般的にUIではユーザのために非表示にする必要がある。","","This resource is generally assumed to be active if no value is provided for the active element","","","","","",,,,,"",,,,"Organization.active",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","No equivalent in HL7 v2",".status","./Status (however this concept in ServD more covers why the organization is active or not, could be delisted, deregistered, not operational yet) this could alternatively be derived from ./StartDate and ./EndDate and given a context date.","FiveWs.status"
 "Organization.type","Organization.type","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
-","組織の種類【詳細参照】","その種類の組織。","n組織は、企業、病棟、セクション、臨床チーム、政府部門などにすることができる。多くのアプリケーションでは、コードは、特定の組織を識別するために使用されている（と言う、病棟）別の同じタイプのものとは対照的に - これらは識別子ではなく、コードである。
-
-複数のタイプが適切かどうかを検討する際には、異なるタイプが組織の異なるサブ領域に存在する可能性が高いため、子どもの組織の方がより適切な使用法であるかどうかを評価する必要がある。これは、宗教、学術、医療センターのように、タイプの価値観が直交する場合に使用される可能性が高い。
-
+","組織の種類【詳細参照】","その種類の組織。","n組織は、企業、病棟、セクション、臨床チーム、政府部門などにすることができる。多くのアプリケーションでは、コードは、特定の組織を識別するために使用されている（と言う、病棟）別の同じタイプのものとは対照的に - これらは識別子ではなく、コードである。  
+複数のタイプが適切かどうかを検討する際には、異なるタイプが組織の異なるサブ領域に存在する可能性が高いため、子どもの組織の方がより適切な使用法であるかどうかを評価する必要がある。これは、宗教、学術、医療センターのように、タイプの価値観が直交する場合に使用される可能性が高い。  
 いくつかの法域では、このオプション性を単一のカーディナリティとしてプロファイルすると予想される。","これがある組織の種類を追跡することができる必要がある - 異なる組織の種類は、異なる用途を持っている。","","","","","","","",,"example","組織を分類するために使用されます。","http://hl7.org/fhir/ValueSet/organization-type","",,,,"Organization.type",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","No equivalent in v2",".code","n/a","FiveWs.class"
 "Organization.name","Organization.name","","","",0,1,"","","Y","string {[]} {[]}
@@ -159,8 +156,7 @@ ext-1:両方ではなく、拡張または値[x]が必要です / Must have eith
 ","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","XON.1",".name",".PreferredName/Name"
 "Organization.alias","Organization.alias","","","",0,*,"","","","string {[]} {[]}
-","組織が知られている、または過去に知られていた別名のリスト【詳細参照】","組織がその名で知られている、または過去にその名で知られていた代替名のリスト。","これは、名前がいつ使用されたかを追跡することを目的としたものではなく、古い名前でも組織を特定できるように検索を支援することを目的としているため、別名や歴史的な名前に関連付けられた日付はない。","時間の経過とともに、場所や組織はさまざまな変化を経て、さまざまな名前で知ることができる。
-
+","組織が知られている、または過去に知られていた別名のリスト【詳細参照】","組織がその名で知られている、または過去にその名で知られていた代替名のリスト。","これは、名前がいつ使用されたかを追跡することを目的としたものではなく、古い名前でも組織を特定できるように検索を支援することを目的としているため、別名や歴史的な名前に関連付けられた日付はない。","時間の経過とともに、場所や組織はさまざまな変化を経て、さまざまな名前で知ることができる。  
 組織が知っている前の名前を知るための検索には、非常に便利なことができる。","","","","","","","",,,,,"",,,,"Organization.alias",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".name"
 "Organization.telecom","Organization.telecom","","","",0,*,"","","","ContactPoint {[]} {[]}
@@ -182,10 +178,10 @@ ext-1:拡張機能または値[x]のいずれかが必要です。両方では�
 ","実際の連絡先の詳細","指定されたコミュニケーションシステムに意味がある形式での実際の連絡先の詳細（電話番号または電子メールアドレス）を提供してください。","連絡先の番号やメールアドレス","Need to support legacy numbers that are not in a tightly controlled format.","","","","","","","",,,,,"",,,,"ContactPoint.value",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","XTN.1 (or XTN.12)","./url","./Value"
 "Organization.telecom.use","Organization.telecom.use","","","",0,1,"","Y","Y","code {[]} {[]}
-","work | temp | old | mobile - 連絡先の用途等 【JP_Patient.telecomを参照。】homeは使用しないこと。","「接点の目的を特定する。」(Setten no mokuteki wo tokutei suru.)","患者の連絡先の種別をValueSet(ContactPointUse)より選択する。  一時的なものまたは古いものであると明示しない限り、連絡先が最新とみなされる。
-　- work : 職場
-　- temp : 一時的
-　- old : 以前の
+","work | temp | old | mobile - 連絡先の用途等 【JP_Patient.telecomを参照。】homeは使用しないこと。","「接点の目的を特定する。」(Setten no mokuteki wo tokutei suru.)","患者の連絡先の種別をValueSet(ContactPointUse)より選択する。  一時的なものまたは古いものであると明示しない限り、連絡先が最新とみなされる。  
+　- work : 職場  
+　- temp : 一時的  
+　- old : 以前の  
 　- mobile : モバイル機器","Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose.","","","","","","","",,"required","「接点の使用。」(Setten no shiyō.)","http://hl7.org/fhir/ValueSet/contact-point-use|4.0.1","",,,,"ContactPoint.use",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","XTN.2 - but often indicated by field","unique(./use)","./ContactPointPurpose"
 "Organization.telecom.rank","Organization.telecom.rank","","","",0,1,"","","Y","positiveInt {[]} {[]}
@@ -206,33 +202,33 @@ user content","",0,*,"","","","Extension {[]} {[]}
 ","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
 "Organization.address.use","Organization.address.use","","","",0,1,"","Y","Y","code {[]} {[]}
-","work | temp | old | billing - purpose of this address　住所の用途 【JP_Patient.address参照】使用コード「home」は使用しない。","The purpose of this address.
+","work | temp | old | billing - purpose of this address　住所の用途 【JP_Patient.address参照】使用コード「home」は使用しない。","The purpose of this address.  
 住所の用途","住所の用途をValueSet(AddressUse)より選択する。  
-- work : 職場
-- temp : 一時的
-- old : 以前の
-- billing : 請求書、インボイス、領収書などの送付用","多くのリストから適切なアドレスを選択できるようにします。 / Allows an appropriate address to be chosen from a list of many.","","","","","","","",,"required","アドレスの使用。 / The use of an address.","http://hl7.org/fhir/ValueSet/address-use|4.0.1","",,,,"Address.use",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+　- work : 職場  
+　- temp : 一時的  
+　- old : 以前の  
+　- billing : 請求書、インボイス、領収書などの送付用","多くのリストから適切なアドレスを選択できるようにします。 / Allows an appropriate address to be chosen from a list of many.","","","","","","","",,"required","アドレスの使用。 / The use of an address.","http://hl7.org/fhir/ValueSet/address-use|4.0.1","",,,,"Address.use",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","XAD.7","unique(./use)","./AddressPurpose"
 "Organization.address.type","Organization.address.type","","","",0,1,"","","Y","code {[]} {[]}
 ","postal | physical | both 【JP_Patient.address参照】","住所（訪問できる住所）と郵送先住所（私書箱や気付住所など）を区別する。ほとんどのアドレスは両方。","住所の種類をValueSet(AddressType)より選択する。  
-- postal : 郵送先 - 私書箱、気付の住所
-- physical : 訪れることのできる物理的な住所
-- both : postalとphysicalの両方","","","","","","","","",,"required","アドレスのタイプ（物理 /郵便）。 / The type of an address (physical / postal).","http://hl7.org/fhir/ValueSet/address-type|4.0.1","",,,,"Address.type",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+　- postal : 郵送先 - 私書箱、気付の住所  
+　- physical : 訪れることのできる物理的な住所  
+　- both : postalとphysicalの両方","","","","","","","","",,"required","アドレスのタイプ（物理 /郵便）。 / The type of an address (physical / postal).","http://hl7.org/fhir/ValueSet/address-type|4.0.1","",,,,"Address.type",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","XAD.18","unique(./use)"
 "Organization.address.text","Organization.address.text","","","",0,1,"","","Y","string {[]} {[]}
 ","住所のテキスト表現 【JP_Patient.address参照】","表示するアドレス全体を指定する  
 例：郵便ラベル。これは、特定の部品の代わりに、または特定の部品と同様に提供される場合がある。","テキスト表現とパーツの両方を提供できる。アドレスを更新するアプリケーションは、テキストとパーツの両方が存在する場合、パーツにないコンテンツはテキストに含まれないようにする必要がある。  
-- 住所を(都道府県や市町村などに)分離して管理していない場合は、textに入れる。  
-- 住所を(都道府県や市町村などに)分離して管理している場合でも、まとめてtextに入れること。  
-- 郵便番号は含めない。  
-
+　- 住所を(都道府県や市町村などに)分離して管理していない場合は、textに入れる。  
+　- 住所を(都道府県や市町村などに)分離して管理している場合でも、まとめてtextに入れること。  
+　- 郵便番号は含めない。  
+　  
 例：東京都文京区本郷7-3-1","レンダリング可能で、不コード化されていないフォーム。 / A renderable, unencoded form.","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""東京都文京区本郷7-3-1""/>","","",,,,,"",,,,"Address.text",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","XAD.1 + XAD.2 + XAD.3 + XAD.4 + XAD.5 + XAD.6","./formatted"
 "Organization.address.line","Organization.address.line","","","",0,*,"","","Y","string {[]} {[]}
 ","ストリート名や番地など 【JP_Patient.address参照】","このコンポーネントには、家番号、アパート番号、通りの名前、通りの方向、P.O。が含まれる。ボックス番号、配達のヒント、および同様の住所情報など。","【JP Core仕様】state要素とcity要素で表現しなかったそのあとの住所部分を番地以降の部分も含めてすべていれる。  
 英数字は半角でも全角でもよい。文字列の前後および途中に空白文字を含めないこと。  
 繰り返し要素が許されているので、区切りを表現したい場合には、複数要素に分けて格納してもよい。  
-
+　  
 例：本郷7-3-1  
 例：大字石神９７６  
 例：藤崎町大字藤崎字西村1-2 春山荘201号室","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""本郷7-3-1""/>","","",,,,,"",,,,"Address.line",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}

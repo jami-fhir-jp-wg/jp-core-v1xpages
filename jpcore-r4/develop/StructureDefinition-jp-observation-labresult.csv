@@ -34,24 +34,15 @@ user content","",0,*,"","Y","","Extension {[]} {[]}
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","修飾子拡張機能により、安全に無視できる大部分の拡張機能と明確に区別できるように、安全に無視できない拡張機能が可能になります。これにより、実装者が拡張の存在を禁止する必要性を排除することにより、相互運用性が促進されます。詳細については、[修飾子拡張の定義]（拡張性.html＃modifierextension）を参照してください。 / Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
 "Observation.identifier","Observation.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
-","当該検査項目に対して、施設内で割り振られる一意の識別子","この検査項目に割り当てられた一意の識別子。リソースの識別子やシステム的なシーケンスではなく、ビジネスID。","【JP Core仕様】当該検査項目に対して、施設内で割り振られる一意の識別子があればそれを使用する。なければ次のルールを参考に一意となる識別子を生成し設定する。
-
-アプリケーション側のデータベースにおけるフィールド長の定義については、最低64バイトを確保すること。
-
---- 参考 ---
-
-次の項目を順にセパレータ「_(アンダースコア)」で連結し、 identifier.value に設定する。グループ項目でない場合など、該当コード／番号がない場合はセパレータを連続で連結する。各コードはローカルコードを使用し、必ず設定できること。
-
-　１．ORC-2(依頼者オーダ番号)　SS-MIX2の15桁前ゼロ形式の番号
-
-　２．OBR-4(検査項目ID)　検査セットの識別コード
-
-　３．SPM-4(検体タイプ)
-
-　４．OBX-3(検査項目)
-
-　５．OBX-4(検査副ID)・・・オプション。必要に応じて使用。
-
+","当該検査項目に対して、施設内で割り振られる一意の識別子","この検査項目に割り当てられた一意の識別子。リソースの識別子やシステム的なシーケンスではなく、ビジネスID。","【JP Core仕様】当該検査項目に対して、施設内で割り振られる一意の識別子があればそれを使用する。なければ次のルールを参考に一意となる識別子を生成し設定する。  
+アプリケーション側のデータベースにおけるフィールド長の定義については、最低64バイトを確保すること。  
+--- 参考 ---  
+次の項目を順にセパレータ「_(アンダースコア)」で連結し、 identifier.value に設定する。グループ項目でない場合など、該当コード／番号がない場合はセパレータを連続で連結する。各コードはローカルコードを使用し、必ず設定できること。  
+　１．ORC-2(依頼者オーダ番号)　SS-MIX2の15桁前ゼロ形式の番号  
+　２．OBR-4(検査項目ID)　検査セットの識別コード  
+　３．SPM-4(検体タイプ)  
+　４．OBX-3(検査項目)  
+　５．OBX-4(検査副ID)・・・オプション。必要に応じて使用。  
 形式：[ORC-2]_[OBR-4]_[SPM-4]_[OBX-3]（_[OBX-4]）","観測を区別し、参照することを可能にします。 / Allows observations to be distinguished and referenced.","","","","","","","",,,,,"",,,,"Observation.identifier",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.identifier","OBX.21  For OBX segments from systems without OBX-21 support a combination of ORC/OBR and OBX must be negotiated between trading partners to uniquely identify the OBX segment. Depending on how V2 has been implemented each of these may be an option: 1) OBR-3 + OBX-3 + OBX-4 or 2) OBR-3 + OBR-4 + OBX-3 + OBX-4 or 2) some other way to uniquely ID the OBR/ORC + OBX-3 + OBX-4.","id","FiveWs.identifier"
 "Observation.identifier.id","Observation.identifier.id","","","",0,1,"","","","string {[]} {[]}
@@ -88,8 +79,7 @@ ext-1:両方ではなく、拡張または値[x]が必要です / Must have eith
 ","このObservationが親イベントの一部を成す要素であるとき、その親イベントに関する情報【詳細参照】","このリソースが一部として、あるいは手順の一つとして含まれるより大きなイベント。","【JP Core仕様】当面は使用しない。","","","","","","","","",,,,,"",,,,"Observation.partOf",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.partOf","Varies by domain",".outboundRelationship[typeCode=FLFS].target"
 "Observation.status","Observation.status","","","",1,1,"","Y","Y","code {[]} {[]}
-","結果の状態【詳細参照】","結果値の状態。","【JP Core仕様】v2.5の「F」に相当する値は「final」であるが、ここでは 必須コード表「ObservationStatus」より、全てのコード値を使用可とする。
-
+","結果の状態【詳細参照】","結果値の状態。","【JP Core仕様】v2.5の「F」に相当する値は「final」であるが、ここでは 必須コード表「ObservationStatus」より、全てのコード値を使用可とする。  
 (registered | preliminary | final | amended |   corrected | cancelled | entered-in-error | unknown)","個々の結果のステータスを追跡する必要があります。レポート全体が最終決定される前に、いくつかの結果が確定します。 / Need to track the status of individual results. Some results are finalized before the whole report is finalized.","","","","","","","",,"required","観察のステータスを提供するコード。 / Codes providing the status of an observation.","http://hl7.org/fhir/ValueSet/observation-status|4.0.1","",,,,"Observation.status",1,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.status","< 445584004 |Report by finality status|","OBX-11","status  Amended & Final are differentiated by whether it is the subject of a ControlAct event with a type of ""revise""","FiveWs.status"
 "Observation.category","Observation.category","","","",1,*,"","","","CodeableConcept {[]} {[]}
@@ -110,8 +100,7 @@ ext-1:両方ではなく、拡張または値[x]が必要です / Must have eith
 ","コンセプトの単純なテキスト表現 / Plain text representation of the concept","データを入力したユーザー、および/またはユーザーの意図された意味を表すユーザーによって見られる/選択/発言された概念の人間の言語表現。 / A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.","多くの場合、テキストはコーディングの1つの表示名と同じです。 / Very often the text is the same as a displayName of one of the codings.","用語からのコードは、それらを使用する人間のすべてのニュアンスを使用して、常に正しい意味をキャプチャするとは限りません。または、適切なコードがまったくない場合があります。これらの場合、テキストはソースの完全な意味をキャプチャするために使用されます。 / The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.","","","","","","","",,,,,"",,,,"CodeableConcept.text",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C*E.9. But note many systems use C*E.2 for this","./originalText[mediaType/code=""text/plain""]/data"
 "Observation.category:laboratory","Observation.category","laboratory","","",1,1,"","","","CodeableConcept {[]} {[]}
-","検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から""laboratory""を設定する。","検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から""laboratory""を設定する。","【JP Core仕様】推奨コード表「JP Core Simple Observation Category CodeSystem」より、このプロファイルでは「laboratory」固定とする。
-
+","検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から""laboratory""を設定する。","検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から""laboratory""を設定する。","【JP Core仕様】推奨コード表「JP Core Simple Observation Category CodeSystem」より、このプロファイルでは「laboratory」固定とする。  
 (social-history | vital-signs | imaging | laboratory | procedure | survey | exam | therapy | activity)","どの観測値が取得されて表示されるかをフィルタリングするために使用されます。 / Used for filtering what observations are retrieved and displayed.","","","","","","","",,"required","","http://jpfhir.jp/fhir/core/ValueSet/JP_SimpleObservationCategory_VS","",,,,"Observation.category",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".outboundRelationship[typeCode=""COMP].target[classCode=""LIST"", moodCode=""EVN""].code","FiveWs.class"
 "Observation.category:laboratory.id","Observation.category.id","","","",0,1,"","","","string {[]} {[]}
@@ -161,9 +150,8 @@ user content","",0,*,"","","","Extension {[]} {[]}
 ","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
 "Observation.code.coding","Observation.code.coding","","","",1,*,"","","Y","Coding {[]} {[]}
-","用語システムによって定義されたコード / Code defined by a terminology system","コード体系によって定義されたコードへの参照。","【JP Core仕様】SS-MIX2にならい、標準コード、ローカルコードの2つを設定可能とし、いずれか一方は必須とする。さらにJLAC10とJLAC11などの複数の標準コードも設定できるよう、上限は設けない。
-
-標準コード、ローカルコードの2つまで格納可。順不同。
+","用語システムによって定義されたコード / Code defined by a terminology system","コード体系によって定義されたコードへの参照。","【JP Core仕様】SS-MIX2にならい、標準コード、ローカルコードの2つを設定可能とし、いずれか一方は必須とする。さらにJLAC10とJLAC11などの複数の標準コードも設定できるよう、上限は設けない。  
+標準コード、ローカルコードの2つまで格納可。順不同。  
 SS-MIX2だとCWE.1 ～CWE.3に標準コード、CWE.4～CWE.6にローカルコード、など（順不同）。","コードシステム内の代替エンコーディング、および他のコードシステムへの翻訳が可能になります。 / Allows for alternative encodings within a code system, and translations to other code systems.","","","","","","","",,,,,"",,,,"CodeableConcept.coding",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C*E.1-8, C*E.10-22","union(., ./translation)"
 "Observation.code.coding.id","Observation.code.coding.id","","","",0,1,"","","","string {[]} {[]}
@@ -174,8 +162,7 @@ user content","",0,*,"","","","Extension {[]} {[]}
 ","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
 "Observation.code.coding.system","Observation.code.coding.system","","","",0,1,"","","Y","uri {[]} {[]}
-","用語システムのアイデンティティ / Identity of the terminology system","コード体系。","【JP Core仕様】標準コードの場合、JLAC10を表すURIを設定。
-
+","用語システムのアイデンティティ / Identity of the terminology system","コード体系。","【JP Core仕様】標準コードの場合、JLAC10を表すURIを設定。  
 URIは本WGで定義する。","シンボルの定義のソースについて明確である必要があります。 / Need to be unambiguous about the source of the definition of the symbol.","","","","","","","",,,,,"",,,,"Coding.system",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C*E.3","./codeSystem"
 "Observation.code.coding.version","Observation.code.coding.version","","","",0,1,"","","Y","string {[]} {[]}
@@ -191,8 +178,7 @@ URIは本WGで定義する。","シンボルの定義のソースについて明
 ","このコーディングがユーザーによって直接選択された場合 / If this coding was chosen directly by the user","このコードが利用者によって、例えば利用可能なコードの選択リストから、など、直接選択されたものであることを示す。","【JP Core仕様】当面は未使用とする。","これは、臨床安全基準として特定されています - この正確なシステム/コードペアは、いくつかのルールまたは言語処理に基づいてシステムによって推測されるのではなく、明示的に選択されたことです。 / This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.","","","","","","","",,,,,"",,,,"Coding.userSelected",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Sometimes implied by being first","CD.codingRationale"
 "Observation.code.text","Observation.code.text","","","",1,1,"","","Y","string {[]} {[]}
-","コンセプトの単純なテキスト表現 / Plain text representation of the concept","コードの表示名。報告書などに記載する場合に使用する表示名。コードを複数指定した場合(標準コード、ローカルコード)、その一般的な表現。","【JP Core仕様】このプロファイルでは、表示名として必須とする。
-
+","コンセプトの単純なテキスト表現 / Plain text representation of the concept","コードの表示名。報告書などに記載する場合に使用する表示名。コードを複数指定した場合(標準コード、ローカルコード)、その一般的な表現。","【JP Core仕様】このプロファイルでは、表示名として必須とする。  
 多くの場合、coding.display と同一になるが、coding.display に異なる複数の表現が格納される場合を想定し、code間で共通の表現として必須とする。","用語からのコードは、それらを使用する人間のすべてのニュアンスを使用して、常に正しい意味をキャプチャするとは限りません。または、適切なコードがまったくない場合があります。これらの場合、テキストはソースの完全な意味をキャプチャするために使用されます。 / The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.","","","","","","","",,,,,"",,,,"CodeableConcept.text",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C*E.9. But note many systems use C*E.2 for this","./originalText[mediaType/code=""text/plain""]/data"
 "Observation.subject","Observation.subject","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient]]}
@@ -203,16 +189,13 @@ URIは本WGで定義する。","シンボルの定義のソースについて明
 ","OBX-3","participation[typeCode=SBJ]","FiveWs.subject[x]","FiveWs.subject"
 "Observation.encounter","Observation.encounter","","Context
 ","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Encounter]]}
-","診察や入院など、このObservationが実施されるきっかけとなった診療イベントに関する情報【詳細参照】","この検査が行われるヘルスケアイベント。医療提供者と患者の接点。","【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。
-
+","診察や入院など、このObservationが実施されるきっかけとなった診療イベントに関する情報【詳細参照】","この検査が行われるヘルスケアイベント。医療提供者と患者の接点。","【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。  
 ※このプロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。","一部の観察では、観察と特定のEncounterの間のリンクを知ることが重要かもしれません。 / For some observations it may be important to know the link between an observation and a particular encounter.","","","","","","","",,,,,"",,,,"Observation.encounter",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.context","PV1","inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]","FiveWs.context"
 "Observation.effective[x]","Observation.effective[x]","","Occurrence
 ","",1,1,"","","Y","dateTime {[]} {[]}
-Period {[]} {[]}Timing {[]} {[]}","取得された結果が臨床的に確定された日時または期間【詳細参照】","検体検査の場合は、検体採取日時。","【JP Core仕様】このプロファイルでは、検体採取日時を設定し、必須とする。
-
-effectiveInstant
-
+Period {[]} {[]}Timing {[]} {[]}","取得された結果が臨床的に確定された日時または期間【詳細参照】","検体検査の場合は、検体採取日時。","【JP Core仕様】このプロファイルでは、検体採取日時を設定し、必須とする。  
+effectiveInstant  
 instant型はイベント発生のログ時間であり、未使用とする。","観察が真実と見なされた時期を知ることは、その関連性にとって重要であり、傾向を決定します。 / Knowing when an observation was deemed true is important to its relevance as well as determining trends.","","","","","","","",,,,,"",,,,"Observation.effective[x]",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.occurrence[x]","OBX-14, and/or OBX-19 after v2.4  (depends on who observation made)","effectiveTime","FiveWs.done[x]"
 "Observation.issued","Observation.issued","","","",0,1,"","","Y","instant {[]} {[]}
@@ -222,50 +205,33 @@ instant型はイベント発生のログ時間であり、未使用とする。"
 ","このObservationの責任者/実施者に関する情報【詳細参照】","検査値を確認した責任者。検査実施責任者情報。","【JP Core仕様】検査に直接責任を負う個人(つまり検査を実行、もしくは検証した人)の識別子。","観察にある程度の自信を与える可能性があり、また、フォローアップの質問をどこに向けるべきかを示します。 / May give a degree of confidence in the observation and also indicates where follow-up questions should be directed.","","","","","","","",,,,,"",,,,"Observation.performer",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.performer.actor","OBX.15 / (Practitioner)  OBX-16,  PRT-5:PRT-4='RO' /  (Device)  OBX-18 , PRT-10:PRT-4='EQUIP' / (Organization)  OBX-23,  PRT-8:PRT-4='PO'","participation[typeCode=PRF]","FiveWs.actor"
 "Observation.value[x]","Observation.value[x]","","","",0,1,"","","Y","Quantity {[]} {[]}
-CodeableConcept {[]} {[]}string {[]} {[]}","同じ検査項目でも、システム（施設）により、使うデータ型が異なる可能性あり【詳細参照】","検体検査の結果として決定された情報。","以下のデータ型はSS-MIX2では未使用のため、未使用とした。今後の議論で使用の必要性が出れば復活させる。
-
-valueBoolean
-
-valueInteger　：検査結果値を整数値（Integer）で定義したい場合に指定する。ただし、valueQuantityで単位付き数値を示すので、通常は使わない。　SS-MIX2／HL7 V2.5→ OBX-2＝「NW」の時の OBX-5(結果値)
-
-valueRange
-
-valueRatio
-
-valueSampledData
-
-valueTime　：検査結果値が「時間」の場合、その時間を指定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「TM」の時の OBX-5(結果値)
-
-valueDateTime　：検査結果値が「日時」の場合、その日時を指定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「DT」の時の OBX-5(結果値)
-
+CodeableConcept {[]} {[]}string {[]} {[]}","同じ検査項目でも、システム（施設）により、使うデータ型が異なる可能性あり【詳細参照】","検体検査の結果として決定された情報。","以下のデータ型はSS-MIX2では未使用のため、未使用とした。今後の議論で使用の必要性が出れば復活させる。  
+valueBoolean  
+valueInteger ： 検査結果値を整数値（Integer）で定義したい場合に指定する。ただし、valueQuantityで単位付き数値を示すので、通常は使わない。　SS-MIX2／HL7 V2.5→ OBX-2＝「NW」の時の OBX-5(結果値)  
+valueRange  
+valueRatio  
+valueSampledData  
+valueTime ： 検査結果値が「時間」の場合、その時間を指定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「TM」の時の OBX-5(結果値)  
+valueDateTime ： 検査結果値が「日時」の場合、その日時を指定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「DT」の時の OBX-5(結果値)  
 valuePeriod","観測は値を持つように存在しますが、それが誤っている場合、または観測のグループを表す場合はそうではありません。 / An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.","","","","","","","",,,,,"","type:$this}
 ","",,"closed","Observation.value[x]",0,1,"obs-7
 ","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","< 441742003 |Evaluation finding|","OBX.2, OBX.5, OBX.6","value","363714003 |Interprets|"
 "Observation.value[x]:valueQuantity","Observation.value[x]","valueQuantity","","",0,1,"","","Y","Quantity {[]} {[]}
-","検査結果が「数値」の場合、値、単位を設定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「NM」の時の OBX-5(結果値)、OBX-6(単位)【詳細参照】","取得された結果","valueQuantity.value　：結果値（数値）を定義。　SS-MIX2／HL7 V2.5：OBX-5(結果値)
-
-valueQuantity.comparator　：QuantityComparator Value setから設定。　SS-MIX2／HL7 V2.5→ 検体検査結果メッセージでは未使用となっているデータ型だが、SN型のSN.1(比較演算子)が該当する。検査値の「0未満」の場合の「未満」などに相当するコードを設定。
-
-valueQuantity.unit　：.systemで示す単位のValue setの文字列を指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.2 テキスト
-
-valueQuantity.system　：単位のValue set名を指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.3 コード体系 HL7では「ISO+」だが、ローカルコード99zzzのHL7標準の「ISO+」が示すOID、ローカルコードの場合はOIDを別途取得必要
-
-valueQuantity.code　：.systemで示す単位のValue setのコードを指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.1 識別子","観測は値を持つように存在しますが、それが誤っている場合、または観測のグループを表す場合はそうではありません。 / An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.","","","","","","","",,,,,"",,,,"Observation.value[x]",0,1,"obs-7
+","検査結果が「数値」の場合、値、単位を設定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「NM」の時の OBX-5(結果値)、OBX-6(単位)【詳細参照】","取得された結果","valueQuantity.value　：結果値（数値）を定義。　SS-MIX2／HL7 V2.5：OBX-5(結果値)  
+valueQuantity.comparator ： QuantityComparator Value setから設定。　SS-MIX2／HL7 V2.5→ 検体検査結果メッセージでは未使用となっているデータ型だが、SN型のSN.1(比較演算子)が該当する。検査値の「0未満」の場合の「未満」などに相当するコードを設定。  
+valueQuantity.unit ： systemで示す単位のValue setの文字列を指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.2 テキスト  
+valueQuantity.system ： 単位のValue set名を指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.3 コード体系 HL7では「ISO+」だが、ローカルコード99zzzのHL7標準の「ISO+」が示すOID、ローカルコードの場合はOIDを別途取得必要  
+valueQuantity.code ： systemで示す単位のValue setのコードを指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.1 識別子","観測は値を持つように存在しますが、それが誤っている場合、または観測のグループを表す場合はそうではありません。 / An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.","","","","","","","",,,,,"",,,,"Observation.value[x]",0,1,"obs-7
 ","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","< 441742003 |Evaluation finding|","OBX.2, OBX.5, OBX.6","value","363714003 |Interprets|"
 "Observation.value[x]:valueCodeableConcept","Observation.value[x]","valueCodeableConcept","","",0,1,"","","Y","CodeableConcept {[]} {[]}
-","検査結果が「コード値」の場合、コード、テキスト、コードのValue setを定義する。　SS-MIX2／HL7 V2.5→ OBX-2＝「CWE」の時の OBX-5(結果値)【詳細参照】","取得された結果","valueCodeableConcept.coding　：ローカルコードと国際標準コードなど複数指定できる。　SS-MIX2／HL7 V2.5→ CWEは正規コード＋代替コードの2種類登録可能。
-
-valueCodeableConcept.coding.system　：対象のValue set名を指定。　SS-MIX2／HL7 V2.5→ CWE.3 or 6 コード体系。対象コードの OIDを設定
-
-valueCodeableConcept.coding.version　：対象のValue setのバージョンを指定。　SS-MIX2／HL7 V2.5→ CWE.7 コード体系バージョン ID valueCodeableConcept.coding.code　：対象のValue setのコードを指定。　SS-MIX2／HL7 V2.5→ CWE.1 or 4 識別子。対象コードシステムのコード
-
-valueCodeableConcept.coding.display　：対象のValue setのテキストを指定。　SS-MIX2／HL7 V2.5→ CWE.2 or 5 テキスト。対象コードの名称
-
-valueCodeableConcept.coding.userselected　：未使用。
-
-valueCodeableConcept.text　：コードが示す意味を指定する。通常は.coding.displayの値を指定するが、複数ある場合は適宜編集すること。　SS-MIX2／HL7 V2.5→ CWE.2 テキスト。coding.display と同じ。","観測は値を持つように存在しますが、それが誤っている場合、または観測のグループを表す場合はそうではありません。 / An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.","","","","","","","",,,,,"",,,,"Observation.value[x]",0,1,"obs-7
+","検査結果が「コード値」の場合、コード、テキスト、コードのValue setを定義する。　SS-MIX2／HL7 V2.5→ OBX-2＝「CWE」の時の OBX-5(結果値)【詳細参照】","取得された結果","valueCodeableConcept.coding　：ローカルコードと国際標準コードなど複数指定できる。　SS-MIX2／HL7 V2.5→ CWEは正規コード＋代替コードの2種類登録可能。  
+valueCodeableConcept.coding.system ： 対象のValue set名を指定。　SS-MIX2／HL7 V2.5→ CWE.3 or 6 コード体系。対象コードの OIDを設定  
+valueCodeableConcept.coding.version ： 対象のValue setのバージョンを指定。　SS-MIX2／HL7 V2.5→ CWE.7 コード体系バージョン ID valueCodeableConcept.coding.code　：対象のValue setのコードを指定。　SS-MIX2／HL7 V2.5→ CWE.1 or 4 識別子。対象コードシステムのコード  
+valueCodeableConcept.coding.display ： 対象のValue setのテキストを指定。　SS-MIX2／HL7 V2.5→ CWE.2 or 5 テキスト。対象コードの名称  
+valueCodeableConcept.coding.userselected ： 未使用。  
+valueCodeableConcept.text ： コードが示す意味を指定する。通常は.coding.displayの値を指定するが、複数ある場合は適宜編集すること。　SS-MIX2／HL7 V2.5→ CWE.2 テキスト。coding.display と同じ。","観測は値を持つように存在しますが、それが誤っている場合、または観測のグループを表す場合はそうではありません。 / An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.","","","","","","","",,,,,"",,,,"Observation.value[x]",0,1,"obs-7
 ","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","< 441742003 |Evaluation finding|","OBX.2, OBX.5, OBX.6","value","363714003 |Interprets|"
 "Observation.value[x]:valueString","Observation.value[x]","valueString","","",0,1,"","","Y","string {[]} {[]}
@@ -273,25 +239,20 @@ valueCodeableConcept.text　：コードが示す意味を指定する。通常�
 ","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","< 441742003 |Evaluation finding|","OBX.2, OBX.5, OBX.6","value","363714003 |Interprets|"
 "Observation.dataAbsentReason","Observation.dataAbsentReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
-","このObservationのvalue[x]要素に期待される結果が存在しなかった場合、その理由【詳細参照】","検査結果値が欠落している理由。","【JP Core仕様】SS-MIX2で未使用だが、valueの欠落時に使用する必要があり、重要な項目である。
-
-制約「obs-6」に示す通り、valueが存在する場合、当該項目は存在してはならない。
-
-textのみでの使用は基本的に不可とし、必ずcodingを設定すること。
-
+","このObservationのvalue[x]要素に期待される結果が存在しなかった場合、その理由【詳細参照】","検査結果値が欠落している理由。","【JP Core仕様】SS-MIX2で未使用だが、valueの欠落時に使用する必要があり、重要な項目である。  
+制約「obs-6」に示す通り、valueが存在する場合、当該項目は存在してはならない。  
+textのみでの使用は基本的に不可とし、必ずcodingを設定すること。  
 (unknown |   asked-unknown |   temp-unknown |   not-asked |   asked-declined | masked | not-applicable | unsupported | as-text | error |   not-a-number |   negative-infinity |   positive-infinity | not-performed | not-permitted)","多くの結果には、測定で例外的な値を処理する必要があります。 / For many results it is necessary to handle exceptional values in measurements.","","","","","","","",,"extensible","結果（ `balue.value [x]`）が欠落している理由を指定するコード。 / Codes specifying why the result (`Observation.value[x]`) is missing.","http://hl7.org/fhir/ValueSet/data-absent-reason","",,,,"Observation.dataAbsentReason",0,1,"obs-6
 ","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","N/A","value.nullFlavor"
 "Observation.interpretation","Observation.interpretation","","Abnormal Flag
 ","",0,*,"","","","CodeableConcept {[]} {[]}
-","High, low, normal, etc. 高、低、正常など","検査結果値の、（高、低、正常）といったカテゴリー評価。結果報告書に記載されることもある情報。","【JP Core仕様】拡張可コード表「ObservationInterpretationCodes」を使用する。
-
-コード表が大きいため、下記参照。
-
+","High, low, normal, etc. 高、低、正常など","検査結果値の、（高、低、正常）といったカテゴリー評価。結果報告書に記載されることもある情報。","【JP Core仕様】拡張可コード表「ObservationInterpretationCodes」を使用する。  
+コード表が大きいため、下記参照。  
 https://www.hl7.org/fhir/R4/valueset-observation-interpretation.html","特に数値結果については、結果の重要性を完全に理解するために解釈を必要とする場合がある。","","","","","","","",,"extensible","観測の解釈を識別するコード。 / Codes identifying interpretations of observations.","http://hl7.org/fhir/ValueSet/observation-interpretation","",,,,"Observation.interpretation",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","< 260245000 |Findings values|","OBX-8","interpretationCode","363713009 |Has interpretation|"
 "Observation.note","Observation.note","","","",0,*,"","","","Annotation {[]} {[]}
-","このObservationに関するコメント【詳細参照】","検査、あるいは結果に関するコメント。フリーテキストの追加情報として使用可能。","May include general statements about the observation, or statements about significant, unexpected or unreliable results values, or information about its source when relevant to its interpretation.","Need to be able to provide free text additional information.
+","このObservationに関するコメント【詳細参照】","検査、あるいは結果に関するコメント。フリーテキストの追加情報として使用可能。","May include general statements about the observation, or statements about significant, unexpected or unreliable results values, or information about its source when relevant to its interpretation.","Need to be able to provide free text additional information.  
 フリーテキストの追加情報を提供できる必要がある。","","","","","","","",,,,,"",,,,"Observation.note",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","NTE.3 (partner NTE to OBX, or sometimes another (child?) OBX)","subjectOf.observationEvent[code=""annotation""].value"
 "Observation.note.id","Observation.note.id","","","",0,1,"","","","string {[]} {[]}
@@ -314,10 +275,8 @@ string {[]} {[]}","注釈の責任者 / Individual responsible for the annotatio
 ","対象となった身体部位","検査が行われた患者の体の部位。検体検査に関しては、当面は使用しない。","【JP Core仕様】当面は未使用とする。","","","","","","","","",,"example","解剖学的場所を説明するコード。左右性が含まれる場合があります。 / Codes describing anatomical locations. May include laterality.","http://hl7.org/fhir/ValueSet/body-site","",,,,"Observation.bodySite",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","< 123037004 |Body structure|","OBX-20","targetSiteCode","718497002 |Inherent location|"
 "Observation.method","Observation.method","","","",0,1,"","","","CodeableConcept {[]} {[]}
-","実施の方法","検体検査の検査方法、測定方法。","Observation.code の code から測定方法が暗黙的でない場合にのみ使用する。
-
-【JP Core仕様】Observation.code に JLAC10コードを使用する場合、測定方法コードが含まれているため method は使用しない。Observation.code から測定方法が判明しない場合や、実際の測定方法が異なる場合に使用することになるが、現状では運用が困難と想定されるため、当面は未使用とする。","In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.
-
+","実施の方法","検体検査の検査方法、測定方法。","Observation.code の code から測定方法が暗黙的でない場合にのみ使用する。  
+【JP Core仕様】Observation.code に JLAC10コードを使用する場合、測定方法コードが含まれているため method は使用しない。Observation.code から測定方法が判明しない場合や、実際の測定方法が異なる場合に使用することになるが、現状では運用が困難と想定されるため、当面は未使用とする。","In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.  
 場合により、測定方法は結果に影響を与える可能性があるため、結果を比較できるかどうかを判断したり、結果の重要性を判断したりするために使用される。","","","","","","","",,"example","単純な観測の方法。 / Methods for simple observations.","http://hl7.org/fhir/ValueSet/observation-methods","",,,,"Observation.method",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","OBX-17","methodCode"
 "Observation.specimen","Observation.specimen","","","",1,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Specimen]]}

@@ -490,7 +490,7 @@
       <path value="Observation.identifier"/>
       <short value="当該検査項目に対して、施設内で割り振られる一意の識別子"/>
       <definition value="この検査項目に割り当てられた一意の識別子。リソースの識別子やシステム的なシーケンスではなく、ビジネスID。"/>
-      <comment value="【JP Core仕様】当該検査項目に対して、施設内で割り振られる一意の識別子があればそれを使用する。なければ次のルールを参考に一意となる識別子を生成し設定する。&#xD;&#xA;&#xD;&#xA;アプリケーション側のデータベースにおけるフィールド長の定義については、最低64バイトを確保すること。&#xD;&#xA;&#xD;&#xA;--- 参考 ---&#xD;&#xA;&#xD;&#xA;次の項目を順にセパレータ「_(アンダースコア)」で連結し、 identifier.value に設定する。グループ項目でない場合など、該当コード／番号がない場合はセパレータを連続で連結する。各コードはローカルコードを使用し、必ず設定できること。&#xD;&#xA;&#xD;&#xA;　１．ORC-2(依頼者オーダ番号)　SS-MIX2の15桁前ゼロ形式の番号&#xD;&#xA;&#xD;&#xA;　２．OBR-4(検査項目ID)　検査セットの識別コード&#xD;&#xA;&#xD;&#xA;　３．SPM-4(検体タイプ)&#xD;&#xA;&#xD;&#xA;　４．OBX-3(検査項目)&#xD;&#xA;&#xD;&#xA;　５．OBX-4(検査副ID)・・・オプション。必要に応じて使用。&#xD;&#xA;&#xD;&#xA;形式：[ORC-2]_[OBR-4]_[SPM-4]_[OBX-3]（_[OBX-4]）"/>
+      <comment value="【JP Core仕様】当該検査項目に対して、施設内で割り振られる一意の識別子があればそれを使用する。なければ次のルールを参考に一意となる識別子を生成し設定する。  &#xA;アプリケーション側のデータベースにおけるフィールド長の定義については、最低64バイトを確保すること。  &#xA;--- 参考 ---  &#xA;次の項目を順にセパレータ「_(アンダースコア)」で連結し、 identifier.value に設定する。グループ項目でない場合など、該当コード／番号がない場合はセパレータを連続で連結する。各コードはローカルコードを使用し、必ず設定できること。  &#xA;　１．ORC-2(依頼者オーダ番号)　SS-MIX2の15桁前ゼロ形式の番号  &#xA;　２．OBR-4(検査項目ID)　検査セットの識別コード  &#xA;　３．SPM-4(検体タイプ)  &#xA;　４．OBX-3(検査項目)  &#xA;　５．OBX-4(検査副ID)・・・オプション。必要に応じて使用。  &#xA;形式：[ORC-2]_[OBR-4]_[SPM-4]_[OBX-3]（_[OBX-4]）"/>
       <requirements value="観測を区別し、参照することを可能にします。 / Allows observations to be distinguished and referenced."/>
       <min value="0"/>
       <max value="*"/>
@@ -939,7 +939,7 @@
       <path value="Observation.status"/>
       <short value="結果の状態【詳細参照】"/>
       <definition value="結果値の状態。"/>
-      <comment value="【JP Core仕様】v2.5の「F」に相当する値は「final」であるが、ここでは 必須コード表「ObservationStatus」より、全てのコード値を使用可とする。&#xD;&#xA;&#xD;&#xA;(registered | preliminary | final | amended |   corrected | cancelled | entered-in-error | unknown)"/>
+      <comment value="【JP Core仕様】v2.5の「F」に相当する値は「final」であるが、ここでは 必須コード表「ObservationStatus」より、全てのコード値を使用可とする。  &#xA;(registered | preliminary | final | amended |   corrected | cancelled | entered-in-error | unknown)"/>
       <requirements value="個々の結果のステータスを追跡する必要があります。レポート全体が最終決定される前に、いくつかの結果が確定します。 / Need to track the status of individual results. Some results are finalized before the whole report is finalized."/>
       <min value="1"/>
       <max value="1"/>
@@ -1196,7 +1196,7 @@
       <sliceName value="laboratory"/>
       <short value="検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から&quot;laboratory&quot;を設定する。"/>
       <definition value="検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から&quot;laboratory&quot;を設定する。"/>
-      <comment value="【JP Core仕様】推奨コード表「JP Core Simple Observation Category CodeSystem」より、このプロファイルでは「laboratory」固定とする。&#xD;&#xA;&#xD;&#xA;(social-history | vital-signs | imaging | laboratory | procedure | survey | exam | therapy | activity)"/>
+      <comment value="【JP Core仕様】推奨コード表「JP Core Simple Observation Category CodeSystem」より、このプロファイルでは「laboratory」固定とする。  &#xA;(social-history | vital-signs | imaging | laboratory | procedure | survey | exam | therapy | activity)"/>
       <requirements value="どの観測値が取得されて表示されるかをフィルタリングするために使用されます。 / Used for filtering what observations are retrieved and displayed."/>
       <min value="1"/>
       <max value="1"/>
@@ -1789,7 +1789,7 @@
       <path value="Observation.code.coding"/>
       <short value="用語システムによって定義されたコード / Code defined by a terminology system"/>
       <definition value="コード体系によって定義されたコードへの参照。"/>
-      <comment value="【JP Core仕様】SS-MIX2にならい、標準コード、ローカルコードの2つを設定可能とし、いずれか一方は必須とする。さらにJLAC10とJLAC11などの複数の標準コードも設定できるよう、上限は設けない。&#xD;&#xA;&#xD;&#xA;標準コード、ローカルコードの2つまで格納可。順不同。&#xD;&#xA;SS-MIX2だとCWE.1 ～CWE.3に標準コード、CWE.4～CWE.6にローカルコード、など（順不同）。"/>
+      <comment value="【JP Core仕様】SS-MIX2にならい、標準コード、ローカルコードの2つを設定可能とし、いずれか一方は必須とする。さらにJLAC10とJLAC11などの複数の標準コードも設定できるよう、上限は設けない。  &#xA;標準コード、ローカルコードの2つまで格納可。順不同。  &#xA;SS-MIX2だとCWE.1 ～CWE.3に標準コード、CWE.4～CWE.6にローカルコード、など（順不同）。"/>
       <requirements value="コードシステム内の代替エンコーディング、および他のコードシステムへの翻訳が可能になります。 / Allows for alternative encodings within a code system, and translations to other code systems."/>
       <min value="1"/>
       <max value="*"/>
@@ -1901,7 +1901,7 @@
       <path value="Observation.code.coding.system"/>
       <short value="用語システムのアイデンティティ / Identity of the terminology system"/>
       <definition value="コード体系。"/>
-      <comment value="【JP Core仕様】標準コードの場合、JLAC10を表すURIを設定。&#xD;&#xA;&#xD;&#xA;URIは本WGで定義する。"/>
+      <comment value="【JP Core仕様】標準コードの場合、JLAC10を表すURIを設定。  &#xA;URIは本WGで定義する。"/>
       <requirements value="シンボルの定義のソースについて明確である必要があります。 / Need to be unambiguous about the source of the definition of the symbol."/>
       <min value="0"/>
       <max value="1"/>
@@ -2101,7 +2101,7 @@
       <path value="Observation.code.text"/>
       <short value="コンセプトの単純なテキスト表現 / Plain text representation of the concept"/>
       <definition value="コードの表示名。報告書などに記載する場合に使用する表示名。コードを複数指定した場合(標準コード、ローカルコード)、その一般的な表現。"/>
-      <comment value="【JP Core仕様】このプロファイルでは、表示名として必須とする。&#xD;&#xA;&#xD;&#xA;多くの場合、coding.display と同一になるが、coding.display に異なる複数の表現が格納される場合を想定し、code間で共通の表現として必須とする。"/>
+      <comment value="【JP Core仕様】このプロファイルでは、表示名として必須とする。  &#xA;多くの場合、coding.display と同一になるが、coding.display に異なる複数の表現が格納される場合を想定し、code間で共通の表現として必須とする。"/>
       <requirements value="用語からのコードは、それらを使用する人間のすべてのニュアンスを使用して、常に正しい意味をキャプチャするとは限りません。または、適切なコードがまったくない場合があります。これらの場合、テキストはソースの完全な意味をキャプチャするために使用されます。 / The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source."/>
       <min value="1"/>
       <max value="1"/>
@@ -2231,7 +2231,7 @@
       <path value="Observation.encounter"/>
       <short value="診察や入院など、このObservationが実施されるきっかけとなった診療イベントに関する情報【詳細参照】"/>
       <definition value="この検査が行われるヘルスケアイベント。医療提供者と患者の接点。"/>
-      <comment value="【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。&#xD;&#xA;&#xD;&#xA;※このプロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。"/>
+      <comment value="【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。  &#xA;※このプロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。"/>
       <requirements value="一部の観察では、観察と特定のEncounterの間のリンクを知ることが重要かもしれません。 / For some observations it may be important to know the link between an observation and a particular encounter."/>
       <alias value="Context"/>
       <min value="0"/>
@@ -2276,7 +2276,7 @@
       <path value="Observation.effective[x]"/>
       <short value="取得された結果が臨床的に確定された日時または期間【詳細参照】"/>
       <definition value="検体検査の場合は、検体採取日時。"/>
-      <comment value="【JP Core仕様】このプロファイルでは、検体採取日時を設定し、必須とする。&#xD;&#xA;&#xD;&#xA;effectiveInstant&#xD;&#xA;&#xD;&#xA;instant型はイベント発生のログ時間であり、未使用とする。"/>
+      <comment value="【JP Core仕様】このプロファイルでは、検体採取日時を設定し、必須とする。  &#xA;effectiveInstant  &#xA;instant型はイベント発生のログ時間であり、未使用とする。"/>
       <requirements value="観察が真実と見なされた時期を知ることは、その関連性にとって重要であり、傾向を決定します。 / Knowing when an observation was deemed true is important to its relevance as well as determining trends."/>
       <alias value="Occurrence"/>
       <min value="1"/>
@@ -2421,7 +2421,7 @@
       </slicing>
       <short value="同じ検査項目でも、システム（施設）により、使うデータ型が異なる可能性あり【詳細参照】"/>
       <definition value="検体検査の結果として決定された情報。"/>
-      <comment value="以下のデータ型はSS-MIX2では未使用のため、未使用とした。今後の議論で使用の必要性が出れば復活させる。&#xD;&#xA;&#xD;&#xA;valueBoolean&#xD;&#xA;&#xD;&#xA;valueInteger　：検査結果値を整数値（Integer）で定義したい場合に指定する。ただし、valueQuantityで単位付き数値を示すので、通常は使わない。　SS-MIX2／HL7 V2.5→ OBX-2＝「NW」の時の OBX-5(結果値)&#xD;&#xA;&#xD;&#xA;valueRange&#xD;&#xA;&#xD;&#xA;valueRatio&#xD;&#xA;&#xD;&#xA;valueSampledData&#xD;&#xA;&#xD;&#xA;valueTime　：検査結果値が「時間」の場合、その時間を指定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「TM」の時の OBX-5(結果値)&#xD;&#xA;&#xD;&#xA;valueDateTime　：検査結果値が「日時」の場合、その日時を指定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「DT」の時の OBX-5(結果値)&#xD;&#xA;&#xD;&#xA;valuePeriod"/>
+      <comment value="以下のデータ型はSS-MIX2では未使用のため、未使用とした。今後の議論で使用の必要性が出れば復活させる。  &#xA;valueBoolean  &#xA;valueInteger ： 検査結果値を整数値（Integer）で定義したい場合に指定する。ただし、valueQuantityで単位付き数値を示すので、通常は使わない。　SS-MIX2／HL7 V2.5→ OBX-2＝「NW」の時の OBX-5(結果値)  &#xA;valueRange  &#xA;valueRatio  &#xA;valueSampledData  &#xA;valueTime ： 検査結果値が「時間」の場合、その時間を指定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「TM」の時の OBX-5(結果値)  &#xA;valueDateTime ： 検査結果値が「日時」の場合、その日時を指定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「DT」の時の OBX-5(結果値)  &#xA;valuePeriod"/>
       <requirements value="観測は値を持つように存在しますが、それが誤っている場合、または観測のグループを表す場合はそうではありません。 / An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations."/>
       <min value="0"/>
       <max value="1"/>
@@ -2472,7 +2472,7 @@
       <sliceName value="valueQuantity"/>
       <short value="検査結果が「数値」の場合、値、単位を設定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「NM」の時の OBX-5(結果値)、OBX-6(単位)【詳細参照】"/>
       <definition value="取得された結果"/>
-      <comment value="valueQuantity.value　：結果値（数値）を定義。　SS-MIX2／HL7 V2.5：OBX-5(結果値)&#xD;&#xA;&#xD;&#xA;valueQuantity.comparator　：QuantityComparator Value setから設定。　SS-MIX2／HL7 V2.5→ 検体検査結果メッセージでは未使用となっているデータ型だが、SN型のSN.1(比較演算子)が該当する。検査値の「0未満」の場合の「未満」などに相当するコードを設定。&#xD;&#xA;&#xD;&#xA;valueQuantity.unit　：.systemで示す単位のValue setの文字列を指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.2 テキスト&#xD;&#xA;&#xD;&#xA;valueQuantity.system　：単位のValue set名を指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.3 コード体系 HL7では「ISO+」だが、ローカルコード99zzzのHL7標準の「ISO+」が示すOID、ローカルコードの場合はOIDを別途取得必要&#xD;&#xA;&#xD;&#xA;valueQuantity.code　：.systemで示す単位のValue setのコードを指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.1 識別子"/>
+      <comment value="valueQuantity.value　：結果値（数値）を定義。　SS-MIX2／HL7 V2.5：OBX-5(結果値)  &#xA;valueQuantity.comparator ： QuantityComparator Value setから設定。　SS-MIX2／HL7 V2.5→ 検体検査結果メッセージでは未使用となっているデータ型だが、SN型のSN.1(比較演算子)が該当する。検査値の「0未満」の場合の「未満」などに相当するコードを設定。  &#xA;valueQuantity.unit ： systemで示す単位のValue setの文字列を指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.2 テキスト  &#xA;valueQuantity.system ： 単位のValue set名を指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.3 コード体系 HL7では「ISO+」だが、ローカルコード99zzzのHL7標準の「ISO+」が示すOID、ローカルコードの場合はOIDを別途取得必要  &#xA;valueQuantity.code ： systemで示す単位のValue setのコードを指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.1 識別子"/>
       <requirements value="観測は値を持つように存在しますが、それが誤っている場合、または観測のグループを表す場合はそうではありません。 / An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations."/>
       <min value="0"/>
       <max value="1"/>
@@ -2517,7 +2517,7 @@
       <sliceName value="valueCodeableConcept"/>
       <short value="検査結果が「コード値」の場合、コード、テキスト、コードのValue setを定義する。　SS-MIX2／HL7 V2.5→ OBX-2＝「CWE」の時の OBX-5(結果値)【詳細参照】"/>
       <definition value="取得された結果"/>
-      <comment value="valueCodeableConcept.coding　：ローカルコードと国際標準コードなど複数指定できる。　SS-MIX2／HL7 V2.5→ CWEは正規コード＋代替コードの2種類登録可能。&#xD;&#xA;&#xD;&#xA;valueCodeableConcept.coding.system　：対象のValue set名を指定。　SS-MIX2／HL7 V2.5→ CWE.3 or 6 コード体系。対象コードの OIDを設定&#xD;&#xA;&#xD;&#xA;valueCodeableConcept.coding.version　：対象のValue setのバージョンを指定。　SS-MIX2／HL7 V2.5→ CWE.7 コード体系バージョン ID valueCodeableConcept.coding.code　：対象のValue setのコードを指定。　SS-MIX2／HL7 V2.5→ CWE.1 or 4 識別子。対象コードシステムのコード&#xD;&#xA;&#xD;&#xA;valueCodeableConcept.coding.display　：対象のValue setのテキストを指定。　SS-MIX2／HL7 V2.5→ CWE.2 or 5 テキスト。対象コードの名称&#xD;&#xA;&#xD;&#xA;valueCodeableConcept.coding.userselected　：未使用。&#xD;&#xA;&#xD;&#xA;valueCodeableConcept.text　：コードが示す意味を指定する。通常は.coding.displayの値を指定するが、複数ある場合は適宜編集すること。　SS-MIX2／HL7 V2.5→ CWE.2 テキスト。coding.display と同じ。"/>
+      <comment value="valueCodeableConcept.coding　：ローカルコードと国際標準コードなど複数指定できる。　SS-MIX2／HL7 V2.5→ CWEは正規コード＋代替コードの2種類登録可能。  &#xA;valueCodeableConcept.coding.system ： 対象のValue set名を指定。　SS-MIX2／HL7 V2.5→ CWE.3 or 6 コード体系。対象コードの OIDを設定  &#xA;valueCodeableConcept.coding.version ： 対象のValue setのバージョンを指定。　SS-MIX2／HL7 V2.5→ CWE.7 コード体系バージョン ID valueCodeableConcept.coding.code　：対象のValue setのコードを指定。　SS-MIX2／HL7 V2.5→ CWE.1 or 4 識別子。対象コードシステムのコード  &#xA;valueCodeableConcept.coding.display ： 対象のValue setのテキストを指定。　SS-MIX2／HL7 V2.5→ CWE.2 or 5 テキスト。対象コードの名称  &#xA;valueCodeableConcept.coding.userselected ： 未使用。  &#xA;valueCodeableConcept.text ： コードが示す意味を指定する。通常は.coding.displayの値を指定するが、複数ある場合は適宜編集すること。　SS-MIX2／HL7 V2.5→ CWE.2 テキスト。coding.display と同じ。"/>
       <requirements value="観測は値を持つように存在しますが、それが誤っている場合、または観測のグループを表す場合はそうではありません。 / An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations."/>
       <min value="0"/>
       <max value="1"/>
@@ -2606,7 +2606,7 @@
       <path value="Observation.dataAbsentReason"/>
       <short value="このObservationのvalue[x]要素に期待される結果が存在しなかった場合、その理由【詳細参照】"/>
       <definition value="検査結果値が欠落している理由。"/>
-      <comment value="【JP Core仕様】SS-MIX2で未使用だが、valueの欠落時に使用する必要があり、重要な項目である。&#xD;&#xA;&#xD;&#xA;制約「obs-6」に示す通り、valueが存在する場合、当該項目は存在してはならない。&#xD;&#xA;&#xD;&#xA;textのみでの使用は基本的に不可とし、必ずcodingを設定すること。&#xD;&#xA;&#xD;&#xA;(unknown |   asked-unknown |   temp-unknown |   not-asked |   asked-declined | masked | not-applicable | unsupported | as-text | error |   not-a-number |   negative-infinity |   positive-infinity | not-performed | not-permitted)"/>
+      <comment value="【JP Core仕様】SS-MIX2で未使用だが、valueの欠落時に使用する必要があり、重要な項目である。  &#xA;制約「obs-6」に示す通り、valueが存在する場合、当該項目は存在してはならない。  &#xA;textのみでの使用は基本的に不可とし、必ずcodingを設定すること。  &#xA;(unknown |   asked-unknown |   temp-unknown |   not-asked |   asked-declined | masked | not-applicable | unsupported | as-text | error |   not-a-number |   negative-infinity |   positive-infinity | not-performed | not-permitted)"/>
       <requirements value="多くの結果には、測定で例外的な値を処理する必要があります。 / For many results it is necessary to handle exceptional values in measurements."/>
       <min value="0"/>
       <max value="1"/>
@@ -2650,7 +2650,7 @@
       <path value="Observation.interpretation"/>
       <short value="High, low, normal, etc. 高、低、正常など"/>
       <definition value="検査結果値の、（高、低、正常）といったカテゴリー評価。結果報告書に記載されることもある情報。"/>
-      <comment value="【JP Core仕様】拡張可コード表「ObservationInterpretationCodes」を使用する。&#xD;&#xA;&#xD;&#xA;コード表が大きいため、下記参照。&#xD;&#xA;&#xD;&#xA;https://www.hl7.org/fhir/R4/valueset-observation-interpretation.html"/>
+      <comment value="【JP Core仕様】拡張可コード表「ObservationInterpretationCodes」を使用する。  &#xA;コード表が大きいため、下記参照。  &#xA;https://www.hl7.org/fhir/R4/valueset-observation-interpretation.html"/>
       <requirements value="特に数値結果については、結果の重要性を完全に理解するために解釈を必要とする場合がある。"/>
       <alias value="Abnormal Flag"/>
       <min value="0"/>
@@ -2703,7 +2703,7 @@
       <short value="このObservationに関するコメント【詳細参照】"/>
       <definition value="検査、あるいは結果に関するコメント。フリーテキストの追加情報として使用可能。"/>
       <comment value="May include general statements about the observation, or statements about significant, unexpected or unreliable results values, or information about its source when relevant to its interpretation."/>
-      <requirements value="Need to be able to provide free text additional information.&#xD;&#xA;フリーテキストの追加情報を提供できる必要がある。"/>
+      <requirements value="Need to be able to provide free text additional information.  &#xA;フリーテキストの追加情報を提供できる必要がある。"/>
       <min value="0"/>
       <max value="*"/>
       <base>
@@ -2968,8 +2968,8 @@
       <path value="Observation.method"/>
       <short value="実施の方法"/>
       <definition value="検体検査の検査方法、測定方法。"/>
-      <comment value="Observation.code の code から測定方法が暗黙的でない場合にのみ使用する。&#xD;&#xA;&#xD;&#xA;【JP Core仕様】Observation.code に JLAC10コードを使用する場合、測定方法コードが含まれているため method は使用しない。Observation.code から測定方法が判明しない場合や、実際の測定方法が異なる場合に使用することになるが、現状では運用が困難と想定されるため、当面は未使用とする。"/>
-      <requirements value="In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.&#xD;&#xA;&#xD;&#xA;場合により、測定方法は結果に影響を与える可能性があるため、結果を比較できるかどうかを判断したり、結果の重要性を判断したりするために使用される。"/>
+      <comment value="Observation.code の code から測定方法が暗黙的でない場合にのみ使用する。  &#xA;【JP Core仕様】Observation.code に JLAC10コードを使用する場合、測定方法コードが含まれているため method は使用しない。Observation.code から測定方法が判明しない場合や、実際の測定方法が異なる場合に使用することになるが、現状では運用が困難と想定されるため、当面は未使用とする。"/>
+      <requirements value="In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.  &#xA;場合により、測定方法は結果に影響を与える可能性があるため、結果を比較できるかどうかを判断したり、結果の重要性を判断したりするために使用される。"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -3961,7 +3961,7 @@
       <path value="Observation.identifier"/>
       <short value="当該検査項目に対して、施設内で割り振られる一意の識別子"/>
       <definition value="この検査項目に割り当てられた一意の識別子。リソースの識別子やシステム的なシーケンスではなく、ビジネスID。"/>
-      <comment value="【JP Core仕様】当該検査項目に対して、施設内で割り振られる一意の識別子があればそれを使用する。なければ次のルールを参考に一意となる識別子を生成し設定する。&#xD;&#xA;&#xD;&#xA;アプリケーション側のデータベースにおけるフィールド長の定義については、最低64バイトを確保すること。&#xD;&#xA;&#xD;&#xA;--- 参考 ---&#xD;&#xA;&#xD;&#xA;次の項目を順にセパレータ「_(アンダースコア)」で連結し、 identifier.value に設定する。グループ項目でない場合など、該当コード／番号がない場合はセパレータを連続で連結する。各コードはローカルコードを使用し、必ず設定できること。&#xD;&#xA;&#xD;&#xA;　１．ORC-2(依頼者オーダ番号)　SS-MIX2の15桁前ゼロ形式の番号&#xD;&#xA;&#xD;&#xA;　２．OBR-4(検査項目ID)　検査セットの識別コード&#xD;&#xA;&#xD;&#xA;　３．SPM-4(検体タイプ)&#xD;&#xA;&#xD;&#xA;　４．OBX-3(検査項目)&#xD;&#xA;&#xD;&#xA;　５．OBX-4(検査副ID)・・・オプション。必要に応じて使用。&#xD;&#xA;&#xD;&#xA;形式：[ORC-2]_[OBR-4]_[SPM-4]_[OBX-3]（_[OBX-4]）"/>
+      <comment value="【JP Core仕様】当該検査項目に対して、施設内で割り振られる一意の識別子があればそれを使用する。なければ次のルールを参考に一意となる識別子を生成し設定する。  &#xA;アプリケーション側のデータベースにおけるフィールド長の定義については、最低64バイトを確保すること。  &#xA;--- 参考 ---  &#xA;次の項目を順にセパレータ「_(アンダースコア)」で連結し、 identifier.value に設定する。グループ項目でない場合など、該当コード／番号がない場合はセパレータを連続で連結する。各コードはローカルコードを使用し、必ず設定できること。  &#xA;　１．ORC-2(依頼者オーダ番号)　SS-MIX2の15桁前ゼロ形式の番号  &#xA;　２．OBR-4(検査項目ID)　検査セットの識別コード  &#xA;　３．SPM-4(検体タイプ)  &#xA;　４．OBX-3(検査項目)  &#xA;　５．OBX-4(検査副ID)・・・オプション。必要に応じて使用。  &#xA;形式：[ORC-2]_[OBR-4]_[SPM-4]_[OBX-3]（_[OBX-4]）"/>
     </element>
     <element id="Observation.identifier.use">
       <path value="Observation.identifier.use"/>
@@ -3992,7 +3992,7 @@
     <element id="Observation.status">
       <path value="Observation.status"/>
       <definition value="結果値の状態。"/>
-      <comment value="【JP Core仕様】v2.5の「F」に相当する値は「final」であるが、ここでは 必須コード表「ObservationStatus」より、全てのコード値を使用可とする。&#xD;&#xA;&#xD;&#xA;(registered | preliminary | final | amended |   corrected | cancelled | entered-in-error | unknown)"/>
+      <comment value="【JP Core仕様】v2.5の「F」に相当する値は「final」であるが、ここでは 必須コード表「ObservationStatus」より、全てのコード値を使用可とする。  &#xA;(registered | preliminary | final | amended |   corrected | cancelled | entered-in-error | unknown)"/>
     </element>
     <element id="Observation.category">
       <path value="Observation.category"/>
@@ -4015,7 +4015,7 @@
       <sliceName value="laboratory"/>
       <short value="検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から&quot;laboratory&quot;を設定する。"/>
       <definition value="検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から&quot;laboratory&quot;を設定する。"/>
-      <comment value="【JP Core仕様】推奨コード表「JP Core Simple Observation Category CodeSystem」より、このプロファイルでは「laboratory」固定とする。&#xD;&#xA;&#xD;&#xA;(social-history | vital-signs | imaging | laboratory | procedure | survey | exam | therapy | activity)"/>
+      <comment value="【JP Core仕様】推奨コード表「JP Core Simple Observation Category CodeSystem」より、このプロファイルでは「laboratory」固定とする。  &#xA;(social-history | vital-signs | imaging | laboratory | procedure | survey | exam | therapy | activity)"/>
       <min value="1"/>
       <max value="1"/>
       <binding>
@@ -4056,13 +4056,13 @@
     <element id="Observation.code.coding">
       <path value="Observation.code.coding"/>
       <definition value="コード体系によって定義されたコードへの参照。"/>
-      <comment value="【JP Core仕様】SS-MIX2にならい、標準コード、ローカルコードの2つを設定可能とし、いずれか一方は必須とする。さらにJLAC10とJLAC11などの複数の標準コードも設定できるよう、上限は設けない。&#xD;&#xA;&#xD;&#xA;標準コード、ローカルコードの2つまで格納可。順不同。&#xD;&#xA;SS-MIX2だとCWE.1 ～CWE.3に標準コード、CWE.4～CWE.6にローカルコード、など（順不同）。"/>
+      <comment value="【JP Core仕様】SS-MIX2にならい、標準コード、ローカルコードの2つを設定可能とし、いずれか一方は必須とする。さらにJLAC10とJLAC11などの複数の標準コードも設定できるよう、上限は設けない。  &#xA;標準コード、ローカルコードの2つまで格納可。順不同。  &#xA;SS-MIX2だとCWE.1 ～CWE.3に標準コード、CWE.4～CWE.6にローカルコード、など（順不同）。"/>
       <min value="1"/>
     </element>
     <element id="Observation.code.coding.system">
       <path value="Observation.code.coding.system"/>
       <definition value="コード体系。"/>
-      <comment value="【JP Core仕様】標準コードの場合、JLAC10を表すURIを設定。&#xD;&#xA;&#xD;&#xA;URIは本WGで定義する。"/>
+      <comment value="【JP Core仕様】標準コードの場合、JLAC10を表すURIを設定。  &#xA;URIは本WGで定義する。"/>
     </element>
     <element id="Observation.code.coding.version">
       <path value="Observation.code.coding.version"/>
@@ -4084,7 +4084,7 @@
     <element id="Observation.code.text">
       <path value="Observation.code.text"/>
       <definition value="コードの表示名。報告書などに記載する場合に使用する表示名。コードを複数指定した場合(標準コード、ローカルコード)、その一般的な表現。"/>
-      <comment value="【JP Core仕様】このプロファイルでは、表示名として必須とする。&#xD;&#xA;&#xD;&#xA;多くの場合、coding.display と同一になるが、coding.display に異なる複数の表現が格納される場合を想定し、code間で共通の表現として必須とする。"/>
+      <comment value="【JP Core仕様】このプロファイルでは、表示名として必須とする。  &#xA;多くの場合、coding.display と同一になるが、coding.display に異なる複数の表現が格納される場合を想定し、code間で共通の表現として必須とする。"/>
       <min value="1"/>
     </element>
     <element id="Observation.subject">
@@ -4105,12 +4105,12 @@
     <element id="Observation.encounter">
       <path value="Observation.encounter"/>
       <definition value="この検査が行われるヘルスケアイベント。医療提供者と患者の接点。"/>
-      <comment value="【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。&#xD;&#xA;&#xD;&#xA;※このプロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。"/>
+      <comment value="【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。  &#xA;※このプロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。"/>
     </element>
     <element id="Observation.effective[x]">
       <path value="Observation.effective[x]"/>
       <definition value="検体検査の場合は、検体採取日時。"/>
-      <comment value="【JP Core仕様】このプロファイルでは、検体採取日時を設定し、必須とする。&#xD;&#xA;&#xD;&#xA;effectiveInstant&#xD;&#xA;&#xD;&#xA;instant型はイベント発生のログ時間であり、未使用とする。"/>
+      <comment value="【JP Core仕様】このプロファイルでは、検体採取日時を設定し、必須とする。  &#xA;effectiveInstant  &#xA;instant型はイベント発生のログ時間であり、未使用とする。"/>
       <min value="1"/>
       <type>
         <code value="dateTime"/>
@@ -4144,7 +4144,7 @@
       </slicing>
       <short value="同じ検査項目でも、システム（施設）により、使うデータ型が異なる可能性あり【詳細参照】"/>
       <definition value="検体検査の結果として決定された情報。"/>
-      <comment value="以下のデータ型はSS-MIX2では未使用のため、未使用とした。今後の議論で使用の必要性が出れば復活させる。&#xD;&#xA;&#xD;&#xA;valueBoolean&#xD;&#xA;&#xD;&#xA;valueInteger　：検査結果値を整数値（Integer）で定義したい場合に指定する。ただし、valueQuantityで単位付き数値を示すので、通常は使わない。　SS-MIX2／HL7 V2.5→ OBX-2＝「NW」の時の OBX-5(結果値)&#xD;&#xA;&#xD;&#xA;valueRange&#xD;&#xA;&#xD;&#xA;valueRatio&#xD;&#xA;&#xD;&#xA;valueSampledData&#xD;&#xA;&#xD;&#xA;valueTime　：検査結果値が「時間」の場合、その時間を指定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「TM」の時の OBX-5(結果値)&#xD;&#xA;&#xD;&#xA;valueDateTime　：検査結果値が「日時」の場合、その日時を指定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「DT」の時の OBX-5(結果値)&#xD;&#xA;&#xD;&#xA;valuePeriod"/>
+      <comment value="以下のデータ型はSS-MIX2では未使用のため、未使用とした。今後の議論で使用の必要性が出れば復活させる。  &#xA;valueBoolean  &#xA;valueInteger ： 検査結果値を整数値（Integer）で定義したい場合に指定する。ただし、valueQuantityで単位付き数値を示すので、通常は使わない。　SS-MIX2／HL7 V2.5→ OBX-2＝「NW」の時の OBX-5(結果値)  &#xA;valueRange  &#xA;valueRatio  &#xA;valueSampledData  &#xA;valueTime ： 検査結果値が「時間」の場合、その時間を指定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「TM」の時の OBX-5(結果値)  &#xA;valueDateTime ： 検査結果値が「日時」の場合、その日時を指定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「DT」の時の OBX-5(結果値)  &#xA;valuePeriod"/>
       <type>
         <code value="Quantity"/>
       </type>
@@ -4159,7 +4159,7 @@
       <path value="Observation.value[x]"/>
       <sliceName value="valueQuantity"/>
       <short value="検査結果が「数値」の場合、値、単位を設定する。　SS-MIX2／HL7 V2.5→ OBX-2＝「NM」の時の OBX-5(結果値)、OBX-6(単位)【詳細参照】"/>
-      <comment value="valueQuantity.value　：結果値（数値）を定義。　SS-MIX2／HL7 V2.5：OBX-5(結果値)&#xD;&#xA;&#xD;&#xA;valueQuantity.comparator　：QuantityComparator Value setから設定。　SS-MIX2／HL7 V2.5→ 検体検査結果メッセージでは未使用となっているデータ型だが、SN型のSN.1(比較演算子)が該当する。検査値の「0未満」の場合の「未満」などに相当するコードを設定。&#xD;&#xA;&#xD;&#xA;valueQuantity.unit　：.systemで示す単位のValue setの文字列を指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.2 テキスト&#xD;&#xA;&#xD;&#xA;valueQuantity.system　：単位のValue set名を指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.3 コード体系 HL7では「ISO+」だが、ローカルコード99zzzのHL7標準の「ISO+」が示すOID、ローカルコードの場合はOIDを別途取得必要&#xD;&#xA;&#xD;&#xA;valueQuantity.code　：.systemで示す単位のValue setのコードを指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.1 識別子"/>
+      <comment value="valueQuantity.value　：結果値（数値）を定義。　SS-MIX2／HL7 V2.5：OBX-5(結果値)  &#xA;valueQuantity.comparator ： QuantityComparator Value setから設定。　SS-MIX2／HL7 V2.5→ 検体検査結果メッセージでは未使用となっているデータ型だが、SN型のSN.1(比較演算子)が該当する。検査値の「0未満」の場合の「未満」などに相当するコードを設定。  &#xA;valueQuantity.unit ： systemで示す単位のValue setの文字列を指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.2 テキスト  &#xA;valueQuantity.system ： 単位のValue set名を指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.3 コード体系 HL7では「ISO+」だが、ローカルコード99zzzのHL7標準の「ISO+」が示すOID、ローカルコードの場合はOIDを別途取得必要  &#xA;valueQuantity.code ： systemで示す単位のValue setのコードを指定。　SS-MIX2／HL7 V2.5→ OBX-6(単位) CWE.1 識別子"/>
       <min value="0"/>
       <max value="1"/>
       <type>
@@ -4170,7 +4170,7 @@
       <path value="Observation.value[x]"/>
       <sliceName value="valueCodeableConcept"/>
       <short value="検査結果が「コード値」の場合、コード、テキスト、コードのValue setを定義する。　SS-MIX2／HL7 V2.5→ OBX-2＝「CWE」の時の OBX-5(結果値)【詳細参照】"/>
-      <comment value="valueCodeableConcept.coding　：ローカルコードと国際標準コードなど複数指定できる。　SS-MIX2／HL7 V2.5→ CWEは正規コード＋代替コードの2種類登録可能。&#xD;&#xA;&#xD;&#xA;valueCodeableConcept.coding.system　：対象のValue set名を指定。　SS-MIX2／HL7 V2.5→ CWE.3 or 6 コード体系。対象コードの OIDを設定&#xD;&#xA;&#xD;&#xA;valueCodeableConcept.coding.version　：対象のValue setのバージョンを指定。　SS-MIX2／HL7 V2.5→ CWE.7 コード体系バージョン ID valueCodeableConcept.coding.code　：対象のValue setのコードを指定。　SS-MIX2／HL7 V2.5→ CWE.1 or 4 識別子。対象コードシステムのコード&#xD;&#xA;&#xD;&#xA;valueCodeableConcept.coding.display　：対象のValue setのテキストを指定。　SS-MIX2／HL7 V2.5→ CWE.2 or 5 テキスト。対象コードの名称&#xD;&#xA;&#xD;&#xA;valueCodeableConcept.coding.userselected　：未使用。&#xD;&#xA;&#xD;&#xA;valueCodeableConcept.text　：コードが示す意味を指定する。通常は.coding.displayの値を指定するが、複数ある場合は適宜編集すること。　SS-MIX2／HL7 V2.5→ CWE.2 テキスト。coding.display と同じ。"/>
+      <comment value="valueCodeableConcept.coding　：ローカルコードと国際標準コードなど複数指定できる。　SS-MIX2／HL7 V2.5→ CWEは正規コード＋代替コードの2種類登録可能。  &#xA;valueCodeableConcept.coding.system ： 対象のValue set名を指定。　SS-MIX2／HL7 V2.5→ CWE.3 or 6 コード体系。対象コードの OIDを設定  &#xA;valueCodeableConcept.coding.version ： 対象のValue setのバージョンを指定。　SS-MIX2／HL7 V2.5→ CWE.7 コード体系バージョン ID valueCodeableConcept.coding.code　：対象のValue setのコードを指定。　SS-MIX2／HL7 V2.5→ CWE.1 or 4 識別子。対象コードシステムのコード  &#xA;valueCodeableConcept.coding.display ： 対象のValue setのテキストを指定。　SS-MIX2／HL7 V2.5→ CWE.2 or 5 テキスト。対象コードの名称  &#xA;valueCodeableConcept.coding.userselected ： 未使用。  &#xA;valueCodeableConcept.text ： コードが示す意味を指定する。通常は.coding.displayの値を指定するが、複数ある場合は適宜編集すること。　SS-MIX2／HL7 V2.5→ CWE.2 テキスト。coding.display と同じ。"/>
       <min value="0"/>
       <max value="1"/>
       <type>
@@ -4190,13 +4190,13 @@
     <element id="Observation.dataAbsentReason">
       <path value="Observation.dataAbsentReason"/>
       <definition value="検査結果値が欠落している理由。"/>
-      <comment value="【JP Core仕様】SS-MIX2で未使用だが、valueの欠落時に使用する必要があり、重要な項目である。&#xD;&#xA;&#xD;&#xA;制約「obs-6」に示す通り、valueが存在する場合、当該項目は存在してはならない。&#xD;&#xA;&#xD;&#xA;textのみでの使用は基本的に不可とし、必ずcodingを設定すること。&#xD;&#xA;&#xD;&#xA;(unknown |   asked-unknown |   temp-unknown |   not-asked |   asked-declined | masked | not-applicable | unsupported | as-text | error |   not-a-number |   negative-infinity |   positive-infinity | not-performed | not-permitted)"/>
+      <comment value="【JP Core仕様】SS-MIX2で未使用だが、valueの欠落時に使用する必要があり、重要な項目である。  &#xA;制約「obs-6」に示す通り、valueが存在する場合、当該項目は存在してはならない。  &#xA;textのみでの使用は基本的に不可とし、必ずcodingを設定すること。  &#xA;(unknown |   asked-unknown |   temp-unknown |   not-asked |   asked-declined | masked | not-applicable | unsupported | as-text | error |   not-a-number |   negative-infinity |   positive-infinity | not-performed | not-permitted)"/>
     </element>
     <element id="Observation.interpretation">
       <path value="Observation.interpretation"/>
       <short value="High, low, normal, etc. 高、低、正常など"/>
       <definition value="検査結果値の、（高、低、正常）といったカテゴリー評価。結果報告書に記載されることもある情報。"/>
-      <comment value="【JP Core仕様】拡張可コード表「ObservationInterpretationCodes」を使用する。&#xD;&#xA;&#xD;&#xA;コード表が大きいため、下記参照。&#xD;&#xA;&#xD;&#xA;https://www.hl7.org/fhir/R4/valueset-observation-interpretation.html"/>
+      <comment value="【JP Core仕様】拡張可コード表「ObservationInterpretationCodes」を使用する。  &#xA;コード表が大きいため、下記参照。  &#xA;https://www.hl7.org/fhir/R4/valueset-observation-interpretation.html"/>
       <requirements value="特に数値結果については、結果の重要性を完全に理解するために解釈を必要とする場合がある。"/>
     </element>
     <element id="Observation.note">
@@ -4224,8 +4224,8 @@
       <path value="Observation.method"/>
       <short value="実施の方法"/>
       <definition value="検体検査の検査方法、測定方法。"/>
-      <comment value="Observation.code の code から測定方法が暗黙的でない場合にのみ使用する。&#xD;&#xA;&#xD;&#xA;【JP Core仕様】Observation.code に JLAC10コードを使用する場合、測定方法コードが含まれているため method は使用しない。Observation.code から測定方法が判明しない場合や、実際の測定方法が異なる場合に使用することになるが、現状では運用が困難と想定されるため、当面は未使用とする。"/>
-      <requirements value="In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.&#xD;&#xA;&#xD;&#xA;場合により、測定方法は結果に影響を与える可能性があるため、結果を比較できるかどうかを判断したり、結果の重要性を判断したりするために使用される。"/>
+      <comment value="Observation.code の code から測定方法が暗黙的でない場合にのみ使用する。  &#xA;【JP Core仕様】Observation.code に JLAC10コードを使用する場合、測定方法コードが含まれているため method は使用しない。Observation.code から測定方法が判明しない場合や、実際の測定方法が異なる場合に使用することになるが、現状では運用が困難と想定されるため、当面は未使用とする。"/>
+      <requirements value="In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results.  &#xA;場合により、測定方法は結果に影響を与える可能性があるため、結果を比較できるかどうかを判断したり、結果の重要性を判断したりするために使用される。"/>
     </element>
     <element id="Observation.specimen">
       <path value="Observation.specimen"/>
