@@ -6,64 +6,55 @@
 
 # - resource -------------------------------------------------------------------
 
-<http://jpfhir.jp/fhir/core/ImagingStudy/jp-imagingstudy-radiology-example-1> a fhir:ImagingStudy;
-  fhir:nodeRole fhir:treeRoot;
-  fhir:Resource.id [ fhir:value "jp-imagingstudy-radiology-example-1"];
-  fhir:Resource.meta [
-     fhir:Meta.profile [
-       fhir:value "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Radiology";
-       fhir:index 0;
+<http://jpfhir.jp/fhir/core/ImagingStudy/jp-imagingstudy-radiology-example-1> a fhir:ImagingStudy ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "jp-imagingstudy-radiology-example-1"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Radiology"^^xsd:anyURI ;
        fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Radiology>
-     ]
-  ];
-  fhir:DomainResource.text [
-     fhir:Narrative.status [ fhir:value "generated" ];
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: ImagingStudy</b><a name=\"jp-imagingstudy-radiology-example-1\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource ImagingStudy \"jp-imagingstudy-radiology-example-1\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-jp-imagingstudy-radiology.html\">JP Core ImagingStudy Radiology Profile</a></p></div><p><b>identifier</b>: id: urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430045</p><p><b>status</b>: available</p><p><b>subject</b>: <a href=\"Patient-jp-patient-example-1.html\">Patient/jp-patient-example-1</a> \" 山田\"</p><p><b>started</b>: 2021-01-01 11:01:20+0900</p><p><b>numberOfSeries</b>: 1</p><p><b>numberOfInstances</b>: 1</p><blockquote><p><b>series</b></p><p><b>uid</b>: 2.16.124.113543.6003.2588828330.45298.17418.2723805630</p><p><b>number</b>: 3</p><p><b>modality</b>: Computed Tomography (Details: DICOM code CT = 'Computed Tomography', stated as 'null')</p><p><b>description</b>: CT胸部スクリーニング</p><p><b>numberOfInstances</b>: 1</p><p><b>bodySite</b>: Thoracic cavity (Details: SNOMED CT code 43799004 = 'Thoracic cavity', stated as 'Thoracic cavity')</p><h3>Instances</h3><table class=\"grid\"><tr><td>-</td><td><b>Uid</b></td><td><b>SopClass</b></td><td><b>Number</b></td></tr><tr><td>*</td><td>2.16.124.113543.6003.189642796.63084.16748.2599092903</td><td>urn:oid:1.2.840.10008.5.1.4.1.1.2 (Details: urn:ietf:rfc:3986 code urn:oid:1.2.840.10008.5.1.4.1.1.2 = 'urn:oid:1.2.840.10008.5.1.4.1.1.2', stated as 'null')</td><td>1</td></tr></table></blockquote></div>"
-  ];
-  fhir:ImagingStudy.identifier [
-     fhir:index 0;
-     fhir:Identifier.system [ fhir:value "urn:dicom:uid" ];
-     fhir:Identifier.value [ fhir:value "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430045" ]
-  ];
-  fhir:ImagingStudy.status [ fhir:value "available"];
-  fhir:ImagingStudy.subject [
-     fhir:link <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1>;
-     fhir:Reference.reference [ fhir:value "Patient/jp-patient-example-1" ]
-  ];
-  fhir:ImagingStudy.started [ fhir:value "2021-01-01T11:01:20+09:00"^^xsd:dateTime];
-  fhir:ImagingStudy.numberOfSeries [ fhir:value "1"^^xsd:nonNegativeInteger];
-  fhir:ImagingStudy.numberOfInstances [ fhir:value "1"^^xsd:nonNegativeInteger];
-  fhir:ImagingStudy.series [
-     fhir:index 0;
-     fhir:ImagingStudy.series.uid [ fhir:value "2.16.124.113543.6003.2588828330.45298.17418.2723805630" ];
-     fhir:ImagingStudy.series.number [ fhir:value "3"^^xsd:nonNegativeInteger ];
-     fhir:ImagingStudy.series.modality [
-       fhir:Coding.system [ fhir:value "http://dicom.nema.org/resources/ontology/DCM" ];
-       fhir:Coding.code [ fhir:value "CT" ]
-     ];
-     fhir:ImagingStudy.series.description [ fhir:value "CT胸部スクリーニング" ];
-     fhir:ImagingStudy.series.numberOfInstances [ fhir:value "1"^^xsd:nonNegativeInteger ];
-     fhir:ImagingStudy.series.bodySite [
-       a sct:43799004;
-       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
-       fhir:Coding.code [ fhir:value "43799004" ];
-       fhir:Coding.display [ fhir:value "Thoracic cavity" ]
-     ];
-     fhir:ImagingStudy.series.instance [
-       fhir:index 0;
-       fhir:ImagingStudy.series.instance.uid [ fhir:value "2.16.124.113543.6003.189642796.63084.16748.2599092903" ];
-       fhir:ImagingStudy.series.instance.sopClass [
-         fhir:Coding.system [ fhir:value "urn:ietf:rfc:3986" ];
-         fhir:Coding.code [ fhir:value "urn:oid:1.2.840.10008.5.1.4.1.1.2" ]
-       ];
-       fhir:ImagingStudy.series.instance.number [ fhir:value "1"^^xsd:nonNegativeInteger ]
-     ]
-  ] .
-
-# - ontology header ------------------------------------------------------------
-
-<http://jpfhir.jp/fhir/core/ImagingStudy/jp-imagingstudy-radiology-example-1.ttl> a owl:Ontology;
-  owl:imports fhir:fhir.ttl .
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: ImagingStudy</b><a name=\"jp-imagingstudy-radiology-example-1\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource ImagingStudy &quot;jp-imagingstudy-radiology-example-1&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-jp-imagingstudy-radiology.html\">JP Core ImagingStudy Radiology Profile</a></p></div><p><b>identifier</b>: id: urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430045</p><p><b>status</b>: available</p><p><b>subject</b>: <a href=\"Patient-jp-patient-example-1.html\">Patient/jp-patient-example-1</a> &quot; 山田&quot;</p><p><b>started</b>: 2021-01-01 11:01:20+0900</p><p><b>numberOfSeries</b>: 1</p><p><b>numberOfInstances</b>: 1</p><blockquote><p><b>series</b></p><p><b>uid</b>: 2.16.124.113543.6003.2588828330.45298.17418.2723805630</p><p><b>number</b>: 3</p><p><b>modality</b>: Computed Tomography (Details: DICOM code CT = 'Computed Tomography', stated as 'null')</p><p><b>description</b>: CT胸部スクリーニング</p><p><b>numberOfInstances</b>: 1</p><p><b>bodySite</b>: Thoracic cavity (Details: SNOMED CT code 43799004 = '43799004', stated as 'Thoracic cavity')</p><h3>Instances</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Uid</b></td><td><b>SopClass</b></td><td><b>Number</b></td></tr><tr><td style=\"display: none\">*</td><td>2.16.124.113543.6003.189642796.63084.16748.2599092903</td><td>urn:oid:1.2.840.10008.5.1.4.1.1.2 (Details: urn:ietf:rfc:3986 code urn:oid:1.2.840.10008.5.1.4.1.1.2 = 'urn:oid:1.2.840.10008.5.1.4.1.1.2', stated as 'null')</td><td>1</td></tr></table></blockquote></div>"
+  ] ; # 
+  fhir:identifier ( [
+     fhir:system [ fhir:v "urn:dicom:uid"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430045" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "available"] ; # 
+  fhir:subject [
+     fhir:link <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1> ;
+     fhir:reference [ fhir:v "Patient/jp-patient-example-1" ]
+  ] ; # 
+  fhir:started [ fhir:v "2021-01-01T11:01:20+09:00"^^xsd:dateTime] ; # 
+  fhir:numberOfSeries [ fhir:v "1"^^xsd:nonNegativeInteger] ; # 
+  fhir:numberOfInstances [ fhir:v "1"^^xsd:nonNegativeInteger] ; # 
+  fhir:series ( [
+     fhir:uid [ fhir:v "2.16.124.113543.6003.2588828330.45298.17418.2723805630" ] ;
+     fhir:number [ fhir:v "3"^^xsd:nonNegativeInteger ] ;
+     fhir:modality [
+       fhir:system [ fhir:v "http://dicom.nema.org/resources/ontology/DCM"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "CT" ]
+     ] ;
+     fhir:description [ fhir:v "CT胸部スクリーニング" ] ;
+     fhir:numberOfInstances [ fhir:v "1"^^xsd:nonNegativeInteger ] ;
+     fhir:bodySite [
+       a sct:43799004 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "43799004" ] ;
+       fhir:display [ fhir:v "Thoracic cavity" ]
+     ] ;
+     fhir:instance ( [
+       fhir:uid [ fhir:v "2.16.124.113543.6003.189642796.63084.16748.2599092903" ] ;
+       fhir:sopClass [
+         fhir:system [ fhir:v "urn:ietf:rfc:3986"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "urn:oid:1.2.840.10008.5.1.4.1.1.2" ]
+       ] ;
+       fhir:number [ fhir:v "1"^^xsd:nonNegativeInteger ]
+     ] )
+  ] ) . # 
 
 # -------------------------------------------------------------------------------------
 

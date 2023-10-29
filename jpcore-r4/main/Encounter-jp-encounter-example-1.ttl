@@ -5,52 +5,45 @@
 
 # - resource -------------------------------------------------------------------
 
-<http://jpfhir.jp/fhir/core/Encounter/jp-encounter-example-1> a fhir:Encounter;
-  fhir:nodeRole fhir:treeRoot;
-  fhir:Resource.id [ fhir:value "jp-encounter-example-1"];
-  fhir:Resource.meta [
-     fhir:Meta.profile [
-       fhir:value "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Encounter";
-       fhir:index 0;
+<http://jpfhir.jp/fhir/core/Encounter/jp-encounter-example-1> a fhir:Encounter ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "jp-encounter-example-1"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Encounter"^^xsd:anyURI ;
        fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Encounter>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Encounter</b><a name=\"jp-encounter-example-1\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Encounter &quot;jp-encounter-example-1&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-jp-encounter.html\">JP Core Encounter Profile</a></p></div><p><b>status</b>: finished</p><p><b>class</b>: ambulatory (Details: http://terminology.hl7.org/CodeSystem/v3-ActCode code AMB = 'ambulatory', stated as 'null')</p><p><b>subject</b>: <a href=\"Patient-jp-patient-example-1.html\">Patient/jp-patient-example-1: 山田 太郎</a> &quot; 山田&quot;</p><h3>Participants</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Individual</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Practitioner-jp-practitioner-example-female-1.html\">Practitioner/jp-practitioner-example-female-1: 東京 春子</a> &quot; 東京&quot;</td></tr></table><p><b>period</b>: 2022-05-08 13:08:24+0900 --&gt; 2022-05-08 13:23:24+0900</p><p><b>serviceProvider</b>: <a href=\"Organization-jp-organization-example-clinic.html\">Organization/jp-organization-example-clinic: 太郎花子クリニック</a> &quot;太郎花子クリニック&quot;</p></div>"
+  ] ; # 
+  fhir:status [ fhir:v "finished"] ; # 
+  fhir:class [
+     fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-ActCode"^^xsd:anyURI ] ;
+     fhir:code [ fhir:v "AMB" ]
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1> ;
+     fhir:reference [ fhir:v "Patient/jp-patient-example-1" ] ;
+     fhir:display [ fhir:v "山田 太郎" ]
+  ] ; # 
+  fhir:participant ( [
+     fhir:individual [
+       fhir:link <http://jpfhir.jp/fhir/core/Practitioner/jp-practitioner-example-female-1> ;
+       fhir:reference [ fhir:v "Practitioner/jp-practitioner-example-female-1" ] ;
+       fhir:display [ fhir:v "東京 春子" ]
      ]
-  ];
-  fhir:DomainResource.text [
-     fhir:Narrative.status [ fhir:value "generated" ];
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Encounter</b><a name=\"jp-encounter-example-1\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Encounter \"jp-encounter-example-1\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-jp-encounter.html\">JP Core Encounter Profile</a></p></div><p><b>status</b>: finished</p><p><b>class</b>: ambulatory (Details: http://terminology.hl7.org/CodeSystem/v3-ActCode code AMB = 'ambulatory', stated as 'null')</p><p><b>subject</b>: <a href=\"Patient-jp-patient-example-1.html\">Patient/jp-patient-example-1: 山田 太郎</a> \" 山田\"</p><h3>Participants</h3><table class=\"grid\"><tr><td>-</td><td><b>Individual</b></td></tr><tr><td>*</td><td><a href=\"Practitioner-jp-practitioner-example-female-1.html\">Practitioner/jp-practitioner-example-female-1: 東京 春子</a> \" 東京\"</td></tr></table><p><b>period</b>: 2022-05-08 01:08:24+0900 --&gt; 2022-05-08 01:23:24+0900</p><p><b>serviceProvider</b>: <a href=\"Organization-jp-organization-example-clinic.html\">Organization/jp-organization-example-clinic: 太郎花子クリニック</a> \"太郎花子クリニック\"</p></div>"
-  ];
-  fhir:Encounter.status [ fhir:value "finished"];
-  fhir:Encounter.class [
-     fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ActCode" ];
-     fhir:Coding.code [ fhir:value "AMB" ]
-  ];
-  fhir:Encounter.subject [
-     fhir:link <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1>;
-     fhir:Reference.reference [ fhir:value "Patient/jp-patient-example-1" ];
-     fhir:Reference.display [ fhir:value "山田 太郎" ]
-  ];
-  fhir:Encounter.participant [
-     fhir:index 0;
-     fhir:Encounter.participant.individual [
-       fhir:link <http://jpfhir.jp/fhir/core/Practitioner/jp-practitioner-example-female-1>;
-       fhir:Reference.reference [ fhir:value "Practitioner/jp-practitioner-example-female-1" ];
-       fhir:Reference.display [ fhir:value "東京 春子" ]
-     ]
-  ];
-  fhir:Encounter.period [
-     fhir:Period.start [ fhir:value "2022-05-08T13:08:24+09:00"^^xsd:dateTime ];
-     fhir:Period.end [ fhir:value "2022-05-08T13:23:24+09:00"^^xsd:dateTime ]
-  ];
-  fhir:Encounter.serviceProvider [
-     fhir:link <http://jpfhir.jp/fhir/core/Organization/jp-organization-example-clinic>;
-     fhir:Reference.reference [ fhir:value "Organization/jp-organization-example-clinic" ];
-     fhir:Reference.display [ fhir:value "太郎花子クリニック" ]
-  ] .
-
-# - ontology header ------------------------------------------------------------
-
-<http://jpfhir.jp/fhir/core/Encounter/jp-encounter-example-1.ttl> a owl:Ontology;
-  owl:imports fhir:fhir.ttl .
+  ] ) ; # 
+  fhir:period [
+     fhir:start [ fhir:v "2022-05-08T13:08:24+09:00"^^xsd:dateTime ] ;
+     fhir:end [ fhir:v "2022-05-08T13:23:24+09:00"^^xsd:dateTime ]
+  ] ; # 
+  fhir:serviceProvider [
+     fhir:link <http://jpfhir.jp/fhir/core/Organization/jp-organization-example-clinic> ;
+     fhir:reference [ fhir:v "Organization/jp-organization-example-clinic" ] ;
+     fhir:display [ fhir:v "太郎花子クリニック" ]
+  ] . # 
 
 # -------------------------------------------------------------------------------------
 
