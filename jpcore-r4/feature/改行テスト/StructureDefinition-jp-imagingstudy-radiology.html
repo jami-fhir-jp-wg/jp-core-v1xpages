@@ -674,13 +674,13 @@
 
 
 
-<p>このリソースでは32ビットのタグ（DICOMタグと呼ばれる）で示されるDICOMアトリビュート（タグ情報）をmappingするためのエレメントが用意されている。<br />
+<p>このリソースでは32ビットのタグ（DICOMタグと呼ばれる）で示されるDICOMアトリビュート（タグ情報）をmappingするためのエレメントが用意されている。
 
 DICOMタグは4桁の16進数がコンマで区切られたペア（例　(0008, 103E) )として表現される。それぞれのタグ情報に関する名称と値のペアについては<a href="https://dicom.nema.org/medical/dicom/current/output/html/part06.html">DICOM Part6 Data Dictionary</a>に記載されている。さらに、情報体の中のタグ情報の用途については<a href="https://dicom.nema.org/medical/dicom/current/output/html/part03.html">DICOM Part 3 Information Object Definitions</a>に記載されている。Number of Instances in StudyなどのDICOMにおける問い合わせモデルに関する情報は<a href="https://dicom.nema.org/medical/dicom/current/output/html/part04.html#chapter_C"> DICOM Part 4 Annex C</a>で参照できる。</p>
 
 
 
-<p>最も単純な場合、ImagingStudyはDICOM query（例えばQIDO-RS）を行うことなく重要なDICOMタグ情報へのアクセスを提供する。一方で、DICOMの実画像情報などのインスタンスはImagingStudyリソースには保存されないため、この情報を保存するためにはDICOM WADO-RSサーバやほかのストレージ機能を利用する必要がある。<br />
+<p>最も単純な場合、ImagingStudyはDICOM query（例えばQIDO-RS）を行うことなく重要なDICOMタグ情報へのアクセスを提供する。一方で、DICOMの実画像情報などのインスタンスはImagingStudyリソースには保存されないため、この情報を保存するためにはDICOM WADO-RSサーバやほかのストレージ機能を利用する必要がある。
 
 （FHIRではREST APIを用いることが想定されており，親和性の観点からはDICOM web accessの利用が想定される。）</p>
 
@@ -2120,9 +2120,9 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 
 
 
-<p>ImagingStudyのbodySiteエレメントには原則としてDICOMタグに含まれる部位情報が設定されるのが原則である。これはオーダ情報等の別の管理情報には左右や部位の間違いが含まれることがあり、実際の撮影時に修正されることがあるためである。ただし、DICOMに部位情報が含まれない場合はJJ1017Pなどのコードあるいはそのサブセットを用い指定することを許容する。ただし、lateralityエレメントとの整合性をとり、部位情報が正しいものであることを確認すること。<br />
+<p>ImagingStudyのbodySiteエレメントには原則としてDICOMタグに含まれる部位情報が設定されるのが原則である。これはオーダ情報等の別の管理情報には左右や部位の間違いが含まれることがあり、実際の撮影時に修正されることがあるためである。ただし、DICOMに部位情報が含まれない場合はJJ1017Pなどのコードあるいはそのサブセットを用い指定することを許容する。ただし、lateralityエレメントとの整合性をとり、部位情報が正しいものであることを確認すること。
 
-また、DICOMではSNOMED-CTとのmappingがなされており、DICOMで定義されているSNOMED-CTのコードの利用は無償で可能となる契約がなされている。<br />
+また、DICOMではSNOMED-CTとのmappingがなされており、DICOMで定義されているSNOMED-CTのコードの利用は無償で可能となる契約がなされている。
 
 BodySite等でDICOMでmappingされているSNOMED-CTをCodeSystemとして利用する場合、コードに対応するdisplay textの表記にはSNOMED-CTで規定されている表記を用いること。同様にDICOMをCodeSystemとして指定する際はBody Part Examined (0018,0015)に規定されている表記を指定すること。</p>
 
@@ -2270,7 +2270,7 @@ BodySite等でDICOMでmappingされているSNOMED-CTをCodeSystemとして利�
 
 
 
-<p>次の検索パラメータは必須でサポートされなければならない。（<strong>SHALL</strong>）<br />
+<p>次の検索パラメータは必須でサポートされなければならない。（<strong>SHALL</strong>）
 
 ImagingStudyリソースでは検索の多様性が求められるため、必須としての検索項目は定義していない。</p>
 
@@ -2300,7 +2300,7 @@ ImagingStudyリソースでは検索の多様性が求められるため、必�
 
   </li>
 
-  <li>モダリティ中心の検索：対象患者（= Patientリソース）と撮影に使用されたモダリティを条件とした検索をサポートすることが望ましい  <br />
+  <li>モダリティ中心の検索：対象患者（= Patientリソース）と撮影に使用されたモダリティを条件とした検索をサポートすることが望ましい<br />
 
 なお検索パラメターmodalityは<a href="https://www.hl7.org/fhir/R4/searchparameter-registry.html">定義済み検索パラメーター</a>にseries.modalityを対象として定義されているため、ImagingStudy.modalityを対象としていないことに注意すること
 
@@ -2358,7 +2358,7 @@ ImagingStudyリソースでは検索の多様性が求められるため、必�
 
   </li>
 
-  <li>複数の条件を組み合わせた検索：対象患者（= Patientリソース）、撮影の日時、撮影に使用されたモダリティ、撮影の対象となった撮影部位を条件とした検索をサポートすることが望ましい  <br />
+  <li>複数の条件を組み合わせた検索：対象患者（= Patientリソース）、撮影の日時、撮影に使用されたモダリティ、撮影の対象となった撮影部位を条件とした検索をサポートすることが望ましい<br />
 
 なお検索パラメターmodalityは<a href="https://www.hl7.org/fhir/R4/searchparameter-registry.html">定義済み検索パラメーター</a>にseries.modalityを対象として定義されているため、ImagingStudy.modalityを対象としていないことに注意すること
 
@@ -2572,7 +2572,7 @@ ImagingStudyリソースでは検索の多様性が求められるため、必�
 
         <p>
 
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 31, 2023 08:51+0000">2023-10-31</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 31, 2023 09:19+0000">2023-10-31</span>
 
           <br/>
 

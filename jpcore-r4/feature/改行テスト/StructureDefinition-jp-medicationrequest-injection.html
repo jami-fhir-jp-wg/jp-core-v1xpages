@@ -622,7 +622,7 @@
 
 
 
-<p>本プロファイルは注射、注入の薬剤処方（以下、「注射処方」）をMedicationRequestリソースを使用して表現する。注射処方は指示する項目、使用する用語集、プロセスなどにおいて諸外国と日本では異なっており、日本国内で規格を運用するためにExtensionの追加や用語集の追加・変更を行った。現在、日本での注射関連規格として利用されているJAHIS 注射データ交換規約 Ver 2.1CおよびSS-MIX2 Ver.1.2hを参考にした。<br />
+<p>本プロファイルは注射、注入の薬剤処方（以下、「注射処方」）をMedicationRequestリソースを使用して表現する。注射処方は指示する項目、使用する用語集、プロセスなどにおいて諸外国と日本では異なっており、日本国内で規格を運用するためにExtensionの追加や用語集の追加・変更を行った。現在、日本での注射関連規格として利用されているJAHIS 注射データ交換規約 Ver 2.1CおよびSS-MIX2 Ver.1.2hを参考にした。
 
 以下、本プロファイルのMedicationRequestリソースを「JP Core MedicationRequest Injectionリソース」と呼ぶ。</p>
 
@@ -3794,9 +3794,9 @@ GET [base]/MedicationRequest?patient=[url]&amp;authoredon=[date]
 
 <h3 id="投与薬剤投与量の記述方法">投与薬剤、投与量の記述方法</h3>
 
-<p>１回の投与薬剤と投与量は、RP内の薬剤が１薬剤の場合も混注などで複数の薬剤を含む場合も、すべての薬剤を記述したMedicationリソースを contained 属性に内包し、それをMedicationRequest.medicationReference属性で参照するようにする。<br />
+<p>１回の投与薬剤と投与量は、RP内の薬剤が１薬剤の場合も混注などで複数の薬剤を含む場合も、すべての薬剤を記述したMedicationリソースを contained 属性に内包し、それをMedicationRequest.medicationReference属性で参照するようにする。
 
-Medicationリソースのingredient.itemCodeableConcept要素にCodeableConcept型で各薬剤の識別情報を記述し、ingredient.strength.numerator要素に１回あたりの含有量を記述する。薬剤を識別するコードはHOT7、HOT9、YJコード、⼀般処方名マスターを推奨するが、ローカルコードを使用してもよい。含有量の単位コードは MERIT-9を使用する。ingredient.strength.denominatorには固定値「１回」をMERIT-9を使用して指定する。<br />
+Medicationリソースのingredient.itemCodeableConcept要素にCodeableConcept型で各薬剤の識別情報を記述し、ingredient.strength.numerator要素に１回あたりの含有量を記述する。薬剤を識別するコードはHOT7、HOT9、YJコード、⼀般処方名マスターを推奨するが、ローカルコードを使用してもよい。含有量の単位コードは MERIT-9を使用する。ingredient.strength.denominatorには固定値「１回」をMERIT-9を使用して指定する。
 
 dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる場合には全体の容量をUCUM(“http://unitsofmeasure.org”)を使用してmL単位で指定する。</p>
 
@@ -4238,9 +4238,9 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
 
 <h3 id="頓用指示の頓用条件頓用回数の記述方法">頓用指示の頓用条件、頓用回数の記述方法</h3>
 
-<p>例えば「疼痛時10回分」など、頓用の場合の投与条件や投与回数を表現したい場合、投与条件は dosageInstruction.timing.code 要素に CodeableConcept型で指定する。コードは、JAMI処方・注射オーダ標準用法規格の表6 イベント区分、イベント詳細区分(“http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationAsNeededConditionJAMI_CS”)を推奨するが、MERIT-9 処方オーダ 表5 頓用指示(“http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationAsNeededConditionMERIT9_CS”) を使用してもよい。<br />
+<p>例えば「疼痛時10回分」など、頓用の場合の投与条件や投与回数を表現したい場合、投与条件は dosageInstruction.timing.code 要素に CodeableConcept型で指定する。コードは、JAMI処方・注射オーダ標準用法規格の表6 イベント区分、イベント詳細区分(“http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationAsNeededConditionJAMI_CS”)を推奨するが、MERIT-9 処方オーダ 表5 頓用指示(“http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationAsNeededConditionMERIT9_CS”) を使用してもよい。
 
-頓用回数は、dispenseRequest要素に対して定義した拡張「JP_MedicationRequest_DispenseRequest_ExpectedRepeatCount」を使用し、integer型で頓用回数を記載する。<br />
+頓用回数は、dispenseRequest要素に対して定義した拡張「JP_MedicationRequest_DispenseRequest_ExpectedRepeatCount」を使用し、integer型で頓用回数を記載する。
 
 また、頓用指示の場合、dosageInstruction.asNeededBoolean に true を指定する。</p>
 
@@ -4310,11 +4310,11 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
 
 <h3 id="投与部位の記述方法">投与部位の記述方法</h3>
 
-<p>投与部位を指定する場合は、dosageInstruction.site 要素に、CodeableConcept型で指定する。部位コードは、JAMI標準用法コード 表13 外用部位コード（”urn:oid:1.2.392.200250.2.2.20.32”）を推奨する。<br />
+<p>投与部位を指定する場合は、dosageInstruction.site 要素に、CodeableConcept型で指定する。部位コードは、JAMI標準用法コード 表13 外用部位コード（”urn:oid:1.2.392.200250.2.2.20.32”）を推奨する。
 
-HL7表0550 身体部位(“http://terminology.hl7.org/CodeSystem/v2-0550”)とHL7表0495 身体部位修飾子(“http://terminology.hl7.org/CodeSystem/v2-0495”)を組み合わせて使用してもよいが、その場合は拡張「BodyStructure」を使用する。<br />
+HL7表0550 身体部位(“http://terminology.hl7.org/CodeSystem/v2-0550”)とHL7表0495 身体部位修飾子(“http://terminology.hl7.org/CodeSystem/v2-0495”)を組み合わせて使用してもよいが、その場合は拡張「BodyStructure」を使用する。
 
-この拡張は BodyStructureリソースを参照することができるので、location 要素にHL7表0550 身体部位(“http://terminology.hl7.org/CodeSystem/v2-0550”)のコードを、locationQualifier 要素に<br />
+この拡張は BodyStructureリソースを参照することができるので、location 要素にHL7表0550 身体部位(“http://terminology.hl7.org/CodeSystem/v2-0550”)のコードを、locationQualifier 要素に
 
 身体部位修飾子(“http://terminology.hl7.org/CodeSystem/v2-0495”)のコードをそれぞれ指定したBodyStructureリソースをMedicationRequestリソースのcontained属性に内包し、それをExtension.valueReference 要素で参照するようにする。</p>
 
@@ -4542,9 +4542,9 @@ HL7表0550 身体部位(“http://terminology.hl7.org/CodeSystem/v2-0550”)とH
 
 <h3 id="投与装置の記述方法">投与装置の記述方法</h3>
 
-<p>「シリンジポンプ」など、投与時に使用する装置を指示したい場合は、dosageInstruction要素で拡張「JP_MedicationDosage_Device」を使用し、contained 属性に内包した Deviceリソースに対するリファレンスを指定する。<br />
+<p>「シリンジポンプ」など、投与時に使用する装置を指示したい場合は、dosageInstruction要素で拡張「JP_MedicationDosage_Device」を使用し、contained 属性に内包した Deviceリソースに対するリファレンスを指定する。
 
-内包したDeviceリソースでは type属性に装置の種類をCodeableConcept型で指定する。推奨するコードシステムはないので、ローカルコードを使用する。<br />
+内包したDeviceリソースでは type属性に装置の種類をCodeableConcept型で指定する。推奨するコードシステムはないので、ローカルコードを使用する。
 
 HL7 V2の使用者定義表0164 投薬装置を使用してもよい。</p>
 
@@ -4870,7 +4870,7 @@ HL7 V2の使用者定義表0164 投薬装置を使用してもよい。</p>
 
 <h3 id="各種コメントの記述方法">各種コメントの記述方法</h3>
 
-<p>薬剤オーダのコメントとしては、薬剤単位につくもの、用法指示などRP単位につくもの、注射箋全体につくものがある。<br />
+<p>薬剤オーダのコメントとしては、薬剤単位につくもの、用法指示などRP単位につくもの、注射箋全体につくものがある。
 
 全体のコメントはCommunicationリソースを使用し、薬剤単位、RP単位のコメントは、調剤指示以外はコード化されていれば dosageInstruction.additionalInstruction 要素ないしそうでないものは dosageInstruction.patientInstruction 要素を使用し、調剤指示は dispenseRequest要素に対して定義した拡張「InstructionForDispense」を使用する。</p>
 
@@ -5064,7 +5064,7 @@ HL7 V2の使用者定義表0164 投薬装置を使用してもよい。</p>
 
         <p>
 
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 31, 2023 08:51+0000">2023-10-31</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 31, 2023 09:19+0000">2023-10-31</span>
 
           <br/>
 
