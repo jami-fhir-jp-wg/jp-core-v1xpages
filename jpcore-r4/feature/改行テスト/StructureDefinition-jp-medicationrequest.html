@@ -622,7 +622,7 @@
 
 
 
-<p>本プロファイルは内服、外用の薬剤処方をMedicationRequestリソースを使用して表現する。薬剤処方は指示する項目、使用する用語集、プロセスなどにおいて諸外国と日本では異なっており、日本国内で規格を運用するためにExtensionの追加や用語集の追加・変更を行った。現在、日本での処方関連規格として利用されているJAHIS 処方データ交換規約 Ver 3.0C、JAHIS院外処方箋２次元シンボル記録条件規約 Ver.1.6およびSS-MIX2 Ver.1.2hを参考にし、療養担当則23条様式2号の処方箋形式を電子的に構成することを目的とした。ただし、院外処方に特化することはせず、院内処方も含めた様々なコンテキストで利用できることを目指している。
+<p>本プロファイルは内服、外用の薬剤処方をMedicationRequestリソースを使用して表現する。薬剤処方は指示する項目、使用する用語集、プロセスなどにおいて諸外国と日本では異なっており、日本国内で規格を運用するためにExtensionの追加や用語集の追加・変更を行った。現在、日本での処方関連規格として利用されているJAHIS 処方データ交換規約 Ver 3.0C、JAHIS院外処方箋２次元シンボル記録条件規約 Ver.1.6およびSS-MIX2 Ver.1.2hを参考にし、療養担当則23条様式2号の処方箋形式を電子的に構成することを目的とした。ただし、院外処方に特化することはせず、院内処方も含めた様々なコンテキストで利用できることを目指している。<br />
 
 以下、本プロファイルのMedicationRequestリソースを「JP Core MedicationRequestリソース」と呼ぶ。</p>
 
@@ -4058,7 +4058,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
 
 <h3 id="調剤指示の記述方法">調剤指示の記述方法</h3>
 
-<p>単一の薬剤に対する調剤指示は、dispenseRequest要素に対して定義した拡張「InstructionForDispense」を使用する。この拡張は、CodeableConcept型を使用して、コード化された指示ないしテキストによる指示を記録できる。両方を併記してもよい。テキストによる指示を記録する場合は text要素を使用する。一つの薬剤に対して、複数の指示を記録する場合には、この拡張を、拡張単位で繰り返して記録する。 
+<p>単一の薬剤に対する調剤指示は、dispenseRequest要素に対して定義した拡張「InstructionForDispense」を使用する。この拡張は、CodeableConcept型を使用して、コード化された指示ないしテキストによる指示を記録できる。両方を併記してもよい。テキストによる指示を記録する場合は text要素を使用する。一つの薬剤に対して、複数の指示を記録する場合には、この拡張を、拡張単位で繰り返して記録する。 <br />
 
 調剤指示で使用するコードは、処方情報HL7 FHIR記述仕様(調剤指示)(“urn:oid:1.2.392.200250.2.2.30.10”)を推奨する。</p>
 
@@ -4380,7 +4380,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
 
 <h3 id="各種コメントの記述方法">各種コメントの記述方法</h3>
 
-<p>薬剤オーダのコメントとしては、薬剤単位につくもの、用法指示などRP単位につくもの、処方箋全体につくものがある。
+<p>薬剤オーダのコメントとしては、薬剤単位につくもの、用法指示などRP単位につくもの、処方箋全体につくものがある。<br />
 
 全体のコメントはCommunicationリソースを使用し、薬剤単位、RP単位のコメントは、調剤指示以外はコード化されていれば dosageInstruction.additionalInstruction 要素ないしそうでないものは dosageInstruction.patientInstruction 要素を使用し、調剤指示は dispenseRequest要素に対して定義した拡張「InstructionForDispense」を使用する。</p>
 
@@ -5258,7 +5258,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
 
 <h4 id="１日用法の例">１日用法の例</h4>
 
-<p>朝食後に4錠、昼食後2錠、夕食後1錠、合計1日投与量7錠であることを1日用法で表現したインスタンスの例である。
+<p>朝食後に4錠、昼食後2錠、夕食後1錠、合計1日投与量7錠であることを1日用法で表現したインスタンスの例である。<br />
 
 １つのMedicationRequestリソースの1つのdosageInstruction要素を使用し、dosageInstruction.doseAndRate.rateRatio要素に、1日投与量のみを記載する。1回の投与量の情報をコードとして記述できる場合は、dosageInstruction.additionalInstruction要素に、1 日の服用回数分だけ繰り返し、JAMI補足用法コードを使用し記述する。コード化できない場合は、明細単位の備考としてテキストで記述する。</p>
 
@@ -5598,7 +5598,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-core-startdate=[date]
 
 <h3 id="隔日指定投与の記述方法">隔日指定投与の記述方法</h3>
 
-<p>隔日指定投与は、連続して服用する日数と、その後の連続して休薬する日数を指定する用法である。
+<p>隔日指定投与は、連続して服用する日数と、その後の連続して休薬する日数を指定する用法である。<br />
 
 JAMI標準用法コードを使用する表現方法と、HL7 FHIR本来の表現方法の2種類の表現方法が可能であるが、処方情報HL7 FHIR記述仕様との整合性を考慮してJAMI標準用法コードを使用する方法を推奨する。</p>
 
@@ -5730,7 +5730,7 @@ JAMI標準用法コードを使用する表現方法と、HL7 FHIR本来の表�
 
 <h3 id="曜日指定投与の記述方法">曜日指定投与の記述方法</h3>
 
-<p>曜日指定投与は、「火曜日と金曜日に服用」など、服用する曜日を指定する用法である。
+<p>曜日指定投与は、「火曜日と金曜日に服用」など、服用する曜日を指定する用法である。<br />
 
 JAMI標準用法コードを使用する表現方法と、HL7 FHIR本来の表現方法の2種類の表現方法が可能であるが、処方情報HL7 FHIR記述仕様との整合性を考慮してJAMI標準用法コードを使用する方法を推奨する。</p>
 
@@ -5840,15 +5840,15 @@ JAMI標準用法コードを使用する表現方法と、HL7 FHIR本来の表�
 
 <h3 id="リフィル処方箋でのリフィル回数の記述方法">リフィル処方箋でのリフィル回数の記述方法</h3>
 
-<p>2022年度診療報酬改定により、外来院外処方においてリフィル処方箋が導入された。
+<p>2022年度診療報酬改定により、外来院外処方においてリフィル処方箋が導入された。<br />
 
-リフィル処方箋とは、「症状が安定している患者について、医師の処方により、医療機関に行かずとも、医師及び薬剤師の適切な連携の下、
+リフィル処方箋とは、「症状が安定している患者について、医師の処方により、医療機関に行かずとも、医師及び薬剤師の適切な連携の下、<br />
 
 一定期間内に処方箋を反復利用できる」（厚労省資料より）というもので、現状最大2回までのリフィル（再利用）が可能とされている。</p>
 
 
 
-<p>リフィル処方箋でのリフィル回数は、dispenseRequest.numberOfRepeatsAllowed 要素にunsignedInt型で指定する。
+<p>リフィル処方箋でのリフィル回数は、dispenseRequest.numberOfRepeatsAllowed 要素にunsignedInt型で指定する。<br />
 
 リフィル不可の場合は「0」を指定するか、numberOfRepeatsAllowed 要素そのものを省略することとする。</p>
 
@@ -5908,7 +5908,7 @@ JAMI標準用法コードを使用する表現方法と、HL7 FHIR本来の表�
 
   <li>保健医療福祉情報システム工業会, JAHIS注射データ交換規約Ver.2.1C, <a href="https://www.jahis.jp/standard/detail/id=590">https://www.jahis.jp/standard/detail/id=590</a></li>
 
-  <li>児玉 義憲、hl7v2-to-fhir, 
+  <li>児玉 義憲、hl7v2-to-fhir, <br />
 
 <a href="https://github.com/Acedia-Belphegor/hl7v2-to-fhir/">https://github.com/Acedia-Belphegor/hl7v2-to-fhir/</a></li>
 
@@ -6088,7 +6088,7 @@ JAMI標準用法コードを使用する表現方法と、HL7 FHIR本来の表�
 
         <p>
 
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 31, 2023 07:52+0000">2023-10-31</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 31, 2023 08:51+0000">2023-10-31</span>
 
           <br/>
 

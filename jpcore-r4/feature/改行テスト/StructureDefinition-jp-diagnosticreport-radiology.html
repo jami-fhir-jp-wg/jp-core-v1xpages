@@ -622,7 +622,7 @@
 
 
 
-<p>本プロファイルは、<a href="StructureDefinition-jp-diagnosticreport-radiology.html">DiagnosticReportリソース</a> のうち、放射線画像検査における患者、患者群、機器、場所、およびこれらから得られた画像に対して実施された診断結果またはその解釈を示す「報告書」を表現するリソースの定義である。ここでは、DiagnosticReport リソースに対して本プロファイルに準拠する場合に必須となる要素や、サポートすべき拡張、用語、検索パラメータを定義する。
+<p>本プロファイルは、<a href="StructureDefinition-jp-diagnosticreport-radiology.html">DiagnosticReportリソース</a> のうち、放射線画像検査における患者、患者群、機器、場所、およびこれらから得られた画像に対して実施された診断結果またはその解釈を示す「報告書」を表現するリソースの定義である。ここでは、DiagnosticReport リソースに対して本プロファイルに準拠する場合に必須となる要素や、サポートすべき拡張、用語、検索パラメータを定義する。<br />
 
 報告書は、依頼者や撮影の情報などの臨床的背景のほか、いくつかの計測値、画像、テキストおよびコード化された解釈、テンプレート化された診断報告書により構成される。</p>
 
@@ -640,7 +640,7 @@
 
   <li>施設内で発生するオーダをもとに実施される画像検査に対する診断レポートの保存</li>
 
-  <li>他のリソースからの放射線検査レポートの参照<br />
+  <li>他のリソースからの放射線検査レポートの参照<br /><br />
 
 （例：<a href="StructureDefinition-jp-imagingstudy-radiology.html">ImagingStudyリソース</a>） や<a href="https://www.hl7.org/fhir/R4/servicerequest.html">ServiceRequestリソース</a> のreasonReference エレメントで参照される放射線検査レポート）</li>
 
@@ -652,7 +652,7 @@
 
 
 
-<p>放射線検査レポートで取り扱う診断報告書は、検査の終了後に、検査の診断結果として提供される一連の情報である。
+<p>放射線検査レポートで取り扱う診断報告書は、検査の終了後に、検査の診断結果として提供される一連の情報である。<br />
 
 この情報には、テキストレポート、画像、コード、および計測値などが含まれる。この組み合わせは、診断手順や特定の検査の結果の性質に応じて変化する。FHIRでは、レポートはドキュメント、RESTful API、メッセージングフレームワークなど、さまざまな方法で伝達することができる。これらの方法に含まれるのは、DiagnosticReportリソースそのものである。</p>
 
@@ -706,7 +706,7 @@
 
 
 
-<p>運用のフローに関連する TASK、Procedure 等のリソース定義についてはここでは触れない。
+<p>運用のフローに関連する TASK、Procedure 等のリソース定義についてはここでは触れない。<br />
 
 なお、読影医・確定医の専門医資格情報については、Practitioner.qualificationエレメントでの対応を検討している。</p>
 
@@ -2276,11 +2276,11 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
   <li>status : レポートの状態・進捗状況</li>
 
-  <li>code : レポートの種別
+  <li>code : レポートの種別<br />
 
 （<a href="ValueSet-jp-documentcodes-diagnosticreport-vs.html">JP Core Document Codes Diagnostic</a>に記載されているLOINCコード(18748-4) “Diagnostic imaging study” を指定）</li>
 
-  <li>category : カテゴリとモダリティを表すコード
+  <li>category : カテゴリとモダリティを表すコード<br />
 
 （Radiology(LP29684-5)を第一コードとし、モダリティを示すDICOMコードを第二コードとして指定する。第二コードは複数のモダリティを許容するため、複数のコードの指定が想定される。）</li>
 
@@ -2344,7 +2344,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
 
 
-<p>DiagnosticReportのドメインリソースの一つであるtextエレメントに見読可能な<a href="https://www.hl7.org/fhir/R4/narrative.html">narrative</a>データとしてレポートの所見を中心とした情報を格納する。依頼情報や患者基本情報などを含んだレポート全体のデータは別途presentedFormエレメントに保持されるが、ここではPDF等のバイナリが保存される。よってレポート内容の見読性と検索性を担保するためにtextエレメントに保存されたデータが利用され、ここはxhtmlである事が求められる。
+<p>DiagnosticReportのドメインリソースの一つであるtextエレメントに見読可能な<a href="https://www.hl7.org/fhir/R4/narrative.html">narrative</a>データとしてレポートの所見を中心とした情報を格納する。依頼情報や患者基本情報などを含んだレポート全体のデータは別途presentedFormエレメントに保持されるが、ここではPDF等のバイナリが保存される。よってレポート内容の見読性と検索性を担保するためにtextエレメントに保存されたデータが利用され、ここはxhtmlである事が求められる。<br />
 
 具体的な構造については <a href="DiagnosticReport-jp-diagnosticreport-radiology-example-1.html"><strong>放射線読影レポート</strong></a>を参照のこと</p>
 
@@ -2358,7 +2358,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
 
 
-<p>Codeエレメントは一つの値のみが許容される。一方でIVR等の手技で血管造影検査と超音波検査あるいはCT検査が併用されることがあるように、放射線画像検査では複数のモダリティと組み合わせた複合的な検査治療手技が構成されることがある。すべての組み合わせのコードを準備あるいは列挙することは困難であるため、本バージョンの実装ガイドでは放射線検査に対する画像診断レポートにはCodeに 18748-4（画像検査報告書）を指定することを原則としている。
+<p>Codeエレメントは一つの値のみが許容される。一方でIVR等の手技で血管造影検査と超音波検査あるいはCT検査が併用されることがあるように、放射線画像検査では複数のモダリティと組み合わせた複合的な検査治療手技が構成されることがある。すべての組み合わせのコードを準備あるいは列挙することは困難であるため、本バージョンの実装ガイドでは放射線検査に対する画像診断レポートにはCodeに 18748-4（画像検査報告書）を指定することを原則としている。<br />
 
 Codeエレメントに利用されるコードとして<a href="ValueSet-jp-documentcodes-diagnosticreport-vs.html">JP Core Document Codes Diagnostic</a>	に定義されるコードシステムが用意されているが、粒度の細かいコードはSS-MIX2等で既に定義されているデータとの後方互換を保つ目的で用意されている点に留意が必要である。</p>
 
@@ -2868,7 +2868,7 @@ Codeエレメントに利用されるコードとして<a href="ValueSet-jp-docu
 
         <p>
 
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 31, 2023 07:52+0000">2023-10-31</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 31, 2023 08:51+0000">2023-10-31</span>
 
           <br/>
 

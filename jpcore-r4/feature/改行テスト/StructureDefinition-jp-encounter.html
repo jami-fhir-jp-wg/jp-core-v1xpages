@@ -680,19 +680,19 @@
 
 
 
-<p>Encounterのライフサイクルでは、多くのステータス(status)を遷移する。一般的に、これらは組織のワークフローの順に、 planned(計画), in-progress(進行中), finished/cancelled(終了/キャンセル)となる。<br />
+<p>Encounterのライフサイクルでは、多くのステータス(status)を遷移する。一般的に、これらは組織のワークフローの順に、 planned(計画), in-progress(進行中), finished/cancelled(終了/キャンセル)となる。<br /><br />
 
 このステータス情報はしばしば他のことに使用され、その際にはステータス履歴の分析が必要となることもある。これは、Encounterのすべてのhistoryを検索し、それぞれの期間をチェックし、何らかの形で後処理を行うことで可能となる。しかし、このような負担を軽減するために（またはシステムがリソース履歴をサポートしていない場合のために）、statusHistoryコンポーネントが用意されている。</p>
 
 
 
-<p>そのEncounterが「来院した/入院した」ということを判断できる、statusの値は存在しない。Encounterの使用法およびジネスプラクティス/ポリシ/ワークフロー/タイプがこの定義に影響を与える可能性がある。(例：急性期医療施設、高齢者医療センター、外来診療所、救急部、地域に根ざした診療所など）<br />
+<p>そのEncounterが「来院した/入院した」ということを判断できる、statusの値は存在しない。Encounterの使用法およびジネスプラクティス/ポリシ/ワークフロー/タイプがこの定義に影響を与える可能性がある。(例：急性期医療施設、高齢者医療センター、外来診療所、救急部、地域に根ざした診療所など）<br /><br />
 
 arrived, triaged または in-progress のstatusは入院の開始と考えられ、入力されたhospitalizationサブコンポーネントの存在を意味する。</p>
 
 
 
-<p>on leave のstatusは、例えば、患者が週末に帰宅することを許可された場合や、その他の形式の外部イベントの場合など、入院の一部である場合もあれば、そうでない場合もある。
+<p>on leave のstatusは、例えば、患者が週末に帰宅することを許可された場合や、その他の形式の外部イベントの場合など、入院の一部である場合もあれば、そうでない場合もある。<br />
 
 Encounterには「入院した」という固定した定義はないので、例えば外来（日帰り手術-大腸内視鏡検査）などの例では、患者は入院しているとも考えられる。少なくとも、ステータスが「in-progress」の場合は、患者は入院していると考えられる。</p>
 
@@ -702,13 +702,13 @@ Encounterには「入院した」という固定した定義はないので、�
 
 
 
-<p>Encounterリソースは予約情報を格納するために使用されるべきではなく、Appointmentリソースが予約情報のために使用されることが意図されている。多くのシステムでは、外来患者のEncounter（これはEncounterの範囲である）とAppointmentが同時に使用されていることに注意してほしい。FHIRでは、AppointmentはEncounterの日付を確定するために使用され、一方Encounterは実際の来院/入院等に関する情報、すなわち患者が現れることに適用される。<br />
+<p>Encounterリソースは予約情報を格納するために使用されるべきではなく、Appointmentリソースが予約情報のために使用されることが意図されている。多くのシステムでは、外来患者のEncounter（これはEncounterの範囲である）とAppointmentが同時に使用されていることに注意してほしい。FHIRでは、AppointmentはEncounterの日付を確定するために使用され、一方Encounterは実際の来院/入院等に関する情報、すなわち患者が現れることに適用される。<br /><br />
 
 このように、「planned」のstatusのEncounterは、それを予定したAppointmentと同一ではないが、それは実際に発生する前のEncounterであり、Encounterが完了するまでに更新されることが期待される。患者の場所への到着は、必ずしもEncounterの開始を意味するものではない（例えば、患者が実際に施術者に診てもらうよりも1時間早く到着しても、Encounterの開始にはならない。）。</p>
 
 
 
-<p>Appointmentは通常、Appointmentの計画段階、検索、空いている時間の場所の特定、そしてAppointmentの作成に使われる。このプロセスが完了し、Appointmentが開始されると、Appointmentは達成されたものとしてマークされ、新しく作成されたEncounterにリンクされる。<br />
+<p>Appointmentは通常、Appointmentの計画段階、検索、空いている時間の場所の特定、そしてAppointmentの作成に使われる。このプロセスが完了し、Appointmentが開始されると、Appointmentは達成されたものとしてマークされ、新しく作成されたEncounterにリンクされる。<br /><br />
 
 この新しいEncounterは、施設のある場所に入院したときに「arrived」状態で始まり、その後、病棟を移動した際には別のpartOfで関連付けられたEncounterが始まるかもしれない。</p>
 
@@ -756,7 +756,7 @@ Encounterには「入院した」という固定した定義はないので、�
 
 
 
-<p>またEncounterリソースは、受診前の情報を伝達するために生成することもできる。この場合、status要素は「planned」に設定される。患者の受信内容が入院に関連する場合は、hospitalization要素に入院イベントに関連する拡張情報を格納できる。<br />
+<p>またEncounterリソースは、受診前の情報を伝達するために生成することもできる。この場合、status要素は「planned」に設定される。患者の受信内容が入院に関連する場合は、hospitalization要素に入院イベントに関連する拡張情報を格納できる。<br /><br />
 
 なおこの入院イベントの関連付けは、Encounterリソースのperiod要素で指定されている期間と同じ期間内であることが望ましい。もし期間が異なる場合は、別のEncounterインスタンスを使用し、このEncounterインスタンスの一部として情報を関連付ける必要がある。</p>
 
@@ -2278,11 +2278,11 @@ Summary
 
 <ul>
 
-  <li>status : 受診状況を示す。value set encounter-statusで定義された値から設定する必要がある。<br />
+  <li>status : 受診状況を示す。value set encounter-statusで定義された値から設定する必要がある。  <br />
 
 （planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown）</li>
 
-  <li>class : 受診分類を示す。value set ActEncounterCodeで定義された値から設定する必要がある。<br />
+  <li>class : 受診分類を示す。value set ActEncounterCodeで定義された値から設定する必要がある。  <br />
 
 （AMB/EMER/FLD/HH/IMP/ACUTE/NONAC/OBSENC/PRENC/SS/VR）</li>
 
@@ -2640,7 +2640,7 @@ Summary
 
 
 
-<p>この操作は、この操作が呼び出された特定のEncounterリソースに関連する全ての情報を返す。
+<p>この操作は、この操作が呼び出された特定のEncounterリソースに関連する全ての情報を返す。<br />
 
 応答は “searchset” タイプのBundleリソースである。</p>
 
@@ -2854,7 +2854,7 @@ Summary
 
 
 
-<p>Encounterリソースは、予定情報や予約の保存には使用されない。予約の保存にはAppointmentリソースを利用すること。FHIRでは、Appointmentは診察の日付を決定するのに利用されるのに対して、Encounterは実際に患者が来院して診察が実施されたことを表現する。
+<p>Encounterリソースは、予定情報や予約の保存には使用されない。予約の保存にはAppointmentリソースを利用すること。FHIRでは、Appointmentは診察の日付を決定するのに利用されるのに対して、Encounterは実際に患者が来院して診察が実施されたことを表現する。<br />
 
 そのため、「計画済み」 status の Encounter は実際に発生する前の Encounter であり、診療行為が完了するまで更新されることが期待される。</p>
 
@@ -3040,7 +3040,7 @@ Summary
 
         <p>
 
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 31, 2023 07:52+0000">2023-10-31</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 31, 2023 08:51+0000">2023-10-31</span>
 
           <br/>
 
