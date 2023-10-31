@@ -1230,16 +1230,6 @@ Summary
 
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path(s)</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
 
-<tr><td>dom-2</td><td>error</td><td>ImagingStudy</td><td>もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen).<br/>: contained.contained.empty()</td><td></td></tr>
-
-<tr><td>dom-3</td><td>error</td><td>ImagingStudy</td><td>もしリソースが他のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含まれるリソースに参照されるべきです。<br/>: contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()</td><td></td></tr>
-
-<tr><td>dom-4</td><td>error</td><td>ImagingStudy</td><td>もしリソースが別のリソースの中に含まれる場合、meta.versionIdまたはmeta.lastUpdatedを持つべきではありません。<br/>: contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()</td><td></td></tr>
-
-<tr><td>dom-5</td><td>error</td><td>ImagingStudy</td><td>もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。<br/>: contained.meta.security.empty()</td><td></td></tr>
-
-<tr><td>dom-6</td><td>best practice</td><td>ImagingStudy</td><td>資源は堅牢な管理のために物語を持つべきである。<br/>: text.`div`.exists()</td><td></td></tr>
-
 <tr><td>ele-1</td><td>error</td><td>**ALL** elements</td><td>すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
 
 <tr><td>ext-1</td><td>error</td><td>**ALL** extensions</td><td>拡張機能または値[x]のいずれかが必要です。両方ではありません。<br/>: extension.exists() != value.exists()</td><td></td></tr>
@@ -1346,7 +1336,7 @@ Summary
 
     "<a href="StructureDefinition-jp-imagingstudy-endoscopy.html#ImagingStudy.description" title="DICOM画像検査に関する記述。" class="dict"><span style="text-decoration: underline">description</span></a>" : "&lt;<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。"><b>C?</b></span> <span style="color: navy; opacity: 0.8">DICOM画像検査に関する記述【詳細参照】</span>
 
-    "<a href="StructureDefinition-jp-imagingstudy-endoscopy.html#ImagingStudy.series" title="DICOM画像検査に含まれるシリーズ（大まかな画像のグループ）。" class="dict"><span style="text-decoration: underline">series</span></a>" : [{ <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。"><b>C?</b></span> <span style="color: navy; opacity: 0.8">DICOM画像検査に含まれるシリーズ（大まかな画像のグループ）</span>
+    "<a href="StructureDefinition-jp-imagingstudy-endoscopy.html#ImagingStudy.series" title="DICOM画像検査に含まれるシリーズ（大まかな画像のグループ）。" class="dict"><span style="text-decoration: underline">series</span></a>" : [{ <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8">DICOM画像検査に含まれるシリーズ（大まかな画像のグループ）</span>
 
       "extension": [
 
@@ -1384,7 +1374,7 @@ Summary
 
       }],
 
-      "<a href="StructureDefinition-jp-imagingstudy-endoscopy.html#ImagingStudy.series.instance" title="シリーズに含まれるインスタンス（画像）単位の情報。" class="dict"><span style="text-decoration: underline">instance</span></a>" : [{ <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。"><b>C?</b></span> <span style="color: navy; opacity: 0.8">シリーズに含まれるインスタンス（画像）単位の情報</span>
+      "<a href="StructureDefinition-jp-imagingstudy-endoscopy.html#ImagingStudy.series.instance" title="シリーズに含まれるインスタンス（画像）単位の情報。" class="dict"><span style="text-decoration: underline">instance</span></a>" : [{ <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8">シリーズに含まれるインスタンス（画像）単位の情報</span>
 
         "extension": [
 
@@ -1794,7 +1784,7 @@ Summary
 
     "<a href="StructureDefinition-jp-imagingstudy-endoscopy.html#ImagingStudy.description" title="DICOM画像検査に関する記述。" class="dict"><span style="text-decoration: underline">description</span></a>" : "&lt;<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。"><b>C?</b></span> <span style="color: navy; opacity: 0.8">DICOM画像検査に関する記述【詳細参照】</span>
 
-    "<a href="StructureDefinition-jp-imagingstudy-endoscopy.html#ImagingStudy.series" title="DICOM画像検査に含まれるシリーズ（大まかな画像のグループ）。" class="dict"><span style="text-decoration: underline">series</span></a>" : [{ <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。"><b>C?</b></span> <span style="color: navy; opacity: 0.8">DICOM画像検査に含まれるシリーズ（大まかな画像のグループ）</span>
+    "<a href="StructureDefinition-jp-imagingstudy-endoscopy.html#ImagingStudy.series" title="DICOM画像検査に含まれるシリーズ（大まかな画像のグループ）。" class="dict"><span style="text-decoration: underline">series</span></a>" : [{ <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8">DICOM画像検査に含まれるシリーズ（大まかな画像のグループ）</span>
 
       "extension": [
 
@@ -1832,7 +1822,7 @@ Summary
 
       }],
 
-      "<a href="StructureDefinition-jp-imagingstudy-endoscopy.html#ImagingStudy.series.instance" title="シリーズに含まれるインスタンス（画像）単位の情報。" class="dict"><span style="text-decoration: underline">instance</span></a>" : [{ <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。"><b>C?</b></span> <span style="color: navy; opacity: 0.8">シリーズに含まれるインスタンス（画像）単位の情報</span>
+      "<a href="StructureDefinition-jp-imagingstudy-endoscopy.html#ImagingStudy.series.instance" title="シリーズに含まれるインスタンス（画像）単位の情報。" class="dict"><span style="text-decoration: underline">instance</span></a>" : [{ <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8">シリーズに含まれるインスタンス（画像）単位の情報</span>
 
         "extension": [
 
@@ -1945,16 +1935,6 @@ Summary
         <table class="list">
 
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path(s)</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
-
-<tr><td>dom-2</td><td>error</td><td>ImagingStudy</td><td>もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen).<br/>: contained.contained.empty()</td><td></td></tr>
-
-<tr><td>dom-3</td><td>error</td><td>ImagingStudy</td><td>もしリソースが他のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含まれるリソースに参照されるべきです。<br/>: contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()</td><td></td></tr>
-
-<tr><td>dom-4</td><td>error</td><td>ImagingStudy</td><td>もしリソースが別のリソースの中に含まれる場合、meta.versionIdまたはmeta.lastUpdatedを持つべきではありません。<br/>: contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()</td><td></td></tr>
-
-<tr><td>dom-5</td><td>error</td><td>ImagingStudy</td><td>もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。<br/>: contained.meta.security.empty()</td><td></td></tr>
-
-<tr><td>dom-6</td><td>best practice</td><td>ImagingStudy</td><td>資源は堅牢な管理のために物語を持つべきである。<br/>: text.`div`.exists()</td><td></td></tr>
 
 <tr><td>ele-1</td><td>error</td><td>**ALL** elements</td><td>すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
 
@@ -2436,7 +2416,7 @@ Summary
 
         <p>
 
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 31, 2023 09:42+0000">2023-10-31</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 31, 2023 11:14+0000">2023-10-31</span>
 
           <br/>
 

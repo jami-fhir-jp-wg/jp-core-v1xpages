@@ -1182,21 +1182,9 @@ DetectedIssue リソースへの参照。">detectedIssue</a><a name="MedicationD
 
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path(s)</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
 
-<tr><td>dom-2</td><td>error</td><td>MedicationDispense</td><td>リソースが別のリソースに含まれている場合、ネストされたリソースを含めてはなりません / If the resource is contained in another resource, it SHALL NOT contain nested Resources<br/>: contained.contained.empty()</td><td></td></tr>
-
-<tr><td>dom-3</td><td>error</td><td>MedicationDispense</td><td>リソースが別のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含有リソースを参照するものとします / If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource<br/>: contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()</td><td></td></tr>
-
-<tr><td>dom-4</td><td>error</td><td>MedicationDispense</td><td>リソースが別のリソースに含まれている場合、meta.versionidまたはmeta.lastupdatedを持たないものとします / If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated<br/>: contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()</td><td></td></tr>
-
-<tr><td>dom-5</td><td>error</td><td>MedicationDispense</td><td>別のリソースにリソースが含まれている場合、セキュリティラベルはありません / If a resource is contained in another resource, it SHALL NOT have a security label<br/>: contained.meta.security.empty()</td><td></td></tr>
-
-<tr><td>dom-6</td><td>best practice</td><td>MedicationDispense</td><td>リソースには、堅牢な管理のための叙述(Narative)が必要です / A resource should have narrative for robust management<br/>: text.`div`.exists()</td><td></td></tr>
-
 <tr><td>ele-1</td><td>error</td><td>**ALL** elements</td><td>すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
 
 <tr><td>ext-1</td><td>error</td><td>**ALL** extensions</td><td>両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
-
-<tr><td>mdd-1</td><td>error</td><td>MedicationDispense</td><td>いつ準備されたときにハンドドーバーができないとき / whenHandedOver cannot be before whenPrepared<br/>: whenHandedOver.empty() or whenPrepared.empty() or whenHandedOver &gt;= whenPrepared</td><td></td></tr>
 
 <tr><td>qty-3</td><td>error</td><td>MedicationDispense.quantity, MedicationDispense.daysSupply</td><td>ユニットのコードが存在する場合、システムも存在するものとします / If a code for the unit is present, the system SHALL also be present<br/>: code.empty() or system.exists()</td><td></td></tr>
 
@@ -2102,21 +2090,9 @@ DetectedIssue リソースへの参照。" class="dict"><span style="text-decora
 
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path(s)</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
 
-<tr><td>dom-2</td><td>error</td><td>MedicationDispense</td><td>リソースが別のリソースに含まれている場合、ネストされたリソースを含めてはなりません / If the resource is contained in another resource, it SHALL NOT contain nested Resources<br/>: contained.contained.empty()</td><td></td></tr>
-
-<tr><td>dom-3</td><td>error</td><td>MedicationDispense</td><td>リソースが別のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含有リソースを参照するものとします / If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource<br/>: contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()</td><td></td></tr>
-
-<tr><td>dom-4</td><td>error</td><td>MedicationDispense</td><td>リソースが別のリソースに含まれている場合、meta.versionidまたはmeta.lastupdatedを持たないものとします / If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated<br/>: contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()</td><td></td></tr>
-
-<tr><td>dom-5</td><td>error</td><td>MedicationDispense</td><td>別のリソースにリソースが含まれている場合、セキュリティラベルはありません / If a resource is contained in another resource, it SHALL NOT have a security label<br/>: contained.meta.security.empty()</td><td></td></tr>
-
-<tr><td>dom-6</td><td>best practice</td><td>MedicationDispense</td><td>リソースには、堅牢な管理のための叙述(Narative)が必要です / A resource should have narrative for robust management<br/>: text.`div`.exists()</td><td></td></tr>
-
 <tr><td>ele-1</td><td>error</td><td>**ALL** elements</td><td>すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
 
 <tr><td>ext-1</td><td>error</td><td>**ALL** extensions</td><td>両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
-
-<tr><td>mdd-1</td><td>error</td><td>MedicationDispense</td><td>いつ準備されたときにハンドドーバーができないとき / whenHandedOver cannot be before whenPrepared<br/>: whenHandedOver.empty() or whenPrepared.empty() or whenHandedOver &gt;= whenPrepared</td><td></td></tr>
 
 <tr><td>qty-3</td><td>error</td><td>MedicationDispense.quantity, MedicationDispense.daysSupply</td><td>ユニットのコードが存在する場合、システムも存在するものとします / If a code for the unit is present, the system SHALL also be present<br/>: code.empty() or system.exists()</td><td></td></tr>
 
@@ -3422,7 +3398,7 @@ https://github.com/Acedia-Belphegor/hl7v2-to-fhir/</a></li>
 
         <p>
 
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 31, 2023 09:42+0000">2023-10-31</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 31, 2023 11:14+0000">2023-10-31</span>
 
           <br/>
 

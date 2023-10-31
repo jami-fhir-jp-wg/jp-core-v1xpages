@@ -2,8 +2,7 @@
 "Encounter","Encounter","","Visit
 ","",0,*,"","","","null {[]} {[]}
 ","患者にサービスが提供されている間の相互作用","医療サービスの提供または患者の健康状態の評価を目的とした、患者と医療提供者との間の相互作用。Encounterと表現される。  
-【JP Core仕様】外来受診、救急受診、入院、退院、対面診察、電話診察、など。","","","","","","","","","",,,,,"",,,,"Encounter",0,*,"","dom-2:もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen). {contained.contained.empty()}
-dom-3:もしリソースが他のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含まれるリソースに参照されるべきです。 {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:もしリソースが別のリソースの中に含まれる場合、meta.versionIdまたはmeta.lastUpdatedを持つべきではありません。 {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。 {contained.meta.security.empty()}dom-6:資源は堅牢な管理のために物語を持つべきである。 {text.`div`.exists()}","Event","Entity. Role, or Act","Encounter[@moodCode='EVN']"
+【JP Core仕様】外来受診、救急受診、入院、退院、対面診察、電話診察、など。","","","","","","","","","",,,,,"",,,,"Encounter",0,*,"","","Event","Entity. Role, or Act","Encounter[@moodCode='EVN']"
 "Encounter.id","Encounter.id","","","",0,1,"","","Y","id {[]} {[]}
 ","このアーティファクトの論理ID","リソースのURLで使用される論理ID。一度割り当てられたら、この値は変更されません。","リソースにIDがないのは、作成操作を使用してサーバーに送信されているときだけです。","","","","","","","","",,,,,"",,,,"Resource.id",0,1,"",""
 "Encounter.meta","Encounter.meta","","","",0,1,"","","Y","Meta {[]} {[]}
