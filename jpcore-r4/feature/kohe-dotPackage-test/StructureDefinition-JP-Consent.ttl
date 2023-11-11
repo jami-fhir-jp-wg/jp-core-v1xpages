@@ -389,7 +389,7 @@
      ] [
        fhir:id [ fhir:v "Consent.meta.source" ] ;
        fhir:path [ fhir:v "Consent.meta.source" ] ;
-       fhir:short [ fhir:v "「リソースがどこから来たかを特定する」(Risōsu ga doko kara kita ka o tokutei suru)" ] ;
+       fhir:short [ fhir:v "「リソースがどこから来たかを特定する」" ] ;
        fhir:definition [ fhir:v "リソースのソースシステムを識別するURI。これにより、リソース内の情報のソースをトラックまたは区別するために使用できる最小限の[プロビナンス]（provenance.html＃）情報が提供されます。ソースは、別のFHIRサーバー、ドキュメント、メッセージ、データベースなどを識別できます。" ] ;
        fhir:comment [ fhir:v "プロバナンスのリソースにおいて、これはProvenance.entity.what[x]に対応します。ソースの正確な使用方法（および含意されるProvenance.entity.role）は実装者の判断に委ねられます。指定されたソースは1つだけです。追加のプロバナンスの詳細が必要な場合は、完全なプロバナンスリソースを使用するべきです。\n\nこの要素は、正規のURLでホストされていないリソースの現在のマスターソースがどこにあるかを示すために使用できます。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
@@ -419,7 +419,7 @@
        fhir:id [ fhir:v "Consent.meta.profile" ] ;
        fhir:path [ fhir:v "Consent.meta.profile" ] ;
        fhir:short [ fhir:v "このリソースが適合を主張するプロファイル" ] ;
-       fhir:definition [ fhir:v "このリソースが準拠すると主張する [StructureDefinition](http://hl7.org/fhir/R4/structuredefinition.html#) リソースに関するプロファイルのリストです。URL は [StructureDefinition.url](http://hl7.org/fhir/R4/structuredefinition-definitions.html#StructureDefinition.url) への参照です。" ] ;
+       fhir:definition [ fhir:v "このリソースが準拠すると主張する [StructureDefinition](structuredefinition.html#) リソースに関するプロファイルのリストです。URL は [StructureDefinition.url](structuredefinition-definitions.html#StructureDefinition.url) への参照です。" ] ;
        fhir:comment [ fhir:v "これらの主張が時間の経過に伴って検証または更新される方法と、それらを決定するサーバーや他の基盤に任されます。プロファイルURLのリストは1セットです。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
@@ -481,9 +481,6 @@
          fhir:extension ( [
            fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"^^xsd:anyURI ] ;
            fhir:value [ fhir:v "SecurityLabels" ]
-         ] [
-           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding"^^xsd:anyURI ] ;
-           fhir:value [ fhir:v "true"^^xsd:boolean ]
          ] ) ;
          fhir:strength [ fhir:v "extensible" ] ;
          fhir:description [ fhir:v "医療プライバシーおよびセキュリティ分類システムからのセキュリティラベル。" ] ;
@@ -602,9 +599,6 @@
          ] [
            fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"^^xsd:anyURI ] ;
            fhir:value [ fhir:v "Language" ]
-         ] [
-           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding"^^xsd:anyURI ] ;
-           fhir:value [ fhir:v "true"^^xsd:boolean ]
          ] ) ;
          fhir:strength [ fhir:v "preferred" ] ;
          fhir:description [ fhir:v "人間の言語。 / A human language." ] ;
@@ -1670,10 +1664,6 @@
        fhir:isSummary [ fhir:v "false"^^xsd:boolean ]
      ] [
        fhir:id [ fhir:v "Consent.provision" ] ;
-       fhir:extension ( [
-         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name"^^xsd:anyURI ] ;
-         fhir:value [ fhir:v "provision" ]
-       ] ) ;
        fhir:path [ fhir:v "Consent.provision" ] ;
        fhir:short [ fhir:v "基本的な同意への制約。Policyrule / Constraints to the base Consent.policyRule" ] ;
        fhir:definition [ fhir:v "この同意の基本ポリシーの例外。例外は、アクセス許可の追加または削除です。 / An exception to the base policy of this consent. An exception can be an addition or removal of access permissions." ] ;
@@ -1886,10 +1876,6 @@
        fhir:isSummary [ fhir:v "true"^^xsd:boolean ]
      ] [
        fhir:id [ fhir:v "Consent.provision.actor" ] ;
-       fhir:extension ( [
-         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name"^^xsd:anyURI ] ;
-         fhir:value [ fhir:v "provisionActor" ]
-       ] ) ;
        fhir:path [ fhir:v "Consent.provision.actor" ] ;
        fhir:short [ fhir:v "誰が|このルール（またはグループ、役割によるグループ）によって制御されたもの / Who|what controlled by this rule (or group, by role)" ] ;
        fhir:definition [ fhir:v "この規則によって誰または何が制御されているか。グループを使用して、共有する一部の財産（「役員を認める」など）によって一連のアクターを特定します。 / Who or what is controlled by this rule. Use group to identify a set of actors by some property they share (e.g. 'admitting officers')." ] ;
@@ -2201,9 +2187,6 @@
          fhir:extension ( [
            fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"^^xsd:anyURI ] ;
            fhir:value [ fhir:v "SecurityLabels" ]
-         ] [
-           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding"^^xsd:anyURI ] ;
-           fhir:value [ fhir:v "true"^^xsd:boolean ]
          ] ) ;
          fhir:strength [ fhir:v "extensible" ] ;
          fhir:description [ fhir:v "ヘルスケアプライバシーとセキュリティ分類システムからのセキュリティラベル。 / Security Labels from the Healthcare Privacy and Security Classification System." ] ;
@@ -2366,10 +2349,6 @@
        fhir:isSummary [ fhir:v "true"^^xsd:boolean ]
      ] [
        fhir:id [ fhir:v "Consent.provision.data" ] ;
-       fhir:extension ( [
-         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name"^^xsd:anyURI ] ;
-         fhir:value [ fhir:v "provisionData" ]
-       ] ) ;
        fhir:path [ fhir:v "Consent.provision.data" ] ;
        fhir:short [ fhir:v "この規則によって制御されるデータ / Data controlled by this rule" ] ;
        fhir:definition [ fhir:v "特定のリソースが参照されている場合、このルールによって制御されるリソース。 / The resources controlled by this rule if specific resources are referenced." ] ;

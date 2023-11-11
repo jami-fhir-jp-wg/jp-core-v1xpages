@@ -353,7 +353,7 @@
      ] [
        fhir:id [ fhir:v "ServiceRequest.meta.source" ] ;
        fhir:path [ fhir:v "ServiceRequest.meta.source" ] ;
-       fhir:short [ fhir:v "「リソースがどこから来たかを特定する」(Risōsu ga doko kara kita ka o tokutei suru)" ] ;
+       fhir:short [ fhir:v "「リソースがどこから来たかを特定する」" ] ;
        fhir:definition [ fhir:v "リソースのソースシステムを識別するURI。これにより、リソース内の情報のソースをトラックまたは区別するために使用できる最小限の[プロビナンス]（provenance.html＃）情報が提供されます。ソースは、別のFHIRサーバー、ドキュメント、メッセージ、データベースなどを識別できます。" ] ;
        fhir:comment [ fhir:v "プロバナンスのリソースにおいて、これはProvenance.entity.what[x]に対応します。ソースの正確な使用方法（および含意されるProvenance.entity.role）は実装者の判断に委ねられます。指定されたソースは1つだけです。追加のプロバナンスの詳細が必要な場合は、完全なプロバナンスリソースを使用するべきです。\n\nこの要素は、正規のURLでホストされていないリソースの現在のマスターソースがどこにあるかを示すために使用できます。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
@@ -383,7 +383,7 @@
        fhir:id [ fhir:v "ServiceRequest.meta.profile" ] ;
        fhir:path [ fhir:v "ServiceRequest.meta.profile" ] ;
        fhir:short [ fhir:v "このリソースが適合を主張するプロファイル" ] ;
-       fhir:definition [ fhir:v "このリソースが準拠すると主張する [StructureDefinition](http://hl7.org/fhir/R4/structuredefinition.html#) リソースに関するプロファイルのリストです。URL は [StructureDefinition.url](http://hl7.org/fhir/R4/structuredefinition-definitions.html#StructureDefinition.url) への参照です。" ] ;
+       fhir:definition [ fhir:v "このリソースが準拠すると主張する [StructureDefinition](structuredefinition.html#) リソースに関するプロファイルのリストです。URL は [StructureDefinition.url](structuredefinition-definitions.html#StructureDefinition.url) への参照です。" ] ;
        fhir:comment [ fhir:v "これらの主張が時間の経過に伴って検証または更新される方法と、それらを決定するサーバーや他の基盤に任されます。プロファイルURLのリストは1セットです。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
@@ -445,9 +445,6 @@
          fhir:extension ( [
            fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"^^xsd:anyURI ] ;
            fhir:value [ fhir:v "SecurityLabels" ]
-         ] [
-           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding"^^xsd:anyURI ] ;
-           fhir:value [ fhir:v "true"^^xsd:boolean ]
          ] ) ;
          fhir:strength [ fhir:v "extensible" ] ;
          fhir:description [ fhir:v "医療プライバシーおよびセキュリティ分類システムからのセキュリティラベル。" ] ;
@@ -530,7 +527,7 @@
      ] [
        fhir:id [ fhir:v "ServiceRequest.language" ] ;
        fhir:path [ fhir:v "ServiceRequest.language" ] ;
-       fhir:short [ fhir:v "「リソースコンテンツの言語」(Risōsukontentsu no gengo)" ] ;
+       fhir:short [ fhir:v "「リソースコンテンツの言語」" ] ;
        fhir:definition [ fhir:v "リソースが書かれている基本言語。" ] ;
        fhir:comment [ fhir:v "言語はインデックスとアクセシビリティをサポートするために提供されます（通常、テキスト読み上げなどのサービスは言語タグを使用します）。物語のHTML言語タグは、物語に適用されます。リソース上の言語タグは、リソース内のデータから生成される他のプレゼンテーションの言語を指定するために使用できます。すべてのコンテンツが基本言語である必要はありません。Resource.languageは自動的に物語に適用されたと想定してはいけません。言語が指定されている場合、HTMLのdiv要素にも指定する必要があります（xml：langとhtml lang属性の関係に関する情報はHTML5の規則を参照）。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
@@ -566,12 +563,9 @@
          ] [
            fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"^^xsd:anyURI ] ;
            fhir:value [ fhir:v "Language" ]
-         ] [
-           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding"^^xsd:anyURI ] ;
-           fhir:value [ fhir:v "true"^^xsd:boolean ]
          ] ) ;
          fhir:strength [ fhir:v "preferred" ] ;
-         fhir:description [ fhir:v "「人間の言語。」(Ningen no gengo.)" ] ;
+         fhir:description [ fhir:v "「人間の言語。」" ] ;
          fhir:valueSet [
            fhir:v "http://hl7.org/fhir/ValueSet/languages"^^xsd:anyURI ;
            fhir:link <http://hl7.org/fhir/ValueSet/languages>
@@ -614,7 +608,7 @@
      ] [
        fhir:id [ fhir:v "ServiceRequest.contained" ] ;
        fhir:path [ fhir:v "ServiceRequest.contained" ] ;
-       fhir:short [ fhir:v "「含まれている、インラインのリソース」(Fukuma rete iru, inrain no risōsu)" ] ;
+       fhir:short [ fhir:v "「含まれている、インラインのリソース」" ] ;
        fhir:definition [ fhir:v "これらのリソースは、それらを含むリソースから独立した存在を持ちません。それらは独立して識別することはできず、独自の独立したトランザクション範囲を持つこともできません。" ] ;
        fhir:comment [ fhir:v "コンテンツが適切に識別できる場合には、これを行うべきではありません。識別が失われると、再び復元することは非常に困難であり（文脈に依存します）、メタ要素にプロファイルとタグを持つことができますが、セキュリティのラベルを持っていてはいけません。" ] ;
        fhir:alias ( [ fhir:v "inline resources" ] [ fhir:v "anonymous resources" ] [ fhir:v "contained resources" ] ) ;
@@ -857,7 +851,7 @@
      ] [
        fhir:id [ fhir:v "ServiceRequest.basedOn" ] ;
        fhir:path [ fhir:v "ServiceRequest.basedOn" ] ;
-       fhir:short [ fhir:v "「何のリクエストを満たすのですか？」(Nan no rikuesuto wo mitasu no desu ka?)" ] ;
+       fhir:short [ fhir:v "「何のリクエストを満たすのですか？」" ] ;
        fhir:definition [ fhir:v "このリクエストによって計画/提案/注文が履行されました。" ] ;
        fhir:alias ( [ fhir:v "fulfills" ] ) ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
@@ -906,7 +900,7 @@
      ] [
        fhir:id [ fhir:v "ServiceRequest.replaces" ] ;
        fhir:path [ fhir:v "ServiceRequest.replaces" ] ;
-       fhir:short [ fhir:v "「何のリクエストを代替しますか？」(nan no rikuesuto wo daitai shimasu ka?)" ] ;
+       fhir:short [ fhir:v "「何のリクエストを代替しますか？」" ] ;
        fhir:definition [ fhir:v "そのリクエストは、参照された完了または終了したリクエストの代わりを占めます。" ] ;
        fhir:alias ( [ fhir:v "supersedes" ] [ fhir:v "prior" ] [ fhir:v "renewed order" ] ) ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
@@ -992,7 +986,7 @@
        fhir:path [ fhir:v "ServiceRequest.status" ] ;
        fhir:short [ fhir:v "下書き| アクティブ| 保留中| 取り消された| 完了| エラーで入力| 不明" ] ;
        fhir:definition [ fhir:v "\"注文の状況。\"" ] ;
-       fhir:comment [ fhir:v "状態は一般的にリクエスターの完全なコントロール下にあります。彼らは、注文が下書きかアクティブかを決定し、アクティベートされた後は、完了、キャンセル、または一時停止するかどうかを決定する責任があります。パフォーマーの活動に関連する状態は、対応するイベント（一般的なディスカッションには [イベントパターン](http://hl7.org/fhir/R4/event.html) を参照）または [タスク](http://hl7.org/fhir/R4/task.html) リソースを使用して反映されます。" ] ;
+       fhir:comment [ fhir:v "状態は一般的にリクエスターの完全なコントロール下にあります。彼らは、注文が下書きかアクティブかを決定し、アクティベートされた後は、完了、キャンセル、または一時停止するかどうかを決定する責任があります。パフォーマーの活動に関連する状態は、対応するイベント（一般的なディスカッションには [イベントパターン](event.html) を参照）または [タスク](task.html) リソースを使用して反映されます。" ] ;
        fhir:min [ fhir:v "1"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
        fhir:base [
@@ -1248,7 +1242,7 @@
      ] [
        fhir:id [ fhir:v "ServiceRequest.code" ] ;
        fhir:path [ fhir:v "ServiceRequest.code" ] ;
-       fhir:short [ fhir:v "「何が要求されているのですか」(Nani ga yōkyū sarete iru no desu ka)" ] ;
+       fhir:short [ fhir:v "「何が要求されているのですか」" ] ;
        fhir:definition [ fhir:v "特定のサービス（すなわちプロシジャー（処置等）、診断調査、または調査のパネル）を要求されたことを示すコード" ] ;
        fhir:comment [ fhir:v "多くの実験室と放射線プロシジャー（処置等）には、検査依頼名に検体/臓器系が組み込まれています。 例えば、血清または血清/血漿グルコース、または胸部X線です。 検体はテストコードから別々に記録されない場合があります。" ] ;
        fhir:alias ( [ fhir:v "service requested" ] ) ;
@@ -1459,7 +1453,7 @@
      ] [
        fhir:id [ fhir:v "ServiceRequest.encounter" ] ;
        fhir:path [ fhir:v "ServiceRequest.encounter" ] ;
-       fhir:short [ fhir:v "「要求が作成されたEncounter（診察、受診、入退院など）」(Yōkyū ga sakusei sareta deai)" ] ;
+       fhir:short [ fhir:v "「要求が作成されたEncounter（診察、受診、入退院など）」" ] ;
        fhir:definition [ fhir:v "この要求がされたヘルスケアの文脈に関する追加情報を提供するEncounter（診察、受診、入退院など）。" ] ;
        fhir:alias ( [ fhir:v "context" ] ) ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
@@ -1651,7 +1645,7 @@
      ] [
        fhir:id [ fhir:v "ServiceRequest.requester" ] ;
        fhir:path [ fhir:v "ServiceRequest.requester" ] ;
-       fhir:short [ fhir:v "「誰／何がサービスを要求していますか？」(Dare/nani ga sābisu o yōkyū shiteimasu ka?)" ] ;
+       fhir:short [ fhir:v "「誰／何がサービスを要求していますか？」" ] ;
        fhir:definition [ fhir:v "リクエストを開始し、その活性化の責任を持つ個人" ] ;
        fhir:comment [ fhir:v "これはディスパッチャーではなく、認可者です。この要素は、慣例的にプロバニエンスリソースを介して管理される委任を処理することを意図していません。" ] ;
        fhir:alias ( [ fhir:v "author" ] [ fhir:v "orderer" ] ) ;
@@ -1771,7 +1765,7 @@
      ] [
        fhir:id [ fhir:v "ServiceRequest.performer" ] ;
        fhir:path [ fhir:v "ServiceRequest.performer" ] ;
-       fhir:short [ fhir:v "「依頼されたパフォーマー」(Iraisareta pafōmā)" ] ;
+       fhir:short [ fhir:v "「依頼されたパフォーマー」" ] ;
        fhir:definition [ fhir:v "要求されたサービスを行うために希望の演者。例えば、外科医、皮膚病理学者、内視鏡医など。" ] ;
        fhir:comment [ fhir:v "複数のパフォーマーが存在する場合、順序に関係なく、好みのない代替のパフォーマーのリストとして解釈されます。好みの順序が必要な場合は、[request-performerOrder拡張機能](http://hl7.org/fhir/R4/extension-request-performerorder.html)を使用してください。パフォーマーのグループを表すには、CareTeamを使用します（例：実践者A *および*実践者B）。" ] ;
        fhir:alias ( [ fhir:v "request recipient" ] ) ;
@@ -1927,7 +1921,7 @@
        fhir:path [ fhir:v "ServiceRequest.reasonCode" ] ;
        fhir:short [ fhir:v "プロシジャー（処置等）またはサービスの説明/正当化" ] ;
        fhir:definition [ fhir:v "このサービスをリクエストする理由や正当性について、コード化またはテキスト形式で説明または正当化すること。通常は請求目的のためです。「supportingInfo」で参照されるリソースに関連する場合があります。" ] ;
-       fhir:comment [ fhir:v "この要素は、どのような理由で紹介がなされたかを示し、サービスを提供する方法、または提供するかどうかを決定するために使用されることがあります。データが自由（符号化されていない）テキストである場合は、[CT Scan example](http://hl7.org/fhir/R4/servicerequest-example-di.html)に示されているように、`CodeableConcept.text` 要素を使用してください。" ] ;
+       fhir:comment [ fhir:v "この要素は、どのような理由で紹介がなされたかを示し、サービスを提供する方法、または提供するかどうかを決定するために使用されることがあります。データが自由（符号化されていない）テキストである場合は、[CT Scan example](servicerequest-example-di.html)に示されているように、`CodeableConcept.text` 要素を使用してください。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
        fhir:base [
@@ -1981,7 +1975,7 @@
        fhir:path [ fhir:v "ServiceRequest.reasonReference" ] ;
        fhir:short [ fhir:v "サービスやサービスの説明/正当化" ] ;
        fhir:definition [ fhir:v "「このサービスが要求されている理由を正当化する他のリソースを示します。」サポート情報で言及されているリソースに関連する場合があります。" ] ;
-       fhir:comment [ fhir:v "この要素は紹介理由を表し、サービスの提供方法、あるいは提供されるかどうかを決定するために使用される可能性があります。できるだけ具体的にするために、*Observation*または*Condition*への参照が可能な場合は使用するべきです。そうでない場合、*DiagnosticReport*への参照をする場合は、`DiagnosticReport.conclusion`および/または`DiagnosticReport.conclusionCode`に結果が含まれている必要があります。*DocumentReference*への参照を使用する場合は、対象の文書には、このサービスの要求の関連する理由を提供する明確な発見用語が含まれている必要があります。[CTスキャンの例](http://hl7.org/fhir/R4/servicerequest-example-di.html)に示されるように、データがフリー（コード化されていない）テキストの場合は、`ServiceRequest.reasonCode`内のCodeableConceptテキスト要素を使用してください。" ] ;
+       fhir:comment [ fhir:v "この要素は紹介理由を表し、サービスの提供方法、あるいは提供されるかどうかを決定するために使用される可能性があります。できるだけ具体的にするために、*Observation*または*Condition*への参照が可能な場合は使用するべきです。そうでない場合、*DiagnosticReport*への参照をする場合は、`DiagnosticReport.conclusion`および/または`DiagnosticReport.conclusionCode`に結果が含まれている必要があります。*DocumentReference*への参照を使用する場合は、対象の文書には、このサービスの要求の関連する理由を提供する明確な発見用語が含まれている必要があります。[CTスキャンの例](servicerequest-example-di.html)に示されるように、データがフリー（コード化されていない）テキストの場合は、`ServiceRequest.reasonCode`内のCodeableConceptテキスト要素を使用してください。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
        fhir:base [
@@ -2125,7 +2119,7 @@
        fhir:path [ fhir:v "ServiceRequest.specimen" ] ;
        fhir:short [ fhir:v "プロシジャー（処置等）のサンプル (Tetsuduki no sampuru)" ] ;
        fhir:definition [ fhir:v "実験室のプロシジャー（処置等）で使用される1つ以上の標本。" ] ;
-       fhir:comment [ fhir:v "多くの診断プロシジャー（処置等）ではサンプルが必要ですが、要求自体は実際にはサンプルに関するものではありません。この要素は、既存のサンプルに対して診断が要求され、要求が適用されるサンプルを指す場合に使用されます。逆に、要求が先に未知のサンプルで入力された場合、[試料](http://hl7.org/fhir/R4/specimen.html)リソースはServiceRequestを指します。" ] ;
+       fhir:comment [ fhir:v "多くの診断プロシジャー（処置等）ではサンプルが必要ですが、要求自体は実際にはサンプルに関するものではありません。この要素は、既存のサンプルに対して診断が要求され、要求が適用されるサンプルを指す場合に使用されます。逆に、要求が先に未知のサンプルで入力された場合、[試料](specimen.html)リソースはServiceRequestを指します。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
        fhir:base [
