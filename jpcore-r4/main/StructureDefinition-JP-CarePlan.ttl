@@ -336,7 +336,7 @@
      ] [
        fhir:id [ fhir:v "CarePlan.meta.source" ] ;
        fhir:path [ fhir:v "CarePlan.meta.source" ] ;
-       fhir:short [ fhir:v "「リソースがどこから来たかを特定する」(Risōsu ga doko kara kita ka o tokutei suru)" ] ;
+       fhir:short [ fhir:v "「リソースがどこから来たかを特定する」" ] ;
        fhir:definition [ fhir:v "リソースのソースシステムを識別するURI。これにより、リソース内の情報のソースをトラックまたは区別するために使用できる最小限の[プロビナンス]（provenance.html＃）情報が提供されます。ソースは、別のFHIRサーバー、ドキュメント、メッセージ、データベースなどを識別できます。" ] ;
        fhir:comment [ fhir:v "プロバナンスのリソースにおいて、これはProvenance.entity.what[x]に対応します。ソースの正確な使用方法（および含意されるProvenance.entity.role）は実装者の判断に委ねられます。指定されたソースは1つだけです。追加のプロバナンスの詳細が必要な場合は、完全なプロバナンスリソースを使用するべきです。\n\nこの要素は、正規のURLでホストされていないリソースの現在のマスターソースがどこにあるかを示すために使用できます。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
@@ -366,7 +366,7 @@
        fhir:id [ fhir:v "CarePlan.meta.profile" ] ;
        fhir:path [ fhir:v "CarePlan.meta.profile" ] ;
        fhir:short [ fhir:v "このリソースが適合を主張するプロファイル" ] ;
-       fhir:definition [ fhir:v "このリソースが準拠すると主張する [StructureDefinition](http://hl7.org/fhir/R4/structuredefinition.html#) リソースに関するプロファイルのリストです。URL は [StructureDefinition.url](http://hl7.org/fhir/R4/structuredefinition-definitions.html#StructureDefinition.url) への参照です。" ] ;
+       fhir:definition [ fhir:v "このリソースが準拠すると主張する [StructureDefinition](structuredefinition.html#) リソースに関するプロファイルのリストです。URL は [StructureDefinition.url](structuredefinition-definitions.html#StructureDefinition.url) への参照です。" ] ;
        fhir:comment [ fhir:v "これらの主張が時間の経過に伴って検証または更新される方法と、それらを決定するサーバーや他の基盤に任されます。プロファイルURLのリストは1セットです。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
@@ -428,9 +428,6 @@
          fhir:extension ( [
            fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"^^xsd:anyURI ] ;
            fhir:value [ fhir:v "SecurityLabels" ]
-         ] [
-           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding"^^xsd:anyURI ] ;
-           fhir:value [ fhir:v "true"^^xsd:boolean ]
          ] ) ;
          fhir:strength [ fhir:v "extensible" ] ;
          fhir:description [ fhir:v "医療プライバシーおよびセキュリティ分類システムからのセキュリティラベル。" ] ;
@@ -513,7 +510,7 @@
      ] [
        fhir:id [ fhir:v "CarePlan.language" ] ;
        fhir:path [ fhir:v "CarePlan.language" ] ;
-       fhir:short [ fhir:v "「リソースコンテンツの言語」(Risōsukontentsu no gengo)" ] ;
+       fhir:short [ fhir:v "「リソースコンテンツの言語」" ] ;
        fhir:definition [ fhir:v "リソースが書かれている基本言語。" ] ;
        fhir:comment [ fhir:v "言語はインデックスとアクセシビリティをサポートするために提供されます（通常、テキスト読み上げなどのサービスは言語タグを使用します）。物語のHTML言語タグは、物語に適用されます。リソース上の言語タグは、リソース内のデータから生成される他のプレゼンテーションの言語を指定するために使用できます。すべてのコンテンツが基本言語である必要はありません。Resource.languageは自動的に物語に適用されたと想定してはいけません。言語が指定されている場合、HTMLのdiv要素にも指定する必要があります（xml：langとhtml lang属性の関係に関する情報はHTML5の規則を参照）。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
@@ -549,12 +546,9 @@
          ] [
            fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"^^xsd:anyURI ] ;
            fhir:value [ fhir:v "Language" ]
-         ] [
-           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding"^^xsd:anyURI ] ;
-           fhir:value [ fhir:v "true"^^xsd:boolean ]
          ] ) ;
          fhir:strength [ fhir:v "preferred" ] ;
-         fhir:description [ fhir:v "「人間の言語。」(Ningen no gengo.)" ] ;
+         fhir:description [ fhir:v "「人間の言語。」" ] ;
          fhir:valueSet [
            fhir:v "http://hl7.org/fhir/ValueSet/languages"^^xsd:anyURI ;
            fhir:link <http://hl7.org/fhir/ValueSet/languages>
@@ -597,7 +591,7 @@
      ] [
        fhir:id [ fhir:v "CarePlan.contained" ] ;
        fhir:path [ fhir:v "CarePlan.contained" ] ;
-       fhir:short [ fhir:v "「含まれている、インラインのリソース」(Fukuma rete iru, inrain no risōsu)" ] ;
+       fhir:short [ fhir:v "「含まれている、インラインのリソース」" ] ;
        fhir:definition [ fhir:v "これらのリソースは、それらを含むリソースから独立した存在を持ちません。それらは独立して識別することはできず、独自の独立したトランザクション範囲を持つこともできません。" ] ;
        fhir:comment [ fhir:v "コンテンツが適切に識別できる場合には、これを行うべきではありません。識別が失われると、再び復元することは非常に困難であり（文脈に依存します）、メタ要素にプロファイルとタグを持つことができますが、セキュリティのラベルを持っていてはいけません。" ] ;
        fhir:alias ( [ fhir:v "inline resources" ] [ fhir:v "anonymous resources" ] [ fhir:v "contained resources" ] ) ;
@@ -1315,7 +1309,7 @@
        fhir:id [ fhir:v "CarePlan.created" ] ;
        fhir:path [ fhir:v "CarePlan.created" ] ;
        fhir:short [ fhir:v "日付記録が最初に記録された。" ] ;
-       fhir:definition [ fhir:v "「これは特定のCarePlanレコードがシステム内で作成された日を表します。これはしばしばシステムが生成した日付です。」(Kore wa tokutei no CarePlan rekōdo ga shisutemu nai de sakusei sareda hi o hyō shimasu. Kore wa shibashiba shisutemu ga seisei shita hidzuke desu.)" ] ;
+       fhir:definition [ fhir:v "「これは特定のCarePlanレコードがシステム内で作成された日を表します。これはしばしばシステムが生成した日付です。」" ] ;
        fhir:alias ( [ fhir:v "authoredOn" ] ) ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
@@ -1353,7 +1347,7 @@
      ] [
        fhir:id [ fhir:v "CarePlan.author" ] ;
        fhir:path [ fhir:v "CarePlan.author" ] ;
-       fhir:short [ fhir:v "「指名された責任者は誰ですか？」(Shimei sareta sekinin-sha wa dare desu ka?)" ] ;
+       fhir:short [ fhir:v "「指名された責任者は誰ですか？」" ] ;
        fhir:definition [ fhir:v "人口密集地において、著者はケアプランに責任を持っています。ケアプランは著者に帰属されます。" ] ;
        fhir:comment [ fhir:v "著者は寄稿者でもある可能性があります。例えば、組織は著者として表示されますが、寄稿者としては表示されません。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
@@ -1411,7 +1405,7 @@
      ] [
        fhir:id [ fhir:v "CarePlan.contributor" ] ;
        fhir:path [ fhir:v "CarePlan.contributor" ] ;
-       fhir:short [ fhir:v "「誰がケアプランの内容を提供しましたか？」(Dare ga kea puran no naiyou wo teikyou shimashita ka?)" ] ;
+       fhir:short [ fhir:v "「誰がケアプランの内容を提供しましたか？」" ] ;
        fhir:definition [ fhir:v "介護プランの内容を提供した個人または組織を特定する。" ] ;
        fhir:comment [ fhir:v "共同ケアプランには複数の貢献者がいる場合があります。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
@@ -2607,7 +2601,7 @@
      ] [
        fhir:id [ fhir:v "CarePlan.activity.detail.location" ] ;
        fhir:path [ fhir:v "CarePlan.activity.detail.location" ] ;
-       fhir:short [ fhir:v "「起こるべき場所はどこですか？」(Okoru beki basho wa doko desu ka?)" ] ;
+       fhir:short [ fhir:v "「起こるべき場所はどこですか？」" ] ;
        fhir:definition [ fhir:v "活動が行われる施設を特定します。例えば、自宅、病院、特定のクリニックなどです。" ] ;
        fhir:comment [ fhir:v "特定の臨床ロケーションを参照する場合もあれば、ロケーションのタイプを識別することもあります。" ] ;
        fhir:requirements [ fhir:v "Helps in planning of activity." ] ;
@@ -2713,7 +2707,7 @@
      ] [
        fhir:id [ fhir:v "CarePlan.activity.detail.product[x]" ] ;
        fhir:path [ fhir:v "CarePlan.activity.detail.product[x]" ] ;
-       fhir:short [ fhir:v "「何を管理/供給するのですか？」(Nani wo kanri/kyoukyuu suru no desu ka?)" ] ;
+       fhir:short [ fhir:v "「何を管理/供給するのですか？」" ] ;
        fhir:definition [ fhir:v "活動で消費または提供される食料品、薬品、またはその他の製品を識別します。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "1" ] ;
@@ -2769,7 +2763,7 @@
      ] [
        fhir:id [ fhir:v "CarePlan.activity.detail.dailyAmount" ] ;
        fhir:path [ fhir:v "CarePlan.activity.detail.dailyAmount" ] ;
-       fhir:short [ fhir:v "「1日に何回飲むべきですか？」(Ichi-nichi ni nan-kai nomu beki desu ka?)\"" ] ;
+       fhir:short [ fhir:v "「1日に何回飲むべきですか？」\"" ] ;
        fhir:definition [ fhir:v "特定日に消費される予想数量を特定する。" ] ;
        fhir:requirements [ fhir:v "Allows rough dose checking." ] ;
        fhir:alias ( [ fhir:v "daily dose" ] ) ;
