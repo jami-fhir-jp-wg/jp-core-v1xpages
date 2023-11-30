@@ -77,7 +77,7 @@
        fhir:constraint ( [
          fhir:key [ fhir:v "ait-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "AllergyIntolerance.ClinicalStatusが存在する場合は、存在するものとします。 / AllergyIntolerance.clinicalStatus SHALL be present if verificationStatus is not entered-in-error." ] ;
+         fhir:human [ fhir:v "AllergyIntolerance.verificationStatusに'entered-in-error'が入力されていない場合には、AllergyIntolerance.ClinicalStatusは、存在しなければならない。/ AllergyIntolerance.clinicalStatus SHALL be present if verificationStatus is not entered-in-error." ] ;
          fhir:expression [ fhir:v "verificationStatus.coding.where(system = 'http://terminology.hl7.org/CodeSystem/allergyintolerance-verification' and code = 'entered-in-error').exists() or clinicalStatus.exists()" ] ;
          fhir:xpath [ fhir:v "f:verificationStatus/f:coding/f:code/@value='entered-in-error' or exists(f:clinicalStatus)" ] ;
          fhir:source [
@@ -87,7 +87,7 @@
        ] [
          fhir:key [ fhir:v "ait-2" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "AllergyIntolerance.ClinicalStatusは、検証ステータスが入力されている場合、存在しないでください / AllergyIntolerance.clinicalStatus SHALL NOT be present if verification Status is entered-in-error" ] ;
+         fhir:human [ fhir:v "AllergyIntolerance.verificationStatusに'entered-in-error'が入力されている場合、AllergyIntolerance.ClinicalStatusは、存在してはならない。 / AllergyIntolerance.clinicalStatus SHALL NOT be present if verification Status is entered-in-error" ] ;
          fhir:expression [ fhir:v "verificationStatus.coding.where(system = 'http://terminology.hl7.org/CodeSystem/allergyintolerance-verification' and code = 'entered-in-error').empty() or clinicalStatus.empty()" ] ;
          fhir:xpath [ fhir:v "not(f:verificationStatus/f:coding/f:code/@value='entered-in-error') or not(exists(f:clinicalStatus))" ] ;
          fhir:source [
@@ -107,7 +107,7 @@
        ] [
          fhir:key [ fhir:v "dom-3" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "リソースが別のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含有リソースを参照するものとします / If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource" ] ;
+         fhir:human [ fhir:v "リソースが別のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含有リソースを参照しなければならない。 / If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource" ] ;
          fhir:expression [ fhir:v "contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()" ] ;
          fhir:xpath [ fhir:v "not(exists(for $id in f:contained/*/f:id/@value return $contained[not(parent::*/descendant::f:reference/@value=concat('#', $contained/*/id/@value) or descendant::f:reference[@value='#'])]))" ] ;
          fhir:source [
@@ -117,7 +117,7 @@
        ] [
          fhir:key [ fhir:v "dom-4" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "リソースが別のリソースに含まれている場合、meta.versionidまたはmeta.lastupdatedを持たないものとします / If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated" ] ;
+         fhir:human [ fhir:v "リソースが別のリソースに含まれている場合、meta.versionidもmeta.lastupdatedも持ってはならない。 / If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated" ] ;
          fhir:expression [ fhir:v "contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()" ] ;
          fhir:xpath [ fhir:v "not(exists(f:contained/*/f:meta/f:versionId)) and not(exists(f:contained/*/f:meta/f:lastUpdated))" ] ;
          fhir:source [
@@ -127,7 +127,7 @@
        ] [
          fhir:key [ fhir:v "dom-5" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "別のリソースにリソースが含まれている場合、セキュリティラベルはありません / If a resource is contained in another resource, it SHALL NOT have a security label" ] ;
+         fhir:human [ fhir:v "別のリソースにリソースが含まれている場合、セキュリティラベルはあってはならない。 / If a resource is contained in another resource, it SHALL NOT have a security label" ] ;
          fhir:expression [ fhir:v "contained.meta.security.empty()" ] ;
          fhir:xpath [ fhir:v "not(exists(f:contained/*/f:meta/f:security))" ] ;
          fhir:source [
