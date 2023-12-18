@@ -1,0 +1,157 @@
+"Id","Path","Slice Name","Alias(s)","Label","Min","Max","Must Support?","Is Modifier?","Is Summary?","Type(s)","Short","Definition","Comments","Requirements","Default Value","Meaning When Missing","Fixed Value","Pattern","Example","Minimum Value","Maximum Value","Maximum Length","Binding Strength","Binding Description","Binding Value Set","Code","Slicing Discriminator","Slicing Description","Slicing Ordered","Slicing Rules","Base Path","Base Min","Base Max","Condition(s)","Constraint(s)","Mapping: Workflow Pattern","Mapping: SNOMED CT Concept Domain Binding","Mapping: HL7 v2 Mapping","Mapping: RIM Mapping","Mapping: FiveWs Pattern Mapping","Mapping: SNOMED CT Attribute Binding"
+"Condition","Condition","","","",0,*,"","","","null {[]} {[]}
+","Detailed information about conditions, problems or diagnoses. 患者の臨床状態、問題、または診断に関する詳細な情報","A clinical condition, problem, diagnosis, or other event, situation, issue, or clinical concept that has risen to a level of concern.  
+健康上の懸念となるレベルに達した、身体的、精神的、社会的な負の状態(condition)や問題（problem／issue）、医療者による診断(diagnosis)、生じたイベント(event)、置かれている状況(situation)、臨床的概念(clinical concept)。","","","","","","","","","",,,,,"",,,,"Condition",0,*,"","con-3:verificationStatus」が「entered-in-error」でなく、「category」が「problem-list-item」である場合、「condition.clinicalStatus」が存在している必要があります。 {clinicalStatus.exists() or verificationStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-ver-status' and code = 'entered-in-error').exists() or category.select($this='problem-list-item').empty()}
+con-4:もし状態が軽減された場合、臨床状態は不活動、解決、または寛解でなければなりません。 {abatement.empty() or clinicalStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-clinical' and (code='resolved' or code='remission' or code='inactive')).exists()}con-5:verificationStatusがentered-in-errorである場合、condition.clinicalStatusは存在してはなりません。 {verificationStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-ver-status' and code='entered-in-error').empty() or clinicalStatus.empty()}dom-2:もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen). {contained.contained.empty()}dom-3:もしリソースが他のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含まれるリソースに参照されるべきです。 {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:もしリソースが別のリソースの中に含まれる場合、meta.versionIdまたはmeta.lastUpdatedを持つべきではありません。 {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。 {contained.meta.security.empty()}dom-6:資源は堅牢な管理のために物語を持つべきである。 {text.`div`.exists()}","Event","< 243796009 |Situation with explicit context| : 246090004 |Associated finding| = ( ( < 404684003 |Clinical finding| MINUS ( << 420134006 |Propensity to adverse reactions| OR << 473010000 |Hypersensitivity condition| OR << 79899007 |Drug interaction| OR << 69449002 |Drug action| OR << 441742003 |Evaluation finding| OR << 307824009 |Administrative status| OR << 385356007 |Tumor stage finding|)) OR < 272379006 |Event|)","PPR message","Entity. Role, or Act","Observation[classCode=OBS, moodCode=EVN, code=ASSERTION, value<Diagnosis]"
+"Condition.id","Condition.id","","","",0,1,"","","Y","id {[]} {[]}
+","このアーティファクトの論理ID","リソースのURLで使用される論理ID。一度割り当てられたら、この値は変更されません。","リソースにIDがないのは、作成操作を使用してサーバーに送信されているときだけです。","","","","","","","","",,,,,"",,,,"Resource.id",0,1,"",""
+"Condition.meta","Condition.meta","","","",0,1,"","","Y","Meta {[]} {[]}
+","リソースに関するメタデータ","リソースに関するメタデータ。これはインフラストラクチャによって維持されるコンテンツです。 コンテンツの変更は、リソースのバージョン変更と常に関連しているわけではありません。","","","","","","","","","",,,,,"",,,,"Resource.meta",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Condition.implicitRules","Condition.implicitRules","","","",0,1,"","Y","Y","uri {[]} {[]}
+","このコンテンツが作成されたルールセット","リソース構築時に遵守された一連のルールを指すものであり、コンテンツを処理する際に理解する必要があります。しばしば、特別なルールを定義する実装ガイドとその他のプロファイルなどを含むものです。","このルールセットを主張することで、取引先の限られた集団にしか内容を理解させることができず、長期的にはデータの有用性が制限されます。しかしながら、現存するヘルスエコシステムは高度に分断化しており、一般的に計算可能な形式でデータを定義、収集、交換する準備が整っていません。できる限り、実装者および/または仕様ライターはこの要素の使用を避けるべきです。使用する場合、URLは、そのナラティブとともに他のプロファイル、値セットなどを含む実装ガイドを定義する参照となります。","","","","","","","","",,,,,"",,,,"Resource.implicitRules",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Condition.language","Condition.language","","","",0,1,"","","","code {[]} {[]}
+","「リソースコンテンツの言語」","リソースが書かれている基本言語。","言語はインデックスとアクセシビリティをサポートするために提供されます（通常、テキスト読み上げなどのサービスは言語タグを使用します）。物語のHTML言語タグは、物語に適用されます。リソース上の言語タグは、リソース内のデータから生成される他のプレゼンテーションの言語を指定するために使用できます。すべてのコンテンツが基本言語である必要はありません。Resource.languageは自動的に物語に適用されたと想定してはいけません。言語が指定されている場合、HTMLのdiv要素にも指定する必要があります（xml：langとhtml lang属性の関係に関する情報はHTML5の規則を参照）。","","","","","","","","",,"preferred","「人間の言語。」","http://hl7.org/fhir/ValueSet/languages","",,,,"Resource.language",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Condition.text","Condition.text","","narrative
+htmlxhtmldisplay","",0,1,"","","","Narrative {[]} {[]}
+","Text summary of the resource, for human interpretation. このリソースを人間が解釈するためのテキスト要約","リソースの要約を含む人が読めるナビゲーションであり、リソースの内容を人に表現するために使用できます。ナビゲーションはすべての構造化されたデータをエンコードする必要はありませんが、人間がナビゲーションを読むだけで「臨床的に安全」であるために十分な詳細を含む必要があります。リソース定義には、臨床的な安全性を確保するためにナビゲーションで表現する必要があるコンテンツが定義される場合があります。","含まれるリソースには説明がありません。含まれないリソースには説明が必要です。場合によっては、リソースが少量のデータしか含まず、テキストだけで表現されることがあります（minOccurs = 1要素がすべて満たされている限り）。これは、情報が「テキストの塊」としてキャプチャされるレガシーシステムからのデータや、テキストが生またはナレーションされて符号化された情報が後で追加される場合に必要な場合があります。","","","","","","","","",,,,,"",,,,"DomainResource.text",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Act.text?"
+"Condition.contained","Condition.contained","","inline resources
+anonymous resourcescontained resources","",0,*,"","","","Resource {[]} {[]}
+","「含まれている、インラインのリソース」","これらのリソースは、それらを含むリソースから独立した存在を持ちません。それらは独立して識別することはできず、独自の独立したトランザクション範囲を持つこともできません。","コンテンツが適切に識別できる場合には、これを行うべきではありません。識別が失われると、再び復元することは非常に困難であり（文脈に依存します）、メタ要素にプロファイルとタグを持つことができますが、セキュリティのラベルを持っていてはいけません。","","","","","","","","",,,,,"",,,,"DomainResource.contained",0,*,"","","N/A"
+"Condition.extension","Condition.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","リソースの基本的な定義の一部ではない追加情報を表すために使用することができます。拡張機能の使用を安全かつ管理可能にするために、定義と使用の一定のガバナンスが適用されます。実装者はどんな拡張機能でも定義できますが、拡張機能の定義の一部として満たす必要がある要件があります","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Condition.modifierExtension","Condition.modifierExtension","","extensions
+user content","",0,*,"","Y","","Extension {[]} {[]}
+","無視できない拡張機能 (Mushi dekinai kakuchou kinou)","リソースの基本的な定義に含まれない、要素の理解や、それを含む要素の子孫の理解を修正する追加情報を表すためにも使用されることがあります。通常、修飾要素は否定や修飾を提供します。拡張機能の使用を安全で管理しやすくするために、拡張機能の定義と使用に対して厳格な統治が適用されます。実装者は拡張機能を定義することが許可されていますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張をチェックする必要があります。修飾子拡張は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味も変更できません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Condition.identifier","Condition.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
+","この状態の外部ID。","サーバーからサーバーへ伝搬するにつれて更新され、パフォーマーまたは他のシステムによって割り当てられたビジネス識別子が、この状態に対して一定の値を保持します。","これはビジネス識別子であり、リソース識別子ではありません（[discussion]（resource.html＃identifiers）を参照）。 識別子が単一のリソースインスタンスにのみ表示されることが最善の方法ですが、ビジネス上の実践によっては、同じ識別子を持つ複数のリソースインスタンスが存在する場合があります。 たとえば、複数の患者と個人リソースインスタンスが同じ社会保険番号を共有する場合があります。","Allows identification of the condition as it is known by various participating systems and in a way that remains consistent across servers.","","","","","","","",,,,,"",,,,"Condition.identifier",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.identifier",".id","FiveWs.identifier"
+"Condition.clinicalStatus","Condition.clinicalStatus","","","",0,1,"","Y","Y","CodeableConcept {[]} {[]}
+","active | recurrence | relapse | inactive | remission | resolved （アクティブ | 再発 | 再燃 | インアクティブ | 寛解 | 完治）","The clinical status of the condition.  
+この患者状態の臨床的ステータス（アクティブか否かなど）","データ型はCodeableConceptです。なぜなら、clinicalStatusには一定の臨床判断が含まれるため、必要なFHIR値セットが許容するよりもさらに特定性が必要になる場合があるためです。例えば、SNOMEDコーディングは追加の特定性を許容する場合があります。","","","","","","","","",,"required","病態や診断の臨床状態。","http://hl7.org/fhir/ValueSet/condition-clinical|4.0.1","",,,,"Condition.clinicalStatus",0,1,"con-3
+con-4con-5","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.status","< 303105007 |Disease phases|","PRB-14","Observation ACT
+.inboundRelationship[typeCode=COMP].source[classCode=OBS, code=""clinicalStatus"", moodCode=EVN].value","FiveWs.status"
+"Condition.verificationStatus","Condition.verificationStatus","","","",0,1,"","Y","Y","CodeableConcept {[]} {[]}
+","unconfirmed | provisional | differential | confirmed | refuted | entered-in-error（十分に確認されていない | 暫定的 | 鑑別的 | 十分な根拠で存在 | 十分な根拠で否定 | 誤記載）","The verification status to support the clinical status of the condition.  
+ この患者状態が存在するかどうかの検証状況。","検証状態は必須ではありません。例えば、救急治療室で患者が腹痛を訴えた場合、一般的には検証状態が必要ないでしょう。
+
+データ型はCodeableConceptであり、検証状態には臨床的な判断が必要なため、必要なFHIR値のセットよりも詳細な仕様が必要になる場合があります。例えば、SNOMEDのコーディングではさらに詳細な情報を含むことができます。","","","","","","","","",,"required","状態や診断の臨床状況を支持または拒否するための検証状況","http://hl7.org/fhir/ValueSet/condition-ver-status|4.0.1","",,,,"Condition.verificationStatus",0,1,"con-3
+con-5","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.status","< 410514004 |Finding context value|","PRB-13","Observation ACT
+.inboundRelationship[typeCode=COMP].source[classCode=OBS, code=""verificationStatus"", moodCode=EVN].value","FiveWs.status","408729009"
+"Condition.category","Condition.category","","","",0,*,"","","","CodeableConcept {[]} {[]}
+","problem-list-item | encounter-diagnosis（プロブレムリスト | 一時的な診断）","状態に割り当てられたカテゴリー。","分類はしばしば文脈に強く依存しており、他の文脈では区別が不十分であるか、あまり役に立たないように見えることがあります。","","","","","","","","",,"extensible","状態に割り当てられたカテゴリー。","http://hl7.org/fhir/ValueSet/condition-category","",,,,"Condition.category",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","< 404684003 |Clinical finding|","'problem' if from PRB-3. 'diagnosis' if from DG1 segment in PV1 message",".code","FiveWs.class"
+"Condition.severity","Condition.severity","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","Subjective severity of condition. この患者状態の重症度。このプロファイルは、HL70421 Severity of Illness Codeで表現","A subjective assessment of the severity of the condition as evaluated by the clinician.  
+医療者によって評価されたこの患者状態の重症度。","Coding of the severity with a terminology is preferred, where possible.  
+可能な限り、ターミノロジを用いて重症度をコーディングすることが好ましい。  
+このプロファイルではHL70421 Severity of Illness Code（MI 軽度, MO 中度, SE 重度）を採用。","","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/core/ValueSet/JP_ConditionSeverity_VS","",,,,"Condition.severity",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","< 272141005 |Severities|","PRB-26 / ABS-3","Can be pre/post-coordinated into value.  Or ./inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=""severity""].value","FiveWs.grade","246112005"
+"Condition.code","Condition.code","","type
+","",0,1,"","","Y","CodeableConcept {[]} {[]}
+","Identification of the condition, problem or diagnosis. この患者状態の識別コード","状態、問題、診断の特定。","","0..1 to account for primarily narrative only resources.","","","","","","","",,"example","状態や診断の特定","http://hl7.org/fhir/ValueSet/condition-code","",,,,"Condition.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.code","code 246090004 |Associated finding| (< 404684003 |Clinical finding| MINUS
+<< 420134006 |Propensity to adverse reactions| MINUS 
+<< 473010000 |Hypersensitivity condition| MINUS 
+<< 79899007 |Drug interaction| MINUS
+<< 69449002 |Drug action| MINUS 
+<< 441742003 |Evaluation finding| MINUS 
+<< 307824009 |Administrative status| MINUS 
+<< 385356007 |Tumor stage finding|) 
+OR < 413350009 |Finding with explicit context|
+OR < 272379006 |Event|","PRB-3",".value","FiveWs.what[x]","246090004"
+"Condition.bodySite","Condition.bodySite","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
+","Anatomical location, if relevant. もし関連するのであれば、その人体部位","この症状が現れる解剖学的位置。","Condition.code」で暗黙的に表現されない場合にのみ使用します。ユースケースがBodySiteリソースから属性を必要とする場合（例えば、別々に識別して追跡するために）、標準の拡張機能[bodySite]（extension-bodysite.html）を使用してください。概要コードであることも、位置の非常に正確な定義への参照であることもあります。","","","","","","","","",,"example","解剖学的位置を記述するコード。左右対称性を含む場合があります。","http://hl7.org/fhir/ValueSet/body-site","",,,,"Condition.bodySite",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","< 442083009  |Anatomical or acquired body structure|",".targetBodySiteCode","363698007"
+"Condition.subject","Condition.subject","","patient
+","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient]]}
+","Who has the condition? 誰がこの状態を有するか","その病状記録が関連する患者またはグループを示します。","","Group is typically used for veterinary or public health use cases.","","","","","","","",,,,,"",,,,"Condition.subject",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.subject","PID-3",".participation[typeCode=SBJ].role[classCode=PAT]","FiveWs.subject[x]","FiveWs.subject"
+"Condition.encounter","Condition.encounter","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Encounter]]}
+","Encounter created as part of. この患者状態の記録が作成された受療の状況（外来、入院、救急、在宅など）","The Encounter during which this Condition was created or to which the creation of this record is tightly associated.  
+この患者状態の記録やレコード作成に関連する受療の状況（外来、入院、救急、在宅など）","通常、イベントが発生したEncounter（診察、受診、入退院など）の中で行われることが多いですが、公式的にEncounter（診察、受診、入退院など）が完了する前または後に開始される場合がありますが、それでもEncounter（診察、受診、入退院など）の文脈に関連する活動があります。この記録は、この特定の記録が関連付けられた出来事を示します。 「新しい」診断が、継続的に修正された情報を反映する場合、これは最初に患者が変化に気づいた最初のEncounter（診察、受診、入退院など）とは異なる場合があります。","","","","","","","","",,,,,"",,,,"Condition.encounter",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.context","PV1-19 (+PV1-54)",".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]","FiveWs.context"
+"Condition.onset[x]","Condition.onset[x]","","","",0,1,"","","Y","dateTime {[]} {[]}
+Age {[]} {[]}Period {[]} {[]}Range {[]} {[]}string {[]} {[]}","Estimated or actual date,  date-time, or age. この患者状態のオンセット。推定もしくは実際の日付、日時、年齢","Estimated or actual date or date-time  the condition began, in the opinion of the clinician.  
+臨床医の判断における、本状態が始まったと推定される、または実際に始まった日または日時。","Age is generally used when the patient reports an age at which the Condition began to occur.  
+年齢は一般的に、患者が症状が発生し始めた年齢を報告したケースで使用される。","","","","","","","","",,,,,"",,,,"Condition.onset[x]",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.occurrence[x]","PRB-16",".effectiveTime.low or .inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=""age at onset""].value","FiveWs.init"
+"Condition.abatement[x]","Condition.abatement[x]","","","",0,1,"","","","dateTime {[]} {[]}
+Age {[]} {[]}Period {[]} {[]}Range {[]} {[]}string {[]} {[]}","When in resolution/remission. この状態はいつ治癒／寛解／軽快したか","その状態が解消された日付または予想日。これは、「寛解」と呼ばれます。「寛解」または「解決」と関連付けられた多くの意味のオーバーロードのため、「寛解」と呼ばれます。状態は実際には解決されることはありませんが、緩和することができます。","解決」と「寛解」の間に明確な区別はないため、多くの場合、区別が明確ではありません。患者が症状が収まった年齢を報告した場合、年齢が一般的に使用されます。解消要素がない場合、状態が解決したのか、寛解に入ったのかはわかりません。アプリケーションやユーザーは、一般的に条件が有効であると仮定する必要があります。解消文字列が存在する場合、条件が収束したことを意味します。","","","","","","","","",,,,,"",,,,"Condition.abatement[x]",0,1,"con-4
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".effectiveTime.high or .inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=""age at remission""].value or .inboundRelationship[typeCode=SUBJ]source[classCode=CONC, moodCode=EVN].status=completed","FiveWs.done[x]"
+"Condition.recordedDate","Condition.recordedDate","","","",0,1,"","","Y","dateTime {[]} {[]}
+","Date record was first recorded. この患者状態が初めて記録された日時","The recordedDate represents when this particular Condition record was created in the system, which is often a system-generated date.  
+この患者状態の記録がシステムで作成された日時を表し、多くの場合、システムが生成した日付である。","","","","","","","","","",,,,,"",,,,"Condition.recordedDate",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","REL-11",".participation[typeCode=AUT].time","FiveWs.recorded"
+"Condition.recorder","Condition.recorder","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson]]}
+","Who recorded the condition. 誰がこの患者状態を記録したか","Individual who recorded the record and takes responsibility for its content.  
+この患者状態を記録しその内容に責任を持つ個人。","","","","","","","","","",,,,,"",,,,"Condition.recorder",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=AUT].role","FiveWs.author"
+"Condition.asserter","Condition.asserter","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole]]}
+","Person who asserts this condition. この患者状態の情報源","Individual who is making the condition statement.  
+この患者状態に関する情報の発生源または取得元。","","","","","","","","","",,,,,"",,,,"Condition.asserter",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","REL-7.1 identifier + REL-7.12 type code",".participation[typeCode=INF].role","FiveWs.source"
+"Condition.stage","Condition.stage","","","",0,*,"","","","BackboneElement {[]} {[]}
+","Stage/grade, usually assessed formally. この患者状態のステージやグレード。通常は正式に評価されたもの","Clinical stage or grade of a condition. May include formal severity assessments.  
+病状の臨床病期またはグレード。正式な重症度評価を含む場合がある。","","","","","","","","","",,,,,"",,,,"Condition.stage",0,*,"","con-1:ステージには要約または評価が必要です。 {summary.exists() or assessment.exists()}
+ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}","./inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=""stage/grade""]"
+"Condition.stage.id","Condition.stage.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Condition.stage.extension","Condition.stage.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Condition.stage.modifierExtension","Condition.stage.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Condition.stage.summary","Condition.stage.summary","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","簡単な要約（病気特有のもの）","ステージ3」といった、単純なステージの概要。ステージの決定は病気によって異なります。","","","","","","","","","",,"example","状態段階を説明するコード（例：がんの段階）","http://hl7.org/fhir/ValueSet/condition-stage","",,,,"Condition.stage.summary",0,1,"con-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","< 254291000 |Staging and scales|","PRB-14",".value"
+"Condition.stage.assessment","Condition.stage.assessment","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/ClinicalImpression], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Common], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common]]}
+","「評価の公式記録」","ステージング評価の根拠となる正式な証拠記録への参照。","","","","","","","","","",,,,,"",,,,"Condition.stage.assessment",0,*,"con-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".self"
+"Condition.stage.type","Condition.stage.type","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","""演出の種類"" (Enshutsu no shurui)","病理的ステージングや臨床ステージングといった種類のステージング","","","","","","","","","",,"example","状態分類を表すコード（例：臨床的または病理学的）。","http://hl7.org/fhir/ValueSet/condition-stage-type","",,,,"Condition.stage.type",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=""stage type""]"
+"Condition.evidence","Condition.evidence","","","",0,*,"","","","BackboneElement {[]} {[]}
+","Supporting evidence. 患者状態の存在に関する根拠","Supporting evidence / manifestations that are the basis of the Condition's verification status, such as evidence that confirmed or refuted the condition.  
+患者状態を確認または否定した証拠など、状態の検証ステータスの裏付けとなる症状や兆候。","証拠は、コード化された症状/症状の簡単なリスト、または観察や正式な評価への言及、またはその両方である可能性があります。","","","","","","","","",,,,,"",,,,"Condition.evidence",0,*,"","con-2:証拠にはコードまたは詳細が必要です。 {code.exists() or detail.exists()}
+ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}",".outboundRelationship[typeCode=SPRT].target[classCode=OBS, moodCode=EVN]"
+"Condition.evidence.id","Condition.evidence.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Condition.evidence.extension","Condition.evidence.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Condition.evidence.modifierExtension","Condition.evidence.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Condition.evidence.code","Condition.evidence.code","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
+","表れ/症状","この状態の記録に至った兆候や症状。","","","","","","","","","",,"example","症状や現れ方を記述するコード。","http://hl7.org/fhir/ValueSet/manifestation-or-symptom","",,,,"Condition.evidence.code",0,*,"con-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.reasonCode","< 404684003 |Clinical finding|","[code=""diagnosis""].value","FiveWs.why[x]"
+"Condition.evidence.detail","Condition.evidence.detail","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource]]}
+","別の場所で見つかったサポート情報","その他関連情報、病理検査報告書などのリンク。","","","","","","","","","",,,,,"",,,,"Condition.evidence.detail",0,*,"con-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".self","FiveWs.why[x]"
+"Condition.note","Condition.note","","","",0,*,"","","","Annotation {[]} {[]}
+","Additional information about the Condition. この患者状態に関する追加情報","Additional information about the Condition. This is a general notes/comments entry for description of the Condition, its diagnosis and prognosis.  
+この患者状態に関する追加情報。これは、状態の説明、診断、予後に関するメモやコメントである。","","","","","","","","","",,,,,"",,,,"Condition.note",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.note","NTE child of PRB",".inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=""annotation""].value"
