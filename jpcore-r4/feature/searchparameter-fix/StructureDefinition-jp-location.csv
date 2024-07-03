@@ -1,0 +1,129 @@
+"Id","Path","Slice Name","Alias(s)","Label","Min","Max","Must Support?","Is Modifier?","Is Summary?","Type(s)","Short","Definition","Comments","Requirements","Default Value","Meaning When Missing","Fixed Value","Pattern","Example","Minimum Value","Maximum Value","Maximum Length","Binding Strength","Binding Description","Binding Value Set","Code","Slicing Discriminator","Slicing Description","Slicing Ordered","Slicing Rules","Base Path","Base Min","Base Max","Condition(s)","Constraint(s)","Mapping: RIM Mapping","Mapping: FiveWs Pattern Mapping"
+"Location","Location","","","",0,*,"","","","null {[]} {[]}
+","物理的な場所の詳細情報と位置情報","サービスが提供され、リソースとそれに関わる人たちが存在する物理的な場所の詳細情報と位置情報。","","","","","","","","","",,,,,"",,,,"Location",0,*,"","dom-2:もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen). {contained.contained.empty()}
+dom-3:もしリソースが他のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含まれるリソースに参照されるべきです。 {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:もしリソースが別のリソースの中に含まれる場合、meta.versionIdまたはmeta.lastUpdatedを持つべきではありません。 {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。 {contained.meta.security.empty()}dom-6:資源は堅牢な管理のために物語を持つべきである。 {text.`div`.exists()}","Entity. Role, or Act",".Role[classCode=SDLC]"
+"Location.id","Location.id","","","",0,1,"","","Y","id {[]} {[]}
+","このアーティファクトの論理ID","リソースのURLで使用される論理ID。一度割り当てられたら、この値は変更されません。","リソースにIDがないのは、作成操作を使用してサーバーに送信されているときだけです。","","","","","","","","",,,,,"",,,,"Resource.id",0,1,"",""
+"Location.meta","Location.meta","","","",0,1,"","","Y","Meta {[]} {[]}
+","リソースに関するメタデータ","リソースに関するメタデータ。これはインフラストラクチャによって維持されるコンテンツです。 コンテンツの変更は、リソースのバージョン変更と常に関連しているわけではありません。","","","","","","","","","",,,,,"",,,,"Resource.meta",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Location.implicitRules","Location.implicitRules","","","",0,1,"","Y","Y","uri {[]} {[]}
+","このコンテンツが作成されたルールセット","リソース構築時に遵守された一連のルールを指すものであり、コンテンツを処理する際に理解する必要があります。しばしば、特別なルールを定義する実装ガイドとその他のプロファイルなどを含むものです。","このルールセットを主張することで、取引先の限られた集団にしか内容を理解させることができず、長期的にはデータの有用性が制限されます。しかしながら、現存するヘルスエコシステムは高度に分断化しており、一般的に計算可能な形式でデータを定義、収集、交換する準備が整っていません。できる限り、実装者および/または仕様ライターはこの要素の使用を避けるべきです。使用する場合、URLは、そのナラティブとともに他のプロファイル、値セットなどを含む実装ガイドを定義する参照となります。","","","","","","","","",,,,,"",,,,"Resource.implicitRules",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Location.language","Location.language","","","",0,1,"","","","code {[]} {[]}
+","「リソースコンテンツの言語」","リソースが書かれている基本言語。","言語はインデックスとアクセシビリティをサポートするために提供されます（通常、テキスト読み上げなどのサービスは言語タグを使用します）。物語のHTML言語タグは、物語に適用されます。リソース上の言語タグは、リソース内のデータから生成される他のプレゼンテーションの言語を指定するために使用できます。すべてのコンテンツが基本言語である必要はありません。Resource.languageは自動的に物語に適用されたと想定してはいけません。言語が指定されている場合、HTMLのdiv要素にも指定する必要があります（xml：langとhtml lang属性の関係に関する情報はHTML5の規則を参照）。","","","","","","","","",,"preferred","「人間の言語。」","http://hl7.org/fhir/ValueSet/languages","",,,,"Resource.language",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Location.text","Location.text","","narrative
+htmlxhtmldisplay","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のためのリソースのテキスト要約","リソースの要約を含む人が読めるナビゲーションであり、リソースの内容を人に表現するために使用できます。ナビゲーションはすべての構造化されたデータをエンコードする必要はありませんが、人間がナビゲーションを読むだけで「臨床的に安全」であるために十分な詳細を含む必要があります。リソース定義には、臨床的な安全性を確保するためにナビゲーションで表現する必要があるコンテンツが定義される場合があります。","含まれるリソースには説明がありません。含まれないリソースには説明が必要です。場合によっては、リソースが少量のデータしか含まず、テキストだけで表現されることがあります（minOccurs = 1要素がすべて満たされている限り）。これは、情報が「テキストの塊」としてキャプチャされるレガシーシステムからのデータや、テキストが生またはナレーションされて符号化された情報が後で追加される場合に必要な場合があります。","","","","","","","","",,,,,"",,,,"DomainResource.text",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Act.text?"
+"Location.contained","Location.contained","","inline resources
+anonymous resourcescontained resources","",0,*,"","","","Resource {[]} {[]}
+","「含まれている、インラインのリソース」","これらのリソースは、それらを含むリソースから独立した存在を持ちません。それらは独立して識別することはできず、独自の独立したトランザクション範囲を持つこともできません。","コンテンツが適切に識別できる場合には、これを行うべきではありません。識別が失われると、再び復元することは非常に困難であり（文脈に依存します）、メタ要素にプロファイルとタグを持つことができますが、セキュリティのラベルを持っていてはいけません。","","","","","","","","",,,,,"",,,,"DomainResource.contained",0,*,"","","N/A"
+"Location.extension","Location.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","リソースの基本的な定義の一部ではない追加情報を表すために使用することができます。拡張機能の使用を安全かつ管理可能にするために、定義と使用の一定のガバナンスが適用されます。実装者はどんな拡張機能でも定義できますが、拡張機能の定義の一部として満たす必要がある要件があります","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Location.modifierExtension","Location.modifierExtension","","extensions
+user content","",0,*,"","Y","","Extension {[]} {[]}
+","無視できない拡張機能 (Mushi dekinai kakuchou kinou)","リソースの基本的な定義に含まれない、要素の理解や、それを含む要素の子孫の理解を修正する追加情報を表すためにも使用されることがあります。通常、修飾要素は否定や修飾を提供します。拡張機能の使用を安全で管理しやすくするために、拡張機能の定義と使用に対して厳格な統治が適用されます。実装者は拡張機能を定義することが許可されていますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張をチェックする必要があります。修飾子拡張は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味も変更できません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Location.identifier","Location.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
+","ユーザに場所を特定する一意のコードまたは番号","ユーザに場所を特定する一意のコードまたは番号","","登記内の組織ラベルの場所。これらを追跡する必要がある。","","","","","","","",,,,,"",,,,"Location.identifier",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".id","FiveWs.identifier"
+"Location.status","Location.status","","","",0,1,"","Y","Y","code {[]} {[]}
+","active | suspended | inactive / アクティブ|中断|非アクティブ","statusプロパティは、operationStatus、またはロケーションに構成されている場合はスケジュール/スロットによってカバーされる可能性がある現在の値ではなく、リソースの一般的な可用性をカバーする。","FHIR文字列はサイズが1MBを超えてはならないことに注意すること","","","","","","","","",,"required","「場所がまだ使用されているかどうかを示します。」","http://hl7.org/fhir/ValueSet/location-status|4.0.1","",,,,"Location.status",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".statusCode","FiveWs.status"
+"Location.operationalStatus","Location.operationalStatus","","","",0,1,"","","Y","Coding {[]} {[]}
+","ロケーションの運用ステータス（通常、ベッド/部屋のみ）","稼働状況には、ベッドに最も関連する稼働値が含まれる（ただし、隔離ユニット/透析椅子などの部屋/ユニット/椅子などにも適用できる）。これは通常、汚染、ハウスキーピング、およびメンテナンスなどの他のアクティビティなどの概念をカバーしている。","コードは、SNOMED CTなどの非常に形式的な定義まで、列挙またはコードリストで非常にカジュアルに定義できる。詳細については、HL7 v3コア原則を参照すること。","","","","","","","","",,"preferred","通常ベッド/部屋が位置する場所の稼働状況","http://terminology.hl7.org/ValueSet/v2-0116","",,,,"Location.operationalStatus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","n/a","FiveWs.status"
+"Location.name","Location.name","","","",0,1,"","","Y","string {[]} {[]}
+","人間が使用する場所の名前","人間が使用する場所の名前。一意である必要はない。","場所の名前が変更された場合は、古い名前をエイリアス列に入力して、検索で検索できるようにすることを検討すべきである。","","","","","","","","",,,,,"",,,,"Location.name",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".name"
+"Location.alias","Location.alias","","","",0,*,"","","","string {[]} {[]}
+","その場所が過去に知られていた、または以前から知られていた別名のリスト","その場所が過去に知られていた、または以前から知られていた別名のリスト","エイリアス/歴史的な名前に関連付けられた日付はない。これは、名前がいつ使用されたかを追跡するためではなく、古い名前でも場所を特定できるように検索を支援するためのものである。","「時間の経過とともに、場所や組織は多くの変化を遂げ、さまざまな名前で知られるようになる。  
+場所が知られている以前の名前を知っていることを検索することは非常に役に立つ。」","","","","","","","",,,,,"",,,,"Location.alias",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".name"
+"Location.description","Location.description","","","",0,1,"","","Y","string {[]} {[]}
+","名前以外の場所を識別するための詳細情報として表示できる場所に関する追加の詳細","場所の説明。場所の検索や参照に役立つ。","FHIR文字列はサイズが1MBを超えてはならないことに注意すること","人間は、正しい場所が特定されたことを確認するために追加情報を必要とする。","","","","","","","",,,,,"",,,,"Location.description",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".playingEntity[classCode=PLC determinerCode=INSTANCE].desc"
+"Location.mode","Location.mode","","","",0,1,"","","Y","code {[]} {[]}
+","instance | kind / インスタンス|種類","リソースインスタンスが特定の場所を表すか、場所のクラスを表すかを示す。","ロケーションがロケーションのクラスであるかどうかによって、その使用方法と理解方法が変わるため、これは修飾子としてラベル付けされる。","スケジュールや順番に場所リソースを使用する場合、特定の場所ではなく場所のクラスを参照できる必要がある。","","","","","","","",,"required","リソースインスタンスが特定の場所を表すのか、場所のクラスを表すのかを示します。","http://hl7.org/fhir/ValueSet/location-mode|4.0.1","",,,,"Location.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".playingEntity[classCode=PLC].determinerCode","FiveWs.class"
+"Location.type","Location.type","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
+","実行される機能のタイプ","その場所で実行される機能のタイプを示す。","すべての用語の使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素と前後の調整間の関係を管理するための独自の構造を提供する必要がある。","","","","","","","","",,"extensible","「場所で行われる機能のタイプを示します。」","http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType","",,,,"Location.type",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".code","FiveWs.class"
+"Location.telecom","Location.telecom","","","",0,*,"","","","ContactPoint {[]} {[]}
+","所在地の連絡先","その場所で利用可能な通信機器の連絡先。これには、電話番号、ファックス番号、携帯電話番号、電子メールアドレス、ウェブサイトなどが含まれる。","","","","","","","","","",,,,,"",,,,"Location.telecom",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".telecom"
+"Location.address","Location.address","","","",0,1,"","","","Address {[]} {[]}
+","物理的な場所","物理的な場所。","追加のアドレスは、Location リソースの別のインスタンスを使用して記録するか、Organization を介して記録する必要がある。","場所が訪問できる場合は、住所を把握しておく必要がある。","","","","","","","",,,,,"",,,,"Location.address",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".addr"
+"Location.physicalType","Location.physicalType","","","",0,1,"","","Y","CodeableConcept {[]} {[]}
+","場所の物理的な形態","場所の物理的な形、例えば建物、部屋、車両、道路。","すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。","クエリで関連する場所を表示するためには、場所を分類する必要がある。","","","","","","","",,"example","場所の実体形態。","http://hl7.org/fhir/ValueSet/location-physical-type","",,,,"Location.physicalType",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".playingEntity [classCode=PLC].code","FiveWs.class"
+"Location.position","Location.position","","","",0,1,"","","","BackboneElement {[]} {[]}
+","絶対的な地理的位置","WGS84 データム（KML で使用されている座標系と同じ）を用いて表現された Location の絶対地理的位置。","","モバイルアプリケーションや自動化されたルート検索では、位置情報の正確な位置を知る必要がある。","","","","","","","",,,,,"",,,,"Location.position",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".playingEntity [classCode=PLC determinerCode=INSTANCE].positionText"
+"Location.position.id","Location.position.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Location.position.extension","Location.position.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Location.position.modifierExtension","Location.position.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Location.position.longitude","Location.position.longitude","","","",1,1,"","","","decimal {[]} {[]}
+","WGS84データの経度","経度。値の領域及び解釈は、KML の longitude 要素のテキストと同様である（後述）。","IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。","","","","","","","","",,,,,"",,,,"Location.position.longitude",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","(RIM Opted not to map the sub-elements of GPS location, is now an OBS)"
+"Location.position.latitude","Location.position.latitude","","","",1,1,"","","","decimal {[]} {[]}
+","WGS84データの緯度","緯度。値領域及び解釈は、KML の latitude 要素のテキストと同様である（後述）。","IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。","","","","","","","","",,,,,"",,,,"Location.position.latitude",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","(RIM Opted not to map the sub-elements of GPS location, is now an OBS)"
+"Location.position.altitude","Location.position.altitude","","","",0,1,"","","","decimal {[]} {[]}
+","WGS84データによる高度","高度。値領域及び解釈は、KML の altitude 要素のテキストと同様である（後述）。","IEEE型の浮動小数点型は使用せず、真の10進数のように動作し、精度が組み込まれているものを使用すること（例：JavaのBigInteger）。","","","","","","","","",,,,,"",,,,"Location.position.altitude",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","(RIM Opted not to map the sub-elements of GPS location, is now an OBS)"
+"Location.managingOrganization","Location.managingOrganization","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
+","プロビジョニングと維持管理を担当する組織","場所のプロビジョニングと維持管理を担当する組織。","これは、この場所がサービスを提供する組織階層の一部として使用することもできる。これらのサービスは、HealthcareServiceリソースを介して定義することができる。","場所を管理している人を知る必要がある。","","","","","","","",,,,,"",,,,"Location.managingOrganization",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".scopingEntity[classCode=ORG determinerKind=INSTANCE]"
+"Location.partOf","Location.partOf","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location]]}
+","この場所が物理的に存在するもう一つの場所","この場所が物理的に存在するもう一つの場所。","参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","位置情報、表示、識別のためには、他のどの場所の内部にどの場所があるかを知ることが重要である。","","","","","","","",,,,,"",,,,"Location.partOf",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundLink[typeCode=PART].source[classCode=SDLC]"
+"Location.hoursOfOperation","Location.hoursOfOperation","","","",0,*,"","","","BackboneElement {[]} {[]}
+","この場所は通常、1週間のうち何日/時間帯に営業している","この場所が週に何日あるいは何時間オープンしているか。","この種の情報は、一般的にディレクトリやウェブサイトに掲載されており、施設が利用可能な時間帯を顧客に通知している。  
+その場所の特定のサービスは、その場所の時間よりも短い（または長い）独自の時間を持っている場合がある。","","","","","","","","",,,,,"",,,,"Location.hoursOfOperation",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".effectiveTime"
+"Location.hoursOfOperation.id","Location.hoursOfOperation.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Location.hoursOfOperation.extension","Location.hoursOfOperation.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Location.hoursOfOperation.modifierExtension","Location.hoursOfOperation.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Location.hoursOfOperation.daysOfWeek","Location.hoursOfOperation.daysOfWeek","","","",0,*,"","","","code {[]} {[]}
+","mon | tue | wed | thu | fri | sat | sun / 月｜火｜水｜木｜金｜土｜日","開始時刻と終了時刻の間に利用可能な曜日を示す。","FHIR文字列のサイズは1MBを超えてはならないことに注意すること。","","","","","","","","",,"required","曜日 (Youbi)","http://hl7.org/fhir/ValueSet/days-of-week|4.0.1","",,,,"Location.hoursOfOperation.daysOfWeek",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".effectiveTime"
+"Location.hoursOfOperation.allDay","Location.hoursOfOperation.allDay","","","",0,1,"","","","boolean {[]} {[]}
+","その場所は終日営業している","その場所は終日営業している。","","","","","","","","","",,,,,"",,,,"Location.hoursOfOperation.allDay",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".effectiveTime"
+"Location.hoursOfOperation.openingTime","Location.hoursOfOperation.openingTime","","","",0,1,"","","","time {[]} {[]}
+","場所が開く時間","場所が開く時間","","","","","","","","","",,,,,"",,,,"Location.hoursOfOperation.openingTime",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".effectiveTime"
+"Location.hoursOfOperation.closingTime","Location.hoursOfOperation.closingTime","","","",0,1,"","","","time {[]} {[]}
+","場所が閉まる時間","場所が閉まる時間","","","","","","","","","",,,,,"",,,,"Location.hoursOfOperation.closingTime",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".effectiveTime"
+"Location.availabilityExceptions","Location.availabilityExceptions","","","",0,1,"","","","string {[]} {[]}
+","利用可能の例外についての説明","場所が私たちのものを開くときの説明は、通常、例えば、祝日の可用性とは異なる。  
+営業時間に詳細な通常のサイトの利用可能性のすべての可能性のある例外を簡潔に説明する。","","","","","","","","","",,,,,"",,,,"Location.availabilityExceptions",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","n/a"
+"Location.endpoint","Location.endpoint","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Endpoint]]}
+","場所のために運営されているサービスへのアクセスを提供する技術的なエンドポイント","場所のために運営されているサービスへのアクセスを提供する技術的なエンドポイント。","参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","組織は、さまざまなサービスを提供するさまざまな場所に異なるシステムを持っている可能性があり、それらに接続する方法や目的のための技術的な接続の詳細を定義できる必要がある。","","","","","","","",,,,,"",,,,"Location.endpoint",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","n/a"
