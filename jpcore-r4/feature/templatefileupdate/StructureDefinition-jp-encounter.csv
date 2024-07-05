@@ -1,0 +1,255 @@
+"Id","Path","Slice Name","Alias(s)","Label","Min","Max","Must Support?","Is Modifier?","Is Summary?","Type(s)","Short","Definition","Comments","Requirements","Default Value","Meaning When Missing","Fixed Value","Pattern","Example","Minimum Value","Maximum Value","Maximum Length","Binding Strength","Binding Description","Binding Value Set","Code","Slicing Discriminator","Slicing Description","Slicing Ordered","Slicing Rules","Base Path","Base Min","Base Max","Condition(s)","Constraint(s)","Mapping: Workflow Pattern","Mapping: RIM Mapping","Mapping: FiveWs Pattern Mapping","Mapping: HL7 v2 Mapping"
+"Encounter","Encounter","","Visit
+","",0,*,"","","","null {[]} {[]}
+","患者にサービスが提供されている間の相互作用","医療サービスの提供または患者の健康状態の評価を目的とした、患者と医療提供者との間の相互作用。Encounterと表現される。  
+【JP Core仕様】外来受診、救急受診、入院、退院、対面診察、電話診察、など。","","","","","","","","","",,,,,"",,,,"Encounter",0,*,"","dom-2:もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen). {contained.contained.empty()}
+dom-3:もしリソースが他のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含まれるリソースに参照されるべきです。 {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:もしリソースが別のリソースの中に含まれる場合、meta.versionIdまたはmeta.lastUpdatedを持つべきではありません。 {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。 {contained.meta.security.empty()}dom-6:資源は堅牢な管理のために物語を持つべきである。 {text.`div`.exists()}","Event","Entity. Role, or Act","Encounter[@moodCode='EVN']"
+"Encounter.id","Encounter.id","","","",0,1,"","","Y","id {[]} {[]}
+","このアーティファクトの論理ID","リソースのURLで使用される論理ID。一度割り当てられたら、この値は変更されません。","リソースにIDがないのは、作成操作を使用してサーバーに送信されているときだけです。","","","","","","","","",,,,,"",,,,"Resource.id",0,1,"",""
+"Encounter.meta","Encounter.meta","","","",0,1,"","","Y","Meta {[]} {[]}
+","リソースに関するメタデータ","リソースに関するメタデータ。これはインフラストラクチャによって維持されるコンテンツです。 コンテンツの変更は、リソースのバージョン変更と常に関連しているわけではありません。","","","","","","","","","",,,,,"",,,,"Resource.meta",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Encounter.implicitRules","Encounter.implicitRules","","","",0,1,"","Y","Y","uri {[]} {[]}
+","このコンテンツが作成されたルールセット","リソース構築時に遵守された一連のルールを指すものであり、コンテンツを処理する際に理解する必要があります。しばしば、特別なルールを定義する実装ガイドとその他のプロファイルなどを含むものです。","このルールセットを主張することで、取引先の限られた集団にしか内容を理解させることができず、長期的にはデータの有用性が制限されます。しかしながら、現存するヘルスエコシステムは高度に分断化しており、一般的に計算可能な形式でデータを定義、収集、交換する準備が整っていません。できる限り、実装者および/または仕様ライターはこの要素の使用を避けるべきです。使用する場合、URLは、そのナラティブとともに他のプロファイル、値セットなどを含む実装ガイドを定義する参照となります。","","","","","","","","",,,,,"",,,,"Resource.implicitRules",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Encounter.language","Encounter.language","","","",0,1,"","","","code {[]} {[]}
+","「リソースコンテンツの言語」","リソースが書かれている基本言語。","言語はインデックスとアクセシビリティをサポートするために提供されます（通常、テキスト読み上げなどのサービスは言語タグを使用します）。物語のHTML言語タグは、物語に適用されます。リソース上の言語タグは、リソース内のデータから生成される他のプレゼンテーションの言語を指定するために使用できます。すべてのコンテンツが基本言語である必要はありません。Resource.languageは自動的に物語に適用されたと想定してはいけません。言語が指定されている場合、HTMLのdiv要素にも指定する必要があります（xml：langとhtml lang属性の関係に関する情報はHTML5の規則を参照）。","","","","","","","","",,"preferred","「人間の言語。」","http://hl7.org/fhir/ValueSet/languages","",,,,"Resource.language",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Encounter.text","Encounter.text","","narrative
+htmlxhtmldisplay","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のためのリソースのテキスト要約","リソースの要約を含む人が読めるナビゲーションであり、リソースの内容を人に表現するために使用できます。ナビゲーションはすべての構造化されたデータをエンコードする必要はありませんが、人間がナビゲーションを読むだけで「臨床的に安全」であるために十分な詳細を含む必要があります。リソース定義には、臨床的な安全性を確保するためにナビゲーションで表現する必要があるコンテンツが定義される場合があります。","含まれるリソースには説明がありません。含まれないリソースには説明が必要です。場合によっては、リソースが少量のデータしか含まず、テキストだけで表現されることがあります（minOccurs = 1要素がすべて満たされている限り）。これは、情報が「テキストの塊」としてキャプチャされるレガシーシステムからのデータや、テキストが生またはナレーションされて符号化された情報が後で追加される場合に必要な場合があります。","","","","","","","","",,,,,"",,,,"DomainResource.text",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Act.text?"
+"Encounter.contained","Encounter.contained","","inline resources
+anonymous resourcescontained resources","",0,*,"","","","Resource {[]} {[]}
+","「含まれている、インラインのリソース」","これらのリソースは、それらを含むリソースから独立した存在を持ちません。それらは独立して識別することはできず、独自の独立したトランザクション範囲を持つこともできません。","コンテンツが適切に識別できる場合には、これを行うべきではありません。識別が失われると、再び復元することは非常に困難であり（文脈に依存します）、メタ要素にプロファイルとタグを持つことができますが、セキュリティのラベルを持っていてはいけません。","","","","","","","","",,,,,"",,,,"DomainResource.contained",0,*,"","","N/A"
+"Encounter.extension","Encounter.extension","","","",0,*,"","","","Extension {[]} {[]}
+","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
+","",,"open","DomainResource.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}"
+"Encounter.extension:associatedEncounter","Encounter.extension","associatedEncounter","","",0,1,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter]]} {[]}
+","関連するEncounter","関連するEncounter","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Encounter.modifierExtension","Encounter.modifierExtension","","extensions
+user content","",0,*,"","Y","","Extension {[]} {[]}
+","無視できない拡張機能 (Mushi dekinai kakuchou kinou)","リソースの基本的な定義に含まれない、要素の理解や、それを含む要素の子孫の理解を修正する追加情報を表すためにも使用されることがあります。通常、修飾要素は否定や修飾を提供します。拡張機能の使用を安全で管理しやすくするために、拡張機能の定義と使用に対して厳格な統治が適用されます。実装者は拡張機能を定義することが許可されていますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張をチェックする必要があります。修飾子拡張は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味も変更できません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Encounter.identifier","Encounter.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
+","このEncounterが知られている識別子（複数可）","このEncounterが知られている識別子（複数可）。","","","","","","","","","",,,,,"",,,,"Encounter.identifier",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.identifier",".id","FiveWs.identifier","PV1-19"
+"Encounter.status","Encounter.status","","","",1,1,"","Y","Y","code {[]} {[]}
+","planned | arrived | triaged | in-progress | onleave | finished | cancelled + / 予定｜到着｜トリアージ｜進行中｜保留中｜終了｜キャンセル+","planned | arrived | triaged | in-progress | onleave | finished | cancelled +.  
+予定｜到着｜トリアージ｜進行中｜保留中｜終了｜キャンセル+.","内部のビジネス・ルールは、ステータス(およびクラス)間で発生する可能性のある適切な遷移を検出することに注意すること。","","","","","","","","",,"required","「Encounter（診察、受診、入退院など）の現状。」","http://hl7.org/fhir/ValueSet/encounter-status|4.0.1","",,,,"Encounter.status",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.status",".statusCode","FiveWs.status","No clear equivalent in HL7 v2; active/finished could be inferred from PV1-44, PV1-45, PV2-24; inactive could be inferred from PV2-16"
+"Encounter.statusHistory","Encounter.statusHistory","","","",0,*,"","","","BackboneElement {[]} {[]}
+","過去のEncounterのステータス一覧【詳細参照】","ステータス履歴(status History)は、リソースの歴史的なバージョンを読み込んだり、サーバに保存させたりすることなく、Encounterリソースがステータス履歴を含むことを可能にする。","現在のステータスは、ステータスの履歴ではなく、常にリソースの現在のバージョンにある。","","","","","","","","",,,,,"",,,,"Encounter.statusHistory",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","n/a"
+"Encounter.statusHistory.id","Encounter.statusHistory.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Encounter.statusHistory.extension","Encounter.statusHistory.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Encounter.statusHistory.modifierExtension","Encounter.statusHistory.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Encounter.statusHistory.status","Encounter.statusHistory.status","","","",1,1,"","","","code {[]} {[]}
+","planned | arrived | triaged | in-progress | onleave | finished | cancelled + / 予定｜到着｜トリアージ｜進行中｜保留中｜終了｜キャンセル+.","planned | arrived | triaged | in-progress | onleave | finished | cancelled +.  
+予定｜到着｜トリアージ｜進行中｜保留中｜終了｜キャンセル+.","文字列のサイズは 1MB を超えてはならないことに注意すること。","","","","","","","","",,"required","「Encounter（診察、受診、入退院など）の現状。」","http://hl7.org/fhir/ValueSet/encounter-status|4.0.1","",,,,"Encounter.statusHistory.status",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","n/a"
+"Encounter.statusHistory.period","Encounter.statusHistory.period","","","",1,1,"","","","Period {[]} {[]}
+","そのエピソードが指定された状態になっていた時間","そのエピソードが指定された状態になっていた時間。","期間とは時間の範囲で指定される。範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、または範囲から1つの値が適用されるか（たとえば、「これら2回の間に患者に与える」）を指定する。 期間が必要な場合は、タイプをInterval | Durationとして指定する。","","","","","","","","",,,,,"",,,,"Encounter.statusHistory.period",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","n/a"
+"Encounter.class","Encounter.class","","","",1,1,"","","Y","Coding {[]} {[]}
+","患者とのEncounterの分類【詳細参照】","外来（外来）、入院、救急、在宅医療、その他の地域差による患者Encounterの分類を表す概念。","コードは列挙やコードリストの中で非常にカジュアルに定義されることもあれば、SNOMED CTのような非常にフォーマルな定義まである。 - 詳細はHL7 v3コア・プリンシプルを参照すること。","","","","","","","","",,"extensible","Encounter（診察、受診、入退院など）の分類。 (Deai no bunrui.)","http://terminology.hl7.org/ValueSet/v3-ActEncounterCode","",,,,"Encounter.class",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=SUBJ].source[classCode=LIST].code","FiveWs.class","PV1-2"
+"Encounter.classHistory","Encounter.classHistory","","","",0,*,"","","","BackboneElement {[]} {[]}
+","過去のEncounter classのリスト【詳細参照】","クラスの履歴は、リソースの履歴を経由することなく、Encounterの遷移を追跡することを可能にする。これは、入院患者が緊急時にEncounterした後、入院患者のシナリオに移行する場合に使用される。このようにして、新しいEncounterを再開しないようにすることで、検査/診断結果がより簡単に患者を追跡することができ、再処理を必要とせず、救急から入院への退院の際に紛失したりキャンセルされたりすることがないことを保証する。","","","","","","","","","",,,,,"",,,,"Encounter.classHistory",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","n/a"
+"Encounter.classHistory.id","Encounter.classHistory.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Encounter.classHistory.extension","Encounter.classHistory.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Encounter.classHistory.modifierExtension","Encounter.classHistory.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Encounter.classHistory.class","Encounter.classHistory.class","","","",1,1,"","","","Coding {[]} {[]}
+","inpatient | outpatient | ambulatory | emergency + / 入院｜外来｜外来｜救急＋","inpatient | outpatient | ambulatory | emergency +.  
+入院｜外来｜外来｜救急＋。","コードは列挙やコードリストの中で非常にカジュアルに定義されることもあれば、SNOMED CTのような非常にフォーマルな定義まである- 詳細はHL7 v3コア・プリンシプルを参照すること。","","","","","","","","",,"extensible","Encounter（診察、受診、入退院など）の分類。 (Deai no bunrui.)","http://terminology.hl7.org/ValueSet/v3-ActEncounterCode","",,,,"Encounter.classHistory.class",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","n/a"
+"Encounter.classHistory.period","Encounter.classHistory.period","","","",1,1,"","","","Period {[]} {[]}
+","指定されたクラスにエピソードがあった時間","指定されたクラスにエピソードがあった時間。","期間とは時間の範囲で指定される。範囲全体が適用されるか（たとえば、「患者はこの時間範囲で入院していた」）、または範囲から1つの値が適用されるか（たとえば、「これら2回の間に患者に与える」）を指定する。 期間が必要な場合は、タイプをInterval | Durationとして指定する。","","","","","","","","",,,,,"",,,,"Encounter.classHistory.period",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","n/a"
+"Encounter.type","Encounter.type","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
+","特定の種類のEncounter（診察、受診、入退院など） (tokutei no shurui no deai)","特定のEncounter（診察、受診、入退院など）の種類（例：メール相談、手術日帰り、スキルド・ナーシング、リハビリテーション）","Encounter（診察、受診、入退院など）をさらに分類する方法が多数存在するため、この要素は0から複数の値をとる。","","","","","","","","",,"example","Encounter（診察、受診、入退院など）のタイプ。 (Deai no taipu.)","http://hl7.org/fhir/ValueSet/encounter-type","",,,,"Encounter.type",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.code",".code","FiveWs.class","PV1-4 / PV1-18"
+"Encounter.serviceType","Encounter.serviceType","","","",0,1,"","","Y","CodeableConcept {[]} {[]}
+","""特定のサービスの種類"" (tokutei no saabisu no shurui)","提供されるサービスの広範な分類（例：心臓病学）","","","","","","","","","",,"example","提供されるサービスの広範な分類。","http://hl7.org/fhir/ValueSet/service-type","",,,,"Encounter.serviceType",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.code","n/a","PV1-10"
+"Encounter.priority","Encounter.priority","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","Encounter（診察、受診、入退院など）の緊急性を示す","Encounter（診察、受診、入退院など）の緊急性を示します。","","","","","","","","","",,"example","Encounter（診察、受診、入退院など）の緊急性を示します。","http://terminology.hl7.org/ValueSet/v3-ActPriority","",,,,"Encounter.priority",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".priorityCode","FiveWs.grade","PV2-25"
+"Encounter.subject","Encounter.subject","","patient
+","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/Group]]}
+","対面時に出席している患者またはグループ","""診察時に存在する患者またはグループ。"" (Shinsatsu ji ni sonzai suru kanja mata wa gurūpu.)","エンカウンターは常に患者に関するものですが、すべての使用状況で患者が実際に知られていない場合があり、匿名である可能性があります（例えばアルコール依存症のグループセラピーの場合- エンカウンターの記録が人数/スタッフの請求に使用され、特定の患者の文脈に重要ではない場合、または獣医治療では、個々に追跡されていない群れの羊が治療を受ける場合があります）。","","","","","","","","",,,,,"",,,,"Encounter.subject",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.subject",".participation[typeCode=SBJ]/role[classCode=PAT]","FiveWs.subject[x]","FiveWs.subject","PID-3"
+"Encounter.episodeOfCare","Encounter.episodeOfCare","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/EpisodeOfCare]]}
+","この遭遇が記録されるべきケアのエピソード","特定のエピソードの一部として特定のエンカウンターを分類する必要がある場合、このフィールドを使用する必要があります。この関連は、政府報告、問題追跡、共通の課題に関連するエンカウンターを特定の目的のためにグループ化するのに役立ちます。これらの関連は、通常、エピソードの後に作成され、新しいエンカウンターを追加するためにエピソードを編集するのではなく、入力時にグループ化されます（エピソードは数年にわたって広がる可能性があります）。","","","","","","","","","",,,,,"",,,,"Encounter.episodeOfCare",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.context","n/a","FiveWs.context","PV1-54, PV1-53"
+"Encounter.basedOn","Encounter.basedOn","","incomingReferral
+","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/ServiceRequest]]}
+","このEncounter（診察、受診、入退院など）を開始したサービスリクエスト","このEncounter（診察、受診、入退院など）が満たす要請（例：紹介依頼や手続き要請）","","","","","","","","","",,,,,"",,,,"Encounter.basedOn",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.basedOn",".reason.ClinicalDocument"
+"Encounter.participant","Encounter.participant","","","",0,*,"","","Y","BackboneElement {[]} {[]}
+","「遭遇に関わった参加者のリスト」 (Souguu ni kakawatta sankasha no risuto)","サービスを提供する責任を持つ人々のリスト","","","","","","","","","",,,,,"",,,,"Encounter.participant",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.performer",".participation[typeCode=PFM]","ROL"
+"Encounter.participant.id","Encounter.participant.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Encounter.participant.extension","Encounter.participant.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Encounter.participant.modifierExtension","Encounter.participant.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Encounter.participant.type","Encounter.participant.type","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
+","Encounter（診察、受診、入退院など）における参加者の役割","Encounter（診察、受診、入退院など）における参加者の役割。","参加者タイプは、個人がどのようにエンカウントに参加するかを示します。それには、非開業者の参加者が含まれ、開業者にとってはこのエンカウントの文脈でアクションタイプを説明することが含まれます（例：入院医師、診療医師、翻訳者、相談医師）。これは、雇用、教育、免許などの用語から派生した機能的な役割である開業者の役割とは異なります。","","","","","","","","",,"extensible","Encounter（診察、受診、入退院など）における参加者の役割。","http://hl7.org/fhir/ValueSet/encounter-participant-type","",,,,"Encounter.participant.type",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.performer.function",".functionCode","ROL-3 (or maybe PRT-4)"
+"Encounter.participant.period","Encounter.participant.period","","","",0,1,"","","","Period {[]} {[]}
+","参加者が参加したエンカウンターの期間","指定された参加者が出席した期間。これらは重複することがあり、全体的なエンカウント期間のサブセットになることもあります。","","","","","","","","","",,,,,"",,,,"Encounter.participant.period",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".time","ROL-5, ROL-6 (or maybe PRT-5)"
+"Encounter.participant.individual","Encounter.participant.individual","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson]]}
+","患者以外に関与する人","「患者以外にEncounter（診察、受診、入退院など）に関わった人々。」","","","","","","","","","",,,,,"",,,,"Encounter.participant.individual",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.performer.actor",".role","FiveWs.who","ROL-4"
+"Encounter.appointment","Encounter.appointment","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Appointment]]}
+","このEncounter（診察、受診、入退院など）を予定した予約","このEncounter（診察、受診、入退院など）を予定した約束。","","","","","","","","","",,,,,"",,,,"Encounter.appointment",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.basedOn",".outboundRelationship[typeCode=FLFS].target[classCode=ENC, moodCode=APT]","SCH-1 / SCH-2"
+"Encounter.period","Encounter.period","","","",0,1,"","","","Period {[]} {[]}
+","Encounter（診察、受診、入退院など）の始まりと終わりの時間","Encounter（診察、受診、入退院など）の開始時刻と終了時刻。","もし、まだ知られていなければ、期間の終わりは省略できます。","","","","","","","","",,,,,"",,,,"Encounter.period",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.occurrence[x]",".effectiveTime (low & high)","FiveWs.done[x]","PV1-44, PV1-45"
+"Encounter.length","Encounter.length","","","",0,1,"","","","Duration {[]} {[]}
+","Encounter（診察、受診、入退院など）が続いた時間（不在時間を差し引いた時間）","接触が続いた時間の量です。休暇中の時間は除かれます。","休暇により、エンカウンター期間の時間が異なる場合があります。","","","","","","","","",,,,,"",,,,"Encounter.length",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.occurrence[x]",".lengthOfStayQuantity","(PV1-45 less PV1-44) iff ( (PV1-44 not empty) and (PV1-45 not empty) ); units in minutes"
+"Encounter.reasonCode","Encounter.reasonCode","","Indication
+Admission diagnosis","",0,*,"","","Y","CodeableConcept {[]} {[]}
+","エンカウントが生じる理由がコード化されている","Encounter（診察、受診、入退院など）が起こる理由をコードとして表現します。入院に関しては、コード化された入院診断に使用できます。","主要な診断を知る必要があるシステムには、標準拡張子primaryDiagnosis（フラグではなく、シーケンス値である1 = 主要な診断）でマークされます。","","","","","","","","",,"preferred","Encounter（診察、受診、入退院など）が起こる理由。","http://hl7.org/fhir/ValueSet/encounter-reason","",,,,"Encounter.reasonCode",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.reasonCode",".reasonCode","FiveWs.why[x]","EVN-4 / PV2-3 (note: PV2-3 is nominally constrained to inpatient admissions; HL7 v2 makes no vocabulary suggestions for PV2-3; would not expect PV2 segment or PV2-3 to be in use in all implementations )"
+"Encounter.reasonReference","Encounter.reasonReference","","Indication
+Admission diagnosis","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common], CanonicalType[http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation]]}
+","Encounter（診察、受診、入退院など）が生じた理由（参照）(Deai ga shoujita riyuu (sanshou))","Encounter（診察、受診、入退院など）が起こる理由をコードとして表現します。入院に関しては、コード化された入院診断に使用できます。","主要な診断を知る必要があるシステムには、標準拡張子primaryDiagnosis（フラグではなく、シーケンス値である1 = 主要な診断）でマークされます。","","","","","","","","",,,,,"",,,,"Encounter.reasonReference",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.reasonCode",".reasonCode","FiveWs.why[x]","EVN-4 / PV2-3 (note: PV2-3 is nominally constrained to inpatient admissions; HL7 v2 makes no vocabulary suggestions for PV2-3; would not expect PV2 segment or PV2-3 to be in use in all implementations )"
+"Encounter.diagnosis","Encounter.diagnosis","","","",0,*,"","","Y","BackboneElement {[]} {[]}
+","この診察に関連する診断のリスト","この対面に関連する診断リスト。","","","","","","","","","",,,,,"",,,,"Encounter.diagnosis",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=RSON]"
+"Encounter.diagnosis.id","Encounter.diagnosis.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Encounter.diagnosis.extension","Encounter.diagnosis.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Encounter.diagnosis.modifierExtension","Encounter.diagnosis.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Encounter.diagnosis.condition","Encounter.diagnosis.condition","","Admission diagnosis
+discharge diagnosisindication","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure]]}
+","エンカウンターに関連する診断または処置","エンカウンターが発生する理由は、他のリソースからの情報を使用して指定されます。入院の場合、これは入院診断です。指標は通常、状態（evidence.detailで参照される他のリソースで）またはプロシジャー（処置等）です。","主要な診断を知る必要があるシステムには、標準拡張子primaryDiagnosis（フラグではなく、シーケンス値である1 = 主要な診断）でマークされます。","","","","","","","","",,,,,"",,,,"Encounter.diagnosis.condition",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.reasonReference",".outboundRelationship[typeCode=RSON].target","FiveWs.why[x]","Resources that would commonly referenced at Encounter.indication would be Condition and/or Procedure. These most closely align with DG1/PRB and PR1 respectively."
+"Encounter.diagnosis.use","Encounter.diagnosis.use","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","この診断に対する役割（入院、請求、退院など）","この診断がEncounter（診察、受診、入退院など）の中で果たす役割（入院、請求、退院など）","","","","","","","","","",,"preferred","この状態が表す診断のタイプ。 (Kono jōtai ga arawasu shindan no taipu.)","http://hl7.org/fhir/ValueSet/diagnosis-role","",,,,"Encounter.diagnosis.use",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","n/a"
+"Encounter.diagnosis.rank","Encounter.diagnosis.rank","","","",0,1,"","","","positiveInt {[]} {[]}
+","役割ごとの診断ランキング","各役割タイプの診断ランキング","","","","","","","","","",,,,,"",,,,"Encounter.diagnosis.rank",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=RSON].priority"
+"Encounter.account","Encounter.account","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Account]]}
+","このエンカウンターの請求に使用できるアカウントのセット","このエンカウンターの請求に使用できるアカウントのセット。","請求システムは内部のビジネスルールに基づいて、Encounter（診察、受診、入退院など）に関連する請求可能なアイテムを複数の参照されたアカウントに割り当てることができます。","","","","","","","","",,,,,"",,,,"Encounter.account",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".pertains.A_Account"
+"Encounter.hospitalization","Encounter.hospitalization","","","",0,1,"","","","BackboneElement {[]} {[]}
+","医療サービスの入院に関する詳細","医療サービスへの入院に関する詳細。","「エンカウンター」は入院期間だけでなく、外来診療、地域クリニック、高齢者施設などの文脈も含まれる場合があります。この「エンカウンター」の期間に記録される期間は、この入院記録の全範囲をカバーしています。","","","","","","","","",,,,,"",,,,"Encounter.hospitalization",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].target[classCode=ENC, moodCode=EVN]"
+"Encounter.hospitalization.id","Encounter.hospitalization.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Encounter.hospitalization.extension","Encounter.hospitalization.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Encounter.hospitalization.modifierExtension","Encounter.hospitalization.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Encounter.hospitalization.preAdmissionIdentifier","Encounter.hospitalization.preAdmissionIdentifier","","","",0,1,"","","","Identifier {[]} {[]}
+","事前入院識別子 (Jizen nyugaku shikibetsushi)","「入院前の識別子」","","","","","","","","","",,,,,"",,,,"Encounter.hospitalization.preAdmissionIdentifier",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".id","PV1-5"
+"Encounter.hospitalization.origin","Encounter.hospitalization.origin","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
+","「入院前に患者がいた場所／組織」","患者が入院する前に、どこの場所/組織から来たか。","","","","","","","","","",,,,,"",,,,"Encounter.hospitalization.origin",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=ORG].role"
+"Encounter.hospitalization.admitSource","Encounter.hospitalization.admitSource","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","患者が入院した場所（医師の紹介、転院）","患者がどこから入院したのか（医師の紹介、転院）","","","","","","","","","",,"preferred","患者が入院した場所はどこですか。 (Kanja ga nyūin shita basho wa doko desu ka?)","http://hl7.org/fhir/ValueSet/encounter-admit-source","",,,,"Encounter.hospitalization.admitSource",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".admissionReferralSourceCode","PV1-14"
+"Encounter.hospitalization.reAdmission","Encounter.hospitalization.reAdmission","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","発生した再入院のタイプ（あれば）。値がない場合は、再入院として識別されていないことを意味します。","この入院が再入院かどうか、そしてその理由が分かっている場合はなぜか。","","","","","","","","","",,"example","この入院の再入院の理由。","http://terminology.hl7.org/ValueSet/v2-0092","",,,,"Encounter.hospitalization.reAdmission",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","n/a","PV1-13"
+"Encounter.hospitalization.dietPreference","Encounter.hospitalization.dietPreference","","","",0,*,"","","","CodeableConcept {[]} {[]}
+","患者が報告した食事の好み","患者が報告した食事の好み。","例えば、患者が乳製品フリーとナッツフリーの食事を希望することがあります（相反する要素ではありません）。","Used to track patient's diet restrictions and/or preference. For a complete description of the nutrition needs of a patient during their stay, one should use the nutritionOrder resource which links to Encounter.","","","","","","","",,"example","食品の好みを考慮して、医療、文化、倫理的観点から、提供要件に対応することができます。","http://hl7.org/fhir/ValueSet/encounter-diet","",,,,"Encounter.hospitalization.dietPreference",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].target[classCode=SBADM, moodCode=EVN, code=""diet""]","PV1-38"
+"Encounter.hospitalization.specialCourtesy","Encounter.hospitalization.specialCourtesy","","","",0,*,"","","","CodeableConcept {[]} {[]}
+","特別な配慮（VIP、取締役）","特別なおもてなし（VIP、取締役）","","","","","","","","","",,"preferred","特別なおもてなし。","http://hl7.org/fhir/ValueSet/encounter-special-courtesy","",,,,"Encounter.hospitalization.specialCourtesy",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".specialCourtesiesCode","PV1-16"
+"Encounter.hospitalization.specialArrangement","Encounter.hospitalization.specialArrangement","","","",0,*,"","","","CodeableConcept {[]} {[]}
+","車椅子、翻訳者、ストレッチャー、など。","この入院の機会に行われた特別な要求、特定の装置などの提供などがある場合は。","","","","","","","","","",,"preferred","特別な手配。","http://hl7.org/fhir/ValueSet/encounter-special-arrangements","",,,,"Encounter.hospitalization.specialArrangement",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".specialArrangementCode","PV1-15 / OBR-30 / OBR-43"
+"Encounter.hospitalization.destination","Encounter.hospitalization.destination","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
+","患者が退院する場所/施設","患者が退院する場所/組織。 (Kanja ga taiin suru basho/soshiki.)","","","","","","","","","",,,,,"",,,,"Encounter.hospitalization.destination",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=DST]","PV1-37"
+"Encounter.hospitalization.dischargeDisposition","Encounter.hospitalization.dischargeDisposition","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","退院後の場所のカテゴリーまたは種類","退院後の場所のカテゴリーまたは種類。","","","","","","","","","",,"example","退院時の配慮。","http://hl7.org/fhir/ValueSet/encounter-discharge-disposition","",,,,"Encounter.hospitalization.dischargeDisposition",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".dischargeDispositionCode","PV1-36"
+"Encounter.location","Encounter.location","","","",0,*,"","","","BackboneElement {[]} {[]}
+","患者が行った場所のリスト","この接触中に患者が滞在した場所のリスト","エンカウント」には、場所の種類である「クライアントの自宅」のような場所の参照を明示することで、バーチャルなエンカウントを記録できます。また、エンカウントクラスは「バーチャル」である必要があります。","","","","","","","","",,,,,"",,,,"Encounter.location",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=LOC]"
+"Encounter.location.id","Encounter.location.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Encounter.location.extension","Encounter.location.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Encounter.location.modifierExtension","Encounter.location.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:拡張機能または値[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Encounter.location.location","Encounter.location.location","","","",1,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location]]}
+","Encounter（診察、受診、入退院など）の場所 (Deai no basho)","Encounter（診察、受診、入退院など）が起こる場所。","","","","","","","","","",,,,,"",,,,"Encounter.location.location",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.location",".role","FiveWs.where[x]","PV1-3 / PV1-6 / PV1-11 / PV1-42 / PV1-43"
+"Encounter.location.status","Encounter.location.status","","","",0,1,"","","","code {[]} {[]}
+","計画中 | アクティブな | 予約済みの | 完了しました。","指定された場所に参加者が期間中にいる状態。参加者が場所にいなくなった場合は、期間に終了日時が設定されます。","患者が場所でのアクティブな期間が終了したら、期間終了日が入力され、ステータスが完了に変更される場合があります。","","","","","","","","",,"required","場所の状態。","http://hl7.org/fhir/ValueSet/encounter-location-status|4.0.1","",,,,"Encounter.location.status",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".role.statusCode"
+"Encounter.location.physicalType","Encounter.location.physicalType","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","場所の物理的なタイプ（通常は場所の階層のレベル、ベッドルームワードなど）","これは、メッセージングまたはクエリを簡素化するために記録が必要なレベル（ベッド/病室/部屋など）を特定するために使用されます。","この情報は、エンカウンターリソースの理解とメッセージングまたはクエリの処理をサポートするために、ロケーションリソースからデノーマライズされています。
+
+階層には多くのレベルがあり、特定の使用シナリオに必要な特定のレベルのみをピックアップすることができます。","","","","","","","","",,"example","場所の実体形態。","http://hl7.org/fhir/ValueSet/location-physical-type","",,,,"Encounter.location.physicalType",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Encounter.location.period","Encounter.location.period","","","",0,1,"","","","Period {[]} {[]}
+","患者が場所にいた期間","""患者が場所にいた期間。""","","","","","","","","","",,,,,"",,,,"Encounter.location.period",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".time"
+"Encounter.serviceProvider","Encounter.serviceProvider","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
+","このEncounter（診察、受診、入退院など）に責任を持つ組織（施設）","このエンカウンターのサービスを主に担当する組織。これは患者の記録にある組織と同じかもしれませんが、外部組織からサービスを提供するアクターがいる場合など、別の組織である可能性もあります(別途請求される可能性があります)。大腸内視鏡検査の簡略化されたエンカウンターのバンドルを参照してください。","","","","","","","","","",,,,,"",,,,"Encounter.serviceProvider",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.performer.actor",".particiaption[typeCode=PFM].role","PL.6  & PL.1"
+"Encounter.partOf","Encounter.partOf","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Encounter]]}
+","もう一度のEncounter（診察、受診、入退院など）。このEncounter（診察、受診、入退院など）は一部である。","このEncounter（診察、受診、入退院など）が一部である、別のEncounter（診察、受診、入退院など）（手続き的にも時間的にも）。","これは、子供の経験を母親の経験に関連付けるためにも使用されます。詳細については、患者リソースのノートセクションを参照してください。","","","","","","","","",,,,,"",,,,"Encounter.partOf",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.partOf",".inboundRelationship[typeCode=COMP].source[classCode=COMP, moodCode=EVN]"
