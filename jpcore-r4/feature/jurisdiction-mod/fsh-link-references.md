@@ -75,7 +75,6 @@
 [jp-medication-example-1]: Medication-jp-medication-example-1.html
 [JP_Medication_Ingredient_DrugNo]: StructureDefinition-jp-medication-ingredient-drugno.html
 [JP_Medication_IngredientStrength_StrengthType]: StructureDefinition-jp-medication-ingredientstrength-strengthtype.html
-[JP_MedicationInstructionForDispenseJHSP0002_VS]: ValueSet-jp-medication-instruction-for-dispense-jhsp0002-vs.html
 [JP_Medication]: StructureDefinition-jp-medication.html
 [JP_MedicationQuantity]: StructureDefinition-jp-medicationquantity.html
 [JP_MedicationSimpleQuantity]: StructureDefinition-jp-medicationsimplequantity.html
