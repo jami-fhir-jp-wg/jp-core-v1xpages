@@ -1,0 +1,91 @@
+{
+  "resourceType" : "OperationDefinition",
+  "id" : "jp-medications-everything-op",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: OperationDefinition jp-medications-everything-op</b></p><a name=\"jp-medications-everything-op\"> </a><a name=\"hcjp-medications-everything-op\"> </a><a name=\"jp-medications-everything-op-ja\"> </a><p>URL: [base]/Immunization/[id]/$everything</p><p>URL: [base]/MedicationAdministration/[id]/$everything</p><p>URL: [base]/MedicationDispense/[id]/$everything</p><p>URL: [base]/MedicationRequest/[id]/$everything</p><p>Parameters</p><table class=\"grid\"><tr><td><b>Use</b></td><td><b>Name</b></td><td><b>Scope</b></td><td><b>Cardinality</b></td><td><b>Type</b></td><td><b>Binding</b></td><td><b>Documentation</b></td></tr><tr><td>IN</td><td>start</td><td/><td>0..1</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#date\">date</a></td><td/><td><div><p>特定の日付範囲で提供されたケアに関連する全ての記録を意味する。開始日が指定されていない場合、終了日以前のすべてのレコードが対象に含まれる。</p>\n</div></td></tr><tr><td>IN</td><td>end</td><td/><td>0..1</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#date\">date</a></td><td/><td><div><p>特定の日付範囲で提供されたケアに関連する全ての記録を意味する。終了日が指定されていない場合、開始日以降のすべてのレコードが対象に含まれる。</p>\n</div></td></tr><tr><td>IN</td><td>_since</td><td/><td>0..1</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#instant\">instant</a></td><td/><td><div><p>指定された日時以降に更新されたリソースのみが応答に含まれる。</p>\n</div></td></tr><tr><td>IN</td><td>_type</td><td/><td>0..*</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#code\">code</a></td><td/><td><div><p>応答に含むFHIRリソース型を、カンマ区切りで指定する。指定されない場合は、サーバは全てのリソース型を対象とする。</p>\n</div></td></tr><tr><td>IN</td><td>_count</td><td/><td>0..1</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#integer\">integer</a></td><td/><td><div><p>Bundleの1ページに含まれるリソース件数を指定。</p>\n</div></td></tr><tr><td>OUT</td><td>return</td><td/><td>1..1</td><td><a href=\"http://hl7.org/fhir/R4/bundle.html\">Bundle</a></td><td/><td><div><p>バンドルのタイプは”searchset”である。この操作の結果は、リソースとして直接返される。</p>\n</div></td></tr></table><div><p>この操作が呼び出された特定のMedication関連リソースに対する全ての情報を返す。応答は&quot;searchset&quot;タイプのBundleリソースである。サーバは少なくとも識別された対象リソースコンパートメントに含まれる全てのリソースと、それらから参照されるすべてのリソースを返すことが望ましい。</p>\n</div></div>"
+  },
+  "url" : "http://jpfhir.jp/fhir/core/OperationDefinition/JP_Medications_Everything_Op",
+  "version" : "1.2.0-dev",
+  "name" : "JP_Medications_Everything_OP",
+  "status" : "draft",
+  "kind" : "operation",
+  "date" : "2024-08-01",
+  "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
+  "contact" : [{
+    "name" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://jpfhir.jp"
+    },
+    {
+      "system" : "email",
+      "value" : "office@hlfhir.jp"
+    }]
+  }],
+  "description" : "本OperationはMedication関連リソースに対するクエリに利用するものである。",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "JP",
+      "display" : "Japan"
+    }]
+  }],
+  "code" : "everything",
+  "comment" : "この操作が呼び出された特定のMedication関連リソースに対する全ての情報を返す。応答は\"searchset\"タイプのBundleリソースである。サーバは少なくとも識別された対象リソースコンパートメントに含まれる全てのリソースと、それらから参照されるすべてのリソースを返すことが望ましい。",
+  "resource" : ["Immunization",
+  "MedicationAdministration",
+  "MedicationDispense",
+  "MedicationRequest"],
+  "system" : false,
+  "type" : false,
+  "instance" : true,
+  "parameter" : [{
+    "name" : "start",
+    "use" : "in",
+    "min" : 0,
+    "max" : "1",
+    "documentation" : "特定の日付範囲で提供されたケアに関連する全ての記録を意味する。開始日が指定されていない場合、終了日以前のすべてのレコードが対象に含まれる。",
+    "type" : "date"
+  },
+  {
+    "name" : "end",
+    "use" : "in",
+    "min" : 0,
+    "max" : "1",
+    "documentation" : "特定の日付範囲で提供されたケアに関連する全ての記録を意味する。終了日が指定されていない場合、開始日以降のすべてのレコードが対象に含まれる。",
+    "type" : "date"
+  },
+  {
+    "name" : "_since",
+    "use" : "in",
+    "min" : 0,
+    "max" : "1",
+    "documentation" : "指定された日時以降に更新されたリソースのみが応答に含まれる。",
+    "type" : "instant"
+  },
+  {
+    "name" : "_type",
+    "use" : "in",
+    "min" : 0,
+    "max" : "*",
+    "documentation" : "応答に含むFHIRリソース型を、カンマ区切りで指定する。指定されない場合は、サーバは全てのリソース型を対象とする。",
+    "type" : "code"
+  },
+  {
+    "name" : "_count",
+    "use" : "in",
+    "min" : 0,
+    "max" : "1",
+    "documentation" : "Bundleの1ページに含まれるリソース件数を指定。",
+    "type" : "integer"
+  },
+  {
+    "name" : "return",
+    "use" : "out",
+    "min" : 1,
+    "max" : "1",
+    "documentation" : "バンドルのタイプは”searchset”である。この操作の結果は、リソースとして直接返される。",
+    "type" : "Bundle"
+  }]
+}

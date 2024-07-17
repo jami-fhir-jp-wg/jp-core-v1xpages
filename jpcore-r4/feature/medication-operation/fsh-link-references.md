@@ -201,7 +201,7 @@
 [jp-medicationmethodjamidetailusage-namingsystem]: NamingSystem-jp-medicationmethodjamidetailusage-namingsystem.html
 [jp-medicationrequest-start-sp]: SearchParameter-jp-medicationrequest-start-sp.html
 [jp-medicationroute-hl7-0162-namingsystem]: NamingSystem-jp-medicationroute-hl7-0162-namingsystem.html
-[jp-medications-everything]: OperationDefinition-jp-medications-everything.html
+[jp-medications-everything-op]: OperationDefinition-jp-medications-everything-op.html
 [jp-medicationsubstitutionnotallowedreason-namingsystem]: NamingSystem-jp-medicationsubstitutionnotallowedreason-namingsystem.html
 [jp-medicationunitmerit9-namingsystem]: NamingSystem-jp-medicationunitmerit9-namingsystem.html
 [jp-medicationusagejami-namingsystem]: NamingSystem-jp-medicationusagejami-namingsystem.html
