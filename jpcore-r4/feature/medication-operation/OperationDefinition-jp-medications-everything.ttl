@@ -1,0 +1,90 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://jpfhir.jp/fhir/core/OperationDefinition/jp-medications-everything> a fhir:OperationDefinition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "jp-medications-everything"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: OperationDefinition jp-medications-everything</b></p><a name=\"jp-medications-everything\"> </a><a name=\"hcjp-medications-everything\"> </a><a name=\"jp-medications-everything-ja\"> </a><p>URL: [base]/Immunization/[id]/$everything</p><p>URL: [base]/MedicationAdministration/[id]/$everything</p><p>URL: [base]/MedicationDispense/[id]/$everything</p><p>URL: [base]/MedicationRequest/[id]/$everything</p><p>Parameters</p><table class=\"grid\"><tr><td><b>Use</b></td><td><b>Name</b></td><td><b>Scope</b></td><td><b>Cardinality</b></td><td><b>Type</b></td><td><b>Binding</b></td><td><b>Documentation</b></td></tr><tr><td>IN</td><td>_since</td><td/><td>0..1</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#instant\">instant</a></td><td/><td><div><p>指定された日時以降に更新されたリソースのみが応答に含まれる。</p>\n</div></td></tr><tr><td>IN</td><td>_type</td><td/><td>0..*</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#code\">code</a></td><td/><td><div><p>応答に含むFHIRリソース型を、カンマ区切りで指定する。指定されない場合は、サーバは全てのリソース型を対象とする。</p>\n</div></td></tr><tr><td>IN</td><td>_count</td><td/><td>0..1</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#integer\">integer</a></td><td/><td><div><p>Bundleの1ページに含まれるリソース件数を指定。</p>\n</div></td></tr><tr><td>OUT</td><td>return</td><td/><td>1..1</td><td><a href=\"http://hl7.org/fhir/R4/bundle.html\">Bundle</a></td><td/><td><div><p>バンドルのタイプは”searchset”である。この操作の結果は、リソースとして直接返される。</p>\n</div></td></tr><tr><td>IN</td><td>start</td><td/><td>0..1</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#date\">date</a></td><td/><td><div><p>特定の日付範囲で提供されたケアに関連する全ての記録を意味する。開始日が指定されていない場合、終了日以前のすべてのレコードが対象に含まれる。</p>\n</div></td></tr><tr><td>IN</td><td>end</td><td/><td>0..1</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#date\">date</a></td><td/><td><div><p>特定の日付範囲で提供されたケアに関連する全ての記録を意味する。終了日が指定されていない場合、開始日以降のすべてのレコードが対象に含まれる。</p>\n</div></td></tr></table><div><p>この操作が呼び出された特定のMedicationRequestリソースに関連する全ての情報を返す。応答は&quot;searchset&quot;タイプのBundleリソースである。サーバは少なくとも識別された対象リソースコンパートメントに含まれる全てのリソースと、それらから参照されるすべてのリソースを返すことが望ましい。</p>\n</div></div>"
+  ] ; # 
+  fhir:url [ fhir:v "http://jpfhir.jp/fhir/core/OperationDefinition/Medications-everything"^^xsd:anyURI] ; # 
+  fhir:version [ fhir:v "1.2.0-dev"] ; # 
+  fhir:name [ fhir:v "JP_Medications_Everything_OP"] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:kind [ fhir:v "operation"] ; # 
+  fhir:date [ fhir:v "2024-08-01"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "http://jpfhir.jp" ]
+     ] [
+       fhir:system [ fhir:v "email" ] ;
+       fhir:value [ fhir:v "office@hlfhir.jp" ]
+     ] )
+  ] ) ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "JP" ] ;
+       fhir:display [ fhir:v "Japan" ]
+     ] )
+  ] ) ; # 
+  fhir:code [ fhir:v "everything"] ; # 
+  fhir:comment [ fhir:v "この操作が呼び出された特定のMedicationRequestリソースに関連する全ての情報を返す。応答は\"searchset\"タイプのBundleリソースである。サーバは少なくとも識別された対象リソースコンパートメントに含まれる全てのリソースと、それらから参照されるすべてのリソースを返すことが望ましい。"] ; # 
+  fhir:resource ( [ fhir:v "Immunization"] [ fhir:v "MedicationAdministration"] [ fhir:v "MedicationDispense"] [ fhir:v "MedicationRequest"] ) ; # 
+  fhir:system [ fhir:v "false"^^xsd:boolean] ; # 
+  fhir:type [ fhir:v "false"^^xsd:boolean] ; # 
+  fhir:instance [ fhir:v "true"^^xsd:boolean] ; # 
+  fhir:parameter ( [
+     fhir:name [ fhir:v "_since" ] ;
+     fhir:use [ fhir:v "in" ] ;
+     fhir:min [ fhir:v "0"^^xsd:integer ] ;
+     fhir:max [ fhir:v "1" ] ;
+     fhir:documentation [ fhir:v "指定された日時以降に更新されたリソースのみが応答に含まれる。" ] ;
+     fhir:type [ fhir:v "instant" ]
+  ] [
+     fhir:name [ fhir:v "_type" ] ;
+     fhir:use [ fhir:v "in" ] ;
+     fhir:min [ fhir:v "0"^^xsd:integer ] ;
+     fhir:max [ fhir:v "*" ] ;
+     fhir:documentation [ fhir:v "応答に含むFHIRリソース型を、カンマ区切りで指定する。指定されない場合は、サーバは全てのリソース型を対象とする。" ] ;
+     fhir:type [ fhir:v "code" ]
+  ] [
+     fhir:name [ fhir:v "_count" ] ;
+     fhir:use [ fhir:v "in" ] ;
+     fhir:min [ fhir:v "0"^^xsd:integer ] ;
+     fhir:max [ fhir:v "1" ] ;
+     fhir:documentation [ fhir:v "Bundleの1ページに含まれるリソース件数を指定。" ] ;
+     fhir:type [ fhir:v "integer" ]
+  ] [
+     fhir:name [ fhir:v "return" ] ;
+     fhir:use [ fhir:v "out" ] ;
+     fhir:min [ fhir:v "1"^^xsd:integer ] ;
+     fhir:max [ fhir:v "1" ] ;
+     fhir:documentation [ fhir:v "バンドルのタイプは”searchset”である。この操作の結果は、リソースとして直接返される。" ] ;
+     fhir:type [ fhir:v "Bundle" ]
+  ] [
+     fhir:name [ fhir:v "start" ] ;
+     fhir:use [ fhir:v "in" ] ;
+     fhir:min [ fhir:v "0"^^xsd:integer ] ;
+     fhir:max [ fhir:v "1" ] ;
+     fhir:documentation [ fhir:v "特定の日付範囲で提供されたケアに関連する全ての記録を意味する。開始日が指定されていない場合、終了日以前のすべてのレコードが対象に含まれる。" ] ;
+     fhir:type [ fhir:v "date" ]
+  ] [
+     fhir:name [ fhir:v "end" ] ;
+     fhir:use [ fhir:v "in" ] ;
+     fhir:min [ fhir:v "0"^^xsd:integer ] ;
+     fhir:max [ fhir:v "1" ] ;
+     fhir:documentation [ fhir:v "特定の日付範囲で提供されたケアに関連する全ての記録を意味する。終了日が指定されていない場合、開始日以降のすべてのレコードが対象に含まれる。" ] ;
+     fhir:type [ fhir:v "date" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+
