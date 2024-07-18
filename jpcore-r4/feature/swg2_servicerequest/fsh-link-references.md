@@ -224,4 +224,5 @@
 [JP_ResearchStudy]: StructureDefinition-JP-ResearchStudy.html
 [JP_ResearchSubject]: StructureDefinition-JP-ResearchSubject.html
 [JP_ServiceRequest]: StructureDefinition-JP-ServiceRequest.html
+[JP_ServiceRequest_Common]: StructureDefinition-jp-servicerequest-common.html
 [JP_Specimen]: StructureDefinition-JP-Specimen.html
