@@ -291,7 +291,7 @@
 
 <p>このServiceRequestリソースはFHIRにおけるワークフロー管理を構成するリソース群（Request, Event, Definition）のRequestに相当する。 － <a href="http://hl7.org/fhir/R4/workflow.html">WorkFlow</a>を参照のこと。</p>
 
-<p><a name="l455">​</a>ServiceRequestリソースは患者に対し立案・実施されるリクエストの記録で、処置や診断、もしくは他のサービス（その内容はServiceRequest.intentエレメントの値によって区別される）に関するものを示す。処置・行為は、<a href="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure.html">Procedure</a>リソースまたは<a href="http://jpfhir.jp/fhir/core/StructureDefinition/JP_diagnosticreport_Common.html">DiagnosticReport</a>リソースを導出し、次いで通常は１つ以上のDiagnostic Medicine Module（例：<a href="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common.html">Observation</a>リソース）を参照する。参照されるObservationリソースは手順の実行状況や対象患者の治療・管理に関連する観察、 画像、所見などに関連する文書を要約したものになる。また、このリソースは、患者が他の医療機関に転院あるいは紹介される場合の情報共有にも使われる。具体的には、診察やセカンドオピニオンを受けたい場合や、健康上の問題の短期的な管理や長期的な治療を必要とする場合の情報共有に使われることがある。</p>
+<p><a name="l455">​</a>ServiceRequestリソースは患者に対し立案・実施されるリクエストの記録で、処置や診断、もしくは他のサービス（その内容はServiceRequest.intentエレメントの値によって区別される）に関するものを示す。処置・行為は、<a href="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure.html">Procedure</a>リソースまたは<a href="http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Common.html">DiagnosticReport</a>リソースを導出し、次いで通常は１つ以上のDiagnostic Medicine Module（例：<a href="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common.html">Observation</a>リソース）を参照する。参照されるObservationリソースは手順の実行状況や対象患者の治療・管理に関連する観察、 画像、所見などに関連する文書を要約したものになる。また、このリソースは、患者が他の医療機関に転院あるいは紹介される場合の情報共有にも使われる。具体的には、診察やセカンドオピニオンを受けたい場合や、健康上の問題の短期的な管理や長期的な治療を必要とする場合の情報共有に使われることがある。</p>
 
 <ul>
   <li>診断検査</li>
@@ -319,13 +319,13 @@
 
 <h3 id="boundaries-and-relationships">Boundaries and Relationships</h3>
 
-<p><a name="l530">​</a>ServiceRequestリソースは実施されるサービスの立案、オーダの記録であり、結果として、<a href="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure.html">Procedure</a>、<a href="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common.html">Observation</a>、[DiagnosticReport][JP_DiagnosticReport_Common]、<a href="http://hl7.org/fhir/R4/imagingstudy.html">ImagingStudy</a>など、関連するリソースが作られる。ServiceRequestリソースと対照的に、<a href="http://hl7.org/fhir/R4/task.html">Task</a>リソースは計画から結果までを網羅し、完了するまでの実施状況を追跡する。つまり、レコードに対して実行するタスクのリクエストや追跡、または実施過程の一部として施行すべき手順のチェックリストに対する追跡など、「管理的」なアクションを目的とする。ServiceRequestリソースは、Taskリソースの作成のきっかけになる高レベルの認可でもあり、また、Taskリソースが達成しようとしている「リクエスト」リソースにもなる。</p>
+<p><a name="l530">​</a>ServiceRequestリソースは実施されるサービスの立案、オーダの記録であり、結果として、<a href="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure.html">Procedure</a>、<a href="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common.html">Observation</a>、[DiagnosticReport][http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Common.html]、<a href="http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Radiology.html">ImagingStudy</a>など、関連するリソースが作られる。ServiceRequestリソースと対照的に、<a href="http://hl7.org/fhir/R4/task.html">Task</a>リソースは計画から結果までを網羅し、完了するまでの実施状況を追跡する。つまり、レコードに対して実行するタスクのリクエストや追跡、または実施過程の一部として施行すべき手順のチェックリストに対する追跡など、「管理的」なアクションを目的とする。ServiceRequestリソースは、Taskリソースの作成のきっかけになる高レベルの認可でもあり、また、Taskリソースが達成しようとしている「リクエスト」リソースにもなる。</p>
 
 <p>ServiceRequestリソースは<a href="http://hl7.org/fhir/R4/communicationrequest.html">CommunicationRequest</a>リソースとも関連する。CommunicationRequestリソースは単に情報を公表する。一方で、ServiceRequestリソースは、トレーニングやカウンセリングの一環として情報を要求する場合に使われ、例えば、患者の理解度を確認したり、患者の精神状態を変化させようとするために使われる。あるワークフローでは両方のリソースが存在する。例えば、CommunicationRequestを受けて、医師はServiceRequestをオーダするかもしれない。</p>
 
 <h3 id="references">References</h3>
 
-<p>このリソースは <a href="http://hl7.org/fhir/R4/appointment.html#Appointment">Appointment</a>, <a href="http://hl7.org/fhir/R4/biologicallyderivedproduct.html#BiologicallyDerivedProduct">BiologicallyDerivedProduct</a>, <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan">CarePlan</a>, <a href="http://hl7.org/fhir/R4/claim.html#Claim">Claim</a>, <a href="http://hl7.org/fhir/R4/deviceusestatement.html#DeviceUseStatement">DeviceUseStatement</a>, <a href="http://hl7.org/fhir/R4/diagnosticreport.html#DiagnosticReport">DiagnosticReport</a>, <a href="http://hl7.org/fhir/R4/encounter.html#Encounter">Encounter</a>, <a href="http://hl7.org/fhir/R4/episodeofcare.html#EpisodeOfCare">EpisodeOfCare</a>, <a href="http://hl7.org/fhir/R4/explanationofbenefit.html#ExplanationOfBenefit">ExplanationOfBenefit</a>,<a href="http://hl7.org/fhir/R4/goal.html#Goal">Goal</a>, <a href="http://hl7.org/fhir/R4/imagingstudy.html#ImagingStudy">ImagingStudy</a>, <a href="http://hl7.org/fhir/R4/media.html#Media">Media</a>, <a href="http://hl7.org/fhir/R4/medicationrequest.html#MedicationRequest">MedicationRequest</a>, <a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement">MedicationStatement</a>, <a href="http://hl7.org/fhir/R4/observation.html#Observation">Observation</a>, <a href="http://hl7.org/fhir/R4/procedure.html#Procedure">Procedure</a>, <a href="http://hl7.org/fhir/R4/questionnaireresponse.html#QuestionnaireResponse">QuestionnaireResponse</a>, <a href="http://hl7.org/fhir/R4/specimen.html#Specimen">Specimen</a>などのリソースとServiceRequest自身から参照される。</p>
+<p><a name="l554">​</a>このリソースは <a href="http://hl7.org/fhir/R4/appointment.html#Appointment">Appointment</a>, <a href="http://hl7.org/fhir/R4/biologicallyderivedproduct.html#BiologicallyDerivedProduct">BiologicallyDerivedProduct</a>, <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan">CarePlan</a>, <a href="http://hl7.org/fhir/R4/claim.html#Claim">Claim</a>, <a href="http://hl7.org/fhir/R4/deviceusestatement.html#DeviceUseStatement">DeviceUseStatement</a>, <a href="http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Common.html">DiagnosticReport</a>, <a href="https://jami-fhir-jp-wg.github.io/jp-core-v1xpages/jpcore-r4/feature/swg2_servicerequest/StructureDefinition-jp-encounter.html">Encounter</a>, <a href="http://hl7.org/fhir/R4/episodeofcare.html#EpisodeOfCare">EpisodeOfCare</a>, <a href="http://hl7.org/fhir/R4/explanationofbenefit.html#ExplanationOfBenefit">ExplanationOfBenefit</a>,<a href="http://hl7.org/fhir/R4/goal.html#Goal">Goal</a>, <a href="http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Radiology.html">ImagingStudy</a>, <a href="http://hl7.org/fhir/R4/media.html#Media">Media</a>, <a href="https://jami-fhir-jp-wg.github.io/jp-core-v1xpages/jpcore-r4/feature/swg2_servicerequest/StructureDefinition-jp-medicationrequest.html">MedicationRequest</a>, <a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement">MedicationStatement</a>, <a href="https://jami-fhir-jp-wg.github.io/jp-core-v1xpages/jpcore-r4/feature/swg2_servicerequest/StructureDefinition-jp-observation-common.html">Observation</a>, <a href="https://jami-fhir-jp-wg.github.io/jp-core-v1xpages/jpcore-r4/feature/swg2_servicerequest/StructureDefinition-jp-procedure.html">Procedure</a>, <a href="http://hl7.org/fhir/R4/questionnaireresponse.html#QuestionnaireResponse">QuestionnaireResponse</a>, <a href="http://hl7.org/fhir/R4/specimen.html#Specimen">Specimen</a>などのリソースとServiceRequest自身から参照される。</p>
 
 <p>このリソースは<a href="http://hl7.org/fhir/R4/request.html#Request">Request</a>パターンを実装する。</p>
 
@@ -1663,7 +1663,7 @@ Summary
       <td>ServiceRequest.code</td>
       <td>&nbsp;</td>
       <td><a href="http://hl7.org/fhir/R4/terminologies.html#example">Example</a></td>
-      <td><a href="http://hl7.org/fhir/R4/valueset-procedure-code.html">ProcedureCodes(SNOMEDCT)</a></td>
+      <td><a href="https://jpfhir.jp/fhir/core/terminology/ig/ValueSet-JP_ProcedureCodesMedical_VS">JP Core Procedure Codes Medical ValueSet</a></td>
     </tr>
     <tr>
       <td>ServiceRequest.orderDetail</td>
@@ -1693,13 +1693,13 @@ Summary
       <td>ServiceRequest.reasonCode</td>
       <td>&nbsp;</td>
       <td><a href="http://hl7.org/fhir/R4/terminologies.html#example">Example</a></td>
-      <td><a href="http://hl7.org/fhir/R4/valueset-procedure-reason.html">ProcedureReasonCodes</a></td>
+      <td><a href="https://jami-fhir-jp-wg.github.io/jp-core-v1xpages/jpcore-r4/feature/swg2_servicerequest/ValueSet-jp-procedure-reason-vs.html">JP Core Procedure Reason ValueSet</a></td>
     </tr>
     <tr>
       <td>ServiceRequest.bodySite</td>
       <td>&nbsp;</td>
       <td><a href="http://hl7.org/fhir/R4/terminologies.html#example">Example</a></td>
-      <td><a href="http://hl7.org/fhir/R4/valueset-body-site.html">SNOMEDCTBodyStructures</a></td>
+      <td><a href="https://jami-fhir-jp-wg.github.io/jp-core-v1xpages/jpcore-r4/feature/swg2_servicerequest/ValueSet-jp-procedure-body-site-vs.html">JP Core Procedure BodySite ValueSet</a></td>
     </tr>
   </tbody>
 </table>
@@ -1730,7 +1730,7 @@ Summary
 <h3 id="notes">Notes</h3>
 
 <ul>
-  <li>多くのサービスリクエストは検体、体の部位やシステムを指定する必要がある。しかし、血清グルコース、胸部Ｘ線写真などのように、これらの情報はcode要素に組み込まれている。また、specimen要素やbodysite要素もこれらを指定するために使われる。</li>
+  <li>多くのサービスリクエストは検体、体の部位やシステムを指定する必要がある。しかし、血清グルコース、胸部Ｘ線写真などでは、これらの情報はcode要素に組み込まれている。また、specimen要素やbodysite要素もこれらを指定するために使われる。</li>
   <li>既にある検体へ検査をオーダする場合にだけ、ServiceRequestリソースはSpecimenリソースを参照する。逆に、未採集の検体と一緒にサービスリクエストが最初に作成された時は、SpecimenリソースはServiceRequestリソースを参照する。</li>
   <li>reasonCode要素は多くの場合、保険請求を目的としている。また、reasonCode要素はsupportingInfo要素で言及されたリソースに関連し、処置や診断調査がどのように行われるか、あるいは全く行われないかどうかを決定するために使用される。</li>
   <li>ServiceRequestはWorkflowモジュールの1つであり、その相互運用は高度なFHIRアクティビティであり、各リソースの高度な標準化が前提とされる。そのため、本バージョンでは日本語訳のみとし、参考情報として作成している。</li>
@@ -1741,7 +1741,7 @@ Summary
   <thead>
     <tr>
       <th>要素</th>
-      <th>R4、R4からの変更点</th>
+      <th>R4、R4Bからの変更点</th>
     </tr>
   </thead>
   <tbody>
@@ -2005,7 +2005,7 @@ Summary
 
       <div class="inner-wrapper">
         <p>
-          IG &copy; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jul 23, 2024 04:53+0000">2024-07-23</span>
+          IG &copy; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jul 23, 2024 05:58+0000">2024-07-23</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
