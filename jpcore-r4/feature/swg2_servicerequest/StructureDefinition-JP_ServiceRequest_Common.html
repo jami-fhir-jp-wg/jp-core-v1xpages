@@ -289,9 +289,9 @@
 
 <h3 id="scope-and-usage">Scope and Usage</h3>
 
-<p><a name="l449">​</a>このServiceRequestリソースはFHIRにおけるワークフロー管理を構成するリソース群（Request, Event, Definition）のRequestに相当する。 － <a href="http://hl7.org/fhir/R4B/workflow.html">WorkFlow</a>を参照のこと。</p>
+<p>このServiceRequestリソースはFHIRにおけるワークフロー管理を構成するリソース群（Request, Event, Definition）のRequestに相当する。 － <a href="http://hl7.org/fhir/R4/workflow.html">WorkFlow</a>を参照のこと。</p>
 
-<p><a name="l455">​</a>ServiceRequestリソースは患者に対し立案・実施されるリクエストの記録で、処置や診断、もしくは他のサービス（その内容はServiceRequest.intentエレメントの値によって区別される）に関するものを示す。処置・行為は、<a href="http://hl7.org/fhir/R4B/procedure.html">Procedure</a>リソースまたは<a href="http://hl7.org/fhir/R4B/diagnosticreport.html">DiagnosticReport</a>リソースを導出し、次いで通常は１つ以上のDiagnostic Medicine Module（例：<a href="http://hl7.org/fhir/R4B/observation.html">Observation</a>リソース）を参照する。参照されるObservationリソースは手順の実行状況や対象患者の治療・管理に関連する観察、 画像、所見などに関連する文書を要約したものになる。また、このリソースは、患者が他の医療機関に転院あるいは紹介される場合の情報共有にも使われる。具体的には、診察やセカンドオピニオンを受けたい場合や、健康上の問題の短期的な管理や長期的な治療を必要とする場合の情報共有に使われることがある。</p>
+<p>ServiceRequestリソースは患者に対し立案・実施されるリクエストの記録で、処置や診断、もしくは他のサービス（その内容はServiceRequest.intentエレメントの値によって区別される）に関するものを示す。処置・行為は、<a href="http://hl7.org/fhir/R4/procedure.html">Procedure</a>リソースまたは<a href="http://hl7.org/fhir/R4/diagnosticreport.html">DiagnosticReport</a>リソースを導出し、次いで通常は１つ以上のDiagnostic Medicine Module（例：<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>リソース）を参照する。参照されるObservationリソースは手順の実行状況や対象患者の治療・管理に関連する観察、 画像、所見などに関連する文書を要約したものになる。また、このリソースは、患者が他の医療機関に転院あるいは紹介される場合の情報共有にも使われる。具体的には、診察やセカンドオピニオンを受けたい場合や、健康上の問題の短期的な管理や長期的な治療を必要とする場合の情報共有に使われることがある。</p>
 
 <ul>
   <li>診断検査</li>
@@ -311,23 +311,23 @@
 
 <p>処置は医療従事者だけでなく、友人、親戚、場合によっては患者自身で実施される。</p>
 
-<p><a name="l512">​</a>ServiceRequestリソースの主な目的は、ある患者（獣医学の患畜も含まれる）の処置のオーダリングのサポートである。しかし、ヘルスケア関連の業務には、被験者のグループや医療機器、さらには建物内部の配管や水の集まる場所などの環境に対する診断調査なども含まれ、ServiceRequestリソースはこれらのユースケースのすべてをサポートする点を認識する必要がある。サービス・リクエストは、臨床医によってオーダリングシステム（CPOEシステム）に入力されたオーダと同様に、患者の臨床記録やケアの記録に基づいて作成された臨床判断支援システム（CDSシステム） による提案も表現する。<a href="http://hl7.org/fhir/R4B/careplan.html">CarePlan</a>リソースで参照される計画された処置を表す場合にもこのリソースによって表現される。</p>
+<p>ServiceRequestリソースの主な目的は、ある患者（獣医学の患畜も含まれる）の処置のオーダリングのサポートである。しかし、ヘルスケア関連の業務には、被験者のグループや医療機器、さらには建物内部の配管や水の集まる場所などの環境に対する診断調査なども含まれ、ServiceRequestリソースはこれらのユースケースのすべてをサポートする点を認識する必要がある。サービス・リクエストは、臨床医によってオーダリングシステム（CPOEシステム）に入力されたオーダと同様に、患者の臨床記録やケアの記録に基づいて作成された臨床判断支援システム（CDSシステム） による提案も表現する。<a href="http://hl7.org/fhir/R4/careplan.html">CarePlan</a>リソースで参照される計画された処置を表す場合にもこのリソースによって表現される。</p>
 
 <p>このリソースが用いられる一般的なワークフローは、臨床システムでのサービスリクエストの作成である。サービスリクエストは、おそらくは中継されて、処置を実施する部門（例えば手術部門、生理機能検査部門、臨床検査部門、画像診断検査部門、理学療法部門など）のシステムとやり取りされる。サービスリクエストを受けた部門はリクエストを受諾した後、処置を実施し、実施されたリクエストを参照するレポートを発行する。</p>
 
-<p><a name="l521">​</a>ServiceRequestリソースが要求できる手技は1つに限定される。ワークフローが複数の処置を同時に要求した場合は、複数のServiceRequestインスタンスが作成される。これらのインスタンスはワークフローの要求により異なった方法でリンクされる。詳しくは、<a href="http://hl7.org/fhir/R4B/request.html">Request pattern</a>を参照のこと。</p>
+<p>ServiceRequestリソースが要求できる手技は1つに限定される。ワークフローが複数の処置を同時に要求した場合は、複数のServiceRequestインスタンスが作成される。これらのインスタンスはワークフローの要求により異なった方法でリンクされる。詳しくは、<a href="http://hl7.org/fhir/R4/request.html">Request pattern</a>を参照のこと。</p>
 
 <h3 id="boundaries-and-relationships">Boundaries and Relationships</h3>
 
-<p><a name="l530">​</a>ServiceRequestリソースは実施されるサービスの立案、オーダの記録であり、結果として、<a href="http://hl7.org/fhir/R4B/procedure.html">Procedure</a>、<a href="http://hl7.org/fhir/R4B/observation.html">Observation</a>、<a href="http://hl7.org/fhir/R4B/diagnosticreport.html">DiagnosticReport</a>、<a href="http://hl7.org/fhir/R4B/imagingstudy.html">ImagingStudy</a>など、関連するリソースが作られる。ServiceRequestリソースと対照的に、<a href="http://hl7.org/fhir/R4B/task.html">Task</a>リソースは計画から結果までを網羅し、完了するまでの実施状況を追跡する。つまり、レコードに対して実行するタスクのリクエストや追跡、または実施過程の一部として施行すべき手順のチェックリストに対する追跡など、「管理的」なアクションを目的とする。ServiceRequestリソースは、Taskリソースの作成のきっかけになる高レベルの認可でもあり、また、Taskリソースが達成しようとしている「リクエスト」リソースにもなる。</p>
+<p>ServiceRequestリソースは実施されるサービスの立案、オーダの記録であり、結果として、<a href="http://hl7.org/fhir/R4/procedure.html">Procedure</a>、<a href="http://hl7.org/fhir/R4/observation.html">Observation</a>、<a href="http://hl7.org/fhir/R4/diagnosticreport.html">DiagnosticReport</a>、<a href="http://hl7.org/fhir/R4/imagingstudy.html">ImagingStudy</a>など、関連するリソースが作られる。ServiceRequestリソースと対照的に、<a href="http://hl7.org/fhir/R4/task.html">Task</a>リソースは計画から結果までを網羅し、完了するまでの実施状況を追跡する。つまり、レコードに対して実行するタスクのリクエストや追跡、または実施過程の一部として施行すべき手順のチェックリストに対する追跡など、「管理的」なアクションを目的とする。ServiceRequestリソースは、Taskリソースの作成のきっかけになる高レベルの認可でもあり、また、Taskリソースが達成しようとしている「リクエスト」リソースにもなる。</p>
 
-<p><a name="l548">​</a>ServiceRequestリソースは<a href="http://hl7.org/fhir/R4B/communicationrequest.html">CommunicationRequest</a>リソースとも関連する。CommunicationRequestリソースは単に情報を公表する。一方で、ServiceRequestリソースは、トレーニングやカウンセリングの一環として情報を要求する場合に使われ、例えば、患者の理解度を確認したり、患者の精神状態を変化させようとするために使われる。あるワークフローでは両方のリソースが存在する。例えば、CommunicationRequestを受けて、医師はServiceRequestをオーダするかもしれない。</p>
+<p>ServiceRequestリソースは<a href="http://hl7.org/fhir/R4/communicationrequest.html">CommunicationRequest</a>リソースとも関連する。CommunicationRequestリソースは単に情報を公表する。一方で、ServiceRequestリソースは、トレーニングやカウンセリングの一環として情報を要求する場合に使われ、例えば、患者の理解度を確認したり、患者の精神状態を変化させようとするために使われる。あるワークフローでは両方のリソースが存在する。例えば、CommunicationRequestを受けて、医師はServiceRequestをオーダするかもしれない。</p>
 
 <h3 id="references">References</h3>
 
-<p><a name="l557">​</a>このリソースは <a href="http://hl7.org/fhir/R4B/appointment.html#Appointment">Appointment</a>, <a href="http://hl7.org/fhir/R4B/biologicallyderivedproduct.html#BiologicallyDerivedProduct">BiologicallyDerivedProduct</a>, <a href="http://hl7.org/fhir/R4B/careplan.html#CarePlan">CarePlan</a>, <a href="http://hl7.org/fhir/R4B/claim.html#Claim">Claim</a>, <a href="http://hl7.org/fhir/R4B/deviceusestatement.html#DeviceUseStatement">DeviceUseStatement</a>, <a href="http://hl7.org/fhir/R4B/diagnosticreport.html#DiagnosticReport">DiagnosticReport</a>, <a href="http://hl7.org/fhir/R4B/encounter.html#Encounter">Encounter</a>, <a href="http://hl7.org/fhir/R4B/episodeofcare.html#EpisodeOfCare">EpisodeOfCare</a>, <a href="http://hl7.org/fhir/R4B/explanationofbenefit.html#ExplanationOfBenefit">ExplanationOfBenefit</a>,<a href="http://hl7.org/fhir/R4B/goal.html#Goal">Goal</a>, <a href="http://hl7.org/fhir/R4B/imagingstudy.html#ImagingStudy">ImagingStudy</a>, <a href="http://hl7.org/fhir/R4B/media.html#Media">Media</a>, <a href="http://hl7.org/fhir/R4B/medicationrequest.html#MedicationRequest">MedicationRequest</a>, <a href="http://hl7.org/fhir/R4B/medicationstatement.html#MedicationStatement">MedicationStatement</a>, <a href="http://hl7.org/fhir/R4B/observation.html#Observation">Observation</a>, <a href="http://hl7.org/fhir/R4B/procedure.html#Procedure">Procedure</a>, <a href="http://hl7.org/fhir/R4B/questionnaireresponse.html#QuestionnaireResponse">QuestionnaireResponse</a>, <a href="http://hl7.org/fhir/R4B/specimen.html#Specimen">Specimen</a>などのリソースとServiceRequest自身から参照される。</p>
+<p>このリソースは <a href="http://hl7.org/fhir/R4/appointment.html#Appointment">Appointment</a>, <a href="http://hl7.org/fhir/R4/biologicallyderivedproduct.html#BiologicallyDerivedProduct">BiologicallyDerivedProduct</a>, <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan">CarePlan</a>, <a href="http://hl7.org/fhir/R4/claim.html#Claim">Claim</a>, <a href="http://hl7.org/fhir/R4/deviceusestatement.html#DeviceUseStatement">DeviceUseStatement</a>, <a href="http://hl7.org/fhir/R4/diagnosticreport.html#DiagnosticReport">DiagnosticReport</a>, <a href="http://hl7.org/fhir/R4/encounter.html#Encounter">Encounter</a>, <a href="http://hl7.org/fhir/R4/episodeofcare.html#EpisodeOfCare">EpisodeOfCare</a>, <a href="http://hl7.org/fhir/R4/explanationofbenefit.html#ExplanationOfBenefit">ExplanationOfBenefit</a>,<a href="http://hl7.org/fhir/R4/goal.html#Goal">Goal</a>, <a href="http://hl7.org/fhir/R4/imagingstudy.html#ImagingStudy">ImagingStudy</a>, <a href="http://hl7.org/fhir/R4/media.html#Media">Media</a>, <a href="http://hl7.org/fhir/R4/medicationrequest.html#MedicationRequest">MedicationRequest</a>, <a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement">MedicationStatement</a>, <a href="http://hl7.org/fhir/R4/observation.html#Observation">Observation</a>, <a href="http://hl7.org/fhir/R4/procedure.html#Procedure">Procedure</a>, <a href="http://hl7.org/fhir/R4/questionnaireresponse.html#QuestionnaireResponse">QuestionnaireResponse</a>, <a href="http://hl7.org/fhir/R4/specimen.html#Specimen">Specimen</a>などのリソースとServiceRequest自身から参照される。</p>
 
-<p><a name="l614">​</a>このリソースは<a href="http://hl7.org/fhir/R4B/request.html#Request">Request</a>パターンを実装する。</p>
+<p>このリソースは<a href="http://hl7.org/fhir/R4/request.html#Request">Request</a>パターンを実装する。</p>
 
 
 </div>
@@ -358,7 +358,6 @@
       <li>
         <a href="#tabs-snap">Snapshot Table</a>
       </li>
-      
       <li>
         <a href="#tabs-terminology-bindings-view">Terminology Bindings</a>
       </li>
@@ -769,7 +768,7 @@
 <td style="vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: black; null" title="This element is included in summaries">Σ</span></td>
 <td style="vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">CodeableConcept</a></td>
-<td style="vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">「要求された場所」(Youkyuu sareta basho)<br/><span style="font-weight:bold">Binding: </span><a href="http://terminology.hl7.org/6.0.0/ValueSet-v3-ServiceDeliveryLocationRoleType.html" title="http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType">ServiceDeliveryLocationRoleType</a> (<a href="http://hl7.org/fhir/R4/terminologies.html#example" title="Instances are not expected or even encouraged to draw from the specified value set.  The value set merely provides examples of the types of concepts intended to be included.">example</a>): 「サービスが提供される場所タイプ。」<br/><br/><br/></td></tr>
+<td style="vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">「要求された場所」(Youkyuu sareta basho)<br/><span style="font-weight:bold">Binding: </span><a href="http://terminology.hl7.org/6.0.2/ValueSet-v3-ServiceDeliveryLocationRoleType.html" title="http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType">ServiceDeliveryLocationRoleType</a> (<a href="http://hl7.org/fhir/R4/terminologies.html#example" title="Instances are not expected or even encouraged to draw from the specified value set.  The value set merely provides examples of the types of concepts intended to be included.">example</a>): 「サービスが提供される場所タイプ。」<br/><br/><br/></td></tr>
 
 <tr style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white"><td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_reference.png" alt="." style="background-color: white; background-color: inherit" title="Reference to another Resource" class="hierarchy"/> <a no-external="true" href="StructureDefinition-jp-servicerequest-common-definitions.html#ServiceRequest.locationReference" title="「実際に手順が行われることが好ましい場所に関する参照。例、自宅または介護デイケアセンター。」">locationReference</a><a name="ServiceRequest.locationReference"> </a></td>
 <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: black; null" title="This element is included in summaries">Σ</span></td>
@@ -831,8 +830,7 @@
 <td style="vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="http://hl7.org/fhir/R4/provenance.html">Provenance</a>)</td>
 <td style="vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">「出所の確認をお願いします。」<br/></td></tr>
 
-<tr><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="http://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr></table>
-          
+<tr><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="http://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr></table>          
         </div>
       </div>
     </div>
@@ -873,7 +871,7 @@
 <tr><td>ServiceRequest.orderDetail</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="「注文コンテキストに基づくコード化された注文詳細。」"><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-servicerequest-orderdetail.html">ServiceRequestOrderDetailsCodes</a><div><code>http://hl7.org/fhir/ValueSet/servicerequest-orderdetail</code><button data-clipboard-text="http://hl7.org/fhir/ValueSet/servicerequest-orderdetail" title="Click to copy URL" class="btn-copy"></button></div><div>from the FHIR Standard</div></td></tr>
 <tr><td>ServiceRequest.asNeeded[x]</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="手続きを実行する前に満たされる必要がある前提条件を示すコード化された概念。たとえば、「痛み」、「フレアアップ時」など。"><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-medication-as-needed-reason.html">SNOMEDCTMedicationAsNeededReasonCodes</a><div><code>http://hl7.org/fhir/ValueSet/medication-as-needed-reason</code><button data-clipboard-text="http://hl7.org/fhir/ValueSet/medication-as-needed-reason" title="Click to copy URL" class="btn-copy"></button></div><div>from the FHIR Standard</div></td></tr>
 <tr><td>ServiceRequest.performerType</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="「初診医師」、「チームコーディネーター」、「介護者」など、ケアチーム内の個人の具体的責任を示します。」"><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-participant-role.html">ParticipantRoles</a><div><code>http://hl7.org/fhir/ValueSet/participant-role</code><button data-clipboard-text="http://hl7.org/fhir/ValueSet/participant-role" title="Click to copy URL" class="btn-copy"></button></div><div>from the FHIR Standard</div></td></tr>
-<tr><td>ServiceRequest.locationCode</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="「サービスが提供される場所タイプ。」"><a style="opacity: 1.0" href="http://terminology.hl7.org/6.0.0/ValueSet-v3-ServiceDeliveryLocationRoleType.html">ServiceDeliveryLocationRoleType</a><div><code>http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType</code><button data-clipboard-text="http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType" title="Click to copy URL" class="btn-copy"></button></div></td></tr>
+<tr><td>ServiceRequest.locationCode</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="「サービスが提供される場所タイプ。」"><a style="opacity: 1.0" href="http://terminology.hl7.org/6.0.2/ValueSet-v3-ServiceDeliveryLocationRoleType.html">ServiceDeliveryLocationRoleType</a><div><code>http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType</code><button data-clipboard-text="http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType" title="Click to copy URL" class="btn-copy"></button></div></td></tr>
 <tr><td>ServiceRequest.reasonCode</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="サービス調査の依頼理由を正当化する診断または問題コード。"><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-procedure-reason.html">ProcedureReasonCodes</a><div><code>http://hl7.org/fhir/ValueSet/procedure-reason</code><button data-clipboard-text="http://hl7.org/fhir/ValueSet/procedure-reason" title="Click to copy URL" class="btn-copy"></button></div><div>from the FHIR Standard</div></td></tr>
 <tr><td>ServiceRequest.bodySite</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="解剖学的位置を記述するコード。左右対称性を含む場合があります。"><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-body-site.html">SNOMEDCTBodyStructures</a><div><code>http://hl7.org/fhir/ValueSet/body-site</code><button data-clipboard-text="http://hl7.org/fhir/ValueSet/body-site" title="Click to copy URL" class="btn-copy"></button></div><div>from the FHIR Standard</div></td></tr>
 </table>
@@ -1391,7 +1389,7 @@ Summary
 <td style="vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: black; null" title="This element is included in summaries">Σ</span></td>
 <td style="vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">CodeableConcept</a></td>
-<td style="vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">「要求された場所」(Youkyuu sareta basho)<br/><span style="font-weight:bold">Binding: </span><a href="http://terminology.hl7.org/6.0.0/ValueSet-v3-ServiceDeliveryLocationRoleType.html" title="http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType">ServiceDeliveryLocationRoleType</a> (<a href="http://hl7.org/fhir/R4/terminologies.html#example" title="Instances are not expected or even encouraged to draw from the specified value set.  The value set merely provides examples of the types of concepts intended to be included.">example</a>): 「サービスが提供される場所タイプ。」<br/><br/><br/></td></tr>
+<td style="vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">「要求された場所」(Youkyuu sareta basho)<br/><span style="font-weight:bold">Binding: </span><a href="http://terminology.hl7.org/6.0.2/ValueSet-v3-ServiceDeliveryLocationRoleType.html" title="http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType">ServiceDeliveryLocationRoleType</a> (<a href="http://hl7.org/fhir/R4/terminologies.html#example" title="Instances are not expected or even encouraged to draw from the specified value set.  The value set merely provides examples of the types of concepts intended to be included.">example</a>): 「サービスが提供される場所タイプ。」<br/><br/><br/></td></tr>
 
 <tr style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white"><td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_reference.png" alt="." style="background-color: white; background-color: inherit" title="Reference to another Resource" class="hierarchy"/> <a no-external="true" href="StructureDefinition-jp-servicerequest-common-definitions.html#ServiceRequest.locationReference" title="「実際に手順が行われることが好ましい場所に関する参照。例、自宅または介護デイケアセンター。」">locationReference</a><a name="sa-ServiceRequest.locationReference"> </a></td>
 <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: black; null" title="This element is included in summaries">Σ</span></td>
@@ -1490,7 +1488,7 @@ Summary
 <tr><td>ServiceRequest.orderDetail</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="「注文コンテキストに基づくコード化された注文詳細。」"><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-servicerequest-orderdetail.html">ServiceRequestOrderDetailsCodes</a><div><code>http://hl7.org/fhir/ValueSet/servicerequest-orderdetail</code><button data-clipboard-text="http://hl7.org/fhir/ValueSet/servicerequest-orderdetail" title="Click to copy URL" class="btn-copy"></button></div><div>from the FHIR Standard</div></td></tr>
 <tr><td>ServiceRequest.asNeeded[x]</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="手続きを実行する前に満たされる必要がある前提条件を示すコード化された概念。たとえば、「痛み」、「フレアアップ時」など。"><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-medication-as-needed-reason.html">SNOMEDCTMedicationAsNeededReasonCodes</a><div><code>http://hl7.org/fhir/ValueSet/medication-as-needed-reason</code><button data-clipboard-text="http://hl7.org/fhir/ValueSet/medication-as-needed-reason" title="Click to copy URL" class="btn-copy"></button></div><div>from the FHIR Standard</div></td></tr>
 <tr><td>ServiceRequest.performerType</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="「初診医師」、「チームコーディネーター」、「介護者」など、ケアチーム内の個人の具体的責任を示します。」"><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-participant-role.html">ParticipantRoles</a><div><code>http://hl7.org/fhir/ValueSet/participant-role</code><button data-clipboard-text="http://hl7.org/fhir/ValueSet/participant-role" title="Click to copy URL" class="btn-copy"></button></div><div>from the FHIR Standard</div></td></tr>
-<tr><td>ServiceRequest.locationCode</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="「サービスが提供される場所タイプ。」"><a style="opacity: 1.0" href="http://terminology.hl7.org/6.0.0/ValueSet-v3-ServiceDeliveryLocationRoleType.html">ServiceDeliveryLocationRoleType</a><div><code>http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType</code><button data-clipboard-text="http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType" title="Click to copy URL" class="btn-copy"></button></div></td></tr>
+<tr><td>ServiceRequest.locationCode</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="「サービスが提供される場所タイプ。」"><a style="opacity: 1.0" href="http://terminology.hl7.org/6.0.2/ValueSet-v3-ServiceDeliveryLocationRoleType.html">ServiceDeliveryLocationRoleType</a><div><code>http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType</code><button data-clipboard-text="http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType" title="Click to copy URL" class="btn-copy"></button></div></td></tr>
 <tr><td>ServiceRequest.reasonCode</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="サービス調査の依頼理由を正当化する診断または問題コード。"><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-procedure-reason.html">ProcedureReasonCodes</a><div><code>http://hl7.org/fhir/ValueSet/procedure-reason</code><button data-clipboard-text="http://hl7.org/fhir/ValueSet/procedure-reason" title="Click to copy URL" class="btn-copy"></button></div><div>from the FHIR Standard</div></td></tr>
 <tr><td>ServiceRequest.bodySite</td><td><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#example">example</a></td><td title="解剖学的位置を記述するコード。左右対称性を含む場合があります。"><a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-body-site.html">SNOMEDCTBodyStructures</a><div><code>http://hl7.org/fhir/ValueSet/body-site</code><button data-clipboard-text="http://hl7.org/fhir/ValueSet/body-site" title="Click to copy URL" class="btn-copy"></button></div><div>from the FHIR Standard</div></td></tr>
 </table>
@@ -1640,68 +1638,68 @@ Summary
     <tr>
       <td>ServiceRequest.status</td>
       <td>&nbsp;</td>
-      <td><a name="l6082">​</a><a href="http://hl7.org/fhir/R4B/terminologies.html#required">Required</a></td>
-      <td><a name="l6086">​</a><a href="http://hl7.org/fhir/R4B/valueset-request-status.html">status</a></td>
+      <td><a href="http://hl7.org/fhir/R4/terminologies.html#required">Required</a></td>
+      <td><a href="http://hl7.org/fhir/R4/valueset-request-status.html">status</a></td>
     </tr>
     <tr>
       <td>ServiceRequest.intent</td>
       <td>&nbsp;</td>
-      <td><a name="l6099">​</a><a href="http://hl7.org/fhir/R4B/terminologies.html#required">Required</a></td>
-      <td><a name="l6103">​</a><a href="http://hl7.org/fhir/R4B/valueset-request-intent.html">intent</a></td>
+      <td><a href="http://hl7.org/fhir/R4/terminologies.html#required">Required</a></td>
+      <td><a href="http://hl7.org/fhir/R4/valueset-request-intent.html">intent</a></td>
     </tr>
     <tr>
       <td>ServiceRequest.category</td>
       <td>&nbsp;</td>
-      <td><a name="l6116">​</a><a href="http://hl7.org/fhir/R4B/terminologies.html#example">Example</a></td>
-      <td><a name="l6120">​</a><a href="http://hl7.org/fhir/R4B/valueset-servicerequest-category.html">ServiceRequestCategoryCodes</a></td>
+      <td><a href="http://hl7.org/fhir/R4/terminologies.html#example">Example</a></td>
+      <td><a href="http://hl7.org/fhir/R4/valueset-servicerequest-category.html">ServiceRequestCategoryCodes</a></td>
     </tr>
     <tr>
       <td>ServiceRequest.priority</td>
       <td>&nbsp;</td>
-      <td><a name="l6133">​</a><a href="http://hl7.org/fhir/R4B/terminologies.html#required">Required</a></td>
-      <td><a name="l6137">​</a><a href="http://hl7.org/fhir/R4B/valueset-request-priority.html">RequestPriority</a></td>
+      <td><a href="http://hl7.org/fhir/R4/terminologies.html#required">Required</a></td>
+      <td><a href="http://hl7.org/fhir/R4/valueset-request-priority.html">RequestPriority</a></td>
     </tr>
     <tr>
       <td>ServiceRequest.code</td>
       <td>&nbsp;</td>
-      <td><a name="l6150">​</a><a href="http://hl7.org/fhir/R4B/terminologies.html#example">Example</a></td>
-      <td><a name="l6154">​</a><a href="http://hl7.org/fhir/R4B/valueset-procedure-code.html">ProcedureCodes(SNOMEDCT)</a></td>
+      <td><a href="http://hl7.org/fhir/R4/terminologies.html#example">Example</a></td>
+      <td><a href="http://hl7.org/fhir/R4/valueset-procedure-code.html">ProcedureCodes(SNOMEDCT)</a></td>
     </tr>
     <tr>
       <td>ServiceRequest.orderDetail</td>
       <td>&nbsp;</td>
-      <td><a name="l6167">​</a><a href="http://hl7.org/fhir/R4B/terminologies.html#example">Example</a></td>
-      <td><a name="l6171">​</a><a href="http://hl7.org/fhir/R4B/valueset-servicerequest-orderdetail.html">ServiceRequestOrderDetailsCodes</a></td>
+      <td><a href="http://hl7.org/fhir/R4/terminologies.html#example">Example</a></td>
+      <td><a href="http://hl7.org/fhir/R4/valueset-servicerequest-orderdetail.html">ServiceRequestOrderDetailsCodes</a></td>
     </tr>
     <tr>
       <td>ServiceRequest.asNeeded[x]</td>
       <td>&nbsp;</td>
-      <td><a name="l6184">​</a><a href="http://hl7.org/fhir/R4B/terminologies.html#example">Example</a></td>
-      <td><a name="l6188">​</a><a href="http://hl7.org/fhir/R4B/valueset-medication-as-needed-reason.html">SNOMEDCTMedicationAsNeededReasonCodes</a></td>
+      <td><a href="http://hl7.org/fhir/R4/terminologies.html#example">Example</a></td>
+      <td><a href="http://hl7.org/fhir/R4/valueset-medication-as-needed-reason.html">SNOMEDCTMedicationAsNeededReasonCodes</a></td>
     </tr>
     <tr>
       <td>ServiceRequest.performerType</td>
       <td>&nbsp;</td>
-      <td><a name="l6201">​</a><a href="http://hl7.org/fhir/R4B/terminologies.html#example">Example</a></td>
+      <td><a href="http://hl7.org/fhir/R4/terminologies.html#example">Example</a></td>
       <td><a name="l6205">​</a><a href="http://terminology.hl7.org/3.1.0/ValueSet-action-participant-role.html">ActionParticipantRole</a></td>
     </tr>
     <tr>
       <td>ServiceRequest.locationCode</td>
       <td>&nbsp;</td>
-      <td><a name="l6218">​</a><a href="http://hl7.org/fhir/R4B/terminologies.html#example">Example</a></td>
+      <td><a href="http://hl7.org/fhir/R4/terminologies.html#example">Example</a></td>
       <td><a name="l6222">​</a><a href="http://terminology.hl7.org/3.1.0/ValueSet-v3-ServiceDeliveryLocationRoleType.html">ServiceDeliveryLocationRoleType</a></td>
     </tr>
     <tr>
       <td>ServiceRequest.reasonCode</td>
       <td>&nbsp;</td>
-      <td><a name="l6235">​</a><a href="http://hl7.org/fhir/R4B/terminologies.html#example">Example</a></td>
-      <td><a name="l6239">​</a><a href="http://hl7.org/fhir/R4B/valueset-procedure-reason.html">ProcedureReasonCodes</a></td>
+      <td><a href="http://hl7.org/fhir/R4/terminologies.html#example">Example</a></td>
+      <td><a href="http://hl7.org/fhir/R4/valueset-procedure-reason.html">ProcedureReasonCodes</a></td>
     </tr>
     <tr>
       <td>ServiceRequest.bodySite</td>
       <td>&nbsp;</td>
-      <td><a name="l6252">​</a><a href="http://hl7.org/fhir/R4B/terminologies.html#example">Example</a></td>
-      <td><a name="l6256">​</a><a href="http://hl7.org/fhir/R4B/valueset-body-site.html">SNOMEDCTBodyStructures</a></td>
+      <td><a href="http://hl7.org/fhir/R4/terminologies.html#example">Example</a></td>
+      <td><a href="http://hl7.org/fhir/R4/valueset-body-site.html">SNOMEDCTBodyStructures</a></td>
     </tr>
   </tbody>
 </table>
@@ -1743,7 +1741,7 @@ Summary
   <thead>
     <tr>
       <th>要素</th>
-      <th>R4、R4Bからの変更点</th>
+      <th>R4、R4からの変更点</th>
     </tr>
   </thead>
   <tbody>
@@ -1820,7 +1818,7 @@ Summary
 
 <h3 id="search-parameters">Search Parameters</h3>
 
-<p><a name="l6506">​</a>このリソースの検索パラメータ。基本のパラメータも適用される。詳細は<a href="http://hl7.org/fhir/R4B/search.html">Searching</a>を参照。</p>
+<p>このリソースの検索パラメータ。基本のパラメータも適用される。詳細は<a href="http://hl7.org/fhir/R4/search.html">Searching</a>を参照。</p>
 
 <table>
   <thead>
@@ -1835,149 +1833,149 @@ Summary
   <tbody>
     <tr>
       <td>authored</td>
-      <td><a name="l6542">​</a><a href="http://hl7.org/fhir/R4B/search.html#date">date</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#date">date</a></td>
       <td>署名された日</td>
       <td>ServiceRequest.authoredOn</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>based-on</td>
-      <td><a name="l6561">​</a><a href="http://hl7.org/fhir/R4B/search.html#reference">reference</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#reference">reference</a></td>
       <td>実施すべき対象</td>
-      <td><a name="l6568">​</a>ServiceRequest.basedOn (<a href="http://hl7.org/fhir/R4B/careplan.html">CarePlan</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/medicationrequest.html">MedicationRequest</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/servicerequest.html">ServiceRequest</a>)</td>
+      <td>ServiceRequest.basedOn (<a href="http://hl7.org/fhir/R4/careplan.html">CarePlan</a>,&nbsp;<a href="http://hl7.org/fhir/R4/medicationrequest.html">MedicationRequest</a>,&nbsp;<a href="http://hl7.org/fhir/R4/servicerequest.html">ServiceRequest</a>)</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>body-site</td>
-      <td><a name="l6589">​</a><a href="http://hl7.org/fhir/R4B/search.html#token">token</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#token">token</a></td>
       <td>手技の対象部位</td>
       <td>ServiceRequest.bodySite</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>category</td>
-      <td><a name="l6608">​</a><a href="http://hl7.org/fhir/R4B/search.html#token">token</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#token">token</a></td>
       <td>サービスリクエストの分類</td>
       <td>ServiceRequest.category</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>code</td>
-      <td><a name="l6627">​</a><a href="http://hl7.org/fhir/R4B/search.html#token">token</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#token">token</a></td>
       <td>リクエスト・オーダされる内容のコード</td>
       <td>ServiceRequest.code</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>encounter</td>
-      <td><a name="l6646">​</a><a href="http://hl7.org/fhir/R4B/search.html#reference">reference</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#reference">reference</a></td>
       <td>サービスリクエストが作成された場面</td>
-      <td><a name="l6653">​</a>ServiceRequest.encounter (<a href="http://hl7.org/fhir/R4B/encounter.html">Encounter</a>)</td>
+      <td>ServiceRequest.encounter (<a href="http://hl7.org/fhir/R4/encounter.html">Encounter</a>)</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>identifier</td>
-      <td><a name="l6668">​</a><a href="http://hl7.org/fhir/R4B/search.html#token">token</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#token">token</a></td>
       <td>業務ID</td>
       <td>ServiceRequest.identifier</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>instantiates-canonical</td>
-      <td><a name="l6687">​</a><a href="http://hl7.org/fhir/R4B/search.html#reference">reference</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#reference">reference</a></td>
       <td>FHIRのプロトコールや定義への参照</td>
-      <td><a name="l6694">​</a>ServiceRequest.instantiatesCanonical (<a href="http://hl7.org/fhir/R4B/plandefinition.html">PlanDefinition</a>, <a href="http://hl7.org/fhir/R4B/activitydefinition.html">ActivityDefinition</a>)</td>
+      <td>ServiceRequest.instantiatesCanonical (<a href="http://hl7.org/fhir/R4/plandefinition.html">PlanDefinition</a>, <a href="http://hl7.org/fhir/R4/activitydefinition.html">ActivityDefinition</a>)</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>instantiates-uri</td>
-      <td><a name="l6712">​</a><a href="http://hl7.org/fhir/R4B/search.html#uri">uri</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#uri">uri</a></td>
       <td>外部のプロトコールや定義への参照</td>
       <td>ServiceRequest.instantiatesUri</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>intent</td>
-      <td><a name="l6731">​</a><a href="http://hl7.org/fhir/R4B/search.html#token">token</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#token">token</a></td>
       <td>proposal | plan | directive | order | original-order | reflex-order | filler-order | instance-order | option</td>
       <td>ServiceRequest.intent</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>occurrence</td>
-      <td><a name="l6750">​</a><a href="http://hl7.org/fhir/R4B/search.html#date">date</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#date">date</a></td>
       <td>サービスの実施日</td>
       <td>ServiceRequest.occurrence</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>patient</td>
-      <td><a name="l6769">​</a><a href="http://hl7.org/fhir/R4B/search.html#reference">reference</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#reference">reference</a></td>
       <td>患者による検索</td>
-      <td><a name="l6776">​</a>ServiceRequest.subject.where(resolve() is Patient) (<a href="http://hl7.org/fhir/R4B/patient.html">Patient</a>)</td>
+      <td>ServiceRequest.subject.where(resolve() is Patient) (<a href="http://hl7.org/fhir/R4/patient.html">Patient</a>)</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>performer</td>
-      <td><a name="l6791">​</a><a href="http://hl7.org/fhir/R4B/search.html#reference">reference</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#reference">reference</a></td>
       <td>サービスの実施者</td>
-      <td><a name="l6798">​</a>ServiceRequest.performer (<a href="http://hl7.org/fhir/R4B/practitioner.html">Practitioner</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/organization.html">Organization</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/careteam.html">CareTeam</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/device.html">Device</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/patient.html">Patient</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/healthcareservice.html">HealthcareService</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/practitionerrole.html">PractitionerRole</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/relatedperson.html">RelatedPerson</a>)</td>
+      <td>ServiceRequest.performer (<a href="http://hl7.org/fhir/R4/practitioner.html">Practitioner</a>,&nbsp;<a href="http://hl7.org/fhir/R4/organization.html">Organization</a>,&nbsp;<a href="http://hl7.org/fhir/R4/careteam.html">CareTeam</a>,&nbsp;<a href="http://hl7.org/fhir/R4/device.html">Device</a>,&nbsp;<a href="http://hl7.org/fhir/R4/patient.html">Patient</a>,&nbsp;<a href="http://hl7.org/fhir/R4/healthcareservice.html">HealthcareService</a>,&nbsp;<a href="http://hl7.org/fhir/R4/practitionerrole.html">PractitionerRole</a>,&nbsp;<a href="http://hl7.org/fhir/R4/relatedperson.html">RelatedPerson</a>)</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>performer-type</td>
-      <td><a name="l6834">​</a><a href="http://hl7.org/fhir/R4B/search.html#token">token</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#token">token</a></td>
       <td>サービスの実施者の職種</td>
       <td>ServiceRequest.performerType</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>priority</td>
-      <td><a name="l6853">​</a><a href="http://hl7.org/fhir/R4B/search.html#token">token</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#token">token</a></td>
       <td>routine | urgent | asap | stat</td>
       <td>ServiceRequest.priority</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>replaces</td>
-      <td><a name="l6872">​</a><a href="http://hl7.org/fhir/R4B/search.html#reference">reference</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#reference">reference</a></td>
       <td>代替のサービスリクエスト</td>
-      <td><a name="l6879">​</a>ServiceRequest.replaces (<a href="http://hl7.org/fhir/R4B/servicerequest.html">ServiceRequest</a>)</td>
+      <td>ServiceRequest.replaces (<a href="http://hl7.org/fhir/R4/servicerequest.html">ServiceRequest</a>)</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>requester</td>
-      <td><a name="l6894">​</a><a href="http://hl7.org/fhir/R4B/search.html#reference">reference</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#reference">reference</a></td>
       <td>サービスをリクエストした人・物</td>
-      <td><a name="l6901">​</a>ServiceRequest.requester (<a href="http://hl7.org/fhir/R4B/practitioner.html">Practitioner</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/organization.html">Organization</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/device.html">Device</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/patient.html">Patient</a>,&nbsp; <a href="http://hl7.org/fhir/R4B/practitionerrole.html">PractitionerRole</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/relatedperson.html">RelatedPerson</a>)</td>
+      <td>ServiceRequest.requester (<a href="http://hl7.org/fhir/R4/practitioner.html">Practitioner</a>,&nbsp;<a href="http://hl7.org/fhir/R4/organization.html">Organization</a>,&nbsp;<a href="http://hl7.org/fhir/R4/device.html">Device</a>,&nbsp;<a href="http://hl7.org/fhir/R4/patient.html">Patient</a>,&nbsp; <a href="http://hl7.org/fhir/R4/practitionerrole.html">PractitionerRole</a>,&nbsp;<a href="http://hl7.org/fhir/R4/relatedperson.html">RelatedPerson</a>)</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>requisition</td>
-      <td><a name="l6931">​</a><a href="http://hl7.org/fhir/R4B/search.html#token">token</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#token">token</a></td>
       <td>複合ID</td>
       <td>ServiceRequest.requisition</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>specimen</td>
-      <td><a name="l6950">​</a><a href="http://hl7.org/fhir/R4B/search.html#reference">token</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#reference">token</a></td>
       <td>検体</td>
-      <td><a name="l6957">​</a>ServiceRequest.specimen (<a href="http://hl7.org/fhir/R4B/specimen.html">Specimen</a>)</td>
+      <td>ServiceRequest.specimen (<a href="http://hl7.org/fhir/R4/specimen.html">Specimen</a>)</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>status</td>
-      <td><a name="l6972">​</a><a href="http://hl7.org/fhir/R4B/search.html#token">token</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#token">token</a></td>
       <td>draft | active | on-hold | revoked | completed | entered-in-error | unknown</td>
       <td>ServiceRequest.status</td>
       <td>&nbsp;</td>
     </tr>
     <tr>
       <td>subject</td>
-      <td><a name="l6991">​</a><a href="http://hl7.org/fhir/R4B/search.html#reference">reference</a></td>
+      <td><a href="http://hl7.org/fhir/R4/search.html#reference">reference</a></td>
       <td>対象者</td>
-      <td><a name="l6998">​</a>ServiceRequest.subject ( <a href="http://hl7.org/fhir/R4B/group.html">Group</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/device.html">Device</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/patient.html">Patient</a>,&nbsp;<a href="http://hl7.org/fhir/R4B/location.html">Location</a>)</td>
+      <td>ServiceRequest.subject ( <a href="http://hl7.org/fhir/R4/group.html">Group</a>,&nbsp;<a href="http://hl7.org/fhir/R4/device.html">Device</a>,&nbsp;<a href="http://hl7.org/fhir/R4/patient.html">Patient</a>,&nbsp;<a href="http://hl7.org/fhir/R4/location.html">Location</a>)</td>
       <td>&nbsp;</td>
     </tr>
   </tbody>
@@ -2007,7 +2005,7 @@ Summary
 
       <div class="inner-wrapper">
         <p>
-          IG &copy; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jul 19, 2024 01:02+0000">2024-07-19</span>
+          IG &copy; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jul 23, 2024 04:45+0000">2024-07-23</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
