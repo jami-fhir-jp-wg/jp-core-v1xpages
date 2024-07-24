@@ -131,15 +131,15 @@
 [JP_ObservationBodySite_CS]: CodeSystem-jp-observation-bodysite-cs.html
 [JP_ObservationBodySite_VS]: ValueSet-jp-observation-bodysite-vs.html
 [JP_Observation_Common]: StructureDefinition-jp-observation-common.html
-[JP_Observation_Radiology_Findings]: StructureDefinition-jp-observation-radiology-findings.html
-[JP_Observation_Radiology_Impression]: StructureDefinition-jp-observation-radiology-impression.html
 [jp-observation-labresult-example-1]: Observation-jp-observation-labresult-example-1.html
 [JP_Observation_LabResult]: StructureDefinition-jp-observation-labresult.html
 [JP_Observation_Microbiology]: StructureDefinition-jp-observation-microbiology.html
 [jp-observation-physicalexam-example-1]: Observation-jp-observation-physicalexam-example-1.html
 [JP_Observation_PhysicalExam]: StructureDefinition-jp-observation-physicalexam.html
 [jp-observation-radiology-findings-example-1]: Observation-jp-observation-radiology-findings-example-1.html
+[JP_Observation_Radiology_Findings]: StructureDefinition-jp-observation-radiology-findings.html
 [jp-observation-radiology-impression-example-1]: Observation-jp-observation-radiology-impression-example-1.html
+[JP_Observation_Radiology_Impression]: StructureDefinition-jp-observation-radiology-impression.html
 [jp-observation-socialhistory-example-1]: Observation-jp-observation-socialhistory-example-1.html
 [JP_Observation_SocialHistory]: StructureDefinition-jp-observation-socialhistory.html
 [jp-observation-vitalsigns-example-1]: Observation-jp-observation-vitalsigns-example-1.html
