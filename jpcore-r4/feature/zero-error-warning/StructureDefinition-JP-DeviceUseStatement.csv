@@ -1,0 +1,97 @@
+"Id","Path","Slice Name","Alias(s)","Label","Min","Max","Must Support?","Is Modifier?","Is Summary?","Type(s)","Short","Definition","Comments","Requirements","Default Value","Meaning When Missing","Fixed Value","Pattern","Example","Minimum Value","Maximum Value","Maximum Length","Binding Strength","Binding Description","Binding Value Set","Code","Slicing Discriminator","Slicing Description","Slicing Ordered","Slicing Rules","Base Path","Base Min","Base Max","Condition(s)","Constraint(s)","Mapping: Workflow Pattern","Mapping: Quality Improvement and Clinical Knowledge (QUICK)","Mapping: FiveWs Pattern Mapping","Mapping: HL7 v2 Mapping","Mapping: RIM Mapping"
+"DeviceUseStatement","DeviceUseStatement","","","",0,*,"","","","null {[]} {[]}
+","「デバイスの使用記録」","「患者が報告した情報または他の臨床医からの報告によって得られた、装置の使用記録。」","","","","","","","","","",,,,,"",,,,"DeviceUseStatement",0,*,"","dom-2:もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen). {contained.contained.empty()}
+dom-3:もしリソースが他のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含まれるリソースに参照されるべきです。 {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:もしリソースが別のリソースの中に含まれる場合、meta.versionIdまたはmeta.lastUpdatedを持つべきではありません。 {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:「もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。」 {contained.meta.security.empty()}dom-6:「資源は堅牢な管理のために物語を持つべきである。」 {text.`div`.exists()}","Event","DeviceUsePerformanceOccurrence","Entity. Role, or Act"
+"DeviceUseStatement.id","DeviceUseStatement.id","","","",0,1,"","","Y","id {[]} {[]}
+","このアーティファクトの論理ID","「リソースのURLで使用される論理ID。一度割り当てられたら、この値は変更されません。」","「リソースにIDがないのは、作成操作を使用してサーバーに送信されているときだけです。」","","","","","","","","",,,,,"",,,,"Resource.id",0,1,"",""
+"DeviceUseStatement.meta","DeviceUseStatement.meta","","","",0,1,"","","Y","Meta {[]} {[]}
+","「リソースに関するメタデータ」","リソースに関するメタデータ。これはインフラストラクチャによって維持されるコンテンツです。 コンテンツの変更は、リソースのバージョン変更と常に関連しているわけではありません。","","","","","","","","","",,,,,"",,,,"Resource.meta",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"DeviceUseStatement.meta.id","DeviceUseStatement.meta.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"DeviceUseStatement.meta.extension","DeviceUseStatement.meta.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","「要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。」","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"","value:url}
+","拡張子は常にURLで切り片にされます。",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:「拡張機能または値[x]のいずれかが必要です。両方ではありません。」 {extension.exists() != value.exists()}","n/a"
+"DeviceUseStatement.meta.versionId","DeviceUseStatement.meta.versionId","","","",0,1,"","","Y","id {[]} {[]}
+","バージョン固有の識別子 (Baajon koyū no shikibetsu-shi)","URLのバージョン部分に表示されるバージョン固有の識別子。この値は、リソースが作成、更新、または削除された場合に変更されます。","サーバーがこの値を割り当て、クライアントが指定した値を無視する。ただし、サーバーが更新/削除時にバージョンの整合性を強制する場合を除く。","","","","","","","","",,,,,"",,,,"Meta.versionId",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"DeviceUseStatement.meta.lastUpdated","DeviceUseStatement.meta.lastUpdated","","","",0,1,"Y","","Y","instant {[]} {[]}
+","「リソースのバージョンが最後に変更されたとき」","リソースが最後に変更されたとき - 例えば、バージョンが変更されたとき。","この値はリソースが初めて作成される場合を除いて常に設定されています。サーバー/リソースマネージャーがこの値を設定します。クライアントが提供する値は関係ありません。これはHTTP Last-Modifiedに相当し、[read](http://hl7.org/fhir/R4/http.html#read)のインタラクションで同じ値を持つべきです。","","","","","","","","",,,,,"",,,,"Meta.lastUpdated",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"DeviceUseStatement.meta.source","DeviceUseStatement.meta.source","","","",0,1,"","","Y","uri {[]} {[]}
+","「リソースがどこから来たかを特定する」(Risōsu ga doko kara kita ka o tokutei suru)","リソースのソースシステムを識別するURI。これにより、リソース内の情報のソースをトラックまたは区別するために使用できる最小限の[プロビナンス]（provenance.html＃）情報が提供されます。ソースは、別のFHIRサーバー、ドキュメント、メッセージ、データベースなどを識別できます。","「プロバナンスのリソースにおいて、これはProvenance.entity.what[x]に対応します。ソースの正確な使用方法（および含意されるProvenance.entity.role）は実装者の判断に委ねられます。指定されたソースは1つだけです。追加のプロバナンスの詳細が必要な場合は、完全なプロバナンスリソースを使用するべきです。
+
+この要素は、正規のURLでホストされていないリソースの現在のマスターソースがどこにあるかを示すために使用できます。」","","","","","","","","",,,,,"",,,,"Meta.source",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"DeviceUseStatement.meta.profile","DeviceUseStatement.meta.profile","","","",0,*,"","","Y","canonical {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/StructureDefinition]]}
+","このリソースが適合を主張するプロファイル","このリソースが準拠すると主張する [StructureDefinition](structuredefinition.html#) リソースに関するプロファイルのリストです。URL は [StructureDefinition.url](structuredefinition-definitions.html#StructureDefinition.url) への参照です。","これらの主張が時間の経過に伴って検証または更新される方法と、それらを決定するサーバーや他の基盤に任されます。プロファイルURLのリストは1セットです。","","","","","","","","",,,,,"",,,,"Meta.profile",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"DeviceUseStatement.meta.security","DeviceUseStatement.meta.security","","","",0,*,"","","Y","Coding {[]} {[]}
+","このリソースに適用されたセキュリティラベル","このリソースにはセキュリティラベルが適用されています。これらのタグにより、特定のリソースが全体的なセキュリティポリシーやインフラストラクチャに関連付けられます。","セキュリティラベルは変更せずにリソースのバージョンを更新可能です。セキュリティラベルのリストはセットであり、一意性はシステム/コードに基づき、バージョンと表示は無視されます。","","","","","","","","",,"extensible","医療プライバシーおよびセキュリティ分類システムからのセキュリティラベル。","http://hl7.org/fhir/ValueSet/security-labels","",,,,"Meta.security",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"DeviceUseStatement.meta.tag","DeviceUseStatement.meta.tag","","","",0,*,"","","Y","Coding {[]} {[]}
+","このリソースに適用されたタグ","このリソースに適用されるタグです。タグは、リソースをプロセスやワークフローに識別し、関連付けるために使用することが意図されており、アプリケーションはリソースの意味を解釈する際にタグを考慮する必要はありません。","リソースの表示バージョンを変更することなく、タグを更新できます。タグのリストは集合です。ユニーク性はシステム/コードに基づき、バージョンと表示は無視されます。","","","","","","","","",,"example","「様々なタグを表すコードで、一般的にはワークフローに関連しています。","http://hl7.org/fhir/ValueSet/common-tags","",,,,"Meta.tag",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"DeviceUseStatement.implicitRules","DeviceUseStatement.implicitRules","","","",0,1,"","Y","Y","uri {[]} {[]}
+","このコンテンツが作成されたルールセット","「リソース構築時に遵守された一連のルールを指すものであり、コンテンツを処理する際に理解する必要があります。しばしば、特別なルールを定義する実装ガイドとその他のプロファイルなどを含むものです。」","このルールセットを主張することで、取引先の限られた集団にしか内容を理解させることができず、長期的にはデータの有用性が制限されます。しかしながら、現存するヘルスエコシステムは高度に分断化しており、一般的に計算可能な形式でデータを定義、収集、交換する準備が整っていません。できる限り、実装者および/または仕様ライターはこの要素の使用を避けるべきです。使用する場合、URLは、そのナラティブとともに他のプロファイル、値セットなどを含む実装ガイドを定義する参照となります。","","","","","","","","",,,,,"",,,,"Resource.implicitRules",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"DeviceUseStatement.language","DeviceUseStatement.language","","","",0,1,"","","","code {[]} {[]}
+","「リソースコンテンツの言語」(Risōsukontentsu no gengo)","「リソースが書かれている基本言語。」","言語はインデックスとアクセシビリティをサポートするために提供されます（通常、テキスト読み上げなどのサービスは言語タグを使用します）。物語のHTML言語タグは、物語に適用されます。リソース上の言語タグは、リソース内のデータから生成される他のプレゼンテーションの言語を指定するために使用できます。すべてのコンテンツが基本言語である必要はありません。Resource.languageは自動的に物語に適用されたと想定してはいけません。言語が指定されている場合、HTMLのdiv要素にも指定する必要があります（xml：langとhtml lang属性の関係に関する情報はHTML5の規則を参照）。","","","","","","","","",,"preferred","「人間の言語。」(Ningen no gengo.)","http://hl7.org/fhir/ValueSet/languages","",,,,"Resource.language",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"DeviceUseStatement.text","DeviceUseStatement.text","","narrative
+htmlxhtmldisplay","",0,1,"","","","Narrative {[]} {[]}
+","「人間の解釈のためのリソースのテキスト要約」","「リソースの要約を含む人が読めるナビゲーションであり、リソースの内容を人に表現するために使用できます。ナビゲーションはすべての構造化されたデータをエンコードする必要はありませんが、人間がナビゲーションを読むだけで「臨床的に安全」であるために十分な詳細を含む必要があります。リソース定義には、臨床的な安全性を確保するためにナビゲーションで表現する必要があるコンテンツが定義される場合があります。」","含まれるリソースには説明がありません。含まれないリソースには説明が必要です。場合によっては、リソースが少量のデータしか含まず、テキストだけで表現されることがあります（minOccurs = 1要素がすべて満たされている限り）。これは、情報が「テキストの塊」としてキャプチャされるレガシーシステムからのデータや、テキストが生またはナレーションされて符号化された情報が後で追加される場合に必要な場合があります。","","","","","","","","",,,,,"",,,,"DomainResource.text",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Act.text?"
+"DeviceUseStatement.contained","DeviceUseStatement.contained","","inline resources
+anonymous resourcescontained resources","",0,*,"","","","Resource {[]} {[]}
+","「含まれている、インラインのリソース」(Fukuma rete iru, inrain no risōsu)","「これらのリソースは、それらを含むリソースから独立した存在を持ちません。それらは独立して識別することはできず、独自の独立したトランザクション範囲を持つこともできません。」","「コンテンツが適切に識別できる場合には、これを行うべきではありません。識別が失われると、再び復元することは非常に困難であり（文脈に依存します）、メタ要素にプロファイルとタグを持つことができますが、セキュリティのラベルを持っていてはいけません。」","","","","","","","","",,,,,"",,,,"DomainResource.contained",0,*,"","","N/A"
+"DeviceUseStatement.extension","DeviceUseStatement.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","「リソースの基本的な定義の一部ではない追加情報を表すために使用することができます。拡張機能の使用を安全かつ管理可能にするために、定義と使用の一定のガバナンスが適用されます。実装者はどんな拡張機能でも定義できますが、拡張機能の定義の一部として満たす必要がある要件があります」","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:「拡張機能または値[x]のいずれかが必要です。両方ではありません。」 {extension.exists() != value.exists()}","N/A"
+"DeviceUseStatement.modifierExtension","DeviceUseStatement.modifierExtension","","extensions
+user content","",0,*,"","Y","","Extension {[]} {[]}
+","無視できない拡張機能 (Mushi dekinai kakuchou kinou)","「リソースの基本的な定義に含まれない、要素の理解や、それを含む要素の子孫の理解を修正する追加情報を表すためにも使用されることがあります。通常、修飾要素は否定や修飾を提供します。拡張機能の使用を安全で管理しやすくするために、拡張機能の定義と使用に対して厳格な統治が適用されます。実装者は拡張機能を定義することが許可されていますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張をチェックする必要があります。修飾子拡張は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味も変更できません）。」","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:「拡張機能または値[x]のいずれかが必要です。両方ではありません。」 {extension.exists() != value.exists()}","N/A"
+"DeviceUseStatement.identifier","DeviceUseStatement.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
+","このレコードの外部識別子 (kono rekōdo no gaibu shikibetsu-shi)","「この文に対する外部識別子としてのIRIなど」","","","","","","","","","",,,,,"",,,,"DeviceUseStatement.identifier",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.identifier","ClinicalStatement.identifier","FiveWs.identifier"
+"DeviceUseStatement.basedOn","DeviceUseStatement.basedOn","","fulfills
+","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/ServiceRequest]]}
+","計画、提案、受注を達成する","この DeviceUseStatement で全体または部分的に達成される計画、提案、または命令。","","Allows tracing of authorization for the DeviceUseStatement and tracking whether proposals/recommendations were acted upon.","","","","","","","",,,,,"",,,,"DeviceUseStatement.basedOn",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.basedOn","ORC in proximity to EVN segment",".outboundRelationship[typeCode=FLFS].target"
+"DeviceUseStatement.status","DeviceUseStatement.status","","","",1,1,"","Y","Y","code {[]} {[]}
+","アクティブ | 完了済み | エラーにより入力済み +","この声明に関係するデバイスの状態に対する患者またはその他のソースの判断を表すコードです。一般的に、これはアクティブまたは完了される状態であることが多いです。","「DeviceUseStatmentは時間的に特定の時点での声明です。状態は、宣言された時点でのみ代表的です。患者による使用の状態を表明するコード（例えば、停止中または保留中など）と、リソース自体の状態を表明するコード（例えば、誤って入力された）を含む値が設定されます。この要素は、宣言を現在有効ではないとマークするコードが含まれているため、修飾子としてラベル付けされています。」","","","","","","","","",,"required","「デバイス使用状況の現在を示すコード化された概念」","http://hl7.org/fhir/ValueSet/device-statement-status|4.0.1","",,,,"DeviceUseStatement.status",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.status","…status","FiveWs.status",".statusCode"
+"DeviceUseStatement.subject","DeviceUseStatement.subject","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/Group]]}
+","デバイスを使用する患者 (Debaisu wo shiyōsuru kanja)","「そのデバイスを使用した患者さん。」","","","","","","","","","",,,,,"",,,,"DeviceUseStatement.subject",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.subject","ClinicalStatement.subject","FiveWs.subject[x]","FiveWs.subject"
+"DeviceUseStatement.derivedFrom","DeviceUseStatement.derivedFrom","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/ServiceRequest], CanonicalType[http://hl7.org/fhir/StructureDefinition/Procedure], CanonicalType[http://hl7.org/fhir/StructureDefinition/Claim], CanonicalType[http://hl7.org/fhir/StructureDefinition/Observation], CanonicalType[http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse], CanonicalType[http://hl7.org/fhir/StructureDefinition/DocumentReference]]}
+","サポート情報 (sapooto jouhou)","「DeviceUseStatementと基礎となるリクエストや、DeviceUseStatementをサポートするまたは推定に使用される他の情報へのリンクを許可します。」","「デバイス使用ステートメントを生成する最も一般的な用途は、リクエスト、観察、クレームから作成することから来ています。ただし、デバイス使用ステートメントを派生するリソースのタイプによって利用可能な情報の量が異なることに注意してください。」","","","","","","","","",,,,,"",,,,"DeviceUseStatement.derivedFrom",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"DeviceUseStatement.timing[x]","DeviceUseStatement.timing[x]","","","",0,1,"","","Y","Timing {[]} {[]}
+Period {[]} {[]}dateTime {[]} {[]}","「その装置がどの程度頻繁に使用されたか」","その装置はどのくらいの頻度で使用されましたか。","","","","","","","","","",,,,,"",,,,"DeviceUseStatement.timing[x]",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.occurrence[x]","DeviceUse.applicationSchedule","FiveWs.done[x]"
+"DeviceUseStatement.recordedOn","DeviceUseStatement.recordedOn","","","",0,1,"","","Y","dateTime {[]} {[]}
+","「声明が記録されたとき」","「その発言/記録がされた時刻。」","","","","","","","","","",,,,,"",,,,"DeviceUseStatement.recordedOn",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","ClinicalStatement.statementDateTime","FiveWs.recorded"
+"DeviceUseStatement.source","DeviceUseStatement.source","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient], CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson]]}
+","「発言したのは誰ですか？」(Hatsugen shita no wa dare desu ka?)","「装置が患者によって使用されていると報告したのは誰ですか。」","","","","","","","","","",,,,,"",,,,"DeviceUseStatement.source",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.performer.actor","FiveWs.actor"
+"DeviceUseStatement.device","DeviceUseStatement.device","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Device]]}
+","「使用された機器に関する言及」","使用された機器の詳細。","","","","","","","","","",,,,,"",,,,"DeviceUseStatement.device",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","DeviceUse.device","FiveWs.actor"
+"DeviceUseStatement.reasonCode","DeviceUseStatement.reasonCode","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
+","「どうしてそのデバイスが使われたのか」","「デバイス使用の理由または正当化」","","","","","","","","","",,,,,"",,,,"DeviceUseStatement.reasonCode",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.reasonCode","Action.indication.reason","FiveWs.why[x]"
+"DeviceUseStatement.reasonReference","DeviceUseStatement.reasonReference","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Condition], CanonicalType[http://hl7.org/fhir/StructureDefinition/Observation], CanonicalType[http://hl7.org/fhir/StructureDefinition/DiagnosticReport], CanonicalType[http://hl7.org/fhir/StructureDefinition/DocumentReference], CanonicalType[http://hl7.org/fhir/StructureDefinition/Media]]}
+","「なぜDeviceUseStatementが実行されたのですか？」","「この DeviceUseStatement の正当性を証明する存在の別のリソースを示します。」","","","","","","","","","",,,,,"",,,,"DeviceUseStatement.reasonReference",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.reasonReference","FiveWs.why[x]","EVN.4 or by domain",".outboundRelationship[typeCode=RSON].target"
+"DeviceUseStatement.bodySite","DeviceUseStatement.bodySite","","","",0,1,"","","Y","CodeableConcept {[]} {[]}
+","ターゲットの体の部位 (tāgetto no karada no bubun)","「装置が使用された被験者の体の解剖学的位置（つまり、目標）を示す。」","","Knowing where the device is targeted is important for tracking if multiple sites are possible. If more information than just a code is required, use the extension [http://hl7.org/fhir/StructureDefinition/bodySite](http://hl7.org/fhir/extension-bodysite.html).","","","","","","","",,"example","解剖学的位置を記述するコード。左右対称性を含む場合があります。","http://hl7.org/fhir/ValueSet/body-site","",,,,"DeviceUseStatement.bodySite",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.note","targetSiteCode"
+"DeviceUseStatement.note","DeviceUseStatement.note","","","",0,*,"","","","Annotation {[]} {[]}
+","「詳細な内容（コメント、指示）」","「デバイスの文言について、クラスで提供された属性のいずれかに全くまたは十分に表現されていなかった詳細。これには、コメント、指示、文言に関連する注などが含まれる場合があります。」","","","","","","","","","",,,,,"",,,,"DeviceUseStatement.note",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.note","ClinicalStatement.additionalText"
