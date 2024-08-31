@@ -4366,132 +4366,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;authoredon=[date]
 
 <h4 id="operation一覧">Operation一覧</h4>
 
-<p>JP Core MedicationRequest Injection リソースに対して使用される操作は次の通りである。</p>
-
-<ul>
-  <li>
-    <p>$everything：[base]/MedicationRequest/[id]/$everything</p>
-
-    <ul>
-      <li>この操作が呼び出された特定のMedicationRequestに関連する全ての情報を返す</li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="operation-詳細">Operation 詳細</h4>
-
-<h5 id="everything-操作">$everything 操作</h5>
-
-<p>この操作は、この操作が呼び出された特定のMedicationRequestリソースに関連する全ての情報を返す。応答は “searchset” タイプのBundleリソースである。サーバは、少なくとも、識別されたMedicationRequestコンパートメントに含まれる全てのリソースと、それらから参照されるすべてのリソースを返すことが望ましい。</p>
-
-<p>この操作の公式なURLは以下である。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://hl7.jp/fhir/OperationDefinition/MedicationRequest-everything
-</code></pre></div></div>
-
-<p>URL: [base]/MedicationRequest/[id]/$everything</p>
-
-<p>本操作は、べき等な操作である。</p>
-
-<h6 id="入力パラメータ">入力パラメータ</h6>
-
-<table>
-  <thead>
-    <tr>
-      <th>名前</th>
-      <th>多重度</th>
-      <th>型</th>
-      <th>説明</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>start</td>
-      <td>0..1</td>
-      <td>date</td>
-      <td>特定の日付範囲で提供されたケアに関連する全ての記録を意味する。開始日が指定されていない場合、終了日以前のすべてのレコードが対象に含まれる。</td>
-    </tr>
-    <tr>
-      <td>end</td>
-      <td>0..1</td>
-      <td>date</td>
-      <td>特定の日付範囲で提供されたケアに関連する全ての記録を意味する。終了日が指定されていない場合、開始日以降のすべてのレコードが対象に含まれる。</td>
-    </tr>
-    <tr>
-      <td>_since</td>
-      <td>0..1</td>
-      <td>instant</td>
-      <td>指定された日時以降に更新されたリソースのみが応答に含まれる。</td>
-    </tr>
-    <tr>
-      <td>_type</td>
-      <td>0..*</td>
-      <td>code</td>
-      <td>応答に含むFHIRリソース型を、カンマ区切りで指定する。指定されない場合は、サーバは全てのリソース型を対象とする。</td>
-    </tr>
-    <tr>
-      <td>_count</td>
-      <td>0..1</td>
-      <td>integer</td>
-      <td>Bundleの1ページに含まれるリソース件数を指定。</td>
-    </tr>
-  </tbody>
-</table>
-
-<h6 id="出力パラメータ">出力パラメータ</h6>
-
-<table>
-  <thead>
-    <tr>
-      <th>名前</th>
-      <th>多重度</th>
-      <th>型</th>
-      <th>説明</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>return</td>
-      <td>1..1</td>
-      <td>Bundle</td>
-      <td>バンドルのタイプは”searchset”である。この操作の結果は、リソースとして直接返される。</td>
-    </tr>
-  </tbody>
-</table>
-
-<h6 id="例">例</h6>
-
-<p>リクエスト：単一のMedicationRequestに関連する全てのリソースを取得する。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/MedicationRequest/1234567890/$everything
-[some headers]
-</code></pre></div></div>
-
-<p>レスポンス：指定されたMedicationRequestに関連する全てのリソースを返す。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP/1.1 200 OK
-[other headers]
-
-{
-  "resourceType": "Bundle",
-  "id": "example",
-  "meta": {
-    "lastUpdated": "2014-08-18T01:43:33Z"
-  },
-  "type": "searchset",
-  "entry": [
-    {
-      "fullUrl": "http://example.org/fhir/MedicationRequest/1234567890",
-      "resource": {
-        "resourceType": "MedicationRequest",
-
-          ・・・
-
-       },
-    }
-  ]
-}  
-</code></pre></div></div>
+<p>JP Core MedicationRequest Injection リソースに対する操作は定義されていない。</p>
 
 <h3 id="サンプル">サンプル</h3>
 <p>ホリゾン注射液１０ｍｇ１アンプルを左腕に静脈注射する処方例をFHIRで表現する場合のサンプルを示す。</p>
@@ -4510,7 +4385,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;authoredon=[date]
 <h3 id="投与薬剤投与量の記述方法">投与薬剤、投与量の記述方法</h3>
 <p>１回の投与薬剤と投与量は、RP内の薬剤が１薬剤の場合も混注などで複数の薬剤を含む場合も、すべての薬剤を記述したMedicationリソースを contained 属性に内包し、それをMedicationRequest.medicationReference属性で参照するようにする。
 Medicationリソースのingredient.itemCodeableConcept要素にCodeableConcept型で各薬剤の識別情報を記述し、ingredient.strength.numerator要素に１回あたりの含有量を記述する。薬剤を識別するコードはHOT7、HOT9、YJコード、⼀般処方名マスターを推奨するが、ローカルコードを使用してもよい。含有量の単位コードは MERIT-9を使用する。ingredient.strength.denominatorには固定値「１回」をMERIT-9を使用して指定する。
-dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる場合には全体の容量をUCUM(“http://unitsofmeasure.org”)を使用してmL単位で指定する。</p>
+dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる場合には全体の容量をUCUM("http://unitsofmeasure.org")を使用してmL単位で指定する。</p>
 
 <p>「ソリタ－Ｔ３号輸液５００ｍＬ １本」と「アドナ注（静脈用）50mg／10mL　１アンプル」計510mLを指示する場合のインスタンス例を示す。</p>
 
@@ -4591,7 +4466,7 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
 </span></code></pre></div></div>
 
 <h3 id="投与速度の記述方法">投与速度の記述方法</h3>
-<p>点滴注射など一定の速度で時間をかけて投与する場合、その投与速度は dosageInstruction.doseAndRate.rateRatioを使用してRatio型で表現する。単位コードには、UCUM(“http://unitsofmeasure.org”)を使用する。</p>
+<p>点滴注射など一定の速度で時間をかけて投与する場合、その投与速度は dosageInstruction.doseAndRate.rateRatioを使用してRatio型で表現する。単位コードには、UCUM("http://unitsofmeasure.org")を使用する。</p>
 
 <p>投与速度「100mL/h」を記述したインスタンス例を示す。</p>
 
@@ -4620,7 +4495,7 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
 </span></code></pre></div></div>
 
 <h3 id="力価区分の記述方法">力価区分の記述方法</h3>
-<p>用量は製剤量で記述することを基本とするが、必要に応じて原薬量指定も可能とする。この識別は、Medication.ingredient.strength要素に対して定義した拡張「JP_Medication_IngredientStrength_StrengthType」を使用する。この拡張を識別するURIとして、”http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_IngredientStrength_StrengthType”を使用し、値はCodeableConcept型を使用して力価区分コードを指定することで行い、製剤量は「1」、原薬量は「2」とする。</p>
+<p>用量は製剤量で記述することを基本とするが、必要に応じて原薬量指定も可能とする。この識別は、Medication.ingredient.strength要素に対して定義した拡張「JP_Medication_IngredientStrength_StrengthType」を使用する。この拡張を識別するURIとして、"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_IngredientStrength_StrengthType"を使用し、値はCodeableConcept型を使用して力価区分コードを指定することで行い、製剤量は「1」、原薬量は「2」とする。</p>
 
 <p>投与量「１本」を製剤量で記録したインスタンス例を示す。</p>
 
@@ -4667,7 +4542,7 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
 </span></code></pre></div></div>
 
 <h3 id="調剤容量の記述方法">調剤容量の記述方法</h3>
-<p>調剤容量はdispenseRequest.quantityに、SimpleQuantity型で記録する。単位コードはUCUM(“http://unitsofmeasure.org”)を使用する。</p>
+<p>調剤容量はdispenseRequest.quantityに、SimpleQuantity型で記録する。単位コードはUCUM("http://unitsofmeasure.org")を使用する。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"dispenseRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4715,7 +4590,7 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
 </span></code></pre></div></div>
 
 <h3 id="投与開始タイミングのあいまい指示の記述方法">投与開始タイミングのあいまい指示の記述方法</h3>
-<p>例えば「07/15 夕方」など、投与開始タイミングを時刻ではなくイベントで指定する場合、dosageInstruction.timing.event要素で日付をdateTime型で、dosageInstruction.timing.when要素でタイミングをcode型で表現する。コードは、EventTiming(“https://hl7.org/fhir/R4/valueset-event-timing.html”)を使用する。あいまい指示の場合、投与終了タイミングを指定することはできない。</p>
+<p>例えば「07/15 夕方」など、投与開始タイミングを時刻ではなくイベントで指定する場合、dosageInstruction.timing.event要素で日付をdateTime型で、dosageInstruction.timing.when要素でタイミングをcode型で表現する。コードは、EventTiming("https://hl7.org/fhir/R4/valueset-event-timing.html")を使用する。あいまい指示の場合、投与終了タイミングを指定することはできない。</p>
 
 <p>あいまい指示「2021/07/15 夕方」を指定した場合のインスタンス例を示す。</p>
 
@@ -4730,7 +4605,7 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
 </span></code></pre></div></div>
 
 <h3 id="頓用指示の頓用条件頓用回数の記述方法">頓用指示の頓用条件、頓用回数の記述方法</h3>
-<p>例えば「疼痛時10回分」など、頓用の場合の投与条件や投与回数を表現したい場合、投与条件は dosageInstruction.timing.code 要素に CodeableConcept型で指定する。コードは、JAMI処方・注射オーダ標準用法規格の表6 イベント区分、イベント詳細区分(“http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationAsNeededConditionJAMI_CS”)を推奨するが、MERIT-9 処方オーダ 表5 頓用指示(“http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationAsNeededConditionMERIT9_CS”) を使用してもよい。
+<p>例えば「疼痛時10回分」など、頓用の場合の投与条件や投与回数を表現したい場合、投与条件は dosageInstruction.timing.code 要素に CodeableConcept型で指定する。コードは、JAMI処方・注射オーダ標準用法規格の表6 イベント区分、イベント詳細区分("http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationAsNeededConditionJAMI_CS")を推奨するが、MERIT-9 処方オーダ 表5 頓用指示("http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationAsNeededConditionMERIT9_CS") を使用してもよい。
 頓用回数は、dispenseRequest要素に対して定義した拡張「JP_MedicationRequest_DispenseRequest_ExpectedRepeatCount」を使用し、integer型で頓用回数を記載する。
 また、頓用指示の場合、dosageInstruction.asNeededBoolean に true を指定する。</p>
 
@@ -4766,10 +4641,10 @@ dosageInstruction.doseAndRate.doseQuantity要素には、情報が得られる�
 </span></code></pre></div></div>
 
 <h3 id="投与部位の記述方法">投与部位の記述方法</h3>
-<p>投与部位を指定する場合は、dosageInstruction.site 要素に、CodeableConcept型で指定する。部位コードは、JAMI標準用法コード 表13 外用部位コード（”urn:oid:1.2.392.200250.2.2.20.32”）を推奨する。
-HL7表0550 身体部位(“http://terminology.hl7.org/CodeSystem/v2-0550”)とHL7表0495 身体部位修飾子(“http://terminology.hl7.org/CodeSystem/v2-0495”)を組み合わせて使用してもよいが、その場合は拡張「BodyStructure」を使用する。
-この拡張は BodyStructureリソースを参照することができるので、location 要素にHL7表0550 身体部位(“http://terminology.hl7.org/CodeSystem/v2-0550”)のコードを、locationQualifier 要素に
-身体部位修飾子(“http://terminology.hl7.org/CodeSystem/v2-0495”)のコードをそれぞれ指定したBodyStructureリソースをMedicationRequestリソースのcontained属性に内包し、それをExtension.valueReference 要素で参照するようにする。</p>
+<p>投与部位を指定する場合は、dosageInstruction.site 要素に、CodeableConcept型で指定する。部位コードは、JAMI標準用法コード 表13 外用部位コード（"urn:oid:1.2.392.200250.2.2.20.32"）を推奨する。
+HL7表0550 身体部位("http://terminology.hl7.org/CodeSystem/v2-0550")とHL7表0495 身体部位修飾子("http://terminology.hl7.org/CodeSystem/v2-0495")を組み合わせて使用してもよいが、その場合は拡張「BodyStructure」を使用する。
+この拡張は BodyStructureリソースを参照することができるので、location 要素にHL7表0550 身体部位("http://terminology.hl7.org/CodeSystem/v2-0550")のコードを、locationQualifier 要素に
+身体部位修飾子("http://terminology.hl7.org/CodeSystem/v2-0495")のコードをそれぞれ指定したBodyStructureリソースをMedicationRequestリソースのcontained属性に内包し、それをExtension.valueReference 要素で参照するようにする。</p>
 
 <p>投与部位「左腕」をJAMI標準用法コードで指定した場合のインスタンス例を示す。</p>
 
@@ -4832,9 +4707,9 @@ HL7表0550 身体部位(“http://terminology.hl7.org/CodeSystem/v2-0550”)とH
 <p>複数の部位に投与量を記録する場合は、dosageInstruction 要素を複数繰り返す。</p>
 
 <h3 id="投与経路投与手技の記述方法">投与経路、投与手技の記述方法</h3>
-<p>「静脈内」「眼内」などの投与経路は、dosageInstruction.route 要素にコードまたは文字列で指定する。使用するコード表はHL7 V2の使用者定義表0162 投薬経路を推奨し、その場合識別するURIとして、”http://jpfhir.jp/fhir/core/CodeSystem/route-codes”を使用する。</p>
+<p>「静脈内」「眼内」などの投与経路は、dosageInstruction.route 要素にコードまたは文字列で指定する。使用するコード表はHL7 V2の使用者定義表0162 投薬経路を推奨し、その場合識別するURIとして、"http://jpfhir.jp/fhir/core/CodeSystem/route-codes"を使用する。</p>
 
-<p>「0:静脈注射」、「1:中心静脈注射」などJAMI標準用法コードにて用法詳細区分として表現される区分（注射では「投与手技」とも呼ばれる）は、dosageInstruction.method 要素にコードまたは文字列で指定する。 用法詳細区分を識別するURIとして、”urn:oid:1.2.392.200250.2.2.20.30”を使用する。HL7 V2の使用者定義表0165(“http://terminology.hl7.org/CodeSystem/v2-0165”)やJAHIS注射データ交換規約のJHSI表0003 精密持続点滴(“http://jpfhir.jp/fhir/core/CodeSystem/JHSI0003)を使用してもよい。</p>
+<p>「0:静脈注射」、「1:中心静脈注射」などJAMI標準用法コードにて用法詳細区分として表現される区分（注射では「投与手技」とも呼ばれる）は、dosageInstruction.method 要素にコードまたは文字列で指定する。 用法詳細区分を識別するURIとして、"urn:oid:1.2.392.200250.2.2.20.30"を使用する。HL7 V2の使用者定義表0165("http://terminology.hl7.org/CodeSystem/v2-0165")やJAHIS注射データ交換規約のJHSI表0003 精密持続点滴("http://jpfhir.jp/fhir/core/CodeSystem/JHSI0003)を使用してもよい。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"route"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4919,7 +4794,7 @@ HL7 V2の使用者定義表0164 投薬装置を使用してもよい。</p>
 </span></code></pre></div></div>
 
 <h3 id="注射箋番号オーダidの記述方法">注射箋番号(オーダID)の記述方法</h3>
-<p>注射箋を識別する番号も、同様に MedicationRequestリソースの identifier 要素で表現することができる。Identifier 型のsystem 要素には、保険医療機関番号を含む注射箋ID の名前空間を表すOID（urn:oid:1.2.392.100495.20.3.11.1[保険医療機関コード(10 桁)]）を指定する。全国で⼀意になる発番ルールにもとづく場合には “urn:oid:1.2.392.100495.20.3.11” とする。</p>
+<p>注射箋を識別する番号も、同様に MedicationRequestリソースの identifier 要素で表現することができる。Identifier 型のsystem 要素には、保険医療機関番号を含む注射箋ID の名前空間を表すOID（urn:oid:1.2.392.100495.20.3.11.1[保険医療機関コード(10 桁)]）を指定する。全国で⼀意になる発番ルールにもとづく場合には "urn:oid:1.2.392.100495.20.3.11" とする。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -4930,7 +4805,7 @@ HL7 V2の使用者定義表0164 投薬装置を使用してもよい。</p>
 </span></code></pre></div></div>
 
 <h3 id="rp番号薬剤番号施用番号の記述方法">RP番号、薬剤番号、施用番号の記述方法</h3>
-<p>HL7 FHIRでは、注射箋の中で同一の用法を持つ剤グループ(RP)は、剤単位に個別のMedicationRequestリソースに展開される。このとき、剤グループの番号（RP番号と呼ぶ）と、同一剤グループ内での順番は、いずれも MedicationRequestリソースの identifier で表現することができる。RP番号を識別するURIとして、”urn:oid:1.2.392.100495.20.3.81”を使用する。同一剤グループ内での順番を識別するURIとして、”urn:oid:1.2.392.100495.20.3.82”を使用する。value は 文字列型であり、数値はゼロサプレス、つまり、”01”でなく”1”と指定すること。</p>
+<p>HL7 FHIRでは、注射箋の中で同一の用法を持つ剤グループ(RP)は、剤単位に個別のMedicationRequestリソースに展開される。このとき、剤グループの番号（RP番号と呼ぶ）と、同一剤グループ内での順番は、いずれも MedicationRequestリソースの identifier で表現することができる。RP番号を識別するURIとして、"urn:oid:1.2.392.100495.20.3.81"を使用する。同一剤グループ内での順番を識別するURIとして、"urn:oid:1.2.392.100495.20.3.82"を使用する。value は 文字列型であり、数値はゼロサプレス、つまり、"01"でなく"1"と指定すること。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -4944,7 +4819,7 @@ HL7 V2の使用者定義表0164 投薬装置を使用してもよい。</p>
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div></div>
 
-<p>同一剤グループ内での順番（薬剤番号）は、Medication.ingredient要素に対して定義した拡張「JP_Medication_Ingredient_DrugNo」を使用する。この拡張を識別するURIとして、”http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_Ingredient_DrugNo”を使用し、値はinteger型で指定する。</p>
+<p>同一剤グループ内での順番（薬剤番号）は、Medication.ingredient要素に対して定義した拡張「JP_Medication_Ingredient_DrugNo」を使用する。この拡張を識別するURIとして、"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_Ingredient_DrugNo"を使用し、値はinteger型で指定する。</p>
 
 <p>薬剤番号「1」を記述したインスタンス例を示す。</p>
 
@@ -4998,7 +4873,7 @@ HL7 V2の使用者定義表0164 投薬装置を使用してもよい。</p>
 </span></code></pre></div></div>
 
 <h3 id="入外区分">入外区分</h3>
-<p>薬剤オーダの入院、外来を区別するための区分として表現される入外区分は、HL7V2で定義されているHL7表0482を使用し、category要素にコードおよび文字列で指定することができる。入外区分を識別するURIとして、”http://terminology.hl7.org/CodeSystem/v2-0482”を使用する。</p>
+<p>薬剤オーダの入院、外来を区別するための区分として表現される入外区分は、HL7V2で定義されているHL7表0482を使用し、category要素にコードおよび文字列で指定することができる。入外区分を識別するURIとして、"http://terminology.hl7.org/CodeSystem/v2-0482"を使用する。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5010,7 +4885,7 @@ HL7 V2の使用者定義表0164 投薬装置を使用してもよい。</p>
 </span></code></pre></div></div>
 
 <h3 id="処方区分">処方区分</h3>
-<p>薬剤オーダの運用上の区分である処方区分は、MERIT-9(処方区分)およびJAHIS注射データ交換規約Ver.2.1CのJHSI表0001を使用し、category要素に2種類のコードおよび文字列で指定することができる。MERIT-9(処方区分)を識別するURIとして”http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationCategoryMERIT9_CS”を、JHSI表0001を識別するURIとして”http://jpfhir.jp/fhir/core/CodeSystem/JHSI0001”を使用する。</p>
+<p>薬剤オーダの運用上の区分である処方区分は、MERIT-9(処方区分)およびJAHIS注射データ交換規約Ver.2.1CのJHSI表0001を使用し、category要素に2種類のコードおよび文字列で指定することができる。MERIT-9(処方区分)を識別するURIとして"http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationCategoryMERIT9_CS"を、JHSI表0001を識別するURIとして"http://jpfhir.jp/fhir/core/CodeSystem/JHSI0001"を使用する。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5028,7 +4903,7 @@ HL7 V2の使用者定義表0164 投薬装置を使用してもよい。</p>
 </span></code></pre></div></div>
 
 <h3 id="用法種別">用法種別</h3>
-<p>ワンショットや点滴など、薬剤オーダの時間的な区分である用法種別は、JAMI処方・注射オーダ標準用法規格の表14 時間的要素・機器区分コード表を使用し、dosageInstruction.additionalInstruction要素にコードおよび文字列で指定することができる。時間的要素・機器区分コード表を識別するURIとして”urn:oid:1.2.392.200250.2.2.20.45”を使用する。</p>
+<p>ワンショットや点滴など、薬剤オーダの時間的な区分である用法種別は、JAMI処方・注射オーダ標準用法規格の表14 時間的要素・機器区分コード表を使用し、dosageInstruction.additionalInstruction要素にコードおよび文字列で指定することができる。時間的要素・機器区分コード表を識別するURIとして"urn:oid:1.2.392.200250.2.2.20.45"を使用する。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"dosageInstruction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -5115,7 +4990,7 @@ HL7 V2の使用者定義表0164 投薬装置を使用してもよい。</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Aug 1, 2024 16:38+0000">2024-08-01</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Aug 31, 2024 09:10+0000">2024-08-31</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

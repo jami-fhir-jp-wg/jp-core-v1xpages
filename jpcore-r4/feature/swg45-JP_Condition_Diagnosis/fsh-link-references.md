@@ -44,6 +44,7 @@
 [JP_DiagnosticReport_Radiology]: StructureDefinition-jp-diagnosticreport-radiology.html
 [jp-diagnosticreport-labresult-example-1]: DiagnosticReport-jp-diagnosticreport-labresult-example-1.html
 [jp-diagnosticreport-microbiology-example-1]: DiagnosticReport-jp-diagnosticreport-microbiology-example-1.html
+[JP_Condition_DiseaseOutcome]: StructureDefinition-jp-condition-disease-outcome.html
 [JP_Condition_DiseasePostfixModifier]: StructureDefinition-jp-condition-disease-postfix-modifier.html
 [JP_Condition_DiseasePrefixModifier]: StructureDefinition-jp-condition-disease-prefix-modifier.html
 [JP_DocumentCodes_CS]: CodeSystem-jp-documentcodes-cs.html

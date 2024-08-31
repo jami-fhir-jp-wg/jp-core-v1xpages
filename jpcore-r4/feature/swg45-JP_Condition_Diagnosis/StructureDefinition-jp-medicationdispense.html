@@ -2520,132 +2520,7 @@ GET [base]/MedicationDispense?patient=[url]&amp;whenhandedover=[date]
 
 <h4 id="operation一覧">Operation一覧</h4>
 
-<p>JP Core MedicationDispense リソースに対して使用される操作は次の通りである。</p>
-
-<ul>
-  <li>
-    <p>$everything：[base]/MedicationDispense/[id]/$everything</p>
-
-    <ul>
-      <li>この操作が呼び出された特定のMedicationDispenseに関連する全ての情報を返す</li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="operation-詳細">Operation 詳細</h4>
-
-<h5 id="everything-操作">$everything 操作</h5>
-
-<p>この操作は、この操作が呼び出された特定のMedicationDispenseリソースに関連する全ての情報を返す。応答は “searchset” タイプのBundleリソースである。サーバは、少なくとも、識別されたMedicationDispenseコンパートメントに含まれる全てのリソースと、それらから参照されるすべてのリソースを返すことが望ましい。</p>
-
-<p>この操作の公式なURLは以下である。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://hl7.jp/fhir/OperationDefinition/MedicationDispense-everything
-</code></pre></div></div>
-
-<p>URL: [base]/MedicationDispense/[id]/$everything</p>
-
-<p>本操作は、べき等な操作である。</p>
-
-<h6 id="入力パラメータ">入力パラメータ</h6>
-
-<table>
-  <thead>
-    <tr>
-      <th>名前</th>
-      <th>多重度</th>
-      <th>型</th>
-      <th>説明</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>start</td>
-      <td>0..1</td>
-      <td>date</td>
-      <td>特定の日付範囲で提供されたケアに関連する全ての記録を意味する。開始日が指定されていない場合、終了日以前のすべてのレコードが対象に含まれる。</td>
-    </tr>
-    <tr>
-      <td>end</td>
-      <td>0..1</td>
-      <td>date</td>
-      <td>特定の日付範囲で提供されたケアに関連する全ての記録を意味する。終了日が指定されていない場合、開始日以降のすべてのレコードが対象に含まれる。</td>
-    </tr>
-    <tr>
-      <td>_since</td>
-      <td>0..1</td>
-      <td>instant</td>
-      <td>指定された日時以降に更新されたリソースのみが応答に含まれる。</td>
-    </tr>
-    <tr>
-      <td>_type</td>
-      <td>0..*</td>
-      <td>code</td>
-      <td>応答に含むFHIRリソース型を、カンマ区切りで指定する。指定されない場合は、サーバは全てのリソース型を対象とする。</td>
-    </tr>
-    <tr>
-      <td>_count</td>
-      <td>0..1</td>
-      <td>integer</td>
-      <td>Bundleの1ページに含まれるリソース件数を指定。</td>
-    </tr>
-  </tbody>
-</table>
-
-<h6 id="出力パラメータ">出力パラメータ</h6>
-
-<table>
-  <thead>
-    <tr>
-      <th>名前</th>
-      <th>多重度</th>
-      <th>型</th>
-      <th>説明</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>return</td>
-      <td>1..1</td>
-      <td>Bundle</td>
-      <td>バンドルのタイプは”searchset”である。この操作の結果は、リソースとして直接返される。</td>
-    </tr>
-  </tbody>
-</table>
-
-<h6 id="例">例</h6>
-
-<p>リクエスト：単一のMedicationDispenseに関連する全てのリソースを取得する。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/MedicationDispense/1234567890/$everything
-[some headers]
-</code></pre></div></div>
-
-<p>レスポンス：指定されたMedicationDispenseに関連する全てのリソースを返す。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP/1.1 200 OK
-[other headers]
-
-{
-  "resourceType": "Bundle",
-  "id": "example",
-  "meta": {
-    "lastUpdated": "2014-08-18T01:43:33Z"
-  },
-  "type": "searchset",
-  "entry": [
-    {
-      "fullUrl": "http://example.org/fhir/MedicationDispense/1234567890",
-      "resource": {
-        "resourceType": "MedicationDispense",
-
-          ・・・
-
-       },
-    }
-  ]
-}  
-</code></pre></div></div>
+<p>JP Core MedicationDispense リソースに対する操作は定義されていない。</p>
 
 <h3 id="サンプル">サンプル</h3>
 <p>下記の内容の処方に従って調剤する例をFHIRで表現する場合のサンプルを示す。</p>
@@ -2686,8 +2561,8 @@ GET [base]/MedicationDispense?patient=[url]&amp;whenhandedover=[date]
 
 <h3 id="代替医薬品への変更内容の記述方法">代替医薬品への変更内容の記述方法</h3>
 <p>調剤時に行ったジェネリック医薬品などへの変更内容の記述は、substitution.wasSubstituted, substitution.type, substitution.reason を使用する。
-変更の種類はデフォルトのコード表（”http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution”）を使用する。
-変更の理由はデフォルトのコード表（”http://terminology.hl7.org/CodeSystem/v3-ActReason”)を使用するかフリーテキストで記述する。ローカルのコード表を使用してもよい。</p>
+変更の種類はデフォルトのコード表（"http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution"）を使用する。
+変更の理由はデフォルトのコード表（"http://terminology.hl7.org/CodeSystem/v3-ActReason")を使用するかフリーテキストで記述する。ローカルのコード表を使用してもよい。</p>
 
 <p>ジェネリック医薬品への変更の場合のインスタンス例を以下に示す。</p>
 
@@ -2755,7 +2630,7 @@ GET [base]/MedicationDispense?patient=[url]&amp;whenhandedover=[date]
 <p>単一の薬剤に対する調剤結果は、MedicationDispenseに対して定義した拡張「JP_MedicationDispense_Preparation」を使用する。
 この拡張は、CodeableConcept型を使用してテキストによる指示とコードによる指示のどちらかを記述することができる。
 一つの薬剤に対して、複数の指示を記録する場合には、この拡張を、拡張単位で繰り返して記録する。 
-調剤結果で使用するコードは、処方情報 HL7FHIR 記述仕様(調剤指示)(“urn:oid:1.2.392.200250.2.2.30.10”)を推奨する。</p>
+調剤結果で使用するコードは、処方情報 HL7FHIR 記述仕様(調剤指示)("urn:oid:1.2.392.200250.2.2.30.10")を推奨する。</p>
 
 <p>薬剤単位の調剤結果を表すインスタンス例を示す。</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2872,7 +2747,7 @@ https://github.com/Acedia-Belphegor/hl7v2-to-fhir/</a></li>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Aug 1, 2024 16:38+0000">2024-08-01</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Aug 31, 2024 09:10+0000">2024-08-31</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
