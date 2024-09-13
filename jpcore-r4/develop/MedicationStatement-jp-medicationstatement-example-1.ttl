@@ -1,0 +1,114 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://jpfhir.jp/fhir/core/MedicationStatement/jp-medicationstatement-example-1> a fhir:MedicationStatement ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "jp-medicationstatement-example-1"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationStatement"^^xsd:anyURI ;
+       fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationStatement>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: MedicationStatement jp-medicationstatement-example-1</b></p><a name=\"jp-medicationstatement-example-1\"> </a><a name=\"hcjp-medicationstatement-example-1\"> </a><a name=\"jp-medicationstatement-example-1-ja\"> </a><p><b>status</b>: Completed</p><p><b>medication</b>: <span title=\"Codes:{urn:oid:1.2.392.200119.4.403.1 103835401}\">ムコダイン錠２５０ｍｇ</span></p><p><b>subject</b>: <a href=\"Patient-jp-patient-example-1.html\">山田 太郎 Male, DoB: 1970-01-01 ( urn:oid:1.2.392.100495.20.3.51.11311234567#00000010)</a></p><p><b>effective</b>: 2020-04-01 00:00:00+0900 --&gt; 2020-04-14 00:00:00+0900</p><p><b>dateAsserted</b>: 2020-05-01 12:28:17+0900</p><p><b>informationSource</b>: <a href=\"Patient-jp-patient-example-1.html\">山田 太郎 Male, DoB: 1970-01-01 ( urn:oid:1.2.392.100495.20.3.51.11311234567#00000010)</a></p><p><b>derivedFrom</b>: <a href=\"MedicationRequest-jp-medicationrequest-example-1.html\">MedicationRequest: identifier = urn:oid:1.2.392.100495.20.3.81#1,urn:oid:1.2.392.100495.20.3.82#1,http://jpfhir.jp/fhir/core/IdSystem/resourceInstance-identifier#1234567890.1.1; status = active; intent = order; medication[x] = ムコダイン錠２５０ｍｇ; authoredOn = 2020-04-01 12:28:17+0900</a></p><p><b>reasonCode</b>: <span title=\"Codes:{urn:oid:1.2.392.200119.4.101.6 TQ7A}\">急性気管支炎</span></p><blockquote><p><b>dosage</b></p></blockquote></div>"
+  ] ; # 
+  fhir:status [ fhir:v "completed"] ; # 
+  fhir:medication [
+     a fhir:CodeableConcept ;
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:oid:1.2.392.200119.4.403.1"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "103835401" ] ;
+       fhir:display [ fhir:v "ムコダイン錠２５０ｍｇ" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1> ;
+     fhir:reference [ fhir:v "Patient/jp-patient-example-1" ]
+  ] ; # 
+  fhir:effective [
+     a fhir:Period ;
+     fhir:start [ fhir:v "2020-04-01T00:00:00+09:00"^^xsd:dateTime ] ;
+     fhir:end [ fhir:v "2020-04-14T00:00:00+09:00"^^xsd:dateTime ]
+  ] ; # 
+  fhir:dateAsserted [ fhir:v "2020-05-01T12:28:17+09:00"^^xsd:dateTime] ; # 
+  fhir:informationSource [
+     fhir:link <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1> ;
+     fhir:reference [ fhir:v "Patient/jp-patient-example-1" ]
+  ] ; # 
+  fhir:derivedFrom ( [
+     fhir:link <http://jpfhir.jp/fhir/core/MedicationRequest/jp-medicationrequest-example-1> ;
+     fhir:reference [ fhir:v "MedicationRequest/jp-medicationrequest-example-1" ]
+  ] ) ; # 
+  fhir:reasonCode ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:oid:1.2.392.200119.4.101.6"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "TQ7A" ] ;
+       fhir:display [ fhir:v "急性気管支炎" ]
+     ] )
+  ] ) ; # 
+  fhir:dosage ( [
+     fhir:text [ fhir:v "内服・経口・１日３回朝昼夕食後" ] ;
+     fhir:timing [
+       fhir:code [
+         fhir:coding ( [
+           fhir:system [ fhir:v "urn:oid:1.2.392.200250.2.2.20"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "1013044400000000" ] ;
+           fhir:display [ fhir:v "内服・経口・１日３回朝昼夕食後" ]
+         ] )
+       ]
+     ] ;
+     fhir:route [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/route-codes"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "PO" ] ;
+         fhir:display [ fhir:v "口" ]
+       ] )
+     ] ;
+     fhir:method [
+       fhir:coding ( [
+         fhir:system [ fhir:v "urn:oid:1.2.392.200250.2.2.20.40"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "10" ] ;
+         fhir:display [ fhir:v "経口" ]
+       ] )
+     ] ;
+     fhir:doseAndRate ( [
+       fhir:type [
+         fhir:coding ( [
+           fhir:system [ fhir:v "urn:oid:1.2.392.100495.20.2.22"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "1" ] ;
+           fhir:display [ fhir:v "製剤量" ]
+         ] )
+       ] ;
+       fhir:dose [
+         a fhir:Quantity ;
+         fhir:value [ fhir:v "1"^^xsd:decimal ] ;
+         fhir:unit [ fhir:v "錠" ] ;
+         fhir:system [ fhir:v "urn:oid:1.2.392.100495.20.2.101"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "TAB" ]
+       ] ;
+       fhir:rate [
+         a fhir:Ratio ;
+         fhir:numerator [
+           fhir:value [ fhir:v "3"^^xsd:decimal ] ;
+           fhir:unit [ fhir:v "錠" ] ;
+           fhir:system [ fhir:v "urn:oid:1.2.392.100495.20.2.101"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "TAB" ]
+         ] ;
+         fhir:denominator [
+           fhir:value [ fhir:v "1"^^xsd:decimal ] ;
+           fhir:unit [ fhir:v "日" ] ;
+           fhir:system [ fhir:v "http://unitsofmeasure.org"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "d" ]
+         ]
+       ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

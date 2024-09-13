@@ -115,6 +115,10 @@
 [jp-medicationrequest-injection-example-2]: MedicationRequest-jp-medicationrequest-injection-example-2.html
 [JP_MedicationRequest_Injection]: StructureDefinition-jp-medicationrequest-injection.html
 [JP_MedicationRequest]: StructureDefinition-jp-medicationrequest.html
+[jp-medicationstatement-example-1]: MedicationStatement-jp-medicationstatement-example-1.html
+[jp-medicationstatement-injection-example-1]: MedicationStatement-jp-medicationstatement-injection-example-1.html
+[JP_MedicationStatement_Injection]: StructureDefinition-jp-medicationstatement-injection.html
+[JP_MedicationStatement]: StructureDefinition-jp-medicationstatement.html
 [JP_Microbiology_AntiMicrobialDrug_CS]: CodeSystem-jp-microbiology-anti-microbial-drug-cs.html
 [JP_Microbiology_AntiMicrobialDrug_VS]: ValueSet-jp-microbiology-anti-microbial-drug-vs.html
 [JP_Microbiology_InfectiousAgent_VS]: ValueSet-jp-microbiology-infectious-agent-vs.html
