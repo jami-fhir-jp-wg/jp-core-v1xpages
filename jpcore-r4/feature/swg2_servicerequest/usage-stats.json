@@ -5,6 +5,111 @@
   "jurisdiction": "JP",
   "extensions": [
     {
+      "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseaseOutcome",
+      "title": "JP Core Disease Outcome Extension",
+      "types": [
+        "CodeableConcept",
+        "string",
+        "Extension",
+        "Coding",
+        "Coding",
+        "string",
+        "Extension",
+        "uri",
+        "string",
+        "code",
+        "string",
+        "boolean",
+        "Coding",
+        "string",
+        "Extension",
+        "uri",
+        "string",
+        "code",
+        "string",
+        "boolean",
+        "Coding",
+        "string",
+        "Extension",
+        "uri",
+        "string",
+        "code",
+        "string",
+        "boolean",
+        "string"
+      ]
+    },
+    {
+      "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseasePostfixModifier",
+      "title": "JP Core Disease Postfix Modifier Extension",
+      "types": [
+        "CodeableConcept",
+        "string",
+        "Extension",
+        "Coding",
+        "Coding",
+        "string",
+        "Extension",
+        "uri",
+        "string",
+        "code",
+        "string",
+        "boolean",
+        "Coding",
+        "string",
+        "Extension",
+        "uri",
+        "string",
+        "code",
+        "string",
+        "boolean",
+        "Coding",
+        "string",
+        "Extension",
+        "uri",
+        "string",
+        "code",
+        "string",
+        "boolean",
+        "string"
+      ]
+    },
+    {
+      "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseasePrefixModifier",
+      "title": "JP Core Disease Prefix Modifier Extension",
+      "types": [
+        "CodeableConcept",
+        "string",
+        "Extension",
+        "Coding",
+        "Coding",
+        "string",
+        "Extension",
+        "uri",
+        "string",
+        "code",
+        "string",
+        "boolean",
+        "Coding",
+        "string",
+        "Extension",
+        "uri",
+        "string",
+        "code",
+        "string",
+        "boolean",
+        "Coding",
+        "string",
+        "Extension",
+        "uri",
+        "string",
+        "code",
+        "string",
+        "boolean",
+        "string"
+      ]
+    },
+    {
       "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonNumber",
       "title": "JP Core Coverage InsuredPersonNumber Extension",
       "types": [
@@ -303,6 +408,10 @@
       {
         "url": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition",
         "title": "JP Core Condition Profile"
+      },
+      {
+        "url": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition_Diagnosis",
+        "title": "JP Core Condition Diagnosis Profile"
       }
     ],
     "Consent": [
@@ -441,6 +550,16 @@
         "title": "JP Core MedicationRequest Injection Profile"
       }
     ],
+    "MedicationStatement": [
+      {
+        "url": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationStatement",
+        "title": "JP Core MedicationStatement Profile"
+      },
+      {
+        "url": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationStatement_Injection",
+        "title": "JP Core MedicationStatement Injection Profile"
+      }
+    ],
     "Observation": [
       {
         "url": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_BodyMeasurement",
@@ -526,7 +645,7 @@
       },
       {
         "url": "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ServiceRequest_Common",
-        "title": "JP_ServiceRequest_Common"
+        "title": "JP Core ServiceRequest Common Profile"
       }
     ],
     "Specimen": [
@@ -547,7 +666,8 @@
       "Dosage.site",
       "MedicationAdministration.dosage.site",
       "MedicationDispense.dosageInstruction.site",
-      "MedicationRequest.dosageInstruction.site"
+      "MedicationRequest.dosageInstruction.site",
+      "MedicationStatement.dosage.site"
     ],
     "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation": [
       "SearchParameter.multipleAnd",
@@ -563,12 +683,7 @@
       "StructureDefinition.differential.element.binding",
       "StructureDefinition.snapshot.element.binding"
     ],
-    "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding": [
-      "StructureDefinition.differential.element.binding",
-      "StructureDefinition.snapshot.element.binding"
-    ],
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet": [
-      "StructureDefinition.differential.element.binding",
       "StructureDefinition.snapshot.element.binding"
     ],
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable": [
@@ -615,6 +730,15 @@
     "http://hl7.org/fhir/tools/StructureDefinition/resource-information": [
       "ImplementationGuide.definition.resource"
     ],
+    "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseaseOutcome": [
+      "Condition"
+    ],
+    "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseasePostfixModifier": [
+      "Condition.code"
+    ],
+    "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseasePrefixModifier": [
+      "Condition.code"
+    ],
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonNumber": [
       "Coverage"
     ],
@@ -654,24 +778,29 @@
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_Device": [
       "Dosage",
       "MedicationAdministration.dosage",
-      "MedicationRequest.dosageInstruction"
+      "MedicationRequest.dosageInstruction",
+      "MedicationStatement.dosage"
     ],
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_DosageComment": [
       "Dosage",
-      "MedicationAdministration.dosage"
+      "MedicationAdministration.dosage",
+      "MedicationStatement.dosage"
     ],
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_Line": [
       "Dosage",
       "MedicationAdministration.dosage",
-      "MedicationRequest.dosageInstruction"
+      "MedicationRequest.dosageInstruction",
+      "MedicationStatement.dosage"
     ],
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_LineComment": [
       "Dosage",
-      "MedicationAdministration.dosage"
+      "MedicationAdministration.dosage",
+      "MedicationStatement.dosage"
     ],
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_MethodComment": [
       "Dosage.method",
-      "MedicationAdministration.dosage.method"
+      "MedicationAdministration.dosage.method",
+      "MedicationStatement.dosage.method"
     ],
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_PeriodOfUse": [
       "Dosage",
@@ -679,15 +808,19 @@
     ],
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_RateComment": [
       "Dosage.doseAndRate",
-      "MedicationAdministration.dosage"
+      "MedicationAdministration.dosage",
+      "MedicationStatement.dosage",
+      "MedicationStatement.dosage.doseAndRate"
     ],
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_RouteComment": [
       "Dosage.route",
-      "MedicationAdministration.dosage.route"
+      "MedicationAdministration.dosage.route",
+      "MedicationStatement.dosage.route"
     ],
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_SiteComment": [
       "Dosage.site",
-      "MedicationAdministration.dosage.site"
+      "MedicationAdministration.dosage.site",
+      "MedicationStatement.dosage.site"
     ],
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_UsageDuration": [
       "Dosage",
@@ -702,7 +835,8 @@
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_IngredientStrength_StrengthType": [
       "Medication.ingredient.strength",
       "MedicationDispense.contained.ingredient.strength",
-      "MedicationRequest.contained.ingredient.strength"
+      "MedicationRequest.contained.ingredient.strength",
+      "MedicationStatement.contained.ingredient.strength"
     ],
     "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_Ingredient_DrugNo": [
       "Medication.ingredient",
