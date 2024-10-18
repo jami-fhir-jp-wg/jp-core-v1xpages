@@ -166,6 +166,7 @@
 [JP_Observation_Microbiology]: StructureDefinition-jp-observation-microbiology.html
 [jp-observation-physicalexam-example-1]: Observation-jp-observation-physicalexam-example-1.html
 [JP_Observation_PhysicalExam]: StructureDefinition-jp-observation-physicalexam.html
+[JP_ObservationRadiologyCode_VS]: ValueSet-jp-ObservationRadiologyCode-vs.html
 [jp-observation-radiology-findings-example-1]: Observation-jp-observation-radiology-findings-example-1.html
 [JP_Observation_Radiology_Findings]: StructureDefinition-jp-observation-radiology-findings.html
 [jp-observation-radiology-impression-example-1]: Observation-jp-observation-radiology-impression-example-1.html
