@@ -53,8 +53,7 @@
 [jp-encounter-example-1]: Encounter-jp-encounter-example-1.html
 [JP_Encounter]: StructureDefinition-jp-encounter.html
 [JP_EndoscopyTerminologyCodesJED_CS]: CodeSystem-jp-endoscopyterminology-codes-jed-cs.html
-[JP_FamilyMemberHistory_CS]: CodeSystem-jp-family-member-history-cs.html
-[JP_FamilyMemberHistory_VS]: ValueSet-jp-family-member-history-vs.html
+[JP_FamilyMember_VS]: ValueSet-jp-family-member-vs.html
 [jp-familymemberhistory-example-1]: FamilyMemberHistory-jp-familymemberhistory-example-1.html
 [JP_FamilyMemberHistory]: StructureDefinition-jp-familymemberhistory.html
 [JP_HumanName]: StructureDefinition-jp-humanname.html
