@@ -44,6 +44,7 @@
 [JP_DiagnosticReport_Radiology]: StructureDefinition-jp-diagnosticreport-radiology.html
 [jp-diagnosticreport-labresult-example-1]: DiagnosticReport-jp-diagnosticreport-labresult-example-1.html
 [jp-diagnosticreport-microbiology-example-1]: DiagnosticReport-jp-diagnosticreport-microbiology-example-1.html
+[JP_DICOMModality_VS]: ValueSet-jp-DICOMmodality-vs.html
 [JP_Condition_DiseaseOutcome]: StructureDefinition-jp-condition-disease-outcome.html
 [JP_Condition_DiseasePostfixModifier]: StructureDefinition-jp-condition-disease-postfix-modifier.html
 [JP_Condition_DiseasePrefixModifier]: StructureDefinition-jp-condition-disease-prefix-modifier.html
@@ -210,7 +211,6 @@
 [JP_Procedure]: StructureDefinition-jp-procedure.html
 [JP_ProcedureReason_VS]: ValueSet-jp-procedure-reason-vs.html
 [jp-practitionerrole-example-1]: PractitionerRole-jp-practitionerrole-example-1.html
-[JP_RadiologyModality_VS]: ValueSet-jp-radiologymodality-vs.html
 [jp-server-capabilitystatement]: CapabilityStatement-jp-server-capabilitystatement.html
 [JP_SimpleObservationCategory_CS]: CodeSystem-jp-simpleobservationcategory-cs.html
 [JP_SimpleObservationCategory_VS]: ValueSet-jp-simpleobservationcategory-vs.html
