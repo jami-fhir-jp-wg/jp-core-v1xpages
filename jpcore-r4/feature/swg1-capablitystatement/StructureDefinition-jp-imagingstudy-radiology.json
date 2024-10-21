@@ -410,7 +410,7 @@
       "path" : "ImagingStudy.identifier",
       "short" : "スタディ全体の識別子",
       "definition" : "DICOMスタディインスタンスUIDやアクセッション番号などのImagingStudyの識別子。",
-      "comment" : "DICOMスタディインスタンスUIDのエンコードについては、[Imaging Study Implementation Notes]（imagingstudy.html＃notes）の説明を参照。アクセッション番号はACSN識別子タイプを使用する必要がある。  \n【JP-Core仕様】Study Instance UIDは画像が存在する場合に必須、その他は任意。StudyInstanceUID (0020,000D)",
+      "comment" : "DICOMスタディインスタンスUIDのエンコードについては、[Imaging Study Implementation Notes]（imagingstudy.html#notes）の説明を参照。アクセッション番号はACSN識別子タイプを使用する必要がある。  \n【JP-Core仕様】Study Instance UIDは画像が存在する場合に必須、その他は任意。StudyInstanceUID (0020,000D)",
       "requirements" : "ImagingStudyに1つ以上のシリーズ要素が存在する場合、1つのDICOMスタディUID識別子が存在する必要がある（[DICOM PS 3.3 C.7.2]（https://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.2.html）を参照） 。",
       "alias" : ["StudyInstanceUID",
       "AccessionNumber"],
@@ -511,7 +511,7 @@
       "path" : "ImagingStudy.modality",
       "short" : "実際の取得モダリティーの場合、モダリティーの全シリーズ。対応するDICOM tag: (0008, 0061)",
       "definition" : "実際の取得モダリティであるすべてのseries.modality値のリスト、つまりDICOMコンテキストグループ29（値セットOID 1.2.840.10008.6.1.19）の値。",
-      "comment" : "コードは、列挙型またはコードリストで、SNOMED CTなどの非常に正式な定義まで、非常にカジュアルに定義できる。詳細については、HL7v3コア原則を参照のこと。  \n・モダリティのコードを設定。  \n・Seriesの階層の(0008,0060)を集約する、または(0008,0060)\u3000と\u3000(0008, 0061) のOR。但し、重複する値は1つにまとめて表現。",
+      "comment" : "コードは、列挙型またはコードリストで、DICOMのモダリティコードを利用する。  \n・モダリティのコードを設定。  \n・Seriesの階層の(0008,0060)を集約する、または(0008,0060)\u3000と\u3000(0008, 0061) のOR。但し、重複する値は1つにまとめて表現。",
       "alias" : ["ModalitiesInStudy"],
       "min" : 0,
       "max" : "*",
@@ -1475,7 +1475,7 @@
       "path" : "ImagingStudy.series.modality",
       "short" : "シリーズが取得されたモダリティ",
       "definition" : "シリーズが取得されたモダリティー",
-      "comment" : "コードは、列挙型またはコードリストで、SNOMED CTなどの非常に正式な定義まで、非常に柔軟に定義できる。ただしJP CoreではSNOMED CTを推奨しない。詳細については、HL7v3コア原則を参照。  \n当該シリーズのモダリティコード。1シリーズ1モダリティ（1つのシリーズの中に複数のモダリティが混在することはない）。  \n（参照先）  \nftp://medical.nema.org/medical/dicom/resources/valuesets/fhir/json/CID_29.json  \nhttps://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html",
+      "comment" : "JP CoreではDICOMのモダリティコードを利用する。SNOMED CTは推奨しない。  \n（参照先）   \nhttp://jpfhir.jp/fhir/core/ValueSet/JP_DICOMModality_VS.html",
       "alias" : ["Modality"],
       "min" : 1,
       "max" : "1",
@@ -2344,7 +2344,7 @@
       "path" : "ImagingStudy.identifier",
       "short" : "スタディ全体の識別子",
       "definition" : "DICOMスタディインスタンスUIDやアクセッション番号などのImagingStudyの識別子。",
-      "comment" : "DICOMスタディインスタンスUIDのエンコードについては、[Imaging Study Implementation Notes]（imagingstudy.html＃notes）の説明を参照。アクセッション番号はACSN識別子タイプを使用する必要がある。  \n【JP-Core仕様】Study Instance UIDは画像が存在する場合に必須、その他は任意。StudyInstanceUID (0020,000D)",
+      "comment" : "DICOMスタディインスタンスUIDのエンコードについては、[Imaging Study Implementation Notes]（imagingstudy.html#notes）の説明を参照。アクセッション番号はACSN識別子タイプを使用する必要がある。  \n【JP-Core仕様】Study Instance UIDは画像が存在する場合に必須、その他は任意。StudyInstanceUID (0020,000D)",
       "requirements" : "ImagingStudyに1つ以上のシリーズ要素が存在する場合、1つのDICOMスタディUID識別子が存在する必要がある（[DICOM PS 3.3 C.7.2]（https://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.2.html）を参照） 。",
       "mustSupport" : true
     },
@@ -2360,7 +2360,7 @@
       "path" : "ImagingStudy.modality",
       "short" : "実際の取得モダリティーの場合、モダリティーの全シリーズ。対応するDICOM tag: (0008, 0061)",
       "definition" : "実際の取得モダリティであるすべてのseries.modality値のリスト、つまりDICOMコンテキストグループ29（値セットOID 1.2.840.10008.6.1.19）の値。",
-      "comment" : "コードは、列挙型またはコードリストで、SNOMED CTなどの非常に正式な定義まで、非常にカジュアルに定義できる。詳細については、HL7v3コア原則を参照のこと。  \n・モダリティのコードを設定。  \n・Seriesの階層の(0008,0060)を集約する、または(0008,0060)\u3000と\u3000(0008, 0061) のOR。但し、重複する値は1つにまとめて表現。"
+      "comment" : "コードは、列挙型またはコードリストで、DICOMのモダリティコードを利用する。  \n・モダリティのコードを設定。  \n・Seriesの階層の(0008,0060)を集約する、または(0008,0060)\u3000と\u3000(0008, 0061) のOR。但し、重複する値は1つにまとめて表現。"
     },
     {
       "id" : "ImagingStudy.subject",
@@ -2541,7 +2541,7 @@
       "path" : "ImagingStudy.series.modality",
       "short" : "シリーズが取得されたモダリティ",
       "definition" : "シリーズが取得されたモダリティー",
-      "comment" : "コードは、列挙型またはコードリストで、SNOMED CTなどの非常に正式な定義まで、非常に柔軟に定義できる。ただしJP CoreではSNOMED CTを推奨しない。詳細については、HL7v3コア原則を参照。  \n当該シリーズのモダリティコード。1シリーズ1モダリティ（1つのシリーズの中に複数のモダリティが混在することはない）。  \n（参照先）  \nftp://medical.nema.org/medical/dicom/resources/valuesets/fhir/json/CID_29.json  \nhttps://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html",
+      "comment" : "JP CoreではDICOMのモダリティコードを利用する。SNOMED CTは推奨しない。  \n（参照先）   \nhttp://jpfhir.jp/fhir/core/ValueSet/JP_DICOMModality_VS.html",
       "mustSupport" : true
     },
     {
