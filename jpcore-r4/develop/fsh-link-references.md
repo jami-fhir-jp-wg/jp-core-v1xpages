@@ -44,7 +44,7 @@
 [JP_DiagnosticReport_Radiology]: StructureDefinition-jp-diagnosticreport-radiology.html
 [jp-diagnosticreport-labresult-example-1]: DiagnosticReport-jp-diagnosticreport-labresult-example-1.html
 [jp-diagnosticreport-microbiology-example-1]: DiagnosticReport-jp-diagnosticreport-microbiology-example-1.html
-[JP_DICOMModality_VS]: ValueSet-jp-DICOMmodality-vs.html
+[JP_DICOMModality_VS]: ValueSet-jp-dicommodality-vs.html
 [JP_Condition_DiseaseOutcome]: StructureDefinition-jp-condition-disease-outcome.html
 [JP_Condition_DiseasePostfixModifier]: StructureDefinition-jp-condition-disease-postfix-modifier.html
 [JP_Condition_DiseasePrefixModifier]: StructureDefinition-jp-condition-disease-prefix-modifier.html
@@ -167,7 +167,7 @@
 [JP_Observation_Microbiology]: StructureDefinition-jp-observation-microbiology.html
 [jp-observation-physicalexam-example-1]: Observation-jp-observation-physicalexam-example-1.html
 [JP_Observation_PhysicalExam]: StructureDefinition-jp-observation-physicalexam.html
-[JP_ObservationRadiologyCode_VS]: ValueSet-jp-ObservationRadiologyCode-vs.html
+[JP_ObservationRadiologyCode_VS]: ValueSet-jp-observation-radiology-code-vs.html
 [jp-observation-radiology-findings-example-1]: Observation-jp-observation-radiology-findings-example-1.html
 [JP_Observation_Radiology_Findings]: StructureDefinition-jp-observation-radiology-findings.html
 [jp-observation-radiology-impression-example-1]: Observation-jp-observation-radiology-impression-example-1.html
