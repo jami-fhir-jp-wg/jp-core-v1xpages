@@ -128,7 +128,7 @@ ext-1:両方ではなく、拡張または値[x]が必要です / Must have eith
 ","薬が使用される区分","薬剤の摂取または投与が予想される場所を示します。","","","","","","","","","",,"preferred","薬剤の投与が予想される場所を記述するコード化された概念。","http://hl7.org/fhir/ValueSet/medication-admin-category","",,,,"MedicationAdministration.category",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=""type of medication usage""].value"
 "MedicationAdministration.medication[x]","MedicationAdministration.medication[x]","","","",1,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Medication]]}
-","医薬品","投与された薬剤を識別する。既知の薬のリストから薬を識別するコード情報を設定する。","ひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。  
+","医薬品","医薬品の識別情報は必須でありmedicationReference.referenceが必ず存在しなければならない、JP Coreでは注射の医薬品情報は単一薬剤の場合も Medicationリソースとして記述し、medicationCodeableConceptは使用しない。参照するMedicationリソースは、MedicationRequest.contained属性に内包することが望ましいが、外部参照としても良い。","ひとつのtext要素と、複数のcoding 要素を記述できる。処方オーダ時に選択または入力し、実際に処方箋に印字される文字列を必ずtext要素に格納した上で、それをコード化した情報を1個以上のcoding 要素に記述する。  
 厚生労働省標準であるHOT9コード（販社指定が不要な場合にはHOT7コード）または広く流通しているYJコードを用いるか、一般名処方の場合には厚生労働省保険局一般名処方マスタのコードを使用して、Coding要素（コードsystemを識別するURI、医薬品のコード、そのコード表における医薬品の名称の3つからなる）で記述する。  
 なお、上記のいずれの標準的コードも付番されていない医薬品や医療材料の場合には、薬機法の下で使用されているGS1標準の識別コードであるGTIN(Global Trade Item Number)の調剤包装単位（最少包装単位、個別包装単位）14桁を使用する。  
 ひとつの処方薬、医療材料を複数のコード体系のコードで記述してもよく、その場合にcoding 要素を繰り返して記述する。  
