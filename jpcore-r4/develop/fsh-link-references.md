@@ -212,6 +212,7 @@
 [JP_ProcedureReason_VS]: ValueSet-jp-procedure-reason-vs.html
 [jp-practitionerrole-example-1]: PractitionerRole-jp-practitionerrole-example-1.html
 [jp-server-capabilitystatement]: CapabilityStatement-jp-server-capabilitystatement.html
+[JP_ServiceRequest_Common]: StructureDefinition-jp-servicerequest-common.html
 [JP_SimpleObservationCategory_CS]: CodeSystem-jp-simpleobservationcategory-cs.html
 [JP_SimpleObservationCategory_VS]: ValueSet-jp-simpleobservationcategory-vs.html
 [jp-specimen-example-3]: Specimen-jp-specimen-example-3.html
