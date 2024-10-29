@@ -37,6 +37,7 @@
 [JP_DiagnosticReport_Common]: StructureDefinition-jp-diagnosticreport-common.html
 [JP_ConclusionCodesJed_VS]: ValueSet-jp-conclusion-codes-jed-vs.html
 [jp-diagnosticreport-endoscopy-example-1]: DiagnosticReport-jp-diagnosticreport-endoscopy-example-1.html
+[jp-diagnosticreport-endoscopy-example-2]: DiagnosticReport-jp-diagnosticreport-endoscopy-example-2.html
 [JP_DiagnosticReport_Endoscopy]: StructureDefinition-jp-diagnosticreport-endoscopy.html
 [JP_DiagnosticReport_LabResult]: StructureDefinition-jp-diagnosticreport-labresult.html
 [JP_DiagnosticReport_Microbiology]: StructureDefinition-jp-diagnosticreport-microbiology.html
@@ -54,6 +55,7 @@
 [jp-encounter-example-1]: Encounter-jp-encounter-example-1.html
 [JP_Encounter]: StructureDefinition-jp-encounter.html
 [JP_EndoscopyTerminologyCodesJED_CS]: CodeSystem-jp-endoscopyterminology-codes-jed-cs.html
+[JP_ObservationCategory_Endoscopy_VS]: ValueSet-jp-endoscopy-category-vs.html
 [jp-familymemberhistory-example-1]: FamilyMemberHistory-jp-familymemberhistory-example-1.html
 [JP_FamilyMemberHistory]: StructureDefinition-jp-familymemberhistory.html
 [JP_HumanName]: StructureDefinition-jp-humanname.html
@@ -162,6 +164,15 @@
 [JP_ObservationBodySite_CS]: CodeSystem-jp-observation-bodysite-cs.html
 [JP_ObservationBodySite_VS]: ValueSet-jp-observation-bodysite-vs.html
 [JP_Observation_Common]: StructureDefinition-jp-observation-common.html
+[JP_ObservationEndoscopyCode_VS]: ValueSet-jp-observation-endoscopy-code-vs.html
+[jp-observation-endoscopy-example-findings-2b]: Observation-jp-observation-endoscopy-example-findings-2b.html
+[jp-observation-endoscopy-example-findings-1b]: Observation-jp-observation-endoscopy-example-findings-1b.html
+[jp-observation-endoscopy-example-findings-1a]: Observation-jp-observation-endoscopy-example-findings-1a.html
+[jp-observation-endoscopy-example-findings-2a]: Observation-jp-observation-endoscopy-example-findings-2a.html
+[jp-observation-endoscopy-example-diagnosis-2]: Observation-jp-observation-endoscopy-example-diagnosis-2.html
+[jp-observation-endoscopy-example-diagnosis-1]: Observation-jp-observation-endoscopy-example-diagnosis-1.html
+[JP_Observation_Endoscopy]: StructureDefinition-jp-observation-endoscopy.html
+[JP_ObservationEndoscopyValueJed_VS]: ValueSet-jp-observation-endoscoy-value-jed-vs.html
 [jp-observation-labresult-example-1]: Observation-jp-observation-labresult-example-1.html
 [JP_Observation_LabResult]: StructureDefinition-jp-observation-labresult.html
 [JP_Observation_Microbiology]: StructureDefinition-jp-observation-microbiology.html
