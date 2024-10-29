@@ -44,6 +44,7 @@
 [JP_DiagnosticReport_Radiology]: StructureDefinition-jp-diagnosticreport-radiology.html
 [jp-diagnosticreport-labresult-example-1]: DiagnosticReport-jp-diagnosticreport-labresult-example-1.html
 [jp-diagnosticreport-microbiology-example-1]: DiagnosticReport-jp-diagnosticreport-microbiology-example-1.html
+[JP_DICOMModality_VS]: ValueSet-jp-dicommodality-vs.html
 [JP_Condition_DiseaseOutcome]: StructureDefinition-jp-condition-disease-outcome.html
 [JP_Condition_DiseasePostfixModifier]: StructureDefinition-jp-condition-disease-postfix-modifier.html
 [JP_Condition_DiseasePrefixModifier]: StructureDefinition-jp-condition-disease-prefix-modifier.html
@@ -166,6 +167,11 @@
 [JP_Observation_Microbiology]: StructureDefinition-jp-observation-microbiology.html
 [jp-observation-physicalexam-example-1]: Observation-jp-observation-physicalexam-example-1.html
 [JP_Observation_PhysicalExam]: StructureDefinition-jp-observation-physicalexam.html
+[JP_ObservationRadiologyCode_VS]: ValueSet-jp-observation-radiology-code-vs.html
+[jp-observation-radiology-findings-example-1]: Observation-jp-observation-radiology-findings-example-1.html
+[JP_Observation_Radiology_Findings]: StructureDefinition-jp-observation-radiology-findings.html
+[jp-observation-radiology-impression-example-1]: Observation-jp-observation-radiology-impression-example-1.html
+[JP_Observation_Radiology_Impression]: StructureDefinition-jp-observation-radiology-impression.html
 [jp-observation-socialhistory-example-1]: Observation-jp-observation-socialhistory-example-1.html
 [JP_Observation_SocialHistory]: StructureDefinition-jp-observation-socialhistory.html
 [jp-observation-vitalsigns-example-1]: Observation-jp-observation-vitalsigns-example-1.html
@@ -205,7 +211,6 @@
 [JP_Procedure]: StructureDefinition-jp-procedure.html
 [JP_ProcedureReason_VS]: ValueSet-jp-procedure-reason-vs.html
 [jp-practitionerrole-example-1]: PractitionerRole-jp-practitionerrole-example-1.html
-[JP_RadiologyModality_VS]: ValueSet-jp-radiologymodality-vs.html
 [jp-server-capabilitystatement]: CapabilityStatement-jp-server-capabilitystatement.html
 [JP_ServiceRequest_Common]: StructureDefinition-jp-servicerequest-common.html
 [JP_SimpleObservationCategory_CS]: CodeSystem-jp-simpleobservationcategory-cs.html
