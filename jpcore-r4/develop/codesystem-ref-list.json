@@ -25,6 +25,18 @@
       "http://hl7.org/fhir/R4/valueset-immunization-status.html" : "Immunization Status Codes"
     },
     {
+      "url" : "http://hl7.org/fhir/specimen-status",
+      "version" : "4.0.1",
+      "status" : "draft",
+      "name" : "SpecimenStatus",
+      "title" : "SpecimenStatus",
+      "description" : "Codes providing the status/availability of a specimen.",
+      "oids" : ["2.16.840.1.113883.4.642.4.472"],
+      "uses" : {
+      },
+      "http://hl7.org/fhir/R4/valueset-specimen-status.html" : "SpecimenStatus"
+    },
+    {
       "url" : "http://jpfhir.jp/fhir/Examples/CodeSystem/JP_MedicationAdministrationDosageComment_CS",
       "version" : "1.2.0-dev",
       "status" : "active",
@@ -514,10 +526,10 @@
       "description" : "未定義のコードシステム。使用する予定のコードシステムが利用できない場合や方針未決定の場合等に割り振る特別なリソースである。",
       "uses" : {
       },
+      "ValueSet-jp-undefined-vs.html" : "JP Core Undefined ValueSet",
       "ValueSet-jp-procedure-reason-vs.html" : "JP Core Procedure Reason ValueSet",
       "ValueSet-jp-procedure-devicekind-vs.html" : "JP Core Procedure Device Kind ValueSet",
       "ValueSet-jp-procedure-condition-vs.html" : "JP Core Procedure Condition ValueSet",
-      "ValueSet-jp-undefined-vs.html" : "JP Core Undefined ValueSet",
       "ValueSet-jp-procedure-followup-vs.html" : "JP Core Procedure Follow Up ValueSet",
       "ValueSet-jp-procedure-device-action-vs.html" : "JP Core Procedure Device Action ValueSet",
       "ValueSet-jp-procedure-codes-ichi-vs.html" : "JP Core Procedure Codes ICHI ValueSet"
@@ -568,11 +580,11 @@
       "description" : "LOINC PART file + Core Table(donwloaded from official site) version 2.74",
       "uses" : {
       },
-      "ValueSet-jp-observation-radiology-code-vs.html" : "JP Core Observation Radiology Code ValueSet",
       "ValueSet-jp-microbiology-category-laboratory-vs.html" : "JP Core MicrobiologyCategory ValueSet",
       "ValueSet-jp-endoscopy-category-vs.html" : "JP Core EndoscopyCategory ValueSet",
       "ValueSet-jp-diagnosticreportcategory-vs.html" : "JP Core Diagnostic Report Category ValueSet",
-      "ValueSet-jp-observation-endoscopy-code-vs.html" : "JP Core Observation Endoscopy Code ValueSet"
+      "ValueSet-jp-observation-endoscopy-code-vs.html" : "JP Core Observation Endoscopy Code ValueSet",
+      "ValueSet-jp-observation-radiology-code-vs.html" : "JP Core Observation Radiology Code ValueSet"
     },
     {
       "url" : "http://snomed.info/sct",
@@ -588,6 +600,8 @@
       "http://hl7.org/fhir/R4/valueset-procedure-code.html" : "Procedure Codes (SNOMED CT)",
       "http://hl7.org/fhir/R4/valueset-servicerequest-orderdetail.html" : "Service Request Order Details Codes",
       "http://hl7.org/fhir/R4/valueset-bodysite-laterality.html" : "Laterality",
+      "http://hl7.org/fhir/R4/valueset-specimen-container-type.html" : "Specimen Container Type",
+      "http://hl7.org/fhir/R4/valueset-specimen-collection-method.html" : "FHIR Specimen Collection Method",
       "http://hl7.org/fhir/R4/valueset-servicerequest-category.html" : "Service Request Category Codes"
     },
     {
@@ -603,6 +617,54 @@
       "http://hl7.org/fhir/R4/valueset-medication-admin-status.html" : "Medication administration  status  codes"
     },
     {
+      "url" : "http://terminology.hl7.org/CodeSystem/v2-0371",
+      "version" : "2.0.0",
+      "status" : "active",
+      "name" : "AdditivePreservative",
+      "title" : "additivePreservative",
+      "description" : "HL7-defined code system of concepts specifying any additive introduced to the specimen before or at the time of collection.  These additives may be introduced in order to preserve, maintain or enhance the particular nature or component of the specimen.  Used in HL7 Version 2.x messaging in the SPM and SAC segments.",
+      "oids" : ["2.16.840.1.113883.18.229"],
+      "uses" : {
+      },
+      "http://terminology.hl7.org/6.0.2/ValueSet-v2-0371.html" : "hl7VS-additivePreservative"
+    },
+    {
+      "url" : "http://terminology.hl7.org/CodeSystem/v2-0373",
+      "version" : "2.0.0",
+      "status" : "active",
+      "name" : "Treatment",
+      "title" : "treatment",
+      "description" : "Code system of concepts that identify the specimen treatment performed during lab processing.  Used in the Interaction Specimen Container Detail (SAC) segment in HL7 Version 2.x messaging.",
+      "oids" : ["2.16.840.1.113883.18.231"],
+      "uses" : {
+      },
+      "http://hl7.org/fhir/R4/valueset-specimen-processing-procedure.html" : "Specimen processing procedure"
+    },
+    {
+      "url" : "http://terminology.hl7.org/CodeSystem/v2-0487",
+      "version" : "2.0.0",
+      "status" : "active",
+      "name" : "SpecimenType",
+      "title" : "specimenType",
+      "description" : "HL7-defined code system of concepts that describe the precise nature of an entity that may be used as the source material for an observation.  This is one of two code systems that are used instead of table 0070 (code system 2.16.840.1.113883.18.28) which conflated specimen types and specimen collection methods.   Used in HL7 Version 2.x messaging in the SPM segment.",
+      "oids" : ["2.16.840.1.113883.18.311"],
+      "uses" : {
+      },
+      "http://terminology.hl7.org/6.0.2/ValueSet-v2-0487.html" : "hl7VS-specimenType"
+    },
+    {
+      "url" : "http://terminology.hl7.org/CodeSystem/v2-0493",
+      "version" : "2.0.0",
+      "status" : "active",
+      "name" : "SpecimenCondition",
+      "title" : "specimenCondition",
+      "description" : "Code system of concepts specifying a mode or state of being that describes the nature of the specimen.  Used in HL7 Version 2.x messaging in the SPM segment.",
+      "oids" : ["2.16.840.1.113883.18.317"],
+      "uses" : {
+      },
+      "http://terminology.hl7.org/6.0.2/ValueSet-v2-0493.html" : "hl7VS-specimenCondition"
+    },
+    {
       "url" : "http://terminology.hl7.org/CodeSystem/v2-0532",
       "version" : "2.0.0",
       "status" : "active",
@@ -613,6 +675,18 @@
       "uses" : {
       },
       "http://terminology.hl7.org/6.0.2/ValueSet-v2-0136.html" : "hl7VS-yes-no-Indicator"
+    },
+    {
+      "url" : "http://terminology.hl7.org/CodeSystem/v2-0916",
+      "version" : "2.0.0",
+      "status" : "active",
+      "name" : "RelevantClincialInformation",
+      "title" : "relevantClincialInformation",
+      "description" : "Code system of concepts specifying additional clinical information about the patient or specimen to report the supporting and/or suspected diagnosis and clinical findings on requests for interpreted diagnostic studies. Used in HL7 Version 2.x messaging in the OBR segment.",
+      "oids" : ["2.16.840.1.113883.18.422"],
+      "uses" : {
+      },
+      "http://terminology.hl7.org/6.0.2/ValueSet-v2-0916.html" : "hl7VS-relevantClincialInformation"
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/v3-Race",
@@ -636,6 +710,17 @@
       "uses" : {
       },
       "http://hl7.org/fhir/R4/valueset-units-of-time.html" : "UnitsOfTime"
+    },
+    {
+      "url" : "urn:ietf:bcp:47",
+      "version" : "2.0.1",
+      "status" : "active",
+      "name" : "URN_ietf_bcp_47_CS",
+      "title" : "urn:ietf:bcp:47 Lanuage CodeSystem",
+      "description" : "urn:ietf:bcp:47 Lanuage CodeSystem",
+      "uses" : {
+      },
+      "http://hl7.org/fhir/R4/valueset-languages.html" : "Common Languages"
     },
     {
       "url" : "urn:oid:1.2.392.100495.10.3.100.5.11.5.2",
