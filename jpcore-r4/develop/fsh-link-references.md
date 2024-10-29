@@ -161,8 +161,6 @@
 [JP_ObservationBodyMeasurementCode_VS]: ValueSet-jp-observation-bodymeasurement-code-vs.html
 [jp-observation-bodyMeasurement-example-1]: Observation-jp-observation-bodyMeasurement-example-1.html
 [JP_Observation_BodyMeasurement]: StructureDefinition-jp-observation-bodymeasurement.html
-[JP_ObservationBodySite_CS]: CodeSystem-jp-observation-bodysite-cs.html
-[JP_ObservationBodySite_VS]: ValueSet-jp-observation-bodysite-vs.html
 [JP_Observation_Common]: StructureDefinition-jp-observation-common.html
 [JP_ObservationEndoscopyCode_VS]: ValueSet-jp-observation-endoscopy-code-vs.html
 [jp-observation-endoscopy-example-findings-2b]: Observation-jp-observation-endoscopy-example-findings-2b.html
@@ -270,5 +268,4 @@
 [JP_RelatedPerson]: StructureDefinition-JP-RelatedPerson.html
 [JP_ResearchStudy]: StructureDefinition-JP-ResearchStudy.html
 [JP_ResearchSubject]: StructureDefinition-JP-ResearchSubject.html
-[JP_ServiceRequest]: StructureDefinition-JP-ServiceRequest.html
 [JP_Specimen_Common]: StructureDefinition-jp-specimen-common.html

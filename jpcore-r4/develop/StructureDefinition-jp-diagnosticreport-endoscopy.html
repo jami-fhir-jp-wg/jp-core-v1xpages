@@ -322,7 +322,7 @@
 
 <p>DiagnosticReportリソースを使用して表現した内視鏡検査レポートには、診断内容に加え、いくつかの所見、検査/手技中に撮影された画像、テキストおよびコード化された解釈、テンプレート化された報告書などが含まれる。</p>
 
-<p>典型的な利用方法としては、PDFやxml形式で作成された報告書をDiagnosticReport.presentedForm要素に格納するとともに、DiagnosticReport.result要素が参照する[JP Core Observation Endoscopy][JP_Observation_Endoscopy]リソースに観察結果（診断、所見など）の情報を、DiagnosticReport.conclusion要素に診断要約を記載する。検査中に撮影された画像や動画は、DICOM形式であればimagingStudyを参照、DICOM以外の形式であればDiagnosticReport.media要素にMediaリソースへのリンクとして保持する。</p>
+<p>典型的な利用方法としては、PDFやxml形式で作成された報告書をDiagnosticReport.presentedForm要素に格納するとともに、DiagnosticReport.result要素が参照する<a href="StructureDefinition-jp-observation-endoscopy.html">JP Core Observation Endoscopy</a>リソースに観察結果（診断、所見など）の情報を、DiagnosticReport.conclusion要素に診断要約を記載する。検査中に撮影された画像や動画は、DICOM形式であればimagingStudyを参照、DICOM以外の形式であればDiagnosticReport.media要素にMediaリソースへのリンクとして保持する。</p>
 
 <h3 id="注記">注記</h3>
 
@@ -333,7 +333,7 @@
 
 <h4 id="v12における更新箇所">V1.2における更新箇所</h4>
 
-<p>JP Core V1.1.2では、報告書の見読性、検索の汎用性を確保するために、所見を中心とした報告書の主要な内容についてはDiagnosticReportのDomainResourceの1つであるtext要素にテキスト形式で格納することを推奨していたが、多くのクラウドシステムではDomainResource.textを検索対象とできない可能性があることが判明した。検索性を担保するために、JP Core V1.2以降では、US Coreの運用方法に倣い、DiagnosticReport.result要素が参照する[JP Core Observation Endoscopy][JP_Observation_Endoscopy]リソースに、診断レポートの一部となる内視鏡検査、治療による観察結果（診断、所見など）の情報を記載し、検索対象のリソースとして用いることとした。</p>
+<p>JP Core V1.1.2では、報告書の見読性、検索の汎用性を確保するために、所見を中心とした報告書の主要な内容についてはDiagnosticReportのDomainResourceの1つであるtext要素にテキスト形式で格納することを推奨していたが、多くのクラウドシステムではDomainResource.textを検索対象とできない可能性があることが判明した。検索性を担保するために、JP Core V1.2以降では、US Coreの運用方法に倣い、DiagnosticReport.result要素が参照する<a href="StructureDefinition-jp-observation-endoscopy.html">JP Core Observation Endoscopy</a>リソースに、診断レポートの一部となる内視鏡検査、治療による観察結果（診断、所見など）の情報を記載し、検索対象のリソースとして用いることとした。</p>
 
 <h2 id="プロファイル定義">プロファイル定義</h2>
 
@@ -2187,7 +2187,7 @@ Summary
 <p>依頼情報や患者基本情報などを含むレポート全体のデータは、presentedForm要素に、base64で符号化されたバイナリデータとして格納される。そこで、所見を中心としたhuman-readableな<a href="https://www.hl7.org/fhir/R4/narrative.html">narrative</a>データを、主にレポートの見読性と検索性の向上を目的に、JP Core V1.1.2ではDiagnosticReportのDomainResourceの1つであるtext要素に格納することを推奨することとして本プロファイルを初期リリースした。
 (レポートの詳細はpresentedForm要素に格納されるレポート本体での確認を前提とする)</p>
 
-<p>しかし、多くのクラウドシステムではDomainResource.textを検索対象とできない可能性があることが判明したため、JP Core V1.2以降では、V1.1.2での実装から方針を転換し、US Coreの運用方法に倣い、DiagnosticReport.result要素が参照する[JP Core Observation Endoscopy][JP_Observation_Endoscopy]リソースに、診断レポートの一部となる内視鏡検査、治療による観察結果（診断、所見など）の情報を記載し、検索対象のリソースとして用いることとした。</p>
+<p>しかし、多くのクラウドシステムではDomainResource.textを検索対象とできない可能性があることが判明したため、JP Core V1.2以降では、V1.1.2での実装から方針を転換し、US Coreの運用方法に倣い、DiagnosticReport.result要素が参照する<a href="StructureDefinition-jp-observation-endoscopy.html">JP Core Observation Endoscopy</a>リソースに、診断レポートの一部となる内視鏡検査、治療による観察結果（診断、所見など）の情報を記載し、検索対象のリソースとして用いることとした。</p>
 
 <p>従って、V1.2以降では、.text要素に記述した内容に対する検索性は担保されない可能性を考慮して実装することを推奨する。</p>
 
@@ -2293,7 +2293,7 @@ Summary
 
 <ul>
   <li><a href="DiagnosticReport-jp-diagnosticreport-endoscopy-example-1.html"><strong>上部消化管検査レポート</strong></a>：(JP Core V1.1.2準拠)</li>
-  <li>[<strong>下部消化管検査レポート</strong>][jp-diagnosticreport-endoscopy-example-2]：(JP Core V1.2準拠)</li>
+  <li><a href="DiagnosticReport-jp-diagnosticreport-endoscopy-example-2.html"><strong>下部消化管検査レポート</strong></a>：(JP Core V1.2準拠)</li>
 </ul>
 
 <h2 id="その他参考文献リンク等">その他、参考文献・リンク等</h2>
@@ -2364,7 +2364,7 @@ Summary
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 29, 2024 15:05+0000">2024-10-29</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 29, 2024 23:41+0000">2024-10-29</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
