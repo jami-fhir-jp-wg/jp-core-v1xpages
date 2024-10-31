@@ -756,7 +756,7 @@
          fhir:value [ fhir:v "special-url" ]
        ] [
          fhir:url [ fhir:v "value"^^xsd:anyURI ] ;
-         fhir:value [ fhir:v "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Observation_Electrocardiogram_MachinaryInterpretation" ]
+         fhir:value [ fhir:v "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Observation_Electrocardiogram_DeviceInterpretation" ]
        ] ) ;
        fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"^^xsd:anyURI ]
      ] [
@@ -3279,7 +3279,7 @@
          fhir:value [ fhir:v "special-url" ]
        ] [
          fhir:url [ fhir:v "value"^^xsd:anyURI ] ;
-         fhir:value [ fhir:v "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Observation_Electrocardiogram_MachinaryInterpretation" ]
+         fhir:value [ fhir:v "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Observation_Electrocardiogram_DeviceInterpretation" ]
        ] ) ;
        fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"^^xsd:anyURI ]
      ] [
@@ -7220,7 +7220,19 @@
          fhir:reference [ fhir:v "ValueSet/jp-observation-electrocardiogram-component-code-vs" ]
        ] ;
        fhir:name [ fhir:v "JP Core Observation Electrocardiogram Component Code ValueSet" ] ;
-       fhir:description [ fhir:v "心電図検査の一連の測定値の項目を示す値セット" ] ;
+       fhir:description [ fhir:v "心電図検査の一連の測定項目を示す値セット" ] ;
+       fhir:example [ fhir:v "false"^^xsd:boolean ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "StructureDefinition:extension" ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/jp-observation-electrocardiogram-deviceinterpretation> ;
+         fhir:reference [ fhir:v "StructureDefinition/jp-observation-electrocardiogram-deviceinterpretation" ]
+       ] ;
+       fhir:name [ fhir:v "JP Core Observation Electrocardiogram Device Interpretation Extention" ] ;
+       fhir:description [ fhir:v "心電図検査で測定された結果に対しての機械的に判定された所見、解釈の有無" ] ;
        fhir:example [ fhir:v "false"^^xsd:boolean ]
      ] [
        fhir:extension ( [
@@ -7291,20 +7303,8 @@
          fhir:value [ fhir:v "StructureDefinition:extension" ]
        ] ) ;
        fhir:reference [
-         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/jp-obsrevation-electrocardiogram-machinaryinterpretation> ;
-         fhir:reference [ fhir:v "StructureDefinition/jp-obsrevation-electrocardiogram-machinaryinterpretation" ]
-       ] ;
-       fhir:name [ fhir:v "JP Core Observation Electrocardiogram MachinaryInterpretation Extention" ] ;
-       fhir:description [ fhir:v "心電図検査で測定された結果に対しての機械的に判定された所見、解釈の有無" ] ;
-       fhir:example [ fhir:v "false"^^xsd:boolean ]
-     ] [
-       fhir:extension ( [
-         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
-         fhir:value [ fhir:v "StructureDefinition:extension" ]
-       ] ) ;
-       fhir:reference [
-         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/jp-obsrevation-electrocardiogram-numberoflead> ;
-         fhir:reference [ fhir:v "StructureDefinition/jp-obsrevation-electrocardiogram-numberoflead" ]
+         fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/jp-observation-electrocardiogram-numberoflead> ;
+         fhir:reference [ fhir:v "StructureDefinition/jp-observation-electrocardiogram-numberoflead" ]
        ] ;
        fhir:name [ fhir:v "JP Core Observation Electrocardiogram NumberOfLeed Extention" ] ;
        fhir:description [ fhir:v "心電図検査を実施したときに使った誘導の数を示すExtension" ] ;
@@ -8493,18 +8493,6 @@
        ] ;
        fhir:name [ fhir:v "jp-microbiology-infectious-agent-ns" ] ;
        fhir:description [ fhir:v "微生物学的検査感染性物質コード(Ver.6.2)\n本コードは厚生労働省院内感染対策サーベイランス事業(https://janis.mhlw.go.jp/)で作成されているマスタを編集・加工して利用している" ] ;
-       fhir:example [ fhir:v "false"^^xsd:boolean ]
-     ] [
-       fhir:extension ( [
-         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
-         fhir:value [ fhir:v "NamingSystem" ]
-       ] ) ;
-       fhir:reference [
-         fhir:link <http://jpfhir.jp/fhir/core/NamingSystem/jp-observation-electrocardiogram-interpretation-namingsystem> ;
-         fhir:reference [ fhir:v "NamingSystem/jp-observation-electrocardiogram-interpretation-namingsystem" ]
-       ] ;
-       fhir:name [ fhir:v "jp-observation-electrocardiogram-interpretation-namingsystem" ] ;
-       fhir:description [ fhir:v "JP Observation Electrocardiogram Interpretation NamingSystem" ] ;
        fhir:example [ fhir:v "false"^^xsd:boolean ]
      ] [
        fhir:extension ( [

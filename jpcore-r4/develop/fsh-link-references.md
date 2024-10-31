@@ -165,13 +165,13 @@
 [JP_ObservationElectrogardiogramCategory_CS]: CodeSystem-jp-observation-electrocardiogram-category-cs.html
 [JP_ObservationElectrogardiogramCategory_VS]: ValueSet-jp-observation-electrocardiogram-category-vs.html
 [JP_ObservationElectrocardiogramComponentCode_VS]: ValueSet-jp-observation-electrocardiogram-component-code-vs.html
+[JP_Observation_Electrocardiogram_DeviceInterpretation]: StructureDefinition-jp-observation-electrocardiogram-deviceinterpretation.html
 [JP_ObservationElectrogardiogramDuration_CS]: CodeSystem-jp-observation-electrocardiogram-duration-cs.html
 [JP_ObservationElectrogardiogramDuration_VS]: ValueSet-jp-observation-electrocardiogram-duration-vs.html
 [jp-observation-electrocardiogram-example-1]: Observation-jp-observation-electrocardiogram-example-1.html
 [JP_ObservationElectrocardiogramInterpretationCode_CS]: CodeSystem-jp-observation-electrocardiogram-interpretation-code-cs.html
 [JP_ObservationElectrocardiogramInterpretationCode_VS]: ValueSet-jp-observation-electrocardiogram-interpretation-code-vs.html
-[JP_Observation_Electrocardiogram_MachinaryInterpretation]: StructureDefinition-jp-obsrevation-electrocardiogram-machinaryinterpretation.html
-[JP_Observation_Electrocardiogram_NumberOfLead]: StructureDefinition-jp-obsrevation-electrocardiogram-numberoflead.html
+[JP_Observation_Electrocardiogram_NumberOfLead]: StructureDefinition-jp-observation-electrocardiogram-numberoflead.html
 [JP_Observation_Electrocardiogram]: StructureDefinition-jp-observation-electrocardiogram.html
 [JP_ObservationElectrogardiogramStressType_CS]: CodeSystem-jp-observation-electrocardiogram-stresstype-cs.html
 [JP_ObservationElectrogardiogramStressType_VS]: ValueSet-jp-observation-electrocardiogram-stresstype-vs.html
@@ -265,7 +265,6 @@
 [jp-medicationusagejamiadditional-namingsystem]: NamingSystem-jp-medicationusagejamiadditional-namingsystem.html
 [jp-microbiology-antimicrobialdrug-ns]: NamingSystem-jp-microbiology-antimicrobialdrug-ns.html
 [jp-microbiology-infectious-agent-ns]: NamingSystem-jp-microbiology-infectious-agent-ns.html
-[jp-observation-electrocardiogram-interpretation-namingsystem]: NamingSystem-jp-observation-electrocardiogram-interpretation-namingsystem.html
 [jp-observation-jlac10-namingsystem]: NamingSystem-jp-observation-jlac10-namingsystem.html
 [jp-observation-vitalsignscode-namingsystem]: NamingSystem-jp-observation-vitalsignscode-namingsystem.html
 [jp-organization-insuranceorganizationcategory-sp]: SearchParameter-jp-organization-insuranceorganizationcategory-sp.html
