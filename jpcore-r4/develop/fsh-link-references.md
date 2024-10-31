@@ -162,6 +162,12 @@
 [jp-observation-bodyMeasurement-example-1]: Observation-jp-observation-bodyMeasurement-example-1.html
 [JP_Observation_BodyMeasurement]: StructureDefinition-jp-observation-bodymeasurement.html
 [JP_Observation_Common]: StructureDefinition-jp-observation-common.html
+[jp-observation-electrocardiogram-example-1]: Observation-jp-observation-electrocardiogram-example-1.html
+[JP_ObservationElectrocardiogramInterpretationCode_CS]: CodeSystem-jp-observation-electrocardiogram-interpretation-code-cs.html
+[JP_ObservationElectrocardiogramInterpretationCode_VS]: ValueSet-jp-observation-electrocardiogram-interpretation-code-vs.html
+[JP_Observation_Electrocardiogram_MachinaryInterpretation]: StructureDefinition-jp-obsrevation-electrocardiogram-machinaryinterpretation.html
+[JP_Observation_Electrocardiogram_NumberOfLead]: StructureDefinition-jp-obsrevation-electrocardiogram-numberoflead.html
+[JP_Observation_Electrocardiogram]: StructureDefinition-jp-observation-electrocardiogram.html
 [JP_ObservationEndoscopyCode_VS]: ValueSet-jp-observation-endoscopy-code-vs.html
 [jp-observation-endoscopy-example-findings-2b]: Observation-jp-observation-endoscopy-example-findings-2b.html
 [jp-observation-endoscopy-example-findings-1b]: Observation-jp-observation-endoscopy-example-findings-1b.html
@@ -252,6 +258,7 @@
 [jp-medicationusagejamiadditional-namingsystem]: NamingSystem-jp-medicationusagejamiadditional-namingsystem.html
 [jp-microbiology-antimicrobialdrug-ns]: NamingSystem-jp-microbiology-antimicrobialdrug-ns.html
 [jp-microbiology-infectious-agent-ns]: NamingSystem-jp-microbiology-infectious-agent-ns.html
+[jp-observation-electrocardiogram-interpretation-namingsystem]: NamingSystem-jp-observation-electrocardiogram-interpretation-namingsystem.html
 [jp-observation-jlac10-namingsystem]: NamingSystem-jp-observation-jlac10-namingsystem.html
 [jp-observation-vitalsignscode-namingsystem]: NamingSystem-jp-observation-vitalsignscode-namingsystem.html
 [jp-organization-insuranceorganizationcategory-sp]: SearchParameter-jp-organization-insuranceorganizationcategory-sp.html
