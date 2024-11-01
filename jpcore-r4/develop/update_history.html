@@ -242,6 +242,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
               <li><code class="language-plaintext highlighter-rouge">JP_Observation_VitalSigns</code>プロファイルのcategoryに対する<code class="language-plaintext highlighter-rouge">JP_SimpleObservationCategory_CS</code>に対する多重度を1..<em>から0..</em>に変更した</li>
               <li><code class="language-plaintext highlighter-rouge">JP_Specimen_Common</code>プロファイルを追加、これにあわせ<code class="language-plaintext highlighter-rouge">JP_Specimen</code>プロファイルを削除した</li>
               <li><code class="language-plaintext highlighter-rouge">JP_Media_Endoscopy</code>プロファイルを追加定義した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_DentalOral_ToothExistence</code>プロファイルを追加定義した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_DentalOral_ToothTreatmentCondition</code>プロファイルを追加定義した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_DentalOral_MissingToothCondition</code>プロファイルを追加定義した</li>
             </ul>
           </li>
           <li>DiagnosticReport
@@ -265,7 +268,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
               <li>MEDIS病名交換用コード<code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseCodeMEDISExchange_CS</code></li>
               <li>MEDIS ICD10対応標準病名マスター(管理番号)<code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseCodeMEDISRecordNo_CS</code></li>
               <li>レセプト電算用傷病名マスタ<code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseCodeReceipt_CS</code></li>
-              <li></li>
             </ul>
           </li>
         </ul>
@@ -273,6 +275,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li>Workflow グループ
         <ul>
           <li><code class="language-plaintext highlighter-rouge">JP_ServiceRequest_Common</code>プロファイルを追加、これにあわせ<code class="language-plaintext highlighter-rouge">JP_ServiceRequest</code>を削除した</li>
+        </ul>
+      </li>
+      <li>SearchParameterおよびOperation関連
+        <ul>
+          <li>SearchParameterの記述不具合（型指定やSearchParameterRegistryとの違い）について修正した</li>
+          <li>SearchParameterのexpressionのFHIRPath記述に対する指摘に対応した</li>
+          <li><code class="language-plaintext highlighter-rouge">JP_ImagingStudy_Radiology</code>のIdentifierに関するConformanceをSHALLに変更した</li>
         </ul>
       </li>
       <li>Terminology関連
@@ -300,8 +309,26 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
               <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseOutcomeHL70241_VS</code></li>
               <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseOutcomeJHSD0006_VS</code></li>
               <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseOutcomeReceipt_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalBodySite_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalBodySite_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalBodySiteStatus_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalBodySiteStatus_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalBodyStructure_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalBodyStructure_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalFundamentalStatus_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalFundamentalStatus_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalMissingTeethObservation_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalMissingTeethObservation_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalPresentTeethObservation_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalPresentTeethObservation_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalSimpleMissingTeethObservation_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalSimpleMissingTeethObservation_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalSimplePresentTeethObservation_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalSimplePresentTeethObservation_VS</code></li>
               <li><code class="language-plaintext highlighter-rouge">JP_DICOMModality_VS</code></li>
               <li><code class="language-plaintext highlighter-rouge">JP_ObservationCategory_Endoscopy_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationDentalCategory_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationDentalCategory_VS</code></li>
               <li><code class="language-plaintext highlighter-rouge">JP_ObservationElectrocardiogramInterpretationCode_CS</code></li>
             </ul>
           </li>
@@ -315,13 +342,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           <li>病名マスタ(MEDIS病名交換用コード<code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseCodeMEDISExchange_CS</code>,MEDIS ICD10対応標準病名マスター(管理番号)<code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseCodeMEDISRecordNo_CS</code>,レセプト電算用傷病名マスタ<code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseCodeReceipt_CS</code>)を用語として追加した</li>
         </ul>
       </li>
-      <li>SearchParameterおよびOperationについて
+      <li>Capability Statement関連
         <ul>
-          <li>SearchParameterの記述不具合（型指定やSearchParameterRegistryとの違い）について修正した</li>
-          <li>JP Coreで作成したSearchParameterのexpressionのFHIRPath記述の不具合ついて修正した</li>
-          <li>CapabilityStatementのConformanceの指定、複数パラメータの指定を行った</li>
-          <li>CapabilityStatementのOperation定義を追加した</li>
-          <li><code class="language-plaintext highlighter-rouge">JP_ImagingStudy_Radiology</code>のIdentifierに関するConformanceをSHALLに変更した</li>
+          <li>単数パラメーターのConformanceの指定に対応した</li>
+          <li>複数パラメータの指定の指定に対応した</li>
+          <li>Operation定義を追加した</li>
         </ul>
       </li>
     </ul>
@@ -624,7 +649,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 31, 2024 22:54+0000">2024-10-31</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Nov 1, 2024 01:59+0000">2024-11-01</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
