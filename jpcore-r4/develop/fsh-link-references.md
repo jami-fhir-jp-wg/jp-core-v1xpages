@@ -104,7 +104,6 @@
 [JP_MedicationDosage_UsageDuration]: StructureDefinition-jp-medicationdosage-usageduration.html
 [JP_MedicationExampleDosageComment_CS]: CodeSystem-jp-medication-example-dosagecomment-cs.html
 [JP_MedicationExampleDosageComment_VS]: ValueSet-jp-medication-example-dosagecomment-vs.html
-[JP_MedicationExampleLine_CS]: CodeSystem-jp-medication-example-line-cs.html
 [JP_MedicationExampleLine_VS]: ValueSet-jp-medication-example-line-vs.html
 [JP_MedicationExampleLineComment_CS]: CodeSystem-jp-medication-example-linecomment-cs.html
 [JP_MedicationExampleLineComment_VS]: ValueSet-jp-medication-example-linecomment-vs.html
