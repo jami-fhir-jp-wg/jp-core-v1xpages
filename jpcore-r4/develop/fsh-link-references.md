@@ -293,7 +293,6 @@
 [JP_CarePlan]: StructureDefinition-jp-careplan.html
 [JP_Consent]: StructureDefinition-jp-consent.html
 [JP_Device]: StructureDefinition-jp-device.html
-[JP_DeviceUseStatement]: StructureDefinition-jp-deviceusestatement.html
 [JP_DocumentReference]: StructureDefinition-jp-documentreference.html
 [JP_RelatedPerson]: StructureDefinition-jp-relatedperson.html
 [JP_ResearchStudy]: StructureDefinition-jp-researchstudy.html
