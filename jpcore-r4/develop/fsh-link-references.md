@@ -186,8 +186,6 @@
 [jp-observation-electrocardiogram-example-1]: Observation-jp-observation-electrocardiogram-example-1.html
 [JP_ObservationElectrocardiogramExtraCategory_CS]: CodeSystem-jp-observation-electrocardiogram-extracategory-cs.html
 [JP_ObservationElectrocardiogramExtraCategory_VS]: ValueSet-jp-observation-electrocardiogram-extracategory-vs.html
-[JP_ObservationElectrocardiogramInterpretationCode_CS]: CodeSystem-jp-observation-electrocardiogram-interpretation-code-cs.html
-[JP_ObservationElectrocardiogramInterpretationCode_VS]: ValueSet-jp-observation-electrocardiogram-interpretation-code-vs.html
 [JP_Observation_Electrocardiogram_NumberOfLead]: StructureDefinition-jp-observation-electrocardiogram-numberoflead.html
 [JP_Observation_Electrocardiogram]: StructureDefinition-jp-observation-electrocardiogram.html
 [JP_ObservationElectrocardiogramStressType_CS]: CodeSystem-jp-observation-electrocardiogram-stresstype-cs.html
