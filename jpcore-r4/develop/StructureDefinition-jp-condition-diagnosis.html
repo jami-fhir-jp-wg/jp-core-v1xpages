@@ -2805,6 +2805,12 @@ Summary
   </thead>
   <tbody>
     <tr>
+      <td style="text-align: left">病名転帰</td>
+      <td style="text-align: left">病名の転帰を格納するための拡張<br />《code配下》</td>
+      <td style="text-align: left"><a href="StructureDefinition-jp-condition-disease-outcome.html">JP_Condition_DiseaseOutcome</a></td>
+      <td style="text-align: left">CodeableConcept</td>
+    </tr>
+    <tr>
       <td style="text-align: left">病名修飾語</td>
       <td style="text-align: left">病名の前置修飾語を格納する拡張<br />《code配下》</td>
       <td style="text-align: left"><a href="StructureDefinition-jp-condition-disease-prefix-modifier.html">JP_Condition_DiseasePrefixModifier</a></td>
@@ -2820,7 +2826,7 @@ Summary
 </table>
 
 <h3 id="用語定義">用語定義</h3>
-<p>HL7 FHIRの基底規格では、病名コードなどでSNOMED CTが使われているが、日本ではライセンスの問題もあり普及していない。代替としてJAHIS病名情報データ交換規約やSS-MIX2で使われている用語集を採用した。（★他に参照すべき標準規格はあるか★）</p>
+<p>HL7 FHIRの基底規格では、病名コードなどでSNOMED CTが使われているが、日本ではライセンスの問題もあり普及していない。代替としてJAHIS病名情報データ交換規約やSS-MIX2で使われている用語集を採用した。</p>
 
 <p>HL7 V2系では用語集を識別するコーディングシステム名（以下、「CS名」）は文字列であったが、FHIRではURIを指定する必要があるため、それぞれにURIを割り当てた。以下に使用する用語集のCS名とURI表記を列記する。</p>
 
@@ -2851,12 +2857,6 @@ Summary
       <td>ICD-10</td>
       <td>ICD10</td>
       <td>http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDisaseCodeICD10_CS</td>
-    </tr>
-    <tr>
-      <td>病名</td>
-      <td>ICD-11</td>
-      <td>ICD11</td>
-      <td>http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDisaseCodeICD11_CS</td>
     </tr>
     <tr>
       <td>病名</td>
@@ -2911,7 +2911,7 @@ Summary
 <p>本プロファイルで追加された項目は以下の通りである。</p>
 
 <ul>
-  <li>転帰区分（clinicalStatusを使用）</li>
+  <li>転帰区分（拡張「DiseaseOutcome」を使用）</li>
   <li>発症日（病名開始日）(onset[x]を使用)</li>
   <li>転帰日（病名終了日）(abatement[x]を使用)</li>
   <li>病名修飾語（拡張「DiseasePrefixModifier」「DiseasePostfixModifier」を使用）</li>
@@ -3081,7 +3081,7 @@ Summary
 <h4 id="サンプル">サンプル</h4>
 
 <ul>
-  <li><a href="Condition-jp-condition-diagnosis-example-1.html"><strong>病名（過敏性大腸炎の初期疾患）</strong></a></li>
+  <li><a href="Condition-jp-condition-diagnosis-example-1.html"><strong>病名（右橈骨遠位端骨折の術後）</strong></a></li>
 </ul>
 
 <h2 id="注意事項">注意事項</h2>
@@ -3115,49 +3115,39 @@ Summary
 <h3 id="病名修飾語について">病名修飾語について</h3>
 <p>病名修飾語は「急性」「過敏性」「症候群」などの修飾を病名に付加するためのものであり、Condition.code要素に対して定義した拡張「JP_Condition_DiseasePrefixModifier」「JP_Condition_DiseasePostfixModifier」を使用し、CodeableConcept型を使用して記録する。標準コードとしては、MEDIS ICD10対応標準病名マスターの修飾語交換用コード（"urn:oid:1.2.392.200119.4.102.5"）ないしレセプト電算資システム用修飾語コード("http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseModifierReceipt_CS")を推奨する。この拡張を繰り返すことにより、複数の修飾語を記述することができる。</p>
 
-<p>「過敏性大腸炎の初期疾患」の場合のインスタンス例を示す。（★適用順序が分からないがよいか？★）</p>
+<p>「右橈骨遠位端骨折の術後」の場合のインスタンス例を示す。</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseasePrefixModifier"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"valueCodeableConcept"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> 
         </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200119.4.102.5"</span><span class="p">,</span><span class="w"> 
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3216"</span><span class="p">,</span><span class="w"> 
-        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"過敏性"</span><span class="w"> 
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5194"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"右"</span><span class="w"> 
       </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"過敏性"</span><span class="w">
+      </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"右"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseasePostfixModifier"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"valueCodeableConcept"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> 
         </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200119.4.102.5"</span><span class="p">,</span><span class="w"> 
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1111"</span><span class="p">,</span><span class="w"> 
-        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"の初期"</span><span class="w"> 
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1486"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"の術後"</span><span class="w"> 
       </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"の初期"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseasePostfixModifier"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"valueCodeableConcept"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> 
-        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200119.4.102.5"</span><span class="p">,</span><span class="w"> 
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08MV"</span><span class="p">,</span><span class="w"> 
-        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"疾患"</span><span class="w"> 
-      </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"疾患"</span><span class="w">
+      </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"の術後"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> 
     </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.sample.com/CodeSystem/disease/1311234567"</span><span class="p">,</span><span class="w"> 
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MD13062"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"大腸炎"</span><span class="w"> 
+    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"橈骨遠位端骨折"</span><span class="w"> 
   </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> 
     </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.200119.4.101.6"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VSES"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"大腸炎"</span><span class="w"> 
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CJTR"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"橈骨遠位端骨折"</span><span class="w"> 
   </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w"> 
-  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"過敏性大腸炎の初期疾患"</span><span class="w"> 
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"右橈骨遠位端骨折の術後"</span><span class="w"> 
 </span><span class="p">}</span><span class="err">,</span><span class="w">
 </span></code></pre></div></div>
 
@@ -3188,16 +3178,14 @@ abatement[x]要素はCondition.clinicalStatus要素の値が"resolved","remissio
 </span></code></pre></div></div>
 
 <h3 id="転帰区分の記述方法">転帰区分の記述方法</h3>
-<p>転帰区分は、Condition.clinicalStatus要素を使用し、CodeableConcept型で記載する。使用するコードは、Requiredレベルでバインディングされている値セット ("http://terminology.hl7.org/ValueSet/condition-clinical") の他、HL7V2.ｘで定義されているHL7表0241 ("http://jpfhir.jp/fhir/core/CodeSystem/HL70241") およびJAHIS病名情報データ交換規約Ver.3.1Cで定義されているJHSD表0006 ("http://jpfhir.jp/fhir/core/CodeSystem/JHSD0006")の併用ないしレセプト電算用転帰区分コード（"http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseOutcomeReceipt_CS"）が標準コードとして使用できる。
+<p>転帰区分は、DiseaseOutcome拡張を使用し、CodeableConcept型で記載する。使用するコードは、HL7V2.ｘで定義されているHL7表0241 ("http://jpfhir.jp/fhir/core/CodeSystem/HL70241") およびJAHIS病名情報データ交換規約Ver.3.1Cで定義されているJHSD表0006 ("http://jpfhir.jp/fhir/core/CodeSystem/JHSD0006")の併用ないしレセプト電算用転帰区分コード（"http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseOutcomeReceipt_CS"）が標準コードとして使用できる。
 なお、記述する転帰区分は、abatement[x]に記述した時点、ないしabatement[x]がない場合は出力時点での情報とする。</p>
 
 <p>「寛解」の場合のインスタンス例を示す。</p>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"clinicalStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseaseOutcome"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"valueCodeableConcept"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> 
-    </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/condition-clinical"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"remission"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remission"</span><span class="w"> 
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> 
     </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/CodeSystem/JHSD0006"</span><span class="p">,</span><span class="w"> 
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w"> 
     </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"寛解"</span><span class="w"> 
@@ -3207,7 +3195,8 @@ abatement[x]要素はCondition.clinicalStatus要素の値が"resolved","remissio
     </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"寛解"</span><span class="w"> 
   </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w"> 
   </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"寛解"</span><span class="w"> 
-</span><span class="p">}</span><span class="err">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="err">,</span><span class="w">
 </span></code></pre></div></div>
 
 <h3 id="疑い病名の記述方法">疑い病名の記述方法</h3>
@@ -3296,7 +3285,7 @@ abatement[x]要素はCondition.clinicalStatus要素の値が"resolved","remissio
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Nov 8, 2024 13:59+0000">2024-11-08</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Nov 9, 2024 10:45+0000">2024-11-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
