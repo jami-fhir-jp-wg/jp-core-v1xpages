@@ -215,7 +215,6 @@
 [JP_ObservationEndoscopyValueJed_VS]: ValueSet-jp-observation-endoscoy-value-jed-vs.html
 [jp-observation-labresult-example-1]: Observation-jp-observation-labresult-example-1.html
 [JP_Observation_LabResult]: StructureDefinition-jp-observation-labresult.html
-[JP_Observation_Microbiology]: StructureDefinition-jp-observation-microbiology.html
 [jp-observation-physicalexam-example-1]: Observation-jp-observation-physicalexam-example-1.html
 [JP_Observation_PhysicalExam]: StructureDefinition-jp-observation-physicalexam.html
 [JP_ObservationRadiologyCode_VS]: ValueSet-jp-observation-radiology-code-vs.html
@@ -229,6 +228,7 @@
 [JP_Observation_VitalSigns]: StructureDefinition-jp-observation-vitalsigns.html
 [JP_ObservationDentalCategory_CS]: CodeSystem-jp-observation-dental-category-cs.html
 [JP_ObservationDentalCategory_VS]: ValueSet-jp-observation-dental-category-vs.html
+[JP_Observation_Microbiology]: StructureDefinition-jp-observation-microbiology.html
 [jp-organization-example-payer]: Organization-jp-organization-example-payer.html
 [jp-organization-example-clinic]: Organization-jp-organization-example-clinic.html
 [jp-organization-example-hospital]: Organization-jp-organization-example-hospital.html
