@@ -10,12 +10,6 @@
     single schematron that validates contained resources (if you have any) 
   -->
   <sch:pattern>
-    <sch:title>f:ServiceRequest</sch:title>
-    <sch:rule context="f:ServiceRequest">
-      <sch:assert test="count(f:instantiatesUri) &lt;= 1">instantiatesUri: maximum cardinality of 'instantiatesUri' is 1</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:title>f:ServiceRequest/f:meta</sch:title>
     <sch:rule context="f:ServiceRequest/f:meta">
       <sch:assert test="count(f:id) &lt;= 1">id: maximum cardinality of 'id' is 1</sch:assert>
