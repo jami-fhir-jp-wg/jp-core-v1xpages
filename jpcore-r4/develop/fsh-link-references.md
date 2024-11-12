@@ -228,6 +228,7 @@
 [JP_Observation_VitalSigns]: StructureDefinition-jp-observation-vitalsigns.html
 [JP_ObservationDentalCategory_CS]: CodeSystem-jp-observation-dental-category-cs.html
 [JP_ObservationDentalCategory_VS]: ValueSet-jp-observation-dental-category-vs.html
+[JP_ObservationDetailedDentalCategory_VS]: ValueSet-jp-observation-detailed-dental-category-vs.html
 [JP_Observation_Microbiology]: StructureDefinition-jp-observation-microbiology.html
 [jp-organization-example-payer]: Organization-jp-organization-example-payer.html
 [jp-organization-example-clinic]: Organization-jp-organization-example-clinic.html
