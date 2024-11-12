@@ -6,17 +6,11 @@
 [JP_Condition_Diagnosis]: StructureDefinition-jp-condition-diagnosis.html
 [JP_ConditionDiseaseCodeICD10_CS]: CodeSystem-jp-condition-disease-code-icd10-cs.html
 [JP_ConditionDiseaseCodeICD10_VS]: ValueSet-jp-condition-disease-code-icd10-vs.html
-[JP_ConditionDiseaseCodeMEDISExchange_CS]: CodeSystem-jp-condition-disease-code-medis-exchange-cs.html
 [JP_ConditionDiseaseCodeMEDISExchange_VS]: ValueSet-jp-condition-disease-code-medis-exchange-vs.html
-[JP_ConditionDiseaseCodeMEDISRecordNo_CS]: CodeSystem-jp-condition-disease-code-medis-record-no-cs.html
 [JP_ConditionDiseaseCodeMEDISRecordNo_VS]: ValueSet-jp-condition-disease-code-medis-record-no-vs.html
-[JP_ConditionDieaseCodeReceipt_CS]: CodeSystem-jp-condition-disease-code-receipt-cs.html
 [JP_ConditionDiseaseCodeReceipt_VS]: ValueSet-jp-condition-disease-code-receipt-vs.html
-[JP_ConditionDiseaseModifierMEDISExchange_CS]: CodeSystem-jp-condition-disease-modifier-medis-exchange-cs.html
 [JP_ConditionDiseaseModifierMEDISExchange_VS]: ValueSet-jp-condition-disease-modifier-medis-exchange-vs.html
-[JP_ConditionDiseaseModifierMEDISRecordNo_CS]: CodeSystem-jp-condition-disease-modifier-medis-record-no-cs.html
 [JP_ConditionDiseaseModifierMEDISRecordNo_VS]: ValueSet-jp-condition-disease-modifier-medis-record-no-vs.html
-[JP_ConditionDieaseModifierReceipt_CS]: CodeSystem-jp-condition-disease-modifier-receipt-cs.html
 [JP_ConditionDiseaseModifierReceipt_VS]: ValueSet-jp-condition-disease-modifier-receipt-vs.html
 [JP_ConditionDieaseOutcomeHL70241_CS]: CodeSystem-jp-condition-disease-outcome-hl70241-cs.html
 [JP_ConditionDiseaseOutcomeHL70241_VS]: ValueSet-jp-condition-disease-outcome-hl70241-vs.html
@@ -215,6 +209,7 @@
 [JP_ObservationEndoscopyValueJed_VS]: ValueSet-jp-observation-endoscoy-value-jed-vs.html
 [jp-observation-labresult-example-1]: Observation-jp-observation-labresult-example-1.html
 [JP_Observation_LabResult]: StructureDefinition-jp-observation-labresult.html
+[JP_Observation_Microbiology]: StructureDefinition-jp-observation-microbiology.html
 [jp-observation-physicalexam-example-1]: Observation-jp-observation-physicalexam-example-1.html
 [JP_Observation_PhysicalExam]: StructureDefinition-jp-observation-physicalexam.html
 [JP_ObservationRadiologyCode_VS]: ValueSet-jp-observation-radiology-code-vs.html
@@ -229,7 +224,6 @@
 [JP_ObservationDentalCategory_CS]: CodeSystem-jp-observation-dental-category-cs.html
 [JP_ObservationDentalCategory_VS]: ValueSet-jp-observation-dental-category-vs.html
 [JP_ObservationDetailedDentalCategory_VS]: ValueSet-jp-observation-detailed-dental-category-vs.html
-[JP_Observation_Microbiology]: StructureDefinition-jp-observation-microbiology.html
 [jp-organization-example-payer]: Organization-jp-organization-example-payer.html
 [jp-organization-example-clinic]: Organization-jp-organization-example-clinic.html
 [jp-organization-example-hospital]: Organization-jp-organization-example-hospital.html
