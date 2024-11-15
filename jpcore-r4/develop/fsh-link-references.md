@@ -4,7 +4,6 @@
 [jp-client-capabilitystatement]: CapabilityStatement-jp-client-capabilitystatement.html
 [jp-condition-diagnosis-example-1]: Condition-jp-condition-diagnosis-example-1.html
 [JP_Condition_Diagnosis]: StructureDefinition-jp-condition-diagnosis.html
-[JP_ConditionDiseaseCodeICD10_CS]: CodeSystem-jp-condition-disease-code-icd10-cs.html
 [JP_ConditionDiseaseCodeICD10_VS]: ValueSet-jp-condition-disease-code-icd10-vs.html
 [JP_ConditionDiseaseCodeMEDISExchange_VS]: ValueSet-jp-condition-disease-code-medis-exchange-vs.html
 [JP_ConditionDiseaseCodeMEDISRecordNo_VS]: ValueSet-jp-condition-disease-code-medis-record-no-vs.html
