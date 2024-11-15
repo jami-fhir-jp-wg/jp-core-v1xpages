@@ -4,7 +4,6 @@
 [jp-client-capabilitystatement]: CapabilityStatement-jp-client-capabilitystatement.html
 [jp-condition-diagnosis-example-1]: Condition-jp-condition-diagnosis-example-1.html
 [JP_Condition_Diagnosis]: StructureDefinition-jp-condition-diagnosis.html
-[JP_ConditionDiseaseCodeICD10_VS]: ValueSet-jp-condition-disease-code-icd10-vs.html
 [JP_Disease_MEDIS_Concept_VS]: ValueSet-jp-condition-disease-code-medis-exchange-vs.html
 [JP_Disease_MEDIS_ManagementID_VS]: ValueSet-jp-condition-disease-code-medis-record-no-vs.html
 [JP_ConditionDieaseCodeReceipt_CS]: CodeSystem-jp-condition-disease-code-receipt-cs.html
@@ -309,3 +308,4 @@
 [JP_ResearchSubject]: StructureDefinition-jp-researchsubject.html
 [JP_Specimen_Common]: StructureDefinition-jp-specimen-common.html
 [MEDIS_codeSystem_diseaseName_exchangeCodes_Modifiers]: CodeSystem-medis-codesystem-diseasename-exchangecodes-modifiers.html
+[MHLW_valueSet_icd10_2013_jp]: ValueSet-mhlw-valueset-icd10-2013-jp.html
