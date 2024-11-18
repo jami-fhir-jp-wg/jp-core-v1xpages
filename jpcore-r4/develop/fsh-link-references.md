@@ -1,6 +1,7 @@
 [endpoint-dicom-wadors-example]: Endpoint-endpoint-dicom-wadors-example.html
 [jp-allergyintolerance-example-1]: AllergyIntolerance-jp-allergyintolerance-example-1.html
 [JP_AllergyIntolerance]: StructureDefinition-jp-allergyintolerance.html
+[JP_BodySite_CS]: CodeSystem-jp-bodysite-cs.html
 [jp-client-capabilitystatement]: CapabilityStatement-jp-client-capabilitystatement.html
 [jp-condition-diagnosis-example-1]: Condition-jp-condition-diagnosis-example-1.html
 [JP_Condition_Diagnosis]: StructureDefinition-jp-condition-diagnosis.html
@@ -70,9 +71,11 @@
 [jp-familymemberhistory-example-1]: FamilyMemberHistory-jp-familymemberhistory-example-1.html
 [JP_FamilyMemberHistory]: StructureDefinition-jp-familymemberhistory.html
 [JP_HumanName]: StructureDefinition-jp-humanname.html
+[JP_ImagingStudy_Endoscopy_BodySite_VS]: ValueSet-jp-imagingstudy-endoscopy-bodysite-vs.html
 [jp-imagingstudy-endoscopy-example-1]: ImagingStudy-jp-imagingstudy-endoscopy-example-1.html
 [JP_ImagingStudy_Endoscopy]: StructureDefinition-jp-imagingstudy-endoscopy.html
 [JP_ReasonCodesJed_VS]: ValueSet-jp-reason-codes-jed-vs.html
+[JP_ImagingStudy_Radiology_BodySite_VS]: ValueSet-jp-imagingstudy-radiology-bodysite-vs.html
 [jp-imagingstudy-radiology-example-1]: ImagingStudy-jp-imagingstudy-radiology-example-1.html
 [JP_ImagingStudy_Radiology]: StructureDefinition-jp-imagingstudy-radiology.html
 [JP_Immunization_CertificatedDate]: StructureDefinition-jp-immunization-certificateddate.html
@@ -171,6 +174,7 @@
 [JP_ObservationBodyMeasurementCode_VS]: ValueSet-jp-observation-bodymeasurement-code-vs.html
 [jp-observation-bodyMeasurement-example-1]: Observation-jp-observation-bodyMeasurement-example-1.html
 [JP_Observation_BodyMeasurement]: StructureDefinition-jp-observation-bodymeasurement.html
+[JP_Observation_BodySite_VS]: ValueSet-jp-observation-bodysite-vs.html
 [JP_Observation_Common]: StructureDefinition-jp-observation-common.html
 [JP_Observation_DentalOral_BodySiteStatus]: StructureDefinition-jp-observation-dentaloral-bodysitestatus.html
 [JP_Observation_DentalOral_BodyStructure]: StructureDefinition-jp-observation-dentaloral-bodystructure.html
@@ -240,8 +244,7 @@
 [jp-practitioner-example-male-2]: Practitioner-jp-practitioner-example-male-2.html
 [JP_Practitioner]: StructureDefinition-jp-practitioner.html
 [JP_PractitionerRole]: StructureDefinition-jp-practitionerrole.html
-[JP_ProcedureBodySite_CS]: CodeSystem-jp-procedure-body-site-cs.html
-[JP_ProcedureBodySite_VS]: ValueSet-jp-procedure-body-site-vs.html
+[JP_Procedure_BodySite_VS]: ValueSet-jp-procedure-bodysite-vs.html
 [JP_ProcedureCodesICHI_VS]: ValueSet-jp-procedure-codes-ichi-vs.html
 [JP_ProcedureCondition_VS]: ValueSet-jp-procedure-condition-vs.html
 [JP_ProcedureDeviceAction_VS]: ValueSet-jp-procedure-device-action-vs.html
