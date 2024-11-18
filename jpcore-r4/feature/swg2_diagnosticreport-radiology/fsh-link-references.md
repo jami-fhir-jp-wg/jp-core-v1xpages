@@ -1,6 +1,7 @@
 [endpoint-dicom-wadors-example]: Endpoint-endpoint-dicom-wadors-example.html
 [jp-allergyintolerance-example-1]: AllergyIntolerance-jp-allergyintolerance-example-1.html
 [JP_AllergyIntolerance]: StructureDefinition-jp-allergyintolerance.html
+[JP_BodySite_CS]: CodeSystem-jp-bodysite-cs.html
 [jp-client-capabilitystatement]: CapabilityStatement-jp-client-capabilitystatement.html
 [jp-condition-diagnosis-example-1]: Condition-jp-condition-diagnosis-example-1.html
 [JP_Condition_Diagnosis]: StructureDefinition-jp-condition-diagnosis.html
@@ -67,13 +68,14 @@
 [jp-encounter-example-1]: Encounter-jp-encounter-example-1.html
 [JP_Encounter]: StructureDefinition-jp-encounter.html
 [JP_EndoscopyTerminologyCodesJED_CS]: CodeSystem-jp-endoscopyterminology-codes-jed-cs.html
-[JP_ObservationCategory_Endoscopy_VS]: ValueSet-jp-endoscopy-category-vs.html
 [jp-familymemberhistory-example-1]: FamilyMemberHistory-jp-familymemberhistory-example-1.html
 [JP_FamilyMemberHistory]: StructureDefinition-jp-familymemberhistory.html
 [JP_HumanName]: StructureDefinition-jp-humanname.html
+[JP_ImagingStudy_Endoscopy_BodySite_VS]: ValueSet-jp-imagingstudy-endoscopy-bodysite-vs.html
 [jp-imagingstudy-endoscopy-example-1]: ImagingStudy-jp-imagingstudy-endoscopy-example-1.html
 [JP_ImagingStudy_Endoscopy]: StructureDefinition-jp-imagingstudy-endoscopy.html
 [JP_ReasonCodesJed_VS]: ValueSet-jp-reason-codes-jed-vs.html
+[JP_ImagingStudy_Radiology_BodySite_VS]: ValueSet-jp-imagingstudy-radiology-bodysite-vs.html
 [jp-imagingstudy-radiology-example-1]: ImagingStudy-jp-imagingstudy-radiology-example-1.html
 [JP_ImagingStudy_Radiology]: StructureDefinition-jp-imagingstudy-radiology.html
 [JP_Immunization_CertificatedDate]: StructureDefinition-jp-immunization-certificateddate.html
@@ -166,13 +168,13 @@
 [JP_Microbiology_InfectiousAgent_CS]: CodeSystem-jp-microbiology-infectious-agent-cs.html
 [JP_MicrobiologyCategory_CS]: CodeSystem-jp-microbiology-category-cs.html
 [JP_MicrobiologyCategory_VS]: ValueSet-jp-microbiology-category-vs.html
-[JP_ObservationCategory_Microbiology_VS]: ValueSet-jp-microbiology-category-laboratory-vs.html
 [JP_ObservationBodyMeasurementCategory_CS]: CodeSystem-jp-observation-bodymeasurement-category-cs.html
 [JP_ObservationBodyMeasurementCategory_VS]: ValueSet-jp-observation-bodymeasurement-category-vs.html
 [JP_ObservationBodyMeasurementCode_CS]: CodeSystem-jp-observation-bodymeasurement-code-cs.html
 [JP_ObservationBodyMeasurementCode_VS]: ValueSet-jp-observation-bodymeasurement-code-vs.html
 [jp-observation-bodyMeasurement-example-1]: Observation-jp-observation-bodyMeasurement-example-1.html
 [JP_Observation_BodyMeasurement]: StructureDefinition-jp-observation-bodymeasurement.html
+[JP_Observation_BodySite_VS]: ValueSet-jp-observation-bodysite-vs.html
 [JP_Observation_Common]: StructureDefinition-jp-observation-common.html
 [JP_Observation_DentalOral_BodySiteStatus]: StructureDefinition-jp-observation-dentaloral-bodysitestatus.html
 [JP_Observation_DentalOral_BodyStructure]: StructureDefinition-jp-observation-dentaloral-bodystructure.html
@@ -222,7 +224,6 @@
 [jp-observation-vitalsigns-example-1]: Observation-jp-observation-vitalsigns-example-1.html
 [JP_Observation_VitalSigns]: StructureDefinition-jp-observation-vitalsigns.html
 [JP_ObservationDentalCategory_CS]: CodeSystem-jp-observation-dental-category-cs.html
-[JP_ObservationDentalCategory_VS]: ValueSet-jp-observation-dental-category-vs.html
 [JP_ObservationDetailedDentalCategory_VS]: ValueSet-jp-observation-detailed-dental-category-vs.html
 [jp-organization-example-payer]: Organization-jp-organization-example-payer.html
 [jp-organization-example-clinic]: Organization-jp-organization-example-clinic.html
@@ -243,8 +244,7 @@
 [jp-practitioner-example-male-2]: Practitioner-jp-practitioner-example-male-2.html
 [JP_Practitioner]: StructureDefinition-jp-practitioner.html
 [JP_PractitionerRole]: StructureDefinition-jp-practitionerrole.html
-[JP_ProcedureBodySite_CS]: CodeSystem-jp-procedure-body-site-cs.html
-[JP_ProcedureBodySite_VS]: ValueSet-jp-procedure-body-site-vs.html
+[JP_Procedure_BodySite_VS]: ValueSet-jp-procedure-bodysite-vs.html
 [JP_ProcedureCodesICHI_VS]: ValueSet-jp-procedure-codes-ichi-vs.html
 [JP_ProcedureCondition_VS]: ValueSet-jp-procedure-condition-vs.html
 [JP_ProcedureDeviceAction_VS]: ValueSet-jp-procedure-device-action-vs.html
