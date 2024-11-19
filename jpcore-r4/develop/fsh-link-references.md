@@ -3,6 +3,7 @@
 [JP_AllergyIntolerance]: StructureDefinition-jp-allergyintolerance.html
 [JP_BodySite_CS]: CodeSystem-jp-bodysite-cs.html
 [jp-client-capabilitystatement]: CapabilityStatement-jp-client-capabilitystatement.html
+[JP_Condition_BodySite_VS]: ValueSet-jp-condition-bodysite-vs.html
 [jp-condition-diagnosis-example-1]: Condition-jp-condition-diagnosis-example-1.html
 [JP_Condition_Diagnosis]: StructureDefinition-jp-condition-diagnosis.html
 [JP_Disease_MEDIS_Concept_VS]: ValueSet-jp-condition-disease-code-medis-exchange-vs.html
