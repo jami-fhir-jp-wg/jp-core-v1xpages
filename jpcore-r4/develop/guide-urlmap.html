@@ -203,9 +203,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h3 id="uriに指定する形式について">URIに指定する形式について</h3>
 
 <h4 id="oid形式からurl形式への移行">OID形式からURL形式への移行</h4>
-<p>FHIR実装ガイドで採用している「CodeSystem」や「Identifierに対するSystem値」に対するURIについて、可能なものからOID形式からURL形式への移行を進めている。URL形式がWebにおける標準的な識別子であり、相互運用性やアクセシビリティの向上に寄与するためである。OID形式は、新規OIDの発行や管理のわかりにくさ、人間の可読性と解釈の難しさやWebとの親和性など課題が残っている。URL形式への移行により、これらの課題を解消し、よりオープンで柔軟なシステム構築が可能となる。</p>
+<p>FHIR実装ガイドで採用している「CodeSystem」や「Identifierに対するSystem値」に対するURIについて、可能なものからOID形式からURL形式への移行を進めている。URL形式がWebにおける標準的な識別子であり、人間の可読性、相互運用性やアクセシビリティの向上に寄与するためである。</p>
 
-<p>現時点ではURL形式の利用は必須ではなく、NamingSystemリソースへのOID形式の記載もしてあるOIDについても許容している。これは、既存システムとの互換性を維持し、円滑な移行を促すためである。しかし、一般のFHIRライブラリはNamingSystemリソースの内容まで参照していないことが一般的である。そのため、ライブラリを利用する実装者は、NamingSystemリソースを参照し、必要に応じてOID形式への一括変換などの工夫を行う必要がある。具体的には、NamingSystemリソースに定義されたOIDとURLの対応関係に基づき、ライブラリが処理するデータのURIを適切に変換することで、システム間の相互運用性を確保できる。</p>
+<p>現時点では既存システムとの互換性を維持し円滑な移行を促すため、URL形式の利用は必須ではせずNamingSystemリソースへのOID形式の記載もしてあるOIDについても許容している。しかし、HL7 FHIR標準Validatorやその他のFHIRライブラリはNamingSystemリソースの内容まで参照していないことが多い。そのため実装者は、1)提供されるPackageファイルをNamingSystemリソースを参照し、OID形式への逆変換を行う、2)OIDベースのシステムからデータを外部に出力する際に、URL形式に変換するなどの工夫が必要となる。</p>
 
 <p>将来的なFHIR実装ガイドの改訂においては、URL形式の利用を必須とする方向で検討を進める予定である。そのため、新規システムの構築においては、可能な限りURL形式を採用することが推奨される。</p>
 
@@ -627,7 +627,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Nov 18, 2024 13:47+0000">2024-11-18</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Nov 19, 2024 01:45+0000">2024-11-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
