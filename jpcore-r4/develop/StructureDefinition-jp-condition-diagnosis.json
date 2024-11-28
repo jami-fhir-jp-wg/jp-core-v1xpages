@@ -92,7 +92,7 @@
         }],
         "key" : "con-3",
         "severity" : "warning",
-        "human" : "「verificationStatus」が「entered-in-error」でなく、「category」が「problem-list-item」である場合、「condition.clinicalStatus」が存在している必要があります。」",
+        "human" : "verificationStatus」が「entered-in-error」でなく、「category」が「problem-list-item」である場合、「condition.clinicalStatus」が存在している必要があります。",
         "expression" : "clinicalStatus.exists() or verificationStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-ver-status' and code = 'entered-in-error').exists() or category.select($this='problem-list-item').empty()",
         "xpath" : "exists(f:clinicalStatus) or exists(f:verificationStatus/f:coding/f:code/@value='entered-in-error') or not(exists(category[@value='problem-list-item']))",
         "source" : "http://hl7.org/fhir/StructureDefinition/Condition"
@@ -108,7 +108,7 @@
       {
         "key" : "con-5",
         "severity" : "error",
-        "human" : "「verificationStatusがentered-in-errorである場合、condition.clinicalStatusは存在してはなりません。」",
+        "human" : "verificationStatusがentered-in-errorである場合、condition.clinicalStatusは存在してはなりません。",
         "expression" : "verificationStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-ver-status' and code='entered-in-error').empty() or clinicalStatus.empty()",
         "xpath" : "not(exists(f:verificationStatus/f:coding[f:system/@value='http://terminology.hl7.org/CodeSystem/condition-ver-status' and f:code/@value='entered-in-error'])) or not(exists(f:clinicalStatus))",
         "source" : "http://hl7.org/fhir/StructureDefinition/Condition"
@@ -116,7 +116,7 @@
       {
         "key" : "dom-2",
         "severity" : "error",
-        "human" : "もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません .",
+        "human" : "もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen).",
         "expression" : "contained.contained.empty()",
         "xpath" : "not(parent::f:contained and f:contained)",
         "source" : "http://hl7.org/fhir/StructureDefinition/DomainResource"
@@ -140,7 +140,7 @@
       {
         "key" : "dom-5",
         "severity" : "error",
-        "human" : "「もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。」",
+        "human" : "もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。",
         "expression" : "contained.meta.security.empty()",
         "xpath" : "not(exists(f:contained/*/f:meta/f:security))",
         "source" : "http://hl7.org/fhir/StructureDefinition/DomainResource"
@@ -156,7 +156,7 @@
         }],
         "key" : "dom-6",
         "severity" : "warning",
-        "human" : "「資源は堅牢な管理のために物語を持つべきである。」",
+        "human" : "資源は堅牢な管理のために物語を持つべきである。",
         "expression" : "text.`div`.exists()",
         "xpath" : "exists(f:text/h:div)",
         "source" : "http://hl7.org/fhir/StructureDefinition/DomainResource"
@@ -188,8 +188,8 @@
       "id" : "Condition.id",
       "path" : "Condition.id",
       "short" : "このアーティファクトの論理ID",
-      "definition" : "「リソースのURLで使用される論理ID。一度割り当てられたら、この値は変更されません。」",
-      "comment" : "「リソースにIDがないのは、作成操作を使用してサーバーに送信されているときだけです。」",
+      "definition" : "リソースのURLで使用される論理ID。一度割り当てられたら、この値は変更されません。",
+      "comment" : "リソースにIDがないのは、作成操作を使用してサーバーに送信されているときだけです。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -210,8 +210,8 @@
     {
       "id" : "Condition.meta",
       "path" : "Condition.meta",
-      "short" : "「リソースに関するメタデータ」",
-      "definition" : "リソースに関するメタデータ。これはインフラストラクチャによって維持されるコンテンツです。 コンテンツの変更は、リソースのバージョン変更と常に関連しているわけではありません。",
+      "short" : "リソースに関するMetadata",
+      "definition" : "リソースに関するMetadata。これはインフラストラクチャによって維持されるコンテンツです。 コンテンツの変更は、リソースのバージョン変更と常に関連しているわけではありません。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -237,7 +237,7 @@
       "id" : "Condition.implicitRules",
       "path" : "Condition.implicitRules",
       "short" : "このコンテンツが作成されたルールセット",
-      "definition" : "「リソース構築時に遵守された一連のルールを指すものであり、コンテンツを処理する際に理解する必要があります。しばしば、特別なルールを定義する実装ガイドとその他のプロファイルなどを含むものです。」",
+      "definition" : "リソース構築時に遵守された一連のルールを指すものであり、コンテンツを処理する際に理解する必要があります。しばしば、特別なルールを定義する実装ガイドとその他のプロファイルなどを含むものです。",
       "comment" : "このルールセットを主張することで、取引先の限られた集団にしか内容を理解させることができず、長期的にはデータの有用性が制限されます。しかしながら、現存するヘルスエコシステムは高度に分断化しており、一般的に計算可能な形式でデータを定義、収集、交換する準備が整っていません。できる限り、実装者および/または仕様ライターはこの要素の使用を避けるべきです。使用する場合、URLは、そのナラティブとともに他のプロファイル、値セットなどを含む実装ガイドを定義する参照となります。",
       "min" : 0,
       "max" : "1",
@@ -264,8 +264,8 @@
     {
       "id" : "Condition.language",
       "path" : "Condition.language",
-      "short" : "「リソースコンテンツの言語」",
-      "definition" : "「リソースが書かれている基本言語。」",
+      "short" : "リソースコンテンツの言語",
+      "definition" : "リソースが書かれている基本言語。",
       "comment" : "言語はインデックスとアクセシビリティをサポートするために提供されます（通常、テキスト読み上げなどのサービスは言語タグを使用します）。物語のHTML言語タグは、物語に適用されます。リソース上の言語タグは、リソース内のデータから生成される他のプレゼンテーションの言語を指定するために使用できます。すべてのコンテンツが基本言語である必要はありません。Resource.languageは自動的に物語に適用されたと想定してはいけません。言語が指定されている場合、HTMLのdiv要素にも指定する必要があります（xml：langとhtml lang属性の関係に関する情報はHTML5の規則を参照）。",
       "min" : 0,
       "max" : "1",
@@ -297,7 +297,7 @@
           "valueString" : "Language"
         }],
         "strength" : "preferred",
-        "description" : "「人間の言語。」",
+        "description" : "人間の言語。",
         "valueSet" : "http://hl7.org/fhir/ValueSet/languages"
       }
     },
@@ -305,7 +305,7 @@
       "id" : "Condition.text",
       "path" : "Condition.text",
       "short" : "Text summary of the resource, for human interpretation. このリソースを人間が解釈するためのテキスト要約",
-      "definition" : "「リソースの要約を含む人が読めるナビゲーションであり、リソースの内容を人に表現するために使用できます。ナビゲーションはすべての構造化されたデータをエンコードする必要はありませんが、人間がナビゲーションを読むだけで「臨床的に安全」であるために十分な詳細を含む必要があります。リソース定義には、臨床的な安全性を確保するためにナビゲーションで表現する必要があるコンテンツが定義される場合があります。」",
+      "definition" : "リソースの要約を含む人が読めるナビゲーションであり、リソースの内容を人に表現するために使用できます。ナビゲーションはすべての構造化されたデータをエンコードする必要はありませんが、人間がナビゲーションを読むだけで「臨床的に安全」であるために十分な詳細を含む必要があります。リソース定義には、臨床的な安全性を確保するためにナビゲーションで表現する必要があるコンテンツが定義される場合があります。",
       "comment" : "含まれるリソースには説明がありません。含まれないリソースには説明が必要です。場合によっては、リソースが少量のデータしか含まず、テキストだけで表現されることがあります（minOccurs = 1要素がすべて満たされている限り）。これは、情報が「テキストの塊」としてキャプチャされるレガシーシステムからのデータや、テキストが生またはナレーションされて符号化された情報が後で追加される場合に必要な場合があります。",
       "alias" : ["narrative",
       "html",
@@ -339,9 +339,9 @@
     {
       "id" : "Condition.contained",
       "path" : "Condition.contained",
-      "short" : "「含まれている、インラインのリソース」",
-      "definition" : "「これらのリソースは、それらを含むリソースから独立した存在を持ちません。それらは独立して識別することはできず、独自の独立したトランザクション範囲を持つこともできません。」",
-      "comment" : "「コンテンツが適切に識別できる場合には、これを行うべきではありません。識別が失われると、再び復元することは非常に困難であり（文脈に依存します）、メタ要素にプロファイルとタグを持つことができますが、セキュリティのラベルを持っていてはいけません。」",
+      "short" : "含まれている、インラインのリソース",
+      "definition" : "これらのリソースは、それらを含むリソースから独立した存在を持ちません。それらは独立して識別することはできず、独自の独立したトランザクション範囲を持つこともできません。",
+      "comment" : "コンテンツが適切に識別できる場合には、これを行うべきではありません。識別が失われると、再び復元することは非常に困難であり（文脈に依存します）、メタ要素にプロファイルとタグを持つことができますが、セキュリティのラベルを持っていてはいけません。",
       "alias" : ["inline resources",
       "anonymous resources",
       "contained resources"],
@@ -395,7 +395,7 @@
       {
         "key" : "ext-1",
         "severity" : "error",
-        "human" : "「拡張機能または値[x]のいずれかが必要です。両方ではありません。」",
+        "human" : "拡張機能または値[x]のいずれかが必要です。両方ではありません。",
         "expression" : "extension.exists() != value.exists()",
         "xpath" : "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])",
         "source" : "http://hl7.org/fhir/StructureDefinition/Extension"
@@ -442,8 +442,8 @@
     {
       "id" : "Condition.modifierExtension",
       "path" : "Condition.modifierExtension",
-      "short" : "無視できない拡張機能 ",
-      "definition" : "「リソースの基本的な定義に含まれない、要素の理解や、それを含む要素の子孫の理解を修正する追加情報を表すためにも使用されることがあります。通常、修飾要素は否定や修飾を提供します。拡張機能の使用を安全で管理しやすくするために、拡張機能の定義と使用に対して厳格な統治が適用されます。実装者は拡張機能を定義することが許可されていますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張をチェックする必要があります。修飾子拡張は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味も変更できません）。」",
+      "short" : "無視できない拡張機能",
+      "definition" : "リソースの基本的な定義に含まれない、要素の理解や、それを含む要素の子孫の理解を修正する追加情報を表すためにも使用されることがあります。通常、修飾要素は否定や修飾を提供します。拡張機能の使用を安全で管理しやすくするために、拡張機能の定義と使用に対して厳格な統治が適用されます。実装者は拡張機能を定義することが許可されていますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張をチェックする必要があります。修飾子拡張は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味も変更できません）。",
       "comment" : "どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。",
       "requirements" : "Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).",
       "alias" : ["extensions",
@@ -469,7 +469,7 @@
       {
         "key" : "ext-1",
         "severity" : "error",
-        "human" : "「拡張機能または値[x]のいずれかが必要です。両方ではありません。」",
+        "human" : "拡張機能または値[x]のいずれかが必要です。両方ではありません。",
         "expression" : "extension.exists() != value.exists()",
         "xpath" : "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])",
         "source" : "http://hl7.org/fhir/StructureDefinition/Extension"
@@ -486,8 +486,8 @@
       "id" : "Condition.identifier",
       "path" : "Condition.identifier",
       "short" : "この状態の外部ID。",
-      "definition" : "サーバーからサーバーへ伝搬するにつれて更新され、パフォーマーまたは他のシステムによって割り当てられたビジネス識別子が、この状態に対して一定の値を保持します。",
-      "comment" : "これはビジネス識別子であり、リソース識別子ではありません（[discussion]（resource.html＃identifiers）を参照）。 識別子が単一のリソースインスタンスにのみ表示されることが最善の方法ですが、ビジネス上の実践によっては、同じ識別子を持つ複数のリソースインスタンスが存在する場合があります。 たとえば、複数の患者と個人リソースインスタンスが同じ社会保険番号を共有する場合があります。",
+      "definition" : "サーバーからサーバーへ伝搬するにつれて更新され、パフォーマーまたは他のシステムによって割り当てられたビジネスidentifierが、この状態に対して一定の値を保持します。",
+      "comment" : "これはビジネスidentifierであり、リソースidentifierではありません（[discussion]（resource.html＃identifiers）を参照）。 identifierが単一のリソースインスタンスにのみ表示されることが最善の方法ですが、ビジネス上の実践によっては、同じidentifierを持つ複数のリソースインスタンスが存在する場合があります。 たとえば、複数の患者と個人リソースインスタンスが同じ社会保険番号を共有する場合があります。",
       "requirements" : "Allows identification of the condition as it is known by various participating systems and in a way that remains consistent across servers.",
       "min" : 0,
       "max" : "*",
@@ -617,7 +617,7 @@
           "valueString" : "ConditionVerificationStatus"
         }],
         "strength" : "required",
-        "description" : "「状態や診断の臨床状況を支持または拒否するための検証状況」",
+        "description" : "状態や診断の臨床状況を支持または拒否するための検証状況",
         "valueSet" : "http://hl7.org/fhir/ValueSet/condition-ver-status|4.0.1"
       },
       "mapping" : [{
@@ -649,7 +649,7 @@
       "id" : "Condition.category",
       "path" : "Condition.category",
       "short" : "problem-list-item | encounter-diagnosis（プロブレムリスト | 一時的な診断）",
-      "definition" : "「状態に割り当てられたカテゴリー。」",
+      "definition" : "状態に割り当てられたカテゴリー。",
       "comment" : "分類はしばしば文脈に強く依存しており、他の文脈では区別が不十分であるか、あまり役に立たないように見えることがあります。",
       "min" : 0,
       "max" : "*",
@@ -677,7 +677,7 @@
           "valueString" : "ConditionCategory"
         }],
         "strength" : "extensible",
-        "description" : "「状態に割り当てられたカテゴリー。」",
+        "description" : "状態に割り当てられたカテゴリー。",
         "valueSet" : "http://hl7.org/fhir/ValueSet/condition-category"
       },
       "mapping" : [{
@@ -783,7 +783,7 @@
           "valueString" : "ConditionKind"
         }],
         "strength" : "example",
-        "description" : "「状態や診断の特定」",
+        "description" : "状態や診断の特定",
         "valueSet" : "http://hl7.org/fhir/ValueSet/condition-code"
       },
       "mapping" : [{
@@ -2348,7 +2348,7 @@
       "path" : "Condition.bodySite",
       "short" : "Anatomical location, if relevant. もし関連するのであれば、その人体部位",
       "definition" : "この症状が現れる解剖学的位置。",
-      "comment" : "「Condition.code」で暗黙的に表現されない場合にのみ使用します。ユースケースがBodySiteリソースから属性を必要とする場合（例えば、別々に識別して追跡するために）、標準の拡張機能[bodySite]（extension-bodysite.html）を使用してください。概要コードであることも、位置の非常に正確な定義への参照であることもあります。」",
+      "comment" : "Condition.code」で暗黙的に表現されない場合にのみ使用します。ユースケースがBodySiteリソースから属性を必要とする場合（例えば、別々に識別して追跡するために）、標準の拡張機能[bodySite]（extension-bodysite.html）を使用してください。概要コードであることも、位置の非常に正確な定義への参照であることもあります。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -2390,7 +2390,7 @@
       "id" : "Condition.subject",
       "path" : "Condition.subject",
       "short" : "Who has the condition? 誰がこの状態を有するか",
-      "definition" : "「その病状記録が関連する患者またはグループを示します。」",
+      "definition" : "その病状記録が関連する患者またはグループを示します。",
       "requirements" : "Group is typically used for veterinary or public health use cases.",
       "alias" : ["patient"],
       "min" : 1,
@@ -2440,7 +2440,7 @@
       "path" : "Condition.encounter",
       "short" : "Encounter created as part of. この患者状態の記録が作成された受療の状況（外来、入院、救急、在宅など）",
       "definition" : "The Encounter during which this Condition was created or to which the creation of this record is tightly associated.  \nこの患者状態の記録やレコード作成に関連する受療の状況（外来、入院、救急、在宅など）",
-      "comment" : "通常、イベントが発生した出会いの中で行われることが多いですが、公式的に出会いが完了する前または後に開始される場合がありますが、それでも出会いの文脈に関連する活動があります。この記録は、この特定の記録が関連付けられた出来事を示します。 「新しい」診断が、継続的に修正された情報を反映する場合、これは最初に患者が変化に気づいた最初の出会いとは異なる場合があります。",
+      "comment" : "通常、イベントが発生したEncounter（診察、受診、入退院など）の中で行われることが多いですが、公式的にEncounter（診察、受診、入退院など）が完了する前または後に開始される場合がありますが、それでもEncounter（診察、受診、入退院など）の文脈に関連する活動があります。この記録は、この特定の記録が関連付けられた出来事を示します。 「新しい」診断が、継続的に修正された情報を反映する場合、これは最初に患者が変化に気づいた最初のEncounter（診察、受診、入退院など）とは異なる場合があります。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -2769,7 +2769,7 @@
       "id" : "Condition.stage.extension",
       "path" : "Condition.stage.extension",
       "short" : "実装によって定義される追加コンテンツ",
-      "definition" : "「要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。」",
+      "definition" : "要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。",
       "comment" : "どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。",
       "alias" : ["extensions",
       "user content"],
@@ -2794,7 +2794,7 @@
       {
         "key" : "ext-1",
         "severity" : "error",
-        "human" : "「拡張機能または値[x]のいずれかが必要です。両方ではありません。」",
+        "human" : "拡張機能または値[x]のいずれかが必要です。両方ではありません。",
         "expression" : "extension.exists() != value.exists()",
         "xpath" : "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])",
         "source" : "http://hl7.org/fhir/StructureDefinition/Extension"
@@ -2809,8 +2809,8 @@
     {
       "id" : "Condition.stage.modifierExtension",
       "path" : "Condition.stage.modifierExtension",
-      "short" : "「認識されなくても無視できない拡張機能」",
-      "definition" : "「基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。\n\n修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。」",
+      "short" : "認識されなくても無視できない拡張機能",
+      "definition" : "基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。\n\n修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。",
       "comment" : "どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。",
       "requirements" : "Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).",
       "alias" : ["extensions",
@@ -2837,7 +2837,7 @@
       {
         "key" : "ext-1",
         "severity" : "error",
-        "human" : "「拡張機能または値[x]のいずれかが必要です。両方ではありません。」",
+        "human" : "拡張機能または値[x]のいずれかが必要です。両方ではありません。",
         "expression" : "extension.exists() != value.exists()",
         "xpath" : "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])",
         "source" : "http://hl7.org/fhir/StructureDefinition/Extension"
@@ -2854,7 +2854,7 @@
       "id" : "Condition.stage.summary",
       "path" : "Condition.stage.summary",
       "short" : "簡単な要約（病気特有のもの）",
-      "definition" : "「ステージ3」といった、単純なステージの概要。ステージの決定は病気によって異なります。」",
+      "definition" : "ステージ3」といった、単純なステージの概要。ステージの決定は病気によって異なります。",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -2882,7 +2882,7 @@
           "valueString" : "ConditionStage"
         }],
         "strength" : "example",
-        "description" : "「状態段階を説明するコード（例：がんの段階）」",
+        "description" : "状態段階を説明するコード（例：がんの段階）",
         "valueSet" : "http://hl7.org/fhir/ValueSet/condition-stage"
       },
       "mapping" : [{
@@ -2901,8 +2901,8 @@
     {
       "id" : "Condition.stage.assessment",
       "path" : "Condition.stage.assessment",
-      "short" : "「評価の公式記録」",
-      "definition" : "「ステージング評価の根拠となる正式な証拠記録への参照。」",
+      "short" : "評価の公式記録",
+      "definition" : "ステージング評価の根拠となる正式な証拠記録への参照。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -2935,8 +2935,8 @@
     {
       "id" : "Condition.stage.type",
       "path" : "Condition.stage.type",
-      "short" : "\"演出の種類\" (Enshutsu no shurui)",
-      "definition" : "「病理的ステージングや臨床ステージングといった種類のステージング」",
+      "short" : "演出の種類",
+      "definition" : "病理的ステージングや臨床ステージングといった種類のステージング",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -2976,7 +2976,7 @@
       "path" : "Condition.evidence",
       "short" : "Supporting evidence. 患者状態の存在に関する根拠",
       "definition" : "Supporting evidence / manifestations that are the basis of the Condition's verification status, such as evidence that confirmed or refuted the condition.  \n患者状態を確認または否定した証拠など、状態の検証ステータスの裏付けとなる症状や兆候。",
-      "comment" : "「証拠は、コード化された症状/症状の簡単なリスト、または観察や正式な評価への言及、またはその両方である可能性があります。」",
+      "comment" : "証拠は、コード化された症状/症状の簡単なリスト、または観察や正式な評価への言及、またはその両方である可能性があります。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -3041,7 +3041,7 @@
       "id" : "Condition.evidence.extension",
       "path" : "Condition.evidence.extension",
       "short" : "実装によって定義される追加コンテンツ",
-      "definition" : "「要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。」",
+      "definition" : "要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。",
       "comment" : "どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。",
       "alias" : ["extensions",
       "user content"],
@@ -3066,7 +3066,7 @@
       {
         "key" : "ext-1",
         "severity" : "error",
-        "human" : "「拡張機能または値[x]のいずれかが必要です。両方ではありません。」",
+        "human" : "拡張機能または値[x]のいずれかが必要です。両方ではありません。",
         "expression" : "extension.exists() != value.exists()",
         "xpath" : "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])",
         "source" : "http://hl7.org/fhir/StructureDefinition/Extension"
@@ -3081,8 +3081,8 @@
     {
       "id" : "Condition.evidence.modifierExtension",
       "path" : "Condition.evidence.modifierExtension",
-      "short" : "「認識されなくても無視できない拡張機能」",
-      "definition" : "「基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。\n\n修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。」",
+      "short" : "認識されなくても無視できない拡張機能",
+      "definition" : "基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。\n\n修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。",
       "comment" : "どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。",
       "requirements" : "Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).",
       "alias" : ["extensions",
@@ -3109,7 +3109,7 @@
       {
         "key" : "ext-1",
         "severity" : "error",
-        "human" : "「拡張機能または値[x]のいずれかが必要です。両方ではありません。」",
+        "human" : "拡張機能または値[x]のいずれかが必要です。両方ではありません。",
         "expression" : "extension.exists() != value.exists()",
         "xpath" : "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])",
         "source" : "http://hl7.org/fhir/StructureDefinition/Extension"
@@ -3126,7 +3126,7 @@
       "id" : "Condition.evidence.code",
       "path" : "Condition.evidence.code",
       "short" : "表れ/症状",
-      "definition" : "「この状態の記録に至った兆候や症状。」",
+      "definition" : "この状態の記録に至った兆候や症状。",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -3177,7 +3177,7 @@
     {
       "id" : "Condition.evidence.detail",
       "path" : "Condition.evidence.detail",
-      "short" : "「別の場所で見つかったサポート情報」",
+      "short" : "別の場所で見つかったサポート情報",
       "definition" : "その他関連情報、病理検査報告書などのリンク。",
       "min" : 0,
       "max" : "*",

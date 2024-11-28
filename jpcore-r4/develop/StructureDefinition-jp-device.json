@@ -84,7 +84,7 @@
       {
         "key" : "dom-4",
         "severity" : "error",
-        "human" : "リソースが別のリソースに含まれている場合、meta.versionidまたはmeta.lastupdatedを持たないものとします / If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated",
+        "human" : "リソースが別のリソースに含まれている場合、meta.versionidもmeta.lastupdatedも持ってはならない。 / If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated",
         "expression" : "contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()",
         "xpath" : "not(exists(f:contained/*/f:meta/f:versionId)) and not(exists(f:contained/*/f:meta/f:lastUpdated))",
         "source" : "http://hl7.org/fhir/StructureDefinition/DomainResource"
@@ -150,8 +150,8 @@
     {
       "id" : "Device.meta",
       "path" : "Device.meta",
-      "short" : "リソースに関するメタデータ / Metadata about the resource",
-      "definition" : "リソースに関するメタデータ。これは、インフラストラクチャによって維持されるコンテンツです。コンテンツの変更は、常にリソースのバージョンの変更に関連付けられているとは限りません。 / The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+      "short" : "リソースに関するMetadata / Metadata about the resource",
+      "definition" : "リソースに関するMetadata。これは、インフラストラクチャによって維持されるコンテンツです。コンテンツの変更は、常にリソースのバージョンの変更に関連付けられているとは限りません。 / The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -165,7 +165,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -307,7 +307,7 @@
     {
       "id" : "Device.meta.source",
       "path" : "Device.meta.source",
-      "short" : "「リソースがどこから来たかを特定する」",
+      "short" : "リソースがどこから来たかを特定する",
       "definition" : "リソースのソースシステムを識別するURI。これにより、リソース内の情報のソースをトラックまたは区別するために使用できる最小限の[プロビナンス]（provenance.html＃）情報が提供されます。ソースは、別のFHIRサーバー、ドキュメント、メッセージ、データベースなどを識別できます。",
       "comment" : "プロバナンスのリソースにおいて、これはProvenance.entity.what[x]に対応します。ソースの正確な使用方法（および含意されるProvenance.entity.role）は実装者の判断に委ねられます。指定されたソースは1つだけです。追加のプロバナンスの詳細が必要な場合は、完全なプロバナンスリソースを使用するべきです。\n\nこの要素は、正規のURLでホストされていないリソースの現在のマスターソースがどこにあるかを示すために使用できます。",
       "min" : 0,
@@ -441,7 +441,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -469,7 +469,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -513,7 +513,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -572,7 +572,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -614,7 +614,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -638,9 +638,9 @@
     {
       "id" : "Device.identifier",
       "path" : "Device.identifier",
-      "short" : "インスタンス識別子 / Instance identifier",
-      "definition" : "他の組織または所有者を製造業者によってデバイスに割り当てられた一意のインスタンス識別子。 / Unique instance identifiers assigned to a device by manufacturers other organizations or owners.",
-      "comment" : "デバイスラベルまたはパッケージに存在するバーコードのバーコード文字列には、インスタンスを識別したり、ローカル使用でデバイスに指定された名前を含めるか、デバイスのタイプを識別したりすることがあります。識別子がデバイスのタイプを識別する場合、device.type要素を使用する必要があります。 / The barcode string from a barcode present on a device label or package may identify the instance, include names given to the device in local usage, or may identify the type of device. If the identifier identifies the type of device, Device.type element should be used.",
+      "short" : "インスタンスidentifier / Instance identifier",
+      "definition" : "他の組織または所有者を製造業者によってデバイスに割り当てられた一意のインスタンスidentifier。 / Unique instance identifiers assigned to a device by manufacturers other organizations or owners.",
+      "comment" : "デバイスラベルまたはパッケージに存在するバーコードのバーコード文字列には、インスタンスを識別したり、ローカル使用でデバイスに指定された名前を含めるか、デバイスのタイプを識別したりすることがあります。identifierがデバイスのタイプを識別する場合、device.type要素を使用する必要があります。 / The barcode string from a barcode present on a device label or package may identify the instance, include names given to the device in local usage, or may identify the type of device. If the identifier identifies the type of device, Device.type element should be used.",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -654,7 +654,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -671,7 +671,7 @@
       },
       {
         "identity" : "udi",
-        "map" : "The serial number which is a component of the production identifier (PI), a conditional, variable portion of a UDI.   The identifier.type code should be set to “SNO”(Serial Number) and the system left empty."
+        "map" : "The serial number which is a component of the production identifier (PI), a conditional, variable portion of a UDI.   The identifier.type code should be set to “SNO” and the system left empty."
       }]
     },
     {
@@ -693,7 +693,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -704,8 +704,8 @@
     {
       "id" : "Device.udiCarrier",
       "path" : "Device.udiCarrier",
-      "short" : "一意のデバイス識別子（UDI）バーコード文字列 / Unique Device Identifier (UDI) Barcode string",
-      "definition" : "デバイスラベルまたはパッケージに割り当てられた一意のデバイス識別子（UDI）。デバイスには、販売されている管轄権のためのudicarrierのみが含まれているか、販売されていた可能性のある複数の管轄区域のために、複数のudicarriersが含まれる場合があることに注意してください。 / Unique device identifier (UDI) assigned to device label or package.  Note that the Device may include multiple udiCarriers as it either may include just the udiCarrier for the jurisdiction it is sold, or for multiple jurisdictions it could have been sold.",
+      "short" : "一意のデバイスidentifier（UDI）バーコード文字列 / Unique Device Identifier (UDI) Barcode string",
+      "definition" : "デバイスラベルまたはパッケージに割り当てられた一意のデバイスidentifier（UDI）。デバイスには、販売されている管轄権のためのudicarrierのみが含まれているか、販売されていた可能性のある複数の管轄区域のために、複数のudicarriersが含まれる場合があることに注意してください。 / Unique device identifier (UDI) assigned to device label or package.  Note that the Device may include multiple udiCarriers as it either may include just the udiCarrier for the jurisdiction it is sold, or for multiple jurisdictions it could have been sold.",
       "comment" : "UDIは、デバイスの一意のインスタンスを識別するか、デバイスのタイプのみを識別する場合があります。UDI部品のデバイスへの完全なマッピングについては、[udiマッピング]（device-mappings.html＃udi）を参照してください。 / UDI may identify an unique instance of a device, or it may only identify the type of the device.  See [UDI mappings](http://hl7.org/fhir/R4/device-mappings.html#udi) for a complete mapping of UDI parts to Device.",
       "min" : 0,
       "max" : "*",
@@ -720,7 +720,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -784,7 +784,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -827,7 +827,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -852,7 +852,7 @@
       "id" : "Device.udiCarrier.deviceIdentifier",
       "path" : "Device.udiCarrier.deviceIdentifier",
       "short" : "UDIの必須の固定部分 / Mandatory fixed portion of UDI",
-      "definition" : "デバイス識別子（DI）は、デバイスのラベルと特定のバージョンまたはモデルを識別するUDIの必須の固定部分です。 / The device identifier (DI) is a mandatory, fixed portion of a UDI that identifies the labeler and the specific version or model of a device.",
+      "definition" : "デバイスidentifier（DI）は、デバイスのラベルと特定のバージョンまたはモデルを識別するUDIの必須の固定部分です。 / The device identifier (DI) is a mandatory, fixed portion of a UDI that identifies the labeler and the specific version or model of a device.",
       "alias" : ["DI"],
       "min" : 0,
       "max" : "1",
@@ -867,7 +867,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -906,7 +906,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -927,7 +927,7 @@
       "path" : "Device.udiCarrier.jurisdiction",
       "short" : "地域UDI当局 / Regional UDI authority",
       "definition" : "管轄内のUDI世代の権威ある情報源のアイデンティティ。すべてのUDIは、システムとして適切なリポジトリURIを備えた単一の名前空間内でグローバルにユニークです。たとえば、FDAによって米国で管理されているデバイスのUDISは、http://hl7.org/fhir/namingsystem/fda-udiです。 / The identity of the authoritative source for UDI generation within a  jurisdiction.  All UDIs are globally unique within a single namespace with the appropriate repository uri as the system.  For example,  UDIs of devices managed in the U.S. by the FDA, the value is  http://hl7.org/fhir/NamingSystem/fda-udi.",
-      "requirements" : "UDIの受信者が、どのデータベースがUDI関連メタデータを含むかを知ることができます。 / Allows a recipient of a UDI to know which database will contain the UDI-associated metadata.",
+      "requirements" : "UDIの受信者が、どのデータベースがUDI関連Metadataを含むかを知ることができます。 / Allows a recipient of a UDI to know which database will contain the UDI-associated metadata.",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -941,7 +941,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -973,7 +973,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1009,7 +1009,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1044,7 +1044,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1084,7 +1084,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1128,7 +1128,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1169,7 +1169,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1207,7 +1207,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1245,7 +1245,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1283,7 +1283,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1321,7 +1321,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1360,7 +1360,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1394,7 +1394,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1450,7 +1450,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1493,7 +1493,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1533,7 +1533,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1559,7 +1559,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1602,7 +1602,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1637,7 +1637,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1671,7 +1671,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1706,7 +1706,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1762,7 +1762,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1805,7 +1805,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1845,7 +1845,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1871,7 +1871,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1901,7 +1901,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -1957,7 +1957,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2000,7 +2000,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2040,7 +2040,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2066,7 +2066,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2096,7 +2096,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2122,7 +2122,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2178,7 +2178,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2221,7 +2221,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2260,7 +2260,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2286,7 +2286,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2312,7 +2312,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2340,7 +2340,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2379,7 +2379,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2414,7 +2414,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2450,7 +2450,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2485,7 +2485,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2519,7 +2519,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2549,7 +2549,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
@@ -2580,7 +2580,7 @@
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "すべてのFHIR要素には、@valueまたは子供が必要です / All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
