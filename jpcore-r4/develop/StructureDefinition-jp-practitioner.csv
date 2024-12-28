@@ -54,8 +54,8 @@ Practitioner.identifier.systemは以下の割り当てる。
 "Practitioner.active","Practitioner.active","","","",0,1,"","","Y","boolean {[]} {[]}
 ","この開業医の記録が積極的に使用されているかどうか / Whether this practitioner's record is in active use","この医療従事者の記録がアクティブに使用されているかどうかを示す。","医療従事者がある組織で使用されていない場合、別のロールでアクティブになっている可能性があるので、(例えそれらがアクティブであっても)PractitionerRoleに有効期間を終了日でマークしておく必要がある。","医療従事者のレコードを誤って作成してしまったとき、使用しないようにマークできるようにする必要がある。","","このリソースは、アクティブな要素の値が提供されていない場合、一般にアクティブであると想定されています / This resource is generally assumed to be active if no value is provided for the active element","","","","","",,,,,"",,,,"Practitioner.active",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","./statusCode","FiveWs.status"
-"Practitioner.name","Practitioner.name","","","",0,*,"","","","HumanName {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_HumanName]]} {[]}
-","人の名前情報、その一部分と使い方","医療従事者の氏名（複数の場合もある）","プロパティの選択は、指定された単一の通常の名前があることを保証しなければならず、他の値はニックネーム（別名）、旧名、または他の値を適切に使用する。  
+"Practitioner.name","Practitioner.name","","","",0,*,"","","Y","HumanName {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_HumanName]]} {[]}
+","開業医に関連付けられた名前 / The name(s) associated with the practitioner","医療従事者の氏名（複数の場合もある）","プロパティの選択は、指定された単一の通常の名前があることを保証しなければならず、他の値はニックネーム（別名）、旧名、または他の値を適切に使用する。  
 一般的には、以下を基準にResourceReference.displayで使用する値を選択する。  
 　1. 最低限1つ以上の名前があること  
 　2.useプロパティが「usual」であること  
@@ -63,9 +63,8 @@ Practitioner.identifier.systemは以下の割り当てる。
 　4. useプロパティが「official」であること  
 　5. その他、内部ルールで決められた順番）  
 医療従事者のNameの漢字カナ表記については、JP_Patient.nameで採用した方法を踏襲する。  
-そのほか、要素の説明は、JP_Patient.nameを参照。","医療従事者が知られている名前。複数ある場合は、従事者が通常知られている名前を表示に使用する。","","","","","","","",,,,,"",,,,"Practitioner.name",0,*,"ele-1
-","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-","XPN","n/a","EN (actually, PN)","ProviderName"
+そのほか、要素の説明は、JP_Patient.nameを参照。","医療従事者が知られている名前。複数ある場合は、従事者が通常知られている名前を表示に使用する。","","","","","","","",,,,,"",,,,"Practitioner.name",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","XCN Components","./name","./PreferredName (GivenNames, FamilyName, TitleCode)"
 "Practitioner.telecom","Practitioner.telecom","","","",0,*,"","","Y","ContactPoint {[]} {[]}
 ","電話番号やメールアドレスなど、従事者への詳細な連絡先","電話番号やメールアドレスなど、従事者への詳細な連絡先。","異なる用途や適用される期間に応じて複数の連絡方法を持っている可能性がある。本人に緊急に連絡を取るためのオプションが必要な場合があり、また本人の身元確認に役立つ場合がある。これらは通常、自宅の電話番号、または役割が特定されていない携帯電話番号を持つことになる。  
 要素の説明は、JP_Patient.telecomを参照。","医療従事者が持っているかもしれない任意の役割ごとに独立した連絡方法を知る必要がある。","","","","","","","",,,,,"",,,,"Practitioner.telecom",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}

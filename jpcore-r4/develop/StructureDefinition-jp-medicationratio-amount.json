@@ -173,8 +173,7 @@
       "id" : "Ratio.numerator",
       "path" : "Ratio.numerator",
       "short" : "投与量",
-      "definition" : "薬剤に関する数量と単位を定めたデータイプ",
-      "comment" : "薬剤に関する数量と単位を定めている。ValueおよびCodeを必須としている。単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)",
+      "definition" : "分子の値。 / The value of the numerator.",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -186,7 +185,6 @@
         "code" : "Quantity",
         "profile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationQuantity"]
       }],
-      "condition" : ["ele-1"],
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
@@ -194,35 +192,19 @@
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
-      },
-      {
-        "key" : "qty-3",
-        "severity" : "error",
-        "human" : "ユニットのコードが存在する場合、システムも存在するものとします / If a code for the unit is present, the system SHALL also be present",
-        "expression" : "code.empty() or system.exists()",
-        "xpath" : "not(exists(f:code)) or exists(f:system)",
-        "source" : "http://hl7.org/fhir/StructureDefinition/Quantity"
       }],
       "isModifier" : false,
+      "isSummary" : true,
       "mapping" : [{
         "identity" : "rim",
-        "map" : "n/a"
-      },
-      {
-        "identity" : "v2",
-        "map" : "SN (see also Range) or CQ"
-      },
-      {
-        "identity" : "rim",
-        "map" : "PQ, IVL<PQ>, MO, CO, depending on the values"
+        "map" : ".numerator"
       }]
     },
     {
       "id" : "Ratio.denominator",
       "path" : "Ratio.denominator",
       "short" : "パッケージ量",
-      "definition" : "薬剤に関する数量と単位を定めたデータイプ",
-      "comment" : "薬剤に関する数量と単位を定めている。ValueおよびCodeを必須としている。単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)",
+      "definition" : "分母の値。 / The value of the denominator.",
       "min" : 0,
       "max" : "1",
       "base" : {
@@ -234,7 +216,6 @@
         "code" : "Quantity",
         "profile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationQuantity"]
       }],
-      "condition" : ["ele-1"],
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
@@ -242,27 +223,12 @@
         "expression" : "hasValue() or (children().count() > id.count())",
         "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
-      },
-      {
-        "key" : "qty-3",
-        "severity" : "error",
-        "human" : "ユニットのコードが存在する場合、システムも存在するものとします / If a code for the unit is present, the system SHALL also be present",
-        "expression" : "code.empty() or system.exists()",
-        "xpath" : "not(exists(f:code)) or exists(f:system)",
-        "source" : "http://hl7.org/fhir/StructureDefinition/Quantity"
       }],
       "isModifier" : false,
+      "isSummary" : true,
       "mapping" : [{
         "identity" : "rim",
-        "map" : "n/a"
-      },
-      {
-        "identity" : "v2",
-        "map" : "SN (see also Range) or CQ"
-      },
-      {
-        "identity" : "rim",
-        "map" : "PQ, IVL<PQ>, MO, CO, depending on the values"
+        "map" : ".denominator"
       }]
     }]
   },

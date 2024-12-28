@@ -178,7 +178,6 @@
       <path value="Ratio.numerator"/>
       <short value="投与量"/>
       <definition value="投与量"/>
-      <comment value="薬剤に関する数量と単位を定めている。ValueおよびCodeを必須としている。単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)"/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -190,7 +189,6 @@
         <code value="Quantity"/>
         <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationQuantity"/>
       </type>
-      <condition value="ele-1"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -199,26 +197,11 @@
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
-      <constraint>
-        <key value="qty-3"/>
-        <severity value="error"/>
-        <human value="ユニットのコードが存在する場合、システムも存在するものとします / If a code for the unit is present, the system SHALL also be present"/>
-        <expression value="code.empty() or system.exists()"/>
-        <xpath value="not(exists(f:code)) or exists(f:system)"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Quantity"/>
-      </constraint>
       <isModifier value="false"/>
+      <isSummary value="true"/>
       <mapping>
         <identity value="rim"/>
-        <map value="n/a"/>
-      </mapping>
-      <mapping>
-        <identity value="v2"/>
-        <map value="SN (see also Range) or CQ"/>
-      </mapping>
-      <mapping>
-        <identity value="rim"/>
-        <map value="PQ, IVL&lt;PQ&gt;, MO, CO, depending on the values"/>
+        <map value=".numerator"/>
       </mapping>
     </element>
     <element id="Ratio.numerator.id">

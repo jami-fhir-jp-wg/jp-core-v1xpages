@@ -52,10 +52,9 @@ ext-1:両方ではなく、拡張または値[x]が必要です / Must have eith
 "Medication.form","Medication.form","","","",0,1,"","","","CodeableConcept {[]} {[]}
 ","TAB | CAP | PWD | SYR | SUP | LQD | OIT | CRM | TPE | INJ +","TAB | CAP | PWD | SYR | SUP | LQD | OIT | CRM | TPE | INJ + 製品の剤型についての説明。散剤、ドライシロップ(PWD)、錠剤(TAB)、カプセル(CAP)など。","もし、Medication ResourceがMedicationRequest Resourceから参照された場合は、これはオーダされた剤型である。Medication ResourceがMedicationDispense Resourceから参照された場合は、払い出された剤型である。MedicationAdministration ResourceからMedication Resourceが参照されていれば、投与された剤型である。","","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/core/ValueSet/JP_MedicationFormMERIT9_VS","",,,,"Medication.form",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","coding.code =  //element(*,DrugCodedType)/FormCodecoding.system = //element(*,DrugCodedType)/FormSourceCode",".formCode","RXO-5-Requested Dosage Form / RXE-6-Give Dosage Form / RXD-6-Actual Dosage Form / RXG-8-Give Dosage Form / RXA-8-Administered Dosage Form"
-"Medication.amount","Medication.amount","","","",0,1,"","","","Ratio {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRatio_Amount]]} {[]}
-","パッケージ中の薬剤の量","パッケージされた製品に含まれる薬剤固有の量。たとえば、同じ力価の製品を指定すれば（たとえば、インスリングラルギン10単位/mL注射液）、この値はパッケージ内での薬剤量（たとえば、3mL, 10mLなど）を明示することになる。","比率（Ratio)を表すデータ型は、量(Quantity)と共通単位を使って適切に表現できないときのみに使われるべきである。分母が""1""に固定されているとわかっているような場合は、量(Quantity)を比率(Ratio)の代わりに使うべきである。","","","","","","","","",,,,,"",,,,"Medication.amount",0,1,"ele-1
-","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-rat-1:分子と分母の両方が存在するか、両方が存在します。両方が欠席している場合、いくつかの拡張が存在するものとします / Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present {(numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())}","n/a","RTO","N/A"
+"Medication.amount","Medication.amount","","","",0,1,"","","Y","Ratio {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRatio_Amount]]} {[]}
+","パッケージ中の薬剤の量","パッケージされた製品に含まれる薬剤固有の量。たとえば、同じ力価の製品を指定すれば（たとえば、インスリングラルギン10単位/mL注射液）、この値はパッケージ内での薬剤量（たとえば、3mL, 10mLなど）を明示することになる。","比率（Ratio)を表すデータ型は、量(Quantity)と共通単位を使って適切に表現できないときのみに使われるべきである。分母が""1""に固定されているとわかっているような場合は、量(Quantity)を比率(Ratio)の代わりに使うべきである。","","","","","","","","",,,,,"",,,,"Medication.amount",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".quantity"
 "Medication.ingredient","Medication.ingredient","","","",0,*,"","","","BackboneElement {[]} {[]}
 ","薬効がある、あるいは薬効を伴わない成分","この薬剤を構成する特定の重要成分を識別する","すべての成分を含む必要はない。もし、ある成分が記載されていなくてもその成分が含有されているかどうかを必ずしも意味しない。特定の成分が記載されていても、すべての成分が記載されていると言うことを意味しない。有効成分であるか、有効成分ではないかを指定することは可能である。","","","","","","","","",,,,,"",,,,"Medication.ingredient",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".scopesRole[typeCode=INGR]"
@@ -86,9 +85,8 @@ Indication of whether this ingredient affects the therapeutic action of the drug
 Falseであれば、この成分が薬剤の治療効果に影響がない（たとえば無効）ということを示す。","","","","","","","",,,,,"",,,,"Medication.ingredient.isActive",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","NA"
 "Medication.ingredient.strength","Medication.ingredient.strength","","","",1,1,"","","","Ratio {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRatio_Amount]]} {[]}
-","成分の活性量","この薬剤中にどの程度の物質が含まれているかを示す。たとえば、1錠あたり250mgなど。これは分子が250mgで分母が1錠である比率を表現している。","1回に使用される薬剤量を示すため、denominatorは1回に固定される。","","","","","","","","",,,,,"",,,,"Medication.ingredient.strength",0,1,"ele-1
-","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-rat-1:分子と分母の両方が存在するか、両方が存在します。両方が欠席している場合、いくつかの拡張が存在するものとします / Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present {(numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())}","n/a","RTO","N/A"
+","成分の活性量","この薬剤中にどの程度の物質が含まれているかを示す。たとえば、1錠あたり250mgなど。これは分子が250mgで分母が1錠である比率を表現している。","1回に使用される薬剤量を示すため、denominatorは1回に固定される。","","","","","","","","",,,,,"",,,,"Medication.ingredient.strength",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","//element(*,DrugCodedType)/Strength",".quantity","RXC-3-Component Amount & RXC-4-Component Units  if medication: RXO-2-Requested Give Amount - Minimum & RXO-4-Requested Give Units / RXO-3-Requested Give Amount - Maximum & RXO-4-Requested Give Units / RXO-11-Requested Dispense Amount & RXO-12-Requested Dispense Units / RXE-3-Give Amount - Minimum & RXE-5-Give Units / RXE-4-Give Amount - Maximum & RXE-5-Give Units / RXE-10-Dispense Amount & RXE-10-Dispense Units"
 "Medication.ingredient.strength.id","Medication.ingredient.strength.id","","","",0,1,"","","","string {[]} {[]}
 ","要素間参照のための一意のID / Unique id for inter-element referencing","リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
 "Medication.ingredient.strength.extension","Medication.ingredient.strength.extension","","extensions
@@ -99,19 +97,17 @@ ext-1:両方ではなく、拡張または値[x]が必要です / Must have eith
 "Medication.ingredient.strength.extension:strengthType","Medication.ingredient.strength.extension","strengthType","","",0,*,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Medication_IngredientStrength_StrengthType]]} {[]}
 ","力価区分","投与量が製剤単位か成分単位かを格納する拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Medication.ingredient.strength.numerator","Medication.ingredient.strength.numerator","","","",0,1,"","","","Quantity {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationQuantity]]} {[]}
-","投与量","薬剤に関する数量と単位を定めたデータイプ","薬剤に関する数量と単位を定めている。ValueおよびCodeを必須としている。単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)","","","","","","","","",,,,,"",,,,"Ratio.numerator",0,1,"ele-1
-","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-qty-3:ユニットのコードが存在する場合、システムも存在するものとします / If a code for the unit is present, the system SHALL also be present {code.empty() or system.exists()}","n/a","PQ, IVL<PQ>, MO, CO, depending on the values","SN (see also Range) or CQ"
-"Medication.ingredient.strength.denominator","Medication.ingredient.strength.denominator","","","",0,1,"","","","Quantity {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationQuantity]]} {[]}
-","パッケージ量","薬剤に関する数量と単位を定めたデータイプ","薬剤に関する数量と単位を定めている。ValueおよびCodeを必須としている。単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)","","","","","<valueQuantity xmlns=""http://hl7.org/fhir"">
+"Medication.ingredient.strength.numerator","Medication.ingredient.strength.numerator","","","",0,1,"","","Y","Quantity {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationQuantity]]} {[]}
+","投与量","分子の値。 / The value of the numerator.","","","","","","","","","",,,,,"",,,,"Ratio.numerator",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".numerator"
+"Medication.ingredient.strength.denominator","Medication.ingredient.strength.denominator","","","",0,1,"","","Y","Quantity {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationQuantity]]} {[]}
+","パッケージ量","分母の値。 / The value of the denominator.","","","","","","<valueQuantity xmlns=""http://hl7.org/fhir"">
   <value value=""1""/>
   <unit value=""回""/>
   <system value=""http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationUnitMERIT9Code""/>
   <code value=""TIME""/>
-</valueQuantity>","","","",,,,,"",,,,"Ratio.denominator",0,1,"ele-1
-","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-qty-3:ユニットのコードが存在する場合、システムも存在するものとします / If a code for the unit is present, the system SHALL also be present {code.empty() or system.exists()}","n/a","PQ, IVL<PQ>, MO, CO, depending on the values","SN (see also Range) or CQ"
+</valueQuantity>","","","",,,,,"",,,,"Ratio.denominator",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+",".denominator"
 "Medication.batch","Medication.batch","","","",0,1,"","","","BackboneElement {[]} {[]}
 ","分包された薬剤についての詳細な解説","薬剤のパッケージ（薬品そのものではない）についての情報。","","","","","","","","","",,,,,"",,,,"Medication.batch",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","no mapping",".player[classCode=CONT]"

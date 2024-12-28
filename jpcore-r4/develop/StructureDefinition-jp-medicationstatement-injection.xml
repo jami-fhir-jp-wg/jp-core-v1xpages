@@ -1409,13 +1409,10 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
       <isModifier value="false"/>
+      <isSummary value="false"/>
       <mapping>
         <identity value="rim"/>
-        <map value="n/a"/>
-      </mapping>
-      <mapping>
-        <identity value="rim"/>
-        <map value=".outboundRelationship[typeCode=COMP].target[classCode=SBADM, moodCode=INT]"/>
+        <map value="refer dosageInstruction mapping"/>
       </mapping>
     </element>
     <element id="MedicationStatement.dosage.id">
@@ -1856,7 +1853,7 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
       <path value="MedicationStatement.dosage.timing"/>
       <short value="投与タイミング"/>
       <definition value="投与タイミングを記録する。"/>
-      <comment value="複数回発生する可能性のあるイベントの発生について説明します。タイミングスケジュールは、イベントが発生することが予想または要求される時期を指定するために使用され、過去または進行中のイベントの概要を表すためにも使用できます。簡単にするために、タイミングコンポーネントの定義は「将来の」イベントとして表現されますが、そのようなコンポーネントは歴史的または進行中のイベントを説明するためにも使用できます。&#xA;&#xA;タイミングスケジュールは、イベントが発生したときのイベントおよび/または基準のリストであり、構造化された形式またはコードとして表現できます。イベントと繰り返し仕様の両方が提供される場合、イベントのリストは、繰り返し構造の情報の解釈として理解されるべきです。 / Describes the occurrence of an event that may occur multiple times. Timing schedules are used for specifying when events are expected or requested to occur, and may also be used to represent the summary of a past or ongoing event.  For simplicity, the definitions of Timing components are expressed as 'future' events, but such components can also be used to describe historic or ongoing events.&#xA;&#xA;A Timing schedule can be a list of events and/or criteria for when the event happens, which can be expressed in a structured form and/or as a code. When both event and a repeating specification are provided, the list of events should be understood as an interpretation of the information in the repeat structure."/>
+      <comment value="この属性は、Dosage.Textが入力されると予想される間、常に埋め込まれるとは限りません。両方が入力されている場合、Dosage.textはDosage.timingの内容を反映する必要があります。 / This attribute might not always be populated while the Dosage.text is expected to be populated.  If both are populated, then the Dosage.text should reflect the content of the Dosage.timing."/>
       <requirements value="患者に薬を与えるためのタイミングスケジュール。このデータ型により、さまざまな式が可能になります。たとえば、「8時間ごと」。&quot;一日に三回&quot;;「2011年12月23日から10日間の朝食の1/2の1/2：」;「2013年10月15日、2013年10月17日、2013年11月1日」。時には、総量 /持続時間として表される場合、レートは期間を意味する場合があります（たとえば、500ml / 2時間は2時間の期間を意味します）。ただし、レートが期間（250ml/hour）を意味しない場合、期間にわたって注入を伝えるためにタイミング.repeat.durationが必要です。 / The timing schedule for giving the medication to the patient. This  data type allows many different expressions. For example: &quot;Every 8 hours&quot;; &quot;Three times a day&quot;; &quot;1/2 an hour before breakfast for 10 days from 23-Dec 2011:&quot;; &quot;15 Oct 2013, 17 Oct 2013 and 1 Nov 2013&quot;.  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn't imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period."/>
       <min value="0"/>
       <max value="1"/>
@@ -1878,17 +1875,10 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
       <isModifier value="false"/>
+      <isSummary value="true"/>
       <mapping>
         <identity value="rim"/>
-        <map value="n/a"/>
-      </mapping>
-      <mapping>
-        <identity value="v2"/>
-        <map value="N/A"/>
-      </mapping>
-      <mapping>
-        <identity value="rim"/>
-        <map value="QSET&lt;TS&gt; (GTS)"/>
+        <map value=".effectiveTime"/>
       </mapping>
     </element>
     <element id="MedicationStatement.dosage.timing.id">
@@ -4316,7 +4306,6 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <code value="Quantity"/>
         <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationSimpleQuantity"/>
       </type>
-      <condition value="ele-1"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -4325,34 +4314,15 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
-      <constraint>
-        <key value="qty-3"/>
-        <severity value="error"/>
-        <human value="ユニットのコードが存在する場合、システムも存在するものとします / If a code for the unit is present, the system SHALL also be present"/>
-        <expression value="code.empty() or system.exists()"/>
-        <xpath value="not(exists(f:code)) or exists(f:system)"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Quantity"/>
-      </constraint>
-      <constraint>
-        <key value="sqty-1"/>
-        <severity value="error"/>
-        <human value="コンパレータは、単純なQuantityで使用されません / The comparator is not used on a SimpleQuantity"/>
-        <expression value="comparator.empty()"/>
-        <xpath value="not(exists(f:comparator))"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/SimpleQuantity"/>
-      </constraint>
       <isModifier value="false"/>
-      <mapping>
-        <identity value="rim"/>
-        <map value="n/a"/>
-      </mapping>
+      <isSummary value="true"/>
       <mapping>
         <identity value="v2"/>
-        <map value="SN (see also Range) or CQ"/>
+        <map value="RXO-2, RXE-3"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
-        <map value="PQ, IVL&lt;PQ&gt;, MO, CO, depending on the values"/>
+        <map value=".doseQuantity"/>
       </mapping>
     </element>
     <element id="MedicationStatement.dosage.doseAndRate.rate[x]">
@@ -4408,9 +4378,9 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
     <element id="MedicationStatement.dosage.doseAndRate.rate[x]:rateRatio">
       <path value="MedicationStatement.dosage.doseAndRate.rate[x]"/>
       <sliceName value="rateRatio"/>
-      <short value="単位時間内での薬剤の容量"/>
-      <definition value="単位時間内での薬剤の容量"/>
-      <comment value="比率データタイプは、関係を数量と共通単位を使用して適切に表現できない場合にのみ、2つの数値の関係を表現するために使用する必要があります。分母値が「1」に固定されていることが知られている場合、比率ではなく数量を使用する必要があります。 / The Ratio datatype should only be used to express a relationship of two numbers if the relationship cannot be suitably expressed using a Quantity and a common unit.  Where the denominator value is known to be fixed to &quot;1&quot;, Quantity should be used instead of Ratio."/>
+      <short value="薬剤の投与量速度"/>
+      <definition value="薬剤が投与される量の速度"/>
+      <comment value="レートとデスケーティティの両方を供給して、薬の投与と供給の方法についての詳細を提供することができます。レートが時間の経過とともに変化することを目的としている場合、ローカルのルール/規制に応じて、各変更は、更新されたレートのある薬物療法の新しいバージョンとしてキャプチャするか、新しいレートで新しい薬物採取でキャプチャされる必要があります。&#xD;&#xD;レート（100 ml/hour）を使用して、時間の経過とともにレートを指定することができます。RateQuantityアプローチでは、時間が分母として指定されている特定の比率ではなく、ML/時間が含まれているUCUMグラマーを解析する機能をシステムに持つ必要があります。2時間にわたって500mlなどのレートが指定されている場合、250 mg/時のレートの量を使用して指定するよりも、定量的に正しい場合があります。 / It is possible to supply both a rate and a doseQuantity to provide full details about how the medication is to be administered and supplied. If the rate is intended to change over time, depending on local rules/regulations, each change should be captured as a new version of the MedicationRequest with an updated rate, or captured with a new MedicationRequest with the new rate.&#xD;&#xD;It is possible to specify a rate over time (for example, 100 ml/hour) using either the rateRatio and rateQuantity.  The rateQuantity approach requires systems to have the capability to parse UCUM grammer where ml/hour is included rather than a specific ratio where the time is specified as the denominator.  Where a rate such as 500ml over 2 hours is specified, the use of rateRatio may be more semantically correct than specifying using a rateQuantity of 250 mg/hour."/>
       <requirements value="患者に薬が導入された、または導入される速度を識別します。通常、注入のレート。1時間あたり100 mlまたは100 ml/hr。また、時間単位あたりのレートとして表現することもできます。2時間あたり500 ml。その他の例：200 mcg/minまたは200 mcg/1分。1リットル/8時間。時には、総量 /持続時間として表される場合、レートは期間を意味する場合があります（たとえば、500ml / 2時間は2時間の期間を意味します）。ただし、レートが期間（250ml/hour）を意味しない場合、期間にわたって注入を伝えるためにタイミング.repeat.durationが必要です。 / Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn't imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period."/>
       <min value="0"/>
       <max value="1"/>
@@ -4423,7 +4393,6 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <code value="Ratio"/>
         <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRatio_DosePerPeriod"/>
       </type>
-      <condition value="ele-1"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -4432,34 +4401,23 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
-      <constraint>
-        <key value="rat-1"/>
-        <severity value="error"/>
-        <human value="分子と分母の両方が存在するか、両方が存在します。両方が欠席している場合、いくつかの拡張が存在するものとします / Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present"/>
-        <expression value="(numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())"/>
-        <xpath value="(count(f:numerator) = count(f:denominator)) and ((count(f:numerator) &gt; 0) or (count(f:extension) &gt; 0))"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Ratio"/>
-      </constraint>
       <isModifier value="false"/>
-      <mapping>
-        <identity value="rim"/>
-        <map value="n/a"/>
-      </mapping>
+      <isSummary value="true"/>
       <mapping>
         <identity value="v2"/>
-        <map value="N/A"/>
+        <map value="RXE22, RXE23, RXE-24"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
-        <map value="RTO"/>
+        <map value=".rateQuantity"/>
       </mapping>
     </element>
     <element id="MedicationStatement.dosage.doseAndRate.rate[x]:rateRange">
       <path value="MedicationStatement.dosage.doseAndRate.rate[x]"/>
       <sliceName value="rateRange"/>
-      <short value="範囲指定された時間の上限下限"/>
-      <definition value="範囲指定された時間の上限下限"/>
-      <comment value="時間の上限量、下限量の範囲を持っている。単位指定された数量を割り当てている。Low,Highの値は時間の単位当てはめる。"/>
+      <short value="薬剤の投与量速度"/>
+      <definition value="薬剤が投与される量の速度"/>
+      <comment value="レートとデスケーティティの両方を供給して、薬の投与と供給の方法についての詳細を提供することができます。レートが時間の経過とともに変化することを目的としている場合、ローカルのルール/規制に応じて、各変更は、更新されたレートのある薬物療法の新しいバージョンとしてキャプチャするか、新しいレートで新しい薬物採取でキャプチャされる必要があります。&#xD;&#xD;レート（100 ml/hour）を使用して、時間の経過とともにレートを指定することができます。RateQuantityアプローチでは、時間が分母として指定されている特定の比率ではなく、ML/時間が含まれているUCUMグラマーを解析する機能をシステムに持つ必要があります。2時間にわたって500mlなどのレートが指定されている場合、250 mg/時のレートの量を使用して指定するよりも、定量的に正しい場合があります。 / It is possible to supply both a rate and a doseQuantity to provide full details about how the medication is to be administered and supplied. If the rate is intended to change over time, depending on local rules/regulations, each change should be captured as a new version of the MedicationRequest with an updated rate, or captured with a new MedicationRequest with the new rate.&#xD;&#xD;It is possible to specify a rate over time (for example, 100 ml/hour) using either the rateRatio and rateQuantity.  The rateQuantity approach requires systems to have the capability to parse UCUM grammer where ml/hour is included rather than a specific ratio where the time is specified as the denominator.  Where a rate such as 500ml over 2 hours is specified, the use of rateRatio may be more semantically correct than specifying using a rateQuantity of 250 mg/hour."/>
       <requirements value="患者に薬が導入された、または導入される速度を識別します。通常、注入のレート。1時間あたり100 mlまたは100 ml/hr。また、時間単位あたりのレートとして表現することもできます。2時間あたり500 ml。その他の例：200 mcg/minまたは200 mcg/1分。1リットル/8時間。時には、総量 /持続時間として表される場合、レートは期間を意味する場合があります（たとえば、500ml / 2時間は2時間の期間を意味します）。ただし、レートが期間（250ml/hour）を意味しない場合、期間にわたって注入を伝えるためにタイミング.repeat.durationが必要です。 / Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn't imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period."/>
       <min value="0"/>
       <max value="1"/>
@@ -4472,7 +4430,6 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <code value="Range"/>
         <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRange_UnitOfTime"/>
       </type>
-      <condition value="ele-1"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -4481,26 +4438,15 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
-      <constraint>
-        <key value="rng-2"/>
-        <severity value="error"/>
-        <human value="存在する場合、低い値は高よりも低い値を持つものとします / If present, low SHALL have a lower value than high"/>
-        <expression value="low.empty() or high.empty() or (low &lt;= high)"/>
-        <xpath value="not(exists(f:low/f:value/@value)) or not(exists(f:high/f:value/@value)) or (number(f:low/f:value/@value) &lt;= number(f:high/f:value/@value))"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Range"/>
-      </constraint>
       <isModifier value="false"/>
-      <mapping>
-        <identity value="rim"/>
-        <map value="n/a"/>
-      </mapping>
+      <isSummary value="true"/>
       <mapping>
         <identity value="v2"/>
-        <map value="NR and also possibly SN (but see also quantity)"/>
+        <map value="RXE22, RXE23, RXE-24"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
-        <map value="IVL&lt;QTY[not(type=&quot;TS&quot;)]&gt; [lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]or URG&lt;QTY[not(type=&quot;TS&quot;)]&gt;"/>
+        <map value=".rateQuantity"/>
       </mapping>
     </element>
     <element id="MedicationStatement.dosage.doseAndRate.rate[x]:rateQuantity">
@@ -4508,7 +4454,7 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
       <sliceName value="rateQuantity"/>
       <short value="投与速度(流量)を指定する単位は流量を表す単位（e.g. 量/時間)を指定する"/>
       <definition value="投与速度(流量)を指定する単位は流量を表す単位（e.g. 量/時間)を指定する"/>
-      <comment value="使用のコンテキストは、これがどのような量であるか、したがってどのようなユニットを使用できるかを頻繁に定義する場合があります。使用のコンテキストは、コンパレータの値を制限する場合もあります。 / The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator."/>
+      <comment value="レートとデスケーティティの両方を供給して、薬の投与と供給の方法についての詳細を提供することができます。レートが時間の経過とともに変化することを目的としている場合、ローカルのルール/規制に応じて、各変更は、更新されたレートのある薬物療法の新しいバージョンとしてキャプチャするか、新しいレートで新しい薬物採取でキャプチャされる必要があります。&#xD;&#xD;レート（100 ml/hour）を使用して、時間の経過とともにレートを指定することができます。RateQuantityアプローチでは、時間が分母として指定されている特定の比率ではなく、ML/時間が含まれているUCUMグラマーを解析する機能をシステムに持つ必要があります。2時間にわたって500mlなどのレートが指定されている場合、250 mg/時のレートの量を使用して指定するよりも、定量的に正しい場合があります。 / It is possible to supply both a rate and a doseQuantity to provide full details about how the medication is to be administered and supplied. If the rate is intended to change over time, depending on local rules/regulations, each change should be captured as a new version of the MedicationRequest with an updated rate, or captured with a new MedicationRequest with the new rate.&#xD;&#xD;It is possible to specify a rate over time (for example, 100 ml/hour) using either the rateRatio and rateQuantity.  The rateQuantity approach requires systems to have the capability to parse UCUM grammer where ml/hour is included rather than a specific ratio where the time is specified as the denominator.  Where a rate such as 500ml over 2 hours is specified, the use of rateRatio may be more semantically correct than specifying using a rateQuantity of 250 mg/hour."/>
       <requirements value="患者に薬が導入された、または導入される速度を識別します。通常、注入のレート。1時間あたり100 mlまたは100 ml/hr。また、時間単位あたりのレートとして表現することもできます。2時間あたり500 ml。その他の例：200 mcg/minまたは200 mcg/1分。1リットル/8時間。時には、総量 /持続時間として表される場合、レートは期間を意味する場合があります（たとえば、500ml / 2時間は2時間の期間を意味します）。ただし、レートが期間（250ml/hour）を意味しない場合、期間にわたって注入を伝えるためにタイミング.repeat.durationが必要です。 / Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn't imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period."/>
       <min value="0"/>
       <max value="1"/>
@@ -4521,7 +4467,6 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <code value="Quantity"/>
         <profile value="http://hl7.org/fhir/StructureDefinition/SimpleQuantity"/>
       </type>
-      <condition value="ele-1"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -4530,41 +4475,22 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
-      <constraint>
-        <key value="qty-3"/>
-        <severity value="error"/>
-        <human value="ユニットのコードが存在する場合、システムも存在するものとします / If a code for the unit is present, the system SHALL also be present"/>
-        <expression value="code.empty() or system.exists()"/>
-        <xpath value="not(exists(f:code)) or exists(f:system)"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Quantity"/>
-      </constraint>
-      <constraint>
-        <key value="sqty-1"/>
-        <severity value="error"/>
-        <human value="コンパレータは、単純なQuantityで使用されません / The comparator is not used on a SimpleQuantity"/>
-        <expression value="comparator.empty()"/>
-        <xpath value="not(exists(f:comparator))"/>
-        <source value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationDosageBase"/>
-      </constraint>
       <isModifier value="false"/>
-      <mapping>
-        <identity value="rim"/>
-        <map value="n/a"/>
-      </mapping>
+      <isSummary value="true"/>
       <mapping>
         <identity value="v2"/>
-        <map value="SN (see also Range) or CQ"/>
+        <map value="RXE22, RXE23, RXE-24"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
-        <map value="PQ, IVL&lt;PQ&gt;, MO, CO, depending on the values"/>
+        <map value=".rateQuantity"/>
       </mapping>
     </element>
     <element id="MedicationStatement.dosage.maxDosePerPeriod">
       <path value="MedicationStatement.dosage.maxDosePerPeriod"/>
       <short value="単位時間当たりの投薬量の上限"/>
       <definition value="単位時間当たりの投薬量の上限"/>
-      <comment value="比率データタイプは、関係を数量と共通単位を使用して適切に表現できない場合にのみ、2つの数値の関係を表現するために使用する必要があります。分母値が「1」に固定されていることが知られている場合、比率ではなく数量を使用する必要があります。 / The Ratio datatype should only be used to express a relationship of two numbers if the relationship cannot be suitably expressed using a Quantity and a common unit.  Where the denominator value is known to be fixed to &quot;1&quot;, Quantity should be used instead of Ratio."/>
+      <comment value="これは、上限があるときに投与量の補助として使用することを目的としています。たとえば、「4時間ごとに最大8時間あたり2錠」。 / This is intended for use as an adjunct to the dosage when there is an upper cap.  For example &quot;2 tablets every 4 hours to a maximum of 8/day&quot;."/>
       <requirements value="期間にわたって被験者に投与される可能性のある治療物質の最大総量。たとえば、24時間で1000mg。 / The maximum total quantity of a therapeutic substance that may be administered to a subject over the period of time.  For example, 1000mg in 24 hours."/>
       <min value="0"/>
       <max value="1"/>
@@ -4577,7 +4503,6 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <code value="Ratio"/>
         <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRatio_DosePerPeriod"/>
       </type>
-      <condition value="ele-1"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -4586,33 +4511,22 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
-      <constraint>
-        <key value="rat-1"/>
-        <severity value="error"/>
-        <human value="分子と分母の両方が存在するか、両方が存在します。両方が欠席している場合、いくつかの拡張が存在するものとします / Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present"/>
-        <expression value="(numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())"/>
-        <xpath value="(count(f:numerator) = count(f:denominator)) and ((count(f:numerator) &gt; 0) or (count(f:extension) &gt; 0))"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Ratio"/>
-      </constraint>
       <isModifier value="false"/>
-      <mapping>
-        <identity value="rim"/>
-        <map value="n/a"/>
-      </mapping>
+      <isSummary value="true"/>
       <mapping>
         <identity value="v2"/>
-        <map value="N/A"/>
+        <map value="RXO-23, RXE-19"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
-        <map value="RTO"/>
+        <map value=".maxDoseQuantity"/>
       </mapping>
     </element>
     <element id="MedicationStatement.dosage.maxDosePerAdministration">
       <path value="MedicationStatement.dosage.maxDosePerAdministration"/>
       <short value="1回あたりの投薬量の上限"/>
       <definition value="1回あたりの投薬量の上限"/>
-      <comment value="薬剤に関する簡易的な数量と単位を定めている。ValueおよびCodeを必須とし、comparatorは記述不可。単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)"/>
+      <comment value="これは、上限があるときに投与量の補助として使用することを目的としています。たとえば、5〜10分間で1.5 mg/m2（最大2 mg）IVなどの最大量の体積領域に関連する用量に関連する用量は、1.5 mg/m2、最大2 mgのDosequantityになります。 / This is intended for use as an adjunct to the dosage when there is an upper cap.  For example, a body surface area related dose with a maximum amount, such as 1.5 mg/m2 (maximum 2 mg) IV over 5 – 10 minutes would have doseQuantity of 1.5 mg/m2 and maxDosePerAdministration of 2 mg."/>
       <requirements value="投与ごとの被験者に投与される可能性のある治療物質の最大総量。 / The maximum total quantity of a therapeutic substance that may be administered to a subject per administration."/>
       <min value="0"/>
       <max value="1"/>
@@ -4625,7 +4539,6 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <code value="Quantity"/>
         <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationSimpleQuantity"/>
       </type>
-      <condition value="ele-1"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -4634,41 +4547,17 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
-      <constraint>
-        <key value="qty-3"/>
-        <severity value="error"/>
-        <human value="ユニットのコードが存在する場合、システムも存在するものとします / If a code for the unit is present, the system SHALL also be present"/>
-        <expression value="code.empty() or system.exists()"/>
-        <xpath value="not(exists(f:code)) or exists(f:system)"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Quantity"/>
-      </constraint>
-      <constraint>
-        <key value="sqty-1"/>
-        <severity value="error"/>
-        <human value="コンパレータは、単純なQuantityで使用されません / The comparator is not used on a SimpleQuantity"/>
-        <expression value="comparator.empty()"/>
-        <xpath value="not(exists(f:comparator))"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/SimpleQuantity"/>
-      </constraint>
       <isModifier value="false"/>
+      <isSummary value="true"/>
       <mapping>
         <identity value="rim"/>
-        <map value="n/a"/>
-      </mapping>
-      <mapping>
-        <identity value="v2"/>
-        <map value="SN (see also Range) or CQ"/>
-      </mapping>
-      <mapping>
-        <identity value="rim"/>
-        <map value="PQ, IVL&lt;PQ&gt;, MO, CO, depending on the values"/>
+        <map value="not supported"/>
       </mapping>
     </element>
     <element id="MedicationStatement.dosage.maxDosePerLifetime">
       <path value="MedicationStatement.dosage.maxDosePerLifetime"/>
       <short value="生涯の投薬量の上限"/>
       <definition value="生涯の投薬量の上限"/>
-      <comment value="薬剤に関する簡易的な数量と単位を定めている。ValueおよびCodeを必須とし、comparatorは記述不可。単位についてはMERIT9医薬品単位略号の利用を推進している。(**SHOULD**)"/>
       <requirements value="被験者の寿命ごとに投与される可能性のある治療物質の最大総量。 / The maximum total quantity of a therapeutic substance that may be administered per lifetime of the subject."/>
       <min value="0"/>
       <max value="1"/>
@@ -4681,7 +4570,6 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <code value="Quantity"/>
         <profile value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationSimpleQuantity"/>
       </type>
-      <condition value="ele-1"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -4690,34 +4578,11 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
-      <constraint>
-        <key value="qty-3"/>
-        <severity value="error"/>
-        <human value="ユニットのコードが存在する場合、システムも存在するものとします / If a code for the unit is present, the system SHALL also be present"/>
-        <expression value="code.empty() or system.exists()"/>
-        <xpath value="not(exists(f:code)) or exists(f:system)"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Quantity"/>
-      </constraint>
-      <constraint>
-        <key value="sqty-1"/>
-        <severity value="error"/>
-        <human value="コンパレータは、単純なQuantityで使用されません / The comparator is not used on a SimpleQuantity"/>
-        <expression value="comparator.empty()"/>
-        <xpath value="not(exists(f:comparator))"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/SimpleQuantity"/>
-      </constraint>
       <isModifier value="false"/>
+      <isSummary value="true"/>
       <mapping>
         <identity value="rim"/>
-        <map value="n/a"/>
-      </mapping>
-      <mapping>
-        <identity value="v2"/>
-        <map value="SN (see also Range) or CQ"/>
-      </mapping>
-      <mapping>
-        <identity value="rim"/>
-        <map value="PQ, IVL&lt;PQ&gt;, MO, CO, depending on the values"/>
+        <map value="not supported"/>
       </mapping>
     </element>
   </snapshot>

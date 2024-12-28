@@ -291,6 +291,7 @@
  <tr><td>&nbsp;&nbsp;&nbsp;groupIdentifier</td><td>Request.groupIdentifier</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;insurance</td><td>Request.insurance</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;note</td><td>Request.note</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;dosageInstruction</td><td>Request.occurrence[x]</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;priorPrescription</td><td>Request.replaces</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;eventHistory</td><td>Request.relevantHistory</td> </tr>
 </table>
@@ -325,6 +326,7 @@ Medication.code.coding.display = Message/Body/NewRx/MedicationPrescribed/DrugDes
  <tr><td>&nbsp;&nbsp;&nbsp;dispenseRequest</td><td>Message/Body/NewRx/MedicationPrescribed/ExpirationDate</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;validityPeriod</td><td>Message/Body/NewRx/MedicationPrescribed/Refills</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numberOfRepeatsAllowed</td><td>Message/Body/NewRx/MedicationPrescribed/Quantity</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity</td><td>Message/Body/NewRx/MedicationPrescribed/DaysSupply</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expectedSupplyDuration</td><td>Message/Body/NewRx/MedicationPrescribed/Substitutions</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;substitution</td><td>specific values within Message/Body/NewRx/MedicationPrescribed/Substitutions</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;allowed[x]</td><td>specific values within Message/Body/NewRx/MedicationPrescribed/Substitutions</td> </tr>
@@ -391,7 +393,7 @@ Medication.code.coding.display = Message/Body/NewRx/MedicationPrescribed/DrugDes
  <tr><td>&nbsp;&nbsp;&nbsp;courseOfTherapyType</td><td>Act.code where classCode = LIST and moodCode = EVN</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;insurance</td><td>.outboundRelationship[typeCode=COVBY].target</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;note</td><td>.inboundRelationship[typeCode=SUBJ]/source[classCode=OBS,moodCode=EVN,code=&quot;annotation&quot;].value</td> </tr>
- <tr><td>&nbsp;&nbsp;&nbsp;dosageInstruction</td><td>n/a, .outboundRelationship[typeCode=COMP].target[classCode=SBADM, moodCode=INT]</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;dosageInstruction</td><td>see dosageInstruction mapping</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;dispenseRequest</td><td>component.supplyEvent</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id</td><td>n/a</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modifierExtension</td><td>N/A</td> </tr>
@@ -399,7 +401,7 @@ Medication.code.coding.display = Message/Body/NewRx/MedicationPrescribed/DrugDes
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id</td><td>n/a</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extension</td><td>n/a</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modifierExtension</td><td>N/A</td> </tr>
- <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity</td><td>n/a, PQ, IVL&lt;PQ&gt;, MO, CO, depending on the values</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity</td><td>Supply.quantity[moodCode=RQO]</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;duration</td><td>Supply.effectivetime[moodCode=RQO]</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dispenseInterval</td><td>Supply.effectivetime[moodCode=RQO]</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;validityPeriod</td><td>effectiveTime</td> </tr>
@@ -408,7 +410,7 @@ Medication.code.coding.display = Message/Body/NewRx/MedicationPrescribed/DrugDes
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start</td><td>./low</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end</td><td>./high</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numberOfRepeatsAllowed</td><td>repeatNumber</td> </tr>
- <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity</td><td>n/a, PQ, IVL&lt;PQ&gt;, MO, CO, depending on the values</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity</td><td>quantity</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expectedSupplyDuration</td><td>expectedUseTime</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id</td><td>n/a</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extension</td><td>n/a</td> </tr>
@@ -483,13 +485,11 @@ Medication.code.coding.display = Message/Body/NewRx/MedicationPrescribed/DrugDes
  <tr><td>&nbsp;&nbsp;&nbsp;authoredOn</td><td>RXE-32-Original Order Date/Time / ORC-9-Date/Time of Transaction</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;reasonCode</td><td>ORC-16-Order Control Code Reason /RXE-27-Give Indication/RXO-20-Indication / RXD-21-Indication / RXG-22-Indication / RXA-19-Indication</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;dispenseRequest</td><td></td> </tr>
- <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initialFill</td><td></td> </tr>
- <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity</td><td>SN (see also Range) or CQ</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;validityPeriod</td><td></td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start</td><td>DR.1</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end</td><td>DR.2</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numberOfRepeatsAllowed</td><td>RXE-12-Number of Refills</td> </tr>
- <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity</td><td>SN (see also Range) or CQ</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity</td><td>RXD-4-Actual Dispense Amount / RXD-5.1-Actual Dispense Units.code / RXD-5.3-Actual Dispense Units.name of coding system</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expectedSupplyDuration</td><td></td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value</td><td>SN.2  / CQ - N/A</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;comparator</td><td>SN.1  / CQ.1</td> </tr>
@@ -526,7 +526,7 @@ Medication.code.coding.display = Message/Body/NewRx/MedicationPrescribed/DrugDes
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 01:59+0000">2024-12-18</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Dec 28, 2024 14:45+0000">2024-12-28</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
