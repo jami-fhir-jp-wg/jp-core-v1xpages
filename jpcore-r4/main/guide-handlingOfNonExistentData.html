@@ -3,8 +3,7 @@
 <html xml:lang="ja" xmlns="http://www.w3.org/1999/xhtml" lang="ja">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <!-- <title>JPFHIR.JP.CORE\欠損値（データが存在しない場合）の扱い - FHIR v4.0.1</title> -->
-    <title>欠損値（データが存在しない場合）の扱い - FHIR v4.0.1</title>
+    <title>欠損値（データが存在しない場合）の扱い - HL7 FHIR JP Core ImplementationGuide v1.2.0a</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -20,9 +19,8 @@
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
-    <link href="assets/css/JPCore.css" rel="stylesheet"/>
-    <link href="assets/css/fix-fonts.css" rel="stylesheet"/>
-    
+<link href="assets/css/JPCore.css" rel="stylesheet"/>
+<link href="assets/css/fix-fonts.css" rel="stylesheet"/>
 
     <script type="text/javascript" src="fhir-table-scripts.js"> </script>
 
@@ -33,10 +31,10 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
@@ -48,17 +46,16 @@
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
         <!-- Placeholder for child template header declarations -->
-
-        <div id="project-nav">
-          <a id="project-logo" no-external="true" href="https://www.jami.jp/">
-           <img height="65" alt="Visit JAMI website" src="assets/images/jami-logo.svg"/>
-          </a>
-        </div>
+  <div id="project-nav">
+    <a id="project-logo" no-external="true" href="https://www.jami.jp/">
+     <img height="65" alt="Visit JAMI website" src="assets/images/jami-logo.svg"/>
+    </a>
+  </div>
 
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">HL7 FHIR JP Core ImplementationGuide</span>
             <br/>
-            <span style="display:inline-block;">1.1.2 - release
+            <span style="display:inline-block;">1.2.0a - release
 
               <img alt="Japan flag" src="assets/images/jpn.svg" height="16" title="Japan"/>
             </span>
@@ -112,6 +109,9 @@
         <a href="guide-precautions.html">利用上の注意事項</a>
       </li>
       <li>
+        <a href="guide-urlmap.html">OIDマッピング表</a>
+      </li>
+      <li>
         <a href="update_history.html">更新履歴</a>
       </li>
     </ul>
@@ -132,6 +132,9 @@
       </li>
       <li>
         <a href="group-clinical.html">Clinical</a>
+      </li>
+      <li>
+        <a href="group-workflow.html">Workflow</a>
       </li>
     </ul>
   </li>
@@ -176,7 +179,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.1.2) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://jpfhir.jp/fhir/core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.2.0a) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://jpfhir.jp/fhir/core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>欠損値（データが存在しない場合）の扱い</h2>
   
 
@@ -228,7 +231,7 @@ Readインタラクションの応答として、Cardinalityが１以上の 要�
 
 <h4 id="実装ガイドに準拠するクライアントは欠損データであることを宣言した-cardinalityが1以上のデータ要素を含むリソースインスタンスを処理できなければならない-shall">実装ガイドに準拠するクライアントは、欠損データであることを宣言した Cardinalityが1以上のデータ要素を含むリソースインスタンスを処理できなければならない (<strong>SHALL</strong>)。</h4>
 <p><strong>例)</strong>
-Patient.birthDateの値に欠損情報が付与されているリソースを、要求者は処理できなければならない。なお、birthDateはdate型というprimitive typeであり、そのextensionは”_“を先頭につけたプロパティに対して設定される(<a href="https://www.hl7.org/fhir/R4/json.html#primitive">2.6.2.3 JSON representation of primitive elements</a>)。</p>
+Patient.birthDateの値に欠損情報が付与されているリソースを、要求者は処理できなければならない。なお、birthDateはdate型というprimitive typeであり、そのextensionは"_"を先頭につけたプロパティに対して設定される(<a href="https://www.hl7.org/fhir/R4/json.html#primitive">2.6.2.3 JSON representation of primitive elements</a>)。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"resourceType "</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
@@ -275,7 +278,7 @@ Patient.birthDateの値に欠損情報が付与されているリソースを、
 信できなければならない (<strong>SHALL</strong>) 。</p>
 
 <p><strong>例)</strong>
-患者の生年月日が不明なため、Patient.birthDateに値を保持していない場合（Patient.birthDateが必須 MustSupport）、Data Absent Reason 拡張を使用して、欠損理由（＝不明）を示す。なお、birthDateはdate型というprimitive typeであり、そのextensionは”_“を先頭につけたプロパティに対して設定される(<a href="https://www.hl7.org/fhir/R4/json.html#primitive">2.6.2.3 JSON representation of primitive elements</a>)。</p>
+患者の生年月日が不明なため、Patient.birthDateに値を保持していない場合（Patient.birthDateが必須 MustSupport）、Data Absent Reason 拡張を使用して、欠損理由（＝不明）を示す。なお、birthDateはdate型というprimitive typeであり、そのextensionは"_"を先頭につけたプロパティに対して設定される(<a href="https://www.hl7.org/fhir/R4/json.html#primitive">2.6.2.3 JSON representation of primitive elements</a>)。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"resourceType "</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
@@ -372,20 +375,14 @@ Patient.birthDateの値に欠損情報が付与されているリソースを、
   <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
   <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
 
-  <script type="text/javascript">
-    $(document).ready(function(){
-      if(window.location.hash != "") {
-          $('a[href="' + window.location.hash + '"]').click()
-      }
-    });
-  </script>
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
   <a name="bottom"> </a>
   <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
     <div class="container">  <!-- container -->
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jun 24, 2024 20:23+0000">2024-06-24</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Dec 30, 2024 08:05+0000">2024-12-30</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -412,11 +409,10 @@ Patient.birthDateの値に欠損情報が付与されているリソースを、
   <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
-  <script>anchors.options.visible = 'hover'
-anchors.add()</script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
   
   <html>
-    <body>本実装ガイドへのご質問・ご指摘については、<a href="https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues">GitHub Issue</a>および<a href="https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls">GitHub PullRequest</a>にて受け付けております。</body>
+    <body>本実装ガイドへのご質問・ご指摘については、<a href="https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues">GitHub Issue</a>および<a href="https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls">GitHub PullRequest</a>にて受け付けている。</body>
 </html>
 
   <!-- Analytics Below

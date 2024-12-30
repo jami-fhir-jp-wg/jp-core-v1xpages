@@ -3,8 +3,7 @@
 <html xml:lang="ja" xmlns="http://www.w3.org/1999/xhtml" lang="ja">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <!-- <title>JPFHIR.JP.CORE\JP Core MedicationAdministration Example 投薬実施 ムコダイン錠２５０ｍｇ - FHIR v4.0.1</title> -->
-    <title>MedicationAdministration Example 投薬実施 ムコダイン錠２５０ｍｇ - FHIR v4.0.1</title>
+    <title>JP Core MedicationAdministration Example 投薬実施 ムコダイン錠２５０ｍｇ - HL7 FHIR JP Core ImplementationGuide v1.2.0a</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -20,9 +19,8 @@
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
-    <link href="assets/css/JPCore.css" rel="stylesheet"/>
-    <link href="assets/css/fix-fonts.css" rel="stylesheet"/>
-    
+<link href="assets/css/JPCore.css" rel="stylesheet"/>
+<link href="assets/css/fix-fonts.css" rel="stylesheet"/>
 
     <script type="text/javascript" src="fhir-table-scripts.js"> </script>
 
@@ -33,32 +31,31 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
 
-    <style type="text/css">h2{--heading-prefix:"6.201"}
-    h3,h4,h5,h6{--heading-prefix:"6.201"}</style>
+    <style type="text/css">h2{--heading-prefix:"6.223"}
+    h3,h4,h5,h6{--heading-prefix:"6.223"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
         <!-- Placeholder for child template header declarations -->
-
-        <div id="project-nav">
-          <a id="project-logo" no-external="true" href="https://www.jami.jp/">
-           <img height="65" alt="Visit JAMI website" src="assets/images/jami-logo.svg"/>
-          </a>
-        </div>
+  <div id="project-nav">
+    <a id="project-logo" no-external="true" href="https://www.jami.jp/">
+     <img height="65" alt="Visit JAMI website" src="assets/images/jami-logo.svg"/>
+    </a>
+  </div>
 
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">HL7 FHIR JP Core ImplementationGuide</span>
             <br/>
-            <span style="display:inline-block;">1.1.2 - release
+            <span style="display:inline-block;">1.2.0a - release
 
               <img alt="Japan flag" src="assets/images/jpn.svg" height="16" title="Japan"/>
             </span>
@@ -112,6 +109,9 @@
         <a href="guide-precautions.html">利用上の注意事項</a>
       </li>
       <li>
+        <a href="guide-urlmap.html">OIDマッピング表</a>
+      </li>
+      <li>
         <a href="update_history.html">更新履歴</a>
       </li>
     </ul>
@@ -132,6 +132,9 @@
       </li>
       <li>
         <a href="group-clinical.html">Clinical</a>
+      </li>
+      <li>
+        <a href="group-workflow.html">Workflow</a>
       </li>
     </ul>
   </li>
@@ -169,7 +172,7 @@
           <div class="inner-wrapper">
 
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.1.2) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://jpfhir.jp/fhir/core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.2.0a) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://jpfhir.jp/fhir/core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
 
   
 
@@ -220,7 +223,7 @@
 
 
 
-  <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative: MedicationAdministration </b><a name="jp-medicationadministration-example-1"> </a><a name="hcjp-medicationadministration-example-1"> </a></p><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">ResourceMedicationAdministration &quot;jp-medicationadministration-example-1&quot; </p><p style="margin-bottom: 0px">Profile: <a href="StructureDefinition-jp-medicationadministration.html">JP Core MedicationAdministration Profile</a></p></div><p><b>JP Core MedicationAdministration RequestDepartment Extension</b>: 内科 <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="urn:oid:1.2.392.200250.2.2.2">JP Core Department SS-MIX CodeSystem</a>#01)</span></p><p><b>JP Core MedicationAdministration Requester Extension</b>: <a href="Practitioner-jp-practitioner-example-female-1.html">Practitioner/jp-practitioner-example-female-1: 東京 春子</a> &quot; 東京&quot;</p><p><b>JP Core MedicationAdministration RequestAuthoredOn Extension</b>: 2016-08-25 00:00:00+0900</p><p><b>JP Core MedicationAdministration Location Extension</b>: <a href="Location-jp-location-example-ward.html">Location/jp-location-example-ward: 09A病棟 021病室 4ベッド</a> &quot;09A病棟 021病室 4ベッド&quot;</p><p><b>identifier</b>: <code>urn:oid:1.2.392.100495.20.3.81</code>/1, <code>urn:oid:1.2.392.100495.20.3.82</code>/1, <code>http://jpfhir.jp/fhir/core/IdSystem/resourceInstance-identifier</code>/1234567890.1.1</p><p><b>status</b>: completed</p><p><b>category</b>: Inpatient Order <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="http://terminology.hl7.org/5.5.0/CodeSystem-v2-0482.html">orderType</a>#I)</span></p><p><b>medication</b>: ムコダイン錠２５０ｍｇ <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="urn:oid:1.2.392.200119.4.403.1">MEDIS 基準番号（ＨＯＴ９）</a>#103835401)</span></p><p><b>subject</b>: <a href="Patient-jp-patient-example-1.html">Patient/jp-patient-example-1</a> &quot; 山田&quot;</p><p><b>effective</b>: 2016-08-25 08:30:00+0900</p><h3>Performers</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Function</b></td><td><b>Actor</b></td></tr><tr><td style="display: none">*</td><td>Performer <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="http://terminology.hl7.org/5.5.0/CodeSystem-med-admin-perform-function.html">MedicationAdministration Performer Function Codes</a>#performer)</span></td><td><a href="Practitioner-jp-practitioner-example-female-1.html">Practitioner/jp-practitioner-example-female-1: 福岡 花子</a> &quot; 東京&quot;</td></tr></table><p><b>request</b>: <a href="MedicationRequest-jp-medicationrequest-example-1.html">MedicationRequest/jp-medicationrequest-example-1</a></p><h3>Dosages</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Route</b></td><td><b>Method</b></td><td><b>Dose</b></td></tr><tr><td style="display: none">*</td><td>経口 <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="urn:oid:1.2.392.200250.2.2.20.40">JP Core Medication JAMI Detail Usage Type CodeSystem</a>#10)</span></td><td>内服 <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="urn:oid:1.2.392.200250.2.2.20.30">JP Core Medication JAMI Basic Usage Type CodeSystem</a>#1)</span></td><td>1 錠<span style="background: LightGoldenRodYellow"> (Details: JP Core Medication MERIT9 Unit CodeSystem  codeTAB = '錠')</span></td></tr></table></div>
+  <div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: MedicationAdministration jp-medicationadministration-example-1</b></p><a name="jp-medicationadministration-example-1"> </a><a name="hcjp-medicationadministration-example-1"> </a><a name="jp-medicationadministration-example-1-ja"> </a><p><b>JP Core MedicationAdministration RequestDepartment Extension</b>: <span title="Codes:{http://jami.jp/SS-MIX2/CodeSystem/ClinicalDepartment 01}">内科</span></p><p><b>JP Core MedicationAdministration Requester Extension</b>: <a href="Practitioner-jp-practitioner-example-female-1.html">東京 春子</a></p><p><b>JP Core MedicationAdministration RequestAuthoredOn Extension</b>: 2016-08-25 00:00:00+0900</p><p><b>JP Core MedicationAdministration Location Extension</b>: <a href="Location-jp-location-example-ward.html">09A病棟 021病室 4ベッド</a></p><p><b>identifier</b>: <a href="NamingSystem-jp-medication-rpgroup-number-namingsystem.html" title="JP Core Medication RpGroup Number NamingSystem RP番号">JP_Medication_RpGroup_Number_NamingSystem</a>/1, <a href="NamingSystem-jp-medication-rpgruop-index-namingsystem.html" title="JP Core Medication RpGruop Index NamingSystem RP内の順序を示す連番">JP_Medication_RpGruop_Index_NamingSystem</a>/1, <code>urn:oid:1.2.392.100495.20.3.11</code>/1234567890.1.1</p><p><b>status</b>: Completed</p><p><b>category</b>: <span title="Codes:{http://terminology.hl7.org/CodeSystem/v2-0482 I}">Inpatient Order</span></p><p><b>medication</b>: <span title="Codes:{http://medis.or.jp/CodeSystem/master-HOT9 103835401}">ムコダイン錠２５０ｍｇ</span></p><p><b>subject</b>: <a href="Patient-jp-patient-example-1.html">山田 太郎 Male, DoB: 1970-01-01 ( urn:oid:1.2.392.100495.20.3.51.11311234567#00000010)</a></p><p><b>effective</b>: 2016-08-25 08:30:00+0900</p><h3>Performers</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Function</b></td><td><b>Actor</b></td></tr><tr><td style="display: none">*</td><td><span title="Codes:{http://terminology.hl7.org/CodeSystem/med-admin-perform-function performer}">Performer</span></td><td><a href="Practitioner-jp-practitioner-example-female-1.html">福岡 花子</a></td></tr></table><p><b>request</b>: <a href="MedicationRequest-jp-medicationrequest-example-1.html">MedicationRequest: identifier = http://jpfhir.jp/fhir/core/mhlw/IdSystem/Medication-RPGroupNumber#JP_Medication_RpGroup_Number_NamingSystem#1,http://jpfhir.jp/fhir/core/mhlw/IdSystem/MedicationAdministrationIndex#JP_Medication_RpGruop_Index_NamingSystem#1,http://jpfhir.jp/fhir/core/IdSystem/resourceInstance-identifier#1234567890.1.1,urn:oid:1.2.392.100495.20.3.11#20241101-0000000000000001,urn:oid:1.2.392.100495.20.3.11.11311234567#20241101-00001; status = active; intent = order; medication[x] = ムコダイン錠２５０ｍｇ; authoredOn = 2020-04-01 12:28:17+0900</a></p><h3>Dosages</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Route</b></td><td><b>Method</b></td><td><b>Dose</b></td></tr><tr><td style="display: none">*</td><td><span title="Codes:{http://jami.jp/CodeSystem/MedicationMethodDetailUsage 10}">経口</span></td><td><span title="Codes:{http://jami.jp/CodeSystem/MedicationMethodBasicUsage 1}">内服</span></td><td>1 錠<span style="background: LightGoldenRodYellow"> (Details: JP Core Medication MERIT9 Unit CodeSystem  codeTAB = '錠')</span></td></tr></table></div>
 
   
 
@@ -238,20 +241,14 @@
   <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
   <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
 
-  <script type="text/javascript">
-    $(document).ready(function(){
-      if(window.location.hash != "") {
-          $('a[href="' + window.location.hash + '"]').click()
-      }
-    });
-  </script>
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
   <a name="bottom"> </a>
   <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
     <div class="container">  <!-- container -->
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jun 24, 2024 20:23+0000">2024-06-24</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Dec 30, 2024 08:05+0000">2024-12-30</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -278,11 +275,10 @@
   <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
-  <script>anchors.options.visible = 'hover'
-anchors.add()</script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
   
   <html>
-    <body>本実装ガイドへのご質問・ご指摘については、<a href="https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues">GitHub Issue</a>および<a href="https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls">GitHub PullRequest</a>にて受け付けております。</body>
+    <body>本実装ガイドへのご質問・ご指摘については、<a href="https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues">GitHub Issue</a>および<a href="https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls">GitHub PullRequest</a>にて受け付けている。</body>
 </html>
 
   <!-- Analytics Below

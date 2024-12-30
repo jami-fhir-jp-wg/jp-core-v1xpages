@@ -3,8 +3,7 @@
 <html xml:lang="ja" xmlns="http://www.w3.org/1999/xhtml" lang="ja">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <!-- <title>JPFHIR.JP.CORE\更新履歴 - FHIR v4.0.1</title> -->
-    <title>更新履歴 - FHIR v4.0.1</title>
+    <title>更新履歴 - HL7 FHIR JP Core ImplementationGuide v1.2.0a</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -20,9 +19,8 @@
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
-    <link href="assets/css/JPCore.css" rel="stylesheet"/>
-    <link href="assets/css/fix-fonts.css" rel="stylesheet"/>
-    
+<link href="assets/css/JPCore.css" rel="stylesheet"/>
+<link href="assets/css/fix-fonts.css" rel="stylesheet"/>
 
     <script type="text/javascript" src="fhir-table-scripts.js"> </script>
 
@@ -33,32 +31,31 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
 
-    <style type="text/css">h2{--heading-prefix:"2.7"}
-    h3,h4,h5,h6{--heading-prefix:"2.7"}</style>
+    <style type="text/css">h2{--heading-prefix:"2.8"}
+    h3,h4,h5,h6{--heading-prefix:"2.8"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
         <!-- Placeholder for child template header declarations -->
-
-        <div id="project-nav">
-          <a id="project-logo" no-external="true" href="https://www.jami.jp/">
-           <img height="65" alt="Visit JAMI website" src="assets/images/jami-logo.svg"/>
-          </a>
-        </div>
+  <div id="project-nav">
+    <a id="project-logo" no-external="true" href="https://www.jami.jp/">
+     <img height="65" alt="Visit JAMI website" src="assets/images/jami-logo.svg"/>
+    </a>
+  </div>
 
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">HL7 FHIR JP Core ImplementationGuide</span>
             <br/>
-            <span style="display:inline-block;">1.1.2 - release
+            <span style="display:inline-block;">1.2.0a - release
 
               <img alt="Japan flag" src="assets/images/jpn.svg" height="16" title="Japan"/>
             </span>
@@ -112,6 +109,9 @@
         <a href="guide-precautions.html">利用上の注意事項</a>
       </li>
       <li>
+        <a href="guide-urlmap.html">OIDマッピング表</a>
+      </li>
+      <li>
         <a href="update_history.html">更新履歴</a>
       </li>
     </ul>
@@ -132,6 +132,9 @@
       </li>
       <li>
         <a href="group-clinical.html">Clinical</a>
+      </li>
+      <li>
+        <a href="group-workflow.html">Workflow</a>
       </li>
     </ul>
   </li>
@@ -176,7 +179,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.1.2) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://jpfhir.jp/fhir/core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.2.0a) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://jpfhir.jp/fhir/core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>更新履歴</h2>
   
 
@@ -195,8 +198,186 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <div>
 <!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
-<p><strong><em>v1.1.2</em></strong><br />
-パブリックコメントやIssue等の指摘を中心に不具合やわかりにくい点について改善を行った。また内視鏡検査および微生物学的検査関連のプロファイルを新規に追加した。主な変更点は以下のとおりである。</p>
+<p><strong><em>v1.2.0</em></strong></p>
+
+<ul>
+  <li>全般
+    <ul>
+      <li>「CodeSystem」および「Identifierに対するSystem値」のURIについてOID形式で定義されるものの多くをURL形式に変更を行った。本変更に関して<code class="language-plaintext highlighter-rouge">URIに指定する形式について</code>の項目で記載をしている。</li>
+      <li>主に「v1.1.2に関する不具合」を修正し、新たに「プロファイル」の追加を行った</li>
+      <li>各プロファイルのベースとなるFHIR Versionは4.0.1を維持した、不具合等のやむを得ない場合の除き下位互換性を保つことを考慮している</li>
+      <li>命名規則にしたがってファイル名、ID等を修正した</li>
+      <li>CodeSystem<code class="language-plaintext highlighter-rouge">JP_BodySite_CS</code>を作成し、各プロファイル用のValueSetから参照するように設定した</li>
+      <li>JP CoreにおけるMustSupportの記載を、ユースケースによっては利用される場合を考慮し変更した</li>
+    </ul>
+  </li>
+  <li>Profile関連
+    <ul>
+      <li>Administration グループ
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">JP_Coverage</code>にて被保険者の識別子仕様を変更した
+            <ul>
+              <li>主にレセプト等で利用される被保険者個人識別子とv1.1.2以前より定義される被保険者識別子（CSV版）の２種類を利用できるように拡張した</li>
+              <li>厳密な一意性を保つため、被保険者識別子（CSV版）の先頭に保険者番号を付加する体系に変更した</li>
+              <li>Identifier.assignerに保険者情報を設定した</li>
+              <li>被保険者番号の枝番について全角⇒半角に仕様を変更した</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Medication グループ
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">JP_Medication</code>プロファイルにおいて、ingredient.strength.denominatorを1回の固定値設定した</li>
+          <li><code class="language-plaintext highlighter-rouge">JP_MedicationStatement</code>プロファイルおよび <code class="language-plaintext highlighter-rouge">JP_MedicationStatement_Injection</code>プロファイルを追加した</li>
+          <li><code class="language-plaintext highlighter-rouge">JP_MedicationRequest_Injection</code>プロファイル, <code class="language-plaintext highlighter-rouge">JP_MedicationDispense_Injection</code>プロファイル, <code class="language-plaintext highlighter-rouge">JP_MedicationAdministration_Injection</code>プロファイル, <code class="language-plaintext highlighter-rouge">JP_MedicationStatement_Injection</code>プロファイルに関するmedicationの参照に関する記述を付加した</li>
+          <li>Exampleとして提示しているCodeSystemのcontext=completeの状態に変更した</li>
+          <li>操作：$everythingが不要であるため、Medication関連プロファイルを記述を削除した</li>
+        </ul>
+      </li>
+      <li>Diagnostic グループ
+        <ul>
+          <li>Observation
+            <ul>
+              <li>CategoryのSlicing名称を統一した（first, second, third）</li>
+              <li>第二カテゴリーの中で、固定値設定のものはValueSetを指定しないこととした</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_Radiology_Findings</code>プロファイルおよび<code class="language-plaintext highlighter-rouge">JP_Observation_Radiology_Impression</code>プロファイルを追加した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_Electrocardiogram</code>プロファイルを追加した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_Endoscopy</code>プロファイルを追加した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_VitalSigns</code>プロファイルのcategoryに対する<code class="language-plaintext highlighter-rouge">JP_SimpleObservationCategory_CS</code>に対する多重度を1..<em>から0..</em>に変更した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Specimen_Common</code>プロファイルを追加、それに伴い<code class="language-plaintext highlighter-rouge">JP_Specimen</code>プロファイルを削除した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_DentalOral_ToothExistence</code>プロファイルを追加定義した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_DentalOral_ToothTreatmentCondition</code>プロファイルを追加定義した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_DentalOral_MissingToothCondition</code>プロファイルを追加定義した</li>
+            </ul>
+          </li>
+          <li>ImagingStudy
+            <ul>
+              <li><code class="language-plaintext highlighter-rouge">JP_ImagingStudy_Radiology</code>プロファイルのmodalityおよびseries.modalityに対するバインド対象を<code class="language-plaintext highlighter-rouge">JP_DICOMModality_VS</code>に変更した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ImagingStudy_Radiology</code>のIdentifierに関するConformanceをSHALLに変更した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ImagingStudy_Endoscopy</code>プロファイルのmodalityおよびseries.modalityに対するバインド対象を<code class="language-plaintext highlighter-rouge">JP_DICOMModality_VS</code>に変更した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ImagingStudy_Endoscopy</code>のIdentifierに関するConformanceをSHALLに変更した</li>
+            </ul>
+          </li>
+          <li>DiagnosticReport
+            <ul>
+              <li><code class="language-plaintext highlighter-rouge">JP_DiagnosticReport_Radiology</code>プロファイルのcategoryに対するバインド対象を<code class="language-plaintext highlighter-rouge">JP_DICOMModality_VS</code>に変更した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DiagnosticReport_Radiology</code>プロファイルにて、<code class="language-plaintext highlighter-rouge">JP_Observation_Radiology_Findings</code>および<code class="language-plaintext highlighter-rouge">JP_Observation_Radiology_Impression</code>を要素に設定できる点について修正し、その関係性に関する記述を記載した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DiagnosticReport_Endoscopy</code>プロファイルにて、<code class="language-plaintext highlighter-rouge">JP_Observation_Endoscopy</code>を要素に設定できる点について修正し、その関係性に関する記述を記載した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DiagnosticReport_DentalOral</code>プロファイルを追加定義した</li>
+            </ul>
+          </li>
+          <li>Media
+            <ul>
+              <li><code class="language-plaintext highlighter-rouge">JP_Media_Endoscopy</code>プロファイルを追加定義した</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Clinical グループ
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">JP_Condition_Diagnosis</code>プロファイルを追加した</li>
+          <li><code class="language-plaintext highlighter-rouge">JP_Condition_Diagnosis</code>にて各種病名マスタを利用可能とした</li>
+        </ul>
+      </li>
+      <li>Workflow グループ
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">JP_ServiceRequest_Common</code>プロファイルを追加、それに伴い<code class="language-plaintext highlighter-rouge">JP_ServiceRequest</code>を削除した</li>
+        </ul>
+      </li>
+      <li>SearchParameterおよびOperation関連
+        <ul>
+          <li>SearchParameterの記述不具合（型指定や名称）やSearchParameterRegistryの差異を比較しを修正した</li>
+          <li>SearchParameterのexpressionのFHIRPath記述に対する指摘に対応した</li>
+        </ul>
+      </li>
+      <li>Terminology関連
+        <ul>
+          <li>以下のコードシステムおよびバリューセットを追加/削除した
+            <ul>
+              <li><code class="language-plaintext highlighter-rouge">JP_BodySite_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDieaseOutcomeHL70241_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDieaseOutcomeJHSD0006_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDieaseOutcomeReceipt_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseCodeICD10_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseCodeMEDISExchange_VS.</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseCodeMEDISRecordNo_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseCodeReceipt_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseCodeReceipt_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseModifierMEDISExchange_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseModifierMEDISExchange_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseModifierMEDISRecordNo_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseModifierReceipt_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseModifierReceipt_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseOutcomeHL70241_JHSD0006_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseOutcomeHL70241_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseOutcomeJHSD0006_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseOutcomeReceipt_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Conditon_BodySite_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalBodySite_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalBodySite_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalBodySiteStatus_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalBodySiteStatus_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalBodyStructure_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalBodyStructure_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalFundamentalStatus_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalFundamentalStatus_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalMissingTeethObservation_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalMissingTeethObservation_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalPresentTeethObservation_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalPresentTeethObservation_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalSimpleMissingTeethObservation_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalSimpleMissingTeethObservation_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalSimplePresentTeethObservation_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DentalSimplePresentTeethObservation_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_DICOMModality_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Disease_Claim_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Disease_MEDIS_Concept_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Disease_MEDIS_ManagementID_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ImagingStudy_EndoScopy_BodySite_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ImagingStudy_Radiology_BodySite_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Modifier_Disease_Claim_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Modifier_MEDIS_Concept_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Modifier_MEDIS_ManagementID_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationDentalCategory_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationElectrocardiogramComponentCode_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationElectrocardiogramDuration_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationElectrocardiogramDuration_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationElectrocardiogramExtraCategory_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationElectrocardiogramExtraCategory_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationElectrocardiogramInterpretationCode_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationElectrocardiogramInterpretationCode_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationElectrocardiogramStressType_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationElectrocardiogramStressType_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationEndoscopyCode_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationEndoscopyValueJed_VS</code></li>
+            </ul>
+          </li>
+          <li>以下のCodeSystem,ValueSetを削除した
+            <ul>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationBodyMeasurementCode_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationBodySite_CS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ObservationCategory_Microbiology_VS</code></li>
+              <li><code class="language-plaintext highlighter-rouge">JP_ProcedureBodysite_CS</code></li>
+            </ul>
+          </li>
+          <li>の記述の不具合を修正した</li>
+          <li>病名マスタ(MEDIS病名交換用コード<code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseCodeMEDISExchange_CS</code>,MEDIS ICD10対応標準病名マスター(管理番号)<code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseCodeMEDISRecordNo_CS</code>,レセプト電算用傷病名マスタ<code class="language-plaintext highlighter-rouge">JP_Disease_Claim_CS</code>)を用語として追加した</li>
+        </ul>
+      </li>
+      <li>Capability Statement関連
+        <ul>
+          <li>単数パラメータのConformanceの指定に対応した</li>
+          <li>複数パラメータの記述について追加した</li>
+          <li>Operation定義を追加した</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong><em>v1.1.2</em></strong></p>
+
+<p>パブリックコメントやIssue等の指摘を中心に不具合やわかりにくい点について改善を行った。また内視鏡検査および微生物学的検査関連のプロファイルを新規に追加した。主な変更点は以下のとおりである。</p>
 
 <ul>
   <li>全般
@@ -362,7 +543,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           <li><code class="language-plaintext highlighter-rouge">JP_Patient</code> religionおよびbirthPlaceのExtensionを追加した</li>
           <li><code class="language-plaintext highlighter-rouge">JP_Patient</code> nameをSlicingを利用せずに、参照先を<code class="language-plaintext highlighter-rouge">JP_HumanName</code>とすることのみにした</li>
           <li><code class="language-plaintext highlighter-rouge">JP_Practitioner</code> nameをSlicingを利用せずに、参照先を<code class="language-plaintext highlighter-rouge">JP_HumanName</code>とすることのみにした</li>
-          <li><code class="language-plaintext highlighter-rouge">JP_Coverage</code> Identifierに格納する被保険者情報の格納ルール”{被保険者記号：全角}”,”{被保険者番号：全角}”,”{枝番：全角}”を記載した</li>
+          <li><code class="language-plaintext highlighter-rouge">JP_Coverage</code> Identifierに格納する被保険者情報の格納ルール"{被保険者記号：全角}","{被保険者番号：全角}","{枝番：全角}"を記載した</li>
           <li><code class="language-plaintext highlighter-rouge">JP_Coverage</code> Identifierに格納する被保険者情報の格納ルールを記載した</li>
           <li><code class="language-plaintext highlighter-rouge">JP_Coverage</code> subscriberIdおよびdependentの格納形式を明示的に記載した</li>
           <li><code class="language-plaintext highlighter-rouge">JP_Encounter</code> に対し「Associated Encounter」の拡張定義を行なった</li>
@@ -483,20 +664,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
   <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
 
-  <script type="text/javascript">
-    $(document).ready(function(){
-      if(window.location.hash != "") {
-          $('a[href="' + window.location.hash + '"]').click()
-      }
-    });
-  </script>
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
   <a name="bottom"> </a>
   <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
     <div class="container">  <!-- container -->
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.1.2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jun 24, 2024 20:23+0000">2024-06-24</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Dec 30, 2024 08:05+0000">2024-12-30</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -523,11 +698,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
-  <script>anchors.options.visible = 'hover'
-anchors.add()</script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
   
   <html>
-    <body>本実装ガイドへのご質問・ご指摘については、<a href="https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues">GitHub Issue</a>および<a href="https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls">GitHub PullRequest</a>にて受け付けております。</body>
+    <body>本実装ガイドへのご質問・ご指摘については、<a href="https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues">GitHub Issue</a>および<a href="https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls">GitHub PullRequest</a>にて受け付けている。</body>
 </html>
 
   <!-- Analytics Below
