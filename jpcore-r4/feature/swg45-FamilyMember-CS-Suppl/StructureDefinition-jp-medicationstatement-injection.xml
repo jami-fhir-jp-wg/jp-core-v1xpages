@@ -87,6 +87,9 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/MedicationStatement"/>
   <derivation value="constraint"/>
   <snapshot>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version">
+      <valueString value="4.0.1"/>
+    </extension>
     <element id="MedicationStatement">
       <path value="MedicationStatement"/>
       <short value="服薬情報"/>
@@ -140,7 +143,7 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
         </extension>
         <key value="dom-6"/>
         <severity value="warning"/>
-        <human value="リソースには、堅牢な管理のための叙述(Narative)が必要です / A resource should have narrative for robust management"/>
+        <human value="リソースには、堅牢な管理のための叙述(Narative)が存在することが望ましい / A resource should have narrative for robust management"/>
         <expression value="text.`div`.exists()"/>
         <xpath value="exists(f:text/h:div)"/>
         <source value="http://hl7.org/fhir/StructureDefinition/DomainResource"/>
@@ -743,8 +746,8 @@ HL7 FHIRではvalue setとして http://terminology.hl7.org/CodeSystem/medicatio
     </element>
     <element id="MedicationStatement.context">
       <path value="MedicationStatement.context"/>
-      <short value="薬物測定に関連する遭遇 /エピソード / Encounter / Episode associated with MedicationStatement"/>
-      <definition value="この薬物測定のコンテキストを確立する遭遇またはケアのエピソード。 / The encounter or episode of care that establishes the context for this MedicationStatement."/>
+      <short value="薬物測定に関連するEnounter /エピソード / Encounter / Episode associated with MedicationStatement"/>
+      <definition value="この薬物測定のコンテキストを確立するEnounterまたはケアのエピソード。 / The encounter or episode of care that establishes the context for this MedicationStatement."/>
       <min value="0"/>
       <max value="1"/>
       <base>

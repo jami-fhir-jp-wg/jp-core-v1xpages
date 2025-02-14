@@ -69,6 +69,10 @@
   "baseDefinition" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common",
   "derivation" : "constraint",
   "snapshot" : {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+      "valueString" : "1.3.0-dev"
+    }],
     "element" : [{
       "id" : "Observation",
       "path" : "Observation",
@@ -129,7 +133,7 @@
         }],
         "key" : "dom-6",
         "severity" : "warning",
-        "human" : "リソースには、堅牢な管理のための叙述(Narative)が必要です / A resource should have narrative for robust management",
+        "human" : "リソースには、堅牢な管理のための叙述(Narative)が存在することが望ましい / A resource should have narrative for robust management",
         "expression" : "text.`div`.exists()",
         "xpath" : "exists(f:text/h:div)",
         "source" : "http://hl7.org/fhir/StructureDefinition/DomainResource"
@@ -137,7 +141,7 @@
       {
         "key" : "obs-6",
         "severity" : "error",
-        "human" : "databsentrasonは、観察.value [x]が存在しない場合にのみ存在するものとします / dataAbsentReason SHALL only be present if Observation.value[x] is not present",
+        "human" : "dataAbsentReasonは、Observation.value [x]が存在しない場合にのみ存在するものとします / dataAbsentReason SHALL only be present if Observation.value[x] is not present",
         "expression" : "dataAbsentReason.empty() or value.empty()",
         "xpath" : "not(exists(f:dataAbsentReason)) or (not(exists(*[starts-with(local-name(.), 'value')])))",
         "source" : "http://hl7.org/fhir/StructureDefinition/Observation"
@@ -145,7 +149,7 @@
       {
         "key" : "obs-7",
         "severity" : "error",
-        "human" : "visserveration.codeがvisserveration.component.codeと同じ場合、コードに関連付けられている値要素が存在しないでください / If Observation.code is the same as an Observation.component.code then the value element associated with the code SHALL NOT be present",
+        "human" : "Observation.codeがObservation.component.codeと同じ場合、そのcodeに関連付くvalueは存在してはならない。 / If Observation.code is the same as an Observation.component.code then the value element associated with the code SHALL NOT be present",
         "expression" : "value.empty() or component.code.where(coding.intersect(%resource.code.coding).exists()).empty()",
         "xpath" : "not(f:*[starts-with(local-name(.), 'value')] and (for $coding in f:code/f:coding return f:component/f:code/f:coding[f:code/@value=$coding/f:code/@value] [f:system/@value=$coding/f:system/@value]))",
         "source" : "http://hl7.org/fhir/StructureDefinition/Observation"
@@ -2066,7 +2070,7 @@
           "valueString" : "ObservationValueAbsentReason"
         }],
         "strength" : "extensible",
-        "description" : "結果（ `balue.value [x]`）が欠落している理由を指定するコード。 / Codes specifying why the result (`Observation.value[x]`) is missing.",
+        "description" : "結果（ `Observation.value[x]`）が欠落している理由を指定するコード。 / Codes specifying why the result (`Observation.value[x]`) is missing.",
         "valueSet" : "http://hl7.org/fhir/ValueSet/data-absent-reason"
       },
       "mapping" : [{
@@ -2377,7 +2381,7 @@
       {
         "key" : "obs-3",
         "severity" : "error",
-        "human" : "少なくとも低いまたは高またはテキストが必要です / Must have at least a low or a high or text",
+        "human" : "少なくともlow, high, textのいずれかが必要です / Must have at least a low or a high or text",
         "expression" : "low.exists() or high.exists() or text.exists()",
         "xpath" : "(exists(f:low) or exists(f:high)or exists(f:text))",
         "source" : "http://hl7.org/fhir/StructureDefinition/Observation"
@@ -3099,7 +3103,7 @@
       "path" : "Observation.component.dataAbsentReason",
       "short" : "コンポーネントの結果が欠落している理由 / Why the component result is missing",
       "definition" : "Element obervation.component.value [x]の期待値が欠落している理由を提供します。 / Provides a reason why the expected value in the element Observation.component.value[x] is missing.",
-      "comment" : "「null」または例外的な値は、FHIR観測で2つの方法を表すことができます。1つの方法は、それらを単に値セットに含めるだけで、値の例外を表すことです。たとえば、血清学テストの測定値は、「検出」、「検出されない」、「決定的でない」、または「テストなし」です。\n\n別の方法は、実際の観測に値要素を使用し、明示的なDataBsEntreason要素を使用して例外的な値を記録することです。たとえば、測定が完了していないときに、DataBsentrasonコード「エラー」を使用できます。これらのオプションのため、一般的な観測を例外的な価値のために解釈するには、ユースケース契約が必要です。 / \"Null\" or exceptional values can be represented two ways in FHIR Observations.  One way is to simply include them in the value set and represent the exceptions in the value.  For example, measurement values for a serology test could be  \"detected\", \"not detected\", \"inconclusive\", or  \"test not done\". \n\nThe alternate way is to use the value element for actual observations and use the explicit dataAbsentReason element to record exceptional values.  For example, the dataAbsentReason code \"error\" could be used when the measurement was not completed.  Because of these options, use-case agreements are required to interpret general observations for exceptional values.",
+      "comment" : "「null」または例外的な値は、FHIR観測で2つの方法を表すことができます。1つの方法は、それらを単に値セットに含めるだけで、値の例外を表すことです。たとえば、血清学テストの測定値は、「検出」、「検出されない」、「決定的でない」、または「テストなし」です。\n\n別の方法は、実際の観測に値要素を使用し、明示的なDataBsEntreason要素を使用して例外的な値を記録することです。たとえば、測定が完了していないときに、dataAbsentReasonコード「エラー」を使用できます。これらのオプションのため、一般的な観測を例外的な価値のために解釈するには、ユースケース契約が必要です。 / \"Null\" or exceptional values can be represented two ways in FHIR Observations.  One way is to simply include them in the value set and represent the exceptions in the value.  For example, measurement values for a serology test could be  \"detected\", \"not detected\", \"inconclusive\", or  \"test not done\". \n\nThe alternate way is to use the value element for actual observations and use the explicit dataAbsentReason element to record exceptional values.  For example, the dataAbsentReason code \"error\" could be used when the measurement was not completed.  Because of these options, use-case agreements are required to interpret general observations for exceptional values.",
       "requirements" : "多くの結果には、測定で例外的な値を処理する必要があります。 / For many results it is necessary to handle exceptional values in measurements.",
       "min" : 0,
       "max" : "1",
@@ -3128,7 +3132,7 @@
           "valueString" : "ObservationValueAbsentReason"
         }],
         "strength" : "extensible",
-        "description" : "結果（ `balue.value [x]`）が欠落している理由を指定するコード。 / Codes specifying why the result (`Observation.value[x]`) is missing.",
+        "description" : "結果（ `Observation.value[x]`）が欠落している理由を指定するコード。 / Codes specifying why the result (`Observation.value[x]`) is missing.",
         "valueSet" : "http://hl7.org/fhir/ValueSet/data-absent-reason"
       },
       "mapping" : [{

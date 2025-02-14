@@ -76,6 +76,9 @@
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/DocumentReference"/>
   <derivation value="constraint"/>
   <snapshot>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version">
+      <valueString value="4.0.1"/>
+    </extension>
     <element id="DocumentReference">
       <path value="DocumentReference"/>
       <short value="ドキュメントへの参照 / A reference to a document"/>
@@ -129,7 +132,7 @@
         </extension>
         <key value="dom-6"/>
         <severity value="warning"/>
-        <human value="リソースには、堅牢な管理のための叙述(Narative)が必要です / A resource should have narrative for robust management"/>
+        <human value="リソースには、堅牢な管理のための叙述(Narative)が存在することが望ましい / A resource should have narrative for robust management"/>
         <expression value="text.`div`.exists()"/>
         <xpath value="exists(f:text/h:div)"/>
         <source value="http://hl7.org/fhir/StructureDefinition/DomainResource"/>
@@ -264,7 +267,7 @@
       <constraint>
         <key value="ext-1"/>
         <severity value="error"/>
-        <human value="拡張機能または値[x]のいずれかが必要です。両方ではありません。"/>
+        <human value="extensionまたはvalue[x]のいずれかが必要です。両方ではありません。"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
@@ -1926,7 +1929,7 @@
     <element id="DocumentReference.context.encounter">
       <path value="DocumentReference.context.encounter"/>
       <short value="ドキュメントコンテンツのコンテキスト / Context of the document  content"/>
-      <definition value="ドキュメントコンテンツが関連付けられている臨床的遭遇またはケアの種類について説明します。 / Describes the clinical encounter or type of care that the document content is associated with."/>
+      <definition value="ドキュメントコンテンツが関連付けられている臨床的Enounterまたはケアの種類について説明します。 / Describes the clinical encounter or type of care that the document content is associated with."/>
       <min value="0"/>
       <max value="*"/>
       <base>

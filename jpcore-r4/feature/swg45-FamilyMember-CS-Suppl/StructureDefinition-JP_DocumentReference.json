@@ -73,6 +73,10 @@
   "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/DocumentReference",
   "derivation" : "constraint",
   "snapshot" : {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+      "valueString" : "4.0.1"
+    }],
     "element" : [{
       "id" : "DocumentReference",
       "path" : "DocumentReference",
@@ -129,7 +133,7 @@
         }],
         "key" : "dom-6",
         "severity" : "warning",
-        "human" : "リソースには、堅牢な管理のための叙述(Narative)が必要です / A resource should have narrative for robust management",
+        "human" : "リソースには、堅牢な管理のための叙述(Narative)が存在することが望ましい / A resource should have narrative for robust management",
         "expression" : "text.`div`.exists()",
         "xpath" : "exists(f:text/h:div)",
         "source" : "http://hl7.org/fhir/StructureDefinition/DomainResource"
@@ -270,7 +274,7 @@
       {
         "key" : "ext-1",
         "severity" : "error",
-        "human" : "拡張機能または値[x]のいずれかが必要です。両方ではありません。",
+        "human" : "extensionまたはvalue[x]のいずれかが必要です。両方ではありません。",
         "expression" : "extension.exists() != value.exists()",
         "xpath" : "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])",
         "source" : "http://hl7.org/fhir/StructureDefinition/Extension"
@@ -1987,7 +1991,7 @@
       "id" : "DocumentReference.context.encounter",
       "path" : "DocumentReference.context.encounter",
       "short" : "ドキュメントコンテンツのコンテキスト / Context of the document  content",
-      "definition" : "ドキュメントコンテンツが関連付けられている臨床的遭遇またはケアの種類について説明します。 / Describes the clinical encounter or type of care that the document content is associated with.",
+      "definition" : "ドキュメントコンテンツが関連付けられている臨床的Enounterまたはケアの種類について説明します。 / Describes the clinical encounter or type of care that the document content is associated with.",
       "min" : 0,
       "max" : "*",
       "base" : {
