@@ -1,5 +1,4 @@
 [endpoint-dicom-wadors-example]: Endpoint-endpoint-dicom-wadors-example.html
-[JP_v3ActCode_FamMeb_CS]: CodeSystem-jp-v3ActCode-famMeb-cs.html
 [jp-allergyintolerance-example-1]: AllergyIntolerance-jp-allergyintolerance-example-1.html
 [JP_AllergyIntolerance]: StructureDefinition-jp-allergyintolerance.html
 [jp-client-capabilitystatement]: CapabilityStatement-jp-client-capabilitystatement.html
@@ -54,6 +53,7 @@
 [JP_Condition_DiseasePrefixModifier]: StructureDefinition-jp-condition-disease-prefix-modifier.html
 [jp-encounter-example-1]: Encounter-jp-encounter-example-1.html
 [JP_Encounter]: StructureDefinition-jp-encounter.html
+[JP_v3ActCode_FamMeb_CS]: CodeSystem-jp-v3ActCode-famMeb-cs.html
 [jp-familymemberhistory-example-1]: FamilyMemberHistory-jp-familymemberhistory-example-1.html
 [JP_FamilyMemberHistory]: StructureDefinition-jp-familymemberhistory.html
 [JP_HumanName]: StructureDefinition-jp-humanname.html
