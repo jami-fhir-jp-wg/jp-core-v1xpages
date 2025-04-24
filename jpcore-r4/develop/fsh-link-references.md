@@ -129,8 +129,6 @@
 [jp-medicationstatement-injection-example-1]: MedicationStatement-jp-medicationstatement-injection-example-1.html
 [JP_MedicationStatement_Injection]: StructureDefinition-jp-medicationstatement-injection.html
 [JP_MedicationStatement]: StructureDefinition-jp-medicationstatement.html
-[JP_ObservationBodyMeasurementCategory_CS]: CodeSystem-jp-observation-bodymeasurement-category-cs.html
-[JP_ObservationBodyMeasurementCategory_VS]: ValueSet-jp-observation-bodymeasurement-category-vs.html
 [JP_ObservationBodyMeasurementCode_CS]: CodeSystem-jp-observation-bodymeasurement-code-cs.html
 [JP_ObservationBodyMeasurementCode_VS]: ValueSet-jp-observation-bodymeasurement-code-vs.html
 [jp-observation-bodyMeasurement-example-1]: Observation-jp-observation-bodyMeasurement-example-1.html
