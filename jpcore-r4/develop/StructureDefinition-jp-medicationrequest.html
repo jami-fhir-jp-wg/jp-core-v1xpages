@@ -4547,7 +4547,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-medication-start=[date]
 </span></code></pre></div></div>
 
 <h3 id="１回量と１日量の記述方法">１回量と１日量の記述方法</h3>
-<p>2010年1月に医療ミス防止の観点から、慣例として普及していた一日量処方ではなく、1回量処方を推奨するという「内服薬処方せんの記載方法の在り方に関する検討会報告書」が厚生労働省から出された。そもそも、HL7 FHIRでは1回量処方を前提としていることから、本ワーキンググループでも、1回量処方のみの対応で良いとの意見も出た。しかし、8年経過した＝ても処方箋の8割が一日量処方を使用しているとの報告があり、システムによっては1回量処方に対応していないことから一日量処方にも対応することとした。</p>
+<p>2010年1月に医療ミス防止の観点から、慣例として普及していた一日量処方ではなく、1回量処方を推奨するという「内服薬処方せんの記載方法の在り方に関する検討会報告書」が厚生労働省から出された。そもそも、HL7 FHIRでは1回量処方を前提としていることから、本ワーキンググループでも、1回量処方のみの対応で良いとの意見も出た。しかし、2018年の調査でも処方箋の8割が一日量処方を使用しているとの報告があり、システムによっては1回量処方に対応していないことから一日量処方にも対応することとした。</p>
 
 <p>1回量は、dosageInstruction.doseAndRate.doseQuantity要素 にSimpleQuantity型で記述する。単位コードには、医薬品単位略号を使用する。</p>
 
@@ -4581,7 +4581,7 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-medication-start=[date]
 <p>doseQuantityエレメントは省略可能(0..1)である。</p>
 
 <h3 id="力価区分の記述方法">力価区分の記述方法</h3>
-<p>用量は製剤量で記述することを基本とするが、必要に応じて原薬量指定も可能とする。この識別は、dosageInstruction.doseAndRate.type 要素に、力価区分コードを指定することで行い、製剤量は「1」、原薬量は「2」とする。本要素は、安全性のため省略せずに必須とする。</p>
+<p>用量は製剤量で記述することを基本とするが、必要に応じて原薬量指定も可能とする。この識別は、dosageInstruction.doseAndRate.type 要素に、力価区分コードを指定することで行い、製剤量は「1」、原薬量は「2」とする。本要素は、省略せず記入されることが望ましい。</p>
 
 <p>投与量「1回1錠（1日3錠）」を製剤量で記録したインスタンス例を示す。</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"dosageInstruction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4730,10 +4730,10 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-medication-start=[date]
 </span></code></pre></div></div>
 
 <h3 id="処方箋番号オーダidの記述方法">処方箋番号(オーダID)の記述方法</h3>
-<p>処方箋を識別する番号も、同様に MedicationRequestリソースの identifier 要素で表現することができる。Identifier 型のsystem 要素には、保険医療機関番号を含む処方箋ID の名前空間を表すOID（urn:oid:1.2.392.100495.20.3.11.1[保険医療機関コード(10 桁)]）を指定する。全国で⼀意になる発番ルールにもとづく場合には "urn:oid:1.2.392.100495.20.3.11" とする。</p>
+<p>処方箋（処方オーダ）の識別子も、同様に MedicationRequestリソースの identifier 要素で表現することができる。</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.392.100495.20.3.11.1.11311234567"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://jpfhir.jp/fhir/core/IdSystem/resourceInstance-identifier"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-00123456"</span><span class="w">
   </span><span class="p">},</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -4803,8 +4803,20 @@ GET [base]/MedicationRequest?patient=[url]&amp;jp-medication-start=[date]
 </span></code></pre></div></div>
 
 <h3 id="各種コメントの記述方法">各種コメントの記述方法</h3>
-<p>薬剤オーダのコメントとしては、薬剤単位につくもの、用法指示などRP単位につくもの、処方箋全体につくものがある。
-全体のコメントはCommunicationリソースを使用し、薬剤単位、RP単位のコメントは、調剤指示以外はコード化されていれば dosageInstruction.additionalInstruction 要素ないしそうでないものは dosageInstruction.patientInstruction 要素を使用し、調剤指示は dispenseRequest要素に対して定義した拡張「InstructionForDispense」を使用する。</p>
+<p>処方オーダに付随するコメントには、薬剤単位につけられるもの、用法指示などRP単位につけられるもの、処方オーダ全体につけられるものがある。</p>
+
+<ul>
+  <li>処方オーダ全体に対するコメント</li>
+  <li>Communicationリソースを使用する。</li>
+  <li>薬剤単位、RP単位のコメント</li>
+  <li>調剤指示に関するコメント</li>
+  <li>dispenseRequest要素に対して定義した拡張「InstructionForDispense」を使用する。</li>
+  <li>調剤指示以外についてのコメント</li>
+  <li>コード化されているもの
+    *  dosageInstruction.additionalInstruction を使用する。</li>
+  <li>コード化されていないもの
+    * dosageInstruction.patientInstruction を使用する。</li>
+</ul>
 
 <h3 id="不均等投与の記述方法">不均等投与の記述方法</h3>
 <p>不均等用法は、「朝1 錠、昼2 錠、夕3 錠服用」など、1 日の中の服用タイミングごとに服用量が変化する用法である。不均等投与を1回投与ごとの複数の用法（1回用法）に分けて記述できる場合は、服用タイミングが異なる複数の剤グループとして表現することができる。しかし、不均等投与を1つの剤グループとして１つの用法（1日用法）でしか表現できないシステムもある。以下では、1回用法のインスタンス例と、1日用法でのインスタンス例をそれぞれ示す。</p>
@@ -5629,7 +5641,7 @@ JAMI標準用法コードを使用する表現方法と、HL7 FHIR本来の表�
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.3.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jun 5, 2025 11:59+0000">2025-06-05</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.3.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jun 5, 2025 13:16+0000">2025-06-05</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
