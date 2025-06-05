@@ -99,8 +99,8 @@ ext-1:両方ではなく、拡張または値[x]が必要です / Must have eith
 "Observation.category.text","Observation.category.text","","","",0,1,"","","Y","string {[]} {[]}
 ","コンセプトの単純なテキスト表現 / Plain text representation of the concept","データを入力したユーザー、および/またはユーザーの意図された意味を表すユーザーによって見られる/選択/発言された概念の人間の言語表現。 / A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.","多くの場合、テキストはコーディングの1つの表示名と同じです。 / Very often the text is the same as a displayName of one of the codings.","用語からのコードは、それらを使用する人間のすべてのニュアンスを使用して、常に正しい意味をキャプチャするとは限りません。または、適切なコードがまったくない場合があります。これらの場合、テキストはソースの完全な意味をキャプチャするために使用されます。 / The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.","","","","","","","",,,,,"",,,,"CodeableConcept.text",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C*E.9. But note many systems use C*E.2 for this","./originalText[mediaType/code=""text/plain""]/data"
-"Observation.category:first","Observation.category","first","","",1,*,"","","","CodeableConcept {[]} {[]}
-","検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から""laboratory""を設定する。","検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から""laboratory""を設定する。","【JP Core仕様】推奨コード表「JP Core Simple Observation Category CodeSystem」より、このプロファイルでは「furst」固定とする。  
+"Observation.category:first","Observation.category","first","","",1,1,"","","","CodeableConcept {[]} {[]}
+","検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から""laboratory""を設定する。","検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から""laboratory""を設定する。","【JP Core仕様】推奨コード表「JP Core Simple Observation Category CodeSystem」より、このプロファイルでは「laboratory」固定とする。  
 (social-history | vital-signs | imaging | laboratory | procedure | survey | exam | therapy | activity)","どの観測値が取得されて表示されるかをフィルタリングするために使用されます。 / Used for filtering what observations are retrieved and displayed.","","","","","","","",,"required","","http://jpfhir.jp/fhir/core/ValueSet/JP_SimpleObservationCategory_VS","",,,,"Observation.category",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".outboundRelationship[typeCode=""COMP].target[classCode=""LIST"", moodCode=""EVN""].code","FiveWs.class"
 "Observation.category:first.id","Observation.category.id","","","",0,1,"","","","string {[]} {[]}
@@ -194,7 +194,7 @@ URIは本WGで定義する。","シンボルの定義のソースについて明
 ","Event.context","PV1","inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]","FiveWs.context"
 "Observation.effective[x]","Observation.effective[x]","","Occurrence
 ","",1,1,"","","Y","dateTime {[]} {[]}
-Period {[]} {[]}Timing {[]} {[]}","取得された結果が臨床的に確定された日時または期間","検体検査の場合は、検体採取日時。","【JP Core仕様】このプロファイルでは、検体採取日時を設定し、必須とする。  
+Period {[]} {[]}Timing {[]} {[]}","検体を採取した日時または期間","検体検査の場合は、検体採取日時。","【JP Core仕様】このプロファイルでは、検体採取日時を設定し、必須とする。  
 effectiveInstant  
 instant型はイベント発生のログ時間であり、未使用とする。","観察が真実と見なされた時期を知ることは、その関連性にとって重要であり、傾向を決定します。 / Knowing when an observation was deemed true is important to its relevance as well as determining trends.","","","","","","","",,,,,"",,,,"Observation.effective[x]",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.occurrence[x]","OBX-14, and/or OBX-19 after v2.4  (depends on who observation made)","effectiveTime","FiveWs.done[x]"
@@ -205,7 +205,7 @@ instant型はイベント発生のログ時間であり、未使用とする。"
 ","このObservationの責任者/実施者に関する情報","検査値を確認した責任者。検査実施責任者情報。","【JP Core仕様】検査に直接責任を負う個人(つまり検査を実行、もしくは検証した人)の識別子。","観察にある程度の自信を与える可能性があり、また、フォローアップの質問をどこに向けるべきかを示します。 / May give a degree of confidence in the observation and also indicates where follow-up questions should be directed.","","","","","","","",,,,,"",,,,"Observation.performer",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.performer.actor","OBX.15 / (Practitioner)  OBX-16,  PRT-5:PRT-4='RO' /  (Device)  OBX-18 , PRT-10:PRT-4='EQUIP' / (Organization)  OBX-23,  PRT-8:PRT-4='PO'","participation[typeCode=PRF]","FiveWs.actor"
 "Observation.value[x]","Observation.value[x]","","","",0,1,"","","Y","Quantity {[]} {[]}
-CodeableConcept {[]} {[]}string {[]} {[]}","同じ検査項目でも、システム（施設）により、使うデータ型が異なる可能性あり【詳細参照】","検体検査の結果として決定された情報。","以下のデータ型はSS-MIX2では未使用のため、未使用とした。今後の議論で使用の必要性が出れば復活させる。  
+CodeableConcept {[]} {[]}string {[]} {[]}","検体検査結果の値","検体検査の結果として決定された情報。","以下のデータ型はSS-MIX2では未使用のため、未使用とした。今後の議論で使用の必要性が出れば復活させる。  
 valueBoolean  
 valueInteger ： 検査結果値を整数値（Integer）で定義したい場合に指定する。ただし、valueQuantityで単位付き数値を示すので、通常は使わない。　SS-MIX2／HL7 V2.5→ OBX-2＝「NW」の時の OBX-5(結果値)  
 valueRange  
