@@ -6,10 +6,8 @@
 [jp-condition-diagnosis-example-1]: Condition-jp-condition-diagnosis-example-1.html
 [JP_Condition_Diagnosis]: StructureDefinition-jp-condition-diagnosis.html
 [JP_ConditionDieaseOutcomeHL70241_CS]: CodeSystem-jp-condition-disease-outcome-hl70241-cs.html
-[JP_ConditionDiseaseOutcomeHL70241_VS]: ValueSet-jp-condition-disease-outcome-hl70241-vs.html
 [JP_ConditionDiseaseOutcomeHL70241_JHSD0006_VS]: ValueSet-jp-condition-disease-outcome-hl70241-jhsd0006-vs.html
 [JP_ConditionDieaseOutcomeJHSD0006_CS]: CodeSystem-jp-condition-disease-outcome-jhsd0006-cs.html
-[JP_ConditionDiseaseOutcomeJHSD0006_VS]: ValueSet-jp-condition-disease-outcome-jhsd0006-vs.html
 [JP_ConditionDieaseOutcomeReceipt_CS]: CodeSystem-jp-condition-disease-outcome-receipt-cs.html
 [JP_ConditionDiseaseOutcomeReceipt_VS]: ValueSet-jp-condition-disease-outcome-receipt-vs.html
 [jp-condition-example-1]: Condition-jp-condition-example-1.html
@@ -87,7 +85,6 @@
 [jp-medication-example-1]: Medication-jp-medication-example-1.html
 [JP_Medication_Ingredient_DrugNo]: StructureDefinition-jp-medication-ingredient-drugno.html
 [JP_Medication_IngredientStrength_StrengthType]: StructureDefinition-jp-medication-ingredientstrength-strengthtype.html
-[JP_MedicationInstructionForDispenseJHSP0002_VS]: ValueSet-jp-medicationinstructionfordispensejhsp0002-vs.html
 [JP_Medication]: StructureDefinition-jp-medication.html
 [JP_MedicationQuantity]: StructureDefinition-jp-medicationquantity.html
 [JP_MedicationSimpleQuantity]: StructureDefinition-jp-medicationsimplequantity.html
@@ -131,7 +128,6 @@
 [JP_MedicationStatement_Injection]: StructureDefinition-jp-medicationstatement-injection.html
 [JP_MedicationStatement]: StructureDefinition-jp-medicationstatement.html
 [JP_ObservationBodyMeasurementCode_CS]: CodeSystem-jp-observation-bodymeasurement-code-cs.html
-[JP_ObservationBodyMeasurementCode_VS]: ValueSet-jp-observation-bodymeasurement-code-vs.html
 [jp-observation-bodyMeasurement-example-1]: Observation-jp-observation-bodyMeasurement-example-1.html
 [JP_Observation_BodyMeasurement]: StructureDefinition-jp-observation-bodymeasurement.html
 [JP_Observation_BodySite_VS]: ValueSet-jp-observation-bodysite-vs.html
@@ -196,7 +192,6 @@
 [jp-patient-example-1]: Patient-jp-patient-example-1.html
 [JP_Patient]: StructureDefinition-jp-patient.html
 [JP_Patient_Race]: StructureDefinition-jp-patient-race.html
-[JP_PhysicalExamCode_VS]: ValueSet-jp-physicalexamcode-vs.html
 [jp-practitioner-example-female-1]: Practitioner-jp-practitioner-example-female-1.html
 [jp-practitioner-example-male-1]: Practitioner-jp-practitioner-example-male-1.html
 [jp-practitioner-example-female-2]: Practitioner-jp-practitioner-example-female-2.html
