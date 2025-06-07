@@ -6,8 +6,6 @@
 [jp-condition-diagnosis-example-1]: Condition-jp-condition-diagnosis-example-1.html
 [JP_Condition_Diagnosis]: StructureDefinition-jp-condition-diagnosis.html
 [JP_ConditionDieaseOutcomeHL70241_CS]: CodeSystem-jp-condition-disease-outcome-hl70241-cs.html
-[JP_ConditionDiseaseOutcomeHL70241_JHSD0006_VS]: ValueSet-jp-condition-disease-outcome-hl70241-jhsd0006-vs.html
-[JP_ConditionDieaseOutcomeJHSD0006_CS]: CodeSystem-jp-condition-disease-outcome-jhsd0006-cs.html
 [JP_ConditionDieaseOutcomeReceipt_CS]: CodeSystem-jp-condition-disease-outcome-receipt-cs.html
 [JP_ConditionDiseaseOutcomeReceipt_VS]: ValueSet-jp-condition-disease-outcome-receipt-vs.html
 [jp-condition-example-1]: Condition-jp-condition-example-1.html
