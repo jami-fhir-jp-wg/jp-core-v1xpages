@@ -33,6 +33,7 @@
 [JP_DentalSimplePresentTeethObservation_VS]: ValueSet-jp-dental-simple-presentteeth-observation-vs.html
 [JP_DiagnosticReport_Common]: StructureDefinition-jp-diagnosticreport-common.html
 [jp-diagnosticreport-dentaloral-example-1]: DiagnosticReport-jp-diagnosticreport-dentaloral-example-1.html
+[jp-diagnosticreport-dentaloral-example-2]: DiagnosticReport-jp-diagnosticreport-dentaloral-example-2.html
 [JP_DiagnosticReport_DentalOral]: StructureDefinition-jp-diagnosticreport-dentaloral.html
 [jp-diagnosticreport-endoscopy-example-1]: DiagnosticReport-jp-diagnosticreport-endoscopy-example-1.html
 [jp-diagnosticreport-endoscopy-example-2]: DiagnosticReport-jp-diagnosticreport-endoscopy-example-2.html
@@ -132,10 +133,16 @@
 [JP_Observation_Common]: StructureDefinition-jp-observation-common.html
 [JP_Observation_DentalOral_BodySiteStatus]: StructureDefinition-jp-observation-dentaloral-bodysitestatus.html
 [JP_Observation_DentalOral_BodyStructure]: StructureDefinition-jp-observation-dentaloral-bodystructure.html
+[jp-observation-dentaloral-missingtoothcondition-example-4]: Observation-jp-observation-dentaloral-missingtoothcondition-example-4.html
+[jp-observation-dentaloral-missingtoothcondition-example-5]: Observation-jp-observation-dentaloral-missingtoothcondition-example-5.html
+[jp-observation-dentaloral-missingtoothcondition-example-6]: Observation-jp-observation-dentaloral-missingtoothcondition-example-6.html
 [JP_Observation_DentalOral_MissingToothCondition]: StructureDefinition-jp-observation-dentaloral-missingtoothcondition.html
 [jp-observation-dentaloral-toothexistence-example-1]: Observation-jp-observation-dentaloral-toothexistence-example-1.html
 [jp-observation-dentaloral-toothexistence-example-2]: Observation-jp-observation-dentaloral-toothexistence-example-2.html
 [jp-observation-dentaloral-toothexistence-example-3]: Observation-jp-observation-dentaloral-toothexistence-example-3.html
+[jp-observation-dentaloral-toothexistence-example-4]: Observation-jp-observation-dentaloral-toothexistence-example-4.html
+[jp-observation-dentaloral-toothexistence-example-5]: Observation-jp-observation-dentaloral-toothexistence-example-5.html
+[jp-observation-dentaloral-toothexistence-example-6]: Observation-jp-observation-dentaloral-toothexistence-example-6.html
 [JP_Observation_DentalOral_ToothExistence]: StructureDefinition-jp-observation-dentaloral-toothexistence.html
 [jp-observation-dentaloral-toothtreatmentcondition-example-1]: Observation-jp-observation-dentaloral-toothtreatmentcondition-example-1.html
 [jp-observation-dentaloral-toothtreatmentcondition-example-2]: Observation-jp-observation-dentaloral-toothtreatmentcondition-example-2.html
