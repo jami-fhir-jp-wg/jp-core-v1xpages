@@ -229,6 +229,7 @@
 [jp-coverage-insuredpersonsymbol-sp]: SearchParameter-jp-coverage-insuredpersonsymbol-sp.html
 [jp-department-ssmix-namingsystem]: NamingSystem-jp-department-ssmix-namingsystem.html
 [jp-endoscopyterminology-codes-jed-ns]: NamingSystem-jp-endoscopyterminology-codes-jed-ns.html
+[jp-example-local-identifiersystem]: NamingSystem-jp-example-local-identifiersystem.html
 [jp-IdSystem-prescriptionDocumentID-namingsystem]: NamingSystem-jp-IdSystem-prescriptionDocumentID-namingsystem.html
 [jp-insurance-memberID-identifier]: NamingSystem-jp-insurance-memberID-identifier.html
 [jp-insured-person-number-namingsystem]: NamingSystem-jp-insured-person-number-namingsystem.html
