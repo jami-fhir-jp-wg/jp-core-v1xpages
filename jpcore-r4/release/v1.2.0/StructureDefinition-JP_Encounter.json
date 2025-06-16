@@ -370,20 +370,23 @@
       },
       "type" : [{
         "code" : "Extension",
-        "profile" : ["http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter"]
+        "profile" : ["http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|4.0.1"]
       }],
+      "condition" : ["ele-1"],
       "constraint" : [{
         "key" : "ele-1",
         "severity" : "error",
-        "human" : "All FHIR elements must have a @value or children",
+        "human" : "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children",
         "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
         "source" : "http://hl7.org/fhir/StructureDefinition/Element"
       },
       {
         "key" : "ext-1",
         "severity" : "error",
-        "human" : "Must have either extensions or value[x], not both",
+        "human" : "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both",
         "expression" : "extension.exists() != value.exists()",
+        "xpath" : "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
         "source" : "http://hl7.org/fhir/StructureDefinition/Extension"
       }],
       "isModifier" : false
@@ -2976,7 +2979,7 @@
       "max" : "1",
       "type" : [{
         "code" : "Extension",
-        "profile" : ["http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter"]
+        "profile" : ["http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|4.0.1"]
       }]
     },
     {
