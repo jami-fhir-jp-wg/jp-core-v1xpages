@@ -272,6 +272,7 @@
 [jp-organization-insuranceorganizationno-sp]: SearchParameter-jp-organization-insuranceorganizationno-sp.html
 [jp-organization-prefectureno-sp]: SearchParameter-jp-organization-prefectureno-sp.html
 [jp-patient-kanasort-sp]: SearchParameter-jp-patient-kanasort-sp.html
+[jp-prefecture-IdSystem]: NamingSystem-jp-prefecture-IdSystem.html
 [jp-prefecturenumber-namingsystem]: NamingSystem-jp-prefecturenumber-namingsystem.html
 [jp-specimen]: NamingSystem-jp-specimen.html
 [JP_Binary]: StructureDefinition-jp-binary.html
