@@ -388,20 +388,23 @@
       </base>
       <type>
         <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|5.2.0"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|4.0.1"/>
       </type>
+      <condition value="ele-1"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
+        <human value="すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
       <constraint>
         <key value="ext-1"/>
         <severity value="error"/>
-        <human value="Must have either extensions or value[x], not both"/>
+        <human value="両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
       </constraint>
       <isModifier value="false"/>
@@ -2902,7 +2905,7 @@
       <max value="1"/>
       <type>
         <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|5.2.0"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|4.0.1"/>
       </type>
     </element>
     <element id="Encounter.identifier">

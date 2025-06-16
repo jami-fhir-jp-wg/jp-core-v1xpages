@@ -415,15 +415,17 @@
        fhir:type ( [
          fhir:code [ fhir:v "Extension"^^xsd:anyURI ] ;
          fhir:profile ( [
-           fhir:v "http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|5.2.0"^^xsd:anyURI ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|5.2.0>
+           fhir:v "http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|4.0.1"^^xsd:anyURI ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|4.0.1>
          ] )
        ] ) ;
+       fhir:condition ( [ fhir:v "ele-1" ] ) ;
        fhir:constraint ( [
          fhir:key [ fhir:v "ele-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:human [ fhir:v "すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children" ] ;
          fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
+         fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
          fhir:source [
            fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
            fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
@@ -431,8 +433,9 @@
        ] [
          fhir:key [ fhir:v "ext-1" ] ;
          fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "Must have either extensions or value[x], not both" ] ;
+         fhir:human [ fhir:v "両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both" ] ;
          fhir:expression [ fhir:v "extension.exists() != value.exists()" ] ;
+         fhir:xpath [ fhir:v "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" ] ;
          fhir:source [
            fhir:v "http://hl7.org/fhir/StructureDefinition/Extension"^^xsd:anyURI ;
            fhir:link <http://hl7.org/fhir/StructureDefinition/Extension>
@@ -3272,8 +3275,8 @@
        fhir:type ( [
          fhir:code [ fhir:v "Extension"^^xsd:anyURI ] ;
          fhir:profile ( [
-           fhir:v "http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|5.2.0"^^xsd:anyURI ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|5.2.0>
+           fhir:v "http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|4.0.1"^^xsd:anyURI ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter|4.0.1>
          ] )
        ] )
      ] [
