@@ -35,6 +35,7 @@
 [JP_DentalSipmlePresentTeethObservation_CS]: CodeSystem-jp-dental-simple-presentteeth-observation-cs.html
 [JP_DentalSimplePresentTeethObservation_VS]: ValueSet-jp-dental-simple-presentteeth-observation-vs.html
 [JP_DentalSurfaceBodyStructure_CS]: CodeSystem-jp-dental-surfacebodystructure-cs.html
+[JP_DentalTeethObservation_VS]: ValueSet-jp-dental-teethobservation-vs.html
 [JP_DentalToothStatus_Observation_CS]: CodeSystem-jp-dental-toothstatus-observation-cs.html
 [JP_DentalToothStatus_Observation_VS]: ValueSet-jp-dental-toothstatus-observation-vs.html
 [JP_DiagnosticReport_Common]: StructureDefinition-jp-diagnosticreport-common.html
