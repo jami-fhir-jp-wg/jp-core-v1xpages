@@ -142,9 +142,16 @@
 [JP_Observation_DentalOral_BodyStructure_eCS]: StructureDefinition-jp-observation-dentaloral-bodystructure-ecs.html
 [jp-observation-dentaloral-ecs-example]: Observation-jp-observation-dentaloral-ecs-example.html
 [JP_Observation_DentalOral_eCS]: StructureDefinition-jp-observation-dentaloral-ecs.html
+[jp-observation-dentaloral-missingtoothcondition-example-4]: Observation-jp-observation-dentaloral-missingtoothcondition-example-4.html
+[jp-observation-dentaloral-missingtoothcondition-example-5]: Observation-jp-observation-dentaloral-missingtoothcondition-example-5.html
+[jp-observation-dentaloral-missingtoothcondition-example-6]: Observation-jp-observation-dentaloral-missingtoothcondition-example-6.html
 [JP_Observation_DentalOral_MissingToothCondition]: StructureDefinition-jp-observation-dentaloral-missingtoothcondition.html
+[jp-observation-dentaloral-toothexistence-example-1]: Observation-jp-observation-dentaloral-toothexistence-example-1.html
 [JP_Observation_DentalOral_ToothExistence]: StructureDefinition-jp-observation-dentaloral-toothexistence.html
 [JP_Observation_DentalOral_ToothRoot]: StructureDefinition-jp-observation-dentaloral-toothroot.html
+[jp-observation-dentaloral-toothtreatmentcondition-example-1]: Observation-jp-observation-dentaloral-toothtreatmentcondition-example-1.html
+[jp-observation-dentaloral-toothtreatmentcondition-example-2]: Observation-jp-observation-dentaloral-toothtreatmentcondition-example-2.html
+[jp-observation-dentaloral-toothtreatmentcondition-example-3]: Observation-jp-observation-dentaloral-toothtreatmentcondition-example-3.html
 [JP_Observation_DentalOral_ToothTreatmentCondition]: StructureDefinition-jp-observation-dentaloral-toothtreatmentcondition.html
 [JP_ObservationElectrocardiogramComponentCode_VS]: ValueSet-jp-observation-electrocardiogram-component-code-vs.html
 [JP_Observation_Electrocardiogram_DeviceInterpretation]: StructureDefinition-jp-observation-electrocardiogram-deviceinterpretation.html
