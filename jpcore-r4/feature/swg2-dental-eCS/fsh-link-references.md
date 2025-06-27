@@ -19,7 +19,6 @@
 [JP_DentalBodySite_VS]: ValueSet-jp-dental-bodysite-vs.html
 [JP_DentalBodySiteStatus_CS]: CodeSystem-jp-dental-bodysitestatus-cs.html
 [JP_DentalBodySiteStatus_VS]: ValueSet-jp-dental-bodysitestatus-vs.html
-[JP_DentalSurfaceBodyStructure_VS]: ValueSet-jp-dental-surfacebodystructure-vs.html
 [JP_DentalFundamentalStatus_CS]: CodeSystem-jp-dental-fundamentalstatus-cs.html
 [JP_DentalFundamentalStatus_VS]: ValueSet-jp-dental-fundamentalstatus-vs.html
 [JP_DentalMissingTeethObservation_CS]: CodeSystem-jp-dental-missingteeth-observation-cs.html
@@ -33,6 +32,7 @@
 [JP_DentalSipmlePresentTeethObservation_CS]: CodeSystem-jp-dental-simple-presentteeth-observation-cs.html
 [JP_DentalSimplePresentTeethObservation_VS]: ValueSet-jp-dental-simple-presentteeth-observation-vs.html
 [JP_DentalSurfaceBodyStructure_CS]: CodeSystem-jp-dental-surfacebodystructure-cs.html
+[JP_DentalSurfaceBodyStructure_VS]: ValueSet-jp-dental-surfacebodystructure-vs.html
 [JP_DentalTeethObservation_VS]: ValueSet-jp-dental-teethobservation-vs.html
 [JP_DiagnosticReport_Common]: StructureDefinition-jp-diagnosticreport-common.html
 [jp-diagnosticreport-dentaloral-example-1]: DiagnosticReport-jp-diagnosticreport-dentaloral-example-1.html
