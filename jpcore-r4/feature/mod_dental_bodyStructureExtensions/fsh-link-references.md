@@ -136,6 +136,7 @@
 [JP_Observation_Common]: StructureDefinition-jp-observation-common.html
 [JP_Observation_DentalOral_BodySiteStatus]: StructureDefinition-jp-observation-dentaloral-bodysitestatus.html
 [JP_Observation_DentalOral_BodyStructure_eCS]: StructureDefinition-jp-observation-dentaloral-bodystructure-ecs.html
+[jp-observation-dentaloral-ecs-example]: Observation-jp-observation-dentaloral-ecs-example.html
 [JP_Observation_DentalOral_eCS]: StructureDefinition-jp-observation-dentaloral-ecs.html
 [jp-observation-dentaloral-missingtoothcondition-example-4]: Observation-jp-observation-dentaloral-missingtoothcondition-example-4.html
 [jp-observation-dentaloral-missingtoothcondition-example-5]: Observation-jp-observation-dentaloral-missingtoothcondition-example-5.html
