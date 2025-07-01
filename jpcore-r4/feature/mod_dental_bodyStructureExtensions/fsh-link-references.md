@@ -220,15 +220,6 @@
 [jp-specimen-example-2]: Specimen-jp-specimen-example-2.html
 [JP_Undefined_CS]: CodeSystem-jp-undefined-cs.html
 [JP_Undefined_VS]: ValueSet-jp-undefined-vs.html
-[JP_Observation_DentalOral_BodyStructure_BodyLandmarkOrientation]: StructureDefinition-jp-observation-dentaloral-bodystructure-bodylandmarkorientation.html
-[JP_Observation_DentalOral_BodyStructure_ClockFacePosition]: StructureDefinition-jp-observation-dentaloral-bodystructure-clockfaceposition.html
-[JP_Observation_DentalOral_BodyStructure_DistanceFromLandmark]: StructureDefinition-jp-observation-dentaloral-bodystructure-distancefromlandmark.html
-[JP_Observation_DentalOral_BodyStructure_IncludedStructure]: StructureDefinition-jp-observation-dentaloral-bodystructure-includedstructure.html
-[JP_Observation_DentalOral_BodyStructure_LandmarkDescription]: StructureDefinition-jp-observation-dentaloral-bodystructure-landmarkdescription.html
-[JP_Observation_DentalOral_BodyStructure_Laterality]: StructureDefinition-jp-observation-dentaloral-bodystructure-laterality.html
-[JP_Observation_DentalOral_BodyStructure_Qualifier]: StructureDefinition-jp-observation-dentaloral-bodystructure-qualifier.html
-[JP_Observation_DentalOral_BodyStructure_Structure]: StructureDefinition-jp-observation-dentaloral-bodystructure-structure.html
-[JP_Observation_DentalOral_BodyStructure_SurfaceOrientation]: StructureDefinition-jp-observation-dentaloral-bodystructure-surfaceorientation.html
 [jp-clins-bundle-identifier]: NamingSystem-jp-clins-bundle-identifier.html
 [jp-core-resourceInstance-identifier]: NamingSystem-jp-core-resourceInstance-identifier.html
 [jp-coverage-insuredpersonnumber-sp]: SearchParameter-jp-coverage-insuredpersonnumber-sp.html
