@@ -19,9 +19,6 @@
 [JP_DentalBodySite_VS]: ValueSet-jp-dental-bodysite-vs.html
 [JP_DentalBodySiteStatus_CS]: CodeSystem-jp-dental-bodysitestatus-cs.html
 [JP_DentalBodySiteStatus_VS]: ValueSet-jp-dental-bodysitestatus-vs.html
-[JP_DentalBodyStructure_CS]: CodeSystem-jp-dental-bodystructure-cs.html
-[JP_DentalBodyStructure_VS]: ValueSet-jp-dental-bodystructure-vs.html
-[JP_DentalSurfaceBodyStructure_VS]: ValueSet-jp-dental-surfacebodystructure-vs.html
 [JP_DentalFundamentalStatus_CS]: CodeSystem-jp-dental-fundamentalstatus-cs.html
 [JP_DentalFundamentalStatus_VS]: ValueSet-jp-dental-fundamentalstatus-vs.html
 [JP_DentalMissingTeethObservation_CS]: CodeSystem-jp-dental-missingteeth-observation-cs.html
@@ -35,10 +32,9 @@
 [JP_DentalSipmlePresentTeethObservation_CS]: CodeSystem-jp-dental-simple-presentteeth-observation-cs.html
 [JP_DentalSimplePresentTeethObservation_VS]: ValueSet-jp-dental-simple-presentteeth-observation-vs.html
 [JP_DentalSurfaceBodyStructure_CS]: CodeSystem-jp-dental-surfacebodystructure-cs.html
-[JP_DentalToothStatus_Observation_CS]: CodeSystem-jp-dental-toothstatus-observation-cs.html
-[JP_DentalToothStatus_Observation_VS]: ValueSet-jp-dental-toothstatus-observation-vs.html
+[JP_DentalSurfaceBodyStructure_VS]: ValueSet-jp-dental-surfacebodystructure-vs.html
+[JP_DentalTeethObservation_VS]: ValueSet-jp-dental-teethobservation-vs.html
 [JP_DiagnosticReport_Common]: StructureDefinition-jp-diagnosticreport-common.html
-[JP_DiagnosticReport_DentalOral_eCS]: StructureDefinition-jp-diagnosticreport-dentaloral-ecs.html
 [jp-diagnosticreport-dentaloral-example-1]: DiagnosticReport-jp-diagnosticreport-dentaloral-example-1.html
 [jp-diagnosticreport-dentaloral-example-2]: DiagnosticReport-jp-diagnosticreport-dentaloral-example-2.html
 [JP_DiagnosticReport_DentalOral]: StructureDefinition-jp-diagnosticreport-dentaloral.html
@@ -60,7 +56,6 @@
 [jp-familymemberhistory-example-1]: FamilyMemberHistory-jp-familymemberhistory-example-1.html
 [JP_FamilyMemberHistory]: StructureDefinition-jp-familymemberhistory.html
 [JP_HumanName]: StructureDefinition-jp-humanname.html
-[JP_ImagingStudy_Endoscopy_BodySite_VS]: ValueSet-jp-imagingstudy-endoscopy-bodysite-vs.html
 [jp-imagingstudy-endoscopy-example-1]: ImagingStudy-jp-imagingstudy-endoscopy-example-1.html
 [JP_ImagingStudy_Endoscopy]: StructureDefinition-jp-imagingstudy-endoscopy.html
 [JP_ImagingStudy_Radiology_BodySite_VS]: ValueSet-jp-imagingstudy-radiology-bodysite-vs.html
@@ -139,8 +134,8 @@
 [JP_Observation_BodySite_VS]: ValueSet-jp-observation-bodysite-vs.html
 [JP_Observation_Common]: StructureDefinition-jp-observation-common.html
 [JP_Observation_DentalOral_BodySiteStatus]: StructureDefinition-jp-observation-dentaloral-bodysitestatus.html
-[JP_Observation_DentalOral_BodyStructure]: StructureDefinition-jp-observation-dentaloral-bodystructure.html
 [JP_Observation_DentalOral_BodyStructure_eCS]: StructureDefinition-jp-observation-dentaloral-bodystructure-ecs.html
+[jp-observation-dentaloral-ecs-example]: Observation-jp-observation-dentaloral-ecs-example.html
 [JP_Observation_DentalOral_eCS]: StructureDefinition-jp-observation-dentaloral-ecs.html
 [jp-observation-dentaloral-missingtoothcondition-example-4]: Observation-jp-observation-dentaloral-missingtoothcondition-example-4.html
 [jp-observation-dentaloral-missingtoothcondition-example-5]: Observation-jp-observation-dentaloral-missingtoothcondition-example-5.html
@@ -153,10 +148,12 @@
 [jp-observation-dentaloral-toothexistence-example-5]: Observation-jp-observation-dentaloral-toothexistence-example-5.html
 [jp-observation-dentaloral-toothexistence-example-6]: Observation-jp-observation-dentaloral-toothexistence-example-6.html
 [JP_Observation_DentalOral_ToothExistence]: StructureDefinition-jp-observation-dentaloral-toothexistence.html
+[JP_Observation_DentalOral_ToothRoot]: StructureDefinition-jp-observation-dentaloral-toothroot.html
 [jp-observation-dentaloral-toothtreatmentcondition-example-1]: Observation-jp-observation-dentaloral-toothtreatmentcondition-example-1.html
 [jp-observation-dentaloral-toothtreatmentcondition-example-2]: Observation-jp-observation-dentaloral-toothtreatmentcondition-example-2.html
 [jp-observation-dentaloral-toothtreatmentcondition-example-3]: Observation-jp-observation-dentaloral-toothtreatmentcondition-example-3.html
 [JP_Observation_DentalOral_ToothTreatmentCondition]: StructureDefinition-jp-observation-dentaloral-toothtreatmentcondition.html
+[JP_Observation_DentalOral_ToothSurface]: StructureDefinition-jp-observation-dentaloral-toothsurface.html
 [JP_ObservationElectrocardiogramComponentCode_VS]: ValueSet-jp-observation-electrocardiogram-component-code-vs.html
 [JP_Observation_Electrocardiogram_DeviceInterpretation]: StructureDefinition-jp-observation-electrocardiogram-deviceinterpretation.html
 [JP_ObservationElectrocardiogramDuration_CS]: CodeSystem-jp-observation-electrocardiogram-duration-cs.html
