@@ -3,7 +3,7 @@
 <html xml:lang="ja" xmlns="http://www.w3.org/1999/xhtml" lang="ja">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Must SupportとCardinality(多重度)のルール - HL7 FHIR JP Core ImplementationGuide v1.2.0-a</title>
+    <title>Must SupportとCardinality(多重度)のルール - HL7 FHIR JP Core ImplementationGuide v1.2.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -55,7 +55,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">HL7 FHIR JP Core ImplementationGuide</span>
             <br/>
-            <span style="display:inline-block;">1.2.0-a - release
+            <span style="display:inline-block;">1.2.0 - release
 
               <img alt="Japan flag" src="assets/images/jpn.svg" height="16" title="Japan"/>
             </span>
@@ -179,7 +179,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.2.0-a) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://jpfhir.jp/fhir/core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.2.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://jpfhir.jp/fhir/core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Must SupportとCardinality(多重度)のルール</h2>
   
 
@@ -199,12 +199,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
 <h3 id="cardinalityとmustsupport組み合わせ">CardinalityとMustSupport組み合わせ</h3>
+<p>この節では各CardinalityとMustSupportの状態ごとのサーバおよびクライアント動作について表形式にて記載している。</p>
 <h4 id="mustsupportが付与されていない要素について">MustSupportが付与されていない要素について</h4>
-<p>この節では各CardinalityとMustSupportの状態ごとのサーバおよびクライアント動作について表形式にて記載している。JP Coreでは、日本国内で患者データにアクセスするための最小限の適合性要件を定めるという理念に基づき、ユースケースが定まっておりMust Supportに対する揺らがない場合を除き、付与をしないようにした。</p>
+<p>JP Coreは、日本国内における患者データアクセスのための最小限の適合性要件を定めるという理念に基づいている。そのため、MustSupportフラグの付与は原則として派生プロジェクトに委ねており、JP Core自体では行っていない。ただし、一部の分野では、派生実装ガイドにおける特定のユースケースが明確であり、かつJP Core側でMustSupport付与の妥当性を十分に検討できた要素については、例外的にJP Coreでも定義を行っている。</p>
 
 <p>なお、データが存在しない場合の取り扱いについては、<a href="guide-handlingOfNonExistentData.html">欠損値（データが存在しない場合）の扱い</a>にて詳細を記載した。</p>
 
-<p><a href="https://www.hl7.org/fhir/R4/conformance-rules.html#:~:text=an%20element%20to%20a-,minimum%20cardinality%20of%201,-does%20not%20ensure">最小Cardinalityが1であることは、必ずしも有効なデータを持つことを意味しない</a>。最小Cardinalityが1であることは、要素が存在することのみを要求しており、例えば、その要素はDataAbsentReason拡張のみを持つかもしれない。</p>
+<p><a href="https://www.hl7.org/fhir/R4/conformance-rules.html#:~:text=an%20element%20to%20a-,minimum%20cardinality%20of%201,-does%20not%20ensure">最小Cardinalityが1であることは、必ずしも有効なデータを持つことを意味しない</a>。最小Cardinalityが1であることは、要素が存在することのみを要求している。そのデータの性質上データを持たない可能性がある場合はDataAbsentReason拡張を定義し、この要素はDataAbsentReason拡張のみを持つことで要素の存在を担保することを検討すること。</p>
 
 <p>プロファイルによっては、各要素のCardinalityに加えてConstraintsによってさらなる制約が規定されていることがあるので注意すること。</p>
 
@@ -245,7 +246,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>*2 is-modifierフラグのついたエレメント全てにMustSupportフラグが付与することができれば、MustSupportフラグのついていない全てのエレメントを安全に無視できるようになる。</p>
 
-<p>*3 <a href="https://www.hl7.org/fhir/R4/http.html#transactional-integrity">Transaction Integrity</a>に、サーバがCreateの要求からエレメントを変更・削除する場合の例が挙げられており、その中に「サーバがサポートしていない場合」が含まれる。MustSupportのエレメントを変更・削除する場合は、それ以外の理由に限られるべきと考えられる。</p>
+<p>*3 <a href="https://www.hl7.org/fhir/R4/http.html#transactional-integrity">トランザクションの完全性(Transaction Integrity)</a>に、リソースの作成および更新処理において、FHIRサーバーはリソース全体をそのまま受け入れる義務がないことが記載されています。そのためClientの送信したデータがServerへのクエリに結果が反映されないことに注意する必要があります。一致させるためには要素に対してis-modifierやMustSupportの付与を検討ください。</p>
 
 <h4 id="推奨するmustsupportの定義">推奨するMustSupportの定義</h4>
 <p>なお、本プロファイルから派生するプロファイルにおいては、下記のMustSupport定義を推奨する (<strong>MAY</strong>) 。また、「あるエレメントがMustSupportとマークされている場合、そのエレメントの全ての下位エレメントもMustSupportとみなす」よう定義することを推奨する (<strong>MAY</strong>)。</p>
@@ -302,7 +303,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jan 24, 2025 02:50+0000">2025-01-24</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 2, 2025 11:00+0000">2025-07-02</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

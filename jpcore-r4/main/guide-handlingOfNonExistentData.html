@@ -3,7 +3,7 @@
 <html xml:lang="ja" xmlns="http://www.w3.org/1999/xhtml" lang="ja">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>欠損値（データが存在しない場合）の扱い - HL7 FHIR JP Core ImplementationGuide v1.2.0-a</title>
+    <title>欠損値（データが存在しない場合）の扱い - HL7 FHIR JP Core ImplementationGuide v1.2.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -55,7 +55,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">HL7 FHIR JP Core ImplementationGuide</span>
             <br/>
-            <span style="display:inline-block;">1.2.0-a - release
+            <span style="display:inline-block;">1.2.0 - release
 
               <img alt="Japan flag" src="assets/images/jpn.svg" height="16" title="Japan"/>
             </span>
@@ -179,7 +179,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.2.0-a) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://jpfhir.jp/fhir/core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.2.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://jpfhir.jp/fhir/core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>欠損値（データが存在しない場合）の扱い</h2>
   
 
@@ -197,76 +197,97 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
-  <li><a href="#クライアントrequester" id="markdown-toc-クライアントrequester">クライアント(Requester)</a></li>
-  <li><a href="#サーバresponder" id="markdown-toc-サーバresponder">サーバ(Responder)</a></li>
+  <li><a href="#jp-coreにおける欠損値の扱い" id="markdown-toc-jp-coreにおける欠損値の扱い">JP Coreにおける欠損値の扱い</a>    <ul>
+      <li><a href="#クライアント-requester" id="markdown-toc-クライアント-requester">クライアント (Requester)</a></li>
+      <li><a href="#サーバ-responder" id="markdown-toc-サーバ-responder">サーバ (Responder)</a></li>
+    </ul>
+  </li>
 </ul>
 
 </div>
-<p>FHIR®では<a href="https://www.hl7.org/fhir/R4/json.html#2.6.2">JSON</a>および<a href="https://www.hl7.org/fhir/R4/xml.html">XML</a>いずれにおいてもオブジェクトは空ではならない。リソース内にエレメントが存在している場合、そのエレメントはそのタイプに応じた何らかのプロパティか1つ以上の拡張を持つ必要がある（<a href="https://www.hl7.org/fhir/R4/json.html#:~:text=Objects%20are%20never%20empty">2.6.2 JSON Representation of Resources</a>, <a href="https://www.hl7.org/fhir/R4/xml.html#:~:text=FHIR%20elements%20are%20never%20empty">2.6.1 XML Representation of Resources</a>）。string型の値は空文字列であってはならず、そのプロパティが存在するのであれば、1字以上の文字を含む必要がある（<a href="https://www.hl7.org/fhir/R4/datatypes.html#:~:text=strings%20SHOULD%20always%20contain%20non-whitespace">2.24.0.1 Primitive Types</a>）。</p>
+<h2 id="jp-coreにおける欠損値の扱い">JP Coreにおける欠損値の扱い</h2>
 
-<p>データがない場合に、<a href="https://www.hl7.org/fhir/R4/extension-data-absent-reason.html">Data Absent Reason拡張</a>を用いて、データが欠損している理由を表すことができる。</p>
+<p>FHIRではリソース内に要素を記述する際、<strong>具体的なデータを含まない</strong>「空のオブジェクト」を作成することはできない。
+具体的には、リソース（患者情報や検査結果といった情報のまとまり）の中に何らかの要素（例えば「患者さんの名前」や「検査日」といった個別のデータ項目）を記述する場合、その要素には必ず以下のいずれかの情報を含んでいる必要がある。</p>
 
-<p>JP Core の検索要求するクライアント(Requester)およびサーバ(Responder)は以下の要求を満たすこと (<strong>SHALL</strong>)。</p>
-<h3 id="クライアントrequester">クライアント(Requester)</h3>
+<ol>
+  <li>
+    <p><strong>要素の種類に応じた具体的なデータ</strong>:
+例えば、「患者さんの名前」という要素であれば、実際の名前の文字列（例: "山田 太郎"）が入っている、といった具合である。要素が持つべき具体的なデータ値（例：string型なら文字列、integer型なら整数など）が必要になる。</p>
+  </li>
+  <li>
+    <p><strong>少なくとも1つの「拡張 (extension)」</strong>:
+標準で定義されていない情報を追加するための特別な仕組みである「拡張」が、少なくとも1つ設定されている必要がある。</p>
+  </li>
+</ol>
+
+<p>特に文字列（string型）のデータ項目（例：自由記述のメモなど）は、FHIRのルールにより、<strong>空文字（""）を値として使用することはできない</strong>。
+もし文字列型の要素を記述するならば、必ず1文字以上のデータを含んでいる必要がある。</p>
+
+<p>（これらのルールは、FHIR仕様の 2.6.2 JSON Representation of Resources, 2.6.1 XML Representation of Resources, および 2.24.0.1 Primitive Types に基づいている。）</p>
+
+<p>そのため、データが利用できない、または不明な場合でも、空文字で代替することはできない。このような場合に対処するために、<a href="https://www.hl7.org/fhir/R4/extension-data-absent-reason.html">Data Absent Reason拡張</a> を用いて、データが欠損している理由を表現することが推奨される。</p>
+
+<p>実装ガイド作成時に、多重度1以上ややMust Supportを付与した場合は、欠損値の対処方法についてのルールをあらかじめ定めることを推奨する。</p>
+
+<p>JP Coreにおいて多重度が設定された場合のルールは以下の通りである。
+JP Core の検索要求を行うクライアント (Requester) およびサーバ (Responder) は以下の要求を満たさなければならない (<strong>SHALL</strong>)。</p>
+
 <hr />
-<h4 id="実装ガイドに準拠するクライアントはcardinalityが1以上が付与された要素を含むリソースを受信した場合エラーを発生させたりアプリケーションを失敗させることなくそれらの値を処理することができなければならない-shall">実装ガイドに準拠するクライアントは、Cardinalityが1以上が付与された要素を含むリソースを受信した場合、エラーを発生させたりアプリケーションを失敗させることなく、それらの値を処理することができなければならない (<strong>SHALL</strong>)。</h4>
+
+<h3 id="クライアント-requester">クライアント (Requester)</h3>
+
+<h4 id="実装ガイドに準拠するクライアントはcardinalityが1以上の要素を含むリソースを受信した場合エラーを発生させたりアプリケーションを失敗させることなくそれらの値を処理することができなければならない-shall">実装ガイドに準拠するクライアントは、Cardinalityが1以上の要素を含むリソースを受信した場合、エラーを発生させたりアプリケーションを失敗させることなく、それらの値を処理することができなければならない (SHALL)。</h4>
 
 <p><strong>例)</strong>
-Readインタラクションの応答として、Cardinalityが１以上の 要素であるPatient.maritalStatus を含むPatient リソースを受信した場合、
-要求者はその値をエラーなく処理しなければならない。</p>
+Readインタラクションの応答として、Cardinalityが1以上の要素である <code class="language-plaintext highlighter-rouge">Patient.maritalStatus</code> を含む <code class="language-plaintext highlighter-rouge">Patient</code> リソースを受信した場合、要求者はその値をエラーなく処理しなければならない。</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-    </span><span class="nl">"maritalStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-            </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Married"</span><span class="w">
-        </span><span class="p">}]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="err">...</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maritalStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Married"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<h4 id="実装ガイドに準拠するクライアントは欠損データであることを宣言した-cardinalityが1以上のデータ要素を含むリソースインスタンスを処理できなければならない-shall">実装ガイドに準拠するクライアントは、欠損データであることを宣言した Cardinalityが1以上のデータ要素を含むリソースインスタンスを処理できなければならない (<strong>SHALL</strong>)。</h4>
+<h4 id="実装ガイドに準拠するクライアントは欠損データであることを宣言した-cardinalityが1以上のデータ要素を含むリソースインスタンスを処理できなければならない-shall">実装ガイドに準拠するクライアントは、欠損データであることを宣言した Cardinalityが1以上のデータ要素を含むリソースインスタンスを処理できなければならない (SHALL)。</h4>
 <p><strong>例)</strong>
-Patient.birthDateの値に欠損情報が付与されているリソースを、要求者は処理できなければならない。なお、birthDateはdate型というprimitive typeであり、そのextensionは"_"を先頭につけたプロパティに対して設定される(<a href="https://www.hl7.org/fhir/R4/json.html#primitive">2.6.2.3 JSON representation of primitive elements</a>)。</p>
+<code class="language-plaintext highlighter-rouge">Patient.birthDate</code> の値に欠損情報が付与されているリソースを、要求者は処理できなければならない。なお、<code class="language-plaintext highlighter-rouge">birthDate</code> はdate型というprimitive typeであり、そのextensionは"_"を先頭につけたプロパティに対して設定される(<a href="https://www.hl7.org/fhir/R4/json.html#primitive">2.6.2.3 JSON representation of primitive elements</a>)。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"resourceType "</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-    </span><span class="nl">"_birthDate "</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"extension"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-            </span><span class="nl">"url "</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://hl7.org/fhir/StructureDefinition/data-absent-reason"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"valueCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="w">
-        </span><span class="p">}]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-</span><span class="p">}</span><span class="w"> 
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_birthDate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://hl7.org/fhir/StructureDefinition/data-absent-reason"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"valueCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<h3 id="サーバresponder">サーバ(Responder)</h3>
 <hr />
 
+<h3 id="サーバ-responder">サーバ (Responder)</h3>
+
 <h4 id="要素の値を保持している場合">要素の値を保持している場合</h4>
-<p>JP Core 実装ガイドに準拠するサーバは、当該要素の値を保持している場合には、要求された検索結果のリソースのデータ要素として含めることができるべきである (<strong>SHOULD</strong>)。</p>
+<p>JP Core 実装ガイドに準拠するサーバは、当該要素の値を保持している場合には、要求された検索結果のリソースのデータ要素として<strong>含めるべきである</strong> (<strong>SHOULD</strong>)。</p>
 
 <h4 id="要素の値を保持していない場合">要素の値を保持していない場合</h4>
 
-<h5 id="その要素のcardinalityが0を含む場合">その要素のCardinalityが0を含む場合</h5>
-<p>JP Core 実装ガイドに準拠するサーバは、Cardinalityが0を含む要素の値を保持していない場合、そのデータ要素の項目を省略してもよい (<strong>MAY</strong>)。</p>
+<h5 id="その要素の最小多重度が0の場合-cardinalityが0-や-01-など">その要素の最小多重度が0の場合 (Cardinalityが0..* や 0..1 など)</h5>
+<p>JP Core 実装ガイドに準拠するサーバは、最小多重度が0の要素の値を保持していない場合、そのデータ要素の項目を省略してもよい (<strong>MAY</strong>)。</p>
 
-<p><strong>例)</strong></p>
-
-<p>Patient.telecomが欠損している場合…telecom要素は含まなくてよい。</p>
+<p><strong>例)</strong>
+<code class="language-plaintext highlighter-rouge">Patient.telecom</code> が欠損している場合… <code class="language-plaintext highlighter-rouge">telecom</code> 要素は含まなくてよい。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"resourceType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-    </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nl">"family"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Yamada"</span><span class="p">,</span><span class="w"> </span><span class="nl">"given"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"Taro"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">}],</span><span class="w">
-    </span><span class="nl">"gender"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nl">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yamada"</span><span class="p">,</span><span class="w"> </span><span class="nl">"given"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Taro"</span><span class="p">]}],</span><span class="w">
+  </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
@@ -274,95 +295,85 @@ Patient.birthDateの値に欠損情報が付与されているリソースを、
 <p>JP Core実装ガイドのサーバは、Cardinalityが1以上の要素の値を保持していない場合、次のように、データの欠損理由を指定しなければならない (<strong>SHALL</strong>)。</p>
 
 <h6 id="非コード化要素の場合">非コード化要素の場合</h6>
-<p>非コード化値の場合： Data Absent Reason拡張を使用して、欠損理由を送
-信できなければならない (<strong>SHALL</strong>) 。</p>
+<p>非コード化値の場合： Data Absent Reason拡張を使用して、欠損理由を送信できなければならない (<strong>SHALL</strong>)。</p>
 
 <p><strong>例)</strong>
-患者の生年月日が不明なため、Patient.birthDateに値を保持していない場合（Patient.birthDateが必須 MustSupport）、Data Absent Reason 拡張を使用して、欠損理由（＝不明）を示す。なお、birthDateはdate型というprimitive typeであり、そのextensionは"_"を先頭につけたプロパティに対して設定される(<a href="https://www.hl7.org/fhir/R4/json.html#primitive">2.6.2.3 JSON representation of primitive elements</a>)。</p>
+患者の生年月日が不明なため、<code class="language-plaintext highlighter-rouge">Patient.birthDate</code> に値を保持していない場合（<code class="language-plaintext highlighter-rouge">Patient.birthDate</code> が必須 MustSupport）、Data Absent Reason拡張を使用して、欠損理由（＝不明）を示す。なお、<code class="language-plaintext highlighter-rouge">birthDate</code> はdate型というprimitive typeであり、そのextensionは"_"を先頭につけたプロパティに対して設定される(<a href="https://www.hl7.org/fhir/R4/json.html#primitive">2.6.2.3 JSON representation of primitive elements</a>)。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"resourceType "</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-    </span><span class="nl">"_birthDate "</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"extension"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-            </span><span class="nl">"url "</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://hl7.org/fhir/StructureDefinition/data-absent-reason"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"valueCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="w">
-        </span><span class="p">}]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-</span><span class="p">}</span><span class="w"> 
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_birthDate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://hl7.org/fhir/StructureDefinition/data-absent-reason"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"valueCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
-<h6 id="コード化データ要素codeableconceptデータ型またはcode-データ型の場合">コード化データ要素(CodeableConceptデータ型、または、code データ型)の場合</h6>
+<h6 id="コード化データ要素-codeableconceptデータ型またはcode-データ型-の場合">コード化データ要素 (CodeableConceptデータ型、または、code データ型) の場合</h6>
 
-<p>a)  そのコード化要素のバインディング強度が、example, preferred, extensible のいずれかの場合</p>
+<p>a)  そのコード化要素のバインディング強度が、<code class="language-plaintext highlighter-rouge">example</code>, <code class="language-plaintext highlighter-rouge">preferred</code>, <code class="language-plaintext highlighter-rouge">extensible</code> のいずれかの場合</p>
 
-<p>i. コード化値の代替となる文字情報を持っている場合は、文字データのみを使用する。</p>
+<p>i. コード化値の代替となる文字情報を持っている場合は、<strong>当該要素の <code class="language-plaintext highlighter-rouge">text</code> プロパティに、文字情報のみを設定する</strong>。</p>
 
 <p><strong>例)</strong>
- Patient.maritalStatus が必須要素の場合で、Patient.maritalStatus のコード値はわからないが、「既婚」という文字情報は持っている場合、CodeableConcept の text を使用する。</p>
+<code class="language-plaintext highlighter-rouge">Patient.maritalStatus</code> が必須要素の場合で、<code class="language-plaintext highlighter-rouge">Patient.maritalStatus</code> のコード値はわからないが、「既婚」という文字情報は持っている場合、<code class="language-plaintext highlighter-rouge">CodeableConcept</code> の <code class="language-plaintext highlighter-rouge">text</code> を使用する。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"resourceType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-    </span><span class="nl">"maritalStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"既婚"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-</span><span class="p">}</span><span class="err">,</span><span class="w">
-
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maritalStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"既婚"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
 <p>ii. コード化値の代替となる文字情報がない場合、バリューセットの中に例外値を表現するコードがあればその値を使用する。</p>
 
-<p><strong>例)</strong>バリューセットに含まれる例外値を表現するコードを使用（ValueSet marital-statusには、不明な状態を表すコード[UNK]を含んでいるため、UNKを使用する）</p>
+<p><strong>例)</strong>
+バリューセットに含まれる例外値を表現するコードを使用（ValueSet <code class="language-plaintext highlighter-rouge">marital-status</code> には、不明な状態を表すコード <code class="language-plaintext highlighter-rouge">UNK</code> (Unknown) を含んでいるため、<code class="language-plaintext highlighter-rouge">UNK</code> を使用する）</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"resourceType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-    </span><span class="nl">"maritalStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-            </span><span class="nl">"system"</span><span class="p">:</span><span class="s2">"http://terminology.hl7.org/CodeSystem/v3-NullFlavor"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNK"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="w">
-        </span><span class="p">}]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="err">...</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maritalStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/v3-NullFlavor"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNK"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>iii. コード化値の代替となる文字情報がなく、バリューセットの中に例外値を表現するコードが無い場合、[DataAbsentReason]コード体系から、適切な概念コードを使用する。</p>
+<p>iii. コード化値の代替となる文字情報がなく、バリューセットの中に例外値を表現するコードが無い場合、Data Absent Reason拡張コード体系から、適切な概念コードを使用する。</p>
 
-<p><strong>例)</strong> Patient.communication.language の値が、患者に確認していないため不明の場合、Data Absent Reason拡張より「not-asked」を使用する。※Patient.communication.language は現状のJP Core Patientプロファイル案では必須ではないため、例示のためのみに使用した。</p>
+<p><strong>例)</strong>
+<code class="language-plaintext highlighter-rouge">Patient.communication.language</code> の値が、患者に確認していないため不明の場合、Data Absent Reason拡張より「not-asked」を使用する。※<code class="language-plaintext highlighter-rouge">Patient.communication.language</code> は現状のJP Core Patientプロファイル案では必須ではないため、例示のためのみに使用した。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"resourceType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-    </span><span class="nl">"communication"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="nl">"language"</span><span class="p">:{</span><span class="w">
-            </span><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-                    </span><span class="nl">"url "</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://hl7.org/fhir/StructureDefinition/data-absent-reason"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"valueCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"not-asked"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not asked"</span><span class="w">
-            </span><span class="p">}]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="err">...</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"communication"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://hl7.org/fhir/StructureDefinition/data-absent-reason"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"valueCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not-asked"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not asked"</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>b)そのコード化要素のバインディング強度が required の場合</p>
+<p>b)  そのコード化要素のバインディング強度が <code class="language-plaintext highlighter-rouge">required</code> の場合</p>
 
 <p>そのバリューセット内に含まれる例外値を表すコードを使用する。</p>
 
-<p><strong>例)</strong> Patient.genderの値が不明の場合、 バリューセットAdministrativeGender に含まれる例外値を表すコード「unknown」を使用する。※Patient.genderは現状のJP Core Patientプロファイル案では必須ではないため、例示のために使用した。</p>
+<p><strong>例)</strong>
+<code class="language-plaintext highlighter-rouge">Patient.gender</code> の値が不明の場合、 バリューセット <code class="language-plaintext highlighter-rouge">AdministrativeGender</code> に含まれる例外値を表すコード「unknown」を使用する。※<code class="language-plaintext highlighter-rouge">Patient.gender</code> は現状のJP Core Patientプロファイル案では必須ではないため、例示のために使用した。</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"resourceType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
-
 
 
 
@@ -382,7 +393,7 @@ Patient.birthDateの値に欠損情報が付与されているリソースを、
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0-a based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jan 24, 2025 02:50+0000">2025-01-24</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.2.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 2, 2025 11:00+0000">2025-07-02</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
