@@ -21,6 +21,7 @@
     <sch:title>f:MedicationAdministration/f:dosage/f:site</sch:title>
     <sch:rule context="f:MedicationAdministration/f:dosage/f:site">
       <sch:assert test="count(f:id) &lt;= 1">id: maximum cardinality of 'id' is 1</sch:assert>
+      <sch:assert test="count(f:extension[@url = 'http://hl7.org/fhir/StructureDefinition/bodySite|5.2.0']) &lt;= 1">extension with URL = 'http://hl7.org/fhir/StructureDefinition/bodySite|5.2.0': maximum cardinality of 'extension' is 1</sch:assert>
       <sch:assert test="count(f:text) &lt;= 1">text: maximum cardinality of 'text' is 1</sch:assert>
     </sch:rule>
   </sch:pattern>
