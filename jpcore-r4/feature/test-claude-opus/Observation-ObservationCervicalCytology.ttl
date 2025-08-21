@@ -1,0 +1,68 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://jpfhir.jp/fhir/core/Observation/ObservationCervicalCytology> a fhir:Observation ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "ObservationCervicalCytology"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Pathology"^^xsd:anyURI ;
+       fhir:link <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Pathology>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Observation ObservationCervicalCytology</b></p><a name=\"ObservationCervicalCytology\"> </a><a name=\"hcObservationCervicalCytology\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-jp-observation-pathology.html\">JP Core Observation Pathology Profile</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:\">laboratory</span>, <span title=\"Codes:{http://loinc.org LP7839-6}\">PATH</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 47527-7}\">Cervical cytology</span></p><p><b>subject</b>: <a href=\"Patient-PatientCervicalCytology.html\">由美 高橋  Female, DoB: 1980-11-25 ( 56789012)</a></p><p><b>effective</b>: 2024-02-21 10:00:00+0900</p><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 165084003}\">NILM（陰性）</span></p><p><b>specimen</b>: <a href=\"Specimen-SpecimenCervicalCytology.html\">Specimen: identifier = SP-2024-00567-CC; accessionIdentifier = PATH-2024-00567; status = available; type = Cytology specimen; receivedTime = 2024-02-20 10:00:00+0900</a></p></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       fhir:code [ fhir:v "laboratory" ]
+     ] )
+  ] [
+     fhir:coding ( [
+       a loinc:LP7839-6 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "LP7839-6" ]
+     ] )
+  ] ) ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:47527-7 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "47527-7" ] ;
+       fhir:display [ fhir:v "Cervical cytology" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://jpfhir.jp/fhir/core/Patient/PatientCervicalCytology> ;
+     fhir:reference [ fhir:v "Patient/PatientCervicalCytology" ]
+  ] ; # 
+  fhir:effective [
+     a fhir:dateTime ;
+     fhir:v "2024-02-21T10:00:00+09:00"^^xsd:dateTime
+  ] ; # 
+  fhir:value [
+     a fhir:CodeableConcept ;
+     fhir:coding ( [
+       a sct:165084003 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "165084003" ] ;
+       fhir:display [ fhir:v "Negative for intraepithelial lesion or malignancy" ]
+     ] ) ;
+     fhir:text [ fhir:v "NILM（陰性）" ]
+  ] ; # 
+  fhir:specimen [
+     fhir:link <http://jpfhir.jp/fhir/core/Specimen/SpecimenCervicalCytology> ;
+     fhir:reference [ fhir:v "Specimen/SpecimenCervicalCytology" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+
