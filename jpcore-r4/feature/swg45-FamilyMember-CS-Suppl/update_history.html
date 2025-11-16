@@ -181,7 +181,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.3.0-dev) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://jpfhir.jp/fhir/core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">HL7 FHIR JP Core ImplementationGuide - Local Development build (v1.3.0-dev) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://jpfhir.jp/fhir/core/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>更新履歴</h2>
   
 
@@ -205,11 +205,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <ul>
   <li>全般
     <ul>
-      <li>v1.1.2の不具合を修正し、新たにプロファイルを追加した。</li>
       <li>「CodeSystem」および「Identifierのsystem要素」にOID形式で定義されていたURIを、URL形式の定義があるものについてはURL形式に変更した。本変更に関して<code class="language-plaintext highlighter-rouge">OIDマッピング表</code>の項目で記載をしている。</li>
-      <li>各プロファイルのベースとなるFHIRバージョンは4.0.1を維持し、不具合などやむを得ない場合を除き、下位互換性を保つように考慮している</li>
+      <li>歯科口腔関連の一連の定義をtrial useとして追加した</li>
+      <li>v1.1.2の不具合修正を行った。各プロファイルのベースとなるFHIRバージョンは4.0.1を維持し、不具合などやむを得ない場合を除き、下位互換性を保つように考慮している</li>
+      <li>説明文や翻訳部分の語句の修正を中心にパブリックコメントの対応を行った。</li>
       <li>命名規則に従い、ファイル名、ID等を修正した</li>
-      <li>CodeSystem<code class="language-plaintext highlighter-rouge">JP_BodySite_CS</code>を作成し、各プロファイル用のValueSetから参照するように設定した</li>
       <li>JP CoreではMustSupportを利用しない方針であったがユースケースによってはMustSupportの記述を追加している、MustSupportの方針もあわせて記載している</li>
       <li>ビルド時の引数に、言語：日本語、国：日本を指定するようにした</li>
       <li>Copyrightの見直しを実施した</li>
@@ -237,6 +237,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           <li>Exampleとして提示しているCodeSystemのcontext=completeの状態に変更した</li>
           <li>操作：$everythingが不要であるため、Medication関連プロファイルを記述を削除した</li>
           <li>施設ごとに管理される処方箋IDのSystem値に関するルールを、コメントに加えて制約（invariant）にて記述するようにした</li>
+          <li>JP_MedicationInstructionForDispenseJHSP0002_VSのURLの一部に不具合があり修正を行った。</li>
+          <li><code class="language-plaintext highlighter-rouge">JP_MedicationRequest_DispenseRequest_InstructionForDispense</code>、<code class="language-plaintext highlighter-rouge">JP_MedicationDispense_Preparation</code>の調剤に関する拡張にて指定されるValueSetを<code class="language-plaintext highlighter-rouge">JP_MedicationInstructionForDispenseJHSP0002_VS</code>よりhttp://jpfhir.jp/fhir/ePrescription/ValueSet/jami-ePreDispenseInstructionに変更した。</li>
         </ul>
       </li>
       <li>Diagnostic グループ
@@ -254,6 +256,16 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
               <li><code class="language-plaintext highlighter-rouge">JP_Observation_DentalOral_ToothExistence</code>プロファイルを追加定義した</li>
               <li><code class="language-plaintext highlighter-rouge">JP_Observation_DentalOral_ToothTreatmentCondition</code>プロファイルを追加定義した</li>
               <li><code class="language-plaintext highlighter-rouge">JP_Observation_DentalOral_MissingToothCondition</code>プロファイルを追加定義した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_DentalOral_MissingToothCondition</code>プロファイルを追加定義した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_DentalOral_eCS</code>プロファイルを追加定義した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_DentalOral_BodySiteStatus</code>Extensionを追加定義した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_DentalOral_BodyStructure_eCS</code>Extensionを追加定義した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_DentalOral_ToothRoot</code>Extensionを追加定義した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_DentalOral_ToothSurface</code>Extensionを追加定義した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_Electrocardiogram_DeviceInterpretation</code>Extensionを追加定義した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_Electrocardiogram_Duration</code>Extensionを追加定義した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_Electrocardiogram_NumberOfLead</code>Extensionを追加定義した</li>
+              <li><code class="language-plaintext highlighter-rouge">JP_Observation_Electrocardiogram_StressType</code>Extensionを追加定義した</li>
             </ul>
           </li>
           <li>ImagingStudy
@@ -302,7 +314,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <ul>
       <li>以下のコードシステムおよびバリューセットを追加/削除した
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">JP_BodySite_VS</code></li>
           <li><code class="language-plaintext highlighter-rouge">JP_ConditionDieaseOutcomeHL70241_CS</code></li>
           <li><code class="language-plaintext highlighter-rouge">JP_ConditionDieaseOutcomeJHSD0006_CS</code></li>
           <li><code class="language-plaintext highlighter-rouge">JP_ConditionDieaseOutcomeReceipt_CS</code></li>
@@ -320,7 +331,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseOutcomeHL70241_VS</code></li>
           <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseOutcomeJHSD0006_VS</code></li>
           <li><code class="language-plaintext highlighter-rouge">JP_ConditionDiseaseOutcomeReceipt_VS</code></li>
-          <li><code class="language-plaintext highlighter-rouge">JP_Conditon_BodySite_VS</code></li>
           <li><code class="language-plaintext highlighter-rouge">JP_DentalBodySite_CS</code></li>
           <li><code class="language-plaintext highlighter-rouge">JP_DentalBodySite_VS</code></li>
           <li><code class="language-plaintext highlighter-rouge">JP_DentalBodySiteStatus_CS</code></li>
@@ -395,6 +405,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           <li>各プロファイルに記載されたOperation定義を、Capability Statementに明記した</li>
         </ul>
       </li>
+    </ul>
+  </li>
+  <li>Security関連
+    <ul>
+      <li>医療情報システム・サービス提供事業者安全管理ガイドラインの変更に伴い、修正を実施した。</li>
     </ul>
   </li>
 </ul>
@@ -695,7 +710,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.3.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sun, Feb 16, 2025 14:41+0000">2025-02-16</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.3.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sun, Nov 16, 2025 13:07+0000">2025-11-16</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
