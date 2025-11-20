@@ -53,7 +53,6 @@
 [JP_Condition_DiseasePrefixModifier]: StructureDefinition-jp-condition-disease-prefix-modifier.html
 [jp-encounter-example-1]: Encounter-jp-encounter-example-1.html
 [JP_Encounter]: StructureDefinition-jp-encounter.html
-[JP_V3ActCode_CS]: CodeSystem-jp-v3ActCode-cs.html
 [JP_V3RoleCode_CS]: CodeSystem-jp-v3RoleCode-cs.html
 [jp-familymemberhistory-example-1]: FamilyMemberHistory-jp-familymemberhistory-example-1.html
 [JP_FamilyMemberHistory]: StructureDefinition-jp-familymemberhistory.html
