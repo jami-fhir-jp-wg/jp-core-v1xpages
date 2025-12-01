@@ -6804,38 +6804,10 @@ JP Core は以下の方々、および各サーブワーキンググループの
           }
         ],
         "reference" : {
-          "reference" : "StructureDefinition/jp-medicationsimplequantity"
-        },
-        "name" : "JP Core Medication Quantity DataType",
-        "description" : "このデータタイプはSimpleQuantity DataTypeに対して、JP Coreにおける薬剤量に関する定義を行なったものである",
-        "exampleBoolean" : false
-      },
-      {
-        "extension" : [
-          {
-            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "StructureDefinition:complex-type"
-          }
-        ],
-        "reference" : {
           "reference" : "StructureDefinition/jp-medicationrange"
         },
         "name" : "JP Core Medication Range DataType",
         "description" : "このデータタイプはRange DataTypeに対して、薬剤量の上限下限に関する定義を行なったものである",
-        "exampleBoolean" : false
-      },
-      {
-        "extension" : [
-          {
-            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "StructureDefinition:complex-type"
-          }
-        ],
-        "reference" : {
-          "reference" : "StructureDefinition/jp-medicationrange-unitoftime"
-        },
-        "name" : "JP Core Medication Range DataType",
-        "description" : "このデータタイプはRange DataTypeに対して、時間の上限下限に関する定義を行なったものである",
         "exampleBoolean" : false
       },
       {
@@ -6878,6 +6850,34 @@ JP Core は以下の方々、および各サーブワーキンググループの
         },
         "name" : "JP Core Medication Ratio Amount DataType",
         "description" : "このデータタイプはRatio DataTypeに対して、薬剤量／パッケージ量を表す比率を割り当てた制約と拡張を定めたものである。",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:complex-type"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/jp-medicationsimplequantity"
+        },
+        "name" : "JP Core Medication Simple Quantity DataType",
+        "description" : "このデータタイプはSimpleQuantity DataTypeに対して、JP Coreにおける薬剤量に関する定義を行なったものである",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:complex-type"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/jp-medicationrange-unitoftime"
+        },
+        "name" : "JP Core Medication Time Range DataType",
+        "description" : "このデータタイプはRange DataTypeに対して、時間の上限下限に関する定義を行なったものである",
         "exampleBoolean" : false
       },
       {

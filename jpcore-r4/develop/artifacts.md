@@ -104,12 +104,12 @@
 | :--- | :--- |
 | [JP Core HumanName DataType](StructureDefinition-jp-humanname.md) | このデータタイプはHumanName DataTypeに対して、患者データを送受信するための基礎となる制約と拡張を定めたものである。 |
 | [JP Core Medication Quantity DataType](StructureDefinition-jp-medicationquantity.md) | このデータタイプはQuantity DataTypeに対して、JP Coreにおける薬剤量に関する定義を行なったものである |
-| [JP Core Medication Quantity DataType](StructureDefinition-jp-medicationsimplequantity.md) | このデータタイプはSimpleQuantity DataTypeに対して、JP Coreにおける薬剤量に関する定義を行なったものである |
 | [JP Core Medication Range DataType](StructureDefinition-jp-medicationrange.md) | このデータタイプはRange DataTypeに対して、薬剤量の上限下限に関する定義を行なったものである |
-| [JP Core Medication Range DataType](StructureDefinition-jp-medicationrange-unitoftime.md) | このデータタイプはRange DataTypeに対して、時間の上限下限に関する定義を行なったものである |
 | [JP Core Medication Rate Ratio DataType](StructureDefinition-jp-medicationratio-doseperperiod.md) | このデータタイプはRatio DataTypeに対して、薬剤量／単位時間を表す比率を割り当てた制約と拡張を定めたものである。 |
 | [JP Core Medication Rate Ratio DosePerDay DataType](StructureDefinition-jp-medicationratio-doseperday.md) | このデータタイプはJP_MedicationRatio_DosePerPeriod DataTypeに対して、一日あたりの薬剤料（薬剤量／単位時間）を表す比率を割り当てた制約と拡張を定めたものである。 |
 | [JP Core Medication Ratio Amount DataType](StructureDefinition-jp-medicationratio-amount.md) | このデータタイプはRatio DataTypeに対して、薬剤量／パッケージ量を表す比率を割り当てた制約と拡張を定めたものである。 |
+| [JP Core Medication Simple Quantity DataType](StructureDefinition-jp-medicationsimplequantity.md) | このデータタイプはSimpleQuantity DataTypeに対して、JP Coreにおける薬剤量に関する定義を行なったものである |
+| [JP Core Medication Time Range DataType](StructureDefinition-jp-medicationrange-unitoftime.md) | このデータタイプはRange DataTypeに対して、時間の上限下限に関する定義を行なったものである |
 | [JP Core Medication Timing DataType](StructureDefinition-jp-medicationtiming.md) | このデータタイプはTiming DataTypeに対して、薬剤に関するタイミング定義を行なったものである |
 | [JP Core MedicationDosage Base DataType](StructureDefinition-jp-medicationdosagebase.md) | このデータタイプは薬剤用法のDosageベースとして基礎となる制約と拡張のうち共通部分を定めている。 |
 | [JP Core MedicationDosage DataType](StructureDefinition-jp-medicationdosage.md) | このデータタイプは内服用法の制約と拡張のうち共通部分を定めている。 |

@@ -1,10 +1,10 @@
-# JP Core Medication Quantity DataType - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
+# JP Core Medication Simple Quantity DataType - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **JP Core Medication Quantity DataType**
+* **JP Core Medication Simple Quantity DataType**
 
-## Data Type Profile: JP Core Medication Quantity DataType 
+## Data Type Profile: JP Core Medication Simple Quantity DataType 
 
 * **項目**: *定義URL*
   * **内容**: http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationSimpleQuantity
@@ -13,7 +13,7 @@
 * **項目**: *Name*
   * **内容**: JP_MedicationSimpleQuantity
 * **項目**: *Title*
-  * **内容**: JP Core Medication Quantity DataType
+  * **内容**: JP Core Medication Simple Quantity DataType
 * **項目**: *Status*
   * **内容**: Active ( 2023-10-31 )
 * **項目**: *Copyright*
@@ -49,7 +49,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-medicationsimpleq
   "url" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationSimpleQuantity",
   "version" : "1.3.0-dev",
   "name" : "JP_MedicationSimpleQuantity",
-  "title" : "JP Core Medication Quantity DataType",
+  "title" : "JP Core Medication Simple Quantity DataType",
   "status" : "active",
   "date" : "2023-10-31",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
