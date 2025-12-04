@@ -17,7 +17,7 @@
 * **項目**: *Status*
   * **内容**: Active ( 2024-12-30 )
 * **項目**: *Copyright*
-  * **内容**: Copyright JED-Project、JAHIS、日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG
+  * **内容**: Copyright JED-Project、JAHIS、日本医療情報学会FHIR国内実装基盤研究会
 
  
 日本消化器内視鏡学会が推進するJED (Japan Endoscopy Database) Projectのコード値セットのうち主に「所見（存在所見）」「質的診断」に該当するコード 
@@ -92,7 +92,7 @@
       ]
     }
   ],
-  "copyright" : "Copyright JED-Project、JAHIS、日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG",
+  "copyright" : "Copyright JED-Project、JAHIS、日本医療情報学会FHIR国内実装基盤研究会",
   "compose" : {
     "include" : [
       {

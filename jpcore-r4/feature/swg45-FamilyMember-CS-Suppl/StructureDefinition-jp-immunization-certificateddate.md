@@ -17,7 +17,7 @@
 * **項目**: *Status*
   * **内容**: Active ( 2025-07-30 )
 * **項目**: *Copyright*
-  * **内容**: Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG
+  * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
 検定年月日
 
@@ -84,7 +84,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-immunization-cert
       ]
     }
   ],
-  "copyright" : "Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG",
+  "copyright" : "Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会",
   "fhirVersion" : "4.0.1",
   "mapping" : [
     {

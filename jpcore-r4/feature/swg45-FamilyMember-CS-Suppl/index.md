@@ -16,30 +16,30 @@
 * **項目**: *Status*
   * **内容**: Active ( 2024-07-04 )
 * **項目**: *Copyright*
-  * **内容**: Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG
+  * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
-このドキュメントは日本医療情報学会NeXEHRS課題研究会「HL7®FHIR® 日本実装検討WG」で作成した実装ガイドのVer.1.3.0-devである。
+このドキュメントは日本医療情報学会 FHIR 国内実装基盤研究会で作成した実装ガイドの Ver.1.3.0-dev である。
 
 ### 概要
 
-ガイダンス: JP Coreでの全体に関わる規則や注意事項を記載している。
+ガイダンス: JP Core での全体に関わる規則や注意事項を記載している。
 
 * [総合ガイダンス](guide-general.md)
-* [Must SupportとCardinality(多重度)のルール](guide-mustSupportCardinality.md)
+* [Must Support と Cardinality(多重度)のルール](guide-mustSupportCardinality.md)
 * [欠損値の扱い](guide-handlingOfNonExistentData.md)
 * [文字コード](guide-characterEncoding.md)
 * [検索](guide-stringSearch.md)
-* [OIDマッピング表](guide-urlmap.md)
+* [OID マッピング表](guide-urlmap.md)
 * [利用上の注意事項](guide-precautions.md)
 * [更新履歴](update_history.md)
 
-### JP Core FHIRコンテンツ
+### JP Core FHIR コンテンツ
 
-JP Core FHIRコンテンツ: JP Coreで利用するFHIRの詳細について記載をしている。
+JP Core FHIR コンテンツ: JP Core で利用する FHIR の詳細について記載をしている。
 
 #### Profiles （プロファイル）
 
-* [Administrationグループ （運営管理）](group-administration.md) 
+* [Administration グループ （運営管理）](group-administration.md) 
 * [JP Core Patient （患者）プロファイル](StructureDefinition-jp-patient.md)
 * [JP Core Coverage （保険・公費）プロファイル](StructureDefinition-jp-coverage.md)
 * [JP Core Encounter （来院・入院）プロファイル](StructureDefinition-jp-encounter.md)
@@ -48,7 +48,7 @@ JP Core FHIRコンテンツ: JP Coreで利用するFHIRの詳細について記�
 * [JP Core Practitioner （医療従事者）プロファイル](StructureDefinition-jp-practitioner.md)
 * [JP Core PractitionerRole （医療従事者役割）プロファイル](StructureDefinition-jp-practitionerrole.md)
  
-* [Medicationグループ （薬剤リスト）](group-medication.md) 
+* [Medication グループ （薬剤リスト）](group-medication.md) 
 * [JP Core Medication （薬剤）プロファイル](StructureDefinition-jp-medication.md)
 * [JP Core MedicationRequest （内服・外用薬剤処方）プロファイル](StructureDefinition-jp-medicationrequest.md)
 * [JP Core MedicationRequest Injection （注射薬剤処方）プロファイル](StructureDefinition-jp-medicationrequest-injection.md)
@@ -60,7 +60,7 @@ JP Core FHIRコンテンツ: JP Coreで利用するFHIRの詳細について記�
 * [JP Core MedicationStatement Injection （注射薬剤服薬情報）プロファイル](StructureDefinition-jp-medicationstatement-injection.md)
 * [JP Core Immunization （予防接種記録）プロファイル](StructureDefinition-jp-immunization.md)
  
-* [Diagnosticグループ （診断）](group-diagnostic.md) 
+* [Diagnostic グループ （診断）](group-diagnostic.md) 
 * Observation （検査） 
 * [JP Core Observation Common （共通）プロファイル](StructureDefinition-jp-observation-common.md) 
 * [JP Core Observation LabResult （検体検査）プロファイル](StructureDefinition-jp-observation-labresult.md)
@@ -101,7 +101,7 @@ JP Core FHIRコンテンツ: JP Coreで利用するFHIRの詳細について記�
  
  
  
-* [Clinicalグループ（診療）](group-clinical.md) 
+* [Clinical グループ（診療）](group-clinical.md) 
 * [JP Core AllergyIntolerance （アレルギー不耐症）プロファイル](StructureDefinition-jp-allergyintolerance.md)
 * [JP Core Condition （状態）プロファイル](StructureDefinition-jp-condition.md) 
 * [JP Core Condition Diagnosis (診断) プロファイル](StructureDefinition-jp-condition-diagnosis.md)
@@ -109,15 +109,15 @@ JP Core FHIRコンテンツ: JP Coreで利用するFHIRの詳細について記�
 * [JP Core Procedure （処置）プロファイル](StructureDefinition-jp-procedure.md)
 * [JP Core FamilyMemberHistory（家族歴）プロファイル](StructureDefinition-jp-familymemberhistory.md)
  
-* [Workflowグループ](group-workflow.md) 
+* [Workflow グループ](group-workflow.md) 
 * ServiceRequest (サービスリクエスト) 
 * [JP Core ServiceRequest Common (共通) プロファイル](StructureDefinition-jp-servicerequest-common.md)
  
  
 
-#### JP Coreで定義しないProfile(プロファイル)
+#### JP Core で定義しない Profile(プロファイル)
 
-次のProfileはJP Coreでは定義を行なわず、FHIR Baseをそのまま利用する。
+次の Profile は JP Core では定義を行なわず、FHIR Base をそのまま利用する。
 
 * [Resource](https://www.hl7.org/fhir/R4/resource.html)
 * [DomainResource](https://www.hl7.org/fhir/R4/domainresource.html)
@@ -126,19 +126,19 @@ JP Core FHIRコンテンツ: JP Coreで利用するFHIRの詳細について記�
 
 #### Extensions （拡張）
 
-JP Coreにて利用されるExtensionの一覧。
+JP Core にて利用される Extension の一覧。
 
 * [Extensions （拡張）一覧](artifacts.md#structures-extension-definitions)
 
 #### Operations and Search Parameters （操作および検索パラメータ）
 
-JP Coreにて利用されるSearch Parameter および Operationの一覧。
+JP Core にて利用される Search Parameter および Operation の一覧。
 
 * [Search Parameters（検索パラメータ）一覧](group-searchParameter.md)
 
 #### Terminology （用語集）
 
-JP Coreにて利用されるCodeSystem および ValueSetの一覧。
+JP Core にて利用される CodeSystem および ValueSet の一覧。
 
 * [CodeSystems （コードシステム）一覧](artifacts.md#terminology-code-systems)
 * [ValueSets （値セット）一覧](artifacts.md#terminology-value-sets)
@@ -146,13 +146,13 @@ JP Coreにて利用されるCodeSystem および ValueSetの一覧。
 
 ### Capability Statement （機能宣言）
 
-JP Coreを参考に定義したCapabilityStatementの一例。
+JP Core を参考に定義した CapabilityStatement の一例。
 
 * [Capability Statement（機能宣言）](group-capabilityStatement.md)
 
 ### Security （セキュリティ）
 
-JP Core利用にあたり、考慮すべきセキュリティに関する要件を記載する。
+JP Core 利用にあたり、考慮すべきセキュリティに関する要件を記載する。
 
 * [Security （セキュリティ）](security.md)
 
@@ -160,36 +160,9 @@ JP Core利用にあたり、考慮すべきセキュリティに関する要件�
 
 ### Contributors：
 
-JP Coreは以下の方々、および各サーブワーキンググループのここに記載されていない多くのメンバの献身的な活動や協力により作成されている。
+JP Core は以下の方々、および各サーブワーキンググループのここに記載されていない多くのメンバの献身的な活動や協力により作成されている。
 
-* [日本医療情報学会NeXEHRS研究会FHIR日本実装検討WG](https://jpfhir.jp/) 
-* NeXEHRS研究会代表幹事・FHIR日本実装検討WG座長 大江和彦（東京大学）
-* Infrastructure : インフラ基盤SWG 
-* リーダ：㈱ファインデックス 宮川 力
-* サブリーダ：㈱ケーアイエス 小西 由貴範、日本総合システム㈱ 松本 聖
-* メンバ：京都大学 須藤 英隼、東京大学 三谷 知宏、日本総合システム㈱ 安達 隆佳、岡安 想、中川 雅三、藤野 孝彦、ファインデックス 小倉 卓義、（一社）保健医療福祉情報安全管理適合性評価協会 喜多 紘一
- 
-* Diagnostics and Observations : 診断・検査SWG 
-* リーダ：キヤノンメディカルシステムズ㈱ 塩川 康成
-* サブリーダ：㈱ケーアイエス 平山 照幸
-* メンバ：千葉大学 横田 慎一郎、富士通㈱ 石原 正樹、インターシステムズジャパン㈱ 上中 進太郎、㈱エイアンドティー 千葉 信行、深川 一成、㈱日立ハイテク 川田 剛、H.U.グループホールディングス㈱ 和田 征剛、岩手医科大学 田中 良一、東京都立広尾病院 西野 克彦、大船中央病院 青木 陽介、北海道科学大学 谷川 琢海、谷川原 綾子、旭川医科大学 谷 祐児、京都大学 山口 泉、東京大学 三谷 知広、今井 健、井田 有亮、岐阜大学 小林 慎治、オリンパスメディカルシステムズ㈱ 尾崎 孝史、富士フイルムホールディングス㈱ 龍田 岳一、藤田医科大学 苅谷 敬士、キヤノンITSメディカル㈱ 瀧上 悟、川部 鉄士、大阪大学 野崎 一徳、東北大学 中山 雅晴、日本IBM㈱ 木村 雅彦
-* 協力者：オリンパスメディカルシステムズ㈱ 大森 真一、富士フイルム㈱ 三浦 悟朗、日本光電工業㈱ 越後 洋一、竹田 敦、フクダ電子㈱ 山田 剛、嶋井 洋介
- 
-* Administration : アドミニストレーションSWG 
-* リーダ：日本HL7協会 檀原 一之
-* サブリーダ：千葉大学 土井 俊祐、インターシステムズジャパン㈱ 上中 進太郎
-* メンバ：東京大学 岡本 潤、千葉大学 木村 倫人、㈱シーエスアイ 中平 顕士、中村 友哉、山田 浩美、日本電気㈱ 矢原 潤一、㈱ケーアイエス 小西 由貴範、ＴＩＳ㈱ 比留間 健
- 
-* Clinical Module : 臨床・薬剤SWG 
-* リーダ：岐阜大学 小林 慎治、東京大学 河添 悦昌
-* サブリーダ：日本アイ・ビー・エム㈱ 木村 雅彦、㈱メドレー 児玉 義憲
-* メンバ：東京都立広尾病院 西野 克彦、九州大学 高田 敦史、東大病院 永島 里美、慶應義塾大学 横山 諒一、シンクタンク勤務 河﨑 泰子
- 
-* Terminology : ターミノロジーSWG 
-* リーダ：東京大学 今井 健
-* サブリーダ：愛媛大学 木村映善
- 
- 
+* [日本医療情報学会FHIR国内実装基盤研究会](https://jpfhir.jp/)
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
@@ -223,7 +196,7 @@ JP Coreは以下の方々、および各サーブワーキンググループの�
       ]
     }
   ],
-  "description" : "日本医療情報学会(JAMI) NeXEHRS課題研究会「HL7®FHIR® 日本実装検討WG」で作成した日本国内におけるベースとなるJP Core実装ガイドのドラフトVer.1.2.0 です。",
+  "description" : "日本医療情報学会 FHIR 国内実装基盤研究会で作成した日本国内におけるベースとなるJP Core実装ガイドのドラフトVer.1.2.0 です。",
   "jurisdiction" : [
     {
       "coding" : [
@@ -235,7 +208,7 @@ JP Coreは以下の方々、および各サーブワーキンググループの�
       ]
     }
   ],
-  "copyright" : "Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG",
+  "copyright" : "Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会",
   "packageId" : "jpfhir.jp.core",
   "license" : "CC0-1.0",
   "fhirVersion" : ["4.0.1"],
@@ -6355,11 +6328,39 @@ JP Coreは以下の方々、および各サーブワーキンググループの�
           }
         ],
         "reference" : {
+          "reference" : "FamilyMemberHistory/jp-familymemberhistory-example-2"
+        },
+        "name" : "JP Core FamilyMemberHistory Example 家族歴（息子 長男）",
+        "description" : "息子（長男）の家族歴の例。性別同胞内出生順拡張を付ける例。",
+        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "FamilyMemberHistory"
+          }
+        ],
+        "reference" : {
           "reference" : "FamilyMemberHistory/jp-familymemberhistory-example-1"
         },
         "name" : "JP Core FamilyMemberHistory Example 家族歴（母親）",
         "description" : "母親が糖尿病と難聴を有する家族歴の例",
         "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/jp-familymemberhistory-genderedsiblingorder"
+        },
+        "name" : "JP Core FamilyMemberHistory Gendered Sibling Order Extension",
+        "description" : "性別同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。日本固有の社会学的・文化的表現。valueは CodeableConcept で、JP_GenderedSiblingOrder_VS のジェンダー別コード（GSO1_M, GSO1_F など）を推奨する。",
+        "exampleBoolean" : false
       },
       {
         "extension" : [
@@ -6373,6 +6374,34 @@ JP Coreは以下の方々、および各サーブワーキンググループの�
         },
         "name" : "JP Core FamilyMemberHistory Profile",
         "description" : "このプロファイルはFamilyMemberHistoryリソースに対して、データを送受信するための共通の制約と拡張を定めたものである。",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CodeSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "CodeSystem/jp-genderedsiblingorder-cs"
+        },
+        "name" : "JP Core Gendered Sibling Order CodeSystem",
+        "description" : "性別の同胞内出生順を表す日本語ラベル（長男、長女、次男、次女など）を定義するCodeSystem。社会学的・文化的表現。",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/jp-genderedsiblingorder-vs"
+        },
+        "name" : "JP Core Gendered Sibling Order ValueSet",
+        "description" : "性別の同胞内出生順を表すValueSet。JP_GenderedSiblingOrder_CS を包含。",
         "exampleBoolean" : false
       },
       {
@@ -6845,38 +6874,10 @@ JP Coreは以下の方々、および各サーブワーキンググループの�
           }
         ],
         "reference" : {
-          "reference" : "StructureDefinition/jp-medicationsimplequantity"
-        },
-        "name" : "JP Core Medication Quantity DataType",
-        "description" : "このデータタイプはSimpleQuantity DataTypeに対して、JP Coreにおける薬剤量に関する定義を行なったものである",
-        "exampleBoolean" : false
-      },
-      {
-        "extension" : [
-          {
-            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "StructureDefinition:complex-type"
-          }
-        ],
-        "reference" : {
           "reference" : "StructureDefinition/jp-medicationrange"
         },
         "name" : "JP Core Medication Range DataType",
         "description" : "このデータタイプはRange DataTypeに対して、薬剤量の上限下限に関する定義を行なったものである",
-        "exampleBoolean" : false
-      },
-      {
-        "extension" : [
-          {
-            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "StructureDefinition:complex-type"
-          }
-        ],
-        "reference" : {
-          "reference" : "StructureDefinition/jp-medicationrange-unitoftime"
-        },
-        "name" : "JP Core Medication Range DataType",
-        "description" : "このデータタイプはRange DataTypeに対して、時間の上限下限に関する定義を行なったものである",
         "exampleBoolean" : false
       },
       {
@@ -6919,6 +6920,34 @@ JP Coreは以下の方々、および各サーブワーキンググループの�
         },
         "name" : "JP Core Medication Ratio Amount DataType",
         "description" : "このデータタイプはRatio DataTypeに対して、薬剤量／パッケージ量を表す比率を割り当てた制約と拡張を定めたものである。",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:complex-type"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/jp-medicationsimplequantity"
+        },
+        "name" : "JP Core Medication Simple Quantity DataType",
+        "description" : "このデータタイプはSimpleQuantity DataTypeに対して、JP Coreにおける薬剤量に関する定義を行なったものである",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:complex-type"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/jp-medicationrange-unitoftime"
+        },
+        "name" : "JP Core Medication Time Range DataType",
+        "description" : "このデータタイプはRange DataTypeに対して、時間の上限下限に関する定義を行なったものである",
         "exampleBoolean" : false
       },
       {

@@ -17,7 +17,7 @@
 * **項目**: *Status*
   * **内容**: Active ( 2024-12-30 )
 * **項目**: *Copyright*
-  * **内容**: Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG
+  * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
 負荷心電図検査の種別について記録する。
 
@@ -86,7 +86,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-observation-elect
     }
   ],
   "purpose" : "このプロファイルでは負荷心電図検査を記録するに十分な要素をそろえていないが、将来的に拡張することに備えて負荷心電図の種別について記録できるようにした。",
-  "copyright" : "Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG",
+  "copyright" : "Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会",
   "fhirVersion" : "4.0.1",
   "mapping" : [
     {

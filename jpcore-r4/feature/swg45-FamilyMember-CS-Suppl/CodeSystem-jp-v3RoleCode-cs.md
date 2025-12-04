@@ -26,7 +26,7 @@ http://terminology.ht7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の�
 
 * This CodeSystem Supplement is not used here; it may be used elsewhere (e.g. specifications and/or implementations that use this content)
 
-!!このコードシステム は次のコードに displays を定義します:
+このコードシステム `http://jpfhir.jp/fhir/Common/CodeSystem/JP_V3RoleCode_CS` は次のコードに displays を定義します:
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および

@@ -17,7 +17,7 @@
 * **項目**: *Status*
   * **内容**: Active ( 2024-12-30 )
 * **項目**: *Copyright*
-  * **内容**: Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG
+  * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
 心電図検査で測定された結果に対しての機械的に判定された所見、解釈の有無
 
@@ -87,7 +87,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-observation-elect
     }
   ],
   "purpose" : "心電図検査で測定された結果についての所見や解釈が機械的に判定されたものかどうかを示すために用いられる。",
-  "copyright" : "Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG",
+  "copyright" : "Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会",
   "fhirVersion" : "4.0.1",
   "mapping" : [
     {

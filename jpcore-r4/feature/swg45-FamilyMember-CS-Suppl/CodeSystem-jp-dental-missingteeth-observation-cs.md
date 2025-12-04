@@ -17,7 +17,7 @@
 * **項目**: *Status*
   * **内容**: Active ( 2024-12-30 )
 * **項目**: *Copyright*
-  * **内容**: Copyright Japan Dental Association 日本歯科医師会 & FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG
+  * **内容**: Copyright Japan Dental Association 日本歯科医師会 & FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
 JP Coreにて定義した歯科のObservationリソースに関する欠損歯の観察結果コード 
@@ -72,7 +72,7 @@ JP Coreにて定義した歯科のObservationリソースに関する欠損歯�
       ]
     }
   ],
-  "copyright" : "Copyright Japan Dental Association 日本歯科医師会 & FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG",
+  "copyright" : "Copyright Japan Dental Association 日本歯科医師会 & FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会",
   "caseSensitive" : true,
   "content" : "complete",
   "count" : 120,

@@ -17,7 +17,7 @@
 * **項目**: *Status*
   * **内容**: Active ( 2023-10-31 )
 * **項目**: *Copyright*
-  * **内容**: Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG
+  * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
 未定義のコードシステム。使用する予定のコードシステムが利用できない場合や方針未決定の場合等に割り振る特別なリソースである。 
@@ -26,7 +26,7 @@
 
 * [JP_Undefined_VS](ValueSet-jp-undefined-vs.md)
 
-このコードシステム は以下のコードを含むフラグメントを提供します:
+このcase-sensitiveコードシステム `http://jpfhir.jp/fhir/core/CodeSystem/JP_Undefined_CS` は以下のコードを含むフラグメントを提供します:
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
@@ -73,7 +73,7 @@
       ]
     }
   ],
-  "copyright" : "Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG",
+  "copyright" : "Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会",
   "caseSensitive" : true,
   "content" : "fragment"
 }

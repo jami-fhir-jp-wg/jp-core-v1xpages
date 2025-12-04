@@ -15,7 +15,7 @@
 * **項目**: *Status*
   * **内容**: Active ( 2024-12-30 )
 * **項目**: *Copyright*
-  * **内容**: Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG
+  * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
 JP Core MedicationMethod JAMI DetailUsage NamingSystem JAMI用法コード表ー投与経路区分コード２桁（基本用法コード１桁と詳細区分コード１桁を連結） 
@@ -30,7 +30,7 @@ JP Core MedicationMethod JAMI DetailUsage NamingSystem JAMI用法コード表ー
 | Status | active |
 | Definition | JP Core MedicationMethod JAMI DetailUsage NamingSystem JAMI用法コード表ー投与経路区分コード２桁（基本用法コード１桁と詳細区分コード１桁を連結） |
 | Publisher | FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) |
-| Copyright | Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG |
+| Copyright | Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会 |
 
 ### Identifiers
 

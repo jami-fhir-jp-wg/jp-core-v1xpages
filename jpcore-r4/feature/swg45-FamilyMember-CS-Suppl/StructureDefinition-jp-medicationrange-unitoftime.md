@@ -1,10 +1,10 @@
-# JP Core Medication Range DataType - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
+# JP Core Medication Time Range DataType - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **JP Core Medication Range DataType**
+* **JP Core Medication Time Range DataType**
 
-## Data Type Profile: JP Core Medication Range DataType 
+## Data Type Profile: JP Core Medication Time Range DataType 
 
 * **項目**: *定義URL*
   * **内容**: http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRange_UnitOfTime
@@ -13,11 +13,11 @@
 * **項目**: *Name*
   * **内容**: JP_MedicationRange_UnitOfTime
 * **項目**: *Title*
-  * **内容**: JP Core Medication Range DataType
+  * **内容**: JP Core Medication Time Range DataType
 * **項目**: *Status*
   * **内容**: Active ( 2023-10-31 )
 * **項目**: *Copyright*
-  * **内容**: Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG
+  * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
 このデータタイプはRange DataTypeに対して、時間の上限下限に関する定義を行なったものである 
@@ -49,7 +49,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-medicationrange-u
   "url" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRange_UnitOfTime",
   "version" : "1.3.0-dev",
   "name" : "JP_MedicationRange_UnitOfTime",
-  "title" : "JP Core Medication Range DataType",
+  "title" : "JP Core Medication Time Range DataType",
   "status" : "active",
   "date" : "2023-10-31",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
@@ -80,7 +80,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-medicationrange-u
       ]
     }
   ],
-  "copyright" : "Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG",
+  "copyright" : "Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会",
   "fhirVersion" : "4.0.1",
   "mapping" : [
     {

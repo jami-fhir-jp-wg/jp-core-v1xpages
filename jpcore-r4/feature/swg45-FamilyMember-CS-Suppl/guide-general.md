@@ -6,17 +6,17 @@
 
 ## 総合ガイダンス
 
-このセクションでは、本Implementation Guideで使用されるすべてに共通する重要な定義、解釈、および要件の概要を説明する。
+このセクションでは、本 Implementation Guide で使用されるすべてに共通する重要な定義、解釈、および要件の概要を説明する。
 
-### JP Coreの紹介
+### JP Core の紹介
 
 -------
 
-本Implementation Guideは、HL7®FHIR®標準を元に日本国内で患者データにアクセスするための最小限の適合性要件を定めたものである。日本国内での基底Implementation Guideとなることから、「JP Core Implementation Guide」(以下JP Core)と命名する。
- 日本国内の医療情報相互運用性規格としてはHL7v2.5規格があるが、FHIRはHL7v2.5への後方互換性を有していないことから、JP Coreも完全な後方互換性は備えていない。
- JP Coreは「JAMI NeXEHRS課題研究会（正式名：次世代健康医療記録システム共通プラットホーム研究会）」に設置された「HL7 FHIR日本実装検討WG」において検討を行っているものである （現時点において日本HL7協会が承認するものではないため、実装や利用は全て自己責任で行なうこと。）
+本 Implementation Guide は、HL7®FHIR® 標準を元に日本国内で患者データにアクセスするための最小限の適合性要件を定めたものである。日本国内での基底 Implementation Guide となることから、「JP Core Implementation Guide」(以下 JP Core)と命名する。
+ 日本国内の医療情報相互運用性規格としては HL7v2.5 規格があるが、FHIR は HL7v2.5 への後方互換性を有していないことから、JP Core も完全な後方互換性は備えていない。
+ JP Core は「日本医療情報学会FHIR国内実装基盤研究会」において検討を行っているものである （現時点において日本 HL7 協会が承認するものではないため、実装や利用は全て自己責任で行なうこと。）
 
-### SHALL,SHOULD/SHOULD NOT,MAY定義
+### SHALL,SHOULD/SHOULD NOT,MAY 定義
 
 -------
 
@@ -30,7 +30,7 @@
 
 ### 実装ガイド定義
 
-#### 利用しているFHIRバージョン情報 (Cross Version Analysis)
+#### 利用している FHIR バージョン情報 (Cross Version Analysis)
 
 This is an R4 IG. None of the features it uses are changed in R4B, so it can be used as is with R4B systems. Packages for both [R4 (jpfhir.jp.core.r4)](package.r4.tgz) and [R4B (jpfhir.jp.core.r4b)](package.r4b.tgz) are available.
 
@@ -95,16 +95,12 @@ This publication includes IP covered under the following statements.
 * [JP Core MedicationAdministration Example Uncategorized Comment CodeSystem](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/Examples/CodeSystem/JP_MedicationAdministrationUncategorizedComment_CS): [JP_MedicationAdministration_UncategorizedComment](StructureDefinition-jp-medicationadministration-uncategorizedcomment.md)
 * [JP Core Medication Example Line CodeSystem](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/Examples/CodeSystem/JP_MedicationRequestDosageInstructionLine_CS): [JP_MedicationDosage_Line](StructureDefinition-jp-medicationdosage-line.md), [MedicationAdministration/jp-medicationadministration-injection-example-2](MedicationAdministration-jp-medicationadministration-injection-example-2.md), [MedicationRequest/jp-medicationrequest-injection-example-2](MedicationRequest-jp-medicationrequest-injection-example-2.md) and [MedicationStatement/jp-medicationstatement-injection-example-1](MedicationStatement-jp-medicationstatement-injection-example-1.md)
 * [JP Core Observation BodyMeasurement Category CodeSystem](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationBodyMeasurementCategory_CS): [JP_Observation_BodyMeasurement](StructureDefinition-jp-observation-bodymeasurement.md) and [Observation/jp-observation-bodyMeasurement-example-1](Observation-jp-observation-bodyMeasurement-example-1.md)
-* [JP Core Observation Electrocardiogram Duration CodeSystem](CodeSystem-jp-observation-electrocardiogram-duration-cs.md): [JP_ObservationElectrocardiogramDuration_VS](ValueSet-jp-observation-electrocardiogram-duration-vs.md) and [JP_Observation_Electrocardiogram_Duration](StructureDefinition-jp-observation-electrocardiogram-duration.md)
-* [JP Core Observation Electrocardiogram Extra Category CodeSystem](CodeSystem-jp-observation-electrocardiogram-extracategory-cs.md): [JP_ObservationElectrocardiogramExtraCategory_VS](ValueSet-jp-observation-electrocardiogram-extracategory-vs.md) and [JP_Observation_Electrocardiogram](StructureDefinition-jp-observation-electrocardiogram.md)
-* [JP Core Observation Electrocardiogram StressType CodeSystem](CodeSystem-jp-observation-electrocardiogram-stresstype-cs.md): [JP_ObservationElectrocardiogramStressType_VS](ValueSet-jp-observation-electrocardiogram-stresstype-vs.md) and [JP_Observation_Electrocardiogram_StressType](StructureDefinition-jp-observation-electrocardiogram-stresstype.md)
 * [JP Core Observation PhysicalExam Method CodeSystem](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationPhysicalExamMethod_CS): [JP_Observation_PhysicalExam](StructureDefinition-jp-observation-physicalexam.md)
 * [JP Core Physical Exam Code CodeSystem](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/core/CodeSystem/JP_PhysicalExamCode_CS): [JP_Observation_PhysicalExam](StructureDefinition-jp-observation-physicalexam.md) and [Observation/jp-observation-physicalexam-example-1](Observation-jp-observation-physicalexam-example-1.md)
 * [JP Core Practitioner Role CodeSystem](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/core/CodeSystem/JP_PractitionerRole_CS): [JP_MedicationRequest](StructureDefinition-jp-medicationrequest.md), [JP_MedicationRequest_Injection](StructureDefinition-jp-medicationrequest-injection.md), [JP_PractitionerRole](StructureDefinition-jp-practitionerrole.md), [JP_Procedure](StructureDefinition-jp-procedure.md) and [PractitionerRole/jp-practitionerrole-example-1](PractitionerRole-jp-practitionerrole-example-1.md)
 * [JP Core Procedure Category CodeSystem](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/core/CodeSystem/JP_ProcedureCategory_CS): [JP_Procedure](StructureDefinition-jp-procedure.md) and [Procedure/jp-procedure-example-1](Procedure-jp-procedure-example-1.md)
 * [JP Core Procedure Not Performed Reason CodeSystem](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/core/CodeSystem/JP_ProcedureNotPerformedReason_CS): [JP_Procedure](StructureDefinition-jp-procedure.md)
 * [JP Core Procedure Outcome CodeSystem](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/core/CodeSystem/JP_ProcedureOutcome_CS): [JP_Procedure](StructureDefinition-jp-procedure.md) and [Procedure/jp-procedure-example-1](Procedure-jp-procedure-example-1.md)
-* [JP Core Undefined CodeSystem](CodeSystem-jp-undefined-cs.md): [JP_Procedure](StructureDefinition-jp-procedure.md) and [JP_Undefined_VS](ValueSet-jp-undefined-vs.md)
 
 
 * Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG
@@ -150,7 +146,7 @@ This publication includes IP covered under the following statements.
 * [JP Core Document Codes CodeSystem](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/core/CodeSystem/JP_DocumentCodes_CS): [DiagnosticReport/jp-diagnosticreport-dentaloral-example-1](DiagnosticReport-jp-diagnosticreport-dentaloral-example-1.md), [DiagnosticReport/jp-diagnosticreport-dentaloral-example-2](DiagnosticReport-jp-diagnosticreport-dentaloral-example-2.md)...Show 9 more,[DiagnosticReport/jp-diagnosticreport-endoscopy-example-1](DiagnosticReport-jp-diagnosticreport-endoscopy-example-1.md),[DiagnosticReport/jp-diagnosticreport-endoscopy-example-2](DiagnosticReport-jp-diagnosticreport-endoscopy-example-2.md),[DiagnosticReport/jp-diagnosticreport-labresult-example-1](DiagnosticReport-jp-diagnosticreport-labresult-example-1.md),[DiagnosticReport/jp-diagnosticreport-microbiology-example-1](DiagnosticReport-jp-diagnosticreport-microbiology-example-1.md),[DiagnosticReport/jp-diagnosticreport-radiology-example-1](DiagnosticReport-jp-diagnosticreport-radiology-example-1.md),[JP_DiagnosticReport_Common](StructureDefinition-jp-diagnosticreport-common.md),[JP_DiagnosticReport_DentalOral](StructureDefinition-jp-diagnosticreport-dentaloral.md),[JP_DiagnosticReport_Endoscopy](StructureDefinition-jp-diagnosticreport-endoscopy.md)and[JP_DiagnosticReport_Microbiology](StructureDefinition-jp-diagnosticreport-microbiology.md)
 
 
-* Copyright Japan Dental Association 日本歯科医師会 & FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG
+* Copyright Japan Dental Association 日本歯科医師会 & FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
 * [JP Core Dental BodySiteStatus CodeSystem](CodeSystem-jp-dental-bodysitestatus-cs.md): [JP_DentalBodySiteStatus_VS](ValueSet-jp-dental-bodysitestatus-vs.md), [JP_Observation_DentalOral_BodySiteStatus](StructureDefinition-jp-observation-dentaloral-bodysitestatus.md)...Show 7 more,[Observation/jp-observation-dentaloral-ecs-example](Observation-jp-observation-dentaloral-ecs-example.md),[Observation/jp-observation-dentaloral-toothexistence-example-1](Observation-jp-observation-dentaloral-toothexistence-example-1.md),[Observation/jp-observation-dentaloral-toothexistence-example-2](Observation-jp-observation-dentaloral-toothexistence-example-2.md),[Observation/jp-observation-dentaloral-toothexistence-example-3](Observation-jp-observation-dentaloral-toothexistence-example-3.md),[Observation/jp-observation-dentaloral-toothexistence-example-4](Observation-jp-observation-dentaloral-toothexistence-example-4.md),[Observation/jp-observation-dentaloral-toothexistence-example-5](Observation-jp-observation-dentaloral-toothexistence-example-5.md)and[Observation/jp-observation-dentaloral-toothexistence-example-6](Observation-jp-observation-dentaloral-toothexistence-example-6.md)
 * [JP Core Dental BodySite CodeSystem](CodeSystem-jp-dental-bodysite-cs.md): [JP_DentalBodySite_VS](ValueSet-jp-dental-bodysite-vs.md), [JP_Observation_DentalOral_MissingToothCondition](StructureDefinition-jp-observation-dentaloral-missingtoothcondition.md)...Show 16 more,[JP_Observation_DentalOral_ToothExistence](StructureDefinition-jp-observation-dentaloral-toothexistence.md),[JP_Observation_DentalOral_ToothTreatmentCondition](StructureDefinition-jp-observation-dentaloral-toothtreatmentcondition.md),[JP_Observation_DentalOral_eCS](StructureDefinition-jp-observation-dentaloral-ecs.md),[Observation/jp-observation-dentaloral-ecs-example](Observation-jp-observation-dentaloral-ecs-example.md),[Observation/jp-observation-dentaloral-missingtoothcondition-example-4](Observation-jp-observation-dentaloral-missingtoothcondition-example-4.md),[Observation/jp-observation-dentaloral-missingtoothcondition-example-5](Observation-jp-observation-dentaloral-missingtoothcondition-example-5.md),[Observation/jp-observation-dentaloral-missingtoothcondition-example-6](Observation-jp-observation-dentaloral-missingtoothcondition-example-6.md),[Observation/jp-observation-dentaloral-toothexistence-example-1](Observation-jp-observation-dentaloral-toothexistence-example-1.md),[Observation/jp-observation-dentaloral-toothexistence-example-2](Observation-jp-observation-dentaloral-toothexistence-example-2.md),[Observation/jp-observation-dentaloral-toothexistence-example-3](Observation-jp-observation-dentaloral-toothexistence-example-3.md),[Observation/jp-observation-dentaloral-toothexistence-example-4](Observation-jp-observation-dentaloral-toothexistence-example-4.md),[Observation/jp-observation-dentaloral-toothexistence-example-5](Observation-jp-observation-dentaloral-toothexistence-example-5.md),[Observation/jp-observation-dentaloral-toothexistence-example-6](Observation-jp-observation-dentaloral-toothexistence-example-6.md),[Observation/jp-observation-dentaloral-toothtreatmentcondition-example-1](Observation-jp-observation-dentaloral-toothtreatmentcondition-example-1.md),[Observation/jp-observation-dentaloral-toothtreatmentcondition-example-2](Observation-jp-observation-dentaloral-toothtreatmentcondition-example-2.md)and[Observation/jp-observation-dentaloral-toothtreatmentcondition-example-3](Observation-jp-observation-dentaloral-toothtreatmentcondition-example-3.md)
@@ -162,6 +158,14 @@ This publication includes IP covered under the following statements.
 * [JP Core Dental SimplePresentTeethObservation CodeSystem](CodeSystem-jp-dental-simple-presentteeth-observation-cs.md): [JP_DentalSimplePresentTeethObservation_VS](ValueSet-jp-dental-simple-presentteeth-observation-vs.md), [JP_DentalTeethObservation_VS](ValueSet-jp-dental-teethobservation-vs.md)...Show 5 more,[JP_Observation_DentalOral_ToothTreatmentCondition](StructureDefinition-jp-observation-dentaloral-toothtreatmentcondition.md),[JP_Observation_DentalOral_eCS](StructureDefinition-jp-observation-dentaloral-ecs.md),[Observation/jp-observation-dentaloral-toothtreatmentcondition-example-1](Observation-jp-observation-dentaloral-toothtreatmentcondition-example-1.md),[Observation/jp-observation-dentaloral-toothtreatmentcondition-example-2](Observation-jp-observation-dentaloral-toothtreatmentcondition-example-2.md)and[Observation/jp-observation-dentaloral-toothtreatmentcondition-example-3](Observation-jp-observation-dentaloral-toothtreatmentcondition-example-3.md)
 * [JP Core Dental Surface BodyStructure CodeSystem](CodeSystem-jp-dental-surfacebodystructure-cs.md): [JP_DentalSurfaceBodyStructure_VS](ValueSet-jp-dental-surfacebodystructure-vs.md), [JP_Observation_DentalOral_ToothSurface](StructureDefinition-jp-observation-dentaloral-toothsurface.md)...Show 5 more,[JP_Observation_DentalOral_eCS](StructureDefinition-jp-observation-dentaloral-ecs.md),[Observation/jp-observation-dentaloral-ecs-example](Observation-jp-observation-dentaloral-ecs-example.md),[Observation/jp-observation-dentaloral-toothtreatmentcondition-example-1](Observation-jp-observation-dentaloral-toothtreatmentcondition-example-1.md),[Observation/jp-observation-dentaloral-toothtreatmentcondition-example-2](Observation-jp-observation-dentaloral-toothtreatmentcondition-example-2.md)and[Observation/jp-observation-dentaloral-toothtreatmentcondition-example-3](Observation-jp-observation-dentaloral-toothtreatmentcondition-example-3.md)
 * [JP Core ObservationDentalCategory CodeSystem](CodeSystem-jp-observation-dental-category-cs.md): [JP_ObservationDetailedDentalCategory_VS](ValueSet-jp-observation-detailed-dental-category-vs.md), [JP_Observation_DentalOral_MissingToothCondition](StructureDefinition-jp-observation-dentaloral-missingtoothcondition.md)...Show 16 more,[JP_Observation_DentalOral_ToothExistence](StructureDefinition-jp-observation-dentaloral-toothexistence.md),[JP_Observation_DentalOral_ToothTreatmentCondition](StructureDefinition-jp-observation-dentaloral-toothtreatmentcondition.md),[JP_Observation_DentalOral_eCS](StructureDefinition-jp-observation-dentaloral-ecs.md),[Observation/jp-observation-dentaloral-ecs-example](Observation-jp-observation-dentaloral-ecs-example.md),[Observation/jp-observation-dentaloral-missingtoothcondition-example-4](Observation-jp-observation-dentaloral-missingtoothcondition-example-4.md),[Observation/jp-observation-dentaloral-missingtoothcondition-example-5](Observation-jp-observation-dentaloral-missingtoothcondition-example-5.md),[Observation/jp-observation-dentaloral-missingtoothcondition-example-6](Observation-jp-observation-dentaloral-missingtoothcondition-example-6.md),[Observation/jp-observation-dentaloral-toothexistence-example-1](Observation-jp-observation-dentaloral-toothexistence-example-1.md),[Observation/jp-observation-dentaloral-toothexistence-example-2](Observation-jp-observation-dentaloral-toothexistence-example-2.md),[Observation/jp-observation-dentaloral-toothexistence-example-3](Observation-jp-observation-dentaloral-toothexistence-example-3.md),[Observation/jp-observation-dentaloral-toothexistence-example-4](Observation-jp-observation-dentaloral-toothexistence-example-4.md),[Observation/jp-observation-dentaloral-toothexistence-example-5](Observation-jp-observation-dentaloral-toothexistence-example-5.md),[Observation/jp-observation-dentaloral-toothexistence-example-6](Observation-jp-observation-dentaloral-toothexistence-example-6.md),[Observation/jp-observation-dentaloral-toothtreatmentcondition-example-1](Observation-jp-observation-dentaloral-toothtreatmentcondition-example-1.md),[Observation/jp-observation-dentaloral-toothtreatmentcondition-example-2](Observation-jp-observation-dentaloral-toothtreatmentcondition-example-2.md)and[Observation/jp-observation-dentaloral-toothtreatmentcondition-example-3](Observation-jp-observation-dentaloral-toothtreatmentcondition-example-3.md)
+
+
+* Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
+
+* [JP Core Observation Electrocardiogram Duration CodeSystem](CodeSystem-jp-observation-electrocardiogram-duration-cs.md): [JP_ObservationElectrocardiogramDuration_VS](ValueSet-jp-observation-electrocardiogram-duration-vs.md) and [JP_Observation_Electrocardiogram_Duration](StructureDefinition-jp-observation-electrocardiogram-duration.md)
+* [JP Core Observation Electrocardiogram Extra Category CodeSystem](CodeSystem-jp-observation-electrocardiogram-extracategory-cs.md): [JP_ObservationElectrocardiogramExtraCategory_VS](ValueSet-jp-observation-electrocardiogram-extracategory-vs.md) and [JP_Observation_Electrocardiogram](StructureDefinition-jp-observation-electrocardiogram.md)
+* [JP Core Observation Electrocardiogram StressType CodeSystem](CodeSystem-jp-observation-electrocardiogram-stresstype-cs.md): [JP_ObservationElectrocardiogramStressType_VS](ValueSet-jp-observation-electrocardiogram-stresstype-vs.md) and [JP_Observation_Electrocardiogram_StressType](StructureDefinition-jp-observation-electrocardiogram-stresstype.md)
+* [JP Core Undefined CodeSystem](CodeSystem-jp-undefined-cs.md): [JP_Procedure](StructureDefinition-jp-procedure.md) and [JP_Undefined_VS](ValueSet-jp-undefined-vs.md)
 
 
 * Copyright Japanese Association of Healthcare Information Systems Industry(JAHIS) 一般社団法人保健医療福祉情報システム工業会、日本HL7協会
@@ -251,7 +255,7 @@ This publication includes IP covered under the following statements.
 * [ObservationInterpretation](http://terminology.hl7.org/7.0.0/CodeSystem-v3-ObservationInterpretation.html): [DiagnosticReport/jp-diagnosticreport-labresult-example-1](DiagnosticReport-jp-diagnosticreport-labresult-example-1.md), [DiagnosticReport/jp-diagnosticreport-microbiology-example-1](DiagnosticReport-jp-diagnosticreport-microbiology-example-1.md) and [Observation/jp-observation-labresult-example-1](Observation-jp-observation-labresult-example-1.md)
 * [Race](http://terminology.hl7.org/7.0.0/CodeSystem-v3-Race.html): [JP_Patient_Race](StructureDefinition-jp-patient-race.md) and [Patient/jp-patient-example-1](Patient-jp-patient-example-1.md)
 * [Religious Affiliation](http://terminology.hl7.org/7.0.0/CodeSystem-v3-ReligiousAffiliation.html): [Patient/jp-patient-example-1](Patient-jp-patient-example-1.md)
-* [RoleCode](http://terminology.hl7.org/7.0.0/CodeSystem-v3-RoleCode.html): [09A病棟 021病室 4ベッド](Location-jp-location-example-ward.md), [FamilyMemberHistory/jp-familymemberhistory-example-1](FamilyMemberHistory-jp-familymemberhistory-example-1.md), [南ウィング 神経放射線科 手術室1](Location-jp-location-example-ope.md) and [外来101診察室](Location-jp-location-example-examinationroom.md)
+* [RoleCode](http://terminology.hl7.org/7.0.0/CodeSystem-v3-RoleCode.html): [09A病棟 021病室 4ベッド](Location-jp-location-example-ward.md), [FamilyMemberHistory/jp-familymemberhistory-example-1](FamilyMemberHistory-jp-familymemberhistory-example-1.md), [FamilyMemberHistory/jp-familymemberhistory-example-2](FamilyMemberHistory-jp-familymemberhistory-example-2.md), [南ウィング 神経放射線科 手術室1](Location-jp-location-example-ope.md) and [外来101診察室](Location-jp-location-example-examinationroom.md)
 * [Substance Admin Substitution](http://terminology.hl7.org/7.0.0/CodeSystem-v3-substanceAdminSubstitution.html): [MedicationDispense/jp-medicationdispense-example-1](MedicationDispense-jp-medicationdispense-example-1.md)
 
 
@@ -271,11 +275,11 @@ This publication includes IP covered under the following statements.
 * [JP Core Procedure Codes Medical CodeSystem](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/core/CodeSystem/JP_ProcedureCodesMedical_CS): [JP_Procedure](StructureDefinition-jp-procedure.md) and [Procedure/jp-procedure-example-1](Procedure-jp-procedure-example-1.md)
 
 
-**IP Statementsに関する注意事項** 本IP StatementはIG Publisherにて機械的に出力されたものである。SNOMEDについてはJP Coreとしては利用しておらず、FHIR BASEの定義による影響を受けていることに注意すること。 Note that this IP Statement is mechanically output by IG Publisher, and that SNOMED is not used as JP Core, but is affected by the definition of FHIR BASE.
+**IP Statements に関する注意事項** 本 IP Statement は IG Publisher にて機械的に出力されたものである。SNOMED については JP Core としては利用しておらず、FHIR BASE の定義による影響を受けていることに注意すること。 Note that this IP Statement is mechanically output by IG Publisher, and that SNOMED is not used as JP Core, but is affected by the definition of FHIR BASE.
 
 ### 機械翻訳文章
 
-リソースの項目説明文には、FHIR Baseの説明を機械による自動翻訳したものが含まれている。そのため意味が分かりにくい翻訳や丁寧語の文体の文章が混ざっている。
+リソースの項目説明文には、FHIR Base の説明を機械による自動翻訳したものが含まれている。そのため意味が分かりにくい翻訳や丁寧語の文体の文章が混ざっている。
 
 ### 質問先
 
@@ -289,7 +293,7 @@ This publication includes IP covered under the following statements.
 
 -------
 
-NeXEHRS研究会 HL7FHIR日本実装検討WG
+日本医療情報学会 FHIR 国内実装基盤研究会
 
 https://jpfhir.jp/
 

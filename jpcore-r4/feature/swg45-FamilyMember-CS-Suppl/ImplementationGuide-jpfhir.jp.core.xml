@@ -3,7 +3,7 @@
 <ImplementationGuide xmlns="http://hl7.org/fhir">
   <id value="jpfhir.jp.core"/>
   <text>
-    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ImplementationGuide jpfhir.jp.core</b></p><a name="jpfhir.jp.core"> </a><a name="hcjpfhir.jp.core"> </a><h2>FHIRJPCoreImplementationGuide</h2><p>The official URL for this implementation guide is: </p><pre>http://jpfhir.jp/fhir/core/ImplementationGuide/jpfhir.jp.core</pre><div><p>日本医療情報学会(JAMI) NeXEHRS課題研究会「HL7®FHIR® 日本実装検討WG」で作成した日本国内におけるベースとなるJP Core実装ガイドのドラフトVer.1.2.0 です。</p>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ImplementationGuide jpfhir.jp.core</b></p><a name="jpfhir.jp.core"> </a><a name="hcjpfhir.jp.core"> </a><h2>FHIRJPCoreImplementationGuide</h2><p>The official URL for this implementation guide is: </p><pre>http://jpfhir.jp/fhir/core/ImplementationGuide/jpfhir.jp.core</pre><div><p>日本医療情報学会 FHIR 国内実装基盤研究会で作成した日本国内におけるベースとなるJP Core実装ガイドのドラフトVer.1.2.0 です。</p>
 </div></div>
   </text>
   <url value="http://jpfhir.jp/fhir/core/ImplementationGuide/jpfhir.jp.core"/>
@@ -24,7 +24,7 @@
       <value value="office@hlfhir.jp"/>
     </telecom>
   </contact>
-  <description value="日本医療情報学会(JAMI) NeXEHRS課題研究会「HL7®FHIR® 日本実装検討WG」で作成した日本国内におけるベースとなるJP Core実装ガイドのドラフトVer.1.2.0 です。"/>
+  <description value="日本医療情報学会 FHIR 国内実装基盤研究会で作成した日本国内におけるベースとなるJP Core実装ガイドのドラフトVer.1.2.0 です。"/>
   <jurisdiction>
     <coding>
       <system value="urn:iso:std:iso:3166"/>
@@ -32,7 +32,7 @@
       <display value="Japan"/>
     </coding>
   </jurisdiction>
-  <copyright value="Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG"/>
+  <copyright value="Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会"/>
   <packageId value="jpfhir.jp.core"/>
   <license value="CC0-1.0"/>
   <fhirVersion value="4.0.1"/>
@@ -3935,11 +3935,33 @@
         <valueString value="FamilyMemberHistory"/>
       </extension>
       <reference>
+        <reference value="FamilyMemberHistory/jp-familymemberhistory-example-2"/>
+      </reference>
+      <name value="JP Core FamilyMemberHistory Example 家族歴（息子 長男）"/>
+      <description value="息子（長男）の家族歴の例。性別同胞内出生順拡張を付ける例。"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="FamilyMemberHistory"/>
+      </extension>
+      <reference>
         <reference value="FamilyMemberHistory/jp-familymemberhistory-example-1"/>
       </reference>
       <name value="JP Core FamilyMemberHistory Example 家族歴（母親）"/>
       <description value="母親が糖尿病と難聴を有する家族歴の例"/>
       <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/jp-familymemberhistory-genderedsiblingorder"/>
+      </reference>
+      <name value="JP Core FamilyMemberHistory Gendered Sibling Order Extension"/>
+      <description value="性別同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。日本固有の社会学的・文化的表現。valueは CodeableConcept で、JP_GenderedSiblingOrder_VS のジェンダー別コード（GSO1_M, GSO1_F など）を推奨する。"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -3950,6 +3972,28 @@
       </reference>
       <name value="JP Core FamilyMemberHistory Profile"/>
       <description value="このプロファイルはFamilyMemberHistoryリソースに対して、データを送受信するための共通の制約と拡張を定めたものである。"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/jp-genderedsiblingorder-cs"/>
+      </reference>
+      <name value="JP Core Gendered Sibling Order CodeSystem"/>
+      <description value="性別の同胞内出生順を表す日本語ラベル（長男、長女、次男、次女など）を定義するCodeSystem。社会学的・文化的表現。"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/jp-genderedsiblingorder-vs"/>
+      </reference>
+      <name value="JP Core Gendered Sibling Order ValueSet"/>
+      <description value="性別の同胞内出生順を表すValueSet。JP_GenderedSiblingOrder_CS を包含。"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -4320,32 +4364,10 @@
         <valueString value="StructureDefinition:complex-type"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/jp-medicationsimplequantity"/>
-      </reference>
-      <name value="JP Core Medication Quantity DataType"/>
-      <description value="このデータタイプはSimpleQuantity DataTypeに対して、JP Coreにおける薬剤量に関する定義を行なったものである"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:complex-type"/>
-      </extension>
-      <reference>
         <reference value="StructureDefinition/jp-medicationrange"/>
       </reference>
       <name value="JP Core Medication Range DataType"/>
       <description value="このデータタイプはRange DataTypeに対して、薬剤量の上限下限に関する定義を行なったものである"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:complex-type"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/jp-medicationrange-unitoftime"/>
-      </reference>
-      <name value="JP Core Medication Range DataType"/>
-      <description value="このデータタイプはRange DataTypeに対して、時間の上限下限に関する定義を行なったものである"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -4379,6 +4401,28 @@
       </reference>
       <name value="JP Core Medication Ratio Amount DataType"/>
       <description value="このデータタイプはRatio DataTypeに対して、薬剤量／パッケージ量を表す比率を割り当てた制約と拡張を定めたものである。"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:complex-type"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/jp-medicationsimplequantity"/>
+      </reference>
+      <name value="JP Core Medication Simple Quantity DataType"/>
+      <description value="このデータタイプはSimpleQuantity DataTypeに対して、JP Coreにおける薬剤量に関する定義を行なったものである"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:complex-type"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/jp-medicationrange-unitoftime"/>
+      </reference>
+      <name value="JP Core Medication Time Range DataType"/>
+      <description value="このデータタイプはRange DataTypeに対して、時間の上限下限に関する定義を行なったものである"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>

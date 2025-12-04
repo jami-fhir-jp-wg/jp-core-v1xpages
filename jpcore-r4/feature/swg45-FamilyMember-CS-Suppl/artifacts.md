@@ -104,12 +104,12 @@
 | :--- | :--- |
 | [JP Core HumanName DataType](StructureDefinition-jp-humanname.md) | このデータタイプはHumanName DataTypeに対して、患者データを送受信するための基礎となる制約と拡張を定めたものである。 |
 | [JP Core Medication Quantity DataType](StructureDefinition-jp-medicationquantity.md) | このデータタイプはQuantity DataTypeに対して、JP Coreにおける薬剤量に関する定義を行なったものである |
-| [JP Core Medication Quantity DataType](StructureDefinition-jp-medicationsimplequantity.md) | このデータタイプはSimpleQuantity DataTypeに対して、JP Coreにおける薬剤量に関する定義を行なったものである |
 | [JP Core Medication Range DataType](StructureDefinition-jp-medicationrange.md) | このデータタイプはRange DataTypeに対して、薬剤量の上限下限に関する定義を行なったものである |
-| [JP Core Medication Range DataType](StructureDefinition-jp-medicationrange-unitoftime.md) | このデータタイプはRange DataTypeに対して、時間の上限下限に関する定義を行なったものである |
 | [JP Core Medication Rate Ratio DataType](StructureDefinition-jp-medicationratio-doseperperiod.md) | このデータタイプはRatio DataTypeに対して、薬剤量／単位時間を表す比率を割り当てた制約と拡張を定めたものである。 |
 | [JP Core Medication Rate Ratio DosePerDay DataType](StructureDefinition-jp-medicationratio-doseperday.md) | このデータタイプはJP_MedicationRatio_DosePerPeriod DataTypeに対して、一日あたりの薬剤料（薬剤量／単位時間）を表す比率を割り当てた制約と拡張を定めたものである。 |
 | [JP Core Medication Ratio Amount DataType](StructureDefinition-jp-medicationratio-amount.md) | このデータタイプはRatio DataTypeに対して、薬剤量／パッケージ量を表す比率を割り当てた制約と拡張を定めたものである。 |
+| [JP Core Medication Simple Quantity DataType](StructureDefinition-jp-medicationsimplequantity.md) | このデータタイプはSimpleQuantity DataTypeに対して、JP Coreにおける薬剤量に関する定義を行なったものである |
+| [JP Core Medication Time Range DataType](StructureDefinition-jp-medicationrange-unitoftime.md) | このデータタイプはRange DataTypeに対して、時間の上限下限に関する定義を行なったものである |
 | [JP Core Medication Timing DataType](StructureDefinition-jp-medicationtiming.md) | このデータタイプはTiming DataTypeに対して、薬剤に関するタイミング定義を行なったものである |
 | [JP Core MedicationDosage Base DataType](StructureDefinition-jp-medicationdosagebase.md) | このデータタイプは薬剤用法のDosageベースとして基礎となる制約と拡張のうち共通部分を定めている。 |
 | [JP Core MedicationDosage DataType](StructureDefinition-jp-medicationdosage.md) | このデータタイプは内服用法の制約と拡張のうち共通部分を定めている。 |
@@ -127,6 +127,7 @@
 | [JP Core Disease Outcome Extension](StructureDefinition-jp-condition-disease-outcome.md) | 病名の転帰を格納するための拡張 |
 | [JP Core Disease Postfix Modifier Extension](StructureDefinition-jp-condition-disease-postfix-modifier.md) | 病名の後置修飾語を格納するための拡張 |
 | [JP Core Disease Prefix Modifier Extension](StructureDefinition-jp-condition-disease-prefix-modifier.md) | 病名の前置修飾語を格納するための拡張 |
+| [JP Core FamilyMemberHistory Gendered Sibling Order Extension](StructureDefinition-jp-familymemberhistory-genderedsiblingorder.md) | 性別同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。日本固有の社会学的・文化的表現。valueは CodeableConcept で、JP_GenderedSiblingOrder_VS のジェンダー別コード（GSO1_M, GSO1_F など）を推奨する。 |
 | [JP Core Immunization CertificatedDate Extension](StructureDefinition-jp-immunization-certificateddate.md) | 検定年月日 |
 | [JP Core Immunization DueDateOfNextDose Extension](StructureDefinition-jp-immunization-duedateofnextdose.md) | 次回接種予定日 |
 | [JP Core Immunization ManufacturedDate Extension](StructureDefinition-jp-immunization-manufactureddate.md) | 製造年月日 |
@@ -182,6 +183,7 @@
 | [JP Core Dental SimplePresentTeethObservation ValueSet](ValueSet-jp-dental-simple-presentteeth-observation-vs.md) | JP Coreにて定義した歯科のObservationリソースに関する現存歯の観察結果コード（簡易版） |
 | [JP Core Dental SurfaceBodyStructure ValueSet](ValueSet-jp-dental-surfacebodystructure-vs.md) | JP Coreにて定義した歯科のObservationリソースに関する歯面に関連する詳細部位構造コード |
 | [JP Core Dental TeethObservation ValueSet](ValueSet-jp-dental-teethobservation-vs.md) | JP Coreにて定義した歯科のObservationリソースに関する歯面の詳細部位構造コード |
+| [JP Core Gendered Sibling Order ValueSet](ValueSet-jp-genderedsiblingorder-vs.md) | 性別の同胞内出生順を表すValueSet。JP_GenderedSiblingOrder_CS を包含。 |
 | [JP Core ImagingStudy Radiology BodySite ValueSet](ValueSet-jp-imagingstudy-radiology-bodysite-vs.md) | 放射線検査画像の対象となる身体部位のコード |
 | [JP Core Observation BodySite ValueSet](ValueSet-jp-observation-bodysite-vs.md) | 検査の対象となる身体部位のコード |
 | [JP Core Observation Electrocardiogram Component Code ValueSet](ValueSet-jp-observation-electrocardiogram-component-code-vs.md) | 心電図検査の一連の測定項目を示す値セット |
@@ -212,6 +214,7 @@
 | [JP Core Dental SimplePresentTeethObservation CodeSystem](CodeSystem-jp-dental-simple-presentteeth-observation-cs.md) | JP Coreにて定義した歯科のObservationリソースに関する現存歯の観察結果コード（簡易版） |
 | [JP Core Dental Surface BodyStructure CodeSystem](CodeSystem-jp-dental-surfacebodystructure-cs.md) | JP Coreにて定義した歯科のObservationリソースに関する歯面に関連する詳細部位構造コード |
 | [JP Core FamilyMember CodeSystem](CodeSystem-jp-v3RoleCode-cs.md) | http://terminology.ht7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の日本語補足 |
+| [JP Core Gendered Sibling Order CodeSystem](CodeSystem-jp-genderedsiblingorder-cs.md) | 性別の同胞内出生順を表す日本語ラベル（長男、長女、次男、次女など）を定義するCodeSystem。社会学的・文化的表現。 |
 | [JP Core Observation BodyMeasurement Code CodeSystem](CodeSystem-jp-observation-bodymeasurement-code-cs.md) | Observation（身体計測）で使用する項目コードのコードシステム （出典：看護実践用語標準マスターの概要＜看護行為編＞Ver. 3. 6） |
 | [JP Core Observation Electrocardiogram Duration CodeSystem](CodeSystem-jp-observation-electrocardiogram-duration-cs.md) | JP Coreにて定義した心電図のObservationリソースに関する詳細分類コード（検査時間） |
 | [JP Core Observation Electrocardiogram Extra Category CodeSystem](CodeSystem-jp-observation-electrocardiogram-extracategory-cs.md) | JP Coreにて定義した心電図のObservationリソースに関する分類コード |
@@ -290,6 +293,7 @@
 | [JP Core DiagnosticReport_LabResult Example 検体検査（血液）レポート](DiagnosticReport-jp-diagnosticreport-labresult-example-1.md) | 検体検査（血液）レポート |
 | [JP Core DiagnosticReport_Microbiology Example 一般細菌検査レポート](DiagnosticReport-jp-diagnosticreport-microbiology-example-1.md) | 一般細菌検査レポート |
 | [JP Core Encounter Example 外来](Encounter-jp-encounter-example-1.md) | 外来 |
+| [JP Core FamilyMemberHistory Example 家族歴（息子 長男）](FamilyMemberHistory-jp-familymemberhistory-example-2.md) | 息子（長男）の家族歴の例。性別同胞内出生順拡張を付ける例。 |
 | [JP Core FamilyMemberHistory Example 家族歴（母親）](FamilyMemberHistory-jp-familymemberhistory-example-1.md) | 母親が糖尿病と難聴を有する家族歴の例 |
 | [JP Core ImagingStudy Endoscopy Example 内視鏡画像検査](ImagingStudy-jp-imagingstudy-endoscopy-example-1.md) | 内視鏡画像検査 |
 | [JP Core ImagingStudy Radiology Example 放射線画像検査](ImagingStudy-jp-imagingstudy-radiology-example-1.md) | 放射線画像検査 |

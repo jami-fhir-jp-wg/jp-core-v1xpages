@@ -54,8 +54,12 @@
 [jp-encounter-example-1]: Encounter-jp-encounter-example-1.html
 [JP_Encounter]: StructureDefinition-jp-encounter.html
 [JP_V3RoleCode_CS]: CodeSystem-jp-v3RoleCode-cs.html
+[jp-familymemberhistory-example-2]: FamilyMemberHistory-jp-familymemberhistory-example-2.html
 [jp-familymemberhistory-example-1]: FamilyMemberHistory-jp-familymemberhistory-example-1.html
+[JP_FamilyMemberHistory_GenderedSiblingOrder]: StructureDefinition-jp-familymemberhistory-genderedsiblingorder.html
 [JP_FamilyMemberHistory]: StructureDefinition-jp-familymemberhistory.html
+[JP_GenderedSiblingOrder_CS]: CodeSystem-jp-genderedsiblingorder-cs.html
+[JP_GenderedSiblingOrder_VS]: ValueSet-jp-genderedsiblingorder-vs.html
 [JP_HumanName]: StructureDefinition-jp-humanname.html
 [jp-imagingstudy-endoscopy-example-1]: ImagingStudy-jp-imagingstudy-endoscopy-example-1.html
 [JP_ImagingStudy_Endoscopy]: StructureDefinition-jp-imagingstudy-endoscopy.html
@@ -89,12 +93,12 @@
 [JP_Medication_IngredientStrength_StrengthType]: StructureDefinition-jp-medication-ingredientstrength-strengthtype.html
 [JP_Medication]: StructureDefinition-jp-medication.html
 [JP_MedicationQuantity]: StructureDefinition-jp-medicationquantity.html
-[JP_MedicationSimpleQuantity]: StructureDefinition-jp-medicationsimplequantity.html
 [JP_MedicationRange]: StructureDefinition-jp-medicationrange.html
-[JP_MedicationRange_UnitOfTime]: StructureDefinition-jp-medicationrange-unitoftime.html
 [JP_MedicationRatio_DosePerPeriod]: StructureDefinition-jp-medicationratio-doseperperiod.html
 [JP_MedicationRatio_DosePerDay]: StructureDefinition-jp-medicationratio-doseperday.html
 [JP_MedicationRatio_Amount]: StructureDefinition-jp-medicationratio-amount.html
+[JP_MedicationSimpleQuantity]: StructureDefinition-jp-medicationsimplequantity.html
+[JP_MedicationRange_UnitOfTime]: StructureDefinition-jp-medicationrange-unitoftime.html
 [JP_MedicationTiming]: StructureDefinition-jp-medicationtiming.html
 [jp-medicationadministration-example-2]: MedicationAdministration-jp-medicationadministration-example-2.html
 [jp-medicationadministration-example-1]: MedicationAdministration-jp-medicationadministration-example-1.html
