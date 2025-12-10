@@ -6331,7 +6331,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "FamilyMemberHistory/jp-familymemberhistory-example-2"
         },
         "name" : "JP Core FamilyMemberHistory Example 家族歴（息子 長男）",
-        "description" : "息子（長男）の家族歴の例。性別同胞内出生順拡張を付ける例。",
+        "description" : "息子（長男）の家族歴の例。同胞内出生順拡張を付ける例。",
         "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory"
       },
       {
@@ -6352,20 +6352,6 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "StructureDefinition:extension"
-          }
-        ],
-        "reference" : {
-          "reference" : "StructureDefinition/jp-familymemberhistory-genderedsiblingorder"
-        },
-        "name" : "JP Core FamilyMemberHistory Gendered Sibling Order Extension",
-        "description" : "性別同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。日本固有の社会学的・文化的表現。valueは CodeableConcept で、JP_GenderedSiblingOrder_VS のジェンダー別コード（GSO1_M, GSO1_F など）を推奨する。",
-        "exampleBoolean" : false
-      },
-      {
-        "extension" : [
-          {
-            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
             "valueString" : "StructureDefinition:resource"
           }
         ],
@@ -6374,6 +6360,20 @@ JP Core は以下の方々、および各サーブワーキンググループの
         },
         "name" : "JP Core FamilyMemberHistory Profile",
         "description" : "このプロファイルはFamilyMemberHistoryリソースに対して、データを送受信するための共通の制約と拡張を定めたものである。",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/jp-familymemberhistory-siblingorder"
+        },
+        "name" : "JP Core FamilyMemberHistory Sibling Order Extension",
+        "description" : "同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。valueは CodeableConcept で、JP_SiblingOrder_VS のコード（SO1, SO1F など）を推奨する。",
         "exampleBoolean" : false
       },
       {

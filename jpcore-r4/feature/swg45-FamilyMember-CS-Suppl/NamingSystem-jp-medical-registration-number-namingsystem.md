@@ -20,30 +20,6 @@
  
 JP Core Medical Registration Number NamingSystem 医籍登録番号 
 
-### Summary
-
-| | |
-| :--- | :--- |
-| Defining URL | http://jpfhir.jp/fhir/core/NamingSystem/jp-medical-registration-number-namingsystem |
-| Version | 1.3.0-dev |
-| Name | JP_Medical_Registration_Number_NamingSystem |
-| Status | active |
-| Definition | JP Core Medical Registration Number NamingSystem 医籍登録番号 |
-| Publisher | FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) |
-| Copyright | Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会 |
-
-### Identifiers
-
-* **Type**: OID
-  * **Value**: 1.2.392.100495.20.3.31
-  * **Preferred**: 
-* **Type**: URI
-  * **Value**: urn:oid:1.2.392.100495.20.3.31
-  * **Preferred**: 
-* **Type**: URI
-  * **Value**: http://jpfhir.jp/fhir/core/mhlw/IdSystem/medicalRegistrationNumber
-  * **Preferred**: true
-
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
 [GitHub PullRequest](https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls)にて受け付けている。

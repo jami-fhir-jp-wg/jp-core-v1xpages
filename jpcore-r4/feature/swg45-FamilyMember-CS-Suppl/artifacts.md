@@ -127,7 +127,7 @@
 | [JP Core Disease Outcome Extension](StructureDefinition-jp-condition-disease-outcome.md) | 病名の転帰を格納するための拡張 |
 | [JP Core Disease Postfix Modifier Extension](StructureDefinition-jp-condition-disease-postfix-modifier.md) | 病名の後置修飾語を格納するための拡張 |
 | [JP Core Disease Prefix Modifier Extension](StructureDefinition-jp-condition-disease-prefix-modifier.md) | 病名の前置修飾語を格納するための拡張 |
-| [JP Core FamilyMemberHistory Gendered Sibling Order Extension](StructureDefinition-jp-familymemberhistory-genderedsiblingorder.md) | 性別同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。日本固有の社会学的・文化的表現。valueは CodeableConcept で、JP_GenderedSiblingOrder_VS のジェンダー別コード（GSO1_M, GSO1_F など）を推奨する。 |
+| [JP Core FamilyMemberHistory Sibling Order Extension](StructureDefinition-jp-familymemberhistory-siblingorder.md) | 同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。valueは CodeableConcept で、JP_SiblingOrder_VS のコード（SO1, SO1F など）を推奨する。 |
 | [JP Core Immunization CertificatedDate Extension](StructureDefinition-jp-immunization-certificateddate.md) | 検定年月日 |
 | [JP Core Immunization DueDateOfNextDose Extension](StructureDefinition-jp-immunization-duedateofnextdose.md) | 次回接種予定日 |
 | [JP Core Immunization ManufacturedDate Extension](StructureDefinition-jp-immunization-manufactureddate.md) | 製造年月日 |
@@ -293,7 +293,7 @@
 | [JP Core DiagnosticReport_LabResult Example 検体検査（血液）レポート](DiagnosticReport-jp-diagnosticreport-labresult-example-1.md) | 検体検査（血液）レポート |
 | [JP Core DiagnosticReport_Microbiology Example 一般細菌検査レポート](DiagnosticReport-jp-diagnosticreport-microbiology-example-1.md) | 一般細菌検査レポート |
 | [JP Core Encounter Example 外来](Encounter-jp-encounter-example-1.md) | 外来 |
-| [JP Core FamilyMemberHistory Example 家族歴（息子 長男）](FamilyMemberHistory-jp-familymemberhistory-example-2.md) | 息子（長男）の家族歴の例。性別同胞内出生順拡張を付ける例。 |
+| [JP Core FamilyMemberHistory Example 家族歴（息子 長男）](FamilyMemberHistory-jp-familymemberhistory-example-2.md) | 息子（長男）の家族歴の例。同胞内出生順拡張を付ける例。 |
 | [JP Core FamilyMemberHistory Example 家族歴（母親）](FamilyMemberHistory-jp-familymemberhistory-example-1.md) | 母親が糖尿病と難聴を有する家族歴の例 |
 | [JP Core ImagingStudy Endoscopy Example 内視鏡画像検査](ImagingStudy-jp-imagingstudy-endoscopy-example-1.md) | 内視鏡画像検査 |
 | [JP Core ImagingStudy Radiology Example 放射線画像検査](ImagingStudy-jp-imagingstudy-radiology-example-1.md) | 放射線画像検査 |

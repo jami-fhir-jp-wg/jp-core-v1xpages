@@ -24,11 +24,9 @@
 
  **References** 
 
-* [JP Core FamilyMemberHistory Gendered Sibling Order Extension](StructureDefinition-jp-familymemberhistory-genderedsiblingorder.md)
+* [JP Core FamilyMemberHistory Sibling Order Extension](StructureDefinition-jp-familymemberhistory-siblingorder.md)
 
 ### Logical Definition (CLD)
-
-* Include all codes defined in `http://jpfhir.jp/fhir/core/ValueSet/JP_GenderedSiblingOrder_CS`version Not Stated (use latest from terminology server)
 
  
 

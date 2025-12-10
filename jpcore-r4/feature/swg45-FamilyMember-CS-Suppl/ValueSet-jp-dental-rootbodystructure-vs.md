@@ -29,8 +29,6 @@ JP Coreにて定義した歯科のObservationリソースに関する歯根に�
 
 ### Logical Definition (CLD)
 
-* Include all codes defined in [`http://jpfhir.jp/fhir/core/CodeSystem/JP_DentalRootBodyStructure_CS`](CodeSystem-jp-dental-rootbodystructure-cs.md)version 📦1.3.0-dev
-
  
 
 ### Expansion

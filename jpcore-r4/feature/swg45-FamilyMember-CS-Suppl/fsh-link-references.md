@@ -56,8 +56,8 @@
 [JP_V3RoleCode_CS]: CodeSystem-jp-v3RoleCode-cs.html
 [jp-familymemberhistory-example-2]: FamilyMemberHistory-jp-familymemberhistory-example-2.html
 [jp-familymemberhistory-example-1]: FamilyMemberHistory-jp-familymemberhistory-example-1.html
-[JP_FamilyMemberHistory_GenderedSiblingOrder]: StructureDefinition-jp-familymemberhistory-genderedsiblingorder.html
 [JP_FamilyMemberHistory]: StructureDefinition-jp-familymemberhistory.html
+[JP_FamilyMemberHistory_SiblingOrder]: StructureDefinition-jp-familymemberhistory-siblingorder.html
 [JP_GenderedSiblingOrder_CS]: CodeSystem-jp-genderedsiblingorder-cs.html
 [JP_GenderedSiblingOrder_VS]: ValueSet-jp-genderedsiblingorder-vs.html
 [JP_HumanName]: StructureDefinition-jp-humanname.html

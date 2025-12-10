@@ -28,8 +28,6 @@
 
 ### Logical Definition (CLD)
 
-* Include all codes defined in [`http://loinc.org`](http://loinc.org)version 📦3.1.0
-
  
 
 ### Expansion

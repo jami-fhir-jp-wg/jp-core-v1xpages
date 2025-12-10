@@ -20,30 +20,6 @@
  
 JP Core MedicationCode YJ NamingSystem 個別医薬品コード（YJ コード）リスト 
 
-### Summary
-
-| | |
-| :--- | :--- |
-| Defining URL | http://jpfhir.jp/fhir/core/NamingSystem/jp-medicationcodeyj-namingsystem |
-| Version | 1.3.0-dev |
-| Name | JP_MedicationCodeYJ_NamingSystem |
-| Status | active |
-| Definition | JP Core MedicationCode YJ NamingSystem 個別医薬品コード（YJ コード）リスト |
-| Publisher | FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) |
-| Copyright | Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会 |
-
-### Identifiers
-
-* **Type**: OID
-  * **Value**: 1.2.392.100495.20.2.73
-  * **Preferred**: 
-* **Type**: URI
-  * **Value**: urn:oid:1.2.392.100495.20.2.73
-  * **Preferred**: 
-* **Type**: URI
-  * **Value**: http://capstandard.jp/iyaku.info/CodeSystem/YJ-code
-  * **Preferred**: true
-
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
 [GitHub PullRequest](https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls)にて受け付けている。

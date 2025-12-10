@@ -31,8 +31,6 @@ JP Coreにて定義した歯科のObservationリソースに関する身体部�
 
 ### Logical Definition (CLD)
 
-* Include all codes defined in [`http://jpfhir.jp/fhir/core/CodeSystem/JP_DentalBodySite_CS`](CodeSystem-jp-dental-bodysite-cs.md)version 📦1.3.0-dev
-
  
 
 ### Expansion

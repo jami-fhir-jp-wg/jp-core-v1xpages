@@ -28,8 +28,6 @@ JP Coreにて定義した歯科のObservationリソースに関する歯の基�
 
 ### Logical Definition (CLD)
 
-* Include all codes defined in [`http://jpfhir.jp/fhir/core/CodeSystem/JP_DentalFundamentalStatus_CS`](CodeSystem-jp-dental-fundamentalstatus-cs.md)version 📦1.3.0-dev
-
  
 
 ### Expansion

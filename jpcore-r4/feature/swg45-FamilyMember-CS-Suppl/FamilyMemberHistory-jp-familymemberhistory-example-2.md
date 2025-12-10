@@ -8,9 +8,10 @@
 
 Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md)
 
-> **JP Core FamilyMemberHistory Gendered Sibling Order Extension**
-* genderedSiblingOrder: 1
-* genderedSiblingDisplay: 長男
+> **JP Core FamilyMemberHistory Sibling Order Extension**
+* siblingOrder: 1
+
+**jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_GenderedSiblingOrder**: 長男
 
 **status**: Partial
 
@@ -48,23 +49,23 @@ Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemb
     {
       "extension" : [
         {
-          "url" : "genderedSiblingOrder",
+          "url" : "siblingOrder",
           "valueInteger" : 1
-        },
-        {
-          "url" : "genderedSiblingDisplay",
-          "valueCodeableConcept" : {
-            "coding" : [
-              {
-                "system" : "http://jpfhir.jp/fhir/core/ValueSet/JP_GenderedSiblingOrder_CS",
-                "code" : "GSO1_M",
-                "display" : "長男"
-              }
-            ]
-          }
         }
       ],
-      "url" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_GenderedSiblingOrder"
+      "url" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder"
+    },
+    {
+      "url" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_GenderedSiblingOrder",
+      "valueCodeableConcept" : {
+        "coding" : [
+          {
+            "system" : "http://jpfhir.jp/fhir/core/ValueSet/JP_GenderedSiblingOrder_CS",
+            "code" : "GSO1_M",
+            "display" : "長男"
+          }
+        ]
+      }
     }
   ],
   "status" : "partial",

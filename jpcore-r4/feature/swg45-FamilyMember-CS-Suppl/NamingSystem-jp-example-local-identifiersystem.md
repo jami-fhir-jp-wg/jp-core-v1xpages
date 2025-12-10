@@ -20,53 +20,6 @@
  
 JP_local_example_identifiersystem_NamingSystem 
 
-### Summary
-
-| | |
-| :--- | :--- |
-| Defining URL | http://jpfhir.jp/fhir/core/NamingSystem/jp-example-local-identifiersystem |
-| Version | 1.3.0-dev |
-| Name | JP_local_example_identifiersystem_NamingSystem |
-| Status | active |
-| Definition | JP_local_example_identifiersystem_NamingSystem |
-| Publisher | FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) |
-| Copyright | Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会 |
-
-### Identifiers
-
-* **Type**: URI
-  * **Value**: http://abc-hospital.local/fhir/identifier
-* **Type**: URI
-  * **Value**: http://abc-hospital.local/wado-rs
-* **Type**: URI
-  * **Value**: http://terminology.sample.com/CodeSystem/disease-outcome
-* **Type**: URI
-  * **Value**: http://terminology.sample.com/IdSystem/disease/1311234567
-* **Type**: URI
-  * **Value**: http://terminology.sample.com/CodeSystem/disease/1311234567
-* **Type**: URI
-  * **Value**: http://abc-hospital.local/fhir/identifier/endoscopy/report
-* **Type**: URI
-  * **Value**: http://abc-hospital.local/fhir/Observation/localcode
-* **Type**: URI
-  * **Value**: http://abc-hospital.local/fhir/lab/reportid
-* **Type**: URI
-  * **Value**: http://samplehospital.org/fhir/endoscopysystem/imaging-orders
-* **Type**: URI
-  * **Value**: urn:oid:1.2.392.100495.20.3.11.11311234567
-* **Type**: URI
-  * **Value**: urn:oid:1.2.392.200119.5.2.4.1.1.3
-* **Type**: URI
-  * **Value**: http://abc-hospital.local/fhir/ObservationOrder/localcode
-* **Type**: URI
-  * **Value**: http://abc-hospital.local/fhir/Organization/localcode
-* **Type**: URI
-  * **Value**: http://abc-hospital.local/identifiers/collections
-* **Type**: URI
-  * **Value**: http://abc-hospital.local/specimens/2011
-* **Type**: URI
-  * **Value**: http://abc-hospital.local/fhir/mb/reportid
-
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
 [GitHub PullRequest](https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls)にて受け付けている。

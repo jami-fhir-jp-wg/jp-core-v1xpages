@@ -20,30 +20,6 @@
  
 JP Core MedicationMethod JAMI BasicUsage NamingSystem JAMI用法コード表ー基本用法コード１桁 
 
-### Summary
-
-| | |
-| :--- | :--- |
-| Defining URL | http://jpfhir.jp/fhir/core/NamingSystem/jp-medicationmethodjamibasicusage-namingsystem |
-| Version | 1.3.0-dev |
-| Name | JP_MedicationMethodJAMIBasicUsage_NamingSystem |
-| Status | active |
-| Definition | JP Core MedicationMethod JAMI BasicUsage NamingSystem JAMI用法コード表ー基本用法コード１桁 |
-| Publisher | FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) |
-| Copyright | Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会 |
-
-### Identifiers
-
-* **Type**: OID
-  * **Value**: 1.2.392.200250.2.2.20.30
-  * **Preferred**: 
-* **Type**: URI
-  * **Value**: urn:oid:1.2.392.200250.2.2.20.30
-  * **Preferred**: 
-* **Type**: URI
-  * **Value**: http://jami.jp/CodeSystem/MedicationMethodBasicUsage
-  * **Preferred**: true
-
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
 [GitHub PullRequest](https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls)にて受け付けている。

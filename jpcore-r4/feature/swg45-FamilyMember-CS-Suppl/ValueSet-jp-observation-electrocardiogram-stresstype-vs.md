@@ -28,8 +28,6 @@ JP Coreにて定義した心電図のObservationリソースに関する詳細�
 
 ### Logical Definition (CLD)
 
-* Include all codes defined in [`http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationElectrocardiogramStressType_CS`](CodeSystem-jp-observation-electrocardiogram-stresstype-cs.md)version 📦1.3.0-dev
-
  
 
 ### Expansion

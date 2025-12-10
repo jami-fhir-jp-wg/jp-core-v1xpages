@@ -28,8 +28,6 @@ JP Coreにて定義した歯科のObservationリソースに関する現存歯�
 
 ### Logical Definition (CLD)
 
-* Include all codes defined in [`http://jpfhir.jp/fhir/core/CodeSystem/JP_DentalPresentTeethObservation_CS`](CodeSystem-jp-dental-presentteeth-observation-cs.md)version 📦1.3.0-dev
-
  
 
 ### Expansion

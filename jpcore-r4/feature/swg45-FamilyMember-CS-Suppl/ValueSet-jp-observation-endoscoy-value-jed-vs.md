@@ -28,8 +28,6 @@
 
 ### Logical Definition (CLD)
 
-* Include all codes defined in [`urn:oid:1.2.392.200270.4.1000.1`](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=urn:oid:1.2.392.200270.4.1000.1)version 📦1.1.1
-
  
 
 ### Expansion
