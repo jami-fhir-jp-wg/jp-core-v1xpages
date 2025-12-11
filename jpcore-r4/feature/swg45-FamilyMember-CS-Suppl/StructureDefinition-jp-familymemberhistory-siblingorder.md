@@ -7,7 +7,7 @@
 ## Extension: JP Core FamilyMemberHistory Sibling Order Extension 
 
 * **項目**: *定義URL*
-  * **内容**: http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder
+  * **内容**: http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder
 * **項目**: *Version*
   * **内容**: 1.3.0-dev
 * **項目**: *Name*
@@ -19,7 +19,7 @@
 * **項目**: *Copyright*
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
-同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。
+同胞内順位をFamilyMemberHistoryに付記するための拡張。
 
 **Context of Use**
 
@@ -28,7 +28,6 @@
 **Usages:**
 
 * Use this Extension: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md)
-* Examples for this Extension: [FamilyMemberHistory/jp-familymemberhistory-example-2](FamilyMemberHistory-jp-familymemberhistory-example-2.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-familymemberhistory-siblingorder)
 
@@ -50,7 +49,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
 {
   "resourceType" : "StructureDefinition",
   "id" : "jp-familymemberhistory-siblingorder",
-  "url" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder",
+  "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder",
   "version" : "1.3.0-dev",
   "name" : "JP_FamilyMemberHistory_SiblingOrder",
   "title" : "JP Core FamilyMemberHistory Sibling Order Extension",
@@ -72,7 +71,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
       ]
     }
   ],
-  "description" : "同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。",
+  "description" : "同胞内順位をFamilyMemberHistoryに付記するための拡張。",
   "jurisdiction" : [
     {
       "coding" : [
@@ -178,7 +177,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
       {
         "id" : "Extension.url",
         "path" : "Extension.url",
-        "fixedUri" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder"
+        "fixedUri" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder"
       },
       {
         "id" : "Extension.value[x]",

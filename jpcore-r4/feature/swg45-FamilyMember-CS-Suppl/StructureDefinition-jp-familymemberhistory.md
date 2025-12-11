@@ -64,7 +64,11 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
 
 ### Extensions定義
 
-本プロファイルで追加定義された拡張はない。
+本プロファイルで使用される拡張は次の通りである。
+
+* [JP_SiblingOrder][JP_FamilyMemberHistory_SiblingOrder]
+* [JP_SiblingBirthOrder][JP_FamilyMemberHistory_SiblingBirthOrder]
+* [JP_GenderedSiblingBirthOrder][JP_FamilyMemberHistory_GenderedSiblingBirthOrder]
 
 ## 利用方法
 
@@ -243,7 +247,7 @@ GET [base]/FamilyMemberHistory?patient=Patient/123
           {
             "code" : "Extension",
             "profile" : [
-              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder"
+              "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder"
             ]
           }
         ]

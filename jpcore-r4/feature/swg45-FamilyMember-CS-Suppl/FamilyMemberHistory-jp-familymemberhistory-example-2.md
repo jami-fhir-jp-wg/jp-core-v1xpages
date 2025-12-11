@@ -8,7 +8,7 @@
 
 Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md)
 
-**JP Core FamilyMemberHistory Sibling Order Extension**: 長男
+**jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder**: 長男
 
 **status**: Partial
 
