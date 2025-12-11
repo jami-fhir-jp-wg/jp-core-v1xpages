@@ -8,10 +8,7 @@
 
 Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md)
 
-> **JP Core FamilyMemberHistory Sibling Order Extension**
-* siblingOrder: 1
-
-**jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_GenderedSiblingOrder**: 長男
+**JP Core FamilyMemberHistory Sibling Order Extension**: 長男
 
 **status**: Partial
 
@@ -49,14 +46,14 @@ Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemb
     {
       "extension" : [
         {
-          "url" : "siblingOrder",
+          "url" : "siblingBirthOrder",
           "valueInteger" : 1
+        },
+        {
+          "url" : "genderedsSiblingBirthOrder"
         }
       ],
-      "url" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder"
-    },
-    {
-      "url" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_GenderedSiblingOrder",
+      "url" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder",
       "valueCodeableConcept" : {
         "coding" : [
           {

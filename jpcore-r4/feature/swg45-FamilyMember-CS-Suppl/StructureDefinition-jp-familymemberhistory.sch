@@ -9,4 +9,10 @@
     you may need to use this schematron fragment to build a, 
     single schematron that validates contained resources (if you have any) 
   -->
+  <sch:pattern>
+    <sch:title>f:FamilyMemberHistory</sch:title>
+    <sch:rule context="f:FamilyMemberHistory">
+      <sch:assert test="count(f:extension[@url = 'http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder']) &lt;= 1">extension with URL = 'http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder': maximum cardinality of 'extension' is 1</sch:assert>
+    </sch:rule>
+  </sch:pattern>
 </sch:schema>

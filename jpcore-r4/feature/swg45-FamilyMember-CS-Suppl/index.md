@@ -6331,7 +6331,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "FamilyMemberHistory/jp-familymemberhistory-example-2"
         },
         "name" : "JP Core FamilyMemberHistory Example 家族歴（息子 長男）",
-        "description" : "息子（長男）の家族歴の例。同胞内出生順拡張を付ける例。",
+        "description" : "息子（長男）の家族歴、同胞内出生順拡張を付ける例。",
         "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory"
       },
       {
@@ -6373,7 +6373,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "StructureDefinition/jp-familymemberhistory-siblingorder"
         },
         "name" : "JP Core FamilyMemberHistory Sibling Order Extension",
-        "description" : "同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。valueは CodeableConcept で、JP_SiblingOrder_VS のコード（SO1, SO1F など）を推奨する。",
+        "description" : "同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。同胞はvalueは CodeableConcept で、JP_SiblingOrder_VS のコード（SO1, SO1F など）を推奨する。",
         "exampleBoolean" : false
       },
       {

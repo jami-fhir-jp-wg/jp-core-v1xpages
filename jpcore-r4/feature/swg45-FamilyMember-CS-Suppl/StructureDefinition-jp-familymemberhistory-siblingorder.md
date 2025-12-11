@@ -19,7 +19,7 @@
 * **項目**: *Copyright*
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
-同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。valueは CodeableConcept で、JP_SiblingOrder_VS のコード（SO1, SO1F など）を推奨する。
+同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。同胞はvalueは CodeableConcept で、JP_SiblingOrder_VS のコード（SO1, SO1F など）を推奨する。
 
 **Context of Use**
 
@@ -27,6 +27,7 @@
 
 **Usages:**
 
+* Use this Extension: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md)
 * Examples for this Extension: [FamilyMemberHistory/jp-familymemberhistory-example-2](FamilyMemberHistory-jp-familymemberhistory-example-2.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-familymemberhistory-siblingorder)
@@ -71,7 +72,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
       ]
     }
   ],
-  "description" : "同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。valueは CodeableConcept で、JP_SiblingOrder_VS のコード（SO1, SO1F など）を推奨する。",
+  "description" : "同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。同胞はvalueは CodeableConcept で、JP_SiblingOrder_VS のコード（SO1, SO1F など）を推奨する。",
   "jurisdiction" : [
     {
       "coding" : [
@@ -112,9 +113,9 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
         "definition" : "FamilyMemberHistory リソース全体に対して、関連する家族成員の同胞内出生順を表現する拡張。日本語での表現（長男、長女、次男など）を CodeableConcept で提供する。この拡張は社会学的・文化的文脈で利用され、医学的な遺伝情報とは独立している。家系図はスコープ外。"
       },
       {
-        "id" : "Extension.extension:siblingOrder",
+        "id" : "Extension.extension:siblingBirthOrder",
         "path" : "Extension.extension",
-        "sliceName" : "siblingOrder",
+        "sliceName" : "siblingBirthOrder",
         "short" : "同胞内出生順（整数）",
         "definition" : "同胞内での出生順を表現した数値。性別に関係なく、単純に出生順を示す。例えば、男、男、女の出生順の場合、長男は1、次男は2、長女は3など。",
         "min" : 0,
@@ -122,17 +123,17 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
         "mustSupport" : true
       },
       {
-        "id" : "Extension.extension:siblingOrder.extension",
+        "id" : "Extension.extension:siblingBirthOrder.extension",
         "path" : "Extension.extension.extension",
         "max" : "0"
       },
       {
-        "id" : "Extension.extension:siblingOrder.url",
+        "id" : "Extension.extension:siblingBirthOrder.url",
         "path" : "Extension.extension.url",
-        "fixedUri" : "siblingOrder"
+        "fixedUri" : "siblingBirthOrder"
       },
       {
-        "id" : "Extension.extension:siblingOrder.value[x]",
+        "id" : "Extension.extension:siblingBirthOrder.value[x]",
         "path" : "Extension.extension.value[x]",
         "type" : [
           {
@@ -142,9 +143,9 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
         "minValueInteger" : 1
       },
       {
-        "id" : "Extension.extension:genderedSiblingOrder",
+        "id" : "Extension.extension:genderedSiblingBirthOrder",
         "path" : "Extension.extension",
-        "sliceName" : "genderedSiblingOrder",
+        "sliceName" : "genderedSiblingBirthOrder",
         "short" : "性別同胞内出生順",
         "definition" : "同胞内での出生順を性別に表現した用語。用語で出生順が表現されており、用語選択のみで表現される（例：長男、長女など）。",
         "min" : 0,
@@ -152,17 +153,17 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
         "mustSupport" : true
       },
       {
-        "id" : "Extension.extension:genderedSiblingOrder.extension",
+        "id" : "Extension.extension:genderedSiblingBirthOrder.extension",
         "path" : "Extension.extension.extension",
         "max" : "0"
       },
       {
-        "id" : "Extension.extension:genderedSiblingOrder.url",
+        "id" : "Extension.extension:genderedSiblingBirthOrder.url",
         "path" : "Extension.extension.url",
-        "fixedUri" : "genderedSiblingOrder"
+        "fixedUri" : "genderedSiblingBirthOrder"
       },
       {
-        "id" : "Extension.extension:genderedSiblingOrder.value[x]",
+        "id" : "Extension.extension:genderedSiblingBirthOrder.value[x]",
         "path" : "Extension.extension.value[x]",
         "type" : [
           {

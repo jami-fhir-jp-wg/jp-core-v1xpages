@@ -220,6 +220,35 @@ GET [base]/FamilyMemberHistory?patient=Patient/123
         "definition" : "Significant health conditions for a person related to the patient relevant in the context of care for the patient.  \n患者の診療に関連する、患者家族の疾患に関する情報。"
       },
       {
+        "id" : "FamilyMemberHistory.extension",
+        "path" : "FamilyMemberHistory.extension",
+        "slicing" : {
+          "discriminator" : [
+            {
+              "type" : "value",
+              "path" : "url"
+            }
+          ],
+          "ordered" : false,
+          "rules" : "open"
+        }
+      },
+      {
+        "id" : "FamilyMemberHistory.extension:siblingOrder",
+        "path" : "FamilyMemberHistory.extension",
+        "sliceName" : "siblingOrder",
+        "min" : 0,
+        "max" : "1",
+        "type" : [
+          {
+            "code" : "Extension",
+            "profile" : [
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder"
+            ]
+          }
+        ]
+      },
+      {
         "id" : "FamilyMemberHistory.patient",
         "path" : "FamilyMemberHistory.patient",
         "type" : [
