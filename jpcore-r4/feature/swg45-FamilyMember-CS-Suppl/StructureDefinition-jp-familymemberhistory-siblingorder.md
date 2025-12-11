@@ -19,7 +19,7 @@
 * **項目**: *Copyright*
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
-同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。同胞はvalueは CodeableConcept で、JP_SiblingOrder_VS のコード（SO1, SO1F など）を推奨する。
+同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。
 
 **Context of Use**
 
@@ -72,7 +72,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
       ]
     }
   ],
-  "description" : "同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。同胞はvalueは CodeableConcept で、JP_SiblingOrder_VS のコード（SO1, SO1F など）を推奨する。",
+  "description" : "同胞内出生順（長男、長女など）をFamilyMemberHistoryに付記するための拡張。",
   "jurisdiction" : [
     {
       "coding" : [
@@ -110,7 +110,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
         "id" : "Extension",
         "path" : "Extension",
         "short" : "同胞内出生順",
-        "definition" : "FamilyMemberHistory リソース全体に対して、関連する家族成員の同胞内出生順を表現する拡張。日本語での表現（長男、長女、次男など）を CodeableConcept で提供する。この拡張は社会学的・文化的文脈で利用され、医学的な遺伝情報とは独立している。家系図はスコープ外。"
+        "definition" : "FamilyMemberHistoryのrelationship（続柄）と組み合わせて、関連する家族成員の同胞内出生順を表現する拡張。同胞内の順位を整数で、性別の同胞内の出生準名（長男、長女、次男、次女など）を CodeableConcept で表現する。この拡張は社会学的・文化的文脈で利用され、医学的な遺伝情報とは独立している。遺伝学的家系図はスコープ外。"
       },
       {
         "id" : "Extension.extension:siblingBirthOrder",
@@ -146,8 +146,8 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
         "id" : "Extension.extension:genderedSiblingBirthOrder",
         "path" : "Extension.extension",
         "sliceName" : "genderedSiblingBirthOrder",
-        "short" : "性別同胞内出生順",
-        "definition" : "同胞内での出生順を性別に表現した用語。用語で出生順が表現されており、用語選択のみで表現される（例：長男、長女など）。",
+        "short" : "性別同胞内出生順名称（用語）",
+        "definition" : "同胞内の性別の出生順を表す用語（例：長男、長女、次男、次女）。",
         "min" : 0,
         "max" : "1",
         "mustSupport" : true
