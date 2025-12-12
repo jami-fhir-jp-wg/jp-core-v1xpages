@@ -275,6 +275,11 @@ This publication includes IP covered under the following statements.
 * [JP Core Procedure Codes Medical CodeSystem](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/core/CodeSystem/JP_ProcedureCodesMedical_CS): [JP_Procedure](StructureDefinition-jp-procedure.md) and [Procedure/jp-procedure-example-1](Procedure-jp-procedure-example-1.md)
 
 
+* （一社）日本医療情報学会. CC BY-ND 4.0
+
+* [JP Core Gendered Sibling Order CodeSystem](CodeSystem-jp-genderedsiblingorder-cs.md): [FamilyMemberHistory/jp-familymemberhistory-example-2](FamilyMemberHistory-jp-familymemberhistory-example-2.md), [JP_FamilyMemberHistory_SiblingOrder](StructureDefinition-jp-familymemberhistory-siblingorder.md) and [JP_GenderedSiblingOrder_VS](ValueSet-jp-genderedsiblingorder-vs.md)
+
+
 **IP Statements に関する注意事項** 本 IP Statement は IG Publisher にて機械的に出力されたものである。SNOMED については JP Core としては利用しておらず、FHIR BASE の定義による影響を受けていることに注意すること。 Note that this IP Statement is mechanically output by IG Publisher, and that SNOMED is not used as JP Core, but is affected by the definition of FHIR BASE.
 
 ### 機械翻訳文章

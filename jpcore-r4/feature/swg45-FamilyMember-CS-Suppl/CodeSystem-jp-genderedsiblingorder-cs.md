@@ -7,7 +7,7 @@
 ## CodeSystem: JP Core Gendered Sibling Order CodeSystem 
 
 * **項目**: *定義URL*
-  * **内容**: http://jpfhir.jp/fhir/core/CodeSystem/JP_GenderedSiblingOrder_CS
+  * **内容**: http://jpfhir.jp/fhir/core/ValueSet/JP_GenderedSiblingOrder_CS
 * **項目**: *Version*
   * **内容**: 1.3.0-dev
 * **項目**: *Name*
@@ -24,7 +24,7 @@
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* This CodeSystem is not used here; it may be used elsewhere (e.g. specifications and/or implementations that use this content)
+* [JP_GenderedSiblingOrder_VS](ValueSet-jp-genderedsiblingorder-vs.md)
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
@@ -36,7 +36,7 @@
 {
   "resourceType" : "CodeSystem",
   "id" : "jp-genderedsiblingorder-cs",
-  "url" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_GenderedSiblingOrder_CS",
+  "url" : "http://jpfhir.jp/fhir/core/ValueSet/JP_GenderedSiblingOrder_CS",
   "version" : "1.3.0-dev",
   "name" : "JP_GenderedSiblingOrder_CS",
   "title" : "JP Core Gendered Sibling Order CodeSystem",
