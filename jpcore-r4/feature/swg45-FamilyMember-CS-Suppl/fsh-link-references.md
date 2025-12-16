@@ -57,9 +57,9 @@
 [jp-familymemberhistory-example-2]: FamilyMemberHistory-jp-familymemberhistory-example-2.html
 [jp-familymemberhistory-example-1]: FamilyMemberHistory-jp-familymemberhistory-example-1.html
 [JP_FamilyMemberHistory]: StructureDefinition-jp-familymemberhistory.html
-[JP_FamilyMemberHistory_SiblingOrder]: StructureDefinition-jp-familymemberhistory-siblingorder.html
-[JP_GenderedSiblingOrder_CS]: CodeSystem-jp-genderedsiblingorder-cs.html
-[JP_GenderedSiblingOrder_VS]: ValueSet-jp-genderedsiblingorder-vs.html
+[JP_FamilyMemberHistory_GenogramBasedSiblingOrder]: StructureDefinition-jp-familymemberhistory-genogrambasedsiblingorder.html
+[JP_GenderedSiblingBirthOrder_CS]: CodeSystem-jp-genderedsiblingbirthorder-cs.html
+[JP_GenderedSiblingBirthOrder_VS]: ValueSet-jp-genderedsiblingbirthorder-vs.html
 [JP_HumanName]: StructureDefinition-jp-humanname.html
 [jp-imagingstudy-endoscopy-example-1]: ImagingStudy-jp-imagingstudy-endoscopy-example-1.html
 [JP_ImagingStudy_Endoscopy]: StructureDefinition-jp-imagingstudy-endoscopy.html

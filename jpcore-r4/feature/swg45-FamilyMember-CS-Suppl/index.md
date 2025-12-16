@@ -223,7 +223,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
       ],
       "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
       "packageId" : "hl7.terminology.r4",
-      "version" : "7.0.0"
+      "version" : "7.0.1"
     },
     {
       "id" : "hl7ext",
@@ -6370,7 +6370,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           }
         ],
         "reference" : {
-          "reference" : "StructureDefinition/jp-familymemberhistory-siblingorder"
+          "reference" : "StructureDefinition/jp-familymemberhistory-genogrambasedsiblingorder"
         },
         "name" : "JP Core FamilyMemberHistory Sibling Order Extension",
         "description" : "同胞内順位をFamilyMemberHistoryに付記するための拡張。",
@@ -6384,10 +6384,10 @@ JP Core は以下の方々、および各サーブワーキンググループの
           }
         ],
         "reference" : {
-          "reference" : "CodeSystem/jp-genderedsiblingorder-cs"
+          "reference" : "CodeSystem/jp-genderedsiblingbirthorder-cs"
         },
-        "name" : "JP Core Gendered Sibling Order CodeSystem",
-        "description" : "性別の同胞内出生順を表す日本語ラベル（長男、長女、次男、次女など）を定義するCodeSystem。社会学的・文化的表現。",
+        "name" : "JP Core Gendered Sibling Birth Order CodeSystem",
+        "description" : "社会学的・文化的な性別の同胞内出生順の名称を定義するCodeSystem。日本国内では、長女、長男、次女、次男など。性の多様性はtext要素に詳述。外国人の場合、出身国の文化に基づく同胞内出生順の名称を表現するコードシステムを拡張することで対応できる。",
         "exampleBoolean" : false
       },
       {
@@ -6398,10 +6398,10 @@ JP Core は以下の方々、および各サーブワーキンググループの
           }
         ],
         "reference" : {
-          "reference" : "ValueSet/jp-genderedsiblingorder-vs"
+          "reference" : "ValueSet/jp-genderedsiblingbirthorder-vs"
         },
         "name" : "JP Core Gendered Sibling Order ValueSet",
-        "description" : "性別の同胞内出生順を表すValueSet。JP_GenderedSiblingOrder_CS を包含。",
+        "description" : "性別の同胞内出生順の名称を表すValueSet。JP_GenderedSiblingBirthOrder_CS を包含。",
         "exampleBoolean" : false
       },
       {

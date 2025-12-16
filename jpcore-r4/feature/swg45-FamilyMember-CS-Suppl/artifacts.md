@@ -127,7 +127,7 @@
 | [JP Core Disease Outcome Extension](StructureDefinition-jp-condition-disease-outcome.md) | 病名の転帰を格納するための拡張 |
 | [JP Core Disease Postfix Modifier Extension](StructureDefinition-jp-condition-disease-postfix-modifier.md) | 病名の後置修飾語を格納するための拡張 |
 | [JP Core Disease Prefix Modifier Extension](StructureDefinition-jp-condition-disease-prefix-modifier.md) | 病名の前置修飾語を格納するための拡張 |
-| [JP Core FamilyMemberHistory Sibling Order Extension](StructureDefinition-jp-familymemberhistory-siblingorder.md) | 同胞内順位をFamilyMemberHistoryに付記するための拡張。 |
+| [JP Core FamilyMemberHistory Sibling Order Extension](StructureDefinition-jp-familymemberhistory-genogrambasedsiblingorder.md) | 同胞内順位をFamilyMemberHistoryに付記するための拡張。 |
 | [JP Core Immunization CertificatedDate Extension](StructureDefinition-jp-immunization-certificateddate.md) | 検定年月日 |
 | [JP Core Immunization DueDateOfNextDose Extension](StructureDefinition-jp-immunization-duedateofnextdose.md) | 次回接種予定日 |
 | [JP Core Immunization ManufacturedDate Extension](StructureDefinition-jp-immunization-manufactureddate.md) | 製造年月日 |
@@ -183,7 +183,7 @@
 | [JP Core Dental SimplePresentTeethObservation ValueSet](ValueSet-jp-dental-simple-presentteeth-observation-vs.md) | JP Coreにて定義した歯科のObservationリソースに関する現存歯の観察結果コード（簡易版） |
 | [JP Core Dental SurfaceBodyStructure ValueSet](ValueSet-jp-dental-surfacebodystructure-vs.md) | JP Coreにて定義した歯科のObservationリソースに関する歯面に関連する詳細部位構造コード |
 | [JP Core Dental TeethObservation ValueSet](ValueSet-jp-dental-teethobservation-vs.md) | JP Coreにて定義した歯科のObservationリソースに関する歯面の詳細部位構造コード |
-| [JP Core Gendered Sibling Order ValueSet](ValueSet-jp-genderedsiblingorder-vs.md) | 性別の同胞内出生順を表すValueSet。JP_GenderedSiblingOrder_CS を包含。 |
+| [JP Core Gendered Sibling Order ValueSet](ValueSet-jp-genderedsiblingbirthorder-vs.md) | 性別の同胞内出生順の名称を表すValueSet。JP_GenderedSiblingBirthOrder_CS を包含。 |
 | [JP Core ImagingStudy Radiology BodySite ValueSet](ValueSet-jp-imagingstudy-radiology-bodysite-vs.md) | 放射線検査画像の対象となる身体部位のコード |
 | [JP Core Observation BodySite ValueSet](ValueSet-jp-observation-bodysite-vs.md) | 検査の対象となる身体部位のコード |
 | [JP Core Observation Electrocardiogram Component Code ValueSet](ValueSet-jp-observation-electrocardiogram-component-code-vs.md) | 心電図検査の一連の測定項目を示す値セット |
@@ -214,7 +214,7 @@
 | [JP Core Dental SimplePresentTeethObservation CodeSystem](CodeSystem-jp-dental-simple-presentteeth-observation-cs.md) | JP Coreにて定義した歯科のObservationリソースに関する現存歯の観察結果コード（簡易版） |
 | [JP Core Dental Surface BodyStructure CodeSystem](CodeSystem-jp-dental-surfacebodystructure-cs.md) | JP Coreにて定義した歯科のObservationリソースに関する歯面に関連する詳細部位構造コード |
 | [JP Core FamilyMember CodeSystem](CodeSystem-jp-v3RoleCode-cs.md) | http://terminology.ht7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の日本語補足 |
-| [JP Core Gendered Sibling Order CodeSystem](CodeSystem-jp-genderedsiblingorder-cs.md) | 性別の同胞内出生順を表す日本語ラベル（長男、長女、次男、次女など）を定義するCodeSystem。社会学的・文化的表現。 |
+| [JP Core Gendered Sibling Birth Order CodeSystem](CodeSystem-jp-genderedsiblingbirthorder-cs.md) | 社会学的・文化的な性別の同胞内出生順の名称を定義するCodeSystem。日本国内では、長女、長男、次女、次男など。性の多様性はtext要素に詳述。外国人の場合、出身国の文化に基づく同胞内出生順の名称を表現するコードシステムを拡張することで対応できる。 |
 | [JP Core Observation BodyMeasurement Code CodeSystem](CodeSystem-jp-observation-bodymeasurement-code-cs.md) | Observation（身体計測）で使用する項目コードのコードシステム （出典：看護実践用語標準マスターの概要＜看護行為編＞Ver. 3. 6） |
 | [JP Core Observation Electrocardiogram Duration CodeSystem](CodeSystem-jp-observation-electrocardiogram-duration-cs.md) | JP Coreにて定義した心電図のObservationリソースに関する詳細分類コード（検査時間） |
 | [JP Core Observation Electrocardiogram Extra Category CodeSystem](CodeSystem-jp-observation-electrocardiogram-extracategory-cs.md) | JP Coreにて定義した心電図のObservationリソースに関する分類コード |

@@ -8,11 +8,13 @@
 
 Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md)
 
-**jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder**: 長男
+> **JP Core FamilyMemberHistory Sibling Order Extension**
+* siblingBirthOrder: 1
+* genderedSiblingBirthOrder: GSBO1_M
 
 **status**: Partial
 
-**patient**: [山田 太郎](Patient-jp-patient-example-1.md)
+**patient**: [山田 次郎](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/jpfhir-terminology/Patient/jp-patient-example-2)
 
 **relationship**: natural son
 
@@ -50,25 +52,23 @@ Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemb
           "valueInteger" : 1
         },
         {
-          "url" : "genderedsSiblingBirthOrder"
+          "url" : "genderedSiblingBirthOrder",
+          "valueCodeableConcept" : {
+            "coding" : [
+              {
+                "code" : "GSBO1_M"
+              }
+            ]
+          }
         }
       ],
-      "url" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder",
-      "valueCodeableConcept" : {
-        "coding" : [
-          {
-            "system" : "http://jpfhir.jp/fhir/core/ValueSet/JP_GenderedSiblingOrder_CS",
-            "code" : "GSO1_M",
-            "display" : "長男"
-          }
-        ]
-      }
+      "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_GenogramBasedSiblingOrder"
     }
   ],
   "status" : "partial",
   "patient" : {
-    "reference" : "Patient/jp-patient-example-1",
-    "display" : "山田 太郎"
+    "reference" : "Patient/jp-patient-example-2",
+    "display" : "山田 次郎"
   },
   "relationship" : {
     "coding" : [

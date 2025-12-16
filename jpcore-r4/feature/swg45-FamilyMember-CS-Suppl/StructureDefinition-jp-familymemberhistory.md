@@ -66,7 +66,12 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
 
 本プロファイルで使用される拡張は次の通りである。
 
-* [JP_SiblingOrder][JP_FamilyMemberHistory_SiblingOrder]
+* 拡張: ジェノグラム用同胞内出生順
+  * 説明: ジェノグラムを用途とした社会学的・文化的な同胞内出生順の複合拡張
+  * URL: http://jpfhir.jp/fhir/core/ValueSet/JP_GenderedSiblingOrder_VS
+  * 値の型: Extension
+
+* [JP_SiblingOrder][JP_FamilyMemberHistory_GenogramBasedSiblingOrder]
 * [JP_SiblingBirthOrder][JP_FamilyMemberHistory_SiblingBirthOrder]
 * [JP_GenderedSiblingBirthOrder][JP_FamilyMemberHistory_GenderedSiblingBirthOrder]
 
@@ -238,16 +243,16 @@ GET [base]/FamilyMemberHistory?patient=Patient/123
         }
       },
       {
-        "id" : "FamilyMemberHistory.extension:siblingOrder",
+        "id" : "FamilyMemberHistory.extension:genogramBasedSiblingOrder",
         "path" : "FamilyMemberHistory.extension",
-        "sliceName" : "siblingOrder",
+        "sliceName" : "genogramBasedSiblingOrder",
         "min" : 0,
         "max" : "1",
         "type" : [
           {
             "code" : "Extension",
             "profile" : [
-              "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder"
+              "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_GenogramBasedSiblingOrder"
             ]
           }
         ]
