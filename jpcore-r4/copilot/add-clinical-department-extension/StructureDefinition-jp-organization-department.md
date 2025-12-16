@@ -52,7 +52,7 @@
 
 **Usages:**
 
-* Refer to this Profile: [JP Core Department Extension](StructureDefinition-jp-department.md)
+* Refer to this Profile: [JP Core Common Department Extension](StructureDefinition-jp-common-department.md)
 * Examples for this Profile: [第一内科](Organization-jp-organization-department-example-01.md) and [整形外科](Organization-jp-organization-department-example-02.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-organization-department)

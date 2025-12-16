@@ -441,6 +441,32 @@ Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Medicatio
 "jp-careplan","CarePlan.note","CarePlan.note","","","",0,*,"","","","Annotation {[]} {[]}
 ","この計画に対するコメント","介護計画についてのその他の項目には含まれていない一般的な注意事項","","Used to capture information that applies to the plan as a whole that doesn't fit into discrete elements.","","","","","","","",,,,,"",,,,"CarePlan.note",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 "
+"jp-common-department","Extension","Extension","","","",0,*,"","","","null {[]} {[]}
+","診療科情報","そのリソースに関連する診療科を表す拡張。診療科コード（valueCodeableConcept）または診療科組織への参照（valueReference）のいずれかを使用できる。","診療科情報は以下の2つの方法で表現できる：
+1. valueCodeableConcept: SS-MIX2診療科コードなどのコード化された診療科情報
+2. valueReference: JP_Organization_Departmentプロファイルを使用した診療科組織への参照
+
+用途に応じて適切な表現方法を選択すること。診療科名称の統一が困難な場合は、CodeableConceptのtext要素を使用してテキストベースで診療科名を記録することも可能。","","","","","","","","",,,,,"",,,,"Extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"jp-common-department","Extension.id","Extension.id","","","",0,1,"","","","string {[]} {[]}
+","要素間参照のための一意のID / Unique id for inter-element referencing","リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"",""
+"jp-common-department","Extension.extension","Extension.extension","","","",0,0,"","","","Extension {[]} {[]}
+","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
+","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"jp-common-department","Extension.url","Extension.url","","","",1,1,"","","","uri {[]} {[]}
+","拡張機能の意味を識別します / identifies the meaning of the extension","拡張コードの定義のソース - 論理名またはURL。 / Source of the definition for the extension code - a logical name or a URL.","定義は、拡張性コードの計算可能または人間が読み取る可能性のある定義を直接指している場合があります。または、他の仕様で宣言されているように、論理的なURIである場合があります。定義は、拡張機能を定義する構造定義のURIでなければなりません。 / The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.","","","","<valueUri xmlns=""http://hl7.org/fhir"" value=""http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department""/>","","","","",,,,,"",,,,"Extension.url",1,1,"",""
+"jp-common-department","Extension.value[x]","Extension.value[x]","","","",0,1,"","","","CodeableConcept {[]} {[]}
+Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department]]}","拡張値の値 / Value of extension","拡張値の値 - データ型の制約付きセットの1つでなければなりません（リストの[拡張性]（拡張性]（拡張性。html）を参照）。 / Value of extension - must be one of a constrained set of the data types (see [Extensibility](http://hl7.org/fhir/R4/extensibility.html) for a list).","","","","","","","","","",,,,,"","type:$this}
+","",,"closed","Extension.value[x]",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+"
+"jp-common-department","Extension.value[x]:valueCodeableConcept","Extension.value[x]","valueCodeableConcept","","",0,1,"","","","CodeableConcept {[]} {[]}
+","診療科コード","SS-MIX2診療科コード等を使用した診療科のコード表現","診療科コードが利用可能な場合に使用する。SS-MIX2診療科コード（2桁または3桁）の使用を推奨するが、他のコードシステムも使用可能。診療科名称のみの場合はtext要素に設定する。","","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/core/ValueSet/JP_Department_SsMix_VS","",,,,"Extension.value[x]",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+"
+"jp-common-department","Extension.value[x]:valueReference","Extension.value[x]","valueReference","","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department]]}
+","診療科組織への参照","診療科を表すJP_Organization_Departmentプロファイルへの参照","診療科をOrganizationリソースとして管理している場合に使用する。診療科の詳細情報（所属医療機関、連絡先等）を含める場合に適している。","","","","","","","","",,,,,"",,,,"Extension.value[x]",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+"
 "jp-condition-diagnosis","Condition","Condition","","","",0,*,"","","","null {[]} {[]}
 ","Detailed information about disease. 患者の診断に関する詳細な情報","A clinical condition, problem, diagnosis, or other event, situation, issue, or clinical concept that has risen to a level of concern.
 
@@ -1813,32 +1839,6 @@ subrogation=trueの場合、この保険インスタンスは裁定のためで�
 この保険の適用範囲を構成するポリシ。","References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.  
 参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。","To reference the legally binding contract between the policy holder and the insurer.  
 契約者と保険者との間の法的拘束力のある契約を参照するため。","","","","","","","",,,,,"",,,,"Coverage.contract",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-"
-"jp-department","Extension","Extension","","","",0,*,"","","","null {[]} {[]}
-","診療科情報","そのリソースに関連する診療科を表す拡張。診療科コード（valueCodeableConcept）または診療科組織への参照（valueReference）のいずれかを使用できる。","診療科情報は以下の2つの方法で表現できる：
-1. valueCodeableConcept: SS-MIX2診療科コードなどのコード化された診療科情報
-2. valueReference: JP_Organization_Departmentプロファイルを使用した診療科組織への参照
-
-用途に応じて適切な表現方法を選択すること。診療科名称の統一が困難な場合は、CodeableConceptのtext要素を使用してテキストベースで診療科名を記録することも可能。","","","","","","","","",,,,,"",,,,"Extension",0,*,"ele-1
-","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"jp-department","Extension.id","Extension.id","","","",0,1,"","","","string {[]} {[]}
-","要素間参照のための一意のID / Unique id for inter-element referencing","リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"",""
-"jp-department","Extension.extension","Extension.extension","","","",0,0,"","","","Extension {[]} {[]}
-","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
-","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"jp-department","Extension.url","Extension.url","","","",1,1,"","","","uri {[]} {[]}
-","拡張機能の意味を識別します / identifies the meaning of the extension","拡張コードの定義のソース - 論理名またはURL。 / Source of the definition for the extension code - a logical name or a URL.","定義は、拡張性コードの計算可能または人間が読み取る可能性のある定義を直接指している場合があります。または、他の仕様で宣言されているように、論理的なURIである場合があります。定義は、拡張機能を定義する構造定義のURIでなければなりません。 / The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.","","","","<valueUri xmlns=""http://hl7.org/fhir"" value=""http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Department""/>","","","","",,,,,"",,,,"Extension.url",1,1,"",""
-"jp-department","Extension.value[x]","Extension.value[x]","","","",0,1,"","","","CodeableConcept {[]} {[]}
-Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department]]}","拡張値の値 / Value of extension","拡張値の値 - データ型の制約付きセットの1つでなければなりません（リストの[拡張性]（拡張性]（拡張性。html）を参照）。 / Value of extension - must be one of a constrained set of the data types (see [Extensibility](http://hl7.org/fhir/R4/extensibility.html) for a list).","","","","","","","","","",,,,,"","type:$this}
-","",,"closed","Extension.value[x]",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-"
-"jp-department","Extension.value[x]:valueCodeableConcept","Extension.value[x]","valueCodeableConcept","","",0,1,"","","","CodeableConcept {[]} {[]}
-","診療科コード","SS-MIX2診療科コード等を使用した診療科のコード表現","診療科コードが利用可能な場合に使用する。SS-MIX2診療科コード（2桁または3桁）の使用を推奨するが、他のコードシステムも使用可能。診療科名称のみの場合はtext要素に設定する。","","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/core/ValueSet/JP_Department_SsMix_VS","",,,,"Extension.value[x]",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-"
-"jp-department","Extension.value[x]:valueReference","Extension.value[x]","valueReference","","",0,1,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department]]}
-","診療科組織への参照","診療科を表すJP_Organization_Departmentプロファイルへの参照","診療科をOrganizationリソースとして管理している場合に使用する。診療科の詳細情報（所属医療機関、連絡先等）を含める場合に適している。","","","","","","","","",,,,,"",,,,"Extension.value[x]",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
 "jp-device","Device","Device","","","",0,*,"","","","null {[]} {[]}
 ","ヘルスケアで使用されるアイテム / Item used in healthcare","その活動によって実質的に変更されることなく、ヘルスケアの提供に使用される製造されたアイテムの一種。このデバイスは、医療または非医療デバイスである場合があります。 / A type of a manufactured item that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device.","","","","","","","","","",,,,,"",,,,"Device",0,*,"","dom-2:リソースが別のリソースに含まれている場合、ネストされたリソースを含めてはなりません / If the resource is contained in another resource, it SHALL NOT contain nested Resources {contained.contained.empty()}

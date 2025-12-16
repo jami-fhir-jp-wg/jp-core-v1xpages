@@ -8,7 +8,7 @@
 
 Profile: [JP Core MedicationRequest Profile](StructureDefinition-jp-medicationrequest.md)
 
-**JP Core Department Extension**: 内科
+**JP Core Common Department Extension**: 内科
 
 **identifier**: [JP_Medication_RpGroup_Number_NamingSystem](NamingSystem-jp-medication-rpgroup-number-namingsystem.md)/1, [JP_Medication_RpGruop_Index_NamingSystem](NamingSystem-jp-medication-rpgruop-index-namingsystem.md)/1, [JP_core_resourceInstance_identifier_NamingSystem](NamingSystem-jp-core-resourceInstance-identifier.md)/MR-20230401-0001, [JP_IdSystem_PrescriptionDocumentID_NamingSystem](NamingSystem-jp-IdSystem-prescriptionDocumentID-namingsystem.md)/20230401-0000000001
 
@@ -56,7 +56,7 @@ Profile: [JP Core MedicationRequest Profile](StructureDefinition-jp-medicationre
   },
   "extension" : [
     {
-      "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Department",
+      "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department",
       "valueCodeableConcept" : {
         "coding" : [
           {

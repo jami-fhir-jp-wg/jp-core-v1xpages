@@ -1,19 +1,19 @@
-# JP Core Department Extension - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
+# JP Core Common Department Extension - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **JP Core Department Extension**
+* **JP Core Common Department Extension**
 
-## Extension: JP Core Department Extension 
+## Extension: JP Core Common Department Extension 
 
 * **項目**: *定義URL*
-  * **内容**: http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Department
+  * **内容**: http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department
 * **項目**: *Version*
   * **内容**: 1.3.0-dev
 * **項目**: *Name*
-  * **内容**: JP_Department
+  * **内容**: JP_Common_Department
 * **項目**: *Title*
-  * **内容**: JP Core Department Extension
+  * **内容**: JP Core Common Department Extension
 * **項目**: *Status*
   * **内容**: Active ( 2025-10-28 )
 * **項目**: *Copyright*
@@ -29,7 +29,7 @@
 
 * Examples for this Extension: [MedicationRequest/jp-medicationrequest-department-example-01](MedicationRequest-jp-medicationrequest-department-example-01.md), [MedicationRequest/jp-medicationrequest-department-example-02](MedicationRequest-jp-medicationrequest-department-example-02.md) and [ServiceRequest/jp-servicerequest-department-example-03](ServiceRequest-jp-servicerequest-department-example-03.md)
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-department)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-common-department)
 
 ### Formal Views of Extension Content
 
@@ -37,7 +37,7 @@ You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir
 
  
 
-Other representations of profile: [CSV](StructureDefinition-jp-department.csv), [Excel](StructureDefinition-jp-department.xlsx), [Schematron](StructureDefinition-jp-department.sch) 
+Other representations of profile: [CSV](StructureDefinition-jp-common-department.csv), [Excel](StructureDefinition-jp-common-department.xlsx), [Schematron](StructureDefinition-jp-common-department.sch) 
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
@@ -48,11 +48,11 @@ Other representations of profile: [CSV](StructureDefinition-jp-department.csv), 
 ```json
 {
   "resourceType" : "StructureDefinition",
-  "id" : "jp-department",
-  "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Department",
+  "id" : "jp-common-department",
+  "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department",
   "version" : "1.3.0-dev",
-  "name" : "JP_Department",
-  "title" : "JP Core Department Extension",
+  "name" : "JP_Common_Department",
+  "title" : "JP Core Common Department Extension",
   "status" : "active",
   "date" : "2025-10-28",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
@@ -120,7 +120,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-department.csv), 
       {
         "id" : "Extension.url",
         "path" : "Extension.url",
-        "fixedUri" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Department"
+        "fixedUri" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department"
       },
       {
         "id" : "Extension.value[x]",

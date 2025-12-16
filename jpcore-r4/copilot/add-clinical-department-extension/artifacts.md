@@ -122,10 +122,10 @@
 
 | | |
 | :--- | :--- |
+| [JP Core Common Department Extension](StructureDefinition-jp-common-department.md) | 診療科情報を格納するための汎用的な拡張。様々なリソースで診療科情報を表現する際に使用できる。診療科コード（CodeableConcept）または診療科組織への参照（Reference）のいずれかを指定する。 |
 | [JP Core Coverage InsuredPersonNumber Extension](StructureDefinition-jp-coverage-insuredpersonnumber.md) | 健康保険における被保険者証番号を示す拡張 |
 | [JP Core Coverage InsuredPersonSubNumber Extension](StructureDefinition-jp-coverage-insuredpersonsubnumber.md) | 健康保険における被保険者証番号の枝番を示す拡張 |
 | [JP Core Coverage InsuredPersonSymbol Extension](StructureDefinition-jp-coverage-insuredpersonsymbol.md) | 健康保険における被保険者証記号を示す拡張 |
-| [JP Core Department Extension](StructureDefinition-jp-department.md) | 診療科情報を格納するための汎用的な拡張。様々なリソースで診療科情報を表現する際に使用できる。診療科コード（CodeableConcept）または診療科組織への参照（Reference）のいずれかを指定する。 |
 | [JP Core Disease Outcome Extension](StructureDefinition-jp-condition-disease-outcome.md) | 病名の転帰を格納するための拡張 |
 | [JP Core Disease Postfix Modifier Extension](StructureDefinition-jp-condition-disease-postfix-modifier.md) | 病名の後置修飾語を格納するための拡張 |
 | [JP Core Disease Prefix Modifier Extension](StructureDefinition-jp-condition-disease-prefix-modifier.md) | 病名の前置修飾語を格納するための拡張 |

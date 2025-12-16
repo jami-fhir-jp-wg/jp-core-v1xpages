@@ -2,6 +2,7 @@
 [jp-allergyintolerance-example-1]: AllergyIntolerance-jp-allergyintolerance-example-1.html
 [JP_AllergyIntolerance]: StructureDefinition-jp-allergyintolerance.html
 [jp-client-capabilitystatement]: CapabilityStatement-jp-client-capabilitystatement.html
+[JP_Common_Department]: StructureDefinition-jp-common-department.html
 [JP_Condition_BodySite_VS]: ValueSet-jp-condition-bodysite-vs.html
 [jp-condition-diagnosis-example-1]: Condition-jp-condition-diagnosis-example-1.html
 [JP_Condition_Diagnosis]: StructureDefinition-jp-condition-diagnosis.html
@@ -34,7 +35,6 @@
 [JP_DentalSurfaceBodyStructure_CS]: CodeSystem-jp-dental-surfacebodystructure-cs.html
 [JP_DentalSurfaceBodyStructure_VS]: ValueSet-jp-dental-surfacebodystructure-vs.html
 [JP_DentalTeethObservation_VS]: ValueSet-jp-dental-teethobservation-vs.html
-[JP_Department]: StructureDefinition-jp-department.html
 [JP_DiagnosticReport_Common]: StructureDefinition-jp-diagnosticreport-common.html
 [jp-diagnosticreport-dentaloral-example-1]: DiagnosticReport-jp-diagnosticreport-dentaloral-example-1.html
 [jp-diagnosticreport-dentaloral-example-2]: DiagnosticReport-jp-diagnosticreport-dentaloral-example-2.html

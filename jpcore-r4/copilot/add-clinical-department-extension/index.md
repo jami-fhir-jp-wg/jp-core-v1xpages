@@ -223,7 +223,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
       ],
       "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
       "packageId" : "hl7.terminology.r4",
-      "version" : "7.0.0"
+      "version" : "7.0.1"
     },
     {
       "id" : "hl7ext",
@@ -891,7 +891,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           },
           {
             "url" : "value",
-            "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Department"
+            "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -3566,7 +3566,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           },
           {
             "url" : "value",
-            "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Department"
+            "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -5648,6 +5648,20 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/jp-common-department"
+        },
+        "name" : "JP Core Common Department Extension",
+        "description" : "診療科情報を格納するための汎用的な拡張。様々なリソースで診療科情報を表現する際に使用できる。診療科コード（CodeableConcept）または診療科組織への参照（Reference）のいずれかを指定する。",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
             "valueString" : "ValueSet"
           }
         ],
@@ -6090,20 +6104,6 @@ JP Core は以下の方々、および各サーブワーキンググループの
         },
         "name" : "JP Core Dental TeethObservation ValueSet",
         "description" : "JP Coreにて定義した歯科のObservationリソースに関する歯面の詳細部位構造コード",
-        "exampleBoolean" : false
-      },
-      {
-        "extension" : [
-          {
-            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "StructureDefinition:extension"
-          }
-        ],
-        "reference" : {
-          "reference" : "StructureDefinition/jp-department"
-        },
-        "name" : "JP Core Department Extension",
-        "description" : "診療科情報を格納するための汎用的な拡張。様々なリソースで診療科情報を表現する際に使用できる。診療科コード（CodeableConcept）または診療科組織への参照（Reference）のいずれかを指定する。",
         "exampleBoolean" : false
       },
       {

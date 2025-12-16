@@ -8,7 +8,7 @@
 
 Profile: [JP Core MedicationRequest Profile](StructureDefinition-jp-medicationrequest.md)
 
-**JP Core Department Extension**: [第一内科](Organization-jp-organization-department-example-01.md)
+**JP Core Common Department Extension**: [第一内科](Organization-jp-organization-department-example-01.md)
 
 **identifier**: [JP_Medication_RpGroup_Number_NamingSystem](NamingSystem-jp-medication-rpgroup-number-namingsystem.md)/2, [JP_Medication_RpGruop_Index_NamingSystem](NamingSystem-jp-medication-rpgruop-index-namingsystem.md)/1, [JP_core_resourceInstance_identifier_NamingSystem](NamingSystem-jp-core-resourceInstance-identifier.md)/MR-20230401-0002, [JP_IdSystem_PrescriptionDocumentID_NamingSystem](NamingSystem-jp-IdSystem-prescriptionDocumentID-namingsystem.md)/20230401-0000000002
 
@@ -56,7 +56,7 @@ Profile: [JP Core MedicationRequest Profile](StructureDefinition-jp-medicationre
   },
   "extension" : [
     {
-      "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Department",
+      "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department",
       "valueReference" : {
         "reference" : "Organization/jp-organization-department-example-01",
         "display" : "第一内科"

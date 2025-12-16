@@ -8,7 +8,7 @@
 
 Profile: [JP Core ServiceRequest Common Profile](StructureDefinition-jp-servicerequest-common.md)
 
-**JP Core Department Extension**: 消化器腫瘍外科
+**JP Core Common Department Extension**: 消化器腫瘍外科
 
 **identifier**: `http://abc-hospital.local/serviceRequest-identifier`/SR-2023-0401-001
 
@@ -39,7 +39,7 @@ Profile: [JP Core ServiceRequest Common Profile](StructureDefinition-jp-servicer
   },
   "extension" : [
     {
-      "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Department",
+      "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department",
       "valueCodeableConcept" : {
         "text" : "消化器腫瘍外科"
       }
