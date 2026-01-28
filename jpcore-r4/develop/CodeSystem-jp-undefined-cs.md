@@ -26,7 +26,7 @@
 
 * [JP_Undefined_VS](ValueSet-jp-undefined-vs.md)
 
-このcase-sensitiveコードシステム `http://jpfhir.jp/fhir/core/CodeSystem/JP_Undefined_CS` は以下のコードを含むフラグメントを提供します:
+このコードシステム は以下のコードを含むフラグメントを提供します:
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
