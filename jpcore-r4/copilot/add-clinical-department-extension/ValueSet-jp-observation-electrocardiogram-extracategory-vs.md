@@ -28,6 +28,8 @@ JP Coreにて定義した心電図のObservationリソースに関する分類�
 
 ### Logical Definition (CLD)
 
+* Include all codes defined in [`http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationElectrocardiogramExtraCategory_CS`](CodeSystem-jp-observation-electrocardiogram-extracategory-cs.md)version 📦1.3.0-dev
+
  
 
 ### Expansion

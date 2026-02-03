@@ -52,9 +52,9 @@
     <packageId value="hl7.fhir.uv.extensions.r4"/>
     <version value="5.2.0"/>
   </dependsOn>
-  <dependsOn id="jpfhir_terminology_r4">
+  <dependsOn id="jpfhir_terminology">
     <uri value="http://jpfhir.jp/fhir/jpfhir-terminology/ImplementationGuide/jpfhir-terminology"/>
-    <packageId value="jpfhir-terminology.r4"/>
+    <packageId value="jpfhir-terminology"/>
     <version value="1.4.0"/>
   </dependsOn>
   <definition>
@@ -407,6 +407,14 @@
         <valueString value="special-url"/>
       </extension>
       <extension url="value">
+        <valueString value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="special-url"/>
+      </extension>
+      <extension url="value">
         <valueString value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseaseOutcome"/>
       </extension>
     </extension>
@@ -448,14 +456,6 @@
       </extension>
       <extension url="value">
         <valueString value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSymbol"/>
-      </extension>
-    </extension>
-    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
-      <extension url="code">
-        <valueString value="special-url"/>
-      </extension>
-      <extension url="value">
-        <valueString value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -2055,6 +2055,14 @@
         <valueCode value="special-url"/>
       </extension>
       <extension url="value">
+        <valueString value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="special-url"/>
+      </extension>
+      <extension url="value">
         <valueString value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseaseOutcome"/>
       </extension>
     </extension>
@@ -2096,14 +2104,6 @@
       </extension>
       <extension url="value">
         <valueString value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSymbol"/>
-      </extension>
-    </extension>
-    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
-      <extension url="code">
-        <valueCode value="special-url"/>
-      </extension>
-      <extension url="value">
-        <valueString value="http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -5518,10 +5518,10 @@
         <valueString value="Organization"/>
       </extension>
       <reference>
-        <reference value="Organization/jp-organization-department-example-01"/>
+        <reference value="Organization/jp-organization-department-example-02"/>
       </reference>
-      <name value="JP Core Organization Department Example 内科診療科"/>
-      <description value="JP_Organization_Departmentリソースの例。内科診療科を表すOrganization例"/>
+      <name value="JP Core Organization Department Example 内科診療科（ローカルコード使用）"/>
+      <description value="JP_Organization_Departmentリソースの例。内科診療科を表すOrganization例。医療機関固有の診療科コード（ローカルコード）を使用している。"/>
       <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department"/>
     </resource>
     <resource>
@@ -5529,10 +5529,21 @@
         <valueString value="Organization"/>
       </extension>
       <reference>
-        <reference value="Organization/jp-organization-department-example-02"/>
+        <reference value="Organization/jp-organization-department-example-01"/>
       </reference>
-      <name value="JP Core Organization Department Example 整形外科診療科"/>
-      <description value="JP_Organization_Departmentリソースの例。整形外科診療科を表すOrganization例"/>
+      <name value="JP Core Organization Department Example 循環器内科（両方のコード使用）"/>
+      <description value="JP_Organization_Departmentリソースの例。循環器内科を表すOrganization例。ローカルコードとSS-MIX2コードの両方を使用している（推奨パターン）。"/>
+      <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/jp-organization-department-example-03"/>
+      </reference>
+      <name value="JP Core Organization Department Example 整形外科診療科（SS-MIX2コード使用）"/>
+      <description value="JP_Organization_Departmentリソースの例。整形外科診療科を表すOrganization例。SS-MIX2標準診療科コードを使用している。"/>
       <exampleCanonical value="http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department"/>
     </resource>
     <resource>
@@ -5543,7 +5554,7 @@
         <reference value="StructureDefinition/jp-organization-department"/>
       </reference>
       <name value="JP Core Organization Department Profile"/>
-      <description value="このプロファイルはJP_Organizationリソースに対して、診療科情報のデータを送受信するための制約と拡張を定めたものである。診療科を表すOrganizationとして利用することを想定している。"/>
+      <description value="このプロファイルはOrganizationリソースに対して、診療科情報のデータを送受信するための制約と拡張を定めたものである。診療科を表すOrganizationとして利用することを想定している。"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -6182,6 +6193,17 @@
       </reference>
       <name value="jp-medicationrequest-start-sp"/>
       <description value="MedicationRequestリソースをExtensionの服用期間の開始日で検索するパラメータを定義する。"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="NamingSystem"/>
+      </extension>
+      <reference>
+        <reference value="NamingSystem/jp-medicationrequestdepartment-namingsystem"/>
+      </reference>
+      <name value="jp-medicationrequestdepartment-namingsystem"/>
+      <description value="JP Core MedicationRequestDepartment NamingSystem 処方オーダ時に使用する診療科コード。医療機関固有の診療科コードを識別するためのコード体系。"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>

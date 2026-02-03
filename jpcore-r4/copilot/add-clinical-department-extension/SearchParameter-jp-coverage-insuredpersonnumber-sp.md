@@ -20,6 +20,21 @@
  
 CoverageリソースのInsuredPersonNumber(健康保険における被保険者証番号)に関する検索を定義する。 
 
+## JP_Coverage_InsuredPersonNumber_SP
+
+Parameter `jp-insured-personnumber`:`string`
+
+CoverageリソースのInsuredPersonNumber(健康保険における被保険者証番号)に関する検索を定義する。
+
+| | |
+| :--- | :--- |
+| Resource | [Coverage](http://hl7.org/fhir/R4/coverage.html) |
+| Expression | `Coverage.extension('http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonNumber').value.ofType(string)` |
+| Processing Mode | Normal |
+| Multiples | * multipleAnd: The parameter may repeat in order to specify multiple values that must all be true
+* multipleOr: The parameter may have multiple values (separated by comma) where at least one must be true
+ |
+
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
 [GitHub PullRequest](https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls)にて受け付けている。

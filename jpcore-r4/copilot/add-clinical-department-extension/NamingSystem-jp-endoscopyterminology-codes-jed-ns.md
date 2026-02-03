@@ -20,6 +20,30 @@
  
 日本消化器内視鏡学会が推進するJED (Japan Endoscopy Database) Projectで定義されるコード 
 
+### Summary
+
+| | |
+| :--- | :--- |
+| Defining URL | http://jpfhir.jp/fhir/core/NamingSystem/jp-endoscopyterminology-codes-jed-ns |
+| Version | 1.3.0-dev |
+| Name | JP_Endoscopy_TerminologyCodes_JED_NamingSystem |
+| Status | active |
+| Definition | 日本消化器内視鏡学会が推進するJED (Japan Endoscopy Database) Projectで定義されるコード |
+| Publisher | FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) |
+| Copyright | Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会 |
+
+### Identifiers
+
+* **Type**: OID
+  * **Value**: 1.2.392.200270.4.1000.1
+  * **Preferred**: 
+* **Type**: URI
+  * **Value**: urn:oid:1.2.392.200270.4.1000.1
+  * **Preferred**: true
+* **Type**: URI
+  * **Value**: http://jpfhir.jp/fhir/core/CodeSystem/JP_EndoscopyTerminologyCodesJED_CS
+  * **Preferred**: 
+
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
 [GitHub PullRequest](https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls)にて受け付けている。

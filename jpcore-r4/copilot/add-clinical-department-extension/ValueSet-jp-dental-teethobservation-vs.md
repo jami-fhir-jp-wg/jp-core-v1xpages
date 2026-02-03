@@ -28,9 +28,18 @@ JP Coreにて定義した歯科のObservationリソースに関する歯面の�
 
 ### Logical Definition (CLD)
 
+This value set includes codes based on the following rules:
+
+* Include all codes defined in [`http://jpfhir.jp/fhir/core/CodeSystem/JP_DentalPresentTeethObservation_CS`](CodeSystem-jp-dental-presentteeth-observation-cs.md)version 📦1.3.0-dev
+* Include all codes defined in [`http://jpfhir.jp/fhir/core/CodeSystem/JP_DentalSimplePresentTeethObservation_CS`](CodeSystem-jp-dental-simple-presentteeth-observation-cs.md)version 📦1.3.0-dev
+* Include all codes defined in [`http://jpfhir.jp/fhir/core/CodeSystem/JP_DentalMissingTeethObservation_CS`](CodeSystem-jp-dental-missingteeth-observation-cs.md)version 📦1.3.0-dev
+* Include all codes defined in [`http://jpfhir.jp/fhir/core/CodeSystem/JP_DentalSimpleMissingTeethObservation_CS`](CodeSystem-jp-dental-simple-missingteeth-observation-cs.md)version 📦1.3.0-dev
+
  
 
 ### Expansion
+
+This value set contains 439 concepts
 
 -------
 

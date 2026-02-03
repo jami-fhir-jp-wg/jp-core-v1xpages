@@ -23,6 +23,29 @@
 
 **Context of Use**
 
+診療科情報を格納するための汎用的な拡張。様々なリソースで診療科情報を表現する際に使用できる。
+
+## 背景および想定シナリオ
+
+本拡張は、以下のようなユースケースを想定している。
+
+* 処方オーダー（MedicationRequest）における依頼診療科の記録
+* 検査依頼（ServiceRequest）における依頼診療科の記録
+* その他のリソースにおける診療科情報の付加
+
+国内の医療情報交換では診療科の情報を必要とするケースが多いが、FHIRの各リソースには診療科を格納する標準要素が用意されていない。そのため、診療科情報を一貫した方法で表現し、相互運用性を高めることを目的とする。
+
+## スコープ
+
+本拡張は、任意のリソースに対して診療科情報を付加するための汎用的な拡張である。診療科情報は以下の2つの方法で表現できる。
+
+1. **valueCodeableConcept**: SS-MIX2診療科コードなどのコード化された診療科情報
+1. **valueReference**: JP_Organization_Departmentプロファイルを使用した診療科組織への参照
+
+用途に応じて適切な表現方法を選択すること。診療科名称は医療機関ごとに異なることが多いため、コードが利用できない場合はCodeableConcept.text要素にテキストで診療科名を設定することも可能である。
+
+## プロファイル定義
+
 **Usage info**
 
 **Usages:**
@@ -38,6 +61,97 @@ You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir
  
 
 Other representations of profile: [CSV](StructureDefinition-jp-common-department.csv), [Excel](StructureDefinition-jp-common-department.xlsx), [Schematron](StructureDefinition-jp-common-department.sch) 
+
+### 値の選択
+
+本拡張では、以下の2つの値型から選択して使用する。
+
+| | | |
+| :--- | :--- | :--- |
+| valueCodeableConcept | 診療科コード（SS-MIX2等） | 診療科コードのみで十分な場合 |
+| valueReference | JP_Organization_Departmentへの参照 | 診療科の詳細情報（所属医療機関、連絡先等）が必要な場合 |
+
+### 用語定義
+
+診療科コードとしてSS-MIX2診療科コードの使用を推奨する。
+
+| | | |
+| :--- | :--- | :--- |
+| 診療科 | SS-MIX2診療科コード | http://jami.jp/SS-MIX2/CodeSystem/ClinicalDepartment |
+
+SS-MIX2診療科コードは2桁または3桁のコードを使用する。
+
+* 2桁コード例：01（内科）、16（整形外科）
+* 3桁コード例：011（消化器内科）、012（循環器内科）
+
+診療科名称は医療機関ごとに異なることが多いため、コードが利用できない場合はCodeableConcept.text要素にテキストで診療科名を設定することも可能である。
+
+### 使用例
+
+#### 1. SS-MIX2診療科コードを使用する場合
+
+```
+{
+  "extension": [
+    {
+      "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://jami.jp/SS-MIX2/CodeSystem/ClinicalDepartment",
+            "code": "01",
+            "display": "内科"
+          }
+        ]
+      }
+    }
+  ]
+}
+
+```
+
+#### 2. JP_Organization_Departmentへの参照を使用する場合
+
+```
+{
+  "extension": [
+    {
+      "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department",
+      "valueReference": {
+        "reference": "Organization/dept-001",
+        "display": "第一内科"
+      }
+    }
+  ]
+}
+
+```
+
+#### 3. テキストのみで診療科名を指定する場合
+
+```
+{
+  "extension": [
+    {
+      "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department",
+      "valueCodeableConcept": {
+        "text": "消化器腫瘍外科"
+      }
+    }
+  ]
+}
+
+```
+
+### サンプル
+
+* [**MedicationRequestでの使用例（CodeableConcept）**](MedicationRequest-jp-medicationrequest-department-example-01.md)
+* [**MedicationRequestでの使用例（Reference）**](MedicationRequest-jp-medicationrequest-department-example-02.md)
+* [**ServiceRequestでの使用例（テキストのみ）**](ServiceRequest-jp-servicerequest-department-example-03.md)
+
+## その他、参考文献、リンク等
+
+1. SS-MIX2 標準化ストレージ 仕様書 Ver.1.2h[https://www.jami.jp/jamistd/docs/SS-MIX2/h/SS-MIX2_StndrdStrgSpecVer.1.2h.pdf](https://www.jami.jp/jamistd/docs/SS-MIX2/h/SS-MIX2_StndrdStrgSpecVer.1.2h.pdf)
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および

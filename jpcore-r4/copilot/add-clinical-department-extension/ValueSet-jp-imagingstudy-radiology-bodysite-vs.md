@@ -28,6 +28,8 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
 
 ### Logical Definition (CLD)
 
+* Include all codes defined in [`http://jpfhir.jp/fhir/core/CodeSystem/JP_BodySite_CS`](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/core/CodeSystem/JP_BodySite_CS)version 📦0.0.1
+
  
 
 ### Expansion

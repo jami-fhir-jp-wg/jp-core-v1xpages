@@ -28,6 +28,8 @@
 
 ### Logical Definition (CLD)
 
+* Include all codes defined in [`http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseOutcomeReceipt_CS`](CodeSystem-jp-condition-disease-outcome-receipt-cs.md)version 📦1.3.0-dev
+
  
 
 ### Expansion

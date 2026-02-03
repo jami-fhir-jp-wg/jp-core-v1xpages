@@ -20,6 +20,30 @@
  
 JP Core Observation JLAC10 NamingSystem MEDIS 臨床検査コードまとめ表「17桁コード表」 
 
+### Summary
+
+| | |
+| :--- | :--- |
+| Defining URL | http://jpfhir.jp/fhir/core/NamingSystem/jp-medis-observation-jlac10-namingsystem |
+| Version | 1.3.0-dev |
+| Name | JP_MEDIS_Observation_JLAC10_CodeSystem |
+| Status | active |
+| Definition | JP Core Observation JLAC10 NamingSystem MEDIS 臨床検査コードまとめ表「17桁コード表」 |
+| Publisher | FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) |
+| Copyright | Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会 |
+
+### Identifiers
+
+* **Type**: OID
+  * **Value**: 1.2.392.200119.4.504
+  * **Preferred**: 
+* **Type**: URI
+  * **Value**: urn:oid:1.2.392.200119.4.504
+  * **Preferred**: 
+* **Type**: URI
+  * **Value**: http://medis.or.jp/CodeSystem/master-JLAC10-17digits
+  * **Preferred**: true
+
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
 [GitHub PullRequest](https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls)にて受け付けている。

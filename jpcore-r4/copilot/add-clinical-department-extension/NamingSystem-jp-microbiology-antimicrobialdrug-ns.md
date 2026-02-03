@@ -21,6 +21,30 @@
 微生物学的検査抗菌薬コード(Ver.5.2)
 本コードは厚生労働省院内感染対策サーベイランス事業(https://janis.mhlw.go.jp/)で作成されているマスタを編集・加工して利用している 
 
+### Summary
+
+| | |
+| :--- | :--- |
+| Defining URL | http://jpfhir.jp/fhir/core/NamingSystem/jp-microbiology-antimicrobialdrug-ns |
+| Version | 1.3.0-dev |
+| Name | JP_Microbiology_AntiMicrobialDrug_NamingSystem |
+| Status | active |
+| Definition | 微生物学的検査抗菌薬コード(Ver.5.2) 本コードは厚生労働省院内感染対策サーベイランス事業(https://janis.mhlw.go.jp/)で作成されているマスタを編集・加工して利用している |
+| Publisher | FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) |
+| Copyright | Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会 |
+
+### Identifiers
+
+* **Type**: OID
+  * **Value**: 1.2.392.100495.10.3.100.5.11.5.2
+  * **Preferred**: 
+* **Type**: URI
+  * **Value**: urn:oid:1.2.392.100495.10.3.100.5.11.5.2
+  * **Preferred**: true
+* **Type**: URI
+  * **Value**: http://jpfhir.jp/fhir/core/CodeSystem/JP_Microbiology_AntiMicrobialDrug_CS
+  * **Preferred**: 
+
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
 [GitHub PullRequest](https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls)にて受け付けている。

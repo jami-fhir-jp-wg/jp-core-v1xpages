@@ -28,6 +28,8 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
 
 ### Logical Definition (CLD)
 
+* Include all codes defined in [`http://jpfhir.jp/fhir/core/CodeSystem/JP_Undefined_CS`](CodeSystem-jp-undefined-cs.md)version 📦1.3.0-dev
+
  
 
 ### Expansion

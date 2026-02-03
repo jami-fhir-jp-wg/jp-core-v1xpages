@@ -20,6 +20,23 @@
  
 JP_local_patient-identifier_11311234567_NamingSystem 
 
+### Summary
+
+| | |
+| :--- | :--- |
+| Defining URL | http://jpfhir.jp/fhir/core/NamingSystem/jp-local-identifier-11311234567 |
+| Version | 1.3.0-dev |
+| Name | JP_local_patient_identifier_11311234567_NamingSystem |
+| Status | active |
+| Definition | JP_local_patient-identifier_11311234567_NamingSystem |
+| Publisher | FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) |
+| Copyright | Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会 |
+
+### Identifiers
+
+* **Type**: URI
+  * **Value**: urn:oid:1.2.392.100495.20.3.51.11311234567
+
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
 [GitHub PullRequest](https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls)にて受け付けている。

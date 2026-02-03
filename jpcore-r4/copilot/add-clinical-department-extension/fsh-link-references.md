@@ -195,8 +195,9 @@
 [JP_Observation_VitalSigns]: StructureDefinition-jp-observation-vitalsigns.html
 [JP_ObservationDentalCategory_CS]: CodeSystem-jp-observation-dental-category-cs.html
 [JP_ObservationDetailedDentalCategory_VS]: ValueSet-jp-observation-detailed-dental-category-vs.html
-[jp-organization-department-example-01]: Organization-jp-organization-department-example-01.html
 [jp-organization-department-example-02]: Organization-jp-organization-department-example-02.html
+[jp-organization-department-example-01]: Organization-jp-organization-department-example-01.html
+[jp-organization-department-example-03]: Organization-jp-organization-department-example-03.html
 [JP_Organization_Department]: StructureDefinition-jp-organization-department.html
 [jp-organization-example-payer]: Organization-jp-organization-example-payer.html
 [jp-organization-example-clinic]: Organization-jp-organization-example-clinic.html
@@ -256,6 +257,7 @@
 [jp-medicationmethodjamibasicusage-namingsystem]: NamingSystem-jp-medicationmethodjamibasicusage-namingsystem.html
 [jp-medicationmethodjamidetailusage-namingsystem]: NamingSystem-jp-medicationmethodjamidetailusage-namingsystem.html
 [jp-medicationrequest-start-sp]: SearchParameter-jp-medicationrequest-start-sp.html
+[jp-medicationrequestdepartment-namingsystem]: NamingSystem-jp-medicationrequestdepartment-namingsystem.html
 [jp-medicationroute-hl7-0162-namingsystem]: NamingSystem-jp-medicationroute-hl7-0162-namingsystem.html
 [jp-medicationsubstitutionnotallowedreason-namingsystem]: NamingSystem-jp-medicationsubstitutionnotallowedreason-namingsystem.html
 [jp-medicationunitmerit9-namingsystem]: NamingSystem-jp-medicationunitmerit9-namingsystem.html

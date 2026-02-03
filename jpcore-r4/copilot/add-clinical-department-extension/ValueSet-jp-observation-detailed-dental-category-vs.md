@@ -31,6 +31,8 @@ JP Coreにて定義した歯科のObservationリソースに関するカテゴ�
 
 ### Logical Definition (CLD)
 
+* Include all codes defined in [`http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationDentalCategory_CS`](CodeSystem-jp-observation-dental-category-cs.md)version 📦1.3.0-dev
+
  
 
 ### Expansion

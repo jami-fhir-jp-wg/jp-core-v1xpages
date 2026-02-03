@@ -56,9 +56,9 @@
     "version" : "5.2.0"
   },
   {
-    "id" : "jpfhir_terminology_r4",
+    "id" : "jpfhir_terminology",
     "uri" : "http://jpfhir.jp/fhir/jpfhir-terminology/ImplementationGuide/jpfhir-terminology",
-    "packageId" : "jpfhir-terminology.r4",
+    "packageId" : "jpfhir-terminology",
     "version" : "1.4.0"
   }],
   "definition" : {
@@ -542,6 +542,17 @@
       },
       {
         "url" : "value",
+        "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "special-url"
+      },
+      {
+        "url" : "value",
         "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseaseOutcome"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -598,17 +609,6 @@
       {
         "url" : "value",
         "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSymbol"
-      }],
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-    },
-    {
-      "extension" : [{
-        "url" : "code",
-        "valueString" : "special-url"
-      },
-      {
-        "url" : "value",
-        "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -2807,6 +2807,17 @@
       },
       {
         "url" : "value",
+        "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "special-url"
+      },
+      {
+        "url" : "value",
         "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseaseOutcome"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -2863,17 +2874,6 @@
       {
         "url" : "value",
         "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSymbol"
-      }],
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-    },
-    {
-      "extension" : [{
-        "url" : "code",
-        "valueCode" : "special-url"
-      },
-      {
-        "url" : "value",
-        "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -6952,10 +6952,10 @@
         "valueString" : "Organization"
       }],
       "reference" : {
-        "reference" : "Organization/jp-organization-department-example-01"
+        "reference" : "Organization/jp-organization-department-example-02"
       },
-      "name" : "JP Core Organization Department Example 内科診療科",
-      "description" : "JP_Organization_Departmentリソースの例。内科診療科を表すOrganization例",
+      "name" : "JP Core Organization Department Example 内科診療科（ローカルコード使用）",
+      "description" : "JP_Organization_Departmentリソースの例。内科診療科を表すOrganization例。医療機関固有の診療科コード（ローカルコード）を使用している。",
       "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department"
     },
     {
@@ -6964,10 +6964,22 @@
         "valueString" : "Organization"
       }],
       "reference" : {
-        "reference" : "Organization/jp-organization-department-example-02"
+        "reference" : "Organization/jp-organization-department-example-01"
       },
-      "name" : "JP Core Organization Department Example 整形外科診療科",
-      "description" : "JP_Organization_Departmentリソースの例。整形外科診療科を表すOrganization例",
+      "name" : "JP Core Organization Department Example 循環器内科（両方のコード使用）",
+      "description" : "JP_Organization_Departmentリソースの例。循環器内科を表すOrganization例。ローカルコードとSS-MIX2コードの両方を使用している（推奨パターン）。",
+      "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Organization"
+      }],
+      "reference" : {
+        "reference" : "Organization/jp-organization-department-example-03"
+      },
+      "name" : "JP Core Organization Department Example 整形外科診療科（SS-MIX2コード使用）",
+      "description" : "JP_Organization_Departmentリソースの例。整形外科診療科を表すOrganization例。SS-MIX2標準診療科コードを使用している。",
       "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department"
     },
     {
@@ -6979,7 +6991,7 @@
         "reference" : "StructureDefinition/jp-organization-department"
       },
       "name" : "JP Core Organization Department Profile",
-      "description" : "このプロファイルはJP_Organizationリソースに対して、診療科情報のデータを送受信するための制約と拡張を定めたものである。診療科を表すOrganizationとして利用することを想定している。",
+      "description" : "このプロファイルはOrganizationリソースに対して、診療科情報のデータを送受信するための制約と拡張を定めたものである。診療科を表すOrganizationとして利用することを想定している。",
       "exampleBoolean" : false
     },
     {
@@ -7676,6 +7688,18 @@
       },
       "name" : "jp-medicationrequest-start-sp",
       "description" : "MedicationRequestリソースをExtensionの服用期間の開始日で検索するパラメータを定義する。",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/jp-medicationrequestdepartment-namingsystem"
+      },
+      "name" : "jp-medicationrequestdepartment-namingsystem",
+      "description" : "JP Core MedicationRequestDepartment NamingSystem 処方オーダ時に使用する診療科コード。医療機関固有の診療科コードを識別するためのコード体系。",
       "exampleBoolean" : false
     },
     {

@@ -20,7 +20,7 @@
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
-このプロファイルはJP_Organizationリソースに対して、診療科情報のデータを送受信するための制約と拡張を定めたものである。診療科を表すOrganizationとして利用することを想定している。 
+このプロファイルはOrganizationリソースに対して、診療科情報のデータを送受信するための制約と拡張を定めたものである。診療科を表すOrganizationとして利用することを想定している。 
 
 医療機関内の診療科、部門を表すOrganizationプロファイル。病院、診療所などの医療機関に所属する診療科や部署を表現する。
 
@@ -36,7 +36,7 @@
 
 ## スコープ
 
-本プロファイルは、JP_Organizationプロファイルを継承し、診療科・部門に特化した制約を定義している。
+本プロファイルは、Organizationリソースから直接派生し、診療科・部門に特化した制約を定義している。
 
 * Organization.typeには必ず`dept`（部門）コードを設定する
 * 診療科コードとしてSS-MIX2診療科コードの使用を推奨
@@ -53,7 +53,7 @@
 **Usages:**
 
 * Refer to this Profile: [JP Core Common Department Extension](StructureDefinition-jp-common-department.md)
-* Examples for this Profile: [第一内科](Organization-jp-organization-department-example-01.md) and [整形外科](Organization-jp-organization-department-example-02.md)
+* Examples for this Profile: [循環器内科](Organization-jp-organization-department-example-01.md), [第一内科](Organization-jp-organization-department-example-02.md) and [整形外科](Organization-jp-organization-department-example-03.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-organization-department)
 
@@ -71,21 +71,26 @@ Other representations of profile: [CSV](StructureDefinition-jp-organization-depa
 
 * Organization.type: 診療科・部門であることを示すため、`dept`コードの設定が必須
 
-### Extensions定義
+### 診療科識別子（identifier）
 
-本プロファイルでは、JP_Organizationプロファイルで定義されている拡張を継承して使用できる。
+診療科の識別子は以下の2つのパターンで指定できる。両方を併用することを推奨する。
 
-* [JP_OrganizationCategory](StructureDefinition-jp-organization-insuranceorganizationcategory.md) 
-* 点数表コード１桁の情報を表す
- 
-* [JP_OrganizationNo](StructureDefinition-jp-organization-insuranceorganizationno.md) 
-* 保険医療機関番号７桁を表す
- 
-* [JP_PrefectureNo](StructureDefinition-jp-organization-prefectureno.md) 
-* 都道府県番号2桁を表す
- 
+#### 1. 医療機関固有の診療科コード（ローカルコード）
 
-### 診療科コード
+医療機関が独自に定義した診療科コードを使用する場合：
+
+* system: `http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationRequestDepartment/{医療機関識別OID番号}`
+* 医療機関識別OID番号は、医療機関コード（10桁）の先頭に1をつけた11桁とする
+* 例：医療機関コード「1312345670」の場合、systemは `http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationRequestDepartment/11312345670`
+
+#### 2. SS-MIX2標準診療科コード
+
+SS-MIX2で定義された標準診療科コードを使用する場合：
+
+* system: `http://jami.jp/SS-MIX2/CodeSystem/ClinicalDepartment`
+* SS-MIX2標準診療科コードの値を設定する（例：01=内科、03=循環器内科、07=整形外科など）
+
+### 診療科コード（type）
 
 Organization.typeには以下の2種類のコードを設定する：
 
@@ -106,9 +111,21 @@ Organization.typeには以下の2種類のコードを設定する：
 
 診療科は通常、医療機関に所属するため、Organization.partOf要素で親組織（医療機関）を参照することを推奨する。
 
+以下は、ローカルコードとSS-MIX2コードの両方を使用した診療科の例である：
+
 ```
 {
   "resourceType": "Organization",
+  "identifier": [
+    {
+      "system": "http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationRequestDepartment/11312345670",
+      "value": "CARD-001"
+    },
+    {
+      "system": "http://jami.jp/SS-MIX2/CodeSystem/ClinicalDepartment",
+      "value": "03"
+    }
+  ],
   "type": [
     {
       "coding": [
@@ -119,7 +136,7 @@ Organization.typeには以下の2種類のコードを設定する：
       ]
     }
   ],
-  "name": "内科",
+  "name": "循環器内科",
   "partOf": {
     "reference": "Organization/hospital-001",
     "display": "健康第一病院"
@@ -133,8 +150,6 @@ Organization.typeには以下の2種類のコードを設定する：
 ### OperationおよびSearch Parameter 一覧
 
 #### Search Parameter一覧
-
-JP_Organizationプロファイルの検索パラメータを継承する。
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -169,16 +184,26 @@ GET [base]/Organization?partof=Organization/hospital-001
 ```
 
 
+1. 診療科識別子での検索
+
+```
+GET [base]/Organization?identifier=http://jami.jp/SS-MIX2/CodeSystem/ClinicalDepartment|03
+
+```
+
+
 ### サンプル
 
-* [**内科診療科**][jp-organization-department-example-01]
-* [**整形外科診療科**][jp-organization-department-example-02]
+* [**循環器内科（両方のコード使用）**](Organization-jp-organization-department-example-01.md)
+* [**内科診療科（ローカルコード使用）**](Organization-jp-organization-department-example-02.md)
+* [**整形外科診療科（SS-MIX2コード使用）**](Organization-jp-organization-department-example-03.md)
 
 ## 注意事項
 
 * 診療科名称は医療法施行規則に規定されている「標榜診療科」を超えて、医療機関ごとに独自の名称を持つことが多い
 * 同じ医師が外来と入院で異なる診療科に所属するケースなど、所属マトリックスが複雑になる場合がある
 * 診療科情報を使用する際は、用途（診療報酬請求、患者管理、統計等）に応じて適切な表現方法を選択すること
+* 相互運用性を高めるため、ローカルコードとSS-MIX2標準コードの両方を設定することを推奨する
 
 ## その他、参考文献、リンク等
 
@@ -218,7 +243,7 @@ GET [base]/Organization?partof=Organization/hospital-001
       ]
     }
   ],
-  "description" : "このプロファイルはJP_Organizationリソースに対して、診療科情報のデータを送受信するための制約と拡張を定めたものである。診療科を表すOrganizationとして利用することを想定している。",
+  "description" : "このプロファイルはOrganizationリソースに対して、診療科情報のデータを送受信するための制約と拡張を定めたものである。診療科を表すOrganizationとして利用することを想定している。",
   "jurisdiction" : [
     {
       "coding" : [
@@ -257,7 +282,7 @@ GET [base]/Organization?partof=Organization/hospital-001
   "kind" : "resource",
   "abstract" : false,
   "type" : "Organization",
-  "baseDefinition" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization",
+  "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Organization",
   "derivation" : "constraint",
   "differential" : {
     "element" : [
@@ -267,6 +292,57 @@ GET [base]/Organization?partof=Organization/hospital-001
         "short" : "診療科を表す組織情報",
         "definition" : "医療機関内の診療科、部門を表すOrganization。病院、診療所などの医療機関に所属する診療科や部署を表現する。",
         "comment" : "診療科は医療機関（Organization）の一部として、partOf要素を使用して親組織を参照することが推奨される。診療科の種別はtype要素でdept（部門）を指定する。"
+      },
+      {
+        "id" : "Organization.identifier",
+        "path" : "Organization.identifier",
+        "slicing" : {
+          "discriminator" : [
+            {
+              "type" : "value",
+              "path" : "system"
+            }
+          ],
+          "rules" : "open"
+        },
+        "short" : "診療科の識別子 【詳細参照】",
+        "definition" : "診療科を識別するための識別子。",
+        "comment" : "診療科の識別子は以下の2つのパターンで指定できる。\n1. 医療機関固有の診療科コード（ローカルコード）\n   - system: http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationRequestDepartment/{医療機関識別OID番号}\n   - 医療機関識別OID番号は、医療機関コード（10桁）の先頭に1をつけた11桁とする\n   - 例：医療機関コード「1312345670」の場合「http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationRequestDepartment/11312345670」\n2. SS-MIX2標準診療科コード（ssmixDepartmentCodeスライス）\n   - system: http://jami.jp/SS-MIX2/CodeSystem/ClinicalDepartment\n   - SS-MIX2で定義された診療科コードを使用",
+        "constraint" : [
+          {
+            "key" : "jp-org-dept-identifier-local-system",
+            "severity" : "error",
+            "human" : "ローカル診療科コードのsystemは 'http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationRequestDepartment/[1+施設番号10桁]'でなければならない。",
+            "expression" : "system.all(substring(0,43)!='http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationRequestDepartment/' or substring(43).matches('^1(0[1-9]|[1-3][0-9]|4[0-7])([0-9])([0-9]{7})$'))",
+            "source" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department"
+          }
+        ]
+      },
+      {
+        "id" : "Organization.identifier:ssmixDepartmentCode",
+        "path" : "Organization.identifier",
+        "sliceName" : "ssmixDepartmentCode",
+        "short" : "SS-MIX2標準診療科コード",
+        "definition" : "SS-MIX2で定義された標準診療科コード。",
+        "comment" : "SS-MIX2に準拠した診療科コードを指定する場合に使用する。",
+        "min" : 0,
+        "max" : "1"
+      },
+      {
+        "id" : "Organization.identifier:ssmixDepartmentCode.system",
+        "path" : "Organization.identifier.system",
+        "short" : "SS-MIX2診療科コード体系のURI",
+        "definition" : "SS-MIX2で定義された診療科コード体系を示すURI。",
+        "min" : 1,
+        "fixedUri" : "http://jami.jp/SS-MIX2/CodeSystem/ClinicalDepartment"
+      },
+      {
+        "id" : "Organization.identifier:ssmixDepartmentCode.value",
+        "path" : "Organization.identifier.value",
+        "short" : "SS-MIX2診療科コードの値",
+        "definition" : "SS-MIX2で定義された診療科コードの値。",
+        "comment" : "SS-MIX2標準診療科コードの値を設定する（例：01=内科、02=精神科など）。",
+        "min" : 1
       },
       {
         "id" : "Organization.type",
@@ -308,7 +384,21 @@ GET [base]/Organization?partof=Organization/hospital-001
         "path" : "Organization.partOf",
         "short" : "所属する医療機関",
         "definition" : "この診療科が所属する上位組織（医療機関）への参照",
-        "comment" : "診療科は通常、医療機関に所属するため、partOf要素で親組織を参照することが推奨される。"
+        "comment" : "診療科は通常、医療機関に所属するため、partOf要素で親組織を参照することが推奨される。",
+        "type" : [
+          {
+            "extension" : [
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-hierarchy",
+                "valueBoolean" : true
+              }
+            ],
+            "code" : "Reference",
+            "targetProfile" : [
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization"
+            ]
+          }
+        ]
       }
     ]
   }

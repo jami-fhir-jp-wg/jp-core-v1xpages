@@ -20,6 +20,22 @@
  
 MedicationRequestリソースをExtensionの服用期間の開始日で検索するパラメータを定義する。 
 
+## JP_MedicationRequest_Start_SP
+
+Parameter `jp-medication-start`:`date`
+
+MedicationRequestリソースをExtensionの服用期間の開始日で検索するパラメータを定義する。
+
+| | |
+| :--- | :--- |
+| Resource | [MedicationRequest](http://hl7.org/fhir/R4/medicationrequest.html) |
+| Expression | `MedicationRequest.dosageInstruction.extension('http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_PeriodOfUse').value.ofType(Period).start` |
+| Processing Mode | Normal |
+| Multiples | * multipleAnd: It's up to the server whether the parameter may repeat in order to specify multiple values that must all be true
+* multipleOr: It's up to the server whether the parameter can have multiple values (separated by comma) where at least one must be true
+ |
+| Comparators | Allowed: eq, ne, gt, ge, lt, le, sa, eb, ap |
+
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
 [GitHub PullRequest](https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls)にて受け付けている。
