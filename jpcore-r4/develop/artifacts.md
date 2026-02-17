@@ -79,6 +79,7 @@
 | [JP Core Observation Radiology Impression Profile](StructureDefinition-jp-observation-radiology-impression.md) | このプロファイルはDiagnosticReport_Radiologyリソースに関連する画像診断報告書の「インプレッション」データを送受信するための共通の制約と拡張を定めたものである |
 | [JP Core Observation SocialHistory Profile](StructureDefinition-jp-observation-socialhistory.md) | このプロファイルはObservationリソースに対して、生活背景のデータを送受信するための制約と拡張を定めたものである。 |
 | [JP Core Observation VitalSigns Profile](StructureDefinition-jp-observation-vitalsigns.md) | このプロファイルはObservationリソースに対して、バイタルサインのデータを送受信するための制約と拡張を定めたものである。 |
+| [JP Core Organization Department Profile](StructureDefinition-jp-organization-department.md) | このプロファイルはOrganizationリソースに対して、診療科情報のデータを送受信するための制約と拡張を定めたものである。診療科を表すOrganizationとして利用することを想定している。 |
 | [JP Core Organization Profile](StructureDefinition-jp-organization.md) | このプロファイルはOrganizationリソースに対して、組織情報のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
 | [JP Core Patient Profile](StructureDefinition-jp-patient.md) | このプロファイルはPatientリソースに対して、患者のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
 | [JP Core Practitioner Profile](StructureDefinition-jp-practitioner.md) | このプロファイルはPractitionerリソースに対して、医療従事者のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
@@ -121,6 +122,7 @@
 
 | | |
 | :--- | :--- |
+| [JP Core Common Department Extension](StructureDefinition-jp-common-department.md) | 診療科情報を格納するための汎用的な拡張。様々なリソースで診療科情報を表現する際に使用できる。診療科コード（CodeableConcept）または診療科組織への参照（Reference）のいずれかを指定する。 |
 | [JP Core Coverage InsuredPersonNumber Extension](StructureDefinition-jp-coverage-insuredpersonnumber.md) | 健康保険における被保険者証番号を示す拡張 |
 | [JP Core Coverage InsuredPersonSubNumber Extension](StructureDefinition-jp-coverage-insuredpersonsubnumber.md) | 健康保険における被保険者証番号の枝番を示す拡張 |
 | [JP Core Coverage InsuredPersonSymbol Extension](StructureDefinition-jp-coverage-insuredpersonsymbol.md) | 健康保険における被保険者証記号を示す拡張 |
@@ -250,6 +252,7 @@
 | [jp-medicationingredientstrengthstrengthtype-namingsystem](NamingSystem-jp-medicationingredientstrengthstrengthtype-namingsystem.md) | JP Core Medication IngredientStrength StrengthType NamingSystem |
 | [jp-medicationmethodjamibasicusage-namingsystem](NamingSystem-jp-medicationmethodjamibasicusage-namingsystem.md) | JP Core MedicationMethod JAMI BasicUsage NamingSystem JAMI用法コード表ー基本用法コード１桁 |
 | [jp-medicationmethodjamidetailusage-namingsystem](NamingSystem-jp-medicationmethodjamidetailusage-namingsystem.md) | JP Core MedicationMethod JAMI DetailUsage NamingSystem JAMI用法コード表ー投与経路区分コード２桁（基本用法コード１桁と詳細区分コード１桁を連結） |
+| [jp-medicationrequestdepartment-namingsystem](NamingSystem-jp-medicationrequestdepartment-namingsystem.md) | JP Core MedicationRequestDepartment NamingSystem 処方オーダ時に使用する診療科コード。医療機関固有の診療科コードを識別するためのコード体系。 |
 | [jp-medicationroute-hl7-0162-namingsystem](NamingSystem-jp-medicationroute-hl7-0162-namingsystem.md) | JP MedicationRouteHL7 0162 NamingSystem |
 | [jp-medicationsubstitutionnotallowedreason-namingsystem](NamingSystem-jp-medicationsubstitutionnotallowedreason-namingsystem.md) | JP Core MedicationSubstitution NotAllowedReason NamingSystem 後発品変更不可コード |
 | [jp-medicationunitmerit9-namingsystem](NamingSystem-jp-medicationunitmerit9-namingsystem.md) | JP Core MedicationUnit MERIT9 NamingSystem 医薬品単位略号 |
@@ -309,6 +312,8 @@
 | [JP Core MedicationRequest Example 内服処方指示 ムコダイン錠２５０ｍｇ](MedicationRequest-jp-medicationrequest-example-1.md) | 内服処方指示 ムコダイン錠２５０ｍｇ |
 | [JP Core MedicationRequest Injection Example 注射処方指示 ワンショット静脈注射](MedicationRequest-jp-medicationrequest-injection-example-1.md) | 注射処方指示 ホリゾン注射液１０ｍｇワンショット静脈注射 |
 | [JP Core MedicationRequest Injection Example 注射処方指示 点滴注射](MedicationRequest-jp-medicationrequest-injection-example-2.md) | 点滴注射 |
+| [JP Core MedicationRequest with Department Extension Example (CodeableConcept)](MedicationRequest-jp-medicationrequest-department-example-01.md) | JP_Department拡張を使用したMedicationRequestの例。診療科情報をSS-MIX2コードで表現する。 |
+| [JP Core MedicationRequest with Department Extension Example (Reference)](MedicationRequest-jp-medicationrequest-department-example-02.md) | JP_Department拡張を使用したMedicationRequestの例。診療科情報をJP_Organization_Departmentへの参照で表現する。 |
 | [JP Core MedicationStatement Example 服用申告情報 ムコダイン錠２５０ｍｇ](MedicationStatement-jp-medicationstatement-example-1.md) | 服用申告情報 ムコダイン錠２５０ｍｇ |
 | [JP Core MedicationStatement Injection Example 投与申告情報 ソリタ－＋アドナ注](MedicationStatement-jp-medicationstatement-injection-example-1.md) | 投与申告情報 ソリタ－＋アドナ注 |
 | [JP Core Observation BodyMeasurement Example 身体計測（体重）](Observation-jp-observation-bodyMeasurement-example-1.md) | 身体計測（体重） |
@@ -338,6 +343,9 @@
 | [JP Core Observation Radiology Impression Example 画像診断報告書（インプレッション）](Observation-jp-observation-radiology-impression-example-1.md) | 画像診断報告書（インプレッション） |
 | [JP Core Observation SocialHistory Example 社会的背景（喫煙）](Observation-jp-observation-socialhistory-example-1.md) | 喫煙に関する項目 |
 | [JP Core Observation VitalSigns Example バイタル（呼吸数）](Observation-jp-observation-vitalsigns-example-1.md) | バイタル（呼吸数） |
+| [JP Core Organization Department Example 内科診療科（ローカルコード使用）](Organization-jp-organization-department-example-02.md) | JP_Organization_Departmentリソースの例。内科診療科を表すOrganization例。医療機関固有の診療科コード（ローカルコード）を使用している。 |
+| [JP Core Organization Department Example 循環器内科（両方のコード使用）](Organization-jp-organization-department-example-01.md) | JP_Organization_Departmentリソースの例。循環器内科を表すOrganization例。ローカルコードとSS-MIX2コードの両方を使用している（推奨パターン）。 |
+| [JP Core Organization Department Example 整形外科診療科（SS-MIX2コード使用）](Organization-jp-organization-department-example-03.md) | JP_Organization_Departmentリソースの例。整形外科診療科を表すOrganization例。SS-MIX2標準診療科コードを使用している。 |
 | [JP Core Organization Example ひまわり健康保険組合](Organization-jp-organization-example-payer.md) | ひまわり健康保険組合 |
 | [JP Core Organization Example クリニック](Organization-jp-organization-example-clinic.md) | 太郎花子クリニック |
 | [JP Core Organization Example 病院](Organization-jp-organization-example-hospital.md) | 健康第一病院 |
@@ -349,6 +357,7 @@
 | [JP Core Practitioner Example 看護師男性１](Practitioner-jp-practitioner-example-male-2.md) | 看護師男性 |
 | [JP Core Procedure Example 処置（抜糸）](Procedure-jp-procedure-example-1.md) | 前額部に創傷処置を施術しフォローアップとして縫合糸の除去を予定している例 |
 | [JP Core ProcedureRole Example 精神科外来サービス担当](PractitionerRole-jp-practitionerrole-example-1.md) | 精神科外来サービス担当 |
+| [JP Core ServiceRequest with Department Extension Example (Text only)](ServiceRequest-jp-servicerequest-department-example-03.md) | JP_Department拡張を使用したServiceRequestの例。診療科情報をテキストのみで表現する。 |
 | [JP Core Specimen Example 検体材料（喀痰）](Specimen-jp-specimen-example-3.md) | 検体材料（喀痰） |
 | [JP Core Specimen Example 検体材料（尿）](Specimen-jp-specimen-example-1.md) | 検体材料（尿） |
 | [JP Core Specimen Example 検体材料（血液）](Specimen-jp-specimen-example-2.md) | 検体材料（血液） |

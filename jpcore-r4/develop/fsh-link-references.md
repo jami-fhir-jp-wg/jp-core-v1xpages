@@ -2,6 +2,7 @@
 [jp-allergyintolerance-example-1]: AllergyIntolerance-jp-allergyintolerance-example-1.html
 [JP_AllergyIntolerance]: StructureDefinition-jp-allergyintolerance.html
 [jp-client-capabilitystatement]: CapabilityStatement-jp-client-capabilitystatement.html
+[JP_Common_Department]: StructureDefinition-jp-common-department.html
 [JP_Condition_BodySite_VS]: ValueSet-jp-condition-bodysite-vs.html
 [jp-condition-diagnosis-example-1]: Condition-jp-condition-diagnosis-example-1.html
 [JP_Condition_Diagnosis]: StructureDefinition-jp-condition-diagnosis.html
@@ -124,6 +125,8 @@
 [jp-medicationrequest-injection-example-2]: MedicationRequest-jp-medicationrequest-injection-example-2.html
 [JP_MedicationRequest_Injection]: StructureDefinition-jp-medicationrequest-injection.html
 [JP_MedicationRequest]: StructureDefinition-jp-medicationrequest.html
+[jp-medicationrequest-department-example-01]: MedicationRequest-jp-medicationrequest-department-example-01.html
+[jp-medicationrequest-department-example-02]: MedicationRequest-jp-medicationrequest-department-example-02.html
 [jp-medicationstatement-example-1]: MedicationStatement-jp-medicationstatement-example-1.html
 [jp-medicationstatement-injection-example-1]: MedicationStatement-jp-medicationstatement-injection-example-1.html
 [JP_MedicationStatement_Injection]: StructureDefinition-jp-medicationstatement-injection.html
@@ -192,6 +195,10 @@
 [JP_Observation_VitalSigns]: StructureDefinition-jp-observation-vitalsigns.html
 [JP_ObservationDentalCategory_CS]: CodeSystem-jp-observation-dental-category-cs.html
 [JP_ObservationDetailedDentalCategory_VS]: ValueSet-jp-observation-detailed-dental-category-vs.html
+[jp-organization-department-example-02]: Organization-jp-organization-department-example-02.html
+[jp-organization-department-example-01]: Organization-jp-organization-department-example-01.html
+[jp-organization-department-example-03]: Organization-jp-organization-department-example-03.html
+[JP_Organization_Department]: StructureDefinition-jp-organization-department.html
 [jp-organization-example-payer]: Organization-jp-organization-example-payer.html
 [jp-organization-example-clinic]: Organization-jp-organization-example-clinic.html
 [jp-organization-example-hospital]: Organization-jp-organization-example-hospital.html
@@ -214,6 +221,7 @@
 [jp-practitionerrole-example-1]: PractitionerRole-jp-practitionerrole-example-1.html
 [jp-server-capabilitystatement]: CapabilityStatement-jp-server-capabilitystatement.html
 [JP_ServiceRequest_Common]: StructureDefinition-jp-servicerequest-common.html
+[jp-servicerequest-department-example-03]: ServiceRequest-jp-servicerequest-department-example-03.html
 [jp-specimen-example-3]: Specimen-jp-specimen-example-3.html
 [jp-specimen-example-1]: Specimen-jp-specimen-example-1.html
 [jp-specimen-example-2]: Specimen-jp-specimen-example-2.html
@@ -249,6 +257,7 @@
 [jp-medicationmethodjamibasicusage-namingsystem]: NamingSystem-jp-medicationmethodjamibasicusage-namingsystem.html
 [jp-medicationmethodjamidetailusage-namingsystem]: NamingSystem-jp-medicationmethodjamidetailusage-namingsystem.html
 [jp-medicationrequest-start-sp]: SearchParameter-jp-medicationrequest-start-sp.html
+[jp-medicationrequestdepartment-namingsystem]: NamingSystem-jp-medicationrequestdepartment-namingsystem.html
 [jp-medicationroute-hl7-0162-namingsystem]: NamingSystem-jp-medicationroute-hl7-0162-namingsystem.html
 [jp-medicationsubstitutionnotallowedreason-namingsystem]: NamingSystem-jp-medicationsubstitutionnotallowedreason-namingsystem.html
 [jp-medicationunitmerit9-namingsystem]: NamingSystem-jp-medicationunitmerit9-namingsystem.html

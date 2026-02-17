@@ -39,16 +39,17 @@ JP Core FHIR コンテンツ: JP Core で利用する FHIR の詳細について
 
 #### Profiles （プロファイル）
 
-* [Administration グループ （運営管理）](group-administration.md) 
+* [Administrationグループ （運営管理）](group-administration.md) 
 * [JP Core Patient （患者）プロファイル](StructureDefinition-jp-patient.md)
 * [JP Core Coverage （保険・公費）プロファイル](StructureDefinition-jp-coverage.md)
 * [JP Core Encounter （来院・入院）プロファイル](StructureDefinition-jp-encounter.md)
 * [JP Core Location （所在場所）プロファイル](StructureDefinition-jp-location.md)
 * [JP Core Organization （組織）プロファイル](StructureDefinition-jp-organization.md)
+* [JP Core Organization Department （診療科）プロファイル](StructureDefinition-jp-organization-department.md)
 * [JP Core Practitioner （医療従事者）プロファイル](StructureDefinition-jp-practitioner.md)
 * [JP Core PractitionerRole （医療従事者役割）プロファイル](StructureDefinition-jp-practitionerrole.md)
  
-* [Medication グループ （薬剤リスト）](group-medication.md) 
+* [Medicationグループ （薬剤リスト）](group-medication.md) 
 * [JP Core Medication （薬剤）プロファイル](StructureDefinition-jp-medication.md)
 * [JP Core MedicationRequest （内服・外用薬剤処方）プロファイル](StructureDefinition-jp-medicationrequest.md)
 * [JP Core MedicationRequest Injection （注射薬剤処方）プロファイル](StructureDefinition-jp-medicationrequest-injection.md)
@@ -60,7 +61,7 @@ JP Core FHIR コンテンツ: JP Core で利用する FHIR の詳細について
 * [JP Core MedicationStatement Injection （注射薬剤服薬情報）プロファイル](StructureDefinition-jp-medicationstatement-injection.md)
 * [JP Core Immunization （予防接種記録）プロファイル](StructureDefinition-jp-immunization.md)
  
-* [Diagnostic グループ （診断）](group-diagnostic.md) 
+* [Diagnosticグループ （診断）](group-diagnostic.md) 
 * Observation （検査） 
 * [JP Core Observation Common （共通）プロファイル](StructureDefinition-jp-observation-common.md) 
 * [JP Core Observation LabResult （検体検査）プロファイル](StructureDefinition-jp-observation-labresult.md)
@@ -101,7 +102,7 @@ JP Core FHIR コンテンツ: JP Core で利用する FHIR の詳細について
  
  
  
-* [Clinical グループ（診療）](group-clinical.md) 
+* [Clinicalグループ（診療）](group-clinical.md) 
 * [JP Core AllergyIntolerance （アレルギー不耐症）プロファイル](StructureDefinition-jp-allergyintolerance.md)
 * [JP Core Condition （状態）プロファイル](StructureDefinition-jp-condition.md) 
 * [JP Core Condition Diagnosis (診断) プロファイル](StructureDefinition-jp-condition-diagnosis.md)
@@ -109,7 +110,7 @@ JP Core FHIR コンテンツ: JP Core で利用する FHIR の詳細について
 * [JP Core Procedure （処置）プロファイル](StructureDefinition-jp-procedure.md)
 * [JP Core FamilyMemberHistory（家族歴）プロファイル](StructureDefinition-jp-familymemberhistory.md)
  
-* [Workflow グループ](group-workflow.md) 
+* [Workflowグループ](group-workflow.md) 
 * ServiceRequest (サービスリクエスト) 
 * [JP Core ServiceRequest Common (共通) プロファイル](StructureDefinition-jp-servicerequest-common.md)
  
@@ -238,9 +239,9 @@ JP Core は以下の方々、および各サーブワーキンググループの
       "version" : "5.2.0"
     },
     {
-      "id" : "jpfhir_terminology_r4",
+      "id" : "jpfhir_terminology",
       "uri" : "http://jpfhir.jp/fhir/jpfhir-terminology/ImplementationGuide/jpfhir-terminology",
-      "packageId" : "jpfhir-terminology.r4",
+      "packageId" : "jpfhir-terminology",
       "version" : "1.4.0"
     }
   ],
@@ -801,6 +802,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_Undefined_CS"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -2231,6 +2245,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -3462,6 +3489,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           },
           {
             "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Condition_DiseaseOutcome"
           }
         ],
@@ -4892,6 +4932,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           },
           {
             "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient"
           }
         ],
@@ -5590,6 +5643,20 @@ JP Core は以下の方々、および各サーブワーキンググループの
         },
         "name" : "JP Core Client CapabilityStatement",
         "description" : "JP Core実装ガイドを利用したサイトを作成する際にクライアント側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/jp-common-department"
+        },
+        "name" : "JP Core Common Department Extension",
+        "description" : "診療科情報を格納するための汎用的な拡張。様々なリソースで診療科情報を表現する際に使用できる。診療科コード（CodeableConcept）または診療科組織への参照（Reference）のいずれかを指定する。",
         "exampleBoolean" : false
       },
       {
@@ -7304,6 +7371,34 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "MedicationRequest"
+          }
+        ],
+        "reference" : {
+          "reference" : "MedicationRequest/jp-medicationrequest-department-example-01"
+        },
+        "name" : "JP Core MedicationRequest with Department Extension Example (CodeableConcept)",
+        "description" : "JP_Department拡張を使用したMedicationRequestの例。診療科情報をSS-MIX2コードで表現する。",
+        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRequest"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "MedicationRequest"
+          }
+        ],
+        "reference" : {
+          "reference" : "MedicationRequest/jp-medicationrequest-department-example-02"
+        },
+        "name" : "JP Core MedicationRequest with Department Extension Example (Reference)",
+        "description" : "JP_Department拡張を使用したMedicationRequestの例。診療科情報をJP_Organization_Departmentへの参照で表現する。",
+        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationRequest"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
             "valueString" : "MedicationStatement"
           }
         ],
@@ -8260,6 +8355,62 @@ JP Core は以下の方々、および各サーブワーキンググループの
           }
         ],
         "reference" : {
+          "reference" : "Organization/jp-organization-department-example-02"
+        },
+        "name" : "JP Core Organization Department Example 内科診療科（ローカルコード使用）",
+        "description" : "JP_Organization_Departmentリソースの例。内科診療科を表すOrganization例。医療機関固有の診療科コード（ローカルコード）を使用している。",
+        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Organization"
+          }
+        ],
+        "reference" : {
+          "reference" : "Organization/jp-organization-department-example-01"
+        },
+        "name" : "JP Core Organization Department Example 循環器内科（両方のコード使用）",
+        "description" : "JP_Organization_Departmentリソースの例。循環器内科を表すOrganization例。ローカルコードとSS-MIX2コードの両方を使用している（推奨パターン）。",
+        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Organization"
+          }
+        ],
+        "reference" : {
+          "reference" : "Organization/jp-organization-department-example-03"
+        },
+        "name" : "JP Core Organization Department Example 整形外科診療科（SS-MIX2コード使用）",
+        "description" : "JP_Organization_Departmentリソースの例。整形外科診療科を表すOrganization例。SS-MIX2標準診療科コードを使用している。",
+        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization_Department"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/jp-organization-department"
+        },
+        "name" : "JP Core Organization Department Profile",
+        "description" : "このプロファイルはOrganizationリソースに対して、診療科情報のデータを送受信するための制約と拡張を定めたものである。診療科を表すOrganizationとして利用することを想定している。",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Organization"
+          }
+        ],
+        "reference" : {
           "reference" : "Organization/jp-organization-example-payer"
         },
         "name" : "JP Core Organization Example ひまわり健康保険組合",
@@ -8559,6 +8710,20 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "name" : "JP Core ServiceRequest Common Profile",
         "description" : "本プロファイル説明は、患者に対し立案・実施されるリクエストの記録で、行為や診断、もしくは他のサービスのために用いられるFHIR ServiceRequestリソースを使用するにあたっての、最低限の制約を記述したものである。",
         "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ServiceRequest"
+          }
+        ],
+        "reference" : {
+          "reference" : "ServiceRequest/jp-servicerequest-department-example-03"
+        },
+        "name" : "JP Core ServiceRequest with Department Extension Example (Text only)",
+        "description" : "JP_Department拡張を使用したServiceRequestの例。診療科情報をテキストのみで表現する。",
+        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ServiceRequest_Common"
       },
       {
         "extension" : [
@@ -9048,6 +9213,20 @@ JP Core は以下の方々、および各サーブワーキンググループの
         },
         "name" : "jp-medicationrequest-start-sp",
         "description" : "MedicationRequestリソースをExtensionの服用期間の開始日で検索するパラメータを定義する。",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "NamingSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "NamingSystem/jp-medicationrequestdepartment-namingsystem"
+        },
+        "name" : "jp-medicationrequestdepartment-namingsystem",
+        "description" : "JP Core MedicationRequestDepartment NamingSystem 処方オーダ時に使用する診療科コード。医療機関固有の診療科コードを識別するためのコード体系。",
         "exampleBoolean" : false
       },
       {
