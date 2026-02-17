@@ -12,7 +12,7 @@ Profile: [JP Core Organization Profile](StructureDefinition-jp-organization.md)
 
 **type**: Organizational team
 
-**name**: ひまわりＡＢＣ検査株式会社健康保険組合
+**name**: ＡＢＣ検査株式会社
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
@@ -46,7 +46,7 @@ Profile: [JP Core Organization Profile](StructureDefinition-jp-organization.md)
       ]
     }
   ],
-  "name" : "ひまわりＡＢＣ検査株式会社健康保険組合"
+  "name" : "ＡＢＣ検査株式会社"
 }
 
 ```
