@@ -89,16 +89,16 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
 JP Core FamilymMemberHistoryプロファイルで使用される拡張は次の通りである。
 
 * 拡張: 同胞内出生順
-  * 説明: ジェノグラムを用途とした社会的な同胞内出生順の複合拡張
-  * URL: http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_GenogramBasedSiblingOrder
+  * 説明: 同胞内出生順の複合拡張
+  * URL: http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder
   * 値の型: Extension
 * 拡張: 同胞内出生順（整数）
   * 説明: 同胞内における社会的な出生順（整数値）
   * URL: siblingBirthOrder
   * 値の型: integer
-* 拡張: 性別同胞内出生順（用語）
-  * 説明: 同胞内における性別の社会的な出生順（用語）。国内では、長男、長女、次男、次女など。国際化対応は、designationにより、出身国の用語を追加定義することで表現可能。
-  * URL: genderedSiblingBirthOrder
+* 拡張: 性別同胞内出生順名称（コード値）
+  * 説明: 同胞内における性別の社会的な出生順名称（コード値）。国内では、長男、長女、次男、次女など。国際化対応は、designationで出身国の用語を追加定義することで表現可能。
+  * URL: SiblingBirthOrderByGender
   * 値の型: CodeableConcept
 
 ### 用語定義
@@ -106,7 +106,7 @@ JP Core FamilymMemberHistoryプロファイルで使用される拡張は次の�
 | | | |
 | :--- | :--- | :--- |
 | 続柄 | relathionship | http://terminology.hl7.org/ValueSet/v3-FamilyMember |
-| 性別同胞内出生順名称 | GenderedSiblingBirthOrder | http://jpfhir.jp/fhir/core/CodeSystem/JP_GenderedSiblingBirthOrder_CS |
+| 性別同胞内出生順名称 | SiblingBirthOrderByGender | http://jpfhir.jp/fhir/core/CodeSystem/JP_SiblingBirthOrderByGender_CS |
 
 ## 利用方法
 
@@ -181,6 +181,7 @@ GET [base]/FamilyMemberHistory?patient=Patient/123
 * [**家族歴（母親）**](FamilyMemberHistory-jp-familymemberhistory-example-1.md)
 * [**家族歴（息子、長男）**][jp-familymemberhistory-example-2]
 * [**家族歴（内縁の妻）**][jp-familymemberhistory-example-3]
+* [**家族歴（母方のおば）**][jp-familymemberhistory-example-4]
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および

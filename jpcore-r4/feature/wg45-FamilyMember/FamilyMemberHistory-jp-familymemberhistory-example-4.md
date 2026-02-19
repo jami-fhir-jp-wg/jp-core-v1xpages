@@ -10,7 +10,7 @@ Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemb
 
 > **JP Core FamilyMemberHistory Sibling Order Extension**
 * siblingBirthOrder: 3
-* genderedSiblingBirthOrder: 次女
+* siblingBirthOrderByGender: 次女
 
 **status**: Partial
 
@@ -52,7 +52,7 @@ Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemb
           "valueInteger" : 3
         },
         {
-          "url" : "genderedSiblingBirthOrder",
+          "url" : "siblingBirthOrderByGender",
           "valueCodeableConcept" : {
             "coding" : [
               {
