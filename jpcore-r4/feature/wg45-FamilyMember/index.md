@@ -6543,7 +6543,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           }
         ],
         "reference" : {
-          "reference" : "StructureDefinition/jp-familymemberhistory-siblingorder"
+          "reference" : "StructureDefinition/jp-familymemberhistory-relationship-siblingorder"
         },
         "name" : "JP Core FamilyMemberHistory Sibling Order Extension",
         "description" : "同胞内出生順をFamilyMemberHistoryに付記するための拡張。",

@@ -103,7 +103,7 @@ JP Core FamilymMemberHistoryプロファイルで使用される拡張は次の�
 
 * 拡張: 同胞内出生順
   * 説明: 同胞内出生順の複合拡張
-  * URL: http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder
+  * URL: http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_Relatiohship_SiblingOrder
   * 値の型: Extension
 * 拡張: 同胞内出生順（整数）
   * 説明: 同胞内における社会的な出生順（整数値）
@@ -302,7 +302,7 @@ GET [base]/FamilyMemberHistory?patient=Patient/123
           {
             "code" : "Extension",
             "profile" : [
-              "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder"
+              "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_Relationship_SiblingOrder"
             ]
           }
         ]

@@ -129,7 +129,7 @@
 | [JP Core Disease Outcome Extension](StructureDefinition-jp-condition-disease-outcome.md) | 病名の転帰を格納するための拡張 |
 | [JP Core Disease Postfix Modifier Extension](StructureDefinition-jp-condition-disease-postfix-modifier.md) | 病名の後置修飾語を格納するための拡張 |
 | [JP Core Disease Prefix Modifier Extension](StructureDefinition-jp-condition-disease-prefix-modifier.md) | 病名の前置修飾語を格納するための拡張 |
-| [JP Core FamilyMemberHistory Sibling Order Extension](StructureDefinition-jp-familymemberhistory-siblingorder.md) | 同胞内出生順をFamilyMemberHistoryに付記するための拡張。 |
+| [JP Core FamilyMemberHistory Sibling Order Extension](StructureDefinition-jp-familymemberhistory-relationship-siblingorder.md) | 同胞内出生順をFamilyMemberHistoryに付記するための拡張。 |
 | [JP Core Immunization CertificatedDate Extension](StructureDefinition-jp-immunization-certificateddate.md) | 検定年月日 |
 | [JP Core Immunization DueDateOfNextDose Extension](StructureDefinition-jp-immunization-duedateofnextdose.md) | 次回接種予定日 |
 | [JP Core Immunization ManufacturedDate Extension](StructureDefinition-jp-immunization-manufactureddate.md) | 製造年月日 |

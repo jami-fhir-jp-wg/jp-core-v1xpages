@@ -66,7 +66,7 @@ Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemb
             }
           }
         ],
-        "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder"
+        "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_Relationship_SiblingOrder"
       }
     ],
     "coding" : [

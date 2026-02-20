@@ -7,11 +7,11 @@
 ## Extension: JP Core FamilyMemberHistory Sibling Order Extension 
 
 * **項目**: *定義URL*
-  * **内容**: http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder
+  * **内容**: http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_Relationship_SiblingOrder
 * **項目**: *Version*
   * **内容**: 1.3.0-dev
 * **項目**: *Name*
-  * **内容**: JP_FamilyMemberHistory_SiblingOrder
+  * **内容**: JP_FamilyMemberHistory_Relationship_SiblingOrder
 * **項目**: *Title*
   * **内容**: JP Core FamilyMemberHistory Sibling Order Extension
 * **項目**: *Status*
@@ -30,7 +30,7 @@
 * Use this Extension: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md)
 * Examples for this Extension: [FamilyMemberHistory/jp-familymemberhistory-example-2](FamilyMemberHistory-jp-familymemberhistory-example-2.md) and [FamilyMemberHistory/jp-familymemberhistory-example-4](FamilyMemberHistory-jp-familymemberhistory-example-4.md)
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-familymemberhistory-siblingorder)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-familymemberhistory-relationship-siblingorder)
 
 ### Formal Views of Extension Content
 
@@ -38,7 +38,7 @@ You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir
 
  
 
-Other representations of profile: [CSV](StructureDefinition-jp-familymemberhistory-siblingorder.csv), [Excel](StructureDefinition-jp-familymemberhistory-siblingorder.xlsx), [Schematron](StructureDefinition-jp-familymemberhistory-siblingorder.sch) 
+Other representations of profile: [CSV](StructureDefinition-jp-familymemberhistory-relationship-siblingorder.csv), [Excel](StructureDefinition-jp-familymemberhistory-relationship-siblingorder.xlsx), [Schematron](StructureDefinition-jp-familymemberhistory-relationship-siblingorder.sch) 
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
@@ -49,10 +49,10 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
 ```json
 {
   "resourceType" : "StructureDefinition",
-  "id" : "jp-familymemberhistory-siblingorder",
-  "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder",
+  "id" : "jp-familymemberhistory-relationship-siblingorder",
+  "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_Relationship_SiblingOrder",
   "version" : "1.3.0-dev",
-  "name" : "JP_FamilyMemberHistory_SiblingOrder",
+  "name" : "JP_FamilyMemberHistory_Relationship_SiblingOrder",
   "title" : "JP Core FamilyMemberHistory Sibling Order Extension",
   "status" : "active",
   "date" : "2025-12-01",
@@ -178,7 +178,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
       {
         "id" : "Extension.url",
         "path" : "Extension.url",
-        "fixedUri" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder"
+        "fixedUri" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_Relationship_SiblingOrder"
       },
       {
         "id" : "Extension.value[x]",

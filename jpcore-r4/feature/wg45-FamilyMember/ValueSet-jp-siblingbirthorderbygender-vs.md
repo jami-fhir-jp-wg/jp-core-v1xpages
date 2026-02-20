@@ -24,7 +24,7 @@
 
  **References** 
 
-* [JP Core FamilyMemberHistory Sibling Order Extension](StructureDefinition-jp-familymemberhistory-siblingorder.md)
+* [JP Core FamilyMemberHistory Sibling Order Extension](StructureDefinition-jp-familymemberhistory-relationship-siblingorder.md)
 
 ### Logical Definition (CLD)
 

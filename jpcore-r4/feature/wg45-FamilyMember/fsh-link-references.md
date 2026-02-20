@@ -60,7 +60,7 @@
 [jp-familymemberhistory-example-3]: FamilyMemberHistory-jp-familymemberhistory-example-3.html
 [jp-familymemberhistory-example-4]: FamilyMemberHistory-jp-familymemberhistory-example-4.html
 [JP_FamilyMemberHistory]: StructureDefinition-jp-familymemberhistory.html
-[JP_FamilyMemberHistory_SiblingOrder]: StructureDefinition-jp-familymemberhistory-siblingorder.html
+[JP_FamilyMemberHistory_Relationship_SiblingOrder]: StructureDefinition-jp-familymemberhistory-relationship-siblingorder.html
 [JP_HumanName]: StructureDefinition-jp-humanname.html
 [jp-imagingstudy-endoscopy-example-1]: ImagingStudy-jp-imagingstudy-endoscopy-example-1.html
 [JP_ImagingStudy_Endoscopy]: StructureDefinition-jp-imagingstudy-endoscopy.html
