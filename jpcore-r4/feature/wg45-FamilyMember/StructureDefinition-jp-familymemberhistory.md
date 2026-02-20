@@ -197,9 +197,9 @@ GET [base]/FamilyMemberHistory?patient=Patient/123
 #### サンプル
 
 * [**母親**](FamilyMemberHistory-jp-familymemberhistory-example-1.md)
-* [**息子（長男）**][jp-familymemberhistory-example-2]
-* [**内縁の妻**][jp-familymemberhistory-example-3]
-* [**母方のおば（三女）**][jp-familymemberhistory-example-4]
+* [**息子（長男）**](FamilyMemberHistory-jp-familymemberhistory-example-2.md)
+* [**内縁の妻**](FamilyMemberHistory-jp-familymemberhistory-example-3.md)
+* [**母方のおば（三女）**](FamilyMemberHistory-jp-familymemberhistory-example-4.md)
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
