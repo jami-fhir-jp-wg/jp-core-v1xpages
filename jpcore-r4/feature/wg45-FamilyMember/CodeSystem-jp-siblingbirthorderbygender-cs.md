@@ -20,7 +20,7 @@
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
-同胞内における性別の出生順名称を定義するCodeSystem。日本国内では、長女、長男、次女、次男など。性の多様性は、コード"#SBO_OTHER"を適用し、text要素に詳述。国際化対応は、designationにより出身国の用語を追加定義することで表現可能。 
+同胞内における性別の出生順名称を定義するCodeSystem。日本国内では、長女、長男、次女、次男など。十男・十女以上の出生順、性の多様性は、コード"#SBO_OTHER"を適用し、text要素に詳述。国際化対応は、designationにより出身国の用語を追加定義することで表現可能。 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
@@ -59,7 +59,7 @@
       ]
     }
   ],
-  "description" : "同胞内における性別の出生順名称を定義するCodeSystem。日本国内では、長女、長男、次女、次男など。性の多様性は、コード\"#SBO_OTHER\"を適用し、text要素に詳述。国際化対応は、designationにより出身国の用語を追加定義することで表現可能。",
+  "description" : "同胞内における性別の出生順名称を定義するCodeSystem。日本国内では、長女、長男、次女、次男など。十男・十女以上の出生順、性の多様性は、コード\"#SBO_OTHER\"を適用し、text要素に詳述。国際化対応は、designationにより出身国の用語を追加定義することで表現可能。",
   "jurisdiction" : [
     {
       "coding" : [
@@ -277,11 +277,11 @@
     },
     {
       "code" : "SBO_OTHER",
-      "display" : "その他（text要素に詳細を記載）",
+      "display" : "その他（十男・十女以上の出生順、性の多様性、その他の場合はtext要素に詳細を記載）",
       "designation" : [
         {
           "language" : "en",
-          "value" : "Other (specify in text)"
+          "value" : "Other (specify in text for birth order of 11th or higher, gender diversity, or other cases)"
         }
       ]
     },

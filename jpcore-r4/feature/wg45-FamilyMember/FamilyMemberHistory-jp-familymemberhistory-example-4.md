@@ -8,19 +8,15 @@
 
 Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md)
 
-> **JP Core FamilyMemberHistory Sibling Order Extension**
-* siblingBirthOrder: 3
-* siblingBirthOrderByGender: 次女
-
 **status**: Partial
 
 **patient**: [山田 太郎](Patient-jp-patient-example-1.md)
 
-**name**: 母方のおば（次女）
-
-**relationship**: maternal aunt
+**relationship**: 母方のおば
 
 **sex**: Female
+
+**reasonCode**: MELASの疑い
 
 ### Conditions
 
@@ -44,40 +40,40 @@ Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemb
       "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory"
     ]
   },
-  "extension" : [
-    {
-      "extension" : [
-        {
-          "url" : "siblingBirthOrder",
-          "valueInteger" : 3
-        },
-        {
-          "url" : "siblingBirthOrderByGender",
-          "valueCodeableConcept" : {
-            "coding" : [
-              {
-                "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SiblingBirthOrderByGender_CS",
-                "code" : "SBO2_F",
-                "display" : "次女"
-              }
-            ]
-          }
-        }
-      ],
-      "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder"
-    }
-  ],
   "status" : "partial",
   "patient" : {
     "reference" : "Patient/jp-patient-example-1",
     "display" : "山田 太郎"
   },
-  "name" : "母方のおば（次女）",
   "relationship" : {
+    "extension" : [
+      {
+        "extension" : [
+          {
+            "url" : "siblingBirthOrder",
+            "valueInteger" : 3
+          },
+          {
+            "url" : "siblingBirthOrderByGender",
+            "valueCodeableConcept" : {
+              "coding" : [
+                {
+                  "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SiblingBirthOrderByGender_CS",
+                  "code" : "SBO2_F",
+                  "display" : "次女"
+                }
+              ]
+            }
+          }
+        ],
+        "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder"
+      }
+    ],
     "coding" : [
       {
         "system" : "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
-        "code" : "MAUNT"
+        "code" : "MAUNT",
+        "display" : "母方のおば"
       }
     ]
   },
@@ -89,6 +85,11 @@ Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemb
       }
     ]
   },
+  "reasonCode" : [
+    {
+      "text" : "MELASの疑い"
+    }
+  ],
   "condition" : [
     {
       "code" : {

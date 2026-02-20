@@ -57,13 +57,15 @@ JP_FamilyMemberHistoryインスタンスへの参照をListリソースインス
 * **医師が家族歴を記録・更新・検索する**
  診療前に医師は電子カルテから患者の家族歴（ `FamilyMemberHistory` ）を検索し、遺伝性リスク（例：2型糖尿病、家族性高血圧、家族性脂質異常症）を把握。診断・治療計画（遺伝子検査の適応判定、生活習慣指導、薬物療法の選択）に即座に活用できる。診療中に新たに判明した家族歴情報を **更新** し、他の医療スタッフと共有する。
 * **看護師が家族歴を記録・更新・検索する**
- 入院・外来時の問診や看護評価の過程で、看護師は患者・家族から取得した家族歴情報（`FamilyMemberHistory`）に **記録**。既存の家族歴に変更があれば、看護師が **更新** を行い、他の医療従事者が参照できるようにする。また、患者の転院や退院時に家族歴を **検索** し、継続的なケア計画に反映させる。
+ 入院・外来時の問診や看護評価の過程で、看護師は患者・家族から得られる家族歴情報（`FamilyMemberHistory`）を**記録**し、疾患の有無だけでなく、療養生活に影響する家族関係の実態（例：同居/別居、主介護者・キーパーソン、家族内の支援体制、きょうだい構成や出生順、非血縁の同居パートナーや養子縁組等）も踏まえて退院支援や療養支援のリスク評価に活用する。既存の家族歴に追加・変更があれば（例：続柄の詳細化、出生順情報の判明、キーパーソンの変更、支援者の追加など）**更新**し、多職種が参照できるよう共有する。また、転院・退院時には家族歴を**検索・参照**し、家族への説明・指導の方法、支援依頼先、見守り体制の調整に反映させる。
+* **その他の職種（主に介護職）が家族歴を記録・更新・検索する**
+ 介護職は、入退所時アセスメントやサービス担当者会議、日常支援の場面で家族歴（`FamilyMemberHistory`）を**検索・参照**し、「誰が、どの関係で、どの程度支援できるか」という観点からケア計画に反映する。具体的には、家族構成（非血縁の同居者を含む）、同居状況や別居・離婚等の関係性、連絡先・意思決定支援の窓口となるキーパーソン、きょうだい構成や出生順に伴う役割分担、家族内の支援資源と負担の偏りを把握し、連絡体制、緊急時対応、受診同行、服薬・食事・運動など生活支援の割り当てを調整する。日常の聞き取りで新たに分かった情報（例：支援者の変更、家族関係の変化、把握できていなかった同居者の存在、出生順情報の判明など）は、判明した範囲で**記録（必要に応じて更新）**し、医療・看護側へ共有して医療介護連携の情報の連続性を確保する。
 
 ## プロファイル定義
 
 **Usages:**
 
-* Examples for this Profile: [FamilyMemberHistory/jp-familymemberhistory-example-1](FamilyMemberHistory-jp-familymemberhistory-example-1.md), [FamilyMemberHistory/jp-familymemberhistory-example-2](FamilyMemberHistory-jp-familymemberhistory-example-2.md), [鈴木 花子（内縁の妻）、キーパーソン](FamilyMemberHistory-jp-familymemberhistory-example-3.md) and [母方のおば（次女）](FamilyMemberHistory-jp-familymemberhistory-example-4.md)
+* Examples for this Profile: [FamilyMemberHistory/jp-familymemberhistory-example-1](FamilyMemberHistory-jp-familymemberhistory-example-1.md), [FamilyMemberHistory/jp-familymemberhistory-example-2](FamilyMemberHistory-jp-familymemberhistory-example-2.md), [鈴木 花子](FamilyMemberHistory-jp-familymemberhistory-example-3.md) and [FamilyMemberHistory/jp-familymemberhistory-example-4](FamilyMemberHistory-jp-familymemberhistory-example-4.md)
 * CapabilityStatements using this Profile: [JP Core Client CapabilityStatement](CapabilityStatement-jp-client-capabilitystatement.md) and [JP Core Server CapabilityStatement](CapabilityStatement-jp-server-capabilitystatement.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-familymemberhistory)
@@ -81,12 +83,23 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
 本プロファイルに準拠するためには、次の項目の値が存在しなければならない。
 
 * patient : 本リソースを有する患者
-* relationship : 患者と家族との関係の種類（父、母、兄弟など）
+* relationship : 患者と家族との続柄（父、母、兄弟など）
 * status : 家族歴のステータス（部分的 | 完全 | 記録エラー | 健康状態不明）
 
 ### Extensions定義
 
 JP Core FamilymMemberHistoryプロファイルで使用される拡張は次の通りである。
+
+#### モデリング上の注意（運用ルール）
+
+* `FamilyMemberHistory` は、患者に関連する家族 **1人につき1リソース**として作成する。
+* 本プロファイルで扱う「同胞（`sibling`）」は、完全同胞および半同胞に加え、養子縁組・継子等の法的親子関係に基づく非血縁の兄弟姉妹関係も含み、戸籍法施行規則に整合している。
+* 同胞内出生順は当該家族構成員の **続柄（`relationship`）に付随する属性**であるため、`FamilyMemberHistory.relationship` に対する拡張として表現する。
+* 同胞内出生順（`SiblingOrder`）は非血縁関係が含まれうるため、遺伝学的血統図にはそのまま利用できない。ただし、参考資料になることを想定している。
+* 遺伝学的血統図は、同胞を出生順に並べて家系構造を表現する必要がある。しかし、relationship（続柄）だけでは同胞内の順序を表現できず、氏名や生年月日が不明な場合には同一人物の追跡も困難になる。本拡張（`SiblingOrder`）は `siblingBirthOrder`（整数）および `siblingBirthOrderByGender`（長男・次女など）を`relationship`と組み合わせて保持することで、 血統図の自動配置（同胞の並び順の決定）と、追加聴取による家系情報の更新（差分修正）を容易にする。
+* 家族歴を記録する理由（契機）は、`reasonCode`要素に記述する。
+* 患者に関連する家族の病名は、`condition`要素に記述する。`condition.code.text`に自由記載できる。あわせて`condition.code.coding`によりコードを付与してもよい。
+* 関連する家族が聴取したい病名に罹患していない旨を記録する場合は、`note`要素に記述する。
 
 * 拡張: 同胞内出生順
   * 説明: 同胞内出生順の複合拡張
@@ -102,6 +115,11 @@ JP Core FamilymMemberHistoryプロファイルで使用される拡張は次の�
   * 値の型: CodeableConcept
 
 ### 用語定義
+
+#### 続柄（relationship）日本語翻訳時の注意点
+
+* 「おじ」「おば」の漢字は、両親より年上の時は「伯父」「伯母」、年下の時は「叔父」「叔母」の２つあり、V3RoleCodeの`UNCLE`は「おじ」, `AUNT`は「おば」と平仮名を使用した。
+* 「養子」の漢字は総称と男性の両方に使われるため、`CHLDADOPT`を「養子」、 `SONADOPT`を「養子（男子）」とした。
 
 | | | |
 | :--- | :--- | :--- |
@@ -178,10 +196,10 @@ GET [base]/FamilyMemberHistory?patient=Patient/123
 
 #### サンプル
 
-* [**家族歴（母親）**](FamilyMemberHistory-jp-familymemberhistory-example-1.md)
-* [**家族歴（息子、長男）**][jp-familymemberhistory-example-2]
-* [**家族歴（内縁の妻）**][jp-familymemberhistory-example-3]
-* [**家族歴（母方のおば）**][jp-familymemberhistory-example-4]
+* [**母親**](FamilyMemberHistory-jp-familymemberhistory-example-1.md)
+* [**息子（長男）**][jp-familymemberhistory-example-2]
+* [**内縁の妻**][jp-familymemberhistory-example-3]
+* [**母方のおば（三女）**][jp-familymemberhistory-example-4]
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
@@ -265,22 +283,18 @@ GET [base]/FamilyMemberHistory?patient=Patient/123
         "definition" : "Significant health conditions for a person related to the patient relevant in the context of care for the patient.  \n患者の診療に関連する、患者家族の疾患に関する情報。"
       },
       {
-        "id" : "FamilyMemberHistory.extension",
-        "path" : "FamilyMemberHistory.extension",
-        "slicing" : {
-          "discriminator" : [
-            {
-              "type" : "value",
-              "path" : "url"
-            }
-          ],
-          "ordered" : false,
-          "rules" : "open"
-        }
+        "id" : "FamilyMemberHistory.patient",
+        "path" : "FamilyMemberHistory.patient",
+        "type" : [
+          {
+            "code" : "Reference",
+            "targetProfile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient"]
+          }
+        ]
       },
       {
-        "id" : "FamilyMemberHistory.extension:SiblingOrder",
-        "path" : "FamilyMemberHistory.extension",
+        "id" : "FamilyMemberHistory.relationship.extension:SiblingOrder",
+        "path" : "FamilyMemberHistory.relationship.extension",
         "sliceName" : "SiblingOrder",
         "min" : 0,
         "max" : "1",
@@ -290,16 +304,6 @@ GET [base]/FamilyMemberHistory?patient=Patient/123
             "profile" : [
               "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_SiblingOrder"
             ]
-          }
-        ]
-      },
-      {
-        "id" : "FamilyMemberHistory.patient",
-        "path" : "FamilyMemberHistory.patient",
-        "type" : [
-          {
-            "code" : "Reference",
-            "targetProfile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient"]
           }
         ]
       },

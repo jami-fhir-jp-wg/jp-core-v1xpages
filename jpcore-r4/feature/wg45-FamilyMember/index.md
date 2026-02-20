@@ -6475,7 +6475,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "reference" : {
           "reference" : "FamilyMemberHistory/jp-familymemberhistory-example-1"
         },
-        "name" : "JP Core FamilyMemberHistory Example-1 基本的な家族歴（母親）",
+        "name" : "JP Core FamilyMemberHistory Example-1 母親",
         "description" : "基本的な家族歴の例：MELASが疑われる患者（山田太郎）の母親が糖尿病と難聴を有する",
         "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory"
       },
@@ -6489,8 +6489,8 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "reference" : {
           "reference" : "FamilyMemberHistory/jp-familymemberhistory-example-2"
         },
-        "name" : "JP Core FamilyMemberHistory Example-2 家族歴（息子 長男）、氏名が不明",
-        "description" : "同胞内出生順名称の例：MELASが疑われる糖尿病患者（山田太郎）の息子(#SON）が長男（#SBO1_M）は、花粉症の病歴のみで糖尿病の既往なし。",
+        "name" : "JP Core FamilyMemberHistory Example-2 息子（長男）",
+        "description" : "同胞内出生順名称の例：MELASが疑われる糖尿病患者（山田太郎）の息子が長男で、花粉症の病歴のみを有し、糖尿病の既往はない。",
         "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory"
       },
       {
@@ -6503,8 +6503,8 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "reference" : {
           "reference" : "FamilyMemberHistory/jp-familymemberhistory-example-3"
         },
-        "name" : "JP Core FamilyMemberHistory Example-3 家族歴（内縁の妻）、氏名あり",
-        "description" : "鈴木花子という内縁の妻。血縁関係がなく、病歴情報（reasonCode、condition）はない。",
+        "name" : "JP Core FamilyMemberHistory Example-3 内縁のパートナー（血縁なし）",
+        "description" : "血縁関係のない例：鈴木花子という内縁のパートナー、血縁関係がないためMELAS疑いに関する家族歴聴取対象外で、病歴情報（reasonCode、condition）はない。",
         "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory"
       },
       {
@@ -6518,7 +6518,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "FamilyMemberHistory/jp-familymemberhistory-example-4"
         },
         "name" : "JP Core FamilyMemberHistory Example-4 母方のおば（次女）",
-        "description" : "MELAS疑い患者の母方のおば（次女）。母が長女、母方のおじが長男、おばの出生順は３番目。糖尿病に罹患。",
+        "description" : "同胞内出生順と性別同胞内出生順名称の出生順が異なる例：MELASが疑われる患者の母方のおば（次女）。糖尿病に罹患しており、MELAS保因者と思われる。次女であるが出生順は３番目で、姉１人、兄１人がいることが推論される。",
         "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory"
       },
       {
@@ -8884,7 +8884,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "CodeSystem/jp-siblingbirthorderbygender-cs"
         },
         "name" : "JP Core Sibling Birth Order By Gender CodeSystem",
-        "description" : "同胞内における性別の出生順名称を定義するCodeSystem。日本国内では、長女、長男、次女、次男など。性の多様性は、コード\"#SBO_OTHER\"を適用し、text要素に詳述。国際化対応は、designationにより出身国の用語を追加定義することで表現可能。",
+        "description" : "同胞内における性別の出生順名称を定義するCodeSystem。日本国内では、長女、長男、次女、次男など。十男・十女以上の出生順、性の多様性は、コード\"#SBO_OTHER\"を適用し、text要素に詳述。国際化対応は、designationにより出身国の用語を追加定義することで表現可能。",
         "exampleBoolean" : false
       },
       {

@@ -235,7 +235,7 @@ http://terminology.ht7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の�
       "designation" : [
         {
           "language" : "ja",
-          "value" : "伯母（叔母）"
+          "value" : "おば"
         }
       ]
     },
@@ -244,7 +244,7 @@ http://terminology.ht7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の�
       "designation" : [
         {
           "language" : "ja",
-          "value" : "母方の伯母（叔母）"
+          "value" : "母方のおば"
         }
       ]
     },
@@ -253,7 +253,7 @@ http://terminology.ht7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の�
       "designation" : [
         {
           "language" : "ja",
-          "value" : "父方の伯母（叔母）"
+          "value" : "父方のおば"
         }
       ]
     },
@@ -595,7 +595,7 @@ http://terminology.ht7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の�
       "designation" : [
         {
           "language" : "ja",
-          "value" : "伯父（叔父）"
+          "value" : "おじ"
         }
       ]
     },
@@ -604,7 +604,7 @@ http://terminology.ht7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の�
       "designation" : [
         {
           "language" : "ja",
-          "value" : "母方の伯父（叔父）"
+          "value" : "母方のおじ"
         }
       ]
     },
@@ -613,7 +613,7 @@ http://terminology.ht7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の�
       "designation" : [
         {
           "language" : "ja",
-          "value" : "父方の伯父（叔父）"
+          "value" : "父方のおじ"
         }
       ]
     },

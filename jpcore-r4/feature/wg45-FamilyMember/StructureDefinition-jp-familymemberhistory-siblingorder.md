@@ -28,7 +28,7 @@
 **Usages:**
 
 * Use this Extension: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md)
-* Examples for this Extension: [FamilyMemberHistory/jp-familymemberhistory-example-2](FamilyMemberHistory-jp-familymemberhistory-example-2.md) and [母方のおば（次女）](FamilyMemberHistory-jp-familymemberhistory-example-4.md)
+* Examples for this Extension: [FamilyMemberHistory/jp-familymemberhistory-example-2](FamilyMemberHistory-jp-familymemberhistory-example-2.md) and [FamilyMemberHistory/jp-familymemberhistory-example-4](FamilyMemberHistory-jp-familymemberhistory-example-4.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-familymemberhistory-siblingorder)
 
@@ -98,7 +98,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
   "context" : [
     {
       "type" : "element",
-      "expression" : "FamilyMemberHistory"
+      "expression" : "FamilyMemberHistory.relationship"
     }
   ],
   "type" : "Extension",

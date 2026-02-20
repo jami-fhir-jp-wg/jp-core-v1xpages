@@ -1,10 +1,10 @@
-# JP Core FamilyMemberHistory Example-3 家族歴（内縁の妻）、氏名あり - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
+# JP Core FamilyMemberHistory Example-3 内縁のパートナー（血縁なし） - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **JP Core FamilyMemberHistory Example-3 家族歴（内縁の妻）、氏名あり**
+* **JP Core FamilyMemberHistory Example-3 内縁のパートナー（血縁なし）**
 
-## Example FamilyMemberHistory: JP Core FamilyMemberHistory Example-3 家族歴（内縁の妻）、氏名あり
+## Example FamilyMemberHistory: JP Core FamilyMemberHistory Example-3 内縁のパートナー（血縁なし）
 
 Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md)
 
@@ -12,9 +12,9 @@ Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemb
 
 **patient**: [山田 太郎](Patient-jp-patient-example-1.md)
 
-**name**: 鈴木 花子（内縁の妻）、キーパーソン
+**name**: 鈴木 花子
 
-**relationship**: domestic partner
+**relationship**: 内縁のパートナー
 
 **sex**: Female
 
@@ -38,12 +38,13 @@ Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemb
     "reference" : "Patient/jp-patient-example-1",
     "display" : "山田 太郎"
   },
-  "name" : "鈴木 花子（内縁の妻）、キーパーソン",
+  "name" : "鈴木 花子",
   "relationship" : {
     "coding" : [
       {
         "system" : "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
-        "code" : "DOMPART"
+        "code" : "DOMPART",
+        "display" : "内縁のパートナー"
       }
     ]
   },

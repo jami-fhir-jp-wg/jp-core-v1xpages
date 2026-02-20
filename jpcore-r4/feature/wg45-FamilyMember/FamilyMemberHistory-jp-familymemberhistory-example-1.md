@@ -1,10 +1,10 @@
-# JP Core FamilyMemberHistory Example-1 基本的な家族歴（母親） - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
+# JP Core FamilyMemberHistory Example-1 母親 - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **JP Core FamilyMemberHistory Example-1 基本的な家族歴（母親）**
+* **JP Core FamilyMemberHistory Example-1 母親**
 
-## Example FamilyMemberHistory: JP Core FamilyMemberHistory Example-1 基本的な家族歴（母親）
+## Example FamilyMemberHistory: JP Core FamilyMemberHistory Example-1 母親
 
 Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md)
 
@@ -12,11 +12,11 @@ Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemb
 
 **patient**: [山田 太郎](Patient-jp-patient-example-1.md)
 
-**relationship**: mother
+**relationship**: 母親
 
 **sex**: Female
 
-**reasonCode**: 難聴
+**reasonCode**: MELASの疑い
 
 > **condition****code**:糖尿病
 
@@ -46,7 +46,8 @@ Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemb
     "coding" : [
       {
         "system" : "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
-        "code" : "MTH"
+        "code" : "MTH",
+        "display" : "母親"
       }
     ]
   },
@@ -60,7 +61,7 @@ Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemb
   },
   "reasonCode" : [
     {
-      "text" : "難聴"
+      "text" : "MELASの疑い"
     }
   ],
   "condition" : [

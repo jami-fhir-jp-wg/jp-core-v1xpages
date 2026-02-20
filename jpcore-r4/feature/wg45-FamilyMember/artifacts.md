@@ -221,7 +221,7 @@
 | [JP Core Observation Electrocardiogram Extra Category CodeSystem](CodeSystem-jp-observation-electrocardiogram-extracategory-cs.md) | JP Coreにて定義した心電図のObservationリソースに関する分類コード |
 | [JP Core Observation Electrocardiogram StressType CodeSystem](CodeSystem-jp-observation-electrocardiogram-stresstype-cs.md) | JP Coreにて定義した心電図のObservationリソースに関する詳細分類コード（負荷タイプ） |
 | [JP Core ObservationDentalCategory CodeSystem](CodeSystem-jp-observation-dental-category-cs.md) | JP Coreにて定義した歯科のObservationリソースに関するカテゴリのコード |
-| [JP Core Sibling Birth Order By Gender CodeSystem](CodeSystem-jp-siblingbirthorderbygender-cs.md) | 同胞内における性別の出生順名称を定義するCodeSystem。日本国内では、長女、長男、次女、次男など。性の多様性は、コード"#SBO_OTHER"を適用し、text要素に詳述。国際化対応は、designationにより出身国の用語を追加定義することで表現可能。 |
+| [JP Core Sibling Birth Order By Gender CodeSystem](CodeSystem-jp-siblingbirthorderbygender-cs.md) | 同胞内における性別の出生順名称を定義するCodeSystem。日本国内では、長女、長男、次女、次男など。十男・十女以上の出生順、性の多様性は、コード"#SBO_OTHER"を適用し、text要素に詳述。国際化対応は、designationにより出身国の用語を追加定義することで表現可能。 |
 | [JP Core Undefined CodeSystem](CodeSystem-jp-undefined-cs.md) | 未定義のコードシステム。使用する予定のコードシステムが利用できない場合や方針未決定の場合等に割り振る特別なリソースである。 |
 
 ### Terminology: Naming Systems 
@@ -296,10 +296,10 @@
 | [JP Core DiagnosticReport_LabResult Example 検体検査（血液）レポート](DiagnosticReport-jp-diagnosticreport-labresult-example-1.md) | 検体検査（血液）レポート |
 | [JP Core DiagnosticReport_Microbiology Example 一般細菌検査レポート](DiagnosticReport-jp-diagnosticreport-microbiology-example-1.md) | 一般細菌検査レポート |
 | [JP Core Encounter Example 外来](Encounter-jp-encounter-example-1.md) | 外来 |
-| [JP Core FamilyMemberHistory Example-1 基本的な家族歴（母親）](FamilyMemberHistory-jp-familymemberhistory-example-1.md) | 基本的な家族歴の例：MELASが疑われる患者（山田太郎）の母親が糖尿病と難聴を有する |
-| [JP Core FamilyMemberHistory Example-2 家族歴（息子 長男）、氏名が不明](FamilyMemberHistory-jp-familymemberhistory-example-2.md) | 同胞内出生順名称の例：MELASが疑われる糖尿病患者（山田太郎）の息子(#SON）が長男（#SBO1_M）は、花粉症の病歴のみで糖尿病の既往なし。 |
-| [JP Core FamilyMemberHistory Example-3 家族歴（内縁の妻）、氏名あり](FamilyMemberHistory-jp-familymemberhistory-example-3.md) | 鈴木花子という内縁の妻。血縁関係がなく、病歴情報（reasonCode、condition）はない。 |
-| [JP Core FamilyMemberHistory Example-4 母方のおば（次女）](FamilyMemberHistory-jp-familymemberhistory-example-4.md) | MELAS疑い患者の母方のおば（次女）。母が長女、母方のおじが長男、おばの出生順は３番目。糖尿病に罹患。 |
+| [JP Core FamilyMemberHistory Example-1 母親](FamilyMemberHistory-jp-familymemberhistory-example-1.md) | 基本的な家族歴の例：MELASが疑われる患者（山田太郎）の母親が糖尿病と難聴を有する |
+| [JP Core FamilyMemberHistory Example-2 息子（長男）](FamilyMemberHistory-jp-familymemberhistory-example-2.md) | 同胞内出生順名称の例：MELASが疑われる糖尿病患者（山田太郎）の息子が長男で、花粉症の病歴のみを有し、糖尿病の既往はない。 |
+| [JP Core FamilyMemberHistory Example-3 内縁のパートナー（血縁なし）](FamilyMemberHistory-jp-familymemberhistory-example-3.md) | 血縁関係のない例：鈴木花子という内縁のパートナー、血縁関係がないためMELAS疑いに関する家族歴聴取対象外で、病歴情報（reasonCode、condition）はない。 |
+| [JP Core FamilyMemberHistory Example-4 母方のおば（次女）](FamilyMemberHistory-jp-familymemberhistory-example-4.md) | 同胞内出生順と性別同胞内出生順名称の出生順が異なる例：MELASが疑われる患者の母方のおば（次女）。糖尿病に罹患しており、MELAS保因者と思われる。次女であるが出生順は３番目で、姉１人、兄１人がいることが推論される。 |
 | [JP Core ImagingStudy Endoscopy Example 内視鏡画像検査](ImagingStudy-jp-imagingstudy-endoscopy-example-1.md) | 内視鏡画像検査 |
 | [JP Core ImagingStudy Radiology Example 放射線画像検査](ImagingStudy-jp-imagingstudy-radiology-example-1.md) | 放射線画像検査 |
 | [JP Core Immunization Example 肺炎球菌ワクチン接種](Immunization-jp-immunization-example-1.md) | 肺炎球菌ワクチン接種 YJコードによるワクチン記述 |
