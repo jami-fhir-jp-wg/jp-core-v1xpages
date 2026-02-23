@@ -311,63 +311,67 @@
 
 <div style="display:inline-block" markdown="1">
 
-<p>本プロファイルは、患者に関連する家族の主要な健康状態を登録する家族歴に関する情報の登録や検索、取得のために、FHIR FamilyMemberHistoryリソースを使用するにあたって準拠するべき必須となる要素や、サポートすべき拡張、用語、検索パラメータを定義する。</p>
+<p>患者のケアの文脈において関連性のある、患者に関連する個人の重要な健康状態。</p>
 
-<p>臨床における家族歴の正確性には幅があり、用途により大きく3つの分類が想定される。</p>
-<ol>
-  <li>基本的な家族歴(Family Member History)
-    <ul>
-      <li>病名は、「喘息」のように正確な場合もあれば、「癌（部位不明）」のように、あまり正確でない場合もある。</li>
-      <li>関係性も、「叔母（長女）の幸子」と人物を特定できる場合もあれば、「次男」としかわからない場合もある。日常の診療では家族の個人名まで聴取されることは少なく、長女や次男などの続柄で記録される場合が多い。</li>
-      <li>関連する家族全員が聴取されることは少なく、断片的な病歴になることが多い。</li>
-      <li>しかし、遺伝子解析やその他の分析に有用な厳密な家族歴を把握するための基礎資料になる。</li>
-    </ul>
-  </li>
-  <li>ジェノグラム(Genogram,家族図)
-    <ul>
-      <li>介護、障害者支援などの福祉、医療、教育の分野で、援助者が利用者を支援する方策を考えるために作成される。家族内支援のキーパーソンを見つけたりするための資料として活用されている。そのため、非血縁の内縁の妻、養子なども記載される。</li>
-      <li>社会的な背景（遺産相続の問題など）から同胞内の出生順（長男、長女、次男、次女など）を表現する必要性がある。</li>
-      <li>社会的な関係性である別居、離婚なども表現する対象となるが、統一的な仕様は策定されていない。</li>
-    </ul>
-  </li>
-  <li>遺伝学的血統図(Genetic Pedigree)
-    <ul>
-      <li>遺伝学的家系図記載法の国際的な規則に基づいた厳密な運用によるもの。特に癌については親族内の全員で癌に関連する病歴がないことも含めた詳細を聞く必要がある。</li>
-      <li>血縁関係以外の家族は基本的に対象外である。</li>
-    </ul>
-  </li>
-</ol>
+<h2 id="背景及び想定シナリオ">背景及び想定シナリオ</h2>
 
-<p>基本的な家族歴、ジェノグラムにおいて必要とされる「同胞内出生順」（長男、長女、次男、次女など）について拡張し、表現する。</p>
+<p>臨床における家族歴の正確性には幅がある。基本的な家族歴は、医師が患者の遺伝性リスクを把握するために、疾患を中心に記録するものである。病名は「喘息」のように正確な場合もあれば「癌（部位不明）」のように不正確な場合もあり、患者の氏名や全員の生年月日が把握できず、「おば」や「長男」などの続柄として不完全で断片的に記録される。しかし、このような限定的な情報であっても、遺伝子解析やその他の分析に有用な厳密な家族歴を把握するための基礎資料となる。</p>
 
-<p>JP_FamilyMemberHistoryインスタンスへの参照をListリソースインスタンスに結合することで、個人の家族歴全体を表現することができる。</p>
+<p>また、看護師を中心に療養・介護・福祉等の支援体制を目的とした家族図（ジェノグラム、Genogram）も作成される。患者への支援方策を検討する際に、血縁関係のみならず養子や内縁のパートナーといった非血縁者を含めた家族構成、および同胞内の出生順（長男、長女、次男など）を記録することで、家族内の役割と支援体制を把握できる。</p>
+
+<p>遺伝学的血統図（Genetic Pedigree）は、遺伝学的家系図記載法の国際的規則に基づいた厳密な運用によるもので、血縁関係を中心とした遺伝リスク評価に特化している。</p>
+
+<p>本プロファイルは、家族歴（<code class="language-plaintext highlighter-rouge">FamilyMemberHistory</code>）を、医療・介護・福祉などで、記録・更新・検索できるようにすることを目的とする。</p>
+
+<p>主な利用用途</p>
+
+<ul>
+  <li>医療：遺伝性リスク把握、疾患関連情報の記録・更新</li>
+  <li>看護・介護・福祉：療養支援、支援体制整備、ケア計画の策定に必要な家族関係の把握と共有</li>
+</ul>
 
 <h2 id="スコープ">スコープ</h2>
-<ul>
-  <li>本プロファイルは、基本的な家族歴とジェノグラムを対象とする。</li>
-  <li>遺伝学的血統図は対象外である。本実装ガイド（Version 1.2.0）の範囲外であるが、 参考として<a href="https://hl7.org/fhir/R4/familymemberhistory-genetic.html">Genetic Pedigreeプロファイル</a>を参照すること。</li>
-</ul>
 
-<h2 id="想定シナリオ">想定シナリオ</h2>
+<h3 id="対象">対象</h3>
 
-<p>本プロファイルは、家族歴情報を標準化して <strong>記録・更新・検索</strong> できるようにすることを目的としている。</p>
+<p>本プロファイルは、患者に関連する家族歴情報のうち、基本的な家族歴とジェノグラムを対象とする。</p>
 
-<ul>
-  <li>
-    <p><strong>医師が家族歴を記録・更新・検索する</strong><br />
-診療前に医師は電子カルテから患者の家族歴（ <code class="language-plaintext highlighter-rouge">FamilyMemberHistory</code> ）を検索し、遺伝性リスク（例：2型糖尿病、家族性高血圧、家族性脂質異常症）を把握。診断・治療計画（遺伝子検査の適応判定、生活習慣指導、薬物療法の選択）に即座に活用できる。診療中に新たに判明した家族歴情報を <strong>更新</strong> し、他の医療スタッフと共有する。</p>
-  </li>
-  <li>
-    <p><strong>看護師が家族歴を記録・更新・検索する</strong><br />
-入院・外来時の問診や看護評価の過程で、看護師は患者・家族から得られる家族歴情報（<code class="language-plaintext highlighter-rouge">FamilyMemberHistory</code>）を<strong>記録</strong>し、疾患の有無だけでなく、療養生活に影響する家族関係の実態（例：同居/別居、主介護者・キーパーソン、家族内の支援体制、きょうだい構成や出生順、非血縁の同居パートナーや養子縁組等）も踏まえて退院支援や療養支援のリスク評価に活用する。既存の家族歴に追加・変更があれば（例：続柄の詳細化、出生順情報の判明、キーパーソンの変更、支援者の追加など）<strong>更新</strong>し、多職種が参照できるよう共有する。また、転院・退院時には家族歴を<strong>検索・参照</strong>し、家族への説明・指導の方法、支援依頼先、見守り体制の調整に反映させる。</p>
-  </li>
-  <li>
-    <p><strong>その他の職種（主に介護職）が家族歴を記録・更新・検索する</strong><br />
-介護職は、入退所時アセスメントやサービス担当者会議、日常支援の場面で家族歴（<code class="language-plaintext highlighter-rouge">FamilyMemberHistory</code>）を<strong>検索・参照</strong>し、「誰が、どの関係で、どの程度支援できるか」という観点からケア計画に反映する。具体的には、家族構成（非血縁の同居者を含む）、同居状況や別居・離婚等の関係性、連絡先・意思決定支援の窓口となるキーパーソン、きょうだい構成や出生順に伴う役割分担、家族内の支援資源と負担の偏りを把握し、連絡体制、緊急時対応、受診同行、服薬・食事・運動など生活支援の割り当てを調整する。日常の聞き取りで新たに分かった情報（例：支援者の変更、家族関係の変化、把握できていなかった同居者の存在、出生順情報の判明など）は、判明した範囲で<strong>記録（必要に応じて更新）</strong>し、医療・看護側へ共有して医療介護連携の情報の連続性を確保する。</p>
-  </li>
-</ul>
+<p>医療者は同胞内出生順（長男、長女、次男、次女など）で家族歴を記録しており、本プロファイルではこれを拡張により表現する。</p>
+
+<p>複数の FamilyMemberHistory インスタンスを List リソースで集約することで、患者の家族歴全体を統合的に表現できる。</p>
+
+<h3 id="対象外">対象外</h3>
+
+<p>遺伝学的血統図は本プロファイルの対象外である。遺伝学的解析に特化した厳密な血統図については、<a href="https://hl7.org/fhir/R4/familymemberhistory-genetic.html">Genetic Pedigreeプロファイル</a>を参照のこと。</p>
 
 <h2 id="プロファイル定義">プロファイル定義</h2>
+
+<!-- 本ファイル修正不可。-->
+<!-- リソース追加・変更はruby script/markdownlink_creator.mdを実行にて反映される -->
+<!-- Temporary changes to fix formatting for changelog -->
+<style>
+  ul.new-content {
+    padding-left: 25px !important;
+  }
+</style>
+
+<!-- ページ内リンク指定 -->
+
+<!-- ImplementationGuide -->
+
+<!-- StructureDefinition: Profile, DataType -->
+
+<!-- StructureDefinition: Extension -->
+
+<!-- CapabilityStatement -->
+
+<!-- SearchParameter -->
+
+<!-- CodeSystem -->
+
+<!-- ValueSet -->
+
+<!-- Example -->
 
 
 </div>
@@ -461,7 +465,7 @@
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">0</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">*</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="http://hl7.org/fhir/R4/questionnaireresponse.html">QuestionnaireResponse</a> | <a href="http://hl7.org/fhir/R4/documentreference.html">DocumentReference</a> | <a href="StructureDefinition-jp-allergyintolerance.html">JP Core AllergyIntolerance Profile</a> | <a href="StructureDefinition-jp-condition.html">JP Core Condition Profile</a> | <a href="StructureDefinition-jp-observation-common.html">JP Core Observation Common Profile</a> | <a href="StructureDefinition-jp-diagnosticreport-common.html">JP Core DiagnosticReport Common Profile</a>)</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">家族歴が作成された理由 / Why was family member history performed?</span></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 41cf38c7-116b-4ae5-8c48-4837421ab92b
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // de2ea8fe-f362-4424-a318-565e666e4f9e
 document.getElementById('cbjp-familymemberhistoryD-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-familymemberhistoryD'), 'binding', document.getElementById('cbjp-familymemberhistoryD-binding').checked, document.getElementById('ppjp-familymemberhistoryD'));
 document.getElementById('cbjp-familymemberhistoryD-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -527,7 +531,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="http://hl7.org/fhir/R4/questionnaireresponse.html">QuestionnaireResponse</a> | <a href="http://hl7.org/fhir/R4/documentreference.html">DocumentReference</a> | <a href="StructureDefinition-jp-allergyintolerance.html">JP Core AllergyIntolerance Profile</a> | <a href="StructureDefinition-jp-condition.html">JP Core Condition Profile</a> | <a href="StructureDefinition-jp-observation-common.html">JP Core Observation Common Profile</a> | <a href="StructureDefinition-jp-diagnosticreport-common.html">JP Core DiagnosticReport Common Profile</a>)</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">家族歴が作成された理由 / Why was family member history performed?<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 41cf38c7-116b-4ae5-8c48-4837421ab92b
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // de2ea8fe-f362-4424-a318-565e666e4f9e
 document.getElementById('cbjp-familymemberhistoryK-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-familymemberhistoryK'), 'binding', document.getElementById('cbjp-familymemberhistoryK-binding').checked, document.getElementById('ppjp-familymemberhistoryK'));
 document.getElementById('cbjp-familymemberhistoryK-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -830,7 +834,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">状態に関する追加情報 / Extra information about condition<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 41cf38c7-116b-4ae5-8c48-4837421ab92b
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // de2ea8fe-f362-4424-a318-565e666e4f9e
 document.getElementById('cbjp-familymemberhistoryS-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-familymemberhistoryS'), 'binding', document.getElementById('cbjp-familymemberhistoryS-binding').checked, document.getElementById('ppjp-familymemberhistoryS'));
 document.getElementById('cbjp-familymemberhistoryS-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1268,7 +1272,7 @@ Summary
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">0</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">*</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="http://hl7.org/fhir/R4/questionnaireresponse.html">QuestionnaireResponse</a> | <a href="http://hl7.org/fhir/R4/documentreference.html">DocumentReference</a> | <a href="StructureDefinition-jp-allergyintolerance.html">JP Core AllergyIntolerance Profile</a> | <a href="StructureDefinition-jp-condition.html">JP Core Condition Profile</a> | <a href="StructureDefinition-jp-observation-common.html">JP Core Observation Common Profile</a> | <a href="StructureDefinition-jp-diagnosticreport-common.html">JP Core DiagnosticReport Common Profile</a>)</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">家族歴が作成された理由 / Why was family member history performed?</span></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 41cf38c7-116b-4ae5-8c48-4837421ab92b
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // de2ea8fe-f362-4424-a318-565e666e4f9e
 document.getElementById('cbjp-familymemberhistoryDA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-familymemberhistoryDA'), 'binding', document.getElementById('cbjp-familymemberhistoryDA-binding').checked, document.getElementById('ppjp-familymemberhistoryDA'));
 document.getElementById('cbjp-familymemberhistoryDA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1334,7 +1338,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="http://hl7.org/fhir/R4/questionnaireresponse.html">QuestionnaireResponse</a> | <a href="http://hl7.org/fhir/R4/documentreference.html">DocumentReference</a> | <a href="StructureDefinition-jp-allergyintolerance.html">JP Core AllergyIntolerance Profile</a> | <a href="StructureDefinition-jp-condition.html">JP Core Condition Profile</a> | <a href="StructureDefinition-jp-observation-common.html">JP Core Observation Common Profile</a> | <a href="StructureDefinition-jp-diagnosticreport-common.html">JP Core DiagnosticReport Common Profile</a>)</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">家族歴が作成された理由 / Why was family member history performed?<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 41cf38c7-116b-4ae5-8c48-4837421ab92b
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // de2ea8fe-f362-4424-a318-565e666e4f9e
 document.getElementById('cbjp-familymemberhistoryKA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-familymemberhistoryKA'), 'binding', document.getElementById('cbjp-familymemberhistoryKA-binding').checked, document.getElementById('ppjp-familymemberhistoryKA'));
 document.getElementById('cbjp-familymemberhistoryKA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1637,7 +1641,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">状態に関する追加情報 / Extra information about condition<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 41cf38c7-116b-4ae5-8c48-4837421ab92b
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // de2ea8fe-f362-4424-a318-565e666e4f9e
 document.getElementById('cbjp-familymemberhistorySA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-familymemberhistorySA'), 'binding', document.getElementById('cbjp-familymemberhistorySA-binding').checked, document.getElementById('ppjp-familymemberhistorySA'));
 document.getElementById('cbjp-familymemberhistorySA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -2048,18 +2052,19 @@ Summary
 
 <h3 id="extensions定義">Extensions定義</h3>
 
-<p>JP Core FamilymMemberHistoryプロファイルで使用される拡張は次の通りである。</p>
+<p>JP Core FamilyMemberHistoryプロファイルで使用される拡張は次の通りである。</p>
 
 <h4 id="モデリング上の注意運用ルール">モデリング上の注意（運用ルール）</h4>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">FamilyMemberHistory</code> は、患者に関連する家族 <strong>1人につき1リソース</strong>として作成する。</li>
-  <li>本プロファイルで扱う「同胞（<code class="language-plaintext highlighter-rouge">sibling</code>）」は、完全同胞および半同胞に加え、養子縁組・継子等の法的親子関係に基づく非血縁の兄弟姉妹関係も含み、戸籍法施行規則に整合している。</li>
-  <li>同胞内出生順は当該家族構成員の <strong>続柄（<code class="language-plaintext highlighter-rouge">relationship</code>）に付随する属性</strong>であるため、<code class="language-plaintext highlighter-rouge">FamilyMemberHistory.relationship</code> に対する拡張として表現する。</li>
-  <li>同胞内出生順（<code class="language-plaintext highlighter-rouge">SiblingOrder</code>）は非血縁関係が含まれうるため、遺伝学的血統図にはそのまま利用できない。ただし、参考資料になることを想定している。</li>
-  <li>遺伝学的血統図は、同胞を出生順に並べて家系構造を表現する必要がある。しかし、relationship（続柄）だけでは同胞内の順序を表現できず、氏名や生年月日が不明な場合には同一人物の追跡も困難になる。本拡張（<code class="language-plaintext highlighter-rouge">SiblingOrder</code>）は <code class="language-plaintext highlighter-rouge">siblingBirthOrder</code>（整数）および <code class="language-plaintext highlighter-rouge">siblingBirthOrderByGender</code>（長男・次女など）を<code class="language-plaintext highlighter-rouge">relationship</code>と組み合わせて保持することで、 血統図の自動配置（同胞の並び順の決定）と、追加聴取による家系情報の更新（差分修正）を容易にする。</li>
+  <li><code class="language-plaintext highlighter-rouge">FamilyMemberHistory</code>は、患者に関連する個人を<code class="language-plaintext highlighter-rouge">relationship</code>要素で指定し、その個人1人につき1リソース作成する。</li>
+  <li>本プロファイルで扱う「同胞（<code class="language-plaintext highlighter-rouge">sibling</code>）」は、戸籍法施行規則に基づき、完全同胞および半同胞に加え、養子縁組・継子等の法的親子関係に基づく非血縁の兄弟姉妹関係が含まれる。</li>
+  <li>同胞は<code class="language-plaintext highlighter-rouge">relationship</code>要素を起点とした関係性であり、<code class="language-plaintext highlighter-rouge">FamilyMemberHistory.relationship</code>に対する拡張として表現する。</li>
+  <li>また、同胞内出生順（<code class="language-plaintext highlighter-rouge">SiblingOrder</code>）</li>
+  <li>非血縁関係が含まれるため、遺伝学的血統図にはそのまま利用できないが、基礎資料になる。 遺伝学的血統図は関連する血縁関係の家族全員の生年月日が必要である。しかし、基礎的な家族歴では、氏名や生年月日が不明な場合が多く、同一人物の追跡も困難になる。</li>
+  <li>本拡張（<code class="language-plaintext highlighter-rouge">SiblingOrder</code>）は <code class="language-plaintext highlighter-rouge">siblingBirthOrder</code>（整数）および <code class="language-plaintext highlighter-rouge">siblingBirthOrderByGender</code>（長男・次女など）を<code class="language-plaintext highlighter-rouge">relationship</code>要素と組み合わせて保持することで、血統図の自動配置（同胞の並び順の決定）と、追加聴取による家系情報の更新（差分修正）を容易にする。</li>
   <li>家族歴を記録する理由（契機）は、<code class="language-plaintext highlighter-rouge">reasonCode</code>要素に記述する。</li>
-  <li>患者に関連する家族の病名は、<code class="language-plaintext highlighter-rouge">condition</code>要素に記述する。<code class="language-plaintext highlighter-rouge">condition.code.text</code>に自由記載できる。あわせて<code class="language-plaintext highlighter-rouge">condition.code.coding</code>によりコードを付与してもよい。</li>
+  <li>患者に関連する家族の病名は、<code class="language-plaintext highlighter-rouge">condition</code>要素に記述する。<code class="language-plaintext highlighter-rouge">condition.code.text</code>要素に自由記載もでき、<code class="language-plaintext highlighter-rouge">condition.code.coding</code>要素にコードを付与してもよい。</li>
   <li>関連する家族が聴取したい病名に罹患していない旨を記録する場合は、<code class="language-plaintext highlighter-rouge">note</code>要素に記述する。</li>
 </ul>
 
@@ -2201,7 +2206,7 @@ Summary
 
 <h5 id="追加検索パラメータ">追加検索パラメータ</h5>
 
-<p>オプションとして次の検索パラメータをサポートすることができる（MAY）</p>
+<p>オプションとして次の検索パラメータをサポートできる（MAY）</p>
 
 <ol>
   <li>
@@ -2233,7 +2238,7 @@ Summary
   <li><a href="FamilyMemberHistory-jp-familymemberhistory-example-1.html"><strong>母親</strong></a></li>
   <li><a href="FamilyMemberHistory-jp-familymemberhistory-example-2.html"><strong>息子（長男）</strong></a></li>
   <li><a href="FamilyMemberHistory-jp-familymemberhistory-example-3.html"><strong>内縁の妻</strong></a></li>
-  <li><a href="FamilyMemberHistory-jp-familymemberhistory-example-4.html"><strong>母方のおば（三女）</strong></a></li>
+  <li><a href="FamilyMemberHistory-jp-familymemberhistory-example-4.html"><strong>母方のおば（次女）</strong></a></li>
 </ul>
 
 <!-- 本ファイル修正不可。-->
@@ -2288,7 +2293,7 @@ Summary
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.3.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Feb 20, 2026 14:51+0000">2026-02-20</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.3.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Feb 23, 2026 06:21+0000">2026-02-23</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
