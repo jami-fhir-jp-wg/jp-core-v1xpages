@@ -12,7 +12,7 @@ Profile: [JP Core Location Profile](StructureDefinition-jp-location.md)
 
 **status**: Suspended
 
-**operationalStatus**: [bedStatus: H](http://terminology.hl7.org/7.0.1/CodeSystem-v2-0116.html#v2-0116-H) (Housekeeping)
+**operationalStatus**: [bedStatus: H](http://terminology.hl7.org/7.1.0/CodeSystem-v2-0116.html#v2-0116-H) (Housekeeping)
 
 **name**: 南ウィング 神経放射線科 手術室1
 

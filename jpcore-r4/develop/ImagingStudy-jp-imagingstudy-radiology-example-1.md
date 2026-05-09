@@ -8,7 +8,7 @@
 
 Profile: [JP Core ImagingStudy Radiology Profile](StructureDefinition-jp-imagingstudy-radiology.md)
 
-**identifier**: [DICOM Unique Id](http://terminology.hl7.org/7.0.1/NamingSystem-dui.html)/urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430045
+**identifier**: [DICOM Unique Id](http://terminology.hl7.org/7.1.0/NamingSystem-dui.html)/urn:oid:2.16.124.113543.6003.1154777499.30246.19789.3503430045
 
 **status**: Available
 

@@ -10,7 +10,7 @@
 
 **status**: Active
 
-**connectionType**: [Endpoint Connection Type: dicom-wado-rs](http://terminology.hl7.org/7.0.1/CodeSystem-endpoint-connection-type.html#endpoint-connection-type-dicom-wado-rs) (DICOM WADO-RS)
+**connectionType**: [Endpoint Connection Type: dicom-wado-rs](http://terminology.hl7.org/7.1.0/CodeSystem-endpoint-connection-type.html#endpoint-connection-type-dicom-wado-rs) (DICOM WADO-RS)
 
 **name**: ABC Hospital PACS DICOM WADO-RS endpoint
 
