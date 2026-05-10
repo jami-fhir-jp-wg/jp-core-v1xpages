@@ -3384,8 +3384,8 @@
      ] [
        fhir:id [ fhir:v "MedicationDispense.substitution.reason" ] ;
        fhir:path [ fhir:v "MedicationDispense.substitution.reason" ] ;
-       fhir:short [ fhir:v "置換が実施された理由" ] ;
-       fhir:definition [ fhir:v "治療継続性確保のため、FP:処方方針、 OS: 在庫欠品、  RR:代替えを義務付けまたは禁止する規制要件に従った" ] ;
+       fhir:short [ fhir:v "置換が実施された（あるいは、されなかった）理由" ] ;
+       fhir:definition [ fhir:v "【JP Core仕様】置換が実施された、あるいは実施されなかった理由を示す。令和6年保険改訂により、処方箋上で長期収載医薬品の変更不可が指定されている場合は「医療上の必要性がある」または「患者希望による」のいずれかを指定する。" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
        fhir:base [
@@ -3413,21 +3413,10 @@
        fhir:isModifier [ fhir:v false ] ;
        fhir:isSummary [ fhir:v false ] ;
        fhir:binding [
-         fhir:extension ( [
-           fhir:url [
-             fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"^^xsd:anyURI ;
-             fhir:l <http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName>
-           ] ;
-           fhir:value [
-             a fhir:String ;
-             fhir:v "MedicationIntendedSubstitutionReason"
-           ]
-         ] ) ;
-         fhir:strength [ fhir:v "example" ] ;
-         fhir:description [ fhir:v "別の薬物療法が処方されたものから置き換える（またはすべきではない）理由を説明するコード化された概念。 / A coded concept describing the reason that a different medication should (or should not) be substituted from what was prescribed." ] ;
+         fhir:strength [ fhir:v "preferred" ] ;
          fhir:valueSet [
-           fhir:v "http://terminology.hl7.org/ValueSet/v3-SubstanceAdminSubstitutionReason"^^xsd:anyURI ;
-           fhir:l <http://terminology.hl7.org/ValueSet/v3-SubstanceAdminSubstitutionReason>
+           fhir:v "http://jpfhir.jp/fhir/core/ValueSet/JP_MedicationSubstitutionProhibitionReason_VS"^^xsd:anyURI ;
+           fhir:l <http://jpfhir.jp/fhir/core/ValueSet/JP_MedicationSubstitutionProhibitionReason_VS>
          ]
        ] ;
        fhir:mapping ( [

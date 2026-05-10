@@ -185,6 +185,7 @@
 | [JP Core Dental SurfaceBodyStructure ValueSet](ValueSet-jp-dental-surfacebodystructure-vs.md) | JP Coreにて定義した歯科のObservationリソースに関する歯面に関連する詳細部位構造コード |
 | [JP Core Dental TeethObservation ValueSet](ValueSet-jp-dental-teethobservation-vs.md) | JP Coreにて定義した歯科のObservationリソースに関する歯面の詳細部位構造コード |
 | [JP Core ImagingStudy Radiology BodySite ValueSet](ValueSet-jp-imagingstudy-radiology-bodysite-vs.md) | 放射線検査画像の対象となる身体部位のコード |
+| [JP Core Medication Substitution Prohibition Reason ValueSet](ValueSet-jp-medication-substitution-prohibition-reason-vs.md) | 後発医薬品への変更不可理由を示す値セット。令和6年保険改訂（2024年10月施行）により導入された長期収載医薬品の変更不可理由区分（医療上の必要性・患者希望）を含む。MedicationRequest.substitution.reason および MedicationDispense.substitution.reason に使用する。 |
 | [JP Core Observation BodySite ValueSet](ValueSet-jp-observation-bodysite-vs.md) | 検査の対象となる身体部位のコード |
 | [JP Core Observation Electrocardiogram Component Code ValueSet](ValueSet-jp-observation-electrocardiogram-component-code-vs.md) | 心電図検査の一連の測定項目を示す値セット |
 | [JP Core Observation Electrocardiogram Duration ValueSet](ValueSet-jp-observation-electrocardiogram-duration-vs.md) | JP Coreにて定義した心電図のObservationリソースに関する詳細分類コード（検査時間） |
@@ -213,6 +214,7 @@
 | [JP Core Dental SimpleMissingTeethObservation CodeSystem](CodeSystem-jp-dental-simple-missingteeth-observation-cs.md) | JP Coreにて定義した歯科のObservationリソースに関する欠損歯の観察結果コード（簡易版） |
 | [JP Core Dental SimplePresentTeethObservation CodeSystem](CodeSystem-jp-dental-simple-presentteeth-observation-cs.md) | JP Coreにて定義した歯科のObservationリソースに関する現存歯の観察結果コード（簡易版） |
 | [JP Core Dental Surface BodyStructure CodeSystem](CodeSystem-jp-dental-surfacebodystructure-cs.md) | JP Coreにて定義した歯科のObservationリソースに関する歯面に関連する詳細部位構造コード |
+| [JP Core Medication Substitution Prohibition Reason CodeSystem](CodeSystem-jp-medication-substitution-prohibition-reason-cs.md) | 後発医薬品への変更不可理由を示すコードシステム。令和6年保険改訂（2024年10月施行）により導入された長期収載医薬品の変更不可理由区分を定義する。MedicationRequest.substitution.reason および MedicationDispense.substitution.reason に使用する。 |
 | [JP Core Observation BodyMeasurement Code CodeSystem](CodeSystem-jp-observation-bodymeasurement-code-cs.md) | Observation（身体計測）で使用する項目コードのコードシステム （出典：看護実践用語標準マスターの概要＜看護行為編＞Ver. 3. 6） |
 | [JP Core Observation Electrocardiogram Duration CodeSystem](CodeSystem-jp-observation-electrocardiogram-duration-cs.md) | JP Coreにて定義した心電図のObservationリソースに関する詳細分類コード（検査時間） |
 | [JP Core Observation Electrocardiogram Extra Category CodeSystem](CodeSystem-jp-observation-electrocardiogram-extracategory-cs.md) | JP Coreにて定義した心電図のObservationリソースに関する分類コード |
@@ -281,7 +283,7 @@
 | :--- | :--- |
 | [Endpoint DICOM WADO-RS Example](Endpoint-endpoint-dicom-wadors-example.md) | DICOM WADO-RS Example |
 | [JP Core AllergyIntolerance Example 食物アレルギー（小麦）](AllergyIntolerance-jp-allergyintolerance-example-1.md) | じん麻疹を生じた小麦粉アレルギーの例 |
-| [JP Core Condition Diagnosis Example 病名（過敏性大腸炎の初期疾患）](Condition-jp-condition-diagnosis-example-1.md) | 過敏性大腸炎の初期疾患の例 |
+| [JP Core Condition Diagnosis Example 病名（右橈骨遠位端骨折の術後）](Condition-jp-condition-diagnosis-example-1.md) | 右橈骨遠位端骨折の術後の例 |
 | [JP Core Condition Example 病名（直腸癌）](Condition-jp-condition-example-1.md) | 下血を生じたKRAS野生型の転移性結腸直腸癌の例 |
 | [JP Core Coverage Example 健康保険証](Coverage-jp-coverage-example-1.md) | 健康保険証 |
 | [JP Core DiagnosticReport DentalOral Example 口腔診査レポート1](DiagnosticReport-jp-diagnosticreport-dentaloral-example-1.md) | 初診時口腔診査レポート |

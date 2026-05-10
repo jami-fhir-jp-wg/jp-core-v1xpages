@@ -209,6 +209,11 @@ This publication includes IP covered under the following statements.
 * [JP Core Condition Disease Outcome Receipt CodeSystem](CodeSystem-jp-condition-disease-outcome-receipt-cs.md): [JP_ConditionDiseaseOutcomeReceipt_VS](ValueSet-jp-condition-disease-outcome-receipt-vs.md) and [JP_Condition_DiseaseOutcome](StructureDefinition-jp-condition-disease-outcome.md)
 
 
+* FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
+
+* [JP Core Medication Substitution Prohibition Reason CodeSystem](CodeSystem-jp-medication-substitution-prohibition-reason-cs.md): [JP_MedicationDispenseBase](StructureDefinition-jp-medicationdispensebase.md), [JP_MedicationRequest](StructureDefinition-jp-medicationrequest.md), [JP_MedicationRequest_Injection](StructureDefinition-jp-medicationrequest-injection.md) and [JP_MedicationSubstitutionProhibitionReason_VS](ValueSet-jp-medication-substitution-prohibition-reason-vs.md)
+
+
 * These codes are excerpted from Digital Imaging and Communications in Medicine (DICOM) Standard, Part 16: Content Mapping Resource, Copyright © 2011 by the National Electrical Manufacturers Association.
 
 * [DICOM Controlled Terminology Definitions](http://hl7.org/fhir/R4/codesystem-dicom-dcim.html): [DiagnosticReport/jp-diagnosticreport-radiology-example-1](DiagnosticReport-jp-diagnosticreport-radiology-example-1.md), [ImagingStudy/jp-imagingstudy-endoscopy-example-1](ImagingStudy-jp-imagingstudy-endoscopy-example-1.md)...Show 7 more,[ImagingStudy/jp-imagingstudy-radiology-example-1](ImagingStudy-jp-imagingstudy-radiology-example-1.md),[JP_DICOMModality_VS](ValueSet-jp-dicommodality-vs.md),[JP_DiagnosticReport_Radiology](StructureDefinition-jp-diagnosticreport-radiology.md),[JP_ImagingStudy_Endoscopy](StructureDefinition-jp-imagingstudy-endoscopy.md),[JP_ImagingStudy_Radiology](StructureDefinition-jp-imagingstudy-radiology.md),[JP_Media_Endoscopy](StructureDefinition-jp-media-endoscopy.md)and[Media/jp-media-endoscopy-example-1](Media-jp-media-endoscopy-example-1.md)

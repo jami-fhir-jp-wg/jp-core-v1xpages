@@ -452,8 +452,12 @@ Other representations of profile: [CSV](StructureDefinition-jp-medicationdispens
       {
         "id" : "MedicationDispense.substitution.reason",
         "path" : "MedicationDispense.substitution.reason",
-        "short" : "置換が実施された理由",
-        "definition" : "治療継続性確保のため、FP:処方方針、 OS: 在庫欠品、  RR:代替えを義務付けまたは禁止する規制要件に従った"
+        "short" : "置換が実施された（あるいは、されなかった）理由",
+        "definition" : "【JP Core仕様】置換が実施された、あるいは実施されなかった理由を示す。令和6年保険改訂により、処方箋上で長期収載医薬品の変更不可が指定されている場合は「医療上の必要性がある」または「患者希望による」のいずれかを指定する。",
+        "binding" : {
+          "strength" : "preferred",
+          "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_MedicationSubstitutionProhibitionReason_VS"
+        }
       },
       {
         "id" : "MedicationDispense.substitution.responsibleParty",

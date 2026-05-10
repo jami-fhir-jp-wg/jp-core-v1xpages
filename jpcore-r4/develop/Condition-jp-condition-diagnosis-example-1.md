@@ -1,18 +1,18 @@
-# JP Core Condition Diagnosis Example 病名（過敏性大腸炎の初期疾患） - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
+# JP Core Condition Diagnosis Example 病名（右橈骨遠位端骨折の術後） - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **JP Core Condition Diagnosis Example 病名（過敏性大腸炎の初期疾患）**
+* **JP Core Condition Diagnosis Example 病名（右橈骨遠位端骨折の術後）**
 
-## Example Condition: JP Core Condition Diagnosis Example 病名（過敏性大腸炎の初期疾患）
+## Example Condition: JP Core Condition Diagnosis Example 病名（右橈骨遠位端骨折の術後）
 
 Profile: [JP Core Condition Diagnosis Profile](StructureDefinition-jp-condition-diagnosis.md)
 
-**JP Core Disease Outcome Extension**: 寛解
+**JP Core Disease Outcome Extension**: 中止(転医)
 
 **identifier**: [JP_local_example_identifiersystem_NamingSystem](NamingSystem-jp-example-local-identifiersystem.md)/123456789012345
 
-**clinicalStatus**: Remission
+**clinicalStatus**: Inactive
 
 **verificationStatus**: Confirmed
 
@@ -54,16 +54,16 @@ Profile: [JP Core Condition Diagnosis Profile](StructureDefinition-jp-condition-
         "coding" : [
           {
             "system" : "http://terminology.sample.com/CodeSystem/disease-outcome",
-            "code" : "2",
-            "display" : "寛解"
+            "code" : "1",
+            "display" : "中止"
           },
           {
             "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JHSD0006",
-            "code" : "M",
-            "display" : "寛解"
+            "code" : "I",
+            "display" : "中止"
           }
         ],
-        "text" : "寛解"
+        "text" : "中止(転医)"
       }
     }
   ],
@@ -77,8 +77,8 @@ Profile: [JP Core Condition Diagnosis Profile](StructureDefinition-jp-condition-
     "coding" : [
       {
         "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
-        "code" : "remission",
-        "display" : "Remission"
+        "code" : "inactive",
+        "display" : "Inactive"
       }
     ]
   },

@@ -1528,9 +1528,13 @@ JAMI標準用法コードを使用する表現方法では、dosageInstruction.t
       {
         "id" : "MedicationRequest.substitution.reason",
         "path" : "MedicationRequest.substitution.reason",
-        "short" : "代替品を提供した（あるいは、しなかった）理由",
-        "definition" : "代替品にしなければならなかった、あるいは代替品が認められなかった理由を示す。",
-        "comment" : "代替品の理由を表す一般的パターンに全てのターミノロジが適応しているわけではない。情報モデルはCodeableConceptではなく、直接Codingをを使用してテキストやコーディング、翻訳、そしてエレメントと事前条件、事後条件の関係について管理するためにその構造を提示する必要がある。"
+        "short" : "後発医薬品への変更不可理由",
+        "definition" : "【JP Core仕様】後発医薬品への変更不可の理由を示す。令和6年保険改訂により、長期収載医薬品の変更不可を指定する場合は「医療上の必要性がある」または「患者希望による」のいずれかを指定する。",
+        "comment" : "代替品の理由を表す一般的パターンに全てのターミノロジが適応しているわけではない。情報モデルはCodeableConceptではなく、直接Codingをを使用してテキストやコーディング、翻訳、そしてエレメントと事前条件、事後条件の関係について管理するためにその構造を提示する必要がある。",
+        "binding" : {
+          "strength" : "preferred",
+          "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_MedicationSubstitutionProhibitionReason_VS"
+        }
       },
       {
         "id" : "MedicationRequest.priorPrescription",

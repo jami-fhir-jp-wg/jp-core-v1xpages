@@ -5683,8 +5683,8 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "reference" : {
           "reference" : "Condition/jp-condition-diagnosis-example-1"
         },
-        "name" : "JP Core Condition Diagnosis Example 病名（過敏性大腸炎の初期疾患）",
-        "description" : "過敏性大腸炎の初期疾患の例",
+        "name" : "JP Core Condition Diagnosis Example 病名（右橈骨遠位端骨折の術後）",
+        "description" : "右橈骨遠位端骨折の術後の例",
         "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition_Diagnosis"
       },
       {
@@ -6931,6 +6931,34 @@ JP Core は以下の方々、および各サーブワーキンググループの
         },
         "name" : "JP Core Medication Simple Quantity DataType",
         "description" : "このデータタイプはSimpleQuantity DataTypeに対して、JP Coreにおける薬剤量に関する定義を行なったものである",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CodeSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "CodeSystem/jp-medication-substitution-prohibition-reason-cs"
+        },
+        "name" : "JP Core Medication Substitution Prohibition Reason CodeSystem",
+        "description" : "後発医薬品への変更不可理由を示すコードシステム。令和6年保険改訂（2024年10月施行）により導入された長期収載医薬品の変更不可理由区分を定義する。MedicationRequest.substitution.reason および MedicationDispense.substitution.reason に使用する。",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/jp-medication-substitution-prohibition-reason-vs"
+        },
+        "name" : "JP Core Medication Substitution Prohibition Reason ValueSet",
+        "description" : "後発医薬品への変更不可理由を示す値セット。令和6年保険改訂（2024年10月施行）により導入された長期収載医薬品の変更不可理由区分（医療上の必要性・患者希望）を含む。MedicationRequest.substitution.reason および MedicationDispense.substitution.reason に使用する。",
         "exampleBoolean" : false
       },
       {
