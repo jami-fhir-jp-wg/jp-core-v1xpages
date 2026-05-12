@@ -423,7 +423,7 @@ GET [base]/Practitioner?name=山田
         "id" : "Practitioner.qualification.code",
         "path" : "Practitioner.qualification.code",
         "definition" : "資格のコード化された表現。",
-        "comment" : "すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および前後の調整を管理するための独自の構造を提供することが望ましい。"
+        "comment" : "すべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および事前・事後の用語結合を管理するための独自の構造を提供することが望ましい。"
       },
       {
         "id" : "Practitioner.qualification.period",
