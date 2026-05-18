@@ -1007,7 +1007,7 @@ Medication.ingredientに記述される薬剤の合計容量(mL)を dosage.dose 
         "type" : [
           {
             "code" : "Extension",
-            "profile" : ["http://hl7.org/fhir/StructureDefinition/bodySite|5.2.0"]
+            "profile" : ["http://hl7.org/fhir/StructureDefinition/bodySite|5.3.0"]
           }
         ]
       },
