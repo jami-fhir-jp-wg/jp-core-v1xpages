@@ -11,7 +11,7 @@
 * **項目**: *Version*
   * **内容**: 1.3.0-dev
 * **項目**: *Name*
-  * **内容**: JP_DentalSipmleMissingTeethObservation_VS
+  * **内容**: JP_DentalSimpleMissingTeethObservation_VS
 * **項目**: *Title*
   * **内容**: JP Core Dental SimpleMissingTeethObservation ValueSet
 * **項目**: *Status*
@@ -59,7 +59,7 @@ JP Coreにて定義した歯科のObservationリソースに関する欠損歯�
   "id" : "jp-dental-simple-missingteeth-observation-vs",
   "url" : "http://jpfhir.jp/fhir/core/ValueSet/JP_DentalSimpleMissingTeethObservation_VS",
   "version" : "1.3.0-dev",
-  "name" : "JP_DentalSipmleMissingTeethObservation_VS",
+  "name" : "JP_DentalSimpleMissingTeethObservation_VS",
   "title" : "JP Core Dental SimpleMissingTeethObservation ValueSet",
   "status" : "active",
   "experimental" : false,

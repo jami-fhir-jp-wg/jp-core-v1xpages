@@ -11,7 +11,7 @@
 * **項目**: *Version*
   * **内容**: 1.3.0-dev
 * **項目**: *Name*
-  * **内容**: JP_ConditionDieaseOutcomeReceipt_CS
+  * **内容**: JP_ConditionDiseaseOutcomeReceipt_CS
 * **項目**: *Title*
   * **内容**: JP Core Condition Disease Outcome Receipt CodeSystem
 * **項目**: *Status*
@@ -38,7 +38,7 @@
   "id" : "jp-condition-disease-outcome-receipt-cs",
   "url" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseOutcomeReceipt_CS",
   "version" : "1.3.0-dev",
-  "name" : "JP_ConditionDieaseOutcomeReceipt_CS",
+  "name" : "JP_ConditionDiseaseOutcomeReceipt_CS",
   "title" : "JP Core Condition Disease Outcome Receipt CodeSystem",
   "status" : "active",
   "experimental" : false,

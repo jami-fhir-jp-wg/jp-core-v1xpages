@@ -6,8 +6,8 @@
 [JP_Condition_BodySite_VS]: ValueSet-jp-condition-bodysite-vs.html
 [jp-condition-diagnosis-example-1]: Condition-jp-condition-diagnosis-example-1.html
 [JP_Condition_Diagnosis]: StructureDefinition-jp-condition-diagnosis.html
-[JP_ConditionDieaseOutcomeHL70241_CS]: CodeSystem-jp-condition-disease-outcome-hl70241-cs.html
-[JP_ConditionDieaseOutcomeReceipt_CS]: CodeSystem-jp-condition-disease-outcome-receipt-cs.html
+[JP_ConditionDiseaseOutcomeHL70241_CS]: CodeSystem-jp-condition-disease-outcome-hl70241-cs.html
+[JP_ConditionDiseaseOutcomeReceipt_CS]: CodeSystem-jp-condition-disease-outcome-receipt-cs.html
 [JP_ConditionDiseaseOutcomeReceipt_VS]: ValueSet-jp-condition-disease-outcome-receipt-vs.html
 [jp-condition-example-1]: Condition-jp-condition-example-1.html
 [JP_Condition]: StructureDefinition-jp-condition.html
@@ -29,8 +29,8 @@
 [JP_DentalRootBodyStructure_CS]: CodeSystem-jp-dental-rootbodystructure-cs.html
 [JP_DentalRootBodyStructure_VS]: ValueSet-jp-dental-rootbodystructure-vs.html
 [JP_DentalSimpleMissingTeethObservation_CS]: CodeSystem-jp-dental-simple-missingteeth-observation-cs.html
-[JP_DentalSipmleMissingTeethObservation_VS]: ValueSet-jp-dental-simple-missingteeth-observation-vs.html
-[JP_DentalSipmlePresentTeethObservation_CS]: CodeSystem-jp-dental-simple-presentteeth-observation-cs.html
+[JP_DentalSimpleMissingTeethObservation_VS]: ValueSet-jp-dental-simple-missingteeth-observation-vs.html
+[JP_DentalSimplePresentTeethObservation_CS]: CodeSystem-jp-dental-simple-presentteeth-observation-cs.html
 [JP_DentalSimplePresentTeethObservation_VS]: ValueSet-jp-dental-simple-presentteeth-observation-vs.html
 [JP_DentalSurfaceBodyStructure_CS]: CodeSystem-jp-dental-surfacebodystructure-cs.html
 [JP_DentalSurfaceBodyStructure_VS]: ValueSet-jp-dental-surfacebodystructure-vs.html
