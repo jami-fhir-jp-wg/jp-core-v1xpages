@@ -1,0 +1,358 @@
+# JP Core FamilyMemberHistory Profile - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **JP Core FamilyMemberHistory Profile**
+
+## Resource Profile: JP Core FamilyMemberHistory Profile 
+
+* **項目**: *定義URL*
+  * **内容**: http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory
+* **項目**: *Version*
+  * **内容**: 1.3.0-dev
+* **項目**: *Name*
+  * **内容**: JP_FamilyMemberHistory
+* **項目**: *Title*
+  * **内容**: JP Core FamilyMemberHistory Profile
+* **項目**: *Status*
+  * **内容**: Active ( 2024-12-30 )
+* **項目**: *Copyright*
+  * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
+
+ 
+このプロファイルはFamilyMemberHistoryリソースに対して、データを送受信するための共通の制約と拡張を定めたものである。 
+
+患者のケアの文脈において関連性のある、患者に関連する個人の重要な健康状態を記録する。
+
+## 背景及び想定シナリオ
+
+臨床における家族歴の正確性や用途には幅がある。基本的な家族歴は、医師が患者の遺伝性リスクを把握するために、疾患を中心に記録するものである。病名は「気管支喘息」のように比較的明確な場合もあれば、「癌（部位不明）」のように不確定な場合もある。 家族との関係は続柄で表現されるが、日常診療では家族の氏名や生年月日までは聴取されず、「長女」や「二男」などの出生順に基づく呼称で記録されることが多い。また、看護・介護・福祉等の支援体制の構築を用途として、血縁関係だけでなく、養子、継子、内縁のパートナーなどを含む家族構成が記録されている。このような限定的な情報であっても、患者の背景理解、療養支援、追加問診、また必要時にはより厳密な家族歴の作成に向けた基礎資料として有用である。
+
+一方、医学的に厳密な家族歴として遺伝学的血統図（Genetic Pedigree）がある。遺伝学的血統図は、遺伝学的家系図記載法の国際的規則に基づき厳密に運用されるものであり、血縁関係を中心とした遺伝リスク評価に特化している。
+
+本プロファイルは、基本的な家族歴（`FamilyMemberHistory`）を、記録・更新・検索できるようにすることを目的とする。
+
+主な利用用途
+
+* 医療：遺伝性リスク把握、疾患関連情報の記録・更新
+* 看護・介護・福祉：療養支援、支援体制整備、ケア計画の策定に必要な家族関係の把握と共有
+
+## スコープ
+
+### 対象
+
+本プロファイルは、患者に関連する家族歴の情報のうち、医療・看護・介護・福祉等での利用を含めた基本的な家族歴を対象とする。
+
+医療現場では、家族の氏名ではなく、出生順に基づく呼称（長男、長女、次男、次女など）で患者の家族を特定することが多く、本プロファイルでは、このような出生順呼称を拡張により表現する。
+
+### 対象外
+
+遺伝学的血統図は本プロファイルの対象外である。遺伝学的解析に特化した厳密な血統図については、[Genetic Pedigreeプロファイル](https://hl7.org/fhir/R4/familymemberhistory-genetic.html)を参照のこと。
+
+## プロファイル定義
+
+**Usages:**
+
+* Examples for this Profile: [FamilyMemberHistory/jp-familymemberhistory-example-1](FamilyMemberHistory-jp-familymemberhistory-example-1.md), [FamilyMemberHistory/jp-familymemberhistory-example-2](FamilyMemberHistory-jp-familymemberhistory-example-2.md), [鈴木 花子](FamilyMemberHistory-jp-familymemberhistory-example-3.md) and [FamilyMemberHistory/jp-familymemberhistory-example-4](FamilyMemberHistory-jp-familymemberhistory-example-4.md)
+* CapabilityStatements using this Profile: [JP Core Client CapabilityStatement](CapabilityStatement-jp-client-capabilitystatement.md) and [JP Core Server CapabilityStatement](CapabilityStatement-jp-server-capabilitystatement.md)
+
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-familymemberhistory)
+
+### プロファイル詳細
+
+ [Description of Profiles, Differentials, Snapshots and how the different presentations work](http://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#structure-definitions). 
+
+ 
+
+Other representations of profile: [CSV](StructureDefinition-jp-familymemberhistory.csv), [Excel](StructureDefinition-jp-familymemberhistory.xlsx), [Schematron](StructureDefinition-jp-familymemberhistory.sch) 
+
+### 必須要素
+
+本プロファイルに準拠するためには、次の要素の値が存在しなければならない。
+
+* `patient` : 本リソースが対象とする患者
+* `relationship` : 患者と家族との続柄（父、母、兄弟姉妹など）
+*  
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| `status`: 家族歴の記録状態（partial | completed | entered-in-error | health-unknown） |
+
+ 
+
+### 実装ガイダンス
+
+#### 記録単位
+
+`FamilyMemberHistory` は、患者に関連する個人1人につき1リソースとして記録する。
+
+#### 続柄 relationship の記録
+
+患者と対象となる家族構成員との関係は `FamilyMemberHistory.relationship` に記録する。
+ `relationship` には、HL7 V3 RoleCode の FamilyMember ValueSet を使用する。
+
+#### 出生順呼称 BirthOrderLabel の記録
+
+家族内で用いられる「長男」「二男」「長女」「二女」などの出生順に基づく呼称は、`BirthOrderLabel` 拡張で記録する。
+
+出生順呼称は、患者との続柄そのものを置き換えるものではない。患者との関係は `relationship` で表現し、出生順呼称は対象となる家族構成員に関する補足情報として記録する。
+
+出生順呼称は、必ずしも客観的に算出された生物学的出生順位、戸籍上の記載、または遺伝学的血統図における出生順と一致するとは限らない。日常診療で患者または情報提供者から申告された家族内呼称を記録することを想定する。
+
+#### 疾患情報 condition の記録
+
+対象となる家族構成員の疾患情報は `condition` 要素に記録する。
+ 疾患をコード化できる場合は `condition.code.coding` に記録し、必要に応じて `condition.code.text` に自由記載を行う。
+
+#### 補足情報 note の使用
+
+血縁関係、法的関係、同居関係、内縁関係など、`relationship` と出生順呼称のみでは十分に表現できない情報は、必要に応じて `note` に記録する。
+
+#### 複数の家族歴の集約
+
+複数の `FamilyMemberHistory` インスタンスをまとめて扱う場合は、`List` リソース等を用いて患者の家族歴全体を集約できる。
+
+### 拡張定義
+
+JP Core FamilyMemberHistoryプロファイルで使用される拡張は次の通りである。
+
+* 拡張: 出生順呼称
+  * 説明: FamilyMemberHistory.relationshipで表現される続柄を補足し、家族内で用いられる出生順に基づく呼称（長男、二男、長女、二女など）を表現する。
+  * URL: http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_BirthOrderLabel
+  * 値の型: CodeableConcept
+  * Binding: JP_BirthOrderLabel_VS(preferred)
+
+### 用語定義
+
+#### 続柄
+
+`relationship` には HL7 V3 RoleCode の FamilyMember ValueSet を使用する。
+
+#### 出生順呼称
+
+出生順呼称には、JP_BirthOrderLabel_CS および JP_BirthOrderLabel_VS を使用する。
+
+| | | |
+| :--- | :--- | :--- |
+| 続柄 | HL7 V3 FamilyMember ValueSet | http://terminology.hl7.org/ValueSet/v3-FamilyMember |
+| 出生順呼称 | JP BirthOrderLabel CodeSystem | http://jpfhir.jp/fhir/core/CodeSystem/JP_BirthOrderLabel_CS |
+| 出生順呼称 | JP BirthOrderLabel ValueSet | http://jpfhir.jp/fhir/core/ValueSet/JP_BirthOrderLabel_VS |
+
+## 利用方法
+
+### OperationおよびSearch Parameter 一覧
+
+#### Search Parameter一覧
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| SHALL | identifier | token | GET [base]/FamilyMemberHistory?identifier=http://myhospital.com/fhir/familymemberhistory|123 |
+| SHOULD | patient | reference | GET [base]/FamilyMemberHistory?patient=Patient/123 |
+| MAY | patient,relationship | reference,token | GET [base]/FamilyMemberHistory?patient=Patient/123&relationship=FAMMEMB |
+| MAY | patient,status | reference,token | GET [base]/FamilyMemberHistory?patient=Patient/123&status=completed |
+
+##### 必須検索パラメータ
+
+本プロファイルに準拠するためには、以下の検索パラメータをサポートしなければならない（**SHALL**）
+
+1. 検索パラメータidentifierを指定し、レコードIDなどの識別子によりFamilyMemberHistoryを検索
+
+```
+GET [base]/FamilyMemberHistory?identifier={system|}[token]
+
+```
+
+例：
+
+```
+GET [base]/FamilyMemberHistory?identifier=http://myhospital.com/fhir/familymemberhistory|123
+
+```
+
+指定された識別子に一致するFamilyMemberHistoryリソースを含むBundleを検索する。
+
+##### 推奨検索パラメータ
+
+1. 検索パラメータpatientを指定し、該当するすべてのFamilyMemberHistoryを検索
+
+```
+GET [base]/FamilyMemberHistory?patient={reference}
+
+```
+
+例：
+
+```
+GET [base]/FamilyMemberHistory?patient=Patient/123
+
+```
+
+指定された患者のすべてのFamilyMemberHistoryを含むBundleを返却する。
+
+##### 追加検索パラメータ
+
+オプションとして次の検索パラメータをサポートできる（MAY）
+
+1. 検索パラメータpatientとstatusの組みを指定し、該当するすべてのFamilyMemberHistoryを検索
+* OR検索のサポートを含む(例えば status=[token],[token],…)
+
+
+  例：
+
+
+  指定された患者のすべてのFamilyMemberHistoryを含むBundleを返却する。
+
+##### オプション検索パラメータ
+
+本プロファイルで追加定義されたオプション検索パラメータはない。
+
+#### サンプル
+
+* [**母親**](FamilyMemberHistory-jp-familymemberhistory-example-1.md)
+* [**息子（長男）**](FamilyMemberHistory-jp-familymemberhistory-example-2.md)
+* [**内縁のパートナー**](FamilyMemberHistory-jp-familymemberhistory-example-3.md)
+* [**母方のおば（次女）**](FamilyMemberHistory-jp-familymemberhistory-example-4.md)
+* [**家族歴一覧**][jp-familymemberhistory-example-list]
+
+本実装ガイドへのご質問・ご指摘については、
+[GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
+[GitHub PullRequest](https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls)にて受け付けている。
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "StructureDefinition",
+  "id" : "jp-familymemberhistory",
+  "url" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_FamilyMemberHistory",
+  "version" : "1.3.0-dev",
+  "name" : "JP_FamilyMemberHistory",
+  "title" : "JP Core FamilyMemberHistory Profile",
+  "status" : "active",
+  "date" : "2024-12-30",
+  "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
+  "contact" : [
+    {
+      "name" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "http://jpfhir.jp"
+        },
+        {
+          "system" : "email",
+          "value" : "office@hlfhir.jp"
+        }
+      ]
+    }
+  ],
+  "description" : "このプロファイルはFamilyMemberHistoryリソースに対して、データを送受信するための共通の制約と拡張を定めたものである。",
+  "jurisdiction" : [
+    {
+      "coding" : [
+        {
+          "system" : "urn:iso:std:iso:3166",
+          "code" : "JP",
+          "display" : "Japan"
+        }
+      ]
+    }
+  ],
+  "copyright" : "Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会",
+  "fhirVersion" : "4.0.1",
+  "mapping" : [
+    {
+      "identity" : "workflow",
+      "uri" : "http://hl7.org/fhir/workflow",
+      "name" : "Workflow Pattern"
+    },
+    {
+      "identity" : "v2",
+      "uri" : "http://hl7.org/v2",
+      "name" : "HL7 v2 Mapping"
+    },
+    {
+      "identity" : "rim",
+      "uri" : "http://hl7.org/v3",
+      "name" : "RIM Mapping"
+    },
+    {
+      "identity" : "w5",
+      "uri" : "http://hl7.org/fhir/fivews",
+      "name" : "FiveWs Pattern Mapping"
+    }
+  ],
+  "kind" : "resource",
+  "abstract" : false,
+  "type" : "FamilyMemberHistory",
+  "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory",
+  "derivation" : "constraint",
+  "differential" : {
+    "element" : [
+      {
+        "id" : "FamilyMemberHistory",
+        "path" : "FamilyMemberHistory",
+        "short" : "Information about patient's relatives, relevant for patient. 患者に関連する家族の情報（家族歴）",
+        "definition" : "Significant health conditions for a person related to the patient relevant in the context of care for the patient.  \n患者の診療に関連する、患者家族の重要な健康状態に関する情報。"
+      },
+      {
+        "id" : "FamilyMemberHistory.extension",
+        "path" : "FamilyMemberHistory.extension",
+        "slicing" : {
+          "discriminator" : [
+            {
+              "type" : "value",
+              "path" : "url"
+            }
+          ],
+          "ordered" : false,
+          "rules" : "open"
+        }
+      },
+      {
+        "id" : "FamilyMemberHistory.extension:BirthOrderLabel",
+        "path" : "FamilyMemberHistory.extension",
+        "sliceName" : "BirthOrderLabel",
+        "min" : 0,
+        "max" : "1",
+        "type" : [
+          {
+            "code" : "Extension",
+            "profile" : [
+              "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_BirthOrderLabel"
+            ]
+          }
+        ]
+      },
+      {
+        "id" : "FamilyMemberHistory.patient",
+        "path" : "FamilyMemberHistory.patient",
+        "type" : [
+          {
+            "code" : "Reference",
+            "targetProfile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient"]
+          }
+        ]
+      },
+      {
+        "id" : "FamilyMemberHistory.reasonReference",
+        "path" : "FamilyMemberHistory.reasonReference",
+        "type" : [
+          {
+            "code" : "Reference",
+            "targetProfile" : [
+              "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
+              "http://hl7.org/fhir/StructureDefinition/DocumentReference",
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_AllergyIntolerance",
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition",
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common",
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Common"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+```
