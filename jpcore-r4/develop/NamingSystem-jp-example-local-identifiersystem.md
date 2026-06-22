@@ -35,21 +35,21 @@ JP_local_example_identifiersystem_NamingSystem
 ### Identifiers
 
 * **Type**: URI
-  * **Value**: http://abc-hospital.local/fhir/identifier
+  * **Value**: http://example.org/abc-hospital/fhir/identifier
 * **Type**: URI
-  * **Value**: http://abc-hospital.local/wado-rs
+  * **Value**: http://example.org/abc-hospital/wado-rs
 * **Type**: URI
-  * **Value**: http://terminology.sample.com/CodeSystem/disease-outcome
+  * **Value**: http://example.org/terminology/CodeSystem/disease-outcome
 * **Type**: URI
-  * **Value**: http://terminology.sample.com/IdSystem/disease/1311234567
+  * **Value**: http://example.org/terminology/IdSystem/disease/1311234567
 * **Type**: URI
-  * **Value**: http://terminology.sample.com/CodeSystem/disease/1311234567
+  * **Value**: http://example.org/terminology/CodeSystem/disease/1311234567
 * **Type**: URI
-  * **Value**: http://abc-hospital.local/fhir/identifier/endoscopy/report
+  * **Value**: http://example.org/abc-hospital/fhir/identifier/endoscopy/report
 * **Type**: URI
-  * **Value**: http://abc-hospital.local/fhir/Observation/localcode
+  * **Value**: http://example.org/abc-hospital/fhir/Observation/localcode
 * **Type**: URI
-  * **Value**: http://abc-hospital.local/fhir/lab/reportid
+  * **Value**: http://example.org/abc-hospital/fhir/lab/reportid
 * **Type**: URI
   * **Value**: http://samplehospital.org/fhir/endoscopysystem/imaging-orders
 * **Type**: URI
@@ -57,15 +57,15 @@ JP_local_example_identifiersystem_NamingSystem
 * **Type**: URI
   * **Value**: urn:oid:1.2.392.200119.5.2.4.1.1.3
 * **Type**: URI
-  * **Value**: http://abc-hospital.local/fhir/ObservationOrder/localcode
+  * **Value**: http://example.org/abc-hospital/fhir/ObservationOrder/localcode
 * **Type**: URI
-  * **Value**: http://abc-hospital.local/fhir/Organization/localcode
+  * **Value**: http://example.org/abc-hospital/fhir/Organization/localcode
 * **Type**: URI
-  * **Value**: http://abc-hospital.local/identifiers/collections
+  * **Value**: http://example.org/abc-hospital/identifiers/collections
 * **Type**: URI
-  * **Value**: http://abc-hospital.local/specimens/2011
+  * **Value**: http://example.org/abc-hospital/specimens/2011
 * **Type**: URI
-  * **Value**: http://abc-hospital.local/fhir/mb/reportid
+  * **Value**: http://example.org/abc-hospital/fhir/mb/reportid
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
@@ -122,35 +122,35 @@ JP_local_example_identifiersystem_NamingSystem
   "uniqueId" : [
     {
       "type" : "uri",
-      "value" : "http://abc-hospital.local/fhir/identifier"
+      "value" : "http://example.org/abc-hospital/fhir/identifier"
     },
     {
       "type" : "uri",
-      "value" : "http://abc-hospital.local/wado-rs"
+      "value" : "http://example.org/abc-hospital/wado-rs"
     },
     {
       "type" : "uri",
-      "value" : "http://terminology.sample.com/CodeSystem/disease-outcome"
+      "value" : "http://example.org/terminology/CodeSystem/disease-outcome"
     },
     {
       "type" : "uri",
-      "value" : "http://terminology.sample.com/IdSystem/disease/1311234567"
+      "value" : "http://example.org/terminology/IdSystem/disease/1311234567"
     },
     {
       "type" : "uri",
-      "value" : "http://terminology.sample.com/CodeSystem/disease/1311234567"
+      "value" : "http://example.org/terminology/CodeSystem/disease/1311234567"
     },
     {
       "type" : "uri",
-      "value" : "http://abc-hospital.local/fhir/identifier/endoscopy/report"
+      "value" : "http://example.org/abc-hospital/fhir/identifier/endoscopy/report"
     },
     {
       "type" : "uri",
-      "value" : "http://abc-hospital.local/fhir/Observation/localcode"
+      "value" : "http://example.org/abc-hospital/fhir/Observation/localcode"
     },
     {
       "type" : "uri",
-      "value" : "http://abc-hospital.local/fhir/lab/reportid"
+      "value" : "http://example.org/abc-hospital/fhir/lab/reportid"
     },
     {
       "type" : "uri",
@@ -166,23 +166,23 @@ JP_local_example_identifiersystem_NamingSystem
     },
     {
       "type" : "uri",
-      "value" : "http://abc-hospital.local/fhir/ObservationOrder/localcode"
+      "value" : "http://example.org/abc-hospital/fhir/ObservationOrder/localcode"
     },
     {
       "type" : "uri",
-      "value" : "http://abc-hospital.local/fhir/Organization/localcode"
+      "value" : "http://example.org/abc-hospital/fhir/Organization/localcode"
     },
     {
       "type" : "uri",
-      "value" : "http://abc-hospital.local/identifiers/collections"
+      "value" : "http://example.org/abc-hospital/identifiers/collections"
     },
     {
       "type" : "uri",
-      "value" : "http://abc-hospital.local/specimens/2011"
+      "value" : "http://example.org/abc-hospital/specimens/2011"
     },
     {
       "type" : "uri",
-      "value" : "http://abc-hospital.local/fhir/mb/reportid"
+      "value" : "http://example.org/abc-hospital/fhir/mb/reportid"
     }
   ]
 }

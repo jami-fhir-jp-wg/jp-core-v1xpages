@@ -44,7 +44,7 @@ Profile: [JP Core DiagnosticReport Endoscopy Profile](StructureDefinition-jp-dia
   "identifier" : [
     {
       "use" : "usual",
-      "system" : "http://abc-hospital.local/fhir/identifier/endoscopy/report",
+      "system" : "http://example.org/abc-hospital/fhir/identifier/endoscopy/report",
       "value" : "123456"
     }
   ],

@@ -63,7 +63,7 @@ Profile: [JP Core Observation BodyMeasurement Profile](StructureDefinition-jp-ob
   "code" : {
     "coding" : [
       {
-        "system" : "http://abc-hospital.local/fhir/Observation/localcode",
+        "system" : "http://example.org/abc-hospital/fhir/Observation/localcode",
         "code" : "abc-local-456"
       },
       {
