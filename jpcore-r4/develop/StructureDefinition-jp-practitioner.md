@@ -402,8 +402,8 @@ GET [base]/Practitioner?name=山田
         "slicing" : {
           "discriminator" : [
             {
-              "type" : "value",
-              "path" : "code"
+              "type" : "pattern",
+              "path" : "$this"
             }
           ],
           "rules" : "open"
