@@ -237,7 +237,6 @@ Other representations of profile: [CSV](StructureDefinition-jp-observation-denta
       {
         "id" : "Observation.category:second.coding.system",
         "path" : "Observation.category.coding.system",
-        "min" : 1,
         "fixedUri" : "http://loinc.org"
       },
       {
@@ -262,7 +261,6 @@ Other representations of profile: [CSV](StructureDefinition-jp-observation-denta
       {
         "id" : "Observation.category:third.coding.system",
         "path" : "Observation.category.coding.system",
-        "min" : 1,
         "fixedUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationDentalCategory_CS"
       },
       {

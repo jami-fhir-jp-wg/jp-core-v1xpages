@@ -297,7 +297,6 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
       {
         "id" : "Observation.category:second.coding.system",
         "path" : "Observation.category.coding.system",
-        "min" : 1,
         "fixedUri" : "http://loinc.org"
       },
       {

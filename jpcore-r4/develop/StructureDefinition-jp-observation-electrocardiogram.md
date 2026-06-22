@@ -373,7 +373,6 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
       {
         "id" : "Observation.category:second.coding.system",
         "path" : "Observation.category.coding.system",
-        "min" : 1,
         "patternUri" : "http://loinc.org"
       },
       {
@@ -396,7 +395,6 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
       {
         "id" : "Observation.category:third.coding.system",
         "path" : "Observation.category.coding.system",
-        "min" : 1,
         "patternUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationElectrocardiogramExtraCategory_CS"
       },
       {
@@ -456,8 +454,8 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "slicing" : {
           "discriminator" : [
             {
-              "type" : "value",
-              "path" : "coding.system"
+              "type" : "pattern",
+              "path" : "$this"
             }
           ],
           "ordered" : false,
@@ -480,7 +478,6 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "path" : "Observation.interpretation.coding.system",
         "short" : "ECAPS:日本光電解析コード",
         "definition" : "ECAPS:日本光電解析コード",
-        "min" : 1,
         "fixedUri" : "urn:oid:1.2.392.200119.5.2.3.3.1"
       },
       {
@@ -495,7 +492,6 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "path" : "Observation.interpretation.coding.system",
         "short" : "日本光電解析ロジックによるミネソタコード1987年版をベースとした分類",
         "definition" : "日本光電解析ロジックによるミネソタコード1987年版をベースとした分類",
-        "min" : 1,
         "fixedUri" : "urn:oid:1.2.392.200119.5.2.3.3.2.1"
       },
       {
@@ -510,7 +506,6 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "path" : "Observation.interpretation.coding.system",
         "short" : "日本光電解析ロジックによるミネソタコード2005年版をベースとした分類",
         "definition" : "日本光電解析ロジックによるミネソタコード2005年版をベースとした分類",
-        "min" : 1,
         "fixedUri" : "urn:oid:1.2.392.200119.5.2.3.3.2.2"
       },
       {
@@ -525,7 +520,6 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "path" : "Observation.interpretation.coding.system",
         "short" : "フクダ電子判定コード",
         "definition" : "フクダ電子判定コード",
-        "min" : 1,
         "fixedUri" : "urn:oid:1.2.392.200119.5.2.4.1.1.1"
       },
       {
@@ -540,7 +534,6 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "path" : "Observation.interpretation.coding.system",
         "short" : "フクダ電子所見コード",
         "definition" : "フクダ電子所見コード",
-        "min" : 1,
         "fixedUri" : "urn:oid:1.2.392.200119.5.2.4.1.1.2"
       },
       {
@@ -555,7 +548,6 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "path" : "Observation.interpretation.coding.system",
         "short" : "フクダ電子：ミネソタコードと異常部位を記載",
         "definition" : "フクダ電子：ミネソタコードと異常部位を記載",
-        "min" : 1,
         "fixedUri" : "urn:oid:1.2.392.200119.5.2.4.1.1.3"
       },
       {
@@ -618,8 +610,8 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "slicing" : {
           "discriminator" : [
             {
-              "type" : "value",
-              "path" : "coding.system"
+              "type" : "pattern",
+              "path" : "$this"
             }
           ],
           "ordered" : false,
@@ -640,7 +632,6 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "path" : "Observation.component.interpretation.coding.system",
         "short" : "ECAPS:日本光電解析コード",
         "definition" : "ECAPS:日本光電解析コード",
-        "min" : 1,
         "fixedUri" : "urn:oid:1.2.392.200119.5.2.3.3.1"
       },
       {
@@ -655,7 +646,6 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "path" : "Observation.component.interpretation.coding.system",
         "short" : "日本光電解析ロジックによるミネソタコード1987年版をベースとした分類",
         "definition" : "日本光電解析ロジックによるミネソタコード1987年版をベースとした分類",
-        "min" : 1,
         "fixedUri" : "urn:oid:1.2.392.200119.5.2.3.3.2.1"
       },
       {
@@ -670,7 +660,6 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "path" : "Observation.component.interpretation.coding.system",
         "short" : "日本光電解析ロジックによるミネソタコード2005年版をベースとした分類",
         "definition" : "日本光電解析ロジックによるミネソタコード2005年版をベースとした分類",
-        "min" : 1,
         "fixedUri" : "urn:oid:1.2.392.200119.5.2.3.3.2.2"
       },
       {
@@ -685,7 +674,6 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "path" : "Observation.component.interpretation.coding.system",
         "short" : "フクダ電子判定コード",
         "definition" : "フクダ電子判定コード",
-        "min" : 1,
         "fixedUri" : "urn:oid:1.2.392.200119.5.2.4.1.1.1"
       },
       {
@@ -700,7 +688,6 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "path" : "Observation.component.interpretation.coding.system",
         "short" : "フクダ電子所見コード",
         "definition" : "フクダ電子所見コード",
-        "min" : 1,
         "fixedUri" : "urn:oid:1.2.392.200119.5.2.4.1.1.2"
       },
       {
@@ -715,7 +702,6 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "path" : "Observation.component.interpretation.coding.system",
         "short" : "フクダ電子：ミネソタコードと異常部位を記載",
         "definition" : "フクダ電子：ミネソタコードと異常部位を記載",
-        "min" : 1,
         "fixedUri" : "urn:oid:1.2.392.200119.5.2.4.1.1.3"
       }
     ]

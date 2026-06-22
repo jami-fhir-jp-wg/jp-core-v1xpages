@@ -742,8 +742,8 @@ effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情
         "slicing" : {
           "discriminator" : [
             {
-              "type" : "value",
-              "path" : "coding.system"
+              "type" : "pattern",
+              "path" : "$this"
             }
           ],
           "rules" : "open"
@@ -768,7 +768,6 @@ effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情
       {
         "id" : "Observation.category:first.coding.system",
         "path" : "Observation.category.coding.system",
-        "min" : 1,
         "fixedUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"
       },
       {

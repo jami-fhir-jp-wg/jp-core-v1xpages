@@ -48,7 +48,6 @@ Profile: [JP Core Observation DentalOral Tooth Treatment Condition Profile](Stru
     {
       "coding" : [
         {
-          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
           "code" : "exam",
           "display" : "exam"
         }
@@ -58,7 +57,6 @@ Profile: [JP Core Observation DentalOral Tooth Treatment Condition Profile](Stru
     {
       "coding" : [
         {
-          "system" : "http://loinc.org",
           "code" : "LP89803-8",
           "display" : "Dental"
         }
@@ -67,7 +65,6 @@ Profile: [JP Core Observation DentalOral Tooth Treatment Condition Profile](Stru
     {
       "coding" : [
         {
-          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationDentalCategory_CS",
           "code" : "DO-1-02",
           "display" : "ToothTreatmentCondition"
         }
