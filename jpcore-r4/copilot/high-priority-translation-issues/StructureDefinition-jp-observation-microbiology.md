@@ -294,7 +294,6 @@ Diagnostic Reportのサンプルの一部に定義しているため、これを
       {
         "id" : "Observation.category:second.coding.system",
         "path" : "Observation.category.coding.system",
-        "min" : 1,
         "fixedUri" : "http://loinc.org"
       },
       {
@@ -324,7 +323,6 @@ Diagnostic Reportのサンプルの一部に定義しているため、これを
       {
         "id" : "Observation.category:third.coding.system",
         "path" : "Observation.category.coding.system",
-        "min" : 1,
         "fixedUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_MicrobiologyCategory_CS"
       },
       {

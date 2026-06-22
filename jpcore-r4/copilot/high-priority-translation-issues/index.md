@@ -47,6 +47,7 @@ JP Core FHIR コンテンツ: JP Core で利用する FHIR の詳細について
 * [JP Core Organization （組織）プロファイル](StructureDefinition-jp-organization.md)
 * [JP Core Organization Department （診療科）プロファイル](StructureDefinition-jp-organization-department.md)
 * [JP Core Practitioner （医療従事者）プロファイル](StructureDefinition-jp-practitioner.md)
+* [JP Core HumanName （人名）プロファイル](StructureDefinition-jp-humanname.md)
 * [JP Core PractitionerRole （医療従事者役割）プロファイル](StructureDefinition-jp-practitionerrole.md)
  
 * [Medicationグループ （薬剤リスト）](group-medication.md) 
@@ -224,7 +225,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
       ],
       "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
       "packageId" : "hl7.terminology.r4",
-      "version" : "7.1.0"
+      "version" : "7.2.0"
     },
     {
       "id" : "hl7ext",
@@ -236,7 +237,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
       ],
       "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
       "packageId" : "hl7.fhir.uv.extensions.r4",
-      "version" : "5.2.0"
+      "version" : "5.3.0"
     },
     {
       "id" : "jpfhir_terminology",

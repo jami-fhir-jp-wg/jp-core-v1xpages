@@ -18,9 +18,9 @@ Profile: [JP Core Patient Profile](StructureDefinition-jp-patient.md)
 | Contact Detail | * ph: 0312345678(Home)
 * 東京都新宿区
  |
-| [Patient Birth Place](http://hl7.org/fhir/extensions/5.2.0/StructureDefinition-patient-birthPlace.html) | 東京 |
+| [Patient Birth Place](http://hl7.org/fhir/extensions/5.3.0/StructureDefinition-patient-birthPlace.html) | 東京 |
 | [JP Core Patient Race Extension](StructureDefinition-jp-patient-race.md) | Japanese |
-| [Patient Religion](http://hl7.org/fhir/extensions/5.2.0/StructureDefinition-patient-religion.html) | Shinto |
+| [Patient Religion](http://hl7.org/fhir/extensions/5.3.0/StructureDefinition-patient-religion.html) | Shinto |
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および

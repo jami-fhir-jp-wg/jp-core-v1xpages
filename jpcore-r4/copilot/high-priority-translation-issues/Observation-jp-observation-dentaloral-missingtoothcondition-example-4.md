@@ -58,7 +58,6 @@ Profile: [JP Core Observation DentalOral Missing Tooth Condition Profile](Struct
     {
       "coding" : [
         {
-          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
           "code" : "exam",
           "display" : "exam"
         }
@@ -68,7 +67,6 @@ Profile: [JP Core Observation DentalOral Missing Tooth Condition Profile](Struct
     {
       "coding" : [
         {
-          "system" : "http://loinc.org",
           "code" : "LP89803-8",
           "display" : "Dental"
         }
@@ -77,7 +75,6 @@ Profile: [JP Core Observation DentalOral Missing Tooth Condition Profile](Struct
     {
       "coding" : [
         {
-          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationDentalCategory_CS",
           "code" : "DO-1-03",
           "display" : "MissingToothCondition"
         }

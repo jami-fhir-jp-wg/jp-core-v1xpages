@@ -742,8 +742,8 @@ effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情
         "slicing" : {
           "discriminator" : [
             {
-              "type" : "value",
-              "path" : "coding.system"
+              "type" : "pattern",
+              "path" : "$this"
             }
           ],
           "rules" : "open"
@@ -768,7 +768,6 @@ effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情
       {
         "id" : "Observation.category:first.coding.system",
         "path" : "Observation.category.coding.system",
-        "min" : 1,
         "fixedUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"
       },
       {
@@ -788,7 +787,7 @@ effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情
         "path" : "Observation.subject",
         "short" : "このObservationの対象となる患者や患者群、機器、場所に関する情報",
         "definition" : "このObservationの対象となる患者や患者群、機器、場所に関する情報",
-        "comment" : "この要素は1..1のcardinalityになるはずと考えられる。この要素が欠損値になる唯一の状況は、対象患者が不明なデバイスによって観察が行われるケースである。この場合、観察は何らかのコンテキスト/チャネルマッチング技術を介して患者にマッチングされる必要があり、患者にマッチングされれば、その時点で本要素を更新する必要がある。",
+        "comment" : "この要素は1..1のcardinalityになるはずと考えられる。この要素が欠損値になる唯一の状況は、対象患者が不明な機器によって観察が行われるケースである。この場合、観察は何らかのコンテキスト・チャネル照合技術を介して患者に照合される必要があり、患者に照合されれば、その時点で本要素を更新する必要がある。",
         "type" : [
           {
             "code" : "Reference",
@@ -918,7 +917,7 @@ effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情
         "path" : "Observation.device",
         "short" : "このObservationでデータを得るために使われた測定機器に関する情報",
         "definition" : "このObservationでデータを得るために使われた測定機器に関する情報",
-        "comment" : "これは、結果の送信に関与するデバイス（ゲートウェイなど）を表すことを意図したものではない。そのようなデバイスは、必要に応じてProvenanceリソースを使用して文書化する。"
+        "comment" : "これは、結果の送信に関与する機器（ゲートウェイなど）を表すことを意図したものではない。そのような機器は、必要に応じてProvenanceリソースを使用して文書化する。"
       },
       {
         "id" : "Observation.referenceRange",

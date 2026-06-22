@@ -10,7 +10,7 @@ Profile: [JP Core ServiceRequest Common Profile](StructureDefinition-jp-servicer
 
 **JP Core Common Department Extension**: 消化器腫瘍外科
 
-**identifier**: `http://abc-hospital.local/serviceRequest-identifier`/SR-2023-0401-001
+**identifier**: `http://example.org/abc-hospital/serviceRequest-identifier`/SR-2023-0401-001
 
 **status**: Active
 
@@ -47,7 +47,7 @@ Profile: [JP Core ServiceRequest Common Profile](StructureDefinition-jp-servicer
   ],
   "identifier" : [
     {
-      "system" : "http://abc-hospital.local/serviceRequest-identifier",
+      "system" : "http://example.org/abc-hospital/serviceRequest-identifier",
       "value" : "SR-2023-0401-001"
     }
   ],

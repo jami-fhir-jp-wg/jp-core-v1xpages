@@ -30,9 +30,9 @@ Patientリソースをカナ名称でソートするための検索を定義す�
 | :--- | :--- |
 | Resource | [Patient](http://hl7.org/fhir/R4/patient.html) |
 | Expression | `Patient.name.where(extension('http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation').value.ofType(code)='SYL' and use='usual').text` |
-| Processing Mode | Normal |
-| Multiples | * multipleAnd: The parameter may repeat in order to specify multiple values that must all be true
-* multipleOr: The parameter may have multiple values (separated by comma) where at least one must be true
+| Processing Mode | Phonetic |
+| Multiples | * multipleAnd: It's up to the server whether the parameter may repeat in order to specify multiple values that must all be true
+* multipleOr: It's up to the server whether the parameter can have multiple values (separated by comma) where at least one must be true
  |
 
 本実装ガイドへのご質問・ご指摘については、
@@ -82,25 +82,7 @@ Patientリソースをカナ名称でソートするための検索を定義す�
   "base" : ["Patient"],
   "type" : "string",
   "expression" : "Patient.name.where(extension('http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation').value.ofType(code)='SYL' and use='usual').text",
-  "xpathUsage" : "normal",
-  "multipleOr" : true,
-  "_multipleOr" : {
-    "extension" : [
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
-        "valueCode" : "MAY"
-      }
-    ]
-  },
-  "multipleAnd" : true,
-  "_multipleAnd" : {
-    "extension" : [
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
-        "valueCode" : "MAY"
-      }
-    ]
-  }
+  "xpathUsage" : "phonetic"
 }
 
 ```

@@ -138,7 +138,7 @@
       "code" : {
         "coding" : [
           {
-            "system" : "http://abc-hospital.local/fhir/Observation/localcode",
+            "system" : "http://example.org/abc-hospital/fhir/Observation/localcode",
             "code" : "6A0100000061704Z1",
             "display" : "塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義1(白血球)"
           }
@@ -197,7 +197,7 @@
       "code" : {
         "coding" : [
           {
-            "system" : "http://abc-hospital.local/fhir/Observation/localcode",
+            "system" : "http://example.org/abc-hospital/fhir/Observation/localcode",
             "code" : "6A0100000061704Z2",
             "display" : "塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義2(上皮細胞)"
           }
@@ -256,7 +256,7 @@
       "code" : {
         "coding" : [
           {
-            "system" : "http://abc-hospital.local/fhir/Observation/localcode",
+            "system" : "http://example.org/abc-hospital/fhir/Observation/localcode",
             "code" : "6A0100000061704Z3",
             "display" : "塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義3(グラム陽性球菌（GPC）)"
           }
@@ -315,7 +315,7 @@
       "code" : {
         "coding" : [
           {
-            "system" : "http://abc-hospital.local/fhir/Observation/localcode",
+            "system" : "http://example.org/abc-hospital/fhir/Observation/localcode",
             "code" : "6A0100000061704Z4",
             "display" : "塗抹鏡検(一般細菌)_喀痰_グラム染色_ユーザ定義4(グラム陽性桿菌（GPR）)"
           }
@@ -2085,7 +2085,7 @@
       "code" : {
         "coding" : [
           {
-            "system" : "http://abc-hospital.local/fhir/ObservationOrder/localcode",
+            "system" : "http://example.org/abc-hospital/fhir/ObservationOrder/localcode",
             "code" : "12345678"
           }
         ],
@@ -2111,7 +2111,7 @@
   "identifier" : [
     {
       "use" : "usual",
-      "system" : "http://abc-hospital.local/fhir/mb/reportid",
+      "system" : "http://example.org/abc-hospital/fhir/mb/reportid",
       "value" : "1234567"
     }
   ],

@@ -89,11 +89,11 @@ The summary table lists the resources that are part of this configuration, and f
 
 | | | | | | | | | | | | | | | |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| [Patient](#Patient1-1) | Supported Profiles  [JP Core Patient Profile](StructureDefinition-jp-patient.md) | y | y | y | y | y | y | y | y | y | identifier, name, family, given, birthdate, gender, phone, address-postalcode, birthdate+name, birthdate+gender, birthdate+name+gender, name+phone, name+address-postalcode, family+given+birthdate+gender+phone+address-postalcode |  | `Provenance:target` | `$everything` |
-| [Coverage](#Coverage1-2) | Supported Profiles  [JP Core Coverage Profile](StructureDefinition-jp-coverage.md) | y | y | y | y | y | y | y | y | y | beneficiary, class-type, class-value, dependent, identifier, patient, payor, policy-holder, status, subscriber, type |  | `Provenance:target` |  |
+| [Patient](#Patient1-1) | Supported Profiles  [JP Core Patient Profile](StructureDefinition-jp-patient.md) | y | y | y | y | y | y | y | y | y | identifier, name, family, given, birthdate, gender, phone, address-postalcode, jp-kana-sort, birthdate+name, birthdate+gender, birthdate+name+gender, name+phone, name+address-postalcode, family+given+birthdate+gender+phone+address-postalcode |  | `Provenance:target` | `$everything` |
+| [Coverage](#Coverage1-2) | Supported Profiles  [JP Core Coverage Profile](StructureDefinition-jp-coverage.md) | y | y | y | y | y | y | y | y | y | beneficiary, class-type, class-value, dependent, identifier, patient, payor, policy-holder, status, subscriber, type, jp-insured-personnumber, jp-insured-personsubnumber, jp-insured-personsymbol |  | `Provenance:target` |  |
 | [Encounter](#Encounter1-3) | Supported Profiles  [JP Core Encounter Profile](StructureDefinition-jp-encounter.md) | y | y | y | y | y | y | y | y | y | identifier, patient, class, date, status, type, date+patient, class+patient, patient+type, patient+status |  | `Provenance:target` | `$everything` |
 | [Location](#Location1-4) | Supported Profiles  [JP Core Location Profile](StructureDefinition-jp-location.md) | y | y | y | y | y | y | y | y | y | identifier, name, address, address-city, address-state, address-postalcode |  | `Provenance:target` |  |
-| [Organization](#Organization1-5) | Supported Profiles  [JP Core Organization Profile](StructureDefinition-jp-organization.md) | y | y | y | y | y | y | y | y | y | identifier, name, address |  | `Provenance:target` |  |
+| [Organization](#Organization1-5) | Supported Profiles  [JP Core Organization Profile](StructureDefinition-jp-organization.md) | y | y | y | y | y | y | y | y | y | identifier, name, address, jp-insurance-organizationcategory, jp-insurance-organizationno, jp-prefectureno |  | `Provenance:target` |  |
 | [Practitioner](#Practitioner1-6) | Supported Profiles  [JP Core Practitioner Profile](StructureDefinition-jp-practitioner.md) | y | y | y | y | y | y | y | y | y | identifier, name |  | `Provenance:target` |  |
 | [PractitionerRole](#PractitionerRole1-7) | Supported Profiles  [JP Core PractitionerRole Profile](StructureDefinition-jp-practitionerrole.md) | y | y | y | y | y | y | y | y | y | identifier, specialty, practitioner |  | `Provenance:target` |  |
 | [Medication](#Medication1-8) | Supported Profiles  [JP Core Medication Profile](StructureDefinition-jp-medication.md) | y | y | y | y | y | y | y | y | y | identifier |  | `Provenance:target` |  |
@@ -965,6 +965,17 @@ Search Parameters
               "name" : "address-postalcode",
               "definition" : "http://hl7.org/fhir/SearchParameter/individual-address-postalcode",
               "type" : "string"
+            },
+            {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode" : "MAY"
+                }
+              ],
+              "name" : "jp-kana-sort",
+              "definition" : "http://jpfhir.jp/fhir/core/SearchParameter/JP_Patient_KanaSort_SP",
+              "type" : "string"
             }
           ],
           "operation" : [
@@ -1136,6 +1147,39 @@ Search Parameters
               "name" : "type",
               "definition" : "http://hl7.org/fhir/SearchParameter/Coverage-type",
               "type" : "token"
+            },
+            {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode" : "MAY"
+                }
+              ],
+              "name" : "jp-insured-personnumber",
+              "definition" : "http://jpfhir.jp/fhir/core/SearchParameter/JP_Coverage_InsuredPersonNumber_SP",
+              "type" : "string"
+            },
+            {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode" : "MAY"
+                }
+              ],
+              "name" : "jp-insured-personsubnumber",
+              "definition" : "http://jpfhir.jp/fhir/core/SearchParameter/JP_Coverage_InsuredPersonSubNumber_SP",
+              "type" : "string"
+            },
+            {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode" : "MAY"
+                }
+              ],
+              "name" : "jp-insured-personsymbol",
+              "definition" : "http://jpfhir.jp/fhir/core/SearchParameter/JP_Coverage_InsuredPersonSymbol_SP",
+              "type" : "string"
             }
           ]
         },
@@ -1499,6 +1543,39 @@ Search Parameters
               "name" : "address",
               "definition" : "http://hl7.org/fhir/SearchParameter/Organization-address",
               "type" : "string"
+            },
+            {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode" : "MAY"
+                }
+              ],
+              "name" : "jp-insurance-organizationcategory",
+              "definition" : "http://jpfhir.jp/fhir/core/SearchParameter/JP_Organization_InsuranceOrganizationCategory_SP",
+              "type" : "token"
+            },
+            {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode" : "MAY"
+                }
+              ],
+              "name" : "jp-insurance-organizationno",
+              "definition" : "http://jpfhir.jp/fhir/core/SearchParameter/JP_Organization_InsuranceOrganizationNo_SP",
+              "type" : "token"
+            },
+            {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode" : "MAY"
+                }
+              ],
+              "name" : "jp-prefectureno",
+              "definition" : "http://jpfhir.jp/fhir/core/SearchParameter/JP_Organization_PrefectureNo_SP",
+              "type" : "token"
             }
           ]
         },

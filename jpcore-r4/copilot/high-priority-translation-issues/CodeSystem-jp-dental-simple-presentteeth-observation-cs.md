@@ -11,7 +11,7 @@
 * **項目**: *Version*
   * **内容**: 1.3.0-dev
 * **項目**: *Name*
-  * **内容**: JP_DentalSipmlePresentTeethObservation_CS
+  * **内容**: JP_DentalSimplePresentTeethObservation_CS
 * **項目**: *Title*
   * **内容**: JP Core Dental SimplePresentTeethObservation CodeSystem
 * **項目**: *Status*
@@ -39,7 +39,7 @@ JP Coreにて定義した歯科のObservationリソースに関する現存歯�
   "id" : "jp-dental-simple-presentteeth-observation-cs",
   "url" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_DentalSimplePresentTeethObservation_CS",
   "version" : "1.3.0-dev",
-  "name" : "JP_DentalSipmlePresentTeethObservation_CS",
+  "name" : "JP_DentalSimplePresentTeethObservation_CS",
   "title" : "JP Core Dental SimplePresentTeethObservation CodeSystem",
   "status" : "active",
   "experimental" : false,

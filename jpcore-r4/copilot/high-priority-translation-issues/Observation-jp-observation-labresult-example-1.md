@@ -30,7 +30,7 @@
       "code" : {
         "coding" : [
           {
-            "system" : "http://abc-hospital.local/fhir/ObservationOrder/localcode",
+            "system" : "http://example.org/abc-hospital/fhir/ObservationOrder/localcode",
             "code" : "12345678"
           }
         ],
@@ -72,7 +72,7 @@
   "code" : {
     "coding" : [
       {
-        "system" : "http://abc-hospital.local/fhir/Observation/localcode",
+        "system" : "http://example.org/abc-hospital/fhir/Observation/localcode",
         "code" : "05104",
         "display" : "尿酸"
       },

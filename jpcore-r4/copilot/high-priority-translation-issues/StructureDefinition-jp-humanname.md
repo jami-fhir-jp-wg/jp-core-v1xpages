@@ -205,7 +205,7 @@ textには氏名全体を結合し格納する。family、given等の各組み�
           {
             "code" : "Extension",
             "profile" : [
-              "http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation|5.2.0"
+              "http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation|5.3.0"
             ]
           }
         ]

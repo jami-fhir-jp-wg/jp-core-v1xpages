@@ -202,7 +202,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-medicationdosage-
         "type" : [
           {
             "code" : "Extension",
-            "profile" : ["http://hl7.org/fhir/StructureDefinition/bodySite|5.2.0"]
+            "profile" : ["http://hl7.org/fhir/StructureDefinition/bodySite|5.3.0"]
           }
         ]
       },

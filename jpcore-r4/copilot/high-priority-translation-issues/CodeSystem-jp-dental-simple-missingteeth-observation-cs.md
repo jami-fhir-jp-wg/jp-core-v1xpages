@@ -24,7 +24,7 @@ JP Coreにて定義した歯科のObservationリソースに関する欠損歯�
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* [JP_DentalSipmleMissingTeethObservation_VS](ValueSet-jp-dental-simple-missingteeth-observation-vs.md)
+* [JP_DentalSimpleMissingTeethObservation_VS](ValueSet-jp-dental-simple-missingteeth-observation-vs.md)
 * [JP_DentalTeethObservation_VS](ValueSet-jp-dental-teethobservation-vs.md)
 
 本実装ガイドへのご質問・ご指摘については、

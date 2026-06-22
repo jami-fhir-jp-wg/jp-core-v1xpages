@@ -11,7 +11,7 @@
 * **項目**: *Version*
   * **内容**: 1.3.0-dev
 * **項目**: *Name*
-  * **内容**: JP_ConditionDieaseOutcomeHL70241_CS
+  * **内容**: JP_ConditionDiseaseOutcomeHL70241_CS
 * **項目**: *Title*
   * **内容**: JP Core Condition Disease Outcome HL7 Table 0241 - Patient Outcome CodeSystem
 * **項目**: *Status*
@@ -38,7 +38,7 @@ HL7表0241-Patient Outcome コードシステム
   "id" : "jp-condition-disease-outcome-hl70241-cs",
   "url" : "http://jpfhir.jp/fhir/core/CodeSystem/HL70241",
   "version" : "1.3.0-dev",
-  "name" : "JP_ConditionDieaseOutcomeHL70241_CS",
+  "name" : "JP_ConditionDiseaseOutcomeHL70241_CS",
   "title" : "JP Core Condition Disease Outcome HL7 Table 0241 - Patient Outcome CodeSystem",
   "status" : "active",
   "experimental" : false,

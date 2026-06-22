@@ -213,7 +213,6 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
       {
         "id" : "Observation.category:second.coding.system",
         "path" : "Observation.category.coding.system",
-        "min" : 1,
         "patternUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationBodyMeasurementCategory_CS"
       },
       {
