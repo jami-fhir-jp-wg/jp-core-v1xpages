@@ -225,7 +225,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
       ],
       "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
       "packageId" : "hl7.terminology.r4",
-      "version" : "7.1.0"
+      "version" : "7.2.0"
     },
     {
       "id" : "hl7ext",
@@ -725,6 +725,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_DentalSurfaceBodyStructure_CS"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationSubstitutionProhibitionReason_CS"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -2558,6 +2571,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/ValueSet/JP_ImagingStudy_Radiology_BodySite_VS"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/ValueSet/JP_MedicationSubstitutionProhibitionReason_VS"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -3451,6 +3477,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           },
           {
             "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationSubstitutionProhibitionReason_CS"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationBodyMeasurementCode_CS"
           }
         ],
@@ -5272,6 +5311,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/ValueSet/JP_ImagingStudy_Radiology_BodySite_VS"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/ValueSet/JP_MedicationSubstitutionProhibitionReason_VS"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -6491,7 +6543,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "CodeSystem/jp-v3RoleCode-cs"
         },
         "name" : "JP Core FamilyMember CodeSystem",
-        "description" : "http://terminology.ht7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の日本語補足",
+        "description" : "http://terminology.hl7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の日本語補足",
         "exampleBoolean" : false
       },
       {

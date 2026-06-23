@@ -220,7 +220,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-diagnosticreport-
         "slicing" : {
           "discriminator" : [
             {
-              "type" : "value",
+              "type" : "pattern",
               "path" : "$this"
             }
           ],

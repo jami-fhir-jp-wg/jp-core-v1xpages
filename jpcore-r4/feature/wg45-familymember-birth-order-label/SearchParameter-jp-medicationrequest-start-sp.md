@@ -31,8 +31,8 @@ MedicationRequestリソースをExtensionの服用期間の開始日で検索す
 | Resource | [MedicationRequest](http://hl7.org/fhir/R4/medicationrequest.html) |
 | Expression | `MedicationRequest.dosageInstruction.extension('http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_PeriodOfUse').value.ofType(Period).start` |
 | Processing Mode | Normal |
-| Multiples | * multipleAnd: It's up to the server whether the parameter may repeat in order to specify multiple values that must all be true
-* multipleOr: It's up to the server whether the parameter can have multiple values (separated by comma) where at least one must be true
+| Multiples | * multipleAnd: The parameter may repeat in order to specify multiple values that must all be true
+* multipleOr: The parameter may have multiple values (separated by comma) where at least one must be true
  |
 | Comparators | Allowed: eq, ne, gt, ge, lt, le, sa, eb, ap |
 
@@ -84,6 +84,24 @@ MedicationRequestリソースをExtensionの服用期間の開始日で検索す
   "type" : "date",
   "expression" : "MedicationRequest.dosageInstruction.extension('http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_MedicationDosage_PeriodOfUse').value.ofType(Period).start",
   "xpathUsage" : "normal",
+  "multipleOr" : true,
+  "_multipleOr" : {
+    "extension" : [
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+        "valueCode" : "MAY"
+      }
+    ]
+  },
+  "multipleAnd" : true,
+  "_multipleAnd" : {
+    "extension" : [
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+        "valueCode" : "MAY"
+      }
+    ]
+  },
   "comparator" : [
     "eq",
     "ne",

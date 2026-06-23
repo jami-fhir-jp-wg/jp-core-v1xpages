@@ -44,12 +44,12 @@ Profile: [JP_Specimen_Common](StructureDefinition-jp-specimen-common.md)
   },
   "identifier" : [
     {
-      "system" : "http://abc-hospital.local/identifiers/collections",
+      "system" : "http://example.org/abc-hospital/identifiers/collections",
       "value" : "23234352356"
     }
   ],
   "accessionIdentifier" : {
-    "system" : "http://abc-hospital.local/specimens/2011",
+    "system" : "http://example.org/abc-hospital/specimens/2011",
     "value" : "X352356"
   },
   "status" : "available",

@@ -205,6 +205,13 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
         "comment" : "MEDISの看護実践用語標準マスター＜看護観察編＞の大分類１．バイタルサイン・基本情報、中分類2．身体計測の「焦点」",
         "min" : 0,
         "max" : "*",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationBodyMeasurementCategory_CS"
+            }
+          ]
+        },
         "binding" : {
           "strength" : "preferred",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_ObservationBodyMeasurementCategory_VS"
@@ -213,7 +220,6 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
       {
         "id" : "Observation.category:second.coding.system",
         "path" : "Observation.category.coding.system",
-        "min" : 1,
         "patternUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationBodyMeasurementCategory_CS"
       },
       {

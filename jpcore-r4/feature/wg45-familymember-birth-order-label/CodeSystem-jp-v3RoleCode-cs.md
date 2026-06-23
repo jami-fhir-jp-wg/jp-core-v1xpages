@@ -20,7 +20,7 @@
   * **内容**: （一社）日本医療情報学会. CC BY-ND 4.0
 
  
-http://terminology.ht7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の日本語補足 
+http://terminology.hl7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の日本語補足 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
@@ -61,7 +61,7 @@ http://terminology.ht7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の�
       ]
     }
   ],
-  "description" : "http://terminology.ht7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の日本語補足",
+  "description" : "http://terminology.hl7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の日本語補足",
   "jurisdiction" : [
     {
       "coding" : [
@@ -75,7 +75,7 @@ http://terminology.ht7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の�
   ],
   "copyright" : "（一社）日本医療情報学会. CC BY-ND 4.0",
   "content" : "supplement",
-  "supplements" : "http://terminology.ht7.org/Codesystem/v3-RoleCode",
+  "supplements" : "http://terminology.hl7.org/Codesystem/v3-RoleCode",
   "concept" : [
     {
       "code" : "FAMMEMB",

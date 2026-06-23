@@ -53,7 +53,7 @@ Profile: [JP Core Condition Diagnosis Profile](StructureDefinition-jp-condition-
       "valueCodeableConcept" : {
         "coding" : [
           {
-            "system" : "http://terminology.sample.com/CodeSystem/disease-outcome",
+            "system" : "http://example.org/terminology/CodeSystem/disease-outcome",
             "code" : "1",
             "display" : "中止"
           },
@@ -69,7 +69,7 @@ Profile: [JP Core Condition Diagnosis Profile](StructureDefinition-jp-condition-
   ],
   "identifier" : [
     {
-      "system" : "http://terminology.sample.com/IdSystem/disease/1311234567",
+      "system" : "http://example.org/terminology/IdSystem/disease/1311234567",
       "value" : "123456789012345"
     }
   ],
@@ -140,7 +140,7 @@ Profile: [JP Core Condition Diagnosis Profile](StructureDefinition-jp-condition-
     ],
     "coding" : [
       {
-        "system" : "http://terminology.sample.com/CodeSystem/disease/1311234567",
+        "system" : "http://example.org/terminology/CodeSystem/disease/1311234567",
         "code" : "MD13062",
         "display" : "橈骨遠位端骨折"
       },

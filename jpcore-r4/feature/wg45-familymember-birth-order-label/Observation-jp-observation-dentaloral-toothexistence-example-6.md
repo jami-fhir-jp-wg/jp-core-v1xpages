@@ -10,7 +10,7 @@ Profile: [JP Core Observation DentalOral Tooth Existence Profile](StructureDefin
 
 **status**: Final
 
-**category**: 歯の有無, Dental, ToothExistence
+**category**: Dental, 歯の有無, ToothExistence
 
 **code**: Oral/Dental Status
 
@@ -48,21 +48,21 @@ Profile: [JP Core Observation DentalOral Tooth Existence Profile](StructureDefin
     {
       "coding" : [
         {
+          "system" : "http://loinc.org",
+          "code" : "LP89803-8",
+          "display" : "Dental"
+        }
+      ]
+    },
+    {
+      "coding" : [
+        {
           "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
           "code" : "exam",
           "display" : "exam"
         }
       ],
       "text" : "歯の有無"
-    },
-    {
-      "coding" : [
-        {
-          "system" : "http://loinc.org",
-          "code" : "LP89803-8",
-          "display" : "Dental"
-        }
-      ]
     },
     {
       "coding" : [

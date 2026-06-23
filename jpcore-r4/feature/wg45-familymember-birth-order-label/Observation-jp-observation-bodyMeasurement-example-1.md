@@ -10,7 +10,7 @@ Profile: [JP Core Observation BodyMeasurement Profile](StructureDefinition-jp-ob
 
 **status**: Final
 
-**category**: Body Measurement, 体重
+**category**: 体重, Body Measurement
 
 **code**: abc-local-456
 
@@ -44,18 +44,18 @@ Profile: [JP Core Observation BodyMeasurement Profile](StructureDefinition-jp-ob
     {
       "coding" : [
         {
-          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-          "code" : "body-measurement",
-          "display" : "Body Measurement"
+          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationBodyMeasurementCategory_CS",
+          "code" : "weight",
+          "display" : "体重"
         }
       ]
     },
     {
       "coding" : [
         {
-          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationBodyMeasurementCategory_CS",
-          "code" : "weight",
-          "display" : "体重"
+          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+          "code" : "body-measurement",
+          "display" : "Body Measurement"
         }
       ]
     }
@@ -63,7 +63,7 @@ Profile: [JP Core Observation BodyMeasurement Profile](StructureDefinition-jp-ob
   "code" : {
     "coding" : [
       {
-        "system" : "http://abc-hospital.local/fhir/Observation/localcode",
+        "system" : "http://example.org/abc-hospital/fhir/Observation/localcode",
         "code" : "abc-local-456"
       },
       {

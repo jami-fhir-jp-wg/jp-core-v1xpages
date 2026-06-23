@@ -31,7 +31,7 @@ Profile: [JP Core Organization Profile](StructureDefinition-jp-organization.md)
   },
   "identifier" : [
     {
-      "system" : "http://abc-hospital.local/fhir/Organization/localcode",
+      "system" : "http://example.org/abc-hospital/fhir/Organization/localcode",
       "value" : "000-000-000"
     }
   ],

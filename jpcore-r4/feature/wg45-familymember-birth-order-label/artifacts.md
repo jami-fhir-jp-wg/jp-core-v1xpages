@@ -217,7 +217,7 @@
 | [JP Core Dental SimpleMissingTeethObservation CodeSystem](CodeSystem-jp-dental-simple-missingteeth-observation-cs.md) | JP Coreにて定義した歯科のObservationリソースに関する欠損歯の観察結果コード（簡易版） |
 | [JP Core Dental SimplePresentTeethObservation CodeSystem](CodeSystem-jp-dental-simple-presentteeth-observation-cs.md) | JP Coreにて定義した歯科のObservationリソースに関する現存歯の観察結果コード（簡易版） |
 | [JP Core Dental Surface BodyStructure CodeSystem](CodeSystem-jp-dental-surfacebodystructure-cs.md) | JP Coreにて定義した歯科のObservationリソースに関する歯面に関連する詳細部位構造コード |
-| [JP Core FamilyMember CodeSystem](CodeSystem-jp-v3RoleCode-cs.md) | http://terminology.ht7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の日本語補足 |
+| [JP Core FamilyMember CodeSystem](CodeSystem-jp-v3RoleCode-cs.md) | http://terminology.hl7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の日本語補足 |
 | [JP Core Medication Substitution Prohibition Reason CodeSystem](CodeSystem-jp-medication-substitution-prohibition-reason-cs.md) | 後発医薬品への変更不可理由を示すコードシステム。令和6年保険改訂（2024年10月施行）により導入された長期収載医薬品の変更不可理由区分を定義する。MedicationRequest.substitution.reason および MedicationDispense.substitution.reason に使用する。 |
 | [JP Core Observation BodyMeasurement Code CodeSystem](CodeSystem-jp-observation-bodymeasurement-code-cs.md) | Observation（身体計測）で使用する項目コードのコードシステム （出典：看護実践用語標準マスターの概要＜看護行為編＞Ver. 3. 6） |
 | [JP Core Observation Electrocardiogram Duration CodeSystem](CodeSystem-jp-observation-electrocardiogram-duration-cs.md) | JP Coreにて定義した心電図のObservationリソースに関する詳細分類コード（検査時間） |

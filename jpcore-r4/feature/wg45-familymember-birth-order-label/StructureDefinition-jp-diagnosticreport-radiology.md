@@ -373,7 +373,7 @@ GET [base]/DiagnosticReport?identifier=http://myhospital.com/fhir/diagnosticrepo
         "slicing" : {
           "discriminator" : [
             {
-              "type" : "value",
+              "type" : "pattern",
               "path" : "$this"
             }
           ],

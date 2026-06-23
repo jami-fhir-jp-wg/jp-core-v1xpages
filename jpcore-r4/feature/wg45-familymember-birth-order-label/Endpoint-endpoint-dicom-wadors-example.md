@@ -10,7 +10,7 @@
 
 **status**: Active
 
-**connectionType**: [Endpoint Connection Type: dicom-wado-rs](http://terminology.hl7.org/7.1.0/CodeSystem-endpoint-connection-type.html#endpoint-connection-type-dicom-wado-rs) (DICOM WADO-RS)
+**connectionType**: [Endpoint Connection Type: dicom-wado-rs](http://terminology.hl7.org/7.2.0/CodeSystem-endpoint-connection-type.html#endpoint-connection-type-dicom-wado-rs) (DICOM WADO-RS)
 
 **name**: ABC Hospital PACS DICOM WADO-RS endpoint
 
@@ -18,7 +18,7 @@
 
 **payloadMimeType**: application/dicom
 
-**address**: [http://abc-hospital.local/wado-rs](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://abc-hospital.local/wado-rs)
+**address**: [http://example.org/abc-hospital/wado-rs](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://example.org/abc-hospital/wado-rs)
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
@@ -33,7 +33,7 @@
   "identifier" : [
     {
       "use" : "usual",
-      "system" : "http://abc-hospital.local/fhir/identifier",
+      "system" : "http://example.org/abc-hospital/fhir/identifier",
       "value" : "example-wadors"
     }
   ],
@@ -49,7 +49,7 @@
     }
   ],
   "payloadMimeType" : ["application/dicom"],
-  "address" : "http://abc-hospital.local/wado-rs"
+  "address" : "http://example.org/abc-hospital/wado-rs"
 }
 
 ```

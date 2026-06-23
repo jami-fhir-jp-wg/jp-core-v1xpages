@@ -265,7 +265,7 @@ GET [base]/DiagnosticReport?patient=123&category=http://loinc.org|LP29693-6&date
         "slicing" : {
           "discriminator" : [
             {
-              "type" : "value",
+              "type" : "pattern",
               "path" : "$this"
             }
           ],

@@ -54,7 +54,7 @@ Profile: [JP Core Observation LabResult Profile](StructureDefinition-jp-observat
 
 **value**: 176 g/L(Details: UCUM codeg/L = 'g/L')
 
-**specimen**: [Specimen: identifier = http://abc-hospital.local/identifiers/collections#JP_local_example_identifiersystem_NamingSystem#23234352357; accessionIdentifier = http://abc-hospital.local/specimens/2011#JP_local_example_identifiersystem_NamingSystem#X352357; status = available; type = Whole blood; receivedTime = 2021-08-11 11:03:00+0900](Specimen-jp-specimen-example-2.md)
+**specimen**: [Specimen: identifier = http://example.org/abc-hospital/identifiers/collections#JP_local_example_identifiersystem_NamingSystem#23234352357; accessionIdentifier = http://example.org/abc-hospital/specimens/2011#JP_local_example_identifiersystem_NamingSystem#X352357; status = available; type = Whole blood; receivedTime = 2021-08-11 11:03:00+0900](Specimen-jp-specimen-example-2.md)
 
 ### ReferenceRanges
 
@@ -81,7 +81,7 @@ Profile: [JP Core Observation LabResult Profile](StructureDefinition-jp-observat
 
 **value**: 5.9 10*6/uL(Details: UCUM code10*6/uL = '10*6/uL')
 
-**specimen**: [Specimen: identifier = http://abc-hospital.local/identifiers/collections#JP_local_example_identifiersystem_NamingSystem#23234352357; accessionIdentifier = http://abc-hospital.local/specimens/2011#JP_local_example_identifiersystem_NamingSystem#X352357; status = available; type = Whole blood; receivedTime = 2021-08-11 11:03:00+0900](Specimen-jp-specimen-example-2.md)
+**specimen**: [Specimen: identifier = http://example.org/abc-hospital/identifiers/collections#JP_local_example_identifiersystem_NamingSystem#23234352357; accessionIdentifier = http://example.org/abc-hospital/specimens/2011#JP_local_example_identifiersystem_NamingSystem#X352357; status = available; type = Whole blood; receivedTime = 2021-08-11 11:03:00+0900](Specimen-jp-specimen-example-2.md)
 
 ### ReferenceRanges
 
@@ -110,7 +110,7 @@ Profile: [JP Core Observation LabResult Profile](StructureDefinition-jp-observat
 
 **interpretation**: High
 
-**specimen**: [Specimen: identifier = http://abc-hospital.local/identifiers/collections#JP_local_example_identifiersystem_NamingSystem#23234352357; accessionIdentifier = http://abc-hospital.local/specimens/2011#JP_local_example_identifiersystem_NamingSystem#X352357; status = available; type = Whole blood; receivedTime = 2021-08-11 11:03:00+0900](Specimen-jp-specimen-example-2.md)
+**specimen**: [Specimen: identifier = http://example.org/abc-hospital/identifiers/collections#JP_local_example_identifiersystem_NamingSystem#23234352357; accessionIdentifier = http://example.org/abc-hospital/specimens/2011#JP_local_example_identifiersystem_NamingSystem#X352357; status = available; type = Whole blood; receivedTime = 2021-08-11 11:03:00+0900](Specimen-jp-specimen-example-2.md)
 
 ### ReferenceRanges
 
@@ -157,7 +157,7 @@ Profile: [JP Core Observation LabResult Profile](StructureDefinition-jp-observat
       "code" : {
         "coding" : [
           {
-            "system" : "http://abc-hospital.local/fhir/Observation/localcode",
+            "system" : "http://example.org/abc-hospital/fhir/Observation/localcode",
             "code" : "123",
             "display" : "ヘモグロビン"
           },
@@ -226,7 +226,7 @@ Profile: [JP Core Observation LabResult Profile](StructureDefinition-jp-observat
       "code" : {
         "coding" : [
           {
-            "system" : "http://abc-hospital.local/fhir/Observation/localcode",
+            "system" : "http://example.org/abc-hospital/fhir/Observation/localcode",
             "code" : "456",
             "display" : "赤血球数"
           },
@@ -295,7 +295,7 @@ Profile: [JP Core Observation LabResult Profile](StructureDefinition-jp-observat
       "code" : {
         "coding" : [
           {
-            "system" : "http://abc-hospital.local/fhir/Observation/localcode",
+            "system" : "http://example.org/abc-hospital/fhir/Observation/localcode",
             "code" : "789",
             "display" : "ヘマトクリット"
           },
@@ -349,7 +349,7 @@ Profile: [JP Core Observation LabResult Profile](StructureDefinition-jp-observat
   ],
   "identifier" : [
     {
-      "system" : "http://abc-hospital.local/fhir/lab/reportid",
+      "system" : "http://example.org/abc-hospital/fhir/lab/reportid",
       "value" : "5234342"
     }
   ],

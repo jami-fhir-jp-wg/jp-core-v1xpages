@@ -10,7 +10,7 @@ Profile: [JP Core Observation DentalOral Tooth Treatment Condition Profile](Stru
 
 **status**: Final
 
-**category**: 現存歯の処置状態, Dental, ToothTreatmentCondition
+**category**: Dental, 現存歯の処置状態, ToothTreatmentCondition
 
 **code**: Oral/Dental Status
 
@@ -48,21 +48,21 @@ Profile: [JP Core Observation DentalOral Tooth Treatment Condition Profile](Stru
     {
       "coding" : [
         {
+          "system" : "http://loinc.org",
+          "code" : "LP89803-8",
+          "display" : "Dental"
+        }
+      ]
+    },
+    {
+      "coding" : [
+        {
           "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
           "code" : "exam",
           "display" : "exam"
         }
       ],
       "text" : "現存歯の処置状態"
-    },
-    {
-      "coding" : [
-        {
-          "system" : "http://loinc.org",
-          "code" : "LP89803-8",
-          "display" : "Dental"
-        }
-      ]
     },
     {
       "coding" : [
