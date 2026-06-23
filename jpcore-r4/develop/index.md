@@ -737,6 +737,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           },
           {
             "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationSubstitutionProhibitionReason_CS"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationBodyMeasurementCode_CS"
           }
         ],
@@ -2558,6 +2571,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/ValueSet/JP_ImagingStudy_Radiology_BodySite_VS"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/ValueSet/JP_MedicationSubstitutionProhibitionReason_VS"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -3412,6 +3438,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           },
           {
             "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_MedicationSubstitutionProhibitionReason_CS"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationBodyMeasurementCode_CS"
           }
         ],
@@ -5233,6 +5272,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/ValueSet/JP_ImagingStudy_Radiology_BodySite_VS"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/ValueSet/JP_MedicationSubstitutionProhibitionReason_VS"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"

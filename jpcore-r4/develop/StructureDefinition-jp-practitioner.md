@@ -403,7 +403,7 @@ GET [base]/Practitioner?name=山田
           "discriminator" : [
             {
               "type" : "pattern",
-              "path" : "$this"
+              "path" : "code"
             }
           ],
           "rules" : "open"

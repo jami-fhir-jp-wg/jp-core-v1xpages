@@ -289,12 +289,15 @@ Diagnostic Reportのサンプルの一部に定義しているため、これを
         "short" : "第2カテゴリはLOINCのコード18725-2固定とする、ValueSetは指定しない",
         "definition" : "第2カテゴリはLOINCのコード18725-2固定とする、ValueSetは指定しない",
         "min" : 1,
-        "max" : "1"
-      },
-      {
-        "id" : "Observation.category:second.coding.system",
-        "path" : "Observation.category.coding.system",
-        "fixedUri" : "http://loinc.org"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "18725-2"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.category:second.coding.code",

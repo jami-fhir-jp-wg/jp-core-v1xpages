@@ -262,7 +262,7 @@ issued=ge2000-01-01
         "slicing" : {
           "discriminator" : [
             {
-              "type" : "value",
+              "type" : "pattern",
               "path" : "$this"
             }
           ],
@@ -285,15 +285,10 @@ issued=ge2000-01-01
         }
       },
       {
-        "id" : "DiagnosticReport.category:first.coding.system",
-        "path" : "DiagnosticReport.category.coding.system",
-        "fixedUri" : "http://loinc.org"
-      },
-      {
         "id" : "DiagnosticReport.category:first.coding.code",
         "path" : "DiagnosticReport.category.coding.code",
         "min" : 1,
-        "fixedCode" : "LP31759-1"
+        "patternCode" : "LP31759-1"
       },
       {
         "id" : "DiagnosticReport.code",

@@ -292,12 +292,15 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
         "definition" : "第2カテゴリはLOINCのPartコードLP7796-8（内視鏡）固定とする。ValueSetは指定しない",
         "min" : 1,
         "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "LP7796-8"
+            }
+          ]
+        },
         "mustSupport" : true
-      },
-      {
-        "id" : "Observation.category:second.coding.system",
-        "path" : "Observation.category.coding.system",
-        "fixedUri" : "http://loinc.org"
       },
       {
         "id" : "Observation.category:second.coding.code",

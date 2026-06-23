@@ -12,7 +12,7 @@ Profile: [JP Core Observation DentalOral Missing Tooth Condition Profile](Struct
 
 **status**: Final
 
-**category**: 欠損歯の処置状態, Dental, MissingToothCondition
+**category**: Dental, 欠損歯の処置状態, MissingToothCondition
 
 **code**: Oral/Dental Status
 
@@ -58,6 +58,16 @@ Profile: [JP Core Observation DentalOral Missing Tooth Condition Profile](Struct
     {
       "coding" : [
         {
+          "system" : "http://loinc.org",
+          "code" : "LP89803-8",
+          "display" : "Dental"
+        }
+      ]
+    },
+    {
+      "coding" : [
+        {
+          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
           "code" : "exam",
           "display" : "exam"
         }
@@ -67,14 +77,7 @@ Profile: [JP Core Observation DentalOral Missing Tooth Condition Profile](Struct
     {
       "coding" : [
         {
-          "code" : "LP89803-8",
-          "display" : "Dental"
-        }
-      ]
-    },
-    {
-      "coding" : [
-        {
+          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationDentalCategory_CS",
           "code" : "DO-1-03",
           "display" : "MissingToothCondition"
         }

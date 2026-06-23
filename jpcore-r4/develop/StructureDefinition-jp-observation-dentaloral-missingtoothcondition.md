@@ -230,12 +230,15 @@ Other representations of profile: [CSV](StructureDefinition-jp-observation-denta
         "short" : "第2カテゴリはLOINCのコードLP89803-8固定で必須とする、ValueSetは指定しない",
         "definition" : "第2カテゴリはLOINCのコードLP89803-8固定で必須とする、ValueSetは指定しない",
         "min" : 1,
-        "max" : "1"
-      },
-      {
-        "id" : "Observation.category:second.coding.system",
-        "path" : "Observation.category.coding.system",
-        "fixedUri" : "http://loinc.org"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "LP89803-8"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.category:second.coding.code",

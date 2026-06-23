@@ -368,12 +368,15 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "path" : "Observation.category",
         "sliceName" : "second",
         "min" : 0,
-        "max" : "1"
-      },
-      {
-        "id" : "Observation.category:second.coding.system",
-        "path" : "Observation.category.coding.system",
-        "patternUri" : "http://loinc.org"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "11524-6"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.category:second.coding.code",
@@ -387,15 +390,17 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "comment" : "心電図検査について、負荷試験などの条件をつけた分類",
         "min" : 0,
         "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationElectrocardiogramExtraCategory_CS"
+            }
+          ]
+        },
         "binding" : {
           "strength" : "preferred",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_ObservationElectrocardiogramExtraCategory_VS"
         }
-      },
-      {
-        "id" : "Observation.category:third.coding.system",
-        "path" : "Observation.category.coding.system",
-        "patternUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationElectrocardiogramExtraCategory_CS"
       },
       {
         "id" : "Observation.code",
@@ -471,84 +476,120 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "path" : "Observation.interpretation",
         "sliceName" : "ECAPS",
         "min" : 0,
-        "max" : "1"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:1.2.392.200119.5.2.3.3.1"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.interpretation:ECAPS.coding.system",
         "path" : "Observation.interpretation.coding.system",
         "short" : "ECAPS:日本光電解析コード",
-        "definition" : "ECAPS:日本光電解析コード",
-        "fixedUri" : "urn:oid:1.2.392.200119.5.2.3.3.1"
+        "definition" : "ECAPS:日本光電解析コード"
       },
       {
         "id" : "Observation.interpretation:MINNESOTA1987_NK",
         "path" : "Observation.interpretation",
         "sliceName" : "MINNESOTA1987_NK",
         "min" : 0,
-        "max" : "1"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:1.2.392.200119.5.2.3.3.2.1"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.interpretation:MINNESOTA1987_NK.coding.system",
         "path" : "Observation.interpretation.coding.system",
         "short" : "日本光電解析ロジックによるミネソタコード1987年版をベースとした分類",
-        "definition" : "日本光電解析ロジックによるミネソタコード1987年版をベースとした分類",
-        "fixedUri" : "urn:oid:1.2.392.200119.5.2.3.3.2.1"
+        "definition" : "日本光電解析ロジックによるミネソタコード1987年版をベースとした分類"
       },
       {
         "id" : "Observation.interpretation:MINNESOTA2005_NK",
         "path" : "Observation.interpretation",
         "sliceName" : "MINNESOTA2005_NK",
         "min" : 0,
-        "max" : "1"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:1.2.392.200119.5.2.3.3.2.2"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.interpretation:MINNESOTA2005_NK.coding.system",
         "path" : "Observation.interpretation.coding.system",
         "short" : "日本光電解析ロジックによるミネソタコード2005年版をベースとした分類",
-        "definition" : "日本光電解析ロジックによるミネソタコード2005年版をベースとした分類",
-        "fixedUri" : "urn:oid:1.2.392.200119.5.2.3.3.2.2"
+        "definition" : "日本光電解析ロジックによるミネソタコード2005年版をベースとした分類"
       },
       {
         "id" : "Observation.interpretation:FKD_GRADE",
         "path" : "Observation.interpretation",
         "sliceName" : "FKD_GRADE",
         "min" : 0,
-        "max" : "1"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:1.2.392.200119.5.2.4.1.1.1"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.interpretation:FKD_GRADE.coding.system",
         "path" : "Observation.interpretation.coding.system",
         "short" : "フクダ電子判定コード",
-        "definition" : "フクダ電子判定コード",
-        "fixedUri" : "urn:oid:1.2.392.200119.5.2.4.1.1.1"
+        "definition" : "フクダ電子判定コード"
       },
       {
         "id" : "Observation.interpretation:FKD_INTER",
         "path" : "Observation.interpretation",
         "sliceName" : "FKD_INTER",
         "min" : 0,
-        "max" : "1"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:1.2.392.200119.5.2.4.1.1.2"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.interpretation:FKD_INTER.coding.system",
         "path" : "Observation.interpretation.coding.system",
         "short" : "フクダ電子所見コード",
-        "definition" : "フクダ電子所見コード",
-        "fixedUri" : "urn:oid:1.2.392.200119.5.2.4.1.1.2"
+        "definition" : "フクダ電子所見コード"
       },
       {
         "id" : "Observation.interpretation:MINESOTA_CODE",
         "path" : "Observation.interpretation",
         "sliceName" : "MINESOTA_CODE",
         "min" : 0,
-        "max" : "1"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:1.2.392.200119.5.2.4.1.1.3"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.interpretation:MINESOTA_CODE.coding.system",
         "path" : "Observation.interpretation.coding.system",
         "short" : "フクダ電子：ミネソタコードと異常部位を記載",
-        "definition" : "フクダ電子：ミネソタコードと異常部位を記載",
-        "fixedUri" : "urn:oid:1.2.392.200119.5.2.4.1.1.3"
+        "definition" : "フクダ電子：ミネソタコードと異常部位を記載"
       },
       {
         "id" : "Observation.method",
@@ -625,84 +666,120 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         "path" : "Observation.component.interpretation",
         "sliceName" : "ECAPS",
         "min" : 0,
-        "max" : "1"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:1.2.392.200119.5.2.3.3.1"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.component.interpretation:ECAPS.coding.system",
         "path" : "Observation.component.interpretation.coding.system",
         "short" : "ECAPS:日本光電解析コード",
-        "definition" : "ECAPS:日本光電解析コード",
-        "fixedUri" : "urn:oid:1.2.392.200119.5.2.3.3.1"
+        "definition" : "ECAPS:日本光電解析コード"
       },
       {
         "id" : "Observation.component.interpretation:MINNESOTA1987_NK",
         "path" : "Observation.component.interpretation",
         "sliceName" : "MINNESOTA1987_NK",
         "min" : 0,
-        "max" : "1"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:1.2.392.200119.5.2.3.3.2.1"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.component.interpretation:MINNESOTA1987_NK.coding.system",
         "path" : "Observation.component.interpretation.coding.system",
         "short" : "日本光電解析ロジックによるミネソタコード1987年版をベースとした分類",
-        "definition" : "日本光電解析ロジックによるミネソタコード1987年版をベースとした分類",
-        "fixedUri" : "urn:oid:1.2.392.200119.5.2.3.3.2.1"
+        "definition" : "日本光電解析ロジックによるミネソタコード1987年版をベースとした分類"
       },
       {
         "id" : "Observation.component.interpretation:MINNESOTA2005_NK",
         "path" : "Observation.component.interpretation",
         "sliceName" : "MINNESOTA2005_NK",
         "min" : 0,
-        "max" : "1"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:1.2.392.200119.5.2.3.3.2.2"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.component.interpretation:MINNESOTA2005_NK.coding.system",
         "path" : "Observation.component.interpretation.coding.system",
         "short" : "日本光電解析ロジックによるミネソタコード2005年版をベースとした分類",
-        "definition" : "日本光電解析ロジックによるミネソタコード2005年版をベースとした分類",
-        "fixedUri" : "urn:oid:1.2.392.200119.5.2.3.3.2.2"
+        "definition" : "日本光電解析ロジックによるミネソタコード2005年版をベースとした分類"
       },
       {
         "id" : "Observation.component.interpretation:FKD_GRADE",
         "path" : "Observation.component.interpretation",
         "sliceName" : "FKD_GRADE",
         "min" : 0,
-        "max" : "1"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:1.2.392.200119.5.2.4.1.1.1"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.component.interpretation:FKD_GRADE.coding.system",
         "path" : "Observation.component.interpretation.coding.system",
         "short" : "フクダ電子判定コード",
-        "definition" : "フクダ電子判定コード",
-        "fixedUri" : "urn:oid:1.2.392.200119.5.2.4.1.1.1"
+        "definition" : "フクダ電子判定コード"
       },
       {
         "id" : "Observation.component.interpretation:FKD_INTER",
         "path" : "Observation.component.interpretation",
         "sliceName" : "FKD_INTER",
         "min" : 0,
-        "max" : "1"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:1.2.392.200119.5.2.4.1.1.2"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.component.interpretation:FKD_INTER.coding.system",
         "path" : "Observation.component.interpretation.coding.system",
         "short" : "フクダ電子所見コード",
-        "definition" : "フクダ電子所見コード",
-        "fixedUri" : "urn:oid:1.2.392.200119.5.2.4.1.1.2"
+        "definition" : "フクダ電子所見コード"
       },
       {
         "id" : "Observation.component.interpretation:MINESOTA_CODE",
         "path" : "Observation.component.interpretation",
         "sliceName" : "MINESOTA_CODE",
         "min" : 0,
-        "max" : "1"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:1.2.392.200119.5.2.4.1.1.3"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.component.interpretation:MINESOTA_CODE.coding.system",
         "path" : "Observation.component.interpretation.coding.system",
         "short" : "フクダ電子：ミネソタコードと異常部位を記載",
-        "definition" : "フクダ電子：ミネソタコードと異常部位を記載",
-        "fixedUri" : "urn:oid:1.2.392.200119.5.2.4.1.1.3"
+        "definition" : "フクダ電子：ミネソタコードと異常部位を記載"
       }
     ]
   }

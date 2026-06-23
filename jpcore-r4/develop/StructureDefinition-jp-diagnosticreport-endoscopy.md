@@ -296,7 +296,7 @@ GET [base]/DiagnosticReport?patient=123&category=LP7796-8
         "slicing" : {
           "discriminator" : [
             {
-              "type" : "value",
+              "type" : "pattern",
               "path" : "$this"
             }
           ],
@@ -324,15 +324,10 @@ GET [base]/DiagnosticReport?patient=123&category=LP7796-8
         }
       },
       {
-        "id" : "DiagnosticReport.category:first.coding.system",
-        "path" : "DiagnosticReport.category.coding.system",
-        "fixedUri" : "http://loinc.org"
-      },
-      {
         "id" : "DiagnosticReport.category:first.coding.code",
         "path" : "DiagnosticReport.category.coding.code",
         "min" : 1,
-        "fixedCode" : "LP7796-8"
+        "patternCode" : "LP7796-8"
       },
       {
         "id" : "DiagnosticReport.code",
