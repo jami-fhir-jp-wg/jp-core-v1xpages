@@ -53,7 +53,7 @@ Profile: [JP Core Organization Department Profile](StructureDefinition-jp-organi
         },
         {
           "system" : "http://jami.jp/SS-MIX2/CodeSystem/ClinicalDepartment",
-          "code" : "03",
+          "code" : "81",
           "display" : "循環器内科"
         }
       ]

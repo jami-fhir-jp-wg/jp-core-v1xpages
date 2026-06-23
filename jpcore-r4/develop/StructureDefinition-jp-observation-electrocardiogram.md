@@ -356,12 +356,15 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
       {
         "id" : "Observation.category:first",
         "path" : "Observation.category",
-        "sliceName" : "first"
-      },
-      {
-        "id" : "Observation.category:first.coding.code",
-        "path" : "Observation.category.coding.code",
-        "patternCode" : "procedure"
+        "sliceName" : "first",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "procedure"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.category:second",
@@ -377,11 +380,6 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
             }
           ]
         }
-      },
-      {
-        "id" : "Observation.category:second.coding.code",
-        "path" : "Observation.category.coding.code",
-        "patternCode" : "11524-6"
       },
       {
         "id" : "Observation.category:third",
@@ -401,6 +399,11 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
           "strength" : "preferred",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_ObservationElectrocardiogramExtraCategory_VS"
         }
+      },
+      {
+        "id" : "Observation.category:third.coding.system",
+        "path" : "Observation.category.coding.system",
+        "patternUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationElectrocardiogramExtraCategory_CS"
       },
       {
         "id" : "Observation.code",

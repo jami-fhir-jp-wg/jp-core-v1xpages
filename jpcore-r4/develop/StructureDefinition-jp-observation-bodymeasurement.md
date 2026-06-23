@@ -218,6 +218,11 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
         }
       },
       {
+        "id" : "Observation.category:second.coding.system",
+        "path" : "Observation.category.coding.system",
+        "patternUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationBodyMeasurementCategory_CS"
+      },
+      {
         "id" : "Observation.code",
         "path" : "Observation.code",
         "comment" : "MEDISの看護実践用語標準マスター＜看護観察編＞の大分類１．バイタルサイン・基本情報、中分類2．身体計測の「観察名称」",

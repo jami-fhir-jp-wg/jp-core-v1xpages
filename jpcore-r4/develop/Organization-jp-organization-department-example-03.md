@@ -8,7 +8,7 @@
 
 Profile: [JP Core Organization Department Profile](StructureDefinition-jp-organization-department.md)
 
-**identifier**: [JP_Department_SsMix_NamingSystem](NamingSystem-jp-department-ssmix-namingsystem.md)/07
+**identifier**: [JP_Department_SsMix_NamingSystem](NamingSystem-jp-department-ssmix-namingsystem.md)/11
 
 **type**: Hospital Department
 
@@ -34,7 +34,7 @@ Profile: [JP Core Organization Department Profile](StructureDefinition-jp-organi
   "identifier" : [
     {
       "system" : "http://jami.jp/SS-MIX2/CodeSystem/ClinicalDepartment",
-      "value" : "07"
+      "value" : "11"
     }
   ],
   "type" : [
@@ -47,7 +47,7 @@ Profile: [JP Core Organization Department Profile](StructureDefinition-jp-organi
         },
         {
           "system" : "http://jami.jp/SS-MIX2/CodeSystem/ClinicalDepartment",
-          "code" : "07",
+          "code" : "11",
           "display" : "整形外科"
         }
       ]
