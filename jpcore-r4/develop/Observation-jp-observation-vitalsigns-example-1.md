@@ -10,7 +10,7 @@ Profile: [JP Core Observation VitalSigns Profile](StructureDefinition-jp-observa
 
 **status**: Final
 
-**category**: 呼吸機能, Vital Signs
+**category**: Vital Signs, 呼吸機能
 
 **code**: 呼吸数
 
@@ -44,18 +44,18 @@ Profile: [JP Core Observation VitalSigns Profile](StructureDefinition-jp-observa
     {
       "coding" : [
         {
-          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationVitalSignsCategory_CS",
-          "code" : "respiratory-function",
-          "display" : "呼吸機能"
+          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+          "code" : "vital-signs",
+          "display" : "Vital Signs"
         }
       ]
     },
     {
       "coding" : [
         {
-          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-          "code" : "vital-signs",
-          "display" : "Vital Signs"
+          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationVitalSignsCategory_CS",
+          "code" : "respiratory-function",
+          "display" : "呼吸機能"
         }
       ]
     }

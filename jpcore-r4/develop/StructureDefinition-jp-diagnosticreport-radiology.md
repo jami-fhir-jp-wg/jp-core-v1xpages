@@ -392,6 +392,15 @@ GET [base]/DiagnosticReport?identifier=http://myhospital.com/fhir/diagnosticrepo
         "definition" : "レポートを作成した臨床分野・部門、または診断サービス（CT, US, MRIなど）を分類するコード。 これは、検索、並べ替え、および表示の目的で使用される。【JP-Core仕様】放射線レポートは第1コードとして LP29684-5 を固定値として設定。第2コード以下にDICOMModalityコードを列挙することでレポートの対象検査内容を示す。",
         "min" : 1,
         "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "LP29684-5",
+              "display" : "放射線"
+            }
+          ]
+        },
         "mustSupport" : true,
         "binding" : {
           "strength" : "required",
@@ -399,15 +408,9 @@ GET [base]/DiagnosticReport?identifier=http://myhospital.com/fhir/diagnosticrepo
         }
       },
       {
-        "id" : "DiagnosticReport.category:first.coding.system",
-        "path" : "DiagnosticReport.category.coding.system",
-        "fixedUri" : "http://loinc.org"
-      },
-      {
         "id" : "DiagnosticReport.category:first.coding.code",
         "path" : "DiagnosticReport.category.coding.code",
-        "min" : 1,
-        "fixedCode" : "LP29684-5"
+        "min" : 1
       },
       {
         "id" : "DiagnosticReport.category:second",

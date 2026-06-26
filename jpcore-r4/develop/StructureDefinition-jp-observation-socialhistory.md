@@ -191,12 +191,15 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
       {
         "id" : "Observation.category:first",
         "path" : "Observation.category",
-        "sliceName" : "first"
-      },
-      {
-        "id" : "Observation.category:first.coding.code",
-        "path" : "Observation.category.coding.code",
-        "fixedCode" : "social-history"
+        "sliceName" : "first",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "social-history"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.code",

@@ -279,6 +279,15 @@ issued=ge2000-01-01
         "comment" : "【JP Core仕様】レポートカテゴリーとして、LoincコードのLP31759-1（歯科口腔）を使用する。",
         "min" : 1,
         "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "LP31759-1",
+              "display" : "歯科口腔"
+            }
+          ]
+        },
         "binding" : {
           "strength" : "required",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS"
@@ -287,8 +296,7 @@ issued=ge2000-01-01
       {
         "id" : "DiagnosticReport.category:first.coding.code",
         "path" : "DiagnosticReport.category.coding.code",
-        "min" : 1,
-        "patternCode" : "LP31759-1"
+        "min" : 1
       },
       {
         "id" : "DiagnosticReport.code",

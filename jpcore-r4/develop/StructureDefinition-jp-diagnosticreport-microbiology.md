@@ -243,15 +243,10 @@ Other representations of profile: [CSV](StructureDefinition-jp-diagnosticreport-
         }
       },
       {
-        "id" : "DiagnosticReport.category:first.coding.system",
-        "path" : "DiagnosticReport.category.coding.system",
-        "fixedUri" : "http://loinc.org"
-      },
-      {
         "id" : "DiagnosticReport.category:first.coding.code",
         "path" : "DiagnosticReport.category.coding.code",
         "min" : 1,
-        "fixedCode" : "LP7819-8"
+        "patternCode" : "LP7819-8"
       },
       {
         "id" : "DiagnosticReport.code",

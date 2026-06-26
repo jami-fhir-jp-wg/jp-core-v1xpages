@@ -386,7 +386,15 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
         "short" : "検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から\"laboratory\"を設定する。",
         "definition" : "検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から\"laboratory\"を設定する。",
         "comment" : "【JP Core仕様】推奨コード表「JP Core Simple Observation Category CodeSystem」より、このプロファイルでは「laboratory」固定とする。  \n(social-history | vital-signs | imaging | laboratory | procedure | survey | exam | therapy | activity)",
-        "max" : "1"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.category:first.coding",
@@ -404,8 +412,7 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
         "id" : "Observation.category:first.coding.code",
         "path" : "Observation.category.coding.code",
         "short" : "検体検査を表すコード laboratory を設定する。",
-        "definition" : "検体検査を表すコード laboratory を設定する。",
-        "fixedCode" : "laboratory"
+        "definition" : "検体検査を表すコード laboratory を設定する。"
       },
       {
         "id" : "Observation.code",

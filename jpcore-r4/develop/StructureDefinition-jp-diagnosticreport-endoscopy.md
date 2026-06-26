@@ -317,6 +317,15 @@ GET [base]/DiagnosticReport?patient=123&category=LP7796-8
         "comment" : "JP_DiagnosticReportCategory_VSの中から「LP7796-8」（Endoscopy（内視鏡））を指定する。",
         "min" : 1,
         "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "LP7796-8",
+              "display" : "Endoscopy（内視鏡）"
+            }
+          ]
+        },
         "mustSupport" : true,
         "binding" : {
           "strength" : "required",
@@ -326,8 +335,7 @@ GET [base]/DiagnosticReport?patient=123&category=LP7796-8
       {
         "id" : "DiagnosticReport.category:first.coding.code",
         "path" : "DiagnosticReport.category.coding.code",
-        "min" : 1,
-        "patternCode" : "LP7796-8"
+        "min" : 1
       },
       {
         "id" : "DiagnosticReport.code",

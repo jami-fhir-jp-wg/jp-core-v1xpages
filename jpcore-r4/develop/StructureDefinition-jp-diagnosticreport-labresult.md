@@ -282,21 +282,24 @@ GET [base]/DiagnosticReport?patient=123&category=http://loinc.org|LP29693-6&date
         "comment" : "【JP Core仕様】レポートカテゴリーとして、LoincコードのLP29693-6(検体検査/LAB)を使用する。",
         "min" : 1,
         "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "LP29693-6",
+              "display" : "検体検査/LAB"
+            }
+          ]
+        },
         "binding" : {
           "strength" : "required",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS"
         }
       },
       {
-        "id" : "DiagnosticReport.category:first.coding.system",
-        "path" : "DiagnosticReport.category.coding.system",
-        "fixedUri" : "http://loinc.org"
-      },
-      {
         "id" : "DiagnosticReport.category:first.coding.code",
         "path" : "DiagnosticReport.category.coding.code",
-        "min" : 1,
-        "fixedCode" : "LP29693-6"
+        "min" : 1
       },
       {
         "id" : "DiagnosticReport.code.coding",
@@ -304,8 +307,8 @@ GET [base]/DiagnosticReport?patient=123&category=http://loinc.org|LP29693-6&date
         "slicing" : {
           "discriminator" : [
             {
-              "type" : "value",
-              "path" : "system"
+              "type" : "pattern",
+              "path" : "$this"
             }
           ],
           "rules" : "open"
@@ -319,24 +322,17 @@ GET [base]/DiagnosticReport?patient=123&category=http://loinc.org|LP29693-6&date
         "definition" : "検体検査レポート項目コード。本ユースケースにおける項目コード推奨値をスライスにて示している。",
         "comment" : "推奨コードは必須ではない、派生先によるコード体系を作成し割り振ることを否定しない",
         "min" : 0,
-        "max" : "1"
-      },
-      {
-        "id" : "DiagnosticReport.code.coding:laboratoryCode.system",
-        "path" : "DiagnosticReport.code.coding.system",
-        "min" : 1,
-        "fixedUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_DocumentCodes_CS"
+        "max" : "1",
+        "patternCoding" : {
+          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_DocumentCodes_CS",
+          "code" : "11502-2",
+          "display" : "検体検査報告書"
+        }
       },
       {
         "id" : "DiagnosticReport.code.coding:laboratoryCode.code",
         "path" : "DiagnosticReport.code.coding.code",
-        "min" : 1,
-        "fixedCode" : "11502-2"
-      },
-      {
-        "id" : "DiagnosticReport.code.coding:laboratoryCode.display",
-        "path" : "DiagnosticReport.code.coding.display",
-        "patternString" : "検体検査報告書"
+        "min" : 1
       },
       {
         "id" : "DiagnosticReport.subject",

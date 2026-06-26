@@ -8,7 +8,7 @@
 
 Profile: [JP Core DiagnosticReport Endoscopy Profile](StructureDefinition-jp-diagnosticreport-endoscopy.md)
 
-## 下部消化管内視鏡報告書 (内視鏡 ) 
+## 下部消化管内視鏡報告書 (Endoscopy（内視鏡） ) 
 
 | | |
 | :--- | :--- |
@@ -65,7 +65,7 @@ Profile: [JP Core DiagnosticReport Endoscopy Profile](StructureDefinition-jp-dia
         {
           "system" : "http://loinc.org",
           "code" : "LP7796-8",
-          "display" : "内視鏡"
+          "display" : "Endoscopy（内視鏡）"
         }
       ]
     }

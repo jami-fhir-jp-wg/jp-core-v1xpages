@@ -110,18 +110,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -169,18 +169,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -228,18 +228,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -287,18 +287,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -346,18 +346,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -412,18 +412,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -478,18 +478,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -541,18 +541,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -604,18 +604,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -662,18 +662,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -720,18 +720,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -778,18 +778,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -836,18 +836,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -916,18 +916,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -1002,18 +1002,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -1070,18 +1070,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -1138,18 +1138,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -1206,18 +1206,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -1274,18 +1274,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -1342,18 +1342,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -1410,18 +1410,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -1478,18 +1478,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -1546,18 +1546,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -1614,18 +1614,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -1682,18 +1682,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -1750,18 +1750,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -1818,18 +1818,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -1886,18 +1886,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -1954,18 +1954,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },
@@ -2022,18 +2022,18 @@
         {
           "coding" : [
             {
-              "system" : "http://loinc.org",
-              "code" : "18725-2",
-              "display" : "Microbiology studies (set)"
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory",
+              "display" : "Laboratory"
             }
           ]
         },
         {
           "coding" : [
             {
-              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-              "code" : "laboratory",
-              "display" : "Laboratory"
+              "system" : "http://loinc.org",
+              "code" : "18725-2",
+              "display" : "Microbiology studies (set)"
             }
           ]
         },

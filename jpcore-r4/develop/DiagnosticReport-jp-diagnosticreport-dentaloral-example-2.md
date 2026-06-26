@@ -8,7 +8,7 @@
 
 Profile: [JP Core DiagnosticReport DentalOral Profile](StructureDefinition-jp-diagnosticreport-dentaloral.md)
 
-## 口腔診査報告書 (DENTAL ) 
+## 口腔診査報告書 (歯科口腔 ) 
 
 | | |
 | :--- | :--- |
@@ -61,7 +61,7 @@ Profile: [JP Core DiagnosticReport DentalOral Profile](StructureDefinition-jp-di
         {
           "system" : "http://loinc.org",
           "code" : "LP31759-1",
-          "display" : "DENTAL"
+          "display" : "歯科口腔"
         }
       ]
     }
