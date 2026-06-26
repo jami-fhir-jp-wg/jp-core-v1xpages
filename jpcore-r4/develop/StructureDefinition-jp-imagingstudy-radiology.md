@@ -393,7 +393,7 @@ GET [base]/ImagingStudy?encounter=456
         "id" : "ImagingStudy.encounter",
         "path" : "ImagingStudy.encounter",
         "short" : "この画像検査が関連しているEncounterリソース",
-        "definition" : "このImagingStudyが行われるヘルスケアイベント（患者とヘルスケアプロバイダの相互作用など）。",
+        "definition" : "このImagingStudyが行われる診療イベント（患者と医療提供者の相互作用など）。",
         "comment" : "これは通常、イベントが発生したEncounterであるが、一部のイベントは、Encounterの正式な完了の前または後に開始される場合があり、それでもそのEncounterのコンテキストに関連付けられている（例：入院前の検査）  \n受付を示すEncounterリソースを参照。  \n（補足：訪問診療では医療者が患者と会った事を指す）",
         "type" : [
           {
@@ -546,7 +546,7 @@ GET [base]/ImagingStudy?encounter=456
         "path" : "ImagingStudy.description",
         "short" : "機関生成の記述",
         "definition" : "スタディのイメージングマネージャの説明。実施されたスタディ（コンポーネント）の機関生成の説明または分類。",
-        "comment" : "FHIR文字列のサイズは1MBを超えてはならないことに注意。  \n検査に関するフリーコメント。"
+        "comment" : "検査に関するフリーコメント。"
       },
       {
         "id" : "ImagingStudy.series",
@@ -586,7 +586,7 @@ GET [base]/ImagingStudy?encounter=456
         "path" : "ImagingStudy.series.description",
         "short" : "シリーズの人間可読な形式での短い要約記述",
         "definition" : "シリーズの記述。",
-        "comment" : "FHIR文字列のサイズは1MBを超えてはならないことに注意。  \nシリーズごとにつけられるフリーコメント。"
+        "comment" : "シリーズごとにつけられるフリーコメント。"
       },
       {
         "id" : "ImagingStudy.series.numberOfInstances",

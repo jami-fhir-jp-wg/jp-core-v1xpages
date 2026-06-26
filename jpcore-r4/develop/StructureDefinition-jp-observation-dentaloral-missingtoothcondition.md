@@ -313,8 +313,8 @@ Other representations of profile: [CSV](StructureDefinition-jp-observation-denta
       {
         "id" : "Observation.encounter",
         "path" : "Observation.encounter",
-        "short" : "このobservationが行われるヘルスケアイベント",
-        "definition" : "このobservationが行われるヘルスケアイベント",
+        "short" : "このobservationが行われる診療イベント",
+        "definition" : "このobservationが行われる診療イベント",
         "comment" : "例：診療、歯科検診、身元不明者調査"
       },
       {

@@ -289,8 +289,7 @@ GET [base]/Location?address-postalcode=1130033
         "id" : "Location.status",
         "path" : "Location.status",
         "short" : "active | suspended | inactive / アクティブ|中断|非アクティブ",
-        "definition" : "statusプロパティは、operationStatus、またはロケーションに構成されている場合はスケジュール/スロットによってカバーされる可能性がある現在の値ではなく、リソースの一般的な可用性をカバーする。",
-        "comment" : "FHIR文字列はサイズが1MBを超えてはならないことに注意すること"
+        "definition" : "statusプロパティは、operationStatus、またはロケーションに構成されている場合はスケジュール/スロットによってカバーされる可能性がある現在の値ではなく、リソースの一般的な可用性をカバーする。"
       },
       {
         "id" : "Location.operationalStatus",
@@ -319,7 +318,6 @@ GET [base]/Location?address-postalcode=1130033
         "path" : "Location.description",
         "short" : "名前以外の場所を識別するための詳細情報として表示できる場所に関する追加の詳細",
         "definition" : "場所の説明。場所の検索や参照に役立つ。",
-        "comment" : "FHIR文字列はサイズが1MBを超えてはならないことに注意すること",
         "requirements" : "人間は、正しい場所が特定されたことを確認するために追加情報を必要とする。"
       },
       {
@@ -432,8 +430,7 @@ GET [base]/Location?address-postalcode=1130033
         "id" : "Location.hoursOfOperation.daysOfWeek",
         "path" : "Location.hoursOfOperation.daysOfWeek",
         "short" : "mon | tue | wed | thu | fri | sat | sun / 月｜火｜水｜木｜金｜土｜日",
-        "definition" : "開始時刻と終了時刻の間に利用可能な曜日を示す。",
-        "comment" : "FHIR文字列のサイズは1MBを超えてはならないことに注意すること。"
+        "definition" : "開始時刻と終了時刻の間に利用可能な曜日を示す。"
       },
       {
         "id" : "Location.hoursOfOperation.allDay",

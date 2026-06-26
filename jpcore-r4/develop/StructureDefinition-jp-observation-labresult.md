@@ -438,13 +438,11 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
       },
       {
         "id" : "Observation.code.coding.code",
-        "path" : "Observation.code.coding.code",
-        "comment" : "Note that FHIR strings SHALL NOT exceed 1MB in size"
+        "path" : "Observation.code.coding.code"
       },
       {
         "id" : "Observation.code.coding.display",
-        "path" : "Observation.code.coding.display",
-        "comment" : "Note that FHIR strings SHALL NOT exceed 1MB in size"
+        "path" : "Observation.code.coding.display"
       },
       {
         "id" : "Observation.code.coding.userSelected",
@@ -481,7 +479,7 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
       {
         "id" : "Observation.encounter",
         "path" : "Observation.encounter",
-        "definition" : "この検査が行われるヘルスケアイベント。医療提供者と患者の接点。",
+        "definition" : "この検査が行われる診療イベント。医療提供者と患者の接点。",
         "comment" : "【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。  \n※このプロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。"
       },
       {
@@ -682,8 +680,7 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
       {
         "id" : "Observation.referenceRange.text",
         "path" : "Observation.referenceRange.text",
-        "definition" : "量的範囲で表せない場合などに使用する。",
-        "comment" : "Note that FHIR strings SHALL NOT exceed 1MB in size"
+        "definition" : "量的範囲で表せない場合などに使用する。"
       },
       {
         "id" : "Observation.hasMember",
