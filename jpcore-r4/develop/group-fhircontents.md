@@ -9,6 +9,9 @@
 * [Medicationグループ](group-medication.md)
 * [Diagnosticグループ](group-diagnostic.md)
 * [Clinicalグループ](group-clinical.md)
+* [Workflowグループ](group-workflow.md)
+* [CapabilityStatementグループ](group-capabilityStatement.md)
+* [SearchParameterグループ](group-searchParameter.md)
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
