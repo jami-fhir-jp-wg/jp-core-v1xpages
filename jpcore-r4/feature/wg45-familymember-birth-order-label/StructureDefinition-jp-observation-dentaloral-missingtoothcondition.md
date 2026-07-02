@@ -216,12 +216,15 @@ Other representations of profile: [CSV](StructureDefinition-jp-observation-denta
         "path" : "Observation.category",
         "sliceName" : "first",
         "short" : "このObservationに関する分類（JP_SimpleObservationCategory_VS）、必須項目",
-        "definition" : "このObservationに関する分類（JP_SimpleObservationCategory_VS）、必須項目"
-      },
-      {
-        "id" : "Observation.category:first.coding.code",
-        "path" : "Observation.category.coding.code",
-        "fixedCode" : "exam"
+        "definition" : "このObservationに関する分類（JP_SimpleObservationCategory_VS）、必須項目",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "exam"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.category:second",
@@ -243,8 +246,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-observation-denta
       {
         "id" : "Observation.category:second.coding.code",
         "path" : "Observation.category.coding.code",
-        "min" : 1,
-        "fixedCode" : "LP89803-8"
+        "min" : 1
       },
       {
         "id" : "Observation.category:third",
@@ -254,21 +256,23 @@ Other representations of profile: [CSV](StructureDefinition-jp-observation-denta
         "definition" : "このObservationに関する詳細分類、JP_ObservationDetailedDentalCategory_VSより選択する、必須項目",
         "min" : 1,
         "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationDentalCategory_CS",
+              "code" : "DO-1-03"
+            }
+          ]
+        },
         "binding" : {
           "strength" : "required",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_ObservationDetailedDentalCategory_VS"
         }
       },
       {
-        "id" : "Observation.category:third.coding.system",
-        "path" : "Observation.category.coding.system",
-        "fixedUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationDentalCategory_CS"
-      },
-      {
         "id" : "Observation.category:third.coding.code",
         "path" : "Observation.category.coding.code",
-        "min" : 1,
-        "fixedCode" : "DO-1-03"
+        "min" : 1
       },
       {
         "id" : "Observation.code.coding",
@@ -313,8 +317,8 @@ Other representations of profile: [CSV](StructureDefinition-jp-observation-denta
       {
         "id" : "Observation.encounter",
         "path" : "Observation.encounter",
-        "short" : "このobservationが行われるヘルスケアイベント",
-        "definition" : "このobservationが行われるヘルスケアイベント",
+        "short" : "このobservationが行われる診療イベント",
+        "definition" : "このobservationが行われる診療イベント",
         "comment" : "例：診療、歯科検診、身元不明者調査"
       },
       {

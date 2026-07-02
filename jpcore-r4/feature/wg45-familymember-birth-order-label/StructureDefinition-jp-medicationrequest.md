@@ -1066,8 +1066,7 @@ JAMI標準用法コードを使用する表現方法では、dosageInstruction.t
         "id" : "MedicationRequest.priority",
         "path" : "MedicationRequest.priority",
         "short" : "オーダの優先度",
-        "definition" : "このMedicationRequestオーダの優先度。他のオーダと比較して表現される。",
-        "comment" : "FHIRでは文字列の大きさが1MBを超えてはならない(SHALL NOT)。"
+        "definition" : "このMedicationRequestオーダの優先度。他のオーダと比較して表現される。"
       },
       {
         "id" : "MedicationRequest.doNotPerform",

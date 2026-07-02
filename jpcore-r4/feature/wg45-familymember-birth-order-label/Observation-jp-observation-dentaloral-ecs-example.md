@@ -10,7 +10,7 @@ Profile: [JP Core Observation DentalOral eCS Profile](StructureDefinition-jp-obs
 
 **status**: Final
 
-**category**: Dental, 現存歯の処置状態, ClinicalInformationSharing
+**category**: 現存歯の処置状態, Dental, ClinicalInformationSharing
 
 **code**: Referral note
 
@@ -46,21 +46,21 @@ Profile: [JP Core Observation DentalOral eCS Profile](StructureDefinition-jp-obs
     {
       "coding" : [
         {
-          "system" : "http://loinc.org",
-          "code" : "LP89803-8",
-          "display" : "Dental"
-        }
-      ]
-    },
-    {
-      "coding" : [
-        {
           "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
           "code" : "exam",
           "display" : "exam"
         }
       ],
       "text" : "現存歯の処置状態"
+    },
+    {
+      "coding" : [
+        {
+          "system" : "http://loinc.org",
+          "code" : "LP89803-8",
+          "display" : "Dental"
+        }
+      ]
     },
     {
       "coding" : [

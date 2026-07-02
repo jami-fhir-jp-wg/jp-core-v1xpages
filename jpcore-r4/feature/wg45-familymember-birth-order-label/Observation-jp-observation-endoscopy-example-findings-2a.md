@@ -10,7 +10,7 @@ Profile: [JP Core Observation Endoscopy Profile](StructureDefinition-jp-observat
 
 **status**: Final
 
-**category**: 内視鏡, Procedure
+**category**: Procedure, 内視鏡
 
 **code**: 内視鏡所見
 
@@ -44,18 +44,18 @@ Profile: [JP Core Observation Endoscopy Profile](StructureDefinition-jp-observat
     {
       "coding" : [
         {
-          "system" : "http://loinc.org",
-          "code" : "LP7796-8",
-          "display" : "内視鏡"
+          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+          "code" : "procedure",
+          "display" : "Procedure"
         }
       ]
     },
     {
       "coding" : [
         {
-          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
-          "code" : "procedure",
-          "display" : "Procedure"
+          "system" : "http://loinc.org",
+          "code" : "LP7796-8",
+          "display" : "内視鏡"
         }
       ]
     }

@@ -228,12 +228,15 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
         "path" : "Observation.category",
         "sliceName" : "first",
         "comment" : "このObservationを分類するコード。(imaging)が指定される。",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "imaging"
+            }
+          ]
+        },
         "mustSupport" : true
-      },
-      {
-        "id" : "Observation.category:first.coding.code",
-        "path" : "Observation.category.coding.code",
-        "fixedCode" : "imaging"
       },
       {
         "id" : "Observation.code",

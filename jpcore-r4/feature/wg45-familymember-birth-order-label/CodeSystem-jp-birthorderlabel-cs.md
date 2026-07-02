@@ -15,7 +15,7 @@
 * **項目**: *Title*
   * **内容**: JP Core Birth Order Label CodeSystem
 * **項目**: *Status*
-  * **内容**: Active ( 2026-06-23 )
+  * **内容**: Active ( 2026-07-02 )
 * **項目**: *Copyright*
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
@@ -42,7 +42,7 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
   "title" : "JP Core Birth Order Label CodeSystem",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-06-23T12:38:26+00:00",
+  "date" : "2026-07-02T16:06:27+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
@@ -78,12 +78,14 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
   "property" : [
     {
       "code" : "category",
+      "uri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_BirthOrderLabel_CS#category",
       "description" : "出生順呼称の区分。",
       "type" : "code"
     },
     {
       "code" : "order",
-      "description" : "区分ないでの順位。",
+      "uri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_BirthOrderLabel_CS#order",
+      "description" : "区分内での順位。",
       "type" : "integer"
     }
   ],

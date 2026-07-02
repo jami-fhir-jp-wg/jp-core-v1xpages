@@ -214,8 +214,8 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
         "slicing" : {
           "discriminator" : [
             {
-              "type" : "value",
-              "path" : "system"
+              "type" : "pattern",
+              "path" : "$this"
             }
           ],
           "rules" : "open"
@@ -230,22 +230,19 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
         "comment" : "推奨項目コードは必須ではない、派生先によるコード体系を作成し割り振ることを否定しない",
         "min" : 0,
         "max" : "1",
+        "patternCoding" : {
+          "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_PhysicalExamCode_CS",
+          "code" : "physical-findings"
+        },
         "binding" : {
           "strength" : "required",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_PhysicalExamCode_VS"
         }
       },
       {
-        "id" : "Observation.code.coding:physicalExamCode.system",
-        "path" : "Observation.code.coding.system",
-        "min" : 1,
-        "fixedUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_PhysicalExamCode_CS"
-      },
-      {
         "id" : "Observation.code.coding:physicalExamCode.code",
         "path" : "Observation.code.coding.code",
-        "min" : 1,
-        "fixedCode" : "physical-findings"
+        "min" : 1
       },
       {
         "id" : "Observation.code.coding:physicalExamCode.display",

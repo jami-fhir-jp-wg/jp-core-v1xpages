@@ -6627,7 +6627,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "StructureDefinition/jp-familymemberhistory"
         },
         "name" : "JP Core FamilyMemberHistory Profile",
-        "description" : "このプロファイルはFamilyMemberHistoryリソースに対して、データを送受信するための共通の制約と拡張を定めたものである。",
+        "description" : "このプロファイルはFamilyMemberHistoryリソースに対して、患者の家族歴のデータを送受信するための共通の制約と拡張を定めたものである。",
         "exampleBoolean" : false
       },
       {

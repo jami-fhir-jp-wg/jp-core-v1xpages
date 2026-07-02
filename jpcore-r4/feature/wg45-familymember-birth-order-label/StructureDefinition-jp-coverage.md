@@ -404,7 +404,7 @@ GET [base]/Coverage?type=*****
         "path" : "Coverage",
         "short" : "Insurance or medical plan or a payment agreement　保険または医療費支払いプラン、または合意された支払い方法",
         "definition" : "Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.  \nヘルスケア製品およびサービスの償還または支払いに使用される可能性のある金融商品。 保険と自己負担の両方が含まれる。",
-        "comment" : "The Coverage resource contains the insurance card level information, which is customary to provide on claims and other communications between providers and insurers.  \nCoverageには、保険証レベルの情報が含まれている。これは、保険金請求やプロバイダと保険会社間のその他の通信で提供するのが通例である。"
+        "comment" : "The Coverage resource contains the insurance card level information, which is customary to provide on claims and other communications between providers and insurers.  \nCoverageには、保険証レベルの情報が含まれている。これは、保険金請求や医療提供者と保険会社間のその他の通信で提供するのが通例である。"
       },
       {
         "id" : "Coverage.extension",
@@ -476,10 +476,10 @@ GET [base]/Coverage?type=*****
           ],
           "rules" : "open"
         },
-        "short" : "Business Identifier for the coverage　このカバレッジに割り当てられた一意の識別子【詳細参照】",
-        "definition" : "A unique identifier assigned to this coverage.  このカバレッジに割り当てられた一意の識別子。",
-        "comment" : "A unique identifier assigned to this coverage.  このカバレッジに割り当てられた一意の識別子。",
-        "requirements" : "Allows coverages to be distinguished and referenced.  \nカバレッジを区別して参照できるようにする。"
+        "short" : "Business Identifier for the coverage　この保険適用情報に割り当てられた一意の識別子【詳細参照】",
+        "definition" : "A unique identifier assigned to this coverage.  この保険適用情報に割り当てられた一意の識別子。",
+        "comment" : "A unique identifier assigned to this coverage.  この保険適用情報に割り当てられた一意の識別子。",
+        "requirements" : "Allows coverages to be distinguished and referenced.  \n保険適用情報を区別して参照できるようにする。"
       },
       {
         "id" : "Coverage.identifier:insuranceIdentifier",
@@ -525,7 +525,7 @@ GET [base]/Coverage?type=*****
         "sliceName" : "insuranceCsvIdentifier",
         "short" : "被保険者識別子（CSV形式）　\"00012345\",\"１２－３４\",\"５６７８\",\"00\"",
         "definition" : "被保険者識別子として、保険者情報と被保険者情報を囲み文字をダブルクォーテーション、区切りをカンマにて連結する",
-        "comment" : "The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Certificate number, Personal Health Number or Case ID. May be constructed as the concatenation of the Coverage.SubscriberID and the Coverage.dependent.  \nカバレッジのメイン（および場合によっては唯一の）識別子-多くの場合、メンバID、証明書番号、個人の健康番号、またはケースIDと呼ばれる。  \n【JP Core仕様】被保険者記号と番号と枝番を全角にした上でダブルコーテーションで囲い、カンマ区切りで連結する。  \nルール：\"{保険者番号:半角英数８桁}\",\"{被保険者記号}\",\"{被保険者番号}\",\"{枝番:半角数字２桁}\"  \n例：\"00012345\",\"１２－３４\",\"５６７８\",\"00\"",
+        "comment" : "The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Certificate number, Personal Health Number or Case ID. May be constructed as the concatenation of the Coverage.SubscriberID and the Coverage.dependent.  \n保険適用情報のメイン（および場合によっては唯一の）識別子-多くの場合、会員番号、証明書番号、個人健康識別子、または症例IDと呼ばれる。  \n【JP Core仕様】被保険者記号と番号と枝番を全角にした上でダブルコーテーションで囲い、カンマ区切りで連結する。  \nルール：\"{保険者番号:半角英数８桁}\",\"{被保険者記号}\",\"{被保険者番号}\",\"{枝番:半角数字２桁}\"  \n例：\"00012345\",\"１２－３４\",\"５６７８\",\"00\"",
         "min" : 0,
         "max" : "1"
       },
@@ -540,7 +540,7 @@ GET [base]/Coverage?type=*****
         "path" : "Coverage.identifier.value",
         "short" : "被保険者識別子（CSV形式）　\"00012345\",\"１２－３４\",\"５６７８\",\"00\"",
         "definition" : "被保険者識別子として、保険者番号と被保険者記号と番号と枝番を全角にした上でダブルコーテーションで囲い、カンマ区切りで連結する。",
-        "comment" : "The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Certificate number, Personal Health Number or Case ID. May be constructed as the concatenation of the Coverage.SubscriberID and the Coverage.dependent.  \nカバレッジのメイン（および場合によっては唯一の）識別子-多くの場合、メンバID、証明書番号、個人の健康番号、またはケースIDと呼ばれる。  \n【JP Core仕様】保険者番号と被保険者記号と番号と枝番を全角にした上でダブルコーテーションで囲い、カンマ区切りで連結する。  \nルール：\"{保険者番号:半角英数８桁}\",\"{被保険者記号}\",\"{被保険者番号}\",\"{枝番:半角数字２桁}\"  \n例：\"00012345\",\"１２－３４\",\"５６７８\",\"00\"\n要素を省略する、とある場合には、長さ０の文字列とする。",
+        "comment" : "The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Certificate number, Personal Health Number or Case ID. May be constructed as the concatenation of the Coverage.SubscriberID and the Coverage.dependent.  \n保険適用情報のメイン（および場合によっては唯一の）識別子-多くの場合、会員番号、証明書番号、個人健康識別子、または症例IDと呼ばれる。  \n【JP Core仕様】保険者番号と被保険者記号と番号と枝番を全角にした上でダブルコーテーションで囲い、カンマ区切りで連結する。  \nルール：\"{保険者番号:半角英数８桁}\",\"{被保険者記号}\",\"{被保険者番号}\",\"{枝番:半角数字２桁}\"  \n例：\"00012345\",\"１２－３４\",\"５６７８\",\"00\"\n要素を省略する、とある場合には、長さ０の文字列とする。",
         "min" : 1
       },
       {
@@ -562,7 +562,7 @@ GET [base]/Coverage?type=*****
         "id" : "Coverage.status",
         "path" : "Coverage.status",
         "definition" : "The status of the resource instance.  \nリソースインスタンスのステータス。",
-        "comment" : "This element is labeled as a modifier because the status contains the code entered-in-error that marks the coverage as not currently valid.  \nステータスには、カバレッジが現在無効であることを示すエラー入力されたコードが含まれているため、この要素は修飾子としてラベル付けされる。",
+        "comment" : "This element is labeled as a modifier because the status contains the code entered-in-error that marks the coverage as not currently valid.  \nステータスには、保険適用情報が現在無効であることを示すエラー入力されたコードが含まれているため、この要素は修飾子としてラベル付けされる。",
         "requirements" : "Need to track the status of the resource as 'draft' resources may undergo further edits while 'active' resources are immutable and may only have their status changed to 'cancelled'.  \n「ドラフト」リソースはさらに編集される可能性があり、「アクティブ」リソースは不変であり、ステータスが「キャンセル」に変更されるだけである可能性があるため、リソースのステータスを追跡する必要がある。",
         "isModifierReason" : "This element is labelled as a modifier because it is a status element that contains status entered-in-error which means that the resource should not be treated as valid / この要素は、エラーで入力されたステータスを含むステータス要素であるため、修飾子としてラベル付けされている。これは、リソースが有効として扱われるべきではないことを意味する。"
       },
@@ -572,7 +572,7 @@ GET [base]/Coverage?type=*****
         "short" : "Coverage category such as medical or accident　医療保険や事故補償のような分類",
         "definition" : "The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health or payment by an individual or organization.  \n補償の種類：社会プログラム、医療計画、事故補償（労働者災害補償、自動車）、グループの健康、または個人または組織による支払い。",
         "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.  \nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。  \n【JP Core仕様】「[処方情報 HL7FHIR 記述仕様](https://std.jpfhir.jp/stddoc/ePrescriptionDataFHIR_v1x.pdf)」等で使用される保険種別コード（system=”http://jpfhir.jp/fhir/core/mhlw/IdSystem/medicalRegistrationNumber”）として、https://www.mhlw.go.jp/content/10800000/000342368.pdf　の別表１１が使用している例があげられている。JP Coreとして本項目に対する用語のバインドは現時点では定義するまでに至っていない。",
-        "requirements" : "The order of application of coverages is dependent on the types of coverage.  \nカバレッジの適用順序は、カバレッジのタイプによって異なる。"
+        "requirements" : "The order of application of coverages is dependent on the types of coverage.  \n保険適用の適用順序は、保険適用のタイプによって異なる。"
       },
       {
         "id" : "Coverage.policyHolder",
@@ -681,7 +681,7 @@ GET [base]/Coverage?type=*****
         "id" : "Coverage.class.type",
         "path" : "Coverage.class.type",
         "definition" : "The type of classification for which an insurer-specific class label or number and optional name is provided, for example may be used to identify a class of coverage or employer group, Policy, Plan.  \n保険者固有のクラスラベルまたは番号、任意の名前が提供されている分類のタイプを表す。例えば、保険のクラスまたは雇用者グループ、保険契約、Planを識別するために使用することができる。",
-        "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.  \nすべての用語の使用がこの一般的なパターンに適合するわけではない。いくつかのケースでは、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および事前・事後の用語結合を管理するための独自の構造を提供することが望ましい。",
+        "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.  \nすべての用語の使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および事前・事後の用語結合を管理するための独自の構造を提供することが望ましい。",
         "requirements" : "The insurer issued label for a specific health card value.  \n保険者が発行した特定の健康カード番号のラベル。"
       },
       {
@@ -700,14 +700,14 @@ GET [base]/Coverage?type=*****
       {
         "id" : "Coverage.order",
         "path" : "Coverage.order",
-        "definition" : "The order of applicability of this coverage relative to other coverages which are currently in force. Note, there may be gaps in the numbering and this does not imply primary, secondary etc. as the specific positioning of coverages depends upon the episode of care.  \n現在適用されている他の保障と比較して、この保障の適用可能性が高い順に記載されている。なお、ナンバリングにギャップがある場合があり、カバーの具体的な位置づけはケアのエピソードに依存するため、一次、二次などを意味するものではない。",
+        "definition" : "The order of applicability of this coverage relative to other coverages which are currently in force. Note, there may be gaps in the numbering and this does not imply primary, secondary etc. as the specific positioning of coverages depends upon the episode of care.  \n現在適用されている他の保障と比較して、この保障の適用可能性が高い順に記載されている。なお、採番にギャップがある場合があり、適用範囲の具体的な位置づけは診療エピソードに依存するため、一次、二次などを意味するものではない。",
         "comment" : "32 bit number; for values larger than this, use decimal  \n32 ビットの数値、これより大きい値の場合は 10 進数を使用する。",
         "requirements" : "Used in managing the coordination of benefits.  \n保険給付の調整管理に使用する。  \n【JP Core仕様】公費情報で本リソースを使用する場合で、複数の公費負担情報がある場合に、その適用順序番号を示す１，２，３．．．を設定する。"
       },
       {
         "id" : "Coverage.network",
         "path" : "Coverage.network",
-        "definition" : "The insurer-specific identifier for the insurer-defined network of providers to which the beneficiary may seek treatment which will be covered at the 'in-network' rate, otherwise 'out of network' terms and conditions apply.  \n保険者が定義したプロバイダの保険者定義ネットワークの保険者固有の識別子で、被保険者が「ネットワーク内」の料金でカバーされる治療を受けることができるが、そうでなければ「ネットワーク外」の条件が適用される。",
+        "definition" : "The insurer-specific identifier for the insurer-defined network of providers to which the beneficiary may seek treatment which will be covered at the 'in-network' rate, otherwise 'out of network' terms and conditions apply.  \n保険者が定義した医療提供者の保険者定義ネットワークの保険者固有の識別子で、被保険者が「ネットワーク内」の料金でカバーされる治療を受けることができるが、そうでなければ「ネットワーク外」の条件が適用される。",
         "requirements" : "Used in referral for treatment and in claims processing.  \n治療のための紹介や請求処理の際に使用する。"
       },
       {
@@ -733,7 +733,7 @@ GET [base]/Coverage?type=*****
       {
         "id" : "Coverage.costToBeneficiary.type.coding.code",
         "path" : "Coverage.costToBeneficiary.type.coding.code",
-        "comment" : "Note that FHIR strings SHALL NOT exceed 1MB in size  \n自己負担率を表すコード　\"copaypct\""
+        "comment" : "自己負担率を表すコード　\"copaypct\""
       },
       {
         "id" : "Coverage.costToBeneficiary.value[x]",

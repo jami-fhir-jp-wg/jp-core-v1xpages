@@ -191,12 +191,15 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
       {
         "id" : "Observation.category:first",
         "path" : "Observation.category",
-        "sliceName" : "first"
-      },
-      {
-        "id" : "Observation.category:first.coding.code",
-        "path" : "Observation.category.coding.code",
-        "fixedCode" : "body-measurement"
+        "sliceName" : "first",
+        "fixedCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "body-measurement"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.category:second",
@@ -220,7 +223,7 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
       {
         "id" : "Observation.category:second.coding.system",
         "path" : "Observation.category.coding.system",
-        "patternUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationBodyMeasurementCategory_CS"
+        "fixedUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationBodyMeasurementCategory_CS"
       },
       {
         "id" : "Observation.code",

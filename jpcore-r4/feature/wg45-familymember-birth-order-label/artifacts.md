@@ -48,7 +48,7 @@
 | [JP Core DiagnosticReport Microbiology Profile](StructureDefinition-jp-diagnosticreport-microbiology.md) | このプロファイルはDiagnosticReportリソースに対して、データを送受信するための微生物学検査レポートの制約と拡張を定めたものである。 |
 | [JP Core DiagnosticReport Radiology Profile](StructureDefinition-jp-diagnosticreport-radiology.md) | このプロファイルはDiagnosticReportリソースに対して、放射線検査報告書（レポート）のデータを送受信するための制約と拡張を定めたものである。 |
 | [JP Core Encounter Profile](StructureDefinition-jp-encounter.md) | このプロファイルはEncounterリソースに対して、来院/入院情報のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
-| [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md) | このプロファイルはFamilyMemberHistoryリソースに対して、データを送受信するための共通の制約と拡張を定めたものである。 |
+| [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md) | このプロファイルはFamilyMemberHistoryリソースに対して、患者の家族歴のデータを送受信するための共通の制約と拡張を定めたものである。 |
 | [JP Core ImagingStudy Endoscopy Profile](StructureDefinition-jp-imagingstudy-endoscopy.md) | このプロファイルはImagingStudyリソースに対して、主に内視鏡検査で撮影された画像に関わるデータを送受信するための制約と拡張を定めたものである。 |
 | [JP Core ImagingStudy Radiology Profile](StructureDefinition-jp-imagingstudy-radiology.md) | このプロファイルはImagingStudyリソースに対して、放射線検査画像のデータを送受信するための制約と拡張を定めたものである。 |
 | [JP Core Immunization Profile](StructureDefinition-jp-immunization.md) | このプロファイルはImmunizationリソースに対して日本での予防接種情報を送受信するための制約と拡張を加えたものである。 |

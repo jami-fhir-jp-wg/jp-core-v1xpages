@@ -226,7 +226,7 @@ issued=ge2000-01-01
         "path" : "DiagnosticReport",
         "short" : "診断レポート-依頼情報、１項目単位の結果、画像、解釈、およびフォーマットされたレポートの組み合わせ　【JP Core仕様】口腔診査結果レポートのプロフィール",
         "definition" : "患者、患者のグループ、デバイス、場所、これらから派生した対象に対して実行された診断的検査の結果と解釈。レポートには、依頼情報や依頼者情報などの臨床コンテキスト（文脈）、および１項目単位の結果、画像、テキストとコード化された解釈、および診断レポートのフォーマットされた表現のいくつかの組み合わせが含まれる。\r\n【JP Core仕様】口腔診査結果レポートのプロファイル",
-        "comment" : "これは単一のレポートをキャプチャすることを目的としており、複数のレポートをカバーする要約情報の表示に使用するのには適していない。たとえば、このリソースは、検査結果の累積レポート形式やシーケンスの詳細な構造化レポート用に作られていない。\r\n【JP Core仕様】DiagnosticReportリソースの共通プロファイル"
+        "comment" : "これは単一のレポートを格納することを目的としており、複数のレポートを含む要約情報の表示に使用するのには適していない。たとえば、このリソースは、検査結果の累積レポート形式やシーケンスの詳細な構造化レポート用に作られていない。\r\n【JP Core仕様】DiagnosticReportリソースの共通プロファイル"
       },
       {
         "id" : "DiagnosticReport.identifier",
@@ -279,6 +279,15 @@ issued=ge2000-01-01
         "comment" : "【JP Core仕様】レポートカテゴリーとして、LoincコードのLP31759-1（歯科口腔）を使用する。",
         "min" : 1,
         "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "LP31759-1",
+              "display" : "歯科口腔"
+            }
+          ]
+        },
         "binding" : {
           "strength" : "required",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS"
@@ -287,8 +296,7 @@ issued=ge2000-01-01
       {
         "id" : "DiagnosticReport.category:first.coding.code",
         "path" : "DiagnosticReport.category.coding.code",
-        "min" : 1,
-        "patternCode" : "LP31759-1"
+        "min" : 1
       },
       {
         "id" : "DiagnosticReport.code",
@@ -320,8 +328,8 @@ issued=ge2000-01-01
       {
         "id" : "DiagnosticReport.encounter",
         "path" : "DiagnosticReport.encounter",
-        "short" : "依頼時におけるヘルスケアイベント（受診など） 【JP Core仕様】このレポートを書く切っ掛けとなるEncounterリソースを参照",
-        "definition" : "依頼時におけるヘルスケアイベント（受診など） 【JP Core仕様】このレポートを書く切っ掛けとなるEncounterリソースを参照",
+        "short" : "依頼時における診療イベント（受診など） 【JP Core仕様】このレポートを書く切っ掛けとなるEncounterリソースを参照",
+        "definition" : "依頼時における診療イベント（受診など） 【JP Core仕様】このレポートを書く切っ掛けとなるEncounterリソースを参照",
         "comment" : "例：診療、歯科健診（検診）、身元不明者調査 ※JP Coreに網羅されていない"
       },
       {

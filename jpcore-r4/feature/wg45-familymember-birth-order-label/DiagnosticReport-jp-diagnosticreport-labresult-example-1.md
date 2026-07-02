@@ -8,7 +8,7 @@
 
 Profile: [JP Core DiagnosticReport LabResult Profile](StructureDefinition-jp-diagnosticreport-labresult.md)
 
-## 検体検査報告書 (検体検査 ) 
+## 検体検査報告書 (検体検査/LAB ) 
 
 | | |
 | :--- | :--- |
@@ -360,7 +360,7 @@ Profile: [JP Core Observation LabResult Profile](StructureDefinition-jp-observat
         {
           "system" : "http://loinc.org",
           "code" : "LP29693-6",
-          "display" : "検体検査"
+          "display" : "検体検査/LAB"
         }
       ]
     }

@@ -386,7 +386,15 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
         "short" : "検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から\"laboratory\"を設定する。",
         "definition" : "検体検査では、http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS のコード表から\"laboratory\"を設定する。",
         "comment" : "【JP Core仕様】推奨コード表「JP Core Simple Observation Category CodeSystem」より、このプロファイルでは「laboratory」固定とする。  \n(social-history | vital-signs | imaging | laboratory | procedure | survey | exam | therapy | activity)",
-        "max" : "1"
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.category:first.coding",
@@ -404,8 +412,7 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
         "id" : "Observation.category:first.coding.code",
         "path" : "Observation.category.coding.code",
         "short" : "検体検査を表すコード laboratory を設定する。",
-        "definition" : "検体検査を表すコード laboratory を設定する。",
-        "fixedCode" : "laboratory"
+        "definition" : "検体検査を表すコード laboratory を設定する。"
       },
       {
         "id" : "Observation.code",
@@ -438,13 +445,11 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
       },
       {
         "id" : "Observation.code.coding.code",
-        "path" : "Observation.code.coding.code",
-        "comment" : "Note that FHIR strings SHALL NOT exceed 1MB in size"
+        "path" : "Observation.code.coding.code"
       },
       {
         "id" : "Observation.code.coding.display",
-        "path" : "Observation.code.coding.display",
-        "comment" : "Note that FHIR strings SHALL NOT exceed 1MB in size"
+        "path" : "Observation.code.coding.display"
       },
       {
         "id" : "Observation.code.coding.userSelected",
@@ -481,7 +486,7 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
       {
         "id" : "Observation.encounter",
         "path" : "Observation.encounter",
-        "definition" : "この検査が行われるヘルスケアイベント。医療提供者と患者の接点。",
+        "definition" : "この検査が行われる診療イベント。医療提供者と患者の接点。",
         "comment" : "【JP Core仕様】入院外来の区別や所在場所、担当診療科の情報に使用する。  \n※このプロファイルの用途では通常は必須と考えられるが、ユースケースにより使用されない場合を考慮し、1..1に制約しない。"
       },
       {
@@ -682,8 +687,7 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
       {
         "id" : "Observation.referenceRange.text",
         "path" : "Observation.referenceRange.text",
-        "definition" : "量的範囲で表せない場合などに使用する。",
-        "comment" : "Note that FHIR strings SHALL NOT exceed 1MB in size"
+        "definition" : "量的範囲で表せない場合などに使用する。"
       },
       {
         "id" : "Observation.hasMember",

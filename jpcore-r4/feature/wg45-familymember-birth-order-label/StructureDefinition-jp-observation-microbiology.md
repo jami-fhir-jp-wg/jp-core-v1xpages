@@ -275,12 +275,15 @@ Diagnostic Reportのサンプルの一部に定義しているため、これを
         "path" : "Observation.category",
         "sliceName" : "first",
         "short" : "このObservationに関する分類（JP_SimpleObservationCategory_VS）、必須項目",
-        "definition" : "このObservationに関する分類（JP_SimpleObservationCategory_VS）、必須項目"
-      },
-      {
-        "id" : "Observation.category:first.coding.code",
-        "path" : "Observation.category.coding.code",
-        "fixedCode" : "laboratory"
+        "definition" : "このObservationに関する分類（JP_SimpleObservationCategory_VS）、必須項目",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "laboratory"
+            }
+          ]
+        }
       },
       {
         "id" : "Observation.category:second",
@@ -302,8 +305,7 @@ Diagnostic Reportのサンプルの一部に定義しているため、これを
       {
         "id" : "Observation.category:second.coding.code",
         "path" : "Observation.category.coding.code",
-        "min" : 1,
-        "fixedCode" : "18725-2"
+        "min" : 1
       },
       {
         "id" : "Observation.category:second.coding.display",

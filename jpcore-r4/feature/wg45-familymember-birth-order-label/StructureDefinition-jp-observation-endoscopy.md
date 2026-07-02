@@ -277,12 +277,15 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
         "path" : "Observation.category",
         "sliceName" : "first",
         "short" : "内視鏡検査の第1カテゴリはJP_SimpleObservationCategory_VSからprocedureを指定する。",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS",
+              "code" : "procedure"
+            }
+          ]
+        },
         "mustSupport" : true
-      },
-      {
-        "id" : "Observation.category:first.coding.code",
-        "path" : "Observation.category.coding.code",
-        "fixedCode" : "procedure"
       },
       {
         "id" : "Observation.category:second",
@@ -305,8 +308,7 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
       {
         "id" : "Observation.category:second.coding.code",
         "path" : "Observation.category.coding.code",
-        "min" : 1,
-        "fixedCode" : "LP7796-8"
+        "min" : 1
       },
       {
         "id" : "Observation.code",
