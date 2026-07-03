@@ -48,7 +48,7 @@ ImagingStudyリソースはDICOMのstudy, seriesおよび画像に関連する�
 
 このリソースでは32ビットのタグ（DICOMタグと呼ばれる）で示されるDICOMアトリビュート（タグ情報）をmappingするためのエレメントが用意されている。 DICOMタグは4桁の16進数がコンマで区切られたペア（例 (0008, 103E) )として表現される。それぞれのタグ情報に関する名称と値のペアについては[DICOM Part6 Data Dictionary](https://dicom.nema.org/medical/dicom/current/output/html/part06.html)に記載されている。さらに、情報体の中のタグ情報の用途については[DICOM Part 3 Information Object Definitions](https://dicom.nema.org/medical/dicom/current/output/html/part03.html)に記載されている。Number of Instances in StudyなどのDICOMにおける問い合わせモデルに関する情報は[DICOM Part 4 Annex C](https://dicom.nema.org/medical/dicom/current/output/html/part04.html#chapter_C)で参照できる。
 
-最も単純な場合、ImagingStudyはDICOM query（例えばQIDO-RS）を行うことなく重要なDICOMタグ情報へのアクセスを提供する。一方で、DICOMの実画像情報などのインスタンスはImagingStudyリソースには保存されないため、この情報を保存するためにはDICOM WADO-RSサーバやほかのストレージ機能を利用する必要がある。 （FHIRではREST APIを用いることが想定されており，親和性の観点からはDICOM web accessの利用が想定される。）
+最も単純な場合、ImagingStudyはDICOM query（例えばQIDO-RS）を行うことなく重要なDICOMタグ情報へのアクセスを提供する。一方で、DICOMの実画像情報などのインスタンスはImagingStudyリソースには保存されないため、この情報を保存するためにはDICOM WADO-RSサーバーやほかのストレージ機能を利用する必要がある。 （FHIRではREST APIを用いることが想定されており，親和性の観点からはDICOM web accessの利用が想定される。）
 
 ImagingStudyは一つのDICOM studyに対してのリファレンスであり、またそのスタディのサブセットに対する参照にも利用できる。一方で、複数のImagingStudyリソースが同じDICOM studyを参照することや，同じDICOM study内の異なるサブセット（シリーズ）を参照することもあり得る。
 
@@ -537,9 +537,9 @@ GET [base]/ImagingStudy?encounter=456
       {
         "id" : "ImagingStudy.note",
         "path" : "ImagingStudy.note",
-        "short" : "ユーザが定義したコメント",
+        "short" : "ユーザーが定義したコメント",
         "definition" : "推奨されるDICOMマッピングによると、この要素はスタディの説明属性（0008,1030）から派生している。画像検査に関する観察または所見は、この要素に記述するのではなく、Observationのような別のリソースに記録する必要がある。",
-        "comment" : "構造化された注釈（アノテーション）を持たないシステムの場合、作成者や時間なしで単一の注釈を簡単に伝達できる。情報を変更する可能性があるため、この要素をナラティブに含める必要がある場合がある。  \n*注釈は、計算機処理れきる「変更」情報を伝達するために使用されるべきではない*。 （ユーザの行動を強制することはほとんど不可能であるため、これはSHOULDとする）。  \nコメント（Annotation型による記述）"
+        "comment" : "構造化された注釈（アノテーション）を持たないシステムの場合、作成者や時間なしで単一の注釈を簡単に伝達できる。情報を変更する可能性があるため、この要素をナラティブに含める必要がある場合がある。  \n*注釈は、計算機処理れきる「変更」情報を伝達するために使用されるべきではない*。 （ユーザーの行動を強制することはほとんど不可能であるため、これはSHOULDとする）。  \nコメント（Annotation型による記述）"
       },
       {
         "id" : "ImagingStudy.description",
@@ -567,7 +567,7 @@ GET [base]/ImagingStudy?encounter=456
         "path" : "ImagingStudy.series.number",
         "short" : "このシリーズの数値型識別子",
         "definition" : "このシリーズの数値型識別子",
-        "comment" : "32ビット数で表す。これより大きい値の場合は、10進数を使用する。  \n上記UIDとは別に、ユーザ（または装置）が自由に決められる番号。"
+        "comment" : "32ビット数で表す。これより大きい値の場合は、10進数を使用する。  \n上記UIDとは別に、ユーザー（または装置）が自由に決められる番号。"
       },
       {
         "id" : "ImagingStudy.series.modality",
@@ -642,7 +642,7 @@ GET [base]/ImagingStudy?encounter=456
         "path" : "ImagingStudy.series.specimen",
         "short" : "画像検査をした検体",
         "definition" : "例えば、生検のスライド全体の画像化のために画像化された標本。通常の放射線画像検査では使用されない。（DICOMを用いた病理画像検査で用いられる）",
-        "comment" : "参照は、実在のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。  \n【JP Core仕様】UIDは別のtagが存在するので、ユーザ側で自由に付与していい番号と思われる。"
+        "comment" : "参照は、実在のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。  \n【JP Core仕様】UIDは別のtagが存在するので、ユーザー側で自由に付与していい番号と思われる。"
       },
       {
         "id" : "ImagingStudy.series.started",
@@ -704,7 +704,7 @@ GET [base]/ImagingStudy?encounter=456
       {
         "id" : "ImagingStudy.series.instance.number",
         "path" : "ImagingStudy.series.instance.number",
-        "comment" : "32ビット数で表す。これより大きい値の場合は、10進数を使用する。  \n【JP Core仕様】ユーザ（または装置）が自由に決められる画像ごとの番号。DICOMタグマッピングにある値をそのまま設定。"
+        "comment" : "32ビット数で表す。これより大きい値の場合は、10進数を使用する。  \n【JP Core仕様】ユーザー（または装置）が自由に決められる画像ごとの番号。DICOMタグマッピングにある値をそのまま設定。"
       },
       {
         "id" : "ImagingStudy.series.instance.title",

@@ -14,7 +14,7 @@
 | | |
 | :--- | :--- |
 | [JP Core Client CapabilityStatement](CapabilityStatement-jp-client-capabilitystatement.md) | JP Core実装ガイドを利用したサイトを作成する際にクライアント側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。 |
-| [JP Core Server CapabilityStatement](CapabilityStatement-jp-server-capabilitystatement.md) | JP Core実装ガイドを利用したサイトを作成する際にサーバ側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。 |
+| [JP Core Server CapabilityStatement](CapabilityStatement-jp-server-capabilitystatement.md) | JP Core実装ガイドを利用したサイトを作成する際にサーバー側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。 |
 
 ### Behavior: Search Parameters 
 
@@ -59,7 +59,7 @@
 | [JP Core MedicationAdministrationBase Profile](StructureDefinition-jp-medicationadministrationBase.md) | このプロファイルはMedicationAdministrationリソースに対して、投薬実施情報のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
 | [JP Core MedicationDispense Injection Profile](StructureDefinition-jp-medicationdispense-injection.md) | このプロファイルはMedicationDispenseリソースに対して、注射薬剤処方調剤・払い出し記録のデータを送受信するための基礎となる制約と拡張を定めたものである。JP_MedicationDispenseBaseプロファイルからの派生プロファイルである。 |
 | [JP Core MedicationDispense Profile](StructureDefinition-jp-medicationdispense.md) | このプロファイルはMedicationDispenseリソースに対して、内服・外用薬剤処方調剤・払い出し記録のデータを送受信するための基礎となる制約と拡張を定めたものである。JP_MedicationDispenseBaseプロファイルからの派生プロファイルである。 |
-| [JP Core MedicationDispenseBase Profile](StructureDefinition-jp-medicationdispensebase.md) | このプロファイルはユーザは直接適用するものではなく、JP_MedicationDispenseとJP_MedicationDispenseInjectionの共通の親となる抽象プロファイルである。このプロファイルはMedicationDispenseリソースに対して、内服・外用薬剤処方調剤・払い出し記録のデータを送受信するため、JP_MedicationDispenseとJP_MedicationDispenseInjectionの各プロファイルの基礎となる制約と拡張のうち共通部分を定めている。 |
+| [JP Core MedicationDispenseBase Profile](StructureDefinition-jp-medicationdispensebase.md) | このプロファイルはユーザーは直接適用するものではなく、JP_MedicationDispenseとJP_MedicationDispenseInjectionの共通の親となる抽象プロファイルである。このプロファイルはMedicationDispenseリソースに対して、内服・外用薬剤処方調剤・払い出し記録のデータを送受信するため、JP_MedicationDispenseとJP_MedicationDispenseInjectionの各プロファイルの基礎となる制約と拡張のうち共通部分を定めている。 |
 | [JP Core MedicationRequest Injection Profile](StructureDefinition-jp-medicationrequest-injection.md) | このプロファイルはMedicationRequestリソースに対して、注射薬剤処方のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
 | [JP Core MedicationRequest Profile](StructureDefinition-jp-medicationrequest.md) | このプロファイルはMedicationRequestリソースに対して、内服・外用薬剤処方のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
 | [JP Core MedicationStatement Injection Profile](StructureDefinition-jp-medicationstatement-injection.md) | このProfileは服薬状況を示すものであり、診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。 |

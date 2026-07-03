@@ -577,10 +577,10 @@ GET [base]/Coverage?type=*****
       {
         "id" : "Coverage.policyHolder",
         "path" : "Coverage.policyHolder",
-        "short" : "Owner of the policy　ポリシの所有者",
+        "short" : "Owner of the policy　ポリシーの所有者",
         "definition" : "The party who 'owns' the insurance policy.  \n保険証券を「所有する」当事者。",
         "comment" : "For example: may be an individual, corporation or the subscriber's employer.  \n例：個人、企業、または加入者の雇用主である可能性がある。",
-        "requirements" : "This provides employer information in the case of Worker's Compensation and other policies.  \nこれは、労働者災害補償およびその他のポリシの場合に雇用者情報を提供する。",
+        "requirements" : "This provides employer information in the case of Worker's Compensation and other policies.  \nこれは、労働者災害補償およびその他のポリシーの場合に雇用者情報を提供する。",
         "type" : [
           {
             "code" : "Reference",
@@ -596,9 +596,9 @@ GET [base]/Coverage?type=*****
         "id" : "Coverage.subscriber",
         "path" : "Coverage.subscriber",
         "short" : "Subscriber to the policy　被保険者",
-        "definition" : "The party who has signed-up for or 'owns' the contractual relationship to the policy or to whom the benefit of the policy for services rendered to them or their family is due.  \nポリシにサインアップした、またはポリシとの契約関係を「所有」している当事者、またはポリシの利益が彼らまたはその家族に提供されることになっている当事者。",
+        "definition" : "The party who has signed-up for or 'owns' the contractual relationship to the policy or to whom the benefit of the policy for services rendered to them or their family is due.  \nポリシーにサインアップした、またはポリシーとの契約関係を「所有」している当事者、またはポリシーの利益が彼らまたはその家族に提供されることになっている当事者。",
         "comment" : "May be self or a parent in the case of dependents.  \n扶養家族の場合、自己または親である可能性がある。",
-        "requirements" : "This is the party who is entitled to the benefits under the policy.  \nこれは、ポリシに基づいて給付を受ける権利を有する当事者である。",
+        "requirements" : "This is the party who is entitled to the benefits under the policy.  \nこれは、ポリシーに基づいて給付を受ける権利を有する当事者である。",
         "type" : [
           {
             "code" : "Reference",
@@ -642,7 +642,7 @@ GET [base]/Coverage?type=*****
         "path" : "Coverage.relationship",
         "short" : "Beneficiary relationship to the subscriber　加入者との受益者関係",
         "definition" : "The relationship of beneficiary (patient) to the subscriber.  \n受益者（患者）と加入者の関係。",
-        "comment" : "Typically, an individual uses policies which are theirs (relationship='self') before policies owned by others.  \n一般的に、個人は、他人が所有するポリシよりも、自分のポリシ（relationship='self'）を使用する。",
+        "comment" : "Typically, an individual uses policies which are theirs (relationship='self') before policies owned by others.  \n一般的に、個人は、他人が所有するポリシーよりも、自分のポリシー（relationship='self'）を使用する。",
         "requirements" : "To determine relationship between the patient and the subscriber to determine coordination of benefits.  \n患者と加入者の関係を決定し、給付の調整を決定する。  \n【JP Core仕様】「[処方情報 HL7FHIR 記述仕様](https://std.jpfhir.jp/stddoc/ePrescriptionDataFHIR_v1x.pdf)」等で使用される被保険者区分コード（system=”http://jpfhir.jp/fhir/core/mhlw/CodeSystem/InsuredPersonCategory”）として、https://www.mhlw.go.jp/content/10800000/000342368.pdf　の別表１２が使用できる。  \n　1 被保険者  \n　2 被扶養者"
       },
       {
@@ -714,7 +714,7 @@ GET [base]/Coverage?type=*****
         "id" : "Coverage.costToBeneficiary",
         "path" : "Coverage.costToBeneficiary",
         "short" : "Patient payments for services/products　サービスやプロダクトに対する患者支払い",
-        "definition" : "A suite of codes indicating the cost category and associated amount which have been detailed in the policy and may have been  included on the health card.  \nポリシに詳細が記載されており、ヘルスカードに含まれている可能性のあるコストカテゴリと関連する金額を示す一連のコード。",
+        "definition" : "A suite of codes indicating the cost category and associated amount which have been detailed in the policy and may have been  included on the health card.  \nポリシーに詳細が記載されており、ヘルスカードに含まれている可能性のあるコストカテゴリと関連する金額を示す一連のコード。",
         "comment" : "For example by knowing the patient visit co-pay, the provider can collect the amount prior to undertaking treatment.  \n例えば、患者の訪問時の自己負担額を知ることで、医療提供者は治療を行う前にその金額を回収することができる。  \n【JP Core仕様】公費の場合には自己負担率。判明している場合のみ設定する。",
         "requirements" : "Required by providers to manage financial transaction with the patient.  \n事業者が患者との金銭的な取引を管理するために必要となる。"
       },
@@ -772,7 +772,7 @@ GET [base]/Coverage?type=*****
         "id" : "Coverage.contract",
         "path" : "Coverage.contract",
         "short" : "Contract details　契約の詳細",
-        "definition" : "The policy(s) which constitute this insurance coverage.  \nこの保険の適用範囲を構成するポリシ。",
+        "definition" : "The policy(s) which constitute this insurance coverage.  \nこの保険の適用範囲を構成するポリシー。",
         "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.  \n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
         "requirements" : "To reference the legally binding contract between the policy holder and the insurer.  \n契約者と保険者との間の法的拘束力のある契約を参照するため。"
       }

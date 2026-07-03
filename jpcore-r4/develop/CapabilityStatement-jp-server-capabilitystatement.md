@@ -20,7 +20,7 @@
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
-JP Core実装ガイドを利用したサイトを作成する際にサーバ側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。 
+JP Core実装ガイドを利用したサイトを作成する際にサーバー側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。 
 
 この章ではJP Core Requestor[クライアント]から発行される問い合わせに対して応答する責務のある、JP Core Serverに要求される機能(expected capabilities)について記載する。
  JP Core Serverによってサポートされる FHIR プロファイル・RESTful操作・検索パラメータの完全なリストを定義する。
@@ -44,7 +44,7 @@ JP Core実装ガイドを利用したサイトを作成する際にサーバ側�
  
 * セキュリティ 
 * See the General Security Considerations section for requirements and recommendations.
-* サーバはunauthorizedなリクエストに対してはHTTP 401を返さなければならない。(**SHALL**)
+* サーバーはunauthorizedなリクエストに対してはHTTP 401を返さなければならない。(**SHALL**)
  
 
 ## RESTful Capabilities by Resource/Profile:
@@ -696,7 +696,7 @@ Search Parameters
       ]
     }
   ],
-  "description" : "JP Core実装ガイドを利用したサイトを作成する際にサーバ側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。",
+  "description" : "JP Core実装ガイドを利用したサイトを作成する際にサーバー側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。",
   "jurisdiction" : [
     {
       "coding" : [
