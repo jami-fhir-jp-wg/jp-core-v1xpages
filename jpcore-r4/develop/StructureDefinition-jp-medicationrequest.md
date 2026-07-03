@@ -98,7 +98,7 @@ JP Core MedicationRequest プロファイルで使用される拡張は次の通
 
 HL7 FHIRの基底規格では、薬剤コードをはじめとして、剤形などでSNOMED CTが使われているが、国としてライセンスを取得していない。代替としてJAHIS処方データ交換規約やSS-MIX2で使われている用語集を採用した。
 
-HL7 V2系では用語集を識別するコーディングシステム名(以下、「CS名」）は文字列であったが、FHIRではURIを指定する必要があるため、それぞれにURIを割り当てた。以下に使用する用語集のCS名とURI表記を列記する。
+HL7 V2系では用語集を識別するコードシステム名(以下、「CS名」）は文字列であったが、FHIRではURIを指定する必要があるため、それぞれにURIを割り当てた。以下に使用する用語集のCS名とURI表記を列記する。
 
 | | | |
 | :--- | :--- | :--- |
@@ -1529,7 +1529,7 @@ JAMI標準用法コードを使用する表現方法では、dosageInstruction.t
         "path" : "MedicationRequest.substitution.reason",
         "short" : "後発医薬品への変更不可理由",
         "definition" : "【JP Core仕様】後発医薬品への変更不可の理由を示す。令和6年保険改訂により、長期収載医薬品の変更不可を指定する場合は「医療上の必要性がある」または「患者希望による」のいずれかを指定する。",
-        "comment" : "代替品の理由を表す一般的パターンに全てのターミノロジが適応しているわけではない。情報モデルはCodeableConceptではなく、直接Codingをを使用してテキストやコーディング、翻訳、そしてエレメントと事前条件、事後条件の関係について管理するためにその構造を提示する必要がある。",
+        "comment" : "代替品の理由を表す一般的パターンに全てのターミノロジが適応しているわけではない。情報モデルはCodeableConceptではなく、直接`Coding`を使用してテキストや`Coding`、翻訳、そしてエレメントと事前条件、事後条件の関係について管理するためにその構造を提示する必要がある。",
         "binding" : {
           "strength" : "preferred",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_MedicationSubstitutionProhibitionReason_VS"

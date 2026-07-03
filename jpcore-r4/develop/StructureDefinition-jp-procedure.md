@@ -350,7 +350,7 @@ GET [base]/Procedure?identifier=http://myhospital.com/fhir/procedure|123
         "path" : "Procedure.code",
         "short" : "このプロシジャーの識別子",
         "definition" : "行われた具体的な手順。手技の正確な性質がコード化できない場合はテキストを使用する（例：「腹腔鏡下虫垂切除術」）",
-        "comment" : "すべての用語の使用がこの一般的なパターンに当てはまるわけではない。場合によっては、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係や事前・事後の調整を管理するための独自の構造を提供すべきである。",
+        "comment" : "すべての用語の使用がこの一般的なパターンに当てはまるわけではない。場合によっては、モデルはCodeableConceptを使用せず、`Coding`を直接使用し、テキスト、`Coding`、翻訳、要素間の関係や事前・事後の調整を管理するための独自の構造を提供すべきである。",
         "binding" : {
           "strength" : "example",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_ProcedureCodesMedical_VS"
@@ -541,7 +541,7 @@ GET [base]/Procedure?identifier=http://myhospital.com/fhir/procedure|123
         "path" : "Procedure.performer.function",
         "short" : "実施者の役割（ロール）",
         "definition" : "プロシジャーへの実施者の関与のタイプを区別する。たとえば、外科医、麻酔科医、内視鏡医。",
-        "comment" : "すべての用語の使用がこの一般的なパターンに当てはまるわけではない。場合によっては、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係や事前・事後の調整を管理するための独自の構造を提供するべきである。  \n 【JP Core仕様】当面利用しない。",
+        "comment" : "すべての用語の使用がこの一般的なパターンに当てはまるわけではない。場合によっては、モデルはCodeableConceptを使用せず、`Coding`を直接使用し、テキスト、`Coding`、翻訳、要素間の関係や事前・事後の調整を管理するための独自の構造を提供するべきである。  \n 【JP Core仕様】当面利用しない。",
         "binding" : {
           "strength" : "example",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_ProcedurePerformerRole_VS"

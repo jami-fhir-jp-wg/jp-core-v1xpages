@@ -592,7 +592,7 @@ Immunization.occurrenceString要素を使用した例：
         "path" : "Immunization.vaccineCode",
         "short" : "接種されたワクチン製剤",
         "definition" : "接種されたあるいは接種予定のワクチン。",
-        "comment" : "全てのターミノロジがこのパターンに当てはまるわけではない。モデルによってはCodeableConceptではなく，独自構造でCodingを直接指定して文書やコーディング，その解釈や事前条件や事後条件との関連について示される。",
+        "comment" : "全てのターミノロジがこのパターンに当てはまるわけではない。モデルによってはCodeableConceptではなく，独自構造で`Coding`を直接指定して文書や`Coding`，その解釈や事前条件や事後条件との関連について示される。",
         "binding" : {
           "strength" : "preferred",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_MedicationCode_Immunization_VS"

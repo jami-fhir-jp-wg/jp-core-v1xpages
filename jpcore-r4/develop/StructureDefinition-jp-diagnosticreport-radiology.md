@@ -447,7 +447,7 @@ GET [base]/DiagnosticReport?identifier=http://myhospital.com/fhir/diagnosticrepo
         "id" : "DiagnosticReport.code",
         "path" : "DiagnosticReport.code",
         "definition" : "この診断レポートを表現するコードや名称",
-        "comment" : "【JP Core仕様】[画像診断レポート交換手順ガイドライン](https://www.jira-net.or.jp/publishing/files/jesra/JESRA_TR-0042_2018.pdf)「5.1 レポート種別コード」に記載されているLOINCコード [Diagnostic imaging study](https://loinc.org/18748-4/) を指定。コードを指定できない場合はCodeableConceptを使用せずテキスト等を直接コーディングすることも許容されるが、要素間の調整と事前・事後の内容の整合性確保のために独自の構造を提供する必要があるので留意すること。"
+        "comment" : "【JP Core仕様】[画像診断レポート交換手順ガイドライン](https://www.jira-net.or.jp/publishing/files/jesra/JESRA_TR-0042_2018.pdf)「5.1 レポート種別コード」に記載されているLOINCコード [Diagnostic imaging study](https://loinc.org/18748-4/) を指定。コードを指定できない場合はCodeableConceptを使用せずテキスト等を直接コード化することも許容されるが、要素間の調整と事前・事後の内容の整合性確保のために独自の構造を提供する必要があるので留意すること。"
       },
       {
         "id" : "DiagnosticReport.code.coding",
@@ -631,7 +631,7 @@ GET [base]/DiagnosticReport?identifier=http://myhospital.com/fhir/diagnosticrepo
         "id" : "DiagnosticReport.conclusionCode",
         "path" : "DiagnosticReport.conclusionCode",
         "definition" : "診断レポートの要約の結論 (interpretation/impression) を表す 1 つ以上のコード。",
-        "comment" : "すべての用語の使用がこの一般的なパターンに適合するわけではない。 場合によっては、モデルにcodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係と事前調整および事後調整を管理するための独自の構造を提供する必要がある。   \n【JP Core仕様】・放射線レポートの所見の結論となるコードを設定。  \n・例えば、ICD 病名コード"
+        "comment" : "すべての用語の使用がこの一般的なパターンに適合するわけではない。 場合によっては、モデルにcodeableConceptを使用せず、`Coding`を直接使用して、テキスト、`Coding`、翻訳、および要素間の関係と事前調整および事後調整を管理するための独自の構造を提供する必要がある。   \n【JP Core仕様】・放射線レポートの所見の結論となるコードを設定。  \n・例えば、ICD 病名コード"
       },
       {
         "id" : "DiagnosticReport.presentedForm",

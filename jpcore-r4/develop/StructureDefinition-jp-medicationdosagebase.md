@@ -182,7 +182,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-medicationdosageb
         "path" : "Dosage.route",
         "short" : "投与経路",
         "definition" : "投与経路",
-        "comment" : "投与経路の一般的パターンに全てのターミノロジが適応しているわけではない。情報モデルはCodeableConceptではなく、直接Codingをを使用してテキストやコーディング、翻訳、そしてエレメントと事前条件、事後条件の関係について管理するためにその構造を提示する必要がある。  \n【JP Core仕様】HL7表0162をベースにした投与経路コードを使用することが望ましいが、ローカルコードも使用可能。",
+        "comment" : "投与経路の一般的パターンに全てのターミノロジが適応しているわけではない。情報モデルはCodeableConceptではなく、直接`Coding`を使用してテキストや`Coding`、翻訳、そしてエレメントと事前条件、事後条件の関係について管理するためにその構造を提示する必要がある。\n【JP Core仕様】HL7表0162をベースにした投与経路コードを使用することが望ましいが、ローカルコードも使用可能。",
         "binding" : {
           "strength" : "preferred",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_MedicationRouteHL70162_VS"
@@ -215,7 +215,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-medicationdosageb
         "sliceName" : "unitDigit1",
         "short" : "投与⽅法に対応するJAMI 用法コード表基本用法１桁コード",
         "definition" : "投与⽅法に対応するJAMI 用法コード表基本用法１桁コードを識別するURI。",
-        "comment" : "コードは臨時で列記したものや、コードのリストからSNOMED CTのように公式に定義されたものまである（HL7 v3 core principle を参照)。FHIR自体ではコーディング規約を定めてはいないし、意味を暗示するために利用されない(SHALL NOT)。一般的に UserSelected = trueの場合には一つのコードシステムが使われる。",
+        "comment" : "コードは臨時で列記したものや、コードのリストからSNOMED CTのように公式に定義されたものまである（HL7 v3 core principle を参照)。FHIR自体ではコード化に関する規約を定めてはいないし、意味を暗示するために利用されない(SHALL NOT)。一般的に UserSelected = trueの場合には一つのコードシステムが使われる。",
         "requirements" : "他のコードシステムへの変換や代替のコードシステムを使ってエンコードしてもよい。",
         "min" : 0,
         "max" : "1",
@@ -236,7 +236,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-medicationdosageb
         "sliceName" : "unitDigit2",
         "short" : "投与⽅法に対応するJAMI 用法コード表基本用法2桁コード",
         "definition" : "投与⽅法に対応するJAMI 用法コード表基本用法2桁コードを識別するURI。２桁コードhttp://jami.jp/CodeSystem/MedicationUsage",
-        "comment" : "コードは臨時で列記したものや、コードのリストからSNOMED CTのように公式に定義されたものまである（HL7 v3 core principle を参照)。FHIR自体ではコーディング規約を定めてはいないし、意味を暗示するために利用されない(SHALL NOT)。一般的に UserSelected = trueの場合には一つのコードシステムが使われる。",
+        "comment" : "コードは臨時で列記したものや、コードのリストからSNOMED CTのように公式に定義されたものまである（HL7 v3 core principle を参照)。FHIR自体ではコード化に関する規約を定めてはいないし、意味を暗示するために利用されない(SHALL NOT)。一般的に UserSelected = trueの場合には一つのコードシステムが使われる。",
         "requirements" : "他のコードシステムへの変換や代替のコードシステムを使ってエンコードしてもよい。",
         "min" : 0,
         "max" : "1",
@@ -270,7 +270,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-medicationdosageb
         "path" : "Dosage.doseAndRate.type",
         "short" : "力価区分",
         "definition" : "力価区分",
-        "comment" : "投与速度・量の一般的パターンに全てのターミノロジが適応しているわけではない。情報モデルはCodeableConceptではなく、直接Codingをを使用してテキストやコーディング、翻訳、そしてエレメントと事前条件、事後条件の関係について管理するためにその構造を提示する必要がある。",
+        "comment" : "投与速度・量の一般的パターンに全てのターミノロジが適応しているわけではない。情報モデルはCodeableConceptではなく、直接`Coding`を使用してテキストや`Coding`、翻訳、そしてエレメントと事前条件、事後条件の関係について管理するためにその構造を提示する必要がある。",
         "requirements" : "このtypeに値が指定されていなければ、\"ordered\"であることが想定される。",
         "binding" : {
           "strength" : "preferred",
