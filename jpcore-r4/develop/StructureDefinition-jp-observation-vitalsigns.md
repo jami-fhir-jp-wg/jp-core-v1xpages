@@ -201,7 +201,7 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
         "id" : "Observation.category:second",
         "path" : "Observation.category",
         "sliceName" : "second",
-        "comment" : "MEDISの看護実践用語標準マスター＜看護観察編＞の大分類１．バイタルサイン・基本情報、中分類１．バイタルサインの「焦点」",
+        "comment" : "MEDISの看護実践用語標準マスター＜看護観察編＞の大分類１、バイタルサイン・基本情報、中分類１、バイタルサインの「焦点」",
         "min" : 0,
         "max" : "*",
         "patternCodeableConcept" : {
@@ -224,7 +224,7 @@ ObservationリソースのOperation一覧の定義はユースケースに依存
       {
         "id" : "Observation.code",
         "path" : "Observation.code",
-        "comment" : "MEDISの看護実践用語標準マスター＜看護観察編＞の大分類１．バイタルサイン・基本情報、中分類１．バイタルサインの「観察名称」",
+        "comment" : "MEDISの看護実践用語標準マスター＜看護観察編＞の大分類１、バイタルサイン・基本情報、中分類１、バイタルサインの「観察名称」",
         "binding" : {
           "strength" : "preferred",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_ObservationVitalSignsCode_VS"

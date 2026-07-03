@@ -7515,7 +7515,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "StructureDefinition/jp-medicationstatement-injection"
         },
         "name" : "JP Core MedicationStatement Injection Profile",
-        "description" : "このProfileは服薬状況を示すものであり，診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。",
+        "description" : "このProfileは服薬状況を示すものであり、診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。",
         "exampleBoolean" : false
       },
       {
@@ -7529,7 +7529,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "StructureDefinition/jp-medicationstatement"
         },
         "name" : "JP Core MedicationStatement Profile",
-        "description" : "このProfileは服薬状況を示すものであり，診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。",
+        "description" : "このProfileは服薬状況を示すものであり、診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。",
         "exampleBoolean" : false
       },
       {

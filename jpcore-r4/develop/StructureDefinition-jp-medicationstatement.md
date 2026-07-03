@@ -20,10 +20,10 @@
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
-このProfileは服薬状況を示すものであり，診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。 
+このProfileは服薬状況を示すものであり、診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。 
 
  
-このProfileは診療情報提供書や退院サマリーなどの医療文書内で服薬情報について記載するために用いられる。このResourceは薬剤処方や，調剤情報，薬剤投与実施情報としては用いられず，それぞれMedicationRequest, MedicationDispense, MedicationAdministrationが用いられる。 
+このProfileは診療情報提供書や退院サマリーなどの医療文書内で服薬情報について記載するために用いられる。このResourceは薬剤処方や、調剤情報、薬剤投与実施情報としては用いられず、それぞれMedicationRequest, MedicationDispense, MedicationAdministrationが用いられる。 
 
 本プロファイルは患者が服用している薬剤の記録をMedicationStatementリソースを使用して表現する。 以下、本プロファイルのMedicationStatementリソースを「JP Core MedicationStatementリソース」と呼ぶ。
 
@@ -345,7 +345,7 @@ MedicationStatementは薬剤をCodeableConceptとして1つまでしか持つか
       ]
     }
   ],
-  "description" : "このProfileは服薬状況を示すものであり，診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。",
+  "description" : "このProfileは服薬状況を示すものであり、診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。",
   "jurisdiction" : [
     {
       "coding" : [
@@ -357,7 +357,7 @@ MedicationStatementは薬剤をCodeableConceptとして1つまでしか持つか
       ]
     }
   ],
-  "purpose" : "このProfileは診療情報提供書や退院サマリーなどの医療文書内で服薬情報について記載するために用いられる。このResourceは薬剤処方や，調剤情報，薬剤投与実施情報としては用いられず，それぞれMedicationRequest, MedicationDispense, MedicationAdministrationが用いられる。",
+  "purpose" : "このProfileは診療情報提供書や退院サマリーなどの医療文書内で服薬情報について記載するために用いられる。このResourceは薬剤処方や、調剤情報、薬剤投与実施情報としては用いられず、それぞれMedicationRequest, MedicationDispense, MedicationAdministrationが用いられる。",
   "copyright" : "Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会",
   "fhirVersion" : "4.0.1",
   "mapping" : [
@@ -521,7 +521,7 @@ MedicationStatementは薬剤をCodeableConceptとして1つまでしか持つか
       {
         "id" : "MedicationStatement.reasonCode.coding",
         "path" : "MedicationStatement.reasonCode.coding",
-        "short" : "投与理由，対象疾患についてのコード"
+        "short" : "投与理由、対象疾患についてのコード"
       },
       {
         "id" : "MedicationStatement.reasonReference",
@@ -537,7 +537,7 @@ MedicationStatementは薬剤をCodeableConceptとして1つまでしか持つか
       {
         "id" : "MedicationStatement.dosage",
         "path" : "MedicationStatement.dosage",
-        "short" : "この薬剤がどのように服用されたのか，服用すべきだったのかを示す情報",
+        "short" : "この薬剤がどのように服用されたのか、服用すべきだったのかを示す情報",
         "definition" : "患者にこの薬剤がどのように服用すべきかを示す情報",
         "type" : [
           {
