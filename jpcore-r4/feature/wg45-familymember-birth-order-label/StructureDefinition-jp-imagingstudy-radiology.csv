@@ -92,7 +92,7 @@ DICOMのリソース位置を指定。基本的には1つ。","スタディま�
 ","Event.partOf",".outboundRelationship[typeCode=COMP].target[classCode=PROC, moodCode=EVN]","(0008,1032)"
 "ImagingStudy.procedureCode","ImagingStudy.procedureCode","","ProcedureCodeSequence
 ","",0,*,"","","Y","CodeableConcept {[]} {[]}
-","実施されたProcedureのコード","実施されたProcedureのタイプを表すコード。","すべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係と調整前後の関係を管理するための独自の構造を提供する必要がある。  
+","実施されたProcedureのコード","実施されたProcedureのタイプを表すコード。","すべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、`Coding`を直接使用して、テキスト、`Coding`、翻訳、および要素間の関係と調整前後の関係を管理するための独自の構造を提供する必要がある。  
 エラーコードなどを記載","","","","","","","","",,"required","コードは http://playbook.radlex.org/playbook/SearchRadlexAction に該当があれば使わなければならない。ただし、実施された行為のタイプにこれらのコードがなじまない場合は他のコードが利用される可能性がある。","http://playbook.radlex.org/playbook/SearchRadlexAction","",,,,"ImagingStudy.procedureCode",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","Event.code",".outboundRelationship[typeCode=COMP].target[classCode=PROC, moodCode=EVN]","(0008,1032)"
 "ImagingStudy.location","ImagingStudy.location","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Location|4.0.1]]}
@@ -100,7 +100,7 @@ DICOMのリソース位置を指定。基本的には1つ。","スタディま�
 撮影室を示すLocationリソースを参照。","イベントをレコードが保持される可能性が高い場所に結び付け、イベントの発生に関するコンテキストを提供する。 (たとえば、専用の医療環境の内外で発生した場合など。）","","","","","","","",,,,,"",,,,"ImagingStudy.location",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","Event.location",".participation[typeCode=LOC].role","(0008,1040) | (0040,0243)","FiveWs.where[x]","EVN.7"
 "ImagingStudy.reasonCode","ImagingStudy.reasonCode","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
-","スタディが依頼された理由","ImagingStudyが要求された理由を示す臨床状態の説明。","すべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係と調整前後の関係を管理するための独自の構造を提供する必要がある。  
+","スタディが依頼された理由","ImagingStudyが要求された理由を示す臨床状態の説明。","すべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、`Coding`を直接使用して、テキスト、`Coding`、翻訳、および要素間の関係と調整前後の関係を管理するための独自の構造を提供する必要がある。  
 JP Coreでは未使用","","","","","","","","",,"example","研究の理由。","http://hl7.org/fhir/ValueSet/procedure-reason|4.0.1","",,,,"ImagingStudy.reasonCode",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","Event.reasonCode",".reasonCode","(0040,1002)","FiveWs.why[x]"
 "ImagingStudy.reasonReference","ImagingStudy.reasonReference","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common], CanonicalType[http://hl7.org/fhir/StructureDefinition/Media], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Common], CanonicalType[http://hl7.org/fhir/StructureDefinition/DocumentReference]]}
@@ -108,8 +108,8 @@ JP Coreでは未使用","","","","","","","","",,"example","研究の理由。",
 実施理由が書かれたDiagnosticReportリソースを参照。","","","","","","","","",,,,,"",,,,"ImagingStudy.reasonReference",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","Event.reasonReference",".outboundRelationship[typeCode=RSON].target","FiveWs.why[x]","EVN.4 or by domain"
 "ImagingStudy.note","ImagingStudy.note","","","",0,*,"","","Y","Annotation {[]} {[]}
-","ユーザが定義したコメント","推奨されるDICOMマッピングによると、この要素はスタディの説明属性（0008,1030）から派生している。画像検査に関する観察または所見は、この要素に記述するのではなく、Observationのような別のリソースに記録する必要がある。","構造化された注釈（アノテーション）を持たないシステムの場合、作成者や時間なしで単一の注釈を簡単に伝達できる。情報を変更する可能性があるため、この要素をナラティブに含める必要がある場合がある。  
-*注釈は、計算機処理れきる「変更」情報を伝達するために使用されるべきではない*。 （ユーザの行動を強制することはほとんど不可能であるため、これはSHOULDとする）。  
+","ユーザーが定義したコメント","推奨されるDICOMマッピングによると、この要素はスタディの説明属性（0008,1030）から派生している。画像検査に関する観察または所見は、この要素に記述するのではなく、Observationのような別のリソースに記録する必要がある。","構造化された注釈（アノテーション）を持たないシステムの場合、作成者や時間なしで単一の注釈を簡単に伝達できる。情報を変更する可能性があるため、この要素をナラティブに含める必要がある場合がある。  
+*注釈は、計算機処理れきる「変更」情報を伝達するために使用されるべきではない*。 （ユーザーの行動を強制することはほとんど不可能であるため、これはSHOULDとする）。  
 コメント（Annotation型による記述）","","","","","","","","",,,,,"",,,,"ImagingStudy.note",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","Event.note","unknown"
 "ImagingStudy.description","ImagingStudy.description","","StudyDescription
@@ -139,7 +139,7 @@ study階層のidentifierと同じ概念。(0020,000E)にseries固有のUIDが付
 "ImagingStudy.series.number","ImagingStudy.series.number","","SeriesNumber
 ","",0,1,"","","Y","unsignedInt {[]} {[]}
 ","このシリーズの数値型識別子","このシリーズの数値型識別子","32ビット数で表す。これより大きい値の場合は、10進数を使用する。  
-上記UIDとは別に、ユーザ（または装置）が自由に決められる番号。","","","","","","<valueUnsignedInt xmlns=""http://hl7.org/fhir"" value=""3""/>","","",,,,,"",,,,"ImagingStudy.series.number",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+上記UIDとは別に、ユーザー（または装置）が自由に決められる番号。","","","","","","<valueUnsignedInt xmlns=""http://hl7.org/fhir"" value=""3""/>","","",,,,,"",,,,"ImagingStudy.series.number",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".inboundRelationship[type=COMP, source[classCode=COMPOSITION, moodCode=EVN]].sequenceNumber","(0020,0011)"
 "ImagingStudy.series.modality","ImagingStudy.series.modality","","Modality
 ","",1,1,"Y","","Y","Coding {[]} {[]}
@@ -171,7 +171,7 @@ bodySiteは、画像化された身体部分の左右差を示している場合
 ",".targetSiteCode","(0020,0060)"
 "ImagingStudy.series.specimen","ImagingStudy.series.specimen","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Specimen|4.0.1]]}
 ","画像検査をした検体","例えば、生検のスライド全体の画像化のために画像化された標本。通常の放射線画像検査では使用されない。（DICOMを用いた病理画像検査で用いられる）","参照は、実在のFHIRリソースへの参照である必要があり、内容に辿り着ける（解決できる）必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。  
-【JP Core仕様】UIDは別のtagが存在するので、ユーザ側で自由に付与していい番号と思われる。","","","","","","","","",,,,,"",,,,"ImagingStudy.series.specimen",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+【JP Core仕様】UIDは別のtagが存在するので、ユーザー側で自由に付与していい番号と思われる。","","","","","","","","",,,,,"",,,,"ImagingStudy.series.specimen",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","Role[classCode=SPEC]","(0040,0551) + (0040,0562)"
 "ImagingStudy.series.started","ImagingStudy.series.started","","","",0,1,"","","Y","dateTime {[]} {[]}
 ","シリーズの開始時期","シリーズの開始日付、日時。","シリーズ単位での開始時刻。最初にシリーズを取得 or 定義した時刻。","","","","","","","","",,,,,"",,,,"ImagingStudy.series.started",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
@@ -230,7 +230,7 @@ ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではあ
 "ImagingStudy.series.instance.number","ImagingStudy.series.instance.number","","InstanceNumber
 ","",0,1,"","","","unsignedInt {[]} {[]}
 ","このシリーズにおけるこのインスタンスの番号","シリーズ内のインスタンスの数。","32ビット数で表す。これより大きい値の場合は、10進数を使用する。  
-【JP Core仕様】ユーザ（または装置）が自由に決められる画像ごとの番号。DICOMタグマッピングにある値をそのまま設定。","","","","","","<valueUnsignedInt xmlns=""http://hl7.org/fhir"" value=""1""/>","","",,,,,"",,,,"ImagingStudy.series.instance.number",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+【JP Core仕様】ユーザー（または装置）が自由に決められる画像ごとの番号。DICOMタグマッピングにある値をそのまま設定。","","","","","","<valueUnsignedInt xmlns=""http://hl7.org/fhir"" value=""1""/>","","",,,,,"",,,,"ImagingStudy.series.instance.number",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ",".inboundRelationship[typeCode=COMP, source[classCode=OBSSER, moodCode=EVN]].sequenceNumber","(0020,0013)"
 "ImagingStudy.series.instance.title","ImagingStudy.series.instance.title","","","",0,1,"","","","string {[]} {[]}
 ","インスタンスの記述","インスタンスの記述","【JP Core仕様】画像に対する説明。DICOMタグマッピングにある値があれば、そのまま設定  

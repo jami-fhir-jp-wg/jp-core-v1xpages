@@ -369,7 +369,7 @@ PractitionerRoleには、ここで定義されているlocationに住所が含�
       {
         "id" : "PractitionerRole.notAvailable.description",
         "path" : "PractitionerRole.notAvailable.description",
-        "definition" : "この時間が利用できない理由をユーザに提示することができる。"
+        "definition" : "この時間が利用できない理由をユーザーに提示することができる。"
       },
       {
         "id" : "PractitionerRole.notAvailable.during",

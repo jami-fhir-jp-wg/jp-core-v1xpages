@@ -105,7 +105,7 @@ JP Core MedicationAdministration Injection プロファイルで使用される�
 
 HL7 FHIRの基底規格では、薬剤コードをはじめとして、剤形などでSNOMED CTが使われているが、国としてライセンスを取得していない。代替としてJAHIS処方データ交換規約やSS-MIX2で使われている用語集を採用した。
 
-HL7 V2系では用語集を識別するコーディングシステム名(以下、「CS名」）は文字列であったが、FHIRではURIを指定する必要があるため、それぞれにURIを割り当てた。以下に使用する用語集のCS名とURI表記を列記する。
+HL7 V2系では用語集を識別するコードシステム名(以下、「CS名」）は文字列であったが、FHIRではURIを指定する必要があるため、それぞれにURIを割り当てた。以下に使用する用語集のCS名とURI表記を列記する。
 
 | | | |
 | :--- | :--- | :--- |
@@ -985,7 +985,7 @@ Medication.ingredientに記述される薬剤の合計容量(mL)を dosage.dose 
         "id" : "MedicationAdministration.dosage.text",
         "path" : "MedicationAdministration.dosage.text",
         "short" : "フリーテキストの投与方法の説明　SIG:用法",
-        "definition" : "フリーテキストの投与量用法は、投与される投与量や用法が複雑すぎてコーディングできない場合に使用できる。コード化された投与量や用法が存在する場合、フリーテキストの投与量や用法は、人間に表示するためにまだ存在している可能性がある。  \n投与量や用法のこの指示は、実際に投与される薬の投与量や用法を反映する必要がある。"
+        "definition" : "フリーテキストの投与量用法は、投与される投与量や用法が複雑すぎてコード化できない場合に使用できる。コード化された投与量や用法が存在する場合、フリーテキストの投与量や用法は、人間に表示するためにまだ存在している可能性がある。  \n投与量や用法のこの指示は、実際に投与される薬の投与量や用法を反映する必要がある。"
       },
       {
         "id" : "MedicationAdministration.dosage.site",
@@ -1093,7 +1093,7 @@ Medication.ingredientに記述される薬剤の合計容量(mL)を dosage.dose 
         "sliceName" : "unitDigit1",
         "short" : "投与⽅法に対応するJAMI 用法コード表基本用法１桁コード",
         "definition" : "投与⽅法に対応するJAMI 用法コード表基本用法１桁コードを識別するURI。",
-        "comment" : "コードは臨時で列記したものや、コードのリストからSNOMED CTのように公式に定義されたものまである（HL7 v3 core principle を参照)。FHIR自体ではコーディング規約を定めてはいないし、意味を暗示するために利用されない(SHALL NOT)。一般的に UserSelected = trueの場合には一つのコードシステムが使われる。",
+        "comment" : "コードは臨時で列記したものや、コードのリストからSNOMED CTのように公式に定義されたものまである（HL7 v3 core principle を参照)。FHIR自体ではコード化に関する規約を定めてはいないし、意味を暗示するために利用されない(SHALL NOT)。一般的に UserSelected = trueの場合には一つのコードシステムが使われる。",
         "requirements" : "他のコードシステムへの変換や代替のコードシステムを使ってエンコードしてもよい。",
         "min" : 0,
         "max" : "1",
@@ -1114,7 +1114,7 @@ Medication.ingredientに記述される薬剤の合計容量(mL)を dosage.dose 
         "sliceName" : "unitDigit2",
         "short" : "投与⽅法に対応するJAMI 用法コード表基本用法2桁コード",
         "definition" : "投与⽅法に対応するJAMI 用法コード表基本用法2桁コードを識別するURI。２桁コードhttp://jami.jp/CodeSystem/MedicationUsage",
-        "comment" : "コードは臨時で列記したものや、コードのリストからSNOMED CTのように公式に定義されたものまである（HL7 v3 core principle を参照)。FHIR自体ではコーディング規約を定めてはいないし、意味を暗示するために利用されない(SHALL NOT)。一般的に UserSelected = trueの場合には一つのコードシステムが使われる。",
+        "comment" : "コードは臨時で列記したものや、コードのリストからSNOMED CTのように公式に定義されたものまである（HL7 v3 core principle を参照)。FHIR自体ではコード化に関する規約を定めてはいないし、意味を暗示するために利用されない(SHALL NOT)。一般的に UserSelected = trueの場合には一つのコードシステムが使われる。",
         "requirements" : "他のコードシステムへの変換や代替のコードシステムを使ってエンコードしてもよい。",
         "min" : 0,
         "max" : "1",

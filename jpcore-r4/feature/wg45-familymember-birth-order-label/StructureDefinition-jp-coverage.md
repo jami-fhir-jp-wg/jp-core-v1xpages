@@ -571,16 +571,16 @@ GET [base]/Coverage?type=*****
         "path" : "Coverage.type",
         "short" : "Coverage category such as medical or accident　医療保険や事故補償のような分類",
         "definition" : "The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health or payment by an individual or organization.  \n補償の種類：社会プログラム、医療計画、事故補償（労働者災害補償、自動車）、グループの健康、または個人または組織による支払い。",
-        "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.  \nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。  \n【JP Core仕様】「[処方情報 HL7FHIR 記述仕様](https://std.jpfhir.jp/stddoc/ePrescriptionDataFHIR_v1x.pdf)」等で使用される保険種別コード（system=”http://jpfhir.jp/fhir/core/mhlw/IdSystem/medicalRegistrationNumber”）として、https://www.mhlw.go.jp/content/10800000/000342368.pdf　の別表１１が使用している例があげられている。JP Coreとして本項目に対する用語のバインドは現時点では定義するまでに至っていない。",
+        "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.  \nすべてのターミノロジの使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、`Coding`を直接使用して、テキスト、`Coding`、翻訳、および要素間の関係とpre-coordinationとpost-coordinationの用語関係を管理するための独自の構造を提供する必要がある。  \n【JP Core仕様】「[処方情報 HL7FHIR 記述仕様](https://std.jpfhir.jp/stddoc/ePrescriptionDataFHIR_v1x.pdf)」等で使用される保険種別コード（system=”http://jpfhir.jp/fhir/core/mhlw/IdSystem/medicalRegistrationNumber”）として、https://www.mhlw.go.jp/content/10800000/000342368.pdf　の別表１１が使用している例があげられている。JP Coreとして本項目に対する用語のバインドは現時点では定義するまでに至っていない。",
         "requirements" : "The order of application of coverages is dependent on the types of coverage.  \n保険適用の適用順序は、保険適用のタイプによって異なる。"
       },
       {
         "id" : "Coverage.policyHolder",
         "path" : "Coverage.policyHolder",
-        "short" : "Owner of the policy　ポリシの所有者",
+        "short" : "Owner of the policy　ポリシーの所有者",
         "definition" : "The party who 'owns' the insurance policy.  \n保険証券を「所有する」当事者。",
         "comment" : "For example: may be an individual, corporation or the subscriber's employer.  \n例：個人、企業、または加入者の雇用主である可能性がある。",
-        "requirements" : "This provides employer information in the case of Worker's Compensation and other policies.  \nこれは、労働者災害補償およびその他のポリシの場合に雇用者情報を提供する。",
+        "requirements" : "This provides employer information in the case of Worker's Compensation and other policies.  \nこれは、労働者災害補償およびその他のポリシーの場合に雇用者情報を提供する。",
         "type" : [
           {
             "code" : "Reference",
@@ -596,9 +596,9 @@ GET [base]/Coverage?type=*****
         "id" : "Coverage.subscriber",
         "path" : "Coverage.subscriber",
         "short" : "Subscriber to the policy　被保険者",
-        "definition" : "The party who has signed-up for or 'owns' the contractual relationship to the policy or to whom the benefit of the policy for services rendered to them or their family is due.  \nポリシにサインアップした、またはポリシとの契約関係を「所有」している当事者、またはポリシの利益が彼らまたはその家族に提供されることになっている当事者。",
+        "definition" : "The party who has signed-up for or 'owns' the contractual relationship to the policy or to whom the benefit of the policy for services rendered to them or their family is due.  \nポリシーにサインアップした、またはポリシーとの契約関係を「所有」している当事者、またはポリシーの利益が彼らまたはその家族に提供されることになっている当事者。",
         "comment" : "May be self or a parent in the case of dependents.  \n扶養家族の場合、自己または親である可能性がある。",
-        "requirements" : "This is the party who is entitled to the benefits under the policy.  \nこれは、ポリシに基づいて給付を受ける権利を有する当事者である。",
+        "requirements" : "This is the party who is entitled to the benefits under the policy.  \nこれは、ポリシーに基づいて給付を受ける権利を有する当事者である。",
         "type" : [
           {
             "code" : "Reference",
@@ -642,7 +642,7 @@ GET [base]/Coverage?type=*****
         "path" : "Coverage.relationship",
         "short" : "Beneficiary relationship to the subscriber　加入者との受益者関係",
         "definition" : "The relationship of beneficiary (patient) to the subscriber.  \n受益者（患者）と加入者の関係。",
-        "comment" : "Typically, an individual uses policies which are theirs (relationship='self') before policies owned by others.  \n一般的に、個人は、他人が所有するポリシよりも、自分のポリシ（relationship='self'）を使用する。",
+        "comment" : "Typically, an individual uses policies which are theirs (relationship='self') before policies owned by others.  \n一般的に、個人は、他人が所有するポリシーよりも、自分のポリシー（relationship='self'）を使用する。",
         "requirements" : "To determine relationship between the patient and the subscriber to determine coordination of benefits.  \n患者と加入者の関係を決定し、給付の調整を決定する。  \n【JP Core仕様】「[処方情報 HL7FHIR 記述仕様](https://std.jpfhir.jp/stddoc/ePrescriptionDataFHIR_v1x.pdf)」等で使用される被保険者区分コード（system=”http://jpfhir.jp/fhir/core/mhlw/CodeSystem/InsuredPersonCategory”）として、https://www.mhlw.go.jp/content/10800000/000342368.pdf　の別表１２が使用できる。  \n　1 被保険者  \n　2 被扶養者"
       },
       {
@@ -681,7 +681,7 @@ GET [base]/Coverage?type=*****
         "id" : "Coverage.class.type",
         "path" : "Coverage.class.type",
         "definition" : "The type of classification for which an insurer-specific class label or number and optional name is provided, for example may be used to identify a class of coverage or employer group, Policy, Plan.  \n保険者固有のクラスラベルまたは番号、任意の名前が提供されている分類のタイプを表す。例えば、保険のクラスまたは雇用者グループ、保険契約、Planを識別するために使用することができる。",
-        "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.  \nすべての用語の使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、Codingを直接使用し、テキスト、コーディング、翻訳、要素間の関係、および事前・事後の用語結合を管理するための独自の構造を提供することが望ましい。",
+        "comment" : "Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination.  \nすべての用語の使用がこの一般的なパターンに適合するわけではない。場合によっては、モデルはCodeableConceptを使用せず、`Coding`を直接使用し、テキスト、`Coding`、翻訳、要素間の関係、および事前・事後の用語結合を管理するための独自の構造を提供することが望ましい。",
         "requirements" : "The insurer issued label for a specific health card value.  \n保険者が発行した特定の健康カード番号のラベル。"
       },
       {
@@ -702,7 +702,7 @@ GET [base]/Coverage?type=*****
         "path" : "Coverage.order",
         "definition" : "The order of applicability of this coverage relative to other coverages which are currently in force. Note, there may be gaps in the numbering and this does not imply primary, secondary etc. as the specific positioning of coverages depends upon the episode of care.  \n現在適用されている他の保障と比較して、この保障の適用可能性が高い順に記載されている。なお、採番にギャップがある場合があり、適用範囲の具体的な位置づけは診療エピソードに依存するため、一次、二次などを意味するものではない。",
         "comment" : "32 bit number; for values larger than this, use decimal  \n32 ビットの数値、これより大きい値の場合は 10 進数を使用する。",
-        "requirements" : "Used in managing the coordination of benefits.  \n保険給付の調整管理に使用する。  \n【JP Core仕様】公費情報で本リソースを使用する場合で、複数の公費負担情報がある場合に、その適用順序番号を示す１，２，３．．．を設定する。"
+        "requirements" : "Used in managing the coordination of benefits.  \n保険給付の調整管理に使用する。  \n【JP Core仕様】公費情報で本リソースを使用する場合で、複数の公費負担情報がある場合に、その適用順序番号を示す１、２、３…を設定する。"
       },
       {
         "id" : "Coverage.network",
@@ -714,7 +714,7 @@ GET [base]/Coverage?type=*****
         "id" : "Coverage.costToBeneficiary",
         "path" : "Coverage.costToBeneficiary",
         "short" : "Patient payments for services/products　サービスやプロダクトに対する患者支払い",
-        "definition" : "A suite of codes indicating the cost category and associated amount which have been detailed in the policy and may have been  included on the health card.  \nポリシに詳細が記載されており、ヘルスカードに含まれている可能性のあるコストカテゴリと関連する金額を示す一連のコード。",
+        "definition" : "A suite of codes indicating the cost category and associated amount which have been detailed in the policy and may have been  included on the health card.  \nポリシーに詳細が記載されており、ヘルスカードに含まれている可能性のあるコストカテゴリと関連する金額を示す一連のコード。",
         "comment" : "For example by knowing the patient visit co-pay, the provider can collect the amount prior to undertaking treatment.  \n例えば、患者の訪問時の自己負担額を知ることで、医療提供者は治療を行う前にその金額を回収することができる。  \n【JP Core仕様】公費の場合には自己負担率。判明している場合のみ設定する。",
         "requirements" : "Required by providers to manage financial transaction with the patient.  \n事業者が患者との金銭的な取引を管理するために必要となる。"
       },
@@ -772,7 +772,7 @@ GET [base]/Coverage?type=*****
         "id" : "Coverage.contract",
         "path" : "Coverage.contract",
         "short" : "Contract details　契約の詳細",
-        "definition" : "The policy(s) which constitute this insurance coverage.  \nこの保険の適用範囲を構成するポリシ。",
+        "definition" : "The policy(s) which constitute this insurance coverage.  \nこの保険の適用範囲を構成するポリシー。",
         "comment" : "References SHALL be a reference to an actual FHIR resource, and SHALL be resolvable (allowing for access control, temporary unavailability, etc.). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository.  \n参照は、実際のFHIRリソースへの参照である必要があり、解決可能（内容に到達可能）である必要がある（アクセス制御、一時的な使用不可などを考慮に入れる）。解決は、URLから取得するか、リソースタイプによって該当する場合は、絶対参照を正規URLとして扱い、ローカルレジストリ/リポジトリで検索することによって行うことができる。",
         "requirements" : "To reference the legally binding contract between the policy holder and the insurer.  \n契約者と保険者との間の法的拘束力のある契約を参照するため。"
       }

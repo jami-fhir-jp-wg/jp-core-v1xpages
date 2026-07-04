@@ -501,7 +501,7 @@ Immunization.occurrenceString要素を使用した例：
         "id" : "Immunization",
         "path" : "Immunization",
         "short" : "予防接種",
-        "definition" : "予防接種時の記録，あるいは予防接種について患者や医療従事者などが報告した記録。"
+        "definition" : "予防接種時の記録、あるいは予防接種について患者や医療従事者などが報告した記録。"
       },
       {
         "id" : "Immunization.id",
@@ -592,7 +592,7 @@ Immunization.occurrenceString要素を使用した例：
         "path" : "Immunization.vaccineCode",
         "short" : "接種されたワクチン製剤",
         "definition" : "接種されたあるいは接種予定のワクチン。",
-        "comment" : "全てのターミノロジがこのパターンに当てはまるわけではない。モデルによってはCodeableConceptではなく，独自構造でCodingを直接指定して文書やコーディング，その解釈や事前条件や事後条件との関連について示される。",
+        "comment" : "全てのターミノロジがこのパターンに当てはまるわけではない。モデルによってはCodeableConceptではなく、独自構造で`Coding`を直接指定して文書や`Coding`、その解釈や事前条件や事後条件との関連について示される。",
         "binding" : {
           "strength" : "preferred",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_MedicationCode_Immunization_VS"
@@ -602,7 +602,7 @@ Immunization.occurrenceString要素を使用した例：
         "id" : "Immunization.patient",
         "path" : "Immunization.patient",
         "short" : "予防接種を受けた人",
-        "definition" : "予防接種を受けた，あるいは受けなかった患者。",
+        "definition" : "予防接種を受けた、あるいは受けなかった患者。",
         "type" : [
           {
             "code" : "Reference",
@@ -614,7 +614,7 @@ Immunization.occurrenceString要素を使用した例：
         "id" : "Immunization.encounter",
         "path" : "Immunization.encounter",
         "short" : "予防接種を受けた診察",
-        "definition" : "患者が医療従事者から予防接種を受けた外来，入院あるいは他の対面の状態を表す。",
+        "definition" : "患者が医療従事者から予防接種を受けた外来、入院あるいは他の対面の状態を表す。",
         "type" : [
           {
             "code" : "Reference",
@@ -639,7 +639,7 @@ Immunization.occurrenceString要素を使用した例：
         "id" : "Immunization.reportOrigin",
         "path" : "Immunization.reportOrigin",
         "short" : "二次的に報告された記録の発生源を示す",
-        "definition" : "予防接種を実施した時に，ワクチンを接種した人以外からの報告からの情報である場合のデータの発生源。"
+        "definition" : "予防接種を実施した時に、ワクチンを接種した人以外からの報告からの情報である場合のデータの発生源。"
       },
       {
         "id" : "Immunization.location",
@@ -745,7 +745,7 @@ Immunization.occurrenceString要素を使用した例：
         "id" : "Immunization.reasonReference",
         "path" : "Immunization.reasonReference",
         "short" : "予防接種を実施した理由",
-        "definition" : "予防接種が実施された理由を表すCondition，ObservationあるいはDiagnosticReportリソースを参照する。"
+        "definition" : "予防接種が実施された理由を表すCondition、ObservationあるいはDiagnosticReportリソースを参照する。"
       },
       {
         "id" : "Immunization.isSubpotent",
@@ -775,7 +775,7 @@ Immunization.occurrenceString要素を使用した例：
         "id" : "Immunization.fundingSource",
         "path" : "Immunization.fundingSource",
         "short" : "ワクチン接種計画の資金源",
-        "definition" : "ワクチンが実際に接種されるときの資金源を示す。これは患者適格性（たとえば，公的に購入されたワクチンには適格性があるが，在庫の問題で私的資金で購入されたワクチンを投与するような場合）とは異なることがある。"
+        "definition" : "ワクチンが実際に接種されるときの資金源を示す。これは患者適格性（たとえば、公的に購入されたワクチンには適格性があるが、在庫の問題で私的資金で購入されたワクチンを投与するような場合）とは異なることがある。"
       },
       {
         "id" : "Immunization.reaction",

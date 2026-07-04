@@ -93,7 +93,7 @@ Medication リソースで使用される拡張は次の通りである。
 
 HL7 FHIRの基底規格では、薬剤コードをはじめとして、剤形などでSNOMED CTが使われているが、国としてライセンスを取得していない。代替としてJAHIS注射データ交換規約やSS-MIX2で使われている用語集を採用した。
 
-HL7 ver 2系では用語集を識別するコーディングシステム名(以下、「CS名」）は文字列であったが、FHIRではURIを指定する必要があるため、それぞれにURIを割り当てた。以下に使用する用語集のCS名とURI表記を列記する。
+HL7 ver 2系では用語集を識別するコードシステム名(以下、「CS名」）は文字列であったが、FHIRではURIを指定する必要があるため、それぞれにURIを割り当てた。以下に使用する用語集のCS名とURI表記を列記する。
 
 | | | |
 | :--- | :--- | :--- |
@@ -226,7 +226,7 @@ Medicationリソースを参照する上位のリソースに記述される。
         "path" : "Medication.id",
         "short" : "このアーチファクトに対する論理ID",
         "definition" : "リソースに対するURLとして使われるリソースの論理ID。この値は一度割り当てられたら変更されることはない。",
-        "comment" : "ResourceにIDがない時期は、create操作のためにサーバにResourceが送信されている時期だけである。"
+        "comment" : "ResourceにIDがない時期は、create操作のためにサーバーにResourceが送信されている時期だけである。"
       },
       {
         "id" : "Medication.identifier",
@@ -240,7 +240,7 @@ Medicationリソースを参照する上位のリソースに記述される。
         "path" : "Medication.code",
         "short" : "この薬剤を特定するコード",
         "definition" : "A code (or set of codes) that specify this medication, or a textual description if no code is available. Usage note: This could be a standard medication code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be a national or local formulary code, optionally with translations to other code systems.  \nこの薬剤を指定するコード。該当するコードがない場合はテキスト表記。  \n使用法について注記：日本ではHOTコードを利用することが推奨される。一般的な薬剤コードとしてRxNorm、SNOMD CT, IDMPなど標準的な医薬品コードを使うことができる。国や地域に特有のローカルコードも使うことができ、他のコードに変換することもできる。",
-        "comment" : "使われるコンテキストによるが、ユーザ(処方や調剤などを行った人）によって実際にコードが選択されたのであれば、coding.userSelectedはtrueとすることとなる。Codingのデータ型で説明されているように、「ユーザインターフェース（たとえば、選択肢から特定の項目をユーザが選択するような形式）で特定のコードをユーザが選択したのであれば、\"userSelected\"に記録されてもよい」  \nユーザが選択したコードがあれば、その選択がコード変換などで優先される。そのほかのコードは代替のコードシステムか低粒度のコード（たとえば、ベンダー固有の初期値のための一般的なコード）に文字列変換変換するしかない。",
+        "comment" : "使われるコンテキストによるが、ユーザー(処方や調剤などを行った人）によって実際にコードが選択されたのであれば、coding.userSelectedはtrueとすることとなる。Codingのデータ型で説明されているように、「ユーザーインターフェース（たとえば、選択肢から特定の項目をユーザーが選択するような形式）で特定のコードをユーザーが選択したのであれば、\"userSelected\"に記録されてもよい」  \nユーザーが選択したコードがあれば、その選択がコード変換などで優先される。そのほかのコードは代替のコードシステムか低粒度のコード（たとえば、ベンダー固有の初期値のための一般的なコード）に文字列変換変換するしかない。",
         "binding" : {
           "strength" : "preferred",
           "description" : "薬品の種類を規定するコード化された概念",

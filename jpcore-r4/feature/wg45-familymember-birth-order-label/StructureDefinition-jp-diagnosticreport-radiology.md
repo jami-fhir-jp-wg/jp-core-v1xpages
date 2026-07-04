@@ -119,7 +119,7 @@ JP Core V1.2からは、診断、所見などの観察結果についてはDomai
 
 しかし、多くのクラウドシステムではDomainResource.textを検索対象とできない可能性があることが判明したため、JP Core V1.2以降では、V1.1.2での実装から方針を転換し、US Coreの運用方法に倣い、DiagnosticReport.result要素が参照する[JP Core Observation Radiology Findings](StructureDefinition-jp-observation-radiology-findings.md)リソースおよび[JP Core Observation Radiology Impression](StructureDefinition-jp-observation-radiology-impression.md)に、診断レポートの一部となる観察結果（診断、所見など）の情報を記載し、検索対象のリソースとして用いることとした。
 
-従って、V1.2以降では、.text要素に記述した内容はレポートの内容に対する簡易的な表示には利用されるが、サーバ上での検索性は担保されない可能性を考慮して実装することを推奨する。 また、所見(findings)や診断の結果(impression)は対応するObservationリソースに内容が保持されるので、全文検索等の目的で構造化された情報を利用する場合はこれらを参照すること。
+従って、V1.2以降では、.text要素に記述した内容はレポートの内容に対する簡易的な表示には利用されるが、サーバー上での検索性は担保されない可能性を考慮して実装することを推奨する。 また、所見(findings)や診断の結果(impression)は対応するObservationリソースに内容が保持されるので、全文検索等の目的で構造化された情報を利用する場合はこれらを参照すること。
 
 ![](observation_radiology_structure.png)
 
@@ -199,7 +199,7 @@ ImagingStudyやmediaは多少オーバーラップするが、使用される目
 
 Conclusionやコード化された診断結果は各々がレポートを構成する小さなデータであるが、これらはpresentedFormに保持されるnarrativeなデータ内に含まれると同時に、本リソースのエレメントに複製されなければならない（**SHOULD**）。
 
-診断レポートの所見などnarrativeなデータはDiagnosticReportのドメインリソースとして定義されているtextにも保持すること。presentedFormとの内容の重複は許容されている。presentedFormはbase64のバイナリであるため、DiagnosticReportのtextが見読性の担保に利用される。検索についてはサーバ仕様によりドメインリソースであるtextは検索対象として利用できないことがあるので、resultエレメントに指定されるObservationリソースの内容を対象として考慮すること。
+診断レポートの所見などnarrativeなデータはDiagnosticReportのドメインリソースとして定義されているtextにも保持すること。presentedFormとの内容の重複は許容されている。presentedFormはbase64のバイナリであるため、DiagnosticReportのtextが見読性の担保に利用される。検索についてはサーバー仕様によりドメインリソースであるtextは検索対象として利用できないことがあるので、resultエレメントに指定されるObservationリソースの内容を対象として考慮すること。
 
 診断レポートの分野はAIによる診断補助やレポートの構造化を含め様々な変革がもたらされている。そのため、上記仕様は現時点でのリソース展開の例示であり、将来的に変更される可能性がある。
 
@@ -339,7 +339,7 @@ GET [base]/DiagnosticReport?identifier=http://myhospital.com/fhir/diagnosticrepo
         "id" : "DiagnosticReport.text",
         "path" : "DiagnosticReport.text",
         "short" : "人が読める形式で提示された情報。放射線レポートの場合はレポートの所見が保持される【詳細参照】",
-        "definition" : "リソースの概要を含み、リソースの内容を人間が解釈できる形で表現するために用いられる。すべての構造化データをエンコードする必要はないが、人間がテキストを読むだけで「臨床的に安全」になるように十分な詳細を含める必要がある。リソース定義は、臨床的安全性を確保するために、テキストの中でどのコンテンツを表現すべきかを定義することができる。放射線レポートでは少なくともレポートの所見が格納されることが期待される。また，検索可能な文字列が存在する部位としても利用されることを想定している。",
+        "definition" : "リソースの概要を含み、リソースの内容を人間が解釈できる形で表現するために用いられる。すべての構造化データをエンコードする必要はないが、人間がテキストを読むだけで「臨床的に安全」になるように十分な詳細を含める必要がある。リソース定義は、臨床的安全性を確保するために、テキストの中でどのコンテンツを表現すべきかを定義することができる。放射線レポートでは少なくともレポートの所見が格納されることが期待される。また、検索可能な文字列が存在する部位としても利用されることを想定している。",
         "comment" : "放射線レポートの場合、主となる所見を表すエレメントは他のリソースエレメントには存在しない。よってこのドメインリソースを用いてレポートの少なくとも「所見」を人間が可読な状態で保持することが求められる。",
         "mustSupport" : true
       },
@@ -347,7 +347,7 @@ GET [base]/DiagnosticReport?identifier=http://myhospital.com/fhir/diagnosticrepo
         "id" : "DiagnosticReport.identifier",
         "path" : "DiagnosticReport.identifier",
         "definition" : "実行者または他のシステムによってこのレポートに割り当てられた識別子。",
-        "comment" : "通常は診断サービスプロバイダの情報システムにより設定される。  \n【JP Core仕様】レポート番号  \n（放射線情報システム(RIS)による発番が想定されるが、施設によって電子カルテ等のオーダ番号を使う場合もあり得る）",
+        "comment" : "通常は診断サービスプロバイダーの情報システムにより設定される。  \n【JP Core仕様】レポート番号  \n（放射線情報システム(RIS)による発番が想定されるが、施設によって電子カルテ等のオーダ番号を使う場合もあり得る）",
         "requirements" : "このレポートについてクエリを実行するとき、およびFHIRコンテキスト外のレポートにリンクするときにどの識別子を使用するかを知る必要がある"
       },
       {
@@ -447,7 +447,7 @@ GET [base]/DiagnosticReport?identifier=http://myhospital.com/fhir/diagnosticrepo
         "id" : "DiagnosticReport.code",
         "path" : "DiagnosticReport.code",
         "definition" : "この診断レポートを表現するコードや名称",
-        "comment" : "【JP Core仕様】[画像診断レポート交換手順ガイドライン](https://www.jira-net.or.jp/publishing/files/jesra/JESRA_TR-0042_2018.pdf)「5.1 レポート種別コード」に記載されているLOINCコード [Diagnostic imaging study](https://loinc.org/18748-4/) を指定。コードを指定できない場合はCodeableConceptを使用せずテキスト等を直接コーディングすることも許容されるが、要素間の調整と事前・事後の内容の整合性確保のために独自の構造を提供する必要があるので留意すること。"
+        "comment" : "【JP Core仕様】[画像診断レポート交換手順ガイドライン](https://www.jira-net.or.jp/publishing/files/jesra/JESRA_TR-0042_2018.pdf)「5.1 レポート種別コード」に記載されているLOINCコード [Diagnostic imaging study](https://loinc.org/18748-4/) を指定。コードを指定できない場合はCodeableConceptを使用せずテキスト等を直接コード化することも許容されるが、要素間の調整と事前・事後の内容の整合性確保のために独自の構造を提供する必要があるので留意すること。"
       },
       {
         "id" : "DiagnosticReport.code.coding",
@@ -519,7 +519,7 @@ GET [base]/DiagnosticReport?identifier=http://myhospital.com/fhir/diagnosticrepo
       {
         "id" : "DiagnosticReport.issued",
         "path" : "DiagnosticReport.issued",
-        "definition" : "このバージョンのレポートがプロバイダに提供された日時。通常、レポートがレビューおよび検証された後になる。",
+        "definition" : "このバージョンのレポートがプロバイダーに提供された日時。通常、レポートがレビューおよび検証された後になる。",
         "comment" : "リソース自体の更新時間とは異なる場合がある。これは、レポートの実際のリリース時間ではなく、レコード（場合によってはセカンダリコピー）のステータスであるため。  \n【JP Core仕様】レポート確定日時",
         "requirements" : "臨床医は、レポートがリリースされた日付を確認できる必要がある。",
         "mustSupport" : true
@@ -631,7 +631,7 @@ GET [base]/DiagnosticReport?identifier=http://myhospital.com/fhir/diagnosticrepo
         "id" : "DiagnosticReport.conclusionCode",
         "path" : "DiagnosticReport.conclusionCode",
         "definition" : "診断レポートの要約の結論 (interpretation/impression) を表す 1 つ以上のコード。",
-        "comment" : "すべての用語の使用がこの一般的なパターンに適合するわけではない。 場合によっては、モデルにcodeableConceptを使用せず、コーディングを直接使用して、テキスト、コーディング、翻訳、および要素間の関係と事前調整および事後調整を管理するための独自の構造を提供する必要がある。   \n【JP Core仕様】・放射線レポートの所見の結論となるコードを設定。  \n・例えば、ICD 病名コード"
+        "comment" : "すべての用語の使用がこの一般的なパターンに適合するわけではない。 場合によっては、モデルにcodeableConceptを使用せず、`Coding`を直接使用して、テキスト、`Coding`、翻訳、および要素間の関係と事前調整および事後調整を管理するための独自の構造を提供する必要がある。   \n【JP Core仕様】・放射線レポートの所見の結論となるコードを設定。  \n・例えば、ICD 病名コード"
       },
       {
         "id" : "DiagnosticReport.presentedForm",

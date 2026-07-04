@@ -162,7 +162,7 @@ JP Core 利用にあたり、考慮すべきセキュリティに関する要件
 
 ### Contributors：
 
-JP Core は以下の方々、および各サーブワーキンググループのここに記載されていない多くのメンバの献身的な活動や協力により作成されている。
+JP Core は以下の方々、および各サーブワーキンググループのここに記載されていない多くのメンバーの献身的な活動や協力により作成されている。
 
 * [日本医療情報学会FHIR国内実装基盤研究会](https://jpfhir.jp/)
 
@@ -7467,7 +7467,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "StructureDefinition/jp-medicationdispensebase"
         },
         "name" : "JP Core MedicationDispenseBase Profile",
-        "description" : "このプロファイルはユーザは直接適用するものではなく、JP_MedicationDispenseとJP_MedicationDispenseInjectionの共通の親となる抽象プロファイルである。このプロファイルはMedicationDispenseリソースに対して、内服・外用薬剤処方調剤・払い出し記録のデータを送受信するため、JP_MedicationDispenseとJP_MedicationDispenseInjectionの各プロファイルの基礎となる制約と拡張のうち共通部分を定めている。",
+        "description" : "このプロファイルはユーザーは直接適用するものではなく、JP_MedicationDispenseとJP_MedicationDispenseInjectionの共通の親となる抽象プロファイルである。このプロファイルはMedicationDispenseリソースに対して、内服・外用薬剤処方調剤・払い出し記録のデータを送受信するため、JP_MedicationDispenseとJP_MedicationDispenseInjectionの各プロファイルの基礎となる制約と拡張のうち共通部分を定めている。",
         "exampleBoolean" : false
       },
       {
@@ -7691,7 +7691,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "StructureDefinition/jp-medicationstatement-injection"
         },
         "name" : "JP Core MedicationStatement Injection Profile",
-        "description" : "このProfileは服薬状況を示すものであり，診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。",
+        "description" : "このProfileは服薬状況を示すものであり、診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。",
         "exampleBoolean" : false
       },
       {
@@ -7705,7 +7705,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "StructureDefinition/jp-medicationstatement"
         },
         "name" : "JP Core MedicationStatement Profile",
-        "description" : "このProfileは服薬状況を示すものであり，診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。",
+        "description" : "このProfileは服薬状況を示すものであり、診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。",
         "exampleBoolean" : false
       },
       {
@@ -8951,7 +8951,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "CapabilityStatement/jp-server-capabilitystatement"
         },
         "name" : "JP Core Server CapabilityStatement",
-        "description" : "JP Core実装ガイドを利用したサイトを作成する際にサーバ側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。",
+        "description" : "JP Core実装ガイドを利用したサイトを作成する際にサーバー側で規定するCapabilityStatementのOperationsおよびSearch Parametersのリスト例を提示する。JP Core ServerがサポートするFHIRプロファイルに限定しているため、FHIR Baseのプロファイルを利用する際などは必要な項目を追記すること。",
         "exampleBoolean" : false
       },
       {

@@ -37,7 +37,7 @@
 
 本プロファイルは、対象者（患者）に関連する個人の重要な健康状態を記録する家族歴を対象とする。この情報は精度に幅があり、疾患名が「気管支喘息」のように明確な場合もあれば、「癌（部位不明）」のように不確定な場合もある。同様に、対象者を「母方のおば」のように特定できる場合もあれば、続柄の概略しか判明しない場合もある。対象には血縁者に加え、養子・継子・内縁のパートナーなどの非血縁者も含む。
 
-このような基本的な家族歴は、患者の背景理解や療養支援の基礎資料となるとともに、必要に応じてより厳密な家族歴を作成するための出発点にもなる。なお、日本の診療現場では家族構成員を氏名ではなく出生順に基づく呼称で把握することが多いため、本プロファイルでは続柄（relationship）を補足する情報として、この呼称を BirthOrderLabel 拡張により表現する。
+このような基本的な家族歴は、患者の背景理解や療養支援の基礎資料となるとともに、必要に応じてより厳密な家族歴を作成するための出発点にもなる。なお、日本の診療現場では家族構成員を氏名ではなく出生順に基づく呼称（長女、二男など）で把握することが多いため、本プロファイルでは続柄（relationship）を補足する情報として、この呼称を BirthOrderLabel 拡張により表現する。
 
 遺伝学的血統図は本プロファイルの対象外である。遺伝学的解析に特化した厳密な血統図については、[Genetic Pedigreeプロファイル](https://hl7.org/fhir/R4/familymemberhistory-genetic.html)を参照のこと。
 
@@ -90,6 +90,48 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
 出生順呼称は、患者との続柄そのものを置き換えるものではない。患者との関係は `relationship` で表現し、出生順呼称は対象となる家族構成員に関する補足情報として記録する。
 
 出生順呼称は、必ずしも客観的に算出された生物学的出生順位、戸籍上の記載、または遺伝学的血統図における出生順と一致するとは限らない。日常診療で患者または情報提供者から申告された家族内呼称を記録することを想定する。
+
+**実装例：母方のおば（次女）の場合**
+
+以下の例は、患者の母方のおば（`relationship` = `MAUNT`：母方のおば）が、母の兄弟姉妹の中で「次女」と呼称されている場合の実装を示す。
+
+```
+{
+  "resourceType": "FamilyMemberHistory",
+  "status": "partial",
+  "patient": {
+    "reference": "Patient/jp-patient-example-1",
+    "display": "山田 太郎"
+  },
+  "relationship": {
+    "coding": [{
+      "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+      "code": "MAUNT",
+      "display": "母方のおば"
+    }]
+  },
+  "extension": [{
+    "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_BirthOrderLabel",
+    "valueCodeableConcept": {
+      "coding": [{
+        "system": "http://jpfhir.jp/fhir/core/CodeSystem/JP_BirthOrderLabel_CS",
+        "code": "daughter-2",
+        "display": "second daughter"
+      }],
+      "text": "次女"
+    }
+  }],
+  "sex": {
+    "coding": [{
+      "system": "http://hl7.org/fhir/administrative-gender",
+      "code": "female"
+    }]
+  }
+}
+
+```
+
+上記例では、`relationship` に `MAUNT`（母方のおば）を記録し、`extension` に `BirthOrderLabel` 拡張を追加して「次女」（`daughter-2`）を補足情報として記録している。これにより、患者との続柄と家族内での出生順呼称を区別して表現できる。
 
 #### 疾患情報 condition の記録
 

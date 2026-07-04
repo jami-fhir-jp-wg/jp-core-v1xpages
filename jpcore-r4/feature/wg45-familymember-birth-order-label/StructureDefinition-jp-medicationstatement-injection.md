@@ -20,10 +20,10 @@
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
-このProfileは服薬状況を示すものであり，診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。 
+このProfileは服薬状況を示すものであり、診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。 
 
  
-このProfileは診療情報提供書や退院サマリーなどの医療文書内で服薬情報について記載するために用いられる。このResourceは薬剤処方や，調剤情報，薬剤投与実施情報としては用いられず，それぞれMedicationRequest, MedicationDispense, MedicationAdministrationが用いられる。 
+このProfileは診療情報提供書や退院サマリーなどの医療文書内で服薬情報について記載するために用いられる。このResourceは薬剤処方や、調剤情報、薬剤投与実施情報としては用いられず、それぞれMedicationRequest, MedicationDispense, MedicationAdministrationが用いられる。 
 
 本プロファイルは患者に投与された注射薬剤の記録をMedicationStatementリソースを使用して表現する。 以下、本プロファイルのMedicationStatementリソースを「JP Core MedicationStatement Injectionリソース」と呼ぶ。
 
@@ -86,7 +86,7 @@ MedicationStatement リソースは、次の要素を持たなければならな
 
 HL7 FHIRの基底規格では、薬剤コードをはじめとして、剤形などでSNOMED CTが使われているが、日本ではライセンスの問題もあり普及していない。代替としてJAHIS処方データ交換規約やSS-MIX2で使われている用語集を採用した。
 
-HL7 V2系では用語集を識別するコーディングシステム名(以下、「CS名」）は文字列であったが、FHIRではURIを指定する必要があるため、それぞれにURIを割り当てた。以下に使用する用語集のCS名とURI表記を列記する。
+HL7 V2系では用語集を識別するコードシステム名(以下、「CS名」）は文字列であったが、FHIRではURIを指定する必要があるため、それぞれにURIを割り当てた。以下に使用する用語集のCS名とURI表記を列記する。
 
 | | | |
 | :--- | :--- | :--- |
@@ -391,7 +391,7 @@ MedicationStatementは薬剤をCodeableConceptとして1つまでしか持つか
       ]
     }
   ],
-  "description" : "このProfileは服薬状況を示すものであり，診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。",
+  "description" : "このProfileは服薬状況を示すものであり、診療情報提供書や退院サマリーなどの他の文書と組み合わせて用いられる。",
   "jurisdiction" : [
     {
       "coding" : [
@@ -403,7 +403,7 @@ MedicationStatementは薬剤をCodeableConceptとして1つまでしか持つか
       ]
     }
   ],
-  "purpose" : "このProfileは診療情報提供書や退院サマリーなどの医療文書内で服薬情報について記載するために用いられる。このResourceは薬剤処方や，調剤情報，薬剤投与実施情報としては用いられず，それぞれMedicationRequest, MedicationDispense, MedicationAdministrationが用いられる。",
+  "purpose" : "このProfileは診療情報提供書や退院サマリーなどの医療文書内で服薬情報について記載するために用いられる。このResourceは薬剤処方や、調剤情報、薬剤投与実施情報としては用いられず、それぞれMedicationRequest, MedicationDispense, MedicationAdministrationが用いられる。",
   "copyright" : "Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会",
   "fhirVersion" : "4.0.1",
   "mapping" : [
@@ -445,7 +445,7 @@ MedicationStatementは薬剤をCodeableConceptとして1つまでしか持つか
         "id" : "MedicationStatement.identifier",
         "path" : "MedicationStatement.identifier",
         "short" : "外部から参照されるID",
-        "definition" : "このインスタンスが外部から参照されるために使われるIDである。それ以外に任意のIDを付与してもよい。\r\nこのIDは業務手順によって定められた処方オーダーに対して、直接的なURL参照が適切でない場合も含めて関連付けるために使われる。この業務手順のIDは実施者によって割り当てられたものであり、リソースが更新されたりサーバからサーバに転送されたとしても固定のものとして存続する。",
+        "definition" : "このインスタンスが外部から参照されるために使われるIDである。それ以外に任意のIDを付与してもよい。\r\nこのIDは業務手順によって定められた処方オーダーに対して、直接的なURL参照が適切でない場合も含めて関連付けるために使われる。この業務手順のIDは実施者によって割り当てられたものであり、リソースが更新されたりサーバーからサーバーに転送されたとしても固定のものとして存続する。",
         "comment" : "これは業務IDであって、リソースに対するIDではない。"
       },
       {
@@ -565,7 +565,7 @@ MedicationStatementは薬剤をCodeableConceptとして1つまでしか持つか
       {
         "id" : "MedicationStatement.reasonCode.coding",
         "path" : "MedicationStatement.reasonCode.coding",
-        "short" : "投与理由，対象疾患についてのコード"
+        "short" : "投与理由、対象疾患についてのコード"
       },
       {
         "id" : "MedicationStatement.reasonReference",
@@ -581,7 +581,7 @@ MedicationStatementは薬剤をCodeableConceptとして1つまでしか持つか
       {
         "id" : "MedicationStatement.dosage",
         "path" : "MedicationStatement.dosage",
-        "short" : "この薬剤がどのように服用されたのか，服用すべきだったのかを示す情報",
+        "short" : "この薬剤がどのように服用されたのか、服用すべきだったのかを示す情報",
         "definition" : "患者にこの薬剤がどのように服用すべきかを示す情報",
         "type" : [
           {
