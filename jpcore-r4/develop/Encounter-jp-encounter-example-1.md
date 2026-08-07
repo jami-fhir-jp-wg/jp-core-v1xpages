@@ -10,7 +10,7 @@ Profile: [JP Core Encounter Profile](StructureDefinition-jp-encounter.md)
 
 **status**: Finished
 
-**class**: [ActCode: AMB](http://terminology.hl7.org/7.2.0/CodeSystem-v3-ActCode.html#v3-ActCode-AMB) (外来)
+**class**: [ActCode: AMB](http://terminology.hl7.org/7.3.0/CodeSystem-v3-ActCode.html#v3-ActCode-AMB) (外来)
 
 **subject**: [山田 太郎](Patient-jp-patient-example-1.md)
 

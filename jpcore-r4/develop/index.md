@@ -225,7 +225,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
       ],
       "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
       "packageId" : "hl7.terminology.r4",
-      "version" : "7.2.0"
+      "version" : "7.3.0"
     },
     {
       "id" : "hl7ext",
