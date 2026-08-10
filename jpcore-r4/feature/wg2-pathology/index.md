@@ -6290,6 +6290,20 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "DiagnosticReport"
+          }
+        ],
+        "reference" : {
+          "reference" : "DiagnosticReport/JP-DiagnosticReport-Pathology-Example-1"
+        },
+        "name" : "JP Core DiagnosticReport Pathology Example 1",
+        "description" : "病理診断レポートのインスタンス例",
+        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Pathology"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
             "valueString" : "StructureDefinition:resource"
           }
         ],
@@ -6521,7 +6535,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "StructureDefinition/jp-imagingstudy-pathology"
         },
         "name" : "JP Core ImagingStudy Pathology Profile",
-        "description" : "病理WSIのDICOM画像に関する情報を扱うためのプロファイル",
+        "description" : "病理WSIのDICOM画像に関する情報を記録するためのプロファイル",
         "exampleBoolean" : false
       },
       {
@@ -6724,6 +6738,20 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Media"
+          }
+        ],
+        "reference" : {
+          "reference" : "Media/JP-Media-Pathology-Example-01"
+        },
+        "name" : "JP Core Media Pathology Example 01",
+        "description" : "病理画像メディアのサンプルインスタンス",
+        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Media_Pathology"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
             "valueString" : "StructureDefinition:resource"
           }
         ],
@@ -6731,7 +6759,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "StructureDefinition/jp-media-pathology"
         },
         "name" : "JP Core Media Pathology Profile",
-        "description" : "病理で取得または使用される画像に関わる情報を記録するためのプロファイル",
+        "description" : "病理で取得または使用される画像に関わる情報を扱うプロファイル",
         "exampleBoolean" : false
       },
       {
@@ -8894,6 +8922,34 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Specimen"
+          }
+        ],
+        "reference" : {
+          "reference" : "Specimen/JP-Specimen-Pathology-Example"
+        },
+        "name" : "JP Core Specimen Pathology Example",
+        "description" : "病理診断レポート用検体情報のサンプルインスタンス",
+        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Specimen_Pathology"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/jp-specimen-pathology"
+        },
+        "name" : "JP Core Specimen Pathology Profile",
+        "description" : "病理診断レポートにおいて臓器そのものを表現する検体情報を定義したプロファイル",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
             "valueString" : "CodeSystem"
           }
         ],
@@ -8922,15 +8978,15 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "StructureDefinition:resource"
+            "valueString" : "ImagingStudy"
           }
         ],
         "reference" : {
-          "reference" : "StructureDefinition/jp-specimen-pathology"
+          "reference" : "ImagingStudy/jp-imagingstudy-pathology-example-1"
         },
-        "name" : "JP Specimen Pathology Profile",
-        "description" : "病理検体を表現するためのプロファイル。病理診断レポートのユースケースでは、臓器そのものを表現する。",
-        "exampleBoolean" : false
+        "name" : "JP ImagingStudy Pathology Example 病理WSI画像",
+        "description" : "病理WSI画像のImagingStudyリソース例",
+        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Pathology"
       },
       {
         "extension" : [

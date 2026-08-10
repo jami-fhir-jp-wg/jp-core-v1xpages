@@ -53,7 +53,7 @@ DiagnosticReport（検査レポート）リソースは、患者、患者のグ�
 **Usages:**
 
 * Derived from this Profile: [JP Core DiagnosticReport DentalOral Profile](StructureDefinition-jp-diagnosticreport-dentaloral.md), [JP Core DiagnosticReport Endoscopy Profile](StructureDefinition-jp-diagnosticreport-endoscopy.md), [JP Core DiagnosticReport LabResult Profile](StructureDefinition-jp-diagnosticreport-labresult.md), [JP Core DiagnosticReport Microbiology Profile](StructureDefinition-jp-diagnosticreport-microbiology.md) and [JP Core DiagnosticReport Radiology Profile](StructureDefinition-jp-diagnosticreport-radiology.md)
-* Refer to this Profile: [JP Core Condition Profile](StructureDefinition-jp-condition.md), [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md), [JP Core ImagingStudy Radiology Profile](StructureDefinition-jp-imagingstudy-radiology.md), [JP Core MedicationAdministration Profile](StructureDefinition-jp-medicationadministration.md)...Show 2 more,[JP Core Procedure Profile](StructureDefinition-jp-procedure.md)and[JP Core ServiceRequest Common Profile](StructureDefinition-jp-servicerequest-common.md)
+* Refer to this Profile: [JP Core Condition Profile](StructureDefinition-jp-condition.md), [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md), [JP Core ImagingStudy Pathology Profile](StructureDefinition-jp-imagingstudy-pathology.md), [JP Core ImagingStudy Radiology Profile](StructureDefinition-jp-imagingstudy-radiology.md)...Show 3 more,[JP Core MedicationAdministration Profile](StructureDefinition-jp-medicationadministration.md),[JP Core Procedure Profile](StructureDefinition-jp-procedure.md)and[JP Core ServiceRequest Common Profile](StructureDefinition-jp-servicerequest-common.md)
 * CapabilityStatements using this Profile: [JP Core Client CapabilityStatement](CapabilityStatement-jp-client-capabilitystatement.md) and [JP Core Server CapabilityStatement](CapabilityStatement-jp-server-capabilitystatement.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-diagnosticreport-common)
@@ -244,7 +244,11 @@ GET [base]/DiagnosticReport?identifier=http://myhospital.com/fhir/diagnosticrepo
         "path" : "DiagnosticReport.category",
         "short" : "診断レポートを作成した臨床分野、部門、または診断サービス（心臓病学、生化学、血液学、放射線医学など）を分類するコード",
         "definition" : "診断レポートを作成した臨床分野、部門、または診断サービス（心臓病学、生化学、血液学、放射線医学など）を分類するコード",
-        "comment" : "これは、検索、並べ替え、および表示の目的で使用される。"
+        "comment" : "これは、検索、並べ替え、および表示の目的で使用される。",
+        "binding" : {
+          "strength" : "preferred",
+          "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS"
+        }
       },
       {
         "id" : "DiagnosticReport.category.coding.system",
@@ -310,8 +314,8 @@ GET [base]/DiagnosticReport?identifier=http://myhospital.com/fhir/diagnosticrepo
       {
         "id" : "DiagnosticReport.effective[x]",
         "path" : "DiagnosticReport.effective[x]",
-        "short" : "診断レポートの作成日時",
-        "definition" : "診断レポートの作成日時",
+        "short" : "診断レポートの対象となる検査・処置が実施された日時",
+        "definition" : "診断レポートの対象となる検査・処置が実施された日時",
         "comment" : "診断手順が患者に対して実行された場合、これは実施された時間である。対象が検体である場合は、検体採取時間から診断関連時刻を導き出すことができるが、検体情報が常に入手できるとは限らず、検体と診断関連時刻の正確な関係は必ずしも自明ではない。"
       },
       {

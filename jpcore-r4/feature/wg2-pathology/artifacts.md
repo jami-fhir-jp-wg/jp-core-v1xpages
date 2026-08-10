@@ -51,11 +51,11 @@
 | [JP Core Encounter Profile](StructureDefinition-jp-encounter.md) | このプロファイルはEncounterリソースに対して、来院/入院情報のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
 | [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md) | このプロファイルはFamilyMemberHistoryリソースに対して、データを送受信するための共通の制約と拡張を定めたものである。 |
 | [JP Core ImagingStudy Endoscopy Profile](StructureDefinition-jp-imagingstudy-endoscopy.md) | このプロファイルはImagingStudyリソースに対して、主に内視鏡検査で撮影された画像に関わるデータを送受信するための制約と拡張を定めたものである。 |
-| [JP Core ImagingStudy Pathology Profile](StructureDefinition-jp-imagingstudy-pathology.md) | 病理WSIのDICOM画像に関する情報を扱うためのプロファイル |
+| [JP Core ImagingStudy Pathology Profile](StructureDefinition-jp-imagingstudy-pathology.md) | 病理WSIのDICOM画像に関する情報を記録するためのプロファイル |
 | [JP Core ImagingStudy Radiology Profile](StructureDefinition-jp-imagingstudy-radiology.md) | このプロファイルはImagingStudyリソースに対して、放射線検査画像のデータを送受信するための制約と拡張を定めたものである。 |
 | [JP Core Immunization Profile](StructureDefinition-jp-immunization.md) | このプロファイルはImmunizationリソースに対して日本での予防接種情報を送受信するための制約と拡張を加えたものである。 |
 | [JP Core Location Profile](StructureDefinition-jp-location.md) | このプロファイルはLocationリソースに対して、所在場所のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
-| [JP Core Media Pathology Profile](StructureDefinition-jp-media-pathology.md) | 病理で取得または使用される画像に関わる情報を記録するためのプロファイル |
+| [JP Core Media Pathology Profile](StructureDefinition-jp-media-pathology.md) | 病理で取得または使用される画像に関わる情報を扱うプロファイル |
 | [JP Core Medication Profile](StructureDefinition-jp-medication.md) | このプロファイルはMedicationリソースに対して、主に薬剤データを送受信するための基礎となる制約と拡張を定めたものである。 |
 | [JP Core MedicationAdministration Injection Profile](StructureDefinition-jp-medicationadministration-injection.md) | このプロファイルはMedicationAdministrationリソースに対して、注射薬剤処方投与実施情報のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
 | [JP Core MedicationAdministration Profile](StructureDefinition-jp-medicationadministration.md) | このプロファイルはMedicationAdministrationリソースに対して、内服・外用薬剤処方投与実施情報のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
@@ -89,8 +89,8 @@
 | [JP Core PractitionerRole Profile](StructureDefinition-jp-practitionerrole.md) | このプロファイルはPractitionerRoleリソースに対して、医療従事者役割のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
 | [JP Core Procedure Profile](StructureDefinition-jp-procedure.md) | このプロファイルはProcedureリソースに対して、患者に対する医療的な処置のデータを送受信するための共通の制約と拡張を定めたものである。 |
 | [JP Core ServiceRequest Common Profile](StructureDefinition-jp-servicerequest-common.md) | 本プロファイル説明は、患者に対し立案・実施されるリクエストの記録で、行為や診断、もしくは他のサービスのために用いられるFHIR ServiceRequestリソースを使用するにあたっての、最低限の制約を記述したものである。 |
+| [JP Core Specimen Pathology Profile](StructureDefinition-jp-specimen-pathology.md) | 病理診断レポートにおいて臓器そのものを表現する検体情報を定義したプロファイル |
 | [JP Core media Endoscopy Profile](StructureDefinition-jp-media-endoscopy.md) | このプロファイルはMediaリソースに対して、主に内視鏡検査で取得または使用される画像、映像、音声に関わるデータを送受信するための制約と拡張を定めたものである。 |
-| [JP Specimen Pathology Profile](StructureDefinition-jp-specimen-pathology.md) | 病理検体を表現するためのプロファイル。病理診断レポートのユースケースでは、臓器そのものを表現する。 |
 | [JP_Binary](StructureDefinition-jp-binary.md) | JP_Binary 暫定プロファイル |
 | [JP_CarePlan](StructureDefinition-jp-careplan.md) | JP_CarePlan 暫定プロファイル |
 | [JP_Consent](StructureDefinition-jp-consent.md) | JP_Consent 暫定プロファイル |
@@ -294,6 +294,7 @@
 | [JP Core DiagnosticReport DentalOral Example 口腔診査レポート2](DiagnosticReport-jp-diagnosticreport-dentaloral-example-2.md) | 初診時口腔診査レポート |
 | [JP Core DiagnosticReport Endoscopy Example 内視鏡検査レポート](DiagnosticReport-jp-diagnosticreport-endoscopy-example-1.md) | 上部消化管内視鏡検査レポート |
 | [JP Core DiagnosticReport Endoscopy Example2 内視鏡検査レポート](DiagnosticReport-jp-diagnosticreport-endoscopy-example-2.md) | 大腸内視鏡検査レポート |
+| [JP Core DiagnosticReport Pathology Example 1](DiagnosticReport-JP-DiagnosticReport-Pathology-Example-1.md) | 病理診断レポートのインスタンス例 |
 | [JP Core DiagnosticReport Radiology Example 放射線読影レポート](DiagnosticReport-jp-diagnosticreport-radiology-example-1.md) | 放射線読影レポート |
 | [JP Core DiagnosticReport_LabResult Example 検体検査（血液）レポート](DiagnosticReport-jp-diagnosticreport-labresult-example-1.md) | 検体検査（血液）レポート |
 | [JP Core DiagnosticReport_Microbiology Example 一般細菌検査レポート](DiagnosticReport-jp-diagnosticreport-microbiology-example-1.md) | 一般細菌検査レポート |
@@ -306,6 +307,7 @@
 | [JP Core Location Example 病棟](Location-jp-location-example-ward.md) | 病棟 |
 | [JP Core Location Example 診察室](Location-jp-location-example-examinationroom.md) | 診察室 |
 | [JP Core Media Endoscopy Example 内視鏡画像](Media-jp-media-endoscopy-example-1.md) | 内視鏡画像 |
+| [JP Core Media Pathology Example 01](Media-JP-Media-Pathology-Example-01.md) | 病理画像メディアのサンプルインスタンス |
 | [JP Core Medication Example ソリタ－＋アドナ注](Medication-jp-medication-example-2.md) | ソリタ－＋アドナ注 |
 | [JP Core Medication Example ホリゾン注射液１０ｍｇ](Medication-jp-medication-example-1.md) | ホリゾン注射液１０ｍｇ |
 | [JP Core MedicationAdministration Example 投薬中止 パンスポリンＴ錠１００ １００ｍｇ](MedicationAdministration-jp-medicationadministration-example-2.md) | 投薬中止 パンスポリンＴ錠１００ １００ｍｇ |
@@ -367,6 +369,8 @@
 | [JP Core Specimen Example 検体材料（喀痰）](Specimen-jp-specimen-example-3.md) | 検体材料（喀痰） |
 | [JP Core Specimen Example 検体材料（尿）](Specimen-jp-specimen-example-1.md) | 検体材料（尿） |
 | [JP Core Specimen Example 検体材料（血液）](Specimen-jp-specimen-example-2.md) | 検体材料（血液） |
+| [JP Core Specimen Pathology Example](Specimen-JP-Specimen-Pathology-Example.md) | 病理診断レポート用検体情報のサンプルインスタンス |
+| [JP ImagingStudy Pathology Example 病理WSI画像](ImagingStudy-jp-imagingstudy-pathology-example-1.md) | 病理WSI画像のImagingStudyリソース例 |
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および

@@ -15,16 +15,16 @@
 * **項目**: *Title*
   * **内容**: JP Core ImagingStudy Pathology Profile
 * **項目**: *Status*
-  * **内容**: Active ( 2026-08-06 )
+  * **内容**: Active ( 2026-08-10 )
 * **項目**: *Copyright*
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
-病理WSIのDICOM画像に関する情報を扱うためのプロファイル 
+病理WSIのDICOM画像に関する情報を記録するためのプロファイル 
 
 **Usages:**
 
-* This Profile is not used by any profiles in this Implementation Guide
+* Examples for this Profile: [ImagingStudy/jp-imagingstudy-pathology-example-1](ImagingStudy-jp-imagingstudy-pathology-example-1.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-imagingstudy-pathology)
 
@@ -51,7 +51,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
   "name" : "JP_ImagingStudy_Pathology",
   "title" : "JP Core ImagingStudy Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-06T12:23:16+00:00",
+  "date" : "2026-08-10T12:51:50+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
@@ -68,7 +68,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
       ]
     }
   ],
-  "description" : "病理WSIのDICOM画像に関する情報を扱うためのプロファイル",
+  "description" : "病理WSIのDICOM画像に関する情報を記録するためのプロファイル",
   "jurisdiction" : [
     {
       "coding" : [
@@ -134,7 +134,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
         "path" : "ImagingStudy.status",
         "short" : "DICOM画像のステータス【詳細参照】",
         "definition" : "DICOM画像のステータス",
-        "comment" : "登録済み | 利用可能 | 取消済み | エラーで入力 | 不明 http://hl7.org/fhir/ValueSet/imagingstudy-status|4.0.1"
+        "comment" : "登録済み | 利用可能 | 取消済み | エラーで入力 | 不明\n\nhttp://hl7.org/fhir/ValueSet/imagingstudy-status"
       },
       {
         "id" : "ImagingStudy.modality",
@@ -183,27 +183,45 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
         "path" : "ImagingStudy.basedOn",
         "short" : "他のシステムから依頼されたオーダ情報。【詳細参照】",
         "definition" : "他のシステムから依頼されたオーダ情報。",
-        "comment" : "通常、依頼元となるServiceRequestリソースを参照する。他のシステムと連携していない場合は参照不要。"
+        "comment" : "通常、依頼元となるServiceRequestリソースを参照する。\n他のシステムと連携していない場合は参照不要。"
       },
       {
         "id" : "ImagingStudy.referrer",
         "path" : "ImagingStudy.referrer",
         "short" : "依頼医師。必須ではない（ServiceRequestから参照できるため）。",
-        "definition" : "依頼医師。必須ではない（ServiceRequestから参照できるため）。"
+        "definition" : "依頼医師。必須ではない（ServiceRequestから参照できるため）。",
+        "type" : [
+          {
+            "code" : "Reference",
+            "targetProfile" : [
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner",
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole"
+            ]
+          }
+        ]
       },
       {
         "id" : "ImagingStudy.interpreter",
         "path" : "ImagingStudy.interpreter",
         "short" : "依頼医師。【詳細参照】",
         "definition" : "依頼医師。",
-        "comment" : "病理では、原則使用しない。"
+        "comment" : "病理では、原則使用しない。",
+        "type" : [
+          {
+            "code" : "Reference",
+            "targetProfile" : [
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner",
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole"
+            ]
+          }
+        ]
       },
       {
         "id" : "ImagingStudy.endpoint",
         "path" : "ImagingStudy.endpoint",
         "short" : "画像を診断した医師。【詳細参照】",
         "definition" : "画像を診断した医師。",
-        "comment" : "通常、病理医。病理では原則使用しない。"
+        "comment" : "通常、病理医。\n病理では原則使用しない。"
       },
       {
         "id" : "ImagingStudy.numberOfSeries",
@@ -237,14 +255,20 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
         "path" : "ImagingStudy.procedureCode",
         "short" : "実施された処置に関する情報。【詳細参照】",
         "definition" : "実施された処置に関する情報。",
-        "comment" : "病理では省略してよい。使用する場合には、JP Core Procedureを参照する。"
+        "comment" : "病理では省略してよい。\n使用する場合には、JP Core Procedureを参照する。"
       },
       {
         "id" : "ImagingStudy.location",
         "path" : "ImagingStudy.location",
         "short" : "実施された処置を表すコード。【詳細参照】",
         "definition" : "実施された処置を表すコード。",
-        "comment" : "病理では原則使用しない。"
+        "comment" : "病理では原則使用しない。",
+        "type" : [
+          {
+            "code" : "Reference",
+            "targetProfile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Location"]
+          }
+        ]
       },
       {
         "id" : "ImagingStudy.reasonCode",
@@ -258,7 +282,19 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
         "path" : "ImagingStudy.reasonReference",
         "short" : "DICOM画像が依頼された理由を表す1つ以上のコード。【詳細参照】",
         "definition" : "DICOM画像が依頼された理由を表す1つ以上のコード。",
-        "comment" : "病理では原則使用しない。"
+        "comment" : "病理では原則使用しない。",
+        "type" : [
+          {
+            "code" : "Reference",
+            "targetProfile" : [
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition",
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common",
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Common",
+              "http://hl7.org/fhir/StructureDefinition/DocumentReference",
+              "http://hl7.org/fhir/StructureDefinition/Media"
+            ]
+          }
+        ]
       },
       {
         "id" : "ImagingStudy.note",
@@ -297,7 +333,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
         "path" : "ImagingStudy.series.modality",
         "short" : "このシリーズが取得された撮影装置（モダリティ）。【詳細参照】",
         "definition" : "このシリーズが取得された撮影装置（モダリティ）。",
-        "comment" : "病理（WSI）を表すモダリティコード\"SM\"を指定する。1シリーズ1モダリティで、1つのシリーズの中に複数のモダリティが混在することはない。"
+        "comment" : "病理（WSI）を表すモダリティコード\"SM\"を指定する。\n1シリーズ1モダリティで、1つのシリーズの中に複数のモダリティが混在することはない。"
       },
       {
         "id" : "ImagingStudy.series.description",
@@ -372,7 +408,21 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
         "path" : "ImagingStudy.series.performer.actor",
         "short" : "このシリーズの撮影者、もしくは組織。【詳細参照】",
         "definition" : "このシリーズの撮影者、もしくは組織。",
-        "comment" : "病理では原則使用しない。"
+        "comment" : "病理では原則使用しない。",
+        "type" : [
+          {
+            "code" : "Reference",
+            "targetProfile" : [
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Practitioner",
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_PractitionerRole",
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization",
+              "http://hl7.org/fhir/StructureDefinition/CareTeam",
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient",
+              "http://hl7.org/fhir/StructureDefinition/Device",
+              "http://hl7.org/fhir/StructureDefinition/RelatedPerson"
+            ]
+          }
+        ]
       },
       {
         "id" : "ImagingStudy.series.instance",
@@ -392,7 +442,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
         "path" : "ImagingStudy.series.instance.sopClass",
         "short" : "SOPクラスUID。【詳細参照】",
         "definition" : "SOPクラスUID。",
-        "comment" : "病理では、主に以下の値が指定される。VL Whole Slide Microscopy Image Storage (VL全スライド顕微鏡画像保存): 1.2.840.10008.5.1.4.1.1.77.1.6"
+        "comment" : "病理では、主に以下の値が指定される。\nVL Whole Slide Microscopy Image Storage (VL全スライド顕微鏡画像保存): 1.2.840.10008.5.1.4.1.1.77.1.6"
       },
       {
         "id" : "ImagingStudy.series.instance.number",

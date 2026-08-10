@@ -1,10 +1,10 @@
-# JP Specimen Pathology Profile - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
+# JP Core Specimen Pathology Profile - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **JP Specimen Pathology Profile**
+* **JP Core Specimen Pathology Profile**
 
-## Resource Profile: JP Specimen Pathology Profile 
+## Resource Profile: JP Core Specimen Pathology Profile 
 
 * **項目**: *定義URL*
   * **内容**: http://jpfhir.jp/fhir/core/StructureDefinition/JP_Specimen_Pathology
@@ -13,18 +13,18 @@
 * **項目**: *Name*
   * **内容**: JP_Specimen_Pathology
 * **項目**: *Title*
-  * **内容**: JP Specimen Pathology Profile
+  * **内容**: JP Core Specimen Pathology Profile
 * **項目**: *Status*
-  * **内容**: Draft ( 2026-08-06 )
+  * **内容**: Active ( 2026-08-10 )
 * **項目**: *Copyright*
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
-病理検体を表現するためのプロファイル。病理診断レポートのユースケースでは、臓器そのものを表現する。 
+病理診断レポートにおいて臓器そのものを表現する検体情報を定義したプロファイル 
 
 **Usages:**
 
-* This Profile is not used by any profiles in this Implementation Guide
+* Examples for this Profile: [Specimen/JP-Specimen-Pathology-Example](Specimen-JP-Specimen-Pathology-Example.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-specimen-pathology)
 
@@ -49,9 +49,9 @@ Other representations of profile: [CSV](StructureDefinition-jp-specimen-patholog
   "url" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Specimen_Pathology",
   "version" : "1.3.0-dev",
   "name" : "JP_Specimen_Pathology",
-  "title" : "JP Specimen Pathology Profile",
-  "status" : "draft",
-  "date" : "2026-08-06T12:23:16+00:00",
+  "title" : "JP Core Specimen Pathology Profile",
+  "status" : "active",
+  "date" : "2026-08-10T12:51:50+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
@@ -68,7 +68,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-specimen-patholog
       ]
     }
   ],
-  "description" : "病理検体を表現するためのプロファイル。病理診断レポートのユースケースでは、臓器そのものを表現する。",
+  "description" : "病理診断レポートにおいて臓器そのものを表現する検体情報を定義したプロファイル",
   "jurisdiction" : [
     {
       "coding" : [
@@ -109,8 +109,8 @@ Other representations of profile: [CSV](StructureDefinition-jp-specimen-patholog
       {
         "id" : "Specimen",
         "path" : "Specimen",
-        "short" : "病理検体",
-        "definition" : "病理検体"
+        "short" : "病理診断レポートにおいて臓器そのものを表現する検体情報",
+        "definition" : "病理診断レポートにおいて臓器そのものを表現する検体情報"
       },
       {
         "id" : "Specimen.identifier",
@@ -155,18 +155,22 @@ Other representations of profile: [CSV](StructureDefinition-jp-specimen-patholog
         "definition" : "検体の受付日時"
       },
       {
+        "id" : "Specimen.parent",
+        "path" : "Specimen.parent",
+        "short" : "使用しない",
+        "definition" : "使用しない"
+      },
+      {
         "id" : "Specimen.request",
         "path" : "Specimen.request",
         "short" : "依頼目的。病理検査依頼元を示すServiceRequestリソースを参照",
-        "definition" : "依頼目的。病理検査依頼元を示すServiceRequestリソースを参照",
-        "type" : [
-          {
-            "code" : "Reference",
-            "targetProfile" : [
-              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ServiceRequest_Common"
-            ]
-          }
-        ]
+        "definition" : "依頼目的。病理検査依頼元を示すServiceRequestリソースを参照"
+      },
+      {
+        "id" : "Specimen.collection",
+        "path" : "Specimen.collection",
+        "short" : "検体採取に関する詳細情報",
+        "definition" : "検体採取に関する詳細情報"
       },
       {
         "id" : "Specimen.collection.collector",
@@ -203,6 +207,30 @@ Other representations of profile: [CSV](StructureDefinition-jp-specimen-patholog
         "path" : "Specimen.collection.bodySite",
         "short" : "検体部位",
         "definition" : "検体部位"
+      },
+      {
+        "id" : "Specimen.collection.fastingStatus[x]",
+        "path" : "Specimen.collection.fastingStatus[x]",
+        "short" : "使用しない",
+        "definition" : "使用しない"
+      },
+      {
+        "id" : "Specimen.processing",
+        "path" : "Specimen.processing",
+        "short" : "未使用",
+        "definition" : "未使用"
+      },
+      {
+        "id" : "Specimen.container",
+        "path" : "Specimen.container",
+        "short" : "未使用",
+        "definition" : "未使用"
+      },
+      {
+        "id" : "Specimen.condition",
+        "path" : "Specimen.condition",
+        "short" : "未使用",
+        "definition" : "未使用"
       },
       {
         "id" : "Specimen.note",

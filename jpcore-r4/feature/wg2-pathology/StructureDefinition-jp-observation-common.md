@@ -46,7 +46,7 @@ DiagnosticReport（検査レポート）リソースは一連の検査の臨床/
 **Usages:**
 
 * Derived from this Profile: [JP Core Observation BodyMeasurement Profile](StructureDefinition-jp-observation-bodymeasurement.md), [JP Core Observation DentalOral eCS Profile](StructureDefinition-jp-observation-dentaloral-ecs.md), [JP Core Observation DentalOral Missing Tooth Condition Profile](StructureDefinition-jp-observation-dentaloral-missingtoothcondition.md), [JP Core Observation DentalOral Tooth Existence Profile](StructureDefinition-jp-observation-dentaloral-toothexistence.md)...Show 10 more,[JP Core Observation DentalOral Tooth Treatment Condition Profile](StructureDefinition-jp-observation-dentaloral-toothtreatmentcondition.md),[JP Core Observation Electrocardiogram Profile](StructureDefinition-jp-observation-electrocardiogram.md),[JP Core Observation Endoscopy Profile](StructureDefinition-jp-observation-endoscopy.md),[JP Core Observation LabResult Profile](StructureDefinition-jp-observation-labresult.md),[JP Core Observation Microbiology Profile](StructureDefinition-jp-observation-microbiology.md),[JP Core Observation PhysicalExam Profile](StructureDefinition-jp-observation-physicalexam.md),[JP Core Observation Radiology Findings Profile](StructureDefinition-jp-observation-radiology-findings.md),[JP Core Observation Radiology Impression Profile](StructureDefinition-jp-observation-radiology-impression.md),[JP Core Observation SocialHistory Profile](StructureDefinition-jp-observation-socialhistory.md)and[JP Core Observation VitalSigns Profile](StructureDefinition-jp-observation-vitalsigns.md)
-* Refer to this Profile: [JP Core Condition Profile](StructureDefinition-jp-condition.md), [JP Core DiagnosticReport Pathology Profile](StructureDefinition-jp-diagnosticreport-pathology.md), [JP Core DiagnosticReport Radiology Profile](StructureDefinition-jp-diagnosticreport-radiology.md), [JP Core Encounter Profile](StructureDefinition-jp-encounter.md)...Show 14 more,[JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md),[JP Core ImagingStudy Radiology Profile](StructureDefinition-jp-imagingstudy-radiology.md),[JP Core MedicationAdministration Profile](StructureDefinition-jp-medicationadministration.md),[JP Core MedicationRequest Injection Profile](StructureDefinition-jp-medicationrequest-injection.md),[JP Core MedicationRequest Profile](StructureDefinition-jp-medicationrequest.md),[JP Core Observation BodyMeasurement Profile](StructureDefinition-jp-observation-bodymeasurement.md),[JP Core Observation Common Profile](StructureDefinition-jp-observation-common.md),[JP Core Observation Endoscopy Profile](StructureDefinition-jp-observation-endoscopy.md),[JP Core Observation PhysicalExam Profile](StructureDefinition-jp-observation-physicalexam.md),[JP Core Observation Radiology Findings Profile](StructureDefinition-jp-observation-radiology-findings.md),[JP Core Observation SocialHistory Profile](StructureDefinition-jp-observation-socialhistory.md),[JP Core Observation VitalSigns Profile](StructureDefinition-jp-observation-vitalsigns.md),[JP Core Procedure Profile](StructureDefinition-jp-procedure.md)and[JP Core ServiceRequest Common Profile](StructureDefinition-jp-servicerequest-common.md)
+* Refer to this Profile: [JP Core Condition Profile](StructureDefinition-jp-condition.md), [JP Core DiagnosticReport Pathology Profile](StructureDefinition-jp-diagnosticreport-pathology.md), [JP Core DiagnosticReport Radiology Profile](StructureDefinition-jp-diagnosticreport-radiology.md), [JP Core Encounter Profile](StructureDefinition-jp-encounter.md)...Show 15 more,[JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md),[JP Core ImagingStudy Pathology Profile](StructureDefinition-jp-imagingstudy-pathology.md),[JP Core ImagingStudy Radiology Profile](StructureDefinition-jp-imagingstudy-radiology.md),[JP Core MedicationAdministration Profile](StructureDefinition-jp-medicationadministration.md),[JP Core MedicationRequest Injection Profile](StructureDefinition-jp-medicationrequest-injection.md),[JP Core MedicationRequest Profile](StructureDefinition-jp-medicationrequest.md),[JP Core Observation BodyMeasurement Profile](StructureDefinition-jp-observation-bodymeasurement.md),[JP Core Observation Common Profile](StructureDefinition-jp-observation-common.md),[JP Core Observation Endoscopy Profile](StructureDefinition-jp-observation-endoscopy.md),[JP Core Observation PhysicalExam Profile](StructureDefinition-jp-observation-physicalexam.md),[JP Core Observation Radiology Findings Profile](StructureDefinition-jp-observation-radiology-findings.md),[JP Core Observation SocialHistory Profile](StructureDefinition-jp-observation-socialhistory.md),[JP Core Observation VitalSigns Profile](StructureDefinition-jp-observation-vitalsigns.md),[JP Core Procedure Profile](StructureDefinition-jp-procedure.md)and[JP Core ServiceRequest Common Profile](StructureDefinition-jp-servicerequest-common.md)
 * CapabilityStatements using this Profile: [JP Core Client CapabilityStatement](CapabilityStatement-jp-client-capabilitystatement.md) and [JP Core Server CapabilityStatement](CapabilityStatement-jp-server-capabilitystatement.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-observation-common)
@@ -721,7 +721,8 @@ effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情
               "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationAdministration",
               "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationAdministration_Injection",
               "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationDispenseBase",
-              "http://hl7.org/fhir/StructureDefinition/MedicationStatement",
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationStatement",
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationStatement_Injection",
               "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure",
               "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization",
               "http://hl7.org/fhir/StructureDefinition/ImagingStudy"
@@ -787,7 +788,7 @@ effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情
         "path" : "Observation.subject",
         "short" : "このObservationの対象となる患者や患者群、機器、場所に関する情報",
         "definition" : "このObservationの対象となる患者や患者群、機器、場所に関する情報",
-        "comment" : "この要素は1..1のcardinalityになるはずと考えられる。この要素が欠損値になる唯一の状況は、対象患者が不明な機器によって観察が行われるケースである。この場合、観察は何らかのコンテキスト・チャネル照合技術を介して患者に照合される必要があり、患者に照合されれば、その時点で本要素を更新する必要がある。",
+        "comment" : "原則subjectを記述すべきだが、対象患者が不明なデバイス観察のケースを考慮し、cardinalityは0..1とする。",
         "type" : [
           {
             "code" : "Reference",
@@ -805,7 +806,7 @@ effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情
         "path" : "Observation.focus",
         "short" : "配偶者、親、胎児、ドナーなど、このObservationのsubject要素が実際の対象でない場合、その実際の対象に関する情報",
         "definition" : "配偶者、親、胎児、ドナーなど、このObservationのsubject要素が実際の対象でない場合、その実際の対象に関する情報",
-        "comment" : "T通常、observationは対象（患者、または患者のグループ、場所、またはデバイス）について行われ、対象とobservationのために直接測定されるものとの区別は、observationコード自体（例：「血糖値」 ）で記述され、この要素を使用して個別に表す必要はない。検体（標本）への参照が必要な場合は、 `specimen`要素を使用する。リソースの代わりにコードが必要な場合は、人体部位には`bodysite`要素を使用するか、標準の拡張機能[focusCode]（extension-observation-focuscode.html）を使用する。"
+        "comment" : "通常、observationは対象（患者、または患者のグループ、場所、またはデバイス）について行われ、対象とobservationのために直接測定されるものとの区別は、observationコード自体（例：「血糖値」 ）で記述され、この要素を使用して個別に表す必要はない。検体（標本）への参照が必要な場合は、 `specimen`要素を使用する。リソースの代わりにコードが必要な場合は、人体部位には`bodysite`要素を使用するか、標準の拡張機能[focusCode]（extension-observation-focuscode.html）を使用する。"
       },
       {
         "id" : "Observation.encounter",
@@ -970,7 +971,7 @@ effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情
         "short" : "複合的な結果。例えば、血圧測定値ではそれを構成する収縮期および拡張期の値の組み合わせ",
         "definition" : "複合的な結果。例えば、血圧測定値ではそれを構成する収縮期および拡張期の値の組み合わせ",
         "comment" : "複数のObservation をグループに一緒にまとめる方法については、以下の[Notes]（observation.html＃notes）を参照すること。",
-        "requirements" : "コンポーネントobservation は プライマリobservation としてのobservation リソースの中で同じ属性を共有し、常に単一のobservation の一部として扱われる（つまりそれらは分離可能ではないん）。ただし、プライマリobservationのreference rangeはコンポーネント値に継承されないため、reference rangeは各コンポーネントobservation に適切であれば必要である。"
+        "requirements" : "コンポーネントobservation は プライマリobservation としてのobservation リソースの中で同じ属性を共有し、常に単一のobservation の一部として扱われる（つまりそれらは分離可能ではない）。ただし、プライマリobservationのreference rangeはコンポーネント値に継承されないため、reference rangeは各コンポーネントobservation に適切であれば必要である。"
       }
     ]
   }
