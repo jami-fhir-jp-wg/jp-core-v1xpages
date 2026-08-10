@@ -12,7 +12,7 @@ Profile: [JP Core Observation BodyMeasurement Profile](StructureDefinition-jp-ob
 
 **category**: 身体計測, 体重
 
-**code**: abc-local-456
+**code**: 体重
 
 **subject**: [山田 太郎 Male, DoB: 1970-01-01 ( urn:oid:1.2.392.100495.20.3.51.11311234567#JP_local_patient_identifier_11311234567_NamingSystem#00000010)](Patient-jp-patient-example-1.md)
 
@@ -22,7 +22,7 @@ Profile: [JP Core Observation BodyMeasurement Profile](StructureDefinition-jp-ob
 
 **performer**: [Practitioner 大阪 一郎](Practitioner-jp-practitioner-example-male-1.md)
 
-**value**: 63.5 kg
+**value**: 63.5 kg(Details: UCUM codekg = 'kg')
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
@@ -64,11 +64,13 @@ Profile: [JP Core Observation BodyMeasurement Profile](StructureDefinition-jp-ob
     "coding" : [
       {
         "system" : "http://example.org/abc-hospital/fhir/Observation/localcode",
-        "code" : "abc-local-456"
+        "code" : "abc-local-456",
+        "display" : "体重"
       },
       {
         "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ObservationBodyMeasurementCode_CS",
-        "code" : "31000296"
+        "code" : "31000296",
+        "display" : "体重"
       }
     ]
   },
@@ -86,7 +88,9 @@ Profile: [JP Core Observation BodyMeasurement Profile](StructureDefinition-jp-ob
   ],
   "valueQuantity" : {
     "value" : 63.5,
-    "unit" : "kg"
+    "unit" : "kg",
+    "system" : "http://unitsofmeasure.org",
+    "code" : "kg"
   }
 }
 

@@ -244,7 +244,11 @@ GET [base]/DiagnosticReport?identifier=http://myhospital.com/fhir/diagnosticrepo
         "path" : "DiagnosticReport.category",
         "short" : "診断レポートを作成した臨床分野、部門、または診断サービス（心臓病学、生化学、血液学、放射線医学など）を分類するコード",
         "definition" : "診断レポートを作成した臨床分野、部門、または診断サービス（心臓病学、生化学、血液学、放射線医学など）を分類するコード",
-        "comment" : "これは、検索、並べ替え、および表示の目的で使用される。"
+        "comment" : "これは、検索、並べ替え、および表示の目的で使用される。",
+        "binding" : {
+          "strength" : "preferred",
+          "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS"
+        }
       },
       {
         "id" : "DiagnosticReport.category.coding.system",
@@ -310,8 +314,8 @@ GET [base]/DiagnosticReport?identifier=http://myhospital.com/fhir/diagnosticrepo
       {
         "id" : "DiagnosticReport.effective[x]",
         "path" : "DiagnosticReport.effective[x]",
-        "short" : "診断レポートの作成日時",
-        "definition" : "診断レポートの作成日時",
+        "short" : "診断レポートの対象となる検査・処置が実施された日時",
+        "definition" : "診断レポートの対象となる検査・処置が実施された日時",
         "comment" : "診断手順が患者に対して実行された場合、これは実施された時間である。対象が検体である場合は、検体採取時間から診断関連時刻を導き出すことができるが、検体情報が常に入手できるとは限らず、検体と診断関連時刻の正確な関係は必ずしも自明ではない。"
       },
       {
