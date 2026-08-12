@@ -181,7 +181,7 @@ ImagingStudyやmediaは多少オーバーラップするが、使用される目
   "name" : "JP_DiagnosticReport_Pathology",
   "title" : "JP Core DiagnosticReport Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-12T12:53:42+00:00",
+  "date" : "2026-08-12T13:21:20+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
@@ -279,9 +279,44 @@ ImagingStudyやmediaは多少オーバーラップするが、使用される目
       {
         "id" : "DiagnosticReport.category",
         "path" : "DiagnosticReport.category",
+        "slicing" : {
+          "discriminator" : [
+            {
+              "type" : "pattern",
+              "path" : "$this"
+            }
+          ],
+          "rules" : "open"
+        },
+        "min" : 1
+      },
+      {
+        "id" : "DiagnosticReport.category:first",
+        "path" : "DiagnosticReport.category",
+        "sliceName" : "first",
         "short" : "診断レポートの分野を表すコード【詳細参照】",
         "definition" : "診断レポートの分野を表すコード。",
-        "comment" : "Value Set：JPCore_DiagnosticReport_Categoryの中から「LP7839-6」（Pathology（病理））を指定する。"
+        "comment" : "Value Set：JPCore_DiagnosticReport_Categoryの中から「LP7839-6」（Pathology（病理））を指定する。",
+        "min" : 1,
+        "max" : "1",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "LP7839-6",
+              "display" : "病理"
+            }
+          ]
+        },
+        "binding" : {
+          "strength" : "required",
+          "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_DiagnosticReportCategory_VS"
+        }
+      },
+      {
+        "id" : "DiagnosticReport.category:first.coding.code",
+        "path" : "DiagnosticReport.category.coding.code",
+        "min" : 1
       },
       {
         "id" : "DiagnosticReport.code",

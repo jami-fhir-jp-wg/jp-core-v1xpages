@@ -9,4 +9,10 @@
     you may need to use this schematron fragment to build a, 
     single schematron that validates contained resources (if you have any) 
   -->
+  <sch:pattern>
+    <sch:title>f:DiagnosticReport/f:category/f:coding</sch:title>
+    <sch:rule context="f:DiagnosticReport/f:category/f:coding">
+      <sch:assert test="count(f:code) &gt;= 1">code: minimum cardinality of 'code' is 1</sch:assert>
+    </sch:rule>
+  </sch:pattern>
 </sch:schema>
