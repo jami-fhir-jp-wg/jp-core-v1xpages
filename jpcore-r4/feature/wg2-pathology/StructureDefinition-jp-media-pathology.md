@@ -81,7 +81,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-media-pathology.c
   "name" : "JP_Media_Pathology",
   "title" : "JP Core Media Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-12T07:45:23+00:00",
+  "date" : "2026-08-12T12:14:47+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
@@ -204,6 +204,11 @@ Other representations of profile: [CSV](StructureDefinition-jp-media-pathology.c
         "short" : "メディアの種類。【詳細参照】",
         "definition" : "メディアの種類。",
         "comment" : "使用する場合は、\"image\"を使用する。"
+      },
+      {
+        "id" : "Media.type.coding.code",
+        "path" : "Media.type.coding.code",
+        "fixedCode" : "image"
       },
       {
         "id" : "Media.modality",

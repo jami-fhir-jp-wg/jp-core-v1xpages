@@ -80,7 +80,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
   "name" : "JP_ImagingStudy_Pathology",
   "title" : "JP Core ImagingStudy Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-12T07:45:23+00:00",
+  "date" : "2026-08-12T12:14:47+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
@@ -171,6 +171,11 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
         "short" : "DICOM画像で使用された撮影装置（モダリティ）【詳細参照】",
         "definition" : "DICOM画像で使用された撮影装置（モダリティ）",
         "comment" : "病理（WSI）を表すモダリティコード\"SM\"を指定する。"
+      },
+      {
+        "id" : "ImagingStudy.modality.code",
+        "path" : "ImagingStudy.modality.code",
+        "fixedCode" : "SM"
       },
       {
         "id" : "ImagingStudy.subject",
@@ -358,6 +363,11 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
         "short" : "このシリーズが取得された撮影装置（モダリティ）【詳細参照】",
         "definition" : "このシリーズが取得された撮影装置（モダリティ）。",
         "comment" : "病理（WSI）を表すモダリティコード\"SM\"を指定する。1シリーズ1モダリティで、1つのシリーズの中に複数のモダリティが混在することはない。"
+      },
+      {
+        "id" : "ImagingStudy.series.modality.code",
+        "path" : "ImagingStudy.series.modality.code",
+        "fixedCode" : "SM"
       },
       {
         "id" : "ImagingStudy.series.description",

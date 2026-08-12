@@ -182,7 +182,7 @@ ImagingStudyやmediaは多少オーバーラップするが、使用される目
   "name" : "JP_DiagnosticReport_Pathology",
   "title" : "JP Core DiagnosticReport Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-12T07:45:23+00:00",
+  "date" : "2026-08-12T12:14:47+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
