@@ -62,7 +62,6 @@ DiagnosticReportリソースを使用して表現した病理診断レポート�
 **Usages:**
 
 * Refer to this Profile: [JP Core ImagingStudy Pathology Profile](StructureDefinition-jp-imagingstudy-pathology.md)
-* Examples for this Profile: [DiagnosticReport/JP-DiagnosticReport-Pathology-Example-1](DiagnosticReport-JP-DiagnosticReport-Pathology-Example-1.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-diagnosticreport-pathology)
 
@@ -182,7 +181,7 @@ ImagingStudyやmediaは多少オーバーラップするが、使用される目
   "name" : "JP_DiagnosticReport_Pathology",
   "title" : "JP Core DiagnosticReport Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-12T12:14:47+00:00",
+  "date" : "2026-08-12T12:53:42+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {

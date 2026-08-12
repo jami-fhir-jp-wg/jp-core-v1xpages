@@ -6295,20 +6295,6 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "DiagnosticReport"
-          }
-        ],
-        "reference" : {
-          "reference" : "DiagnosticReport/JP-DiagnosticReport-Pathology-Example-1"
-        },
-        "name" : "JP Core DiagnosticReport Pathology Example 1",
-        "description" : "病理診断レポートのインスタンス例",
-        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Pathology"
-      },
-      {
-        "extension" : [
-          {
-            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
             "valueString" : "StructureDefinition:resource"
           }
         ],
@@ -6738,20 +6724,6 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "name" : "JP Core media Endoscopy Profile",
         "description" : "このプロファイルはMediaリソースに対して、主に内視鏡検査で取得または使用される画像、映像、音声に関わるデータを送受信するための制約と拡張を定めたものである。",
         "exampleBoolean" : false
-      },
-      {
-        "extension" : [
-          {
-            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "Media"
-          }
-        ],
-        "reference" : {
-          "reference" : "Media/JP-Media-Pathology-Example-01"
-        },
-        "name" : "JP Core Media Pathology Example 01",
-        "description" : "病理画像メディアのサンプルインスタンス",
-        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Media_Pathology"
       },
       {
         "extension" : [
@@ -8927,20 +8899,6 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "Specimen"
-          }
-        ],
-        "reference" : {
-          "reference" : "Specimen/JP-Specimen-Pathology-Example"
-        },
-        "name" : "JP Core Specimen Pathology Example",
-        "description" : "病理診断レポート用検体情報のサンプルインスタンス",
-        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Specimen_Pathology"
-      },
-      {
-        "extension" : [
-          {
-            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
             "valueString" : "StructureDefinition:resource"
           }
         ],
@@ -8978,20 +8936,6 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "name" : "JP Core Undefined ValueSet",
         "description" : "未定義の値セット。使用する予定のコードシステムが利用できない場合や方針未決定の場合に割り振る特別なリソースである。",
         "exampleBoolean" : false
-      },
-      {
-        "extension" : [
-          {
-            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "ImagingStudy"
-          }
-        ],
-        "reference" : {
-          "reference" : "ImagingStudy/jp-imagingstudy-pathology-example-1"
-        },
-        "name" : "JP ImagingStudy Pathology Example 病理WSI画像",
-        "description" : "病理WSI画像のImagingStudyリソース例",
-        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Pathology"
       },
       {
         "extension" : [

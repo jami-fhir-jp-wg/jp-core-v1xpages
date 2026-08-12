@@ -44,7 +44,6 @@
 [JP_DiagnosticReport_Endoscopy]: StructureDefinition-jp-diagnosticreport-endoscopy.html
 [JP_DiagnosticReport_LabResult]: StructureDefinition-jp-diagnosticreport-labresult.html
 [JP_DiagnosticReport_Microbiology]: StructureDefinition-jp-diagnosticreport-microbiology.html
-[JP-DiagnosticReport-Pathology-Example-1]: DiagnosticReport-JP-DiagnosticReport-Pathology-Example-1.html
 [JP_DiagnosticReport_Pathology]: StructureDefinition-jp-diagnosticreport-pathology.html
 [jp-diagnosticreport-radiology-example-1]: DiagnosticReport-jp-diagnosticreport-radiology-example-1.html
 [JP_DiagnosticReport_Radiology]: StructureDefinition-jp-diagnosticreport-radiology.html
@@ -76,7 +75,6 @@
 [JP_Location]: StructureDefinition-jp-location.html
 [jp-media-endoscopy-example-1]: Media-jp-media-endoscopy-example-1.html
 [JP_Media_Endoscopy]: StructureDefinition-jp-media-endoscopy.html
-[JP-Media-Pathology-Example-01]: Media-JP-Media-Pathology-Example-01.html
 [JP_Media_Pathology]: StructureDefinition-jp-media-pathology.html
 [JP_MedicationDosage_Device]: StructureDefinition-jp-medicationdosage-device.html
 [JP_MedicationDosage_DosageComment]: StructureDefinition-jp-medicationdosage-dosagecomment.html
@@ -232,11 +230,9 @@
 [jp-specimen-example-3]: Specimen-jp-specimen-example-3.html
 [jp-specimen-example-1]: Specimen-jp-specimen-example-1.html
 [jp-specimen-example-2]: Specimen-jp-specimen-example-2.html
-[JP-Specimen-Pathology-Example]: Specimen-JP-Specimen-Pathology-Example.html
 [JP_Specimen_Pathology]: StructureDefinition-jp-specimen-pathology.html
 [JP_Undefined_CS]: CodeSystem-jp-undefined-cs.html
 [JP_Undefined_VS]: ValueSet-jp-undefined-vs.html
-[jp-imagingstudy-pathology-example-1]: ImagingStudy-jp-imagingstudy-pathology-example-1.html
 [jp-clins-bundle-identifier]: NamingSystem-jp-clins-bundle-identifier.html
 [jp-core-resourceInstance-identifier]: NamingSystem-jp-core-resourceInstance-identifier.html
 [jp-coverage-insuredpersonnumber-sp]: SearchParameter-jp-coverage-insuredpersonnumber-sp.html

@@ -53,7 +53,6 @@ ImagingStudyは一つのDICOMの検査を参照する必要があり、またそ
 **Usages:**
 
 * Refer to this Profile: [JP Core DiagnosticReport Pathology Profile](StructureDefinition-jp-diagnosticreport-pathology.md)
-* Examples for this Profile: [ImagingStudy/jp-imagingstudy-pathology-example-1](ImagingStudy-jp-imagingstudy-pathology-example-1.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-imagingstudy-pathology)
 
@@ -80,7 +79,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
   "name" : "JP_ImagingStudy_Pathology",
   "title" : "JP Core ImagingStudy Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-12T12:14:47+00:00",
+  "date" : "2026-08-12T12:53:42+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
