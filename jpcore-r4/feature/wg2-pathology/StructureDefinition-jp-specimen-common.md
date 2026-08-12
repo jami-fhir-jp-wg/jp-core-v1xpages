@@ -43,7 +43,8 @@
 
 **Usages:**
 
-* Refer to this Profile: [JP Core DiagnosticReport Pathology Profile](StructureDefinition-jp-diagnosticreport-pathology.md), [JP Core ImagingStudy Pathology Profile](StructureDefinition-jp-imagingstudy-pathology.md), [JP Core Observation Common Profile](StructureDefinition-jp-observation-common.md) and [JP Core ServiceRequest Common Profile](StructureDefinition-jp-servicerequest-common.md)
+* Derived from this Profile: [JP Core Specimen Pathology Profile](StructureDefinition-jp-specimen-pathology.md)
+* Refer to this Profile: [JP Core Observation Common Profile](StructureDefinition-jp-observation-common.md) and [JP Core ServiceRequest Common Profile](StructureDefinition-jp-servicerequest-common.md)
 * Examples for this Profile: [Specimen/jp-specimen-example-1](Specimen-jp-specimen-example-1.md), [Specimen/jp-specimen-example-2](Specimen-jp-specimen-example-2.md) and [Specimen/jp-specimen-example-3](Specimen-jp-specimen-example-3.md)
 * CapabilityStatements using this Profile: [JP Core Client CapabilityStatement](CapabilityStatement-jp-client-capabilitystatement.md) and [JP Core Server CapabilityStatement](CapabilityStatement-jp-server-capabilitystatement.md)
 

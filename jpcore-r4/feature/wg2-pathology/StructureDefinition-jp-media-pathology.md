@@ -15,15 +15,45 @@
 * **項目**: *Title*
   * **内容**: JP Core Media Pathology Profile
 * **項目**: *Status*
-  * **内容**: Active ( 2026-08-10 )
+  * **内容**: Active ( 2026-08-12 )
 * **項目**: *Copyright*
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
-病理で取得または使用される画像に関わる情報を扱うプロファイル 
+このプロファイルはMediaリソースに対して、病理で取得または使用される画像に関わるデータを送受信するための制約と拡張を定めたものである。 
+
+このプロファイルはMediaリソースに対して、主に病理診断で取得または使用されるNon-DICOMフォーマットの画像、映像、音声記録に関わるデータを送受信するための制約と拡張を定めたものである。
+
+## 背景および想定シナリオ
+
+本プロファイルは、主に病理診断で取得または使用されるNon-DICOMフォーマットの画像、映像、音声記録に関わるデータを取り扱うことを想定している。
+
+* 診断、またはケア提供手順の記録を目的とした画像、映像、音声
+* 診断レポートに含まれる画像
+* 病理診断における顕微鏡画像（Non-DICOM形式）
+* デジタル病理画像（WSI: Whole Slide Imaging）
+* 肉眼写真や標本写真
+
+## スコープ
+
+このプロファイルでは、上記想定シナリオにて用いられるMediaの用途がスコープであり、病理診断において画像や映像を取り扱う際に必要な要件を定義している。
+
+病理診断においてMediaリソースで取り扱われることが想定される画像の種類は以下の通りである：
+
+* HE染色画像
+* 特殊染色画像
+* 免疫組織化学染色画像
+* 肉眼写真
+* 標本写真（マクロ写真）
+* デジタル病理画像（WSI）
+
+## プロファイル定義
+
+[プロファイル定義を参照][JP_Media_Pathology]
 
 **Usages:**
 
+* Refer to this Profile: [JP Core DiagnosticReport Pathology Profile](StructureDefinition-jp-diagnosticreport-pathology.md)
 * Examples for this Profile: [Media/JP-Media-Pathology-Example-01](Media-JP-Media-Pathology-Example-01.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-media-pathology)
@@ -51,7 +81,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-media-pathology.c
   "name" : "JP_Media_Pathology",
   "title" : "JP Core Media Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-10T12:51:50+00:00",
+  "date" : "2026-08-12T07:04:31+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
@@ -68,7 +98,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-media-pathology.c
       ]
     }
   ],
-  "description" : "病理で取得または使用される画像に関わる情報を扱うプロファイル",
+  "description" : "このプロファイルはMediaリソースに対して、病理で取得または使用される画像に関わるデータを送受信するための制約と拡張を定めたものである。",
   "jurisdiction" : [
     {
       "coding" : [
@@ -143,7 +173,16 @@ Other representations of profile: [CSV](StructureDefinition-jp-media-pathology.c
         "path" : "Media.basedOn",
         "short" : "他のシステムから依頼されたオーダ情報。【詳細参照】",
         "definition" : "他のシステムから依頼されたオーダ情報。",
-        "comment" : "通常、依頼元となるServiceRequestリソースを参照する。他のシステムと連携していない場合は参照不要。"
+        "comment" : "通常、依頼元となるServiceRequestリソースを参照する。他のシステムと連携していない場合は参照不要。",
+        "type" : [
+          {
+            "code" : "Reference",
+            "targetProfile" : [
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ServiceRequest_Common",
+              "http://hl7.org/fhir/StructureDefinition/CarePlan"
+            ]
+          }
+        ]
       },
       {
         "id" : "Media.partOf",

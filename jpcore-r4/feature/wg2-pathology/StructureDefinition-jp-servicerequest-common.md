@@ -66,7 +66,7 @@ ServiceRequestリソースは[CommunicationRequest](http://hl7.org/fhir/R4/commu
 
 **Usages:**
 
-* Refer to this Profile: [JP Core MedicationRequest Injection Profile](StructureDefinition-jp-medicationrequest-injection.md), [JP Core MedicationRequest Profile](StructureDefinition-jp-medicationrequest.md) and [JP Core ServiceRequest Common Profile](StructureDefinition-jp-servicerequest-common.md)
+* Refer to this Profile: [JP Core DiagnosticReport Pathology Profile](StructureDefinition-jp-diagnosticreport-pathology.md), [JP Core Media Pathology Profile](StructureDefinition-jp-media-pathology.md), [JP Core MedicationRequest Injection Profile](StructureDefinition-jp-medicationrequest-injection.md), [JP Core MedicationRequest Profile](StructureDefinition-jp-medicationrequest.md) and [JP Core ServiceRequest Common Profile](StructureDefinition-jp-servicerequest-common.md)
 * Examples for this Profile: [ServiceRequest/jp-servicerequest-department-example-03](ServiceRequest-jp-servicerequest-department-example-03.md)
 * CapabilityStatements using this Profile: [JP Core Client CapabilityStatement](CapabilityStatement-jp-client-capabilitystatement.md) and [JP Core Server CapabilityStatement](CapabilityStatement-jp-server-capabilitystatement.md)
 

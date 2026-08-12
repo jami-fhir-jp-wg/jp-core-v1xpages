@@ -84,14 +84,18 @@ JP Core FHIR コンテンツ: JP Core で利用する FHIR の詳細について
  
  
 * Specimen （検体） 
-* [JP Core Specimen Common （共通）プロファイル](StructureDefinition-jp-specimen-common.md)
+* [JP Core Specimen Common （共通）プロファイル](StructureDefinition-jp-specimen-common.md) 
+* [JP Core Specimen Pathology（病理）プロファイル][JP_Specimen_Pathology]
+ 
  
 * Media （メディア） 
 * [JP Core Media Endoscopy（内視鏡検査）プロファイル](StructureDefinition-jp-media-endoscopy.md)
+* [JP Core Media Pathology（病理）プロファイル][JP_Media_Pathology]
  
 * ImagingStudy （画像検査） 
 * [JP Core ImagingStudy Radiology（放射線検査）プロファイル](StructureDefinition-jp-imagingstudy-radiology.md)
 * [JP Core ImagingStudy Endoscopy（内視鏡検査）プロファイル](StructureDefinition-jp-imagingstudy-endoscopy.md)
+* [JP Core ImagingStudy Pathology（病理）プロファイル][JP_ImagingStudy_Pathology]
  
 * DiagnosticReport （診断レポート） 
 * [JP Core DiagnosticReport Common （共通）プロファイル](StructureDefinition-jp-diagnosticreport-common.md) 
@@ -100,6 +104,7 @@ JP Core FHIR コンテンツ: JP Core で利用する FHIR の詳細について
 * [JP Core DiagnosticReport Radiology （放射線検査レポート）プロファイル](StructureDefinition-jp-diagnosticreport-radiology.md)
 * [JP Core DiagnosticReport Endoscopy （内視鏡レポート）プロファイル](StructureDefinition-jp-diagnosticreport-endoscopy.md)
 * [JP Core DiagnosticReport DentalOral （口腔診査レポート）プロファイル](StructureDefinition-jp-diagnosticreport-dentaloral.md)
+* [JP Core DiagnosticReport Pathology （病理レポート）プロファイル][JP_DiagnosticReport_Pathology]
  
  
  
@@ -6311,7 +6316,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "StructureDefinition/jp-diagnosticreport-pathology"
         },
         "name" : "JP Core DiagnosticReport Pathology Profile",
-        "description" : "病理にて作成された診断レポート。",
+        "description" : "このプロファイルはDiagnosticReportリソースに対して、病理分野の診断レポートのデータを送受信するための制約と拡張を定めたものである。",
         "exampleBoolean" : false
       },
       {
@@ -6535,7 +6540,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "StructureDefinition/jp-imagingstudy-pathology"
         },
         "name" : "JP Core ImagingStudy Pathology Profile",
-        "description" : "病理WSIのDICOM画像に関する情報を記録するためのプロファイル",
+        "description" : "このプロファイルはImagingStudyリソースに対して、病理WSIのDICOM画像に関するデータを送受信するための制約と拡張を定めたものである。",
         "exampleBoolean" : false
       },
       {
@@ -6759,7 +6764,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "StructureDefinition/jp-media-pathology"
         },
         "name" : "JP Core Media Pathology Profile",
-        "description" : "病理で取得または使用される画像に関わる情報を扱うプロファイル",
+        "description" : "このプロファイルはMediaリソースに対して、病理で取得または使用される画像に関わるデータを送受信するための制約と拡張を定めたものである。",
         "exampleBoolean" : false
       },
       {
@@ -8943,7 +8948,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "StructureDefinition/jp-specimen-pathology"
         },
         "name" : "JP Core Specimen Pathology Profile",
-        "description" : "病理診断レポートにおいて臓器そのものを表現する検体情報を定義したプロファイル",
+        "description" : "このプロファイルはSpecimenリソースに対して、病理診断レポートにおいて臓器そのものを表現する検体情報のデータを送受信するための制約と拡張を定めたものである。",
         "exampleBoolean" : false
       },
       {

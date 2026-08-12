@@ -46,16 +46,16 @@
 | [JP Core DiagnosticReport Endoscopy Profile](StructureDefinition-jp-diagnosticreport-endoscopy.md) | このプロファイルはDiagnosticReportリソースに対して、内視鏡を使用して実施された検査、治療に関わるデータを送受信するための制約と拡張を定めたものである。 |
 | [JP Core DiagnosticReport LabResult Profile](StructureDefinition-jp-diagnosticreport-labresult.md) | このプロファイルはDiagnosticReportリソースに対して、検体検査結果のデータを送受信するための制約と拡張を定めたものである。 |
 | [JP Core DiagnosticReport Microbiology Profile](StructureDefinition-jp-diagnosticreport-microbiology.md) | このプロファイルはDiagnosticReportリソースに対して、データを送受信するための微生物学検査レポートの制約と拡張を定めたものである。 |
-| [JP Core DiagnosticReport Pathology Profile](StructureDefinition-jp-diagnosticreport-pathology.md) | 病理にて作成された診断レポート。 |
+| [JP Core DiagnosticReport Pathology Profile](StructureDefinition-jp-diagnosticreport-pathology.md) | このプロファイルはDiagnosticReportリソースに対して、病理分野の診断レポートのデータを送受信するための制約と拡張を定めたものである。 |
 | [JP Core DiagnosticReport Radiology Profile](StructureDefinition-jp-diagnosticreport-radiology.md) | このプロファイルはDiagnosticReportリソースに対して、放射線検査報告書（レポート）のデータを送受信するための制約と拡張を定めたものである。 |
 | [JP Core Encounter Profile](StructureDefinition-jp-encounter.md) | このプロファイルはEncounterリソースに対して、来院/入院情報のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
 | [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md) | このプロファイルはFamilyMemberHistoryリソースに対して、データを送受信するための共通の制約と拡張を定めたものである。 |
 | [JP Core ImagingStudy Endoscopy Profile](StructureDefinition-jp-imagingstudy-endoscopy.md) | このプロファイルはImagingStudyリソースに対して、主に内視鏡検査で撮影された画像に関わるデータを送受信するための制約と拡張を定めたものである。 |
-| [JP Core ImagingStudy Pathology Profile](StructureDefinition-jp-imagingstudy-pathology.md) | 病理WSIのDICOM画像に関する情報を記録するためのプロファイル |
+| [JP Core ImagingStudy Pathology Profile](StructureDefinition-jp-imagingstudy-pathology.md) | このプロファイルはImagingStudyリソースに対して、病理WSIのDICOM画像に関するデータを送受信するための制約と拡張を定めたものである。 |
 | [JP Core ImagingStudy Radiology Profile](StructureDefinition-jp-imagingstudy-radiology.md) | このプロファイルはImagingStudyリソースに対して、放射線検査画像のデータを送受信するための制約と拡張を定めたものである。 |
 | [JP Core Immunization Profile](StructureDefinition-jp-immunization.md) | このプロファイルはImmunizationリソースに対して日本での予防接種情報を送受信するための制約と拡張を加えたものである。 |
 | [JP Core Location Profile](StructureDefinition-jp-location.md) | このプロファイルはLocationリソースに対して、所在場所のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
-| [JP Core Media Pathology Profile](StructureDefinition-jp-media-pathology.md) | 病理で取得または使用される画像に関わる情報を扱うプロファイル |
+| [JP Core Media Pathology Profile](StructureDefinition-jp-media-pathology.md) | このプロファイルはMediaリソースに対して、病理で取得または使用される画像に関わるデータを送受信するための制約と拡張を定めたものである。 |
 | [JP Core Medication Profile](StructureDefinition-jp-medication.md) | このプロファイルはMedicationリソースに対して、主に薬剤データを送受信するための基礎となる制約と拡張を定めたものである。 |
 | [JP Core MedicationAdministration Injection Profile](StructureDefinition-jp-medicationadministration-injection.md) | このプロファイルはMedicationAdministrationリソースに対して、注射薬剤処方投与実施情報のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
 | [JP Core MedicationAdministration Profile](StructureDefinition-jp-medicationadministration.md) | このプロファイルはMedicationAdministrationリソースに対して、内服・外用薬剤処方投与実施情報のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
@@ -89,7 +89,7 @@
 | [JP Core PractitionerRole Profile](StructureDefinition-jp-practitionerrole.md) | このプロファイルはPractitionerRoleリソースに対して、医療従事者役割のデータを送受信するための基礎となる制約と拡張を定めたものである。 |
 | [JP Core Procedure Profile](StructureDefinition-jp-procedure.md) | このプロファイルはProcedureリソースに対して、患者に対する医療的な処置のデータを送受信するための共通の制約と拡張を定めたものである。 |
 | [JP Core ServiceRequest Common Profile](StructureDefinition-jp-servicerequest-common.md) | 本プロファイル説明は、患者に対し立案・実施されるリクエストの記録で、行為や診断、もしくは他のサービスのために用いられるFHIR ServiceRequestリソースを使用するにあたっての、最低限の制約を記述したものである。 |
-| [JP Core Specimen Pathology Profile](StructureDefinition-jp-specimen-pathology.md) | 病理診断レポートにおいて臓器そのものを表現する検体情報を定義したプロファイル |
+| [JP Core Specimen Pathology Profile](StructureDefinition-jp-specimen-pathology.md) | このプロファイルはSpecimenリソースに対して、病理診断レポートにおいて臓器そのものを表現する検体情報のデータを送受信するための制約と拡張を定めたものである。 |
 | [JP Core media Endoscopy Profile](StructureDefinition-jp-media-endoscopy.md) | このプロファイルはMediaリソースに対して、主に内視鏡検査で取得または使用される画像、映像、音声に関わるデータを送受信するための制約と拡張を定めたものである。 |
 | [JP_Binary](StructureDefinition-jp-binary.md) | JP_Binary 暫定プロファイル |
 | [JP_CarePlan](StructureDefinition-jp-careplan.md) | JP_CarePlan 暫定プロファイル |

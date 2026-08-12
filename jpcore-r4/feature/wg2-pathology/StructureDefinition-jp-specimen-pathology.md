@@ -15,15 +15,16 @@
 * **項目**: *Title*
   * **内容**: JP Core Specimen Pathology Profile
 * **項目**: *Status*
-  * **内容**: Active ( 2026-08-10 )
+  * **内容**: Active ( 2026-08-12 )
 * **項目**: *Copyright*
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
-病理診断レポートにおいて臓器そのものを表現する検体情報を定義したプロファイル 
+このプロファイルはSpecimenリソースに対して、病理診断レポートにおいて臓器そのものを表現する検体情報のデータを送受信するための制約と拡張を定めたものである。 
 
 **Usages:**
 
+* Refer to this Profile: [JP Core DiagnosticReport Pathology Profile](StructureDefinition-jp-diagnosticreport-pathology.md) and [JP Core ImagingStudy Pathology Profile](StructureDefinition-jp-imagingstudy-pathology.md)
 * Examples for this Profile: [Specimen/JP-Specimen-Pathology-Example](Specimen-JP-Specimen-Pathology-Example.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-specimen-pathology)
@@ -51,7 +52,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-specimen-patholog
   "name" : "JP_Specimen_Pathology",
   "title" : "JP Core Specimen Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-10T12:51:50+00:00",
+  "date" : "2026-08-12T07:04:31+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
@@ -68,7 +69,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-specimen-patholog
       ]
     }
   ],
-  "description" : "病理診断レポートにおいて臓器そのものを表現する検体情報を定義したプロファイル",
+  "description" : "このプロファイルはSpecimenリソースに対して、病理診断レポートにおいて臓器そのものを表現する検体情報のデータを送受信するための制約と拡張を定めたものである。",
   "jurisdiction" : [
     {
       "coding" : [
@@ -102,7 +103,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-specimen-patholog
   "kind" : "resource",
   "abstract" : false,
   "type" : "Specimen",
-  "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Specimen",
+  "baseDefinition" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Specimen_Common",
   "derivation" : "constraint",
   "differential" : {
     "element" : [
@@ -182,7 +183,12 @@ Other representations of profile: [CSV](StructureDefinition-jp-specimen-patholog
         "id" : "Specimen.collection.collected[x]",
         "path" : "Specimen.collection.collected[x]",
         "short" : "検体採取日時",
-        "definition" : "検体採取日時"
+        "definition" : "検体採取日時",
+        "type" : [
+          {
+            "code" : "dateTime"
+          }
+        ]
       },
       {
         "id" : "Specimen.collection.duration",
