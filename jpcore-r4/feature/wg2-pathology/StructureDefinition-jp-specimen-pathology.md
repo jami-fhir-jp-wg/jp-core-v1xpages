@@ -51,7 +51,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-specimen-patholog
   "name" : "JP_Specimen_Pathology",
   "title" : "JP Core Specimen Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-13T00:17:30+00:00",
+  "date" : "2026-08-13T00:49:15+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
