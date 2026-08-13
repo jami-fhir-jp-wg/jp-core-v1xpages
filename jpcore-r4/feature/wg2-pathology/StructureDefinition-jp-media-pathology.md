@@ -51,7 +51,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-media-pathology.c
   "name" : "JP_Media_Pathology",
   "title" : "JP Core Media Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-13T00:49:15+00:00",
+  "date" : "2026-08-13T01:04:13+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {

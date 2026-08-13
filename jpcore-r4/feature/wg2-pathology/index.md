@@ -1652,6 +1652,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           },
           {
             "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Pathology"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Radiology"
           }
         ],
@@ -1730,6 +1743,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           },
           {
             "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Pathology"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Radiology"
           }
         ],
@@ -1770,6 +1796,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Media_Endoscopy"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Media_Pathology"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -2394,6 +2433,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Specimen_Common"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Specimen_Pathology"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -4353,6 +4405,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           },
           {
             "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Pathology"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Radiology"
           }
         ],
@@ -4431,6 +4496,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           },
           {
             "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Pathology"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ImagingStudy_Radiology"
           }
         ],
@@ -4471,6 +4549,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Media_Endoscopy"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Media_Pathology"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -5095,6 +5186,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Specimen_Common"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Specimen_Pathology"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
