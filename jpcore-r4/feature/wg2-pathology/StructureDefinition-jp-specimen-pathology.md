@@ -15,7 +15,7 @@
 * **項目**: *Title*
   * **内容**: JP Core Specimen Pathology Profile
 * **項目**: *Status*
-  * **内容**: Active ( 2026-08-12 )
+  * **内容**: Active ( 2026-08-13 )
 * **項目**: *Copyright*
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
@@ -51,7 +51,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-specimen-patholog
   "name" : "JP_Specimen_Pathology",
   "title" : "JP Core Specimen Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-12T13:21:20+00:00",
+  "date" : "2026-08-13T00:17:30+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
