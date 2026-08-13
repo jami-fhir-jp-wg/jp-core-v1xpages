@@ -30,17 +30,17 @@
  
 * Specimen （検体） 
 * [JP Core Specimen Common （共通）プロファイル](StructureDefinition-jp-specimen-common.md) 
-* [JP Core Specimen Pathology（病理）プロファイル][JP_Specimen_Pathology]
+* [JP Core Specimen Pathology（病理）プロファイル](StructureDefinition-jp-specimen-pathology.md)
  
  
 * Media （メディア） 
 * [JP Core Media Endoscopy（内視鏡検査）プロファイル](StructureDefinition-jp-media-endoscopy.md)
-* [JP Core Media Pathology（病理）プロファイル][JP_Media_Pathology]
+* [JP Core Media Pathology（病理）プロファイル](StructureDefinition-jp-media-pathology.md)
  
 * ImagingStudy （画像検査） 
 * [JP Core ImagingStudy Radiology（放射線検査）プロファイル](StructureDefinition-jp-imagingstudy-radiology.md)
 * [JP Core ImagingStudy Endoscopy（内視鏡検査）プロファイル](StructureDefinition-jp-imagingstudy-endoscopy.md)
-* [JP Core ImagingStudy Pathology（病理）プロファイル][JP_ImagingStudy_Pathology]
+* [JP Core ImagingStudy Pathology（病理）プロファイル](StructureDefinition-jp-imagingstudy-pathology.md)
  
 * DiagnosticReport （診断レポート） 
 * [JP Core DiagnosticReport Common （共通）プロファイル](StructureDefinition-jp-diagnosticreport-common.md)
@@ -49,7 +49,7 @@
 * [JP Core DiagnosticReport Radiology （放射線検査レポート）プロファイル](StructureDefinition-jp-diagnosticreport-radiology.md)
 * [JP Core DiagnosticReport Endoscopy （内視鏡レポート）プロファイル](StructureDefinition-jp-diagnosticreport-endoscopy.md)
 * [JP Core DiagnosticReport DentalOral （口腔診査レポート）プロファイル](StructureDefinition-jp-diagnosticreport-dentaloral.md)
-* [JP Core DiagnosticReport Pathology （病理レポート）プロファイル][JP_DiagnosticReport_Pathology]
+* [JP Core DiagnosticReport Pathology （病理レポート）プロファイル](StructureDefinition-jp-diagnosticreport-pathology.md)
  
 
 ### Extensions
