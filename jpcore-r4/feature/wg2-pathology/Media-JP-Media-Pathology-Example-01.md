@@ -16,7 +16,7 @@ Profile: [JP Core Media Pathology Profile](StructureDefinition-jp-media-patholog
 
 **modality**: External-camera Photography
 
-**subject**: [Patient/jp-patient-example-01](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/jpfhir-terminology/Patient/jp-patient-example-01)
+**subject**: [山田 太郎 Male, DoB: 1970-01-01 ( urn:oid:1.2.392.100495.20.3.51.11311234567#JP_local_patient_identifier_11311234567_NamingSystem#00000010)](Patient-jp-patient-example-1.md)
 
 **issued**: 2026-08-10 10:30:00+0900
 
@@ -75,7 +75,7 @@ Profile: [JP Core Media Pathology Profile](StructureDefinition-jp-media-patholog
     ]
   },
   "subject" : {
-    "reference" : "Patient/jp-patient-example-01"
+    "reference" : "Patient/jp-patient-example-1"
   },
   "issued" : "2026-08-10T10:30:00+09:00",
   "content" : {

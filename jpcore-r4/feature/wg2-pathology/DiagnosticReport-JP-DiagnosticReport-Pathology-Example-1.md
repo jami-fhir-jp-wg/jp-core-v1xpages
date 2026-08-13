@@ -15,16 +15,12 @@ Profile: [JP Core DiagnosticReport Pathology Profile](StructureDefinition-jp-dia
 | Subject | 山田 太郎 Male, DoB: 1970-01-01 ( urn:oid:1.2.392.100495.20.3.51.11311234567#JP_local_patient_identifier_11311234567_NamingSystem#00000010) |
 | When For | 2026-08-10 10:30:00+0900 |
 | Reported | 2026-08-10 14:00:00+0900 |
-| Performer | [Practitioner/jp-practitioner-example-1](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/jpfhir-terminology/Practitioner/jp-practitioner-example-1) |
+| Performer | [Practitioner 東京 春子](Practitioner-jp-practitioner-example-female-1.md) |
 | Identifier | `http://hospital.example.org/fhir/pathology-report-id`/P2026-001234-v1 |
 
 **Report Details**
 
 胃体部の腺癌。深達度pT2（MP）。リンパ節転移陰性。
-
-**Coded Conclusions:**
-
-* Adenocarcinoma, NOS
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
@@ -78,12 +74,12 @@ Profile: [JP Core DiagnosticReport Pathology Profile](StructureDefinition-jp-dia
   "issued" : "2026-08-10T14:00:00+09:00",
   "performer" : [
     {
-      "reference" : "Practitioner/jp-practitioner-example-1"
+      "reference" : "Practitioner/jp-practitioner-example-female-1"
     }
   ],
   "resultsInterpreter" : [
     {
-      "reference" : "Practitioner/jp-practitioner-example-2"
+      "reference" : "Practitioner/jp-practitioner-example-male-1"
     }
   ],
   "specimen" : [
@@ -92,17 +88,6 @@ Profile: [JP Core DiagnosticReport Pathology Profile](StructureDefinition-jp-dia
     }
   ],
   "conclusion" : "胃体部の腺癌。深達度pT2（MP）。リンパ節転移陰性。",
-  "conclusionCode" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:oid:2.16.840.1.113883.6.43.1",
-          "code" : "8140/3",
-          "display" : "Adenocarcinoma, NOS"
-        }
-      ]
-    }
-  ],
   "presentedForm" : [
     {
       "contentType" : "application/pdf",

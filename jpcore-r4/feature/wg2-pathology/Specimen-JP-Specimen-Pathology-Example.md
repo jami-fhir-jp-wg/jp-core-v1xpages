@@ -16,7 +16,7 @@ Profile: [JP Core Specimen Pathology Profile](StructureDefinition-jp-specimen-pa
 
 **type**: 組織
 
-**subject**: [Patient/jp-patient-example](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/jpfhir-terminology/Patient/jp-patient-example)
+**subject**: [山田 太郎 Male, DoB: 1970-01-01 ( urn:oid:1.2.392.100495.20.3.51.11311234567#JP_local_patient_identifier_11311234567_NamingSystem#00000010)](Patient-jp-patient-example-1.md)
 
 **receivedTime**: 2026-08-10 10:30:00+0900
 
@@ -25,7 +25,7 @@ Profile: [JP Core Specimen Pathology Profile](StructureDefinition-jp-specimen-pa
 | | | | | |
 | :--- | :--- | :--- | :--- | :--- |
 | - | **Collector** | **Collected[x]** | **Method** | **BodySite** |
-| * | [Practitioner/jp-practitioner-example](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/jpfhir-terminology/Practitioner/jp-practitioner-example) | 2026-08-10 09:00:00+0900 | 生検 | 胃 |
+| * | [Practitioner 東京 春子](Practitioner-jp-practitioner-example-female-1.md) | 2026-08-10 09:00:00+0900 | 生検 | 胃 |
 
 **note**: 
 
@@ -71,12 +71,12 @@ Profile: [JP Core Specimen Pathology Profile](StructureDefinition-jp-specimen-pa
     "text" : "組織"
   },
   "subject" : {
-    "reference" : "Patient/jp-patient-example"
+    "reference" : "Patient/jp-patient-example-1"
   },
   "receivedTime" : "2026-08-10T10:30:00+09:00",
   "collection" : {
     "collector" : {
-      "reference" : "Practitioner/jp-practitioner-example"
+      "reference" : "Practitioner/jp-practitioner-example-female-1"
     },
     "collectedDateTime" : "2026-08-10T09:00:00+09:00",
     "method" : {
