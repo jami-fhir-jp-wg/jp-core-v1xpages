@@ -25,6 +25,7 @@
 **Usages:**
 
 * Refer to this Profile: [JP Core ImagingStudy Pathology Profile](StructureDefinition-jp-imagingstudy-pathology.md)
+* Examples for this Profile: [DiagnosticReport/JP-DiagnosticReport-Pathology-Example-1](DiagnosticReport-JP-DiagnosticReport-Pathology-Example-1.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-diagnosticreport-pathology)
 
@@ -51,7 +52,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-diagnosticreport-
   "name" : "JP_DiagnosticReport_Pathology",
   "title" : "JP Core DiagnosticReport Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-13T13:00:31+00:00",
+  "date" : "2026-08-13T13:31:56+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
