@@ -51,7 +51,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-media-pathology.c
   "name" : "JP_Media_Pathology",
   "title" : "JP Core Media Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-13T01:37:50+00:00",
+  "date" : "2026-08-13T08:49:13+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
@@ -185,7 +185,11 @@ Other representations of profile: [CSV](StructureDefinition-jp-media-pathology.c
         "path" : "Media.modality",
         "short" : "メディアを取得・撮影した装置（モダリティ）。【詳細参照】",
         "definition" : "メディアを取得・撮影した装置（モダリティ）。",
-        "comment" : "使用する場合、臓器画像は\"XC\"、顕微鏡画像は\"GM\"を指定する。"
+        "comment" : "使用する場合、臓器画像は\"XC\"、顕微鏡画像は\"GM\"を指定する。",
+        "binding" : {
+          "strength" : "required",
+          "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_DICOMModality_VS"
+        }
       },
       {
         "id" : "Media.view",

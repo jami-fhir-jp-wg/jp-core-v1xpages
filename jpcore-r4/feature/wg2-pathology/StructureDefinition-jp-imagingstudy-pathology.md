@@ -51,7 +51,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
   "name" : "JP_ImagingStudy_Pathology",
   "title" : "JP Core ImagingStudy Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-13T01:37:50+00:00",
+  "date" : "2026-08-13T08:49:13+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
@@ -141,12 +141,16 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
         "path" : "ImagingStudy.modality",
         "short" : "DICOM画像で使用された撮影装置（モダリティ）【詳細参照】",
         "definition" : "DICOM画像で使用された撮影装置（モダリティ）",
-        "comment" : "病理（WSI）を表すモダリティコード\"SM\"を指定する。"
-      },
-      {
-        "id" : "ImagingStudy.modality.code",
-        "path" : "ImagingStudy.modality.code",
-        "fixedCode" : "SM"
+        "comment" : "病理（WSI）を表すモダリティコード\"SM\"を指定する。",
+        "patternCoding" : {
+          "system" : "http://dicom.nema.org/resources/ontology/DCM",
+          "code" : "SM",
+          "display" : "Slide Microscopy"
+        },
+        "binding" : {
+          "strength" : "required",
+          "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_DICOMModality_VS"
+        }
       },
       {
         "id" : "ImagingStudy.subject",
@@ -333,12 +337,16 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
         "path" : "ImagingStudy.series.modality",
         "short" : "このシリーズが取得された撮影装置（モダリティ）【詳細参照】",
         "definition" : "このシリーズが取得された撮影装置（モダリティ）。",
-        "comment" : "病理（WSI）を表すモダリティコード\"SM\"を指定する。1シリーズ1モダリティで、1つのシリーズの中に複数のモダリティが混在することはない。"
-      },
-      {
-        "id" : "ImagingStudy.series.modality.code",
-        "path" : "ImagingStudy.series.modality.code",
-        "fixedCode" : "SM"
+        "comment" : "病理（WSI）を表すモダリティコード\"SM\"を指定する。1シリーズ1モダリティで、1つのシリーズの中に複数のモダリティが混在することはない。",
+        "patternCoding" : {
+          "system" : "http://dicom.nema.org/resources/ontology/DCM",
+          "code" : "SM",
+          "display" : "Slide Microscopy"
+        },
+        "binding" : {
+          "strength" : "required",
+          "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_DICOMModality_VS"
+        }
       },
       {
         "id" : "ImagingStudy.series.description",

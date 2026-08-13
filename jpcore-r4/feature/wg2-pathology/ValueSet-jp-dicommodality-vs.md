@@ -26,8 +26,10 @@
 
 * [JP Core DiagnosticReport Radiology Profile](StructureDefinition-jp-diagnosticreport-radiology.md)
 * [JP Core ImagingStudy Endoscopy Profile](StructureDefinition-jp-imagingstudy-endoscopy.md)
+* [JP Core ImagingStudy Pathology Profile](StructureDefinition-jp-imagingstudy-pathology.md)
 * [JP Core ImagingStudy Radiology Profile](StructureDefinition-jp-imagingstudy-radiology.md)
 * [JP Core media Endoscopy Profile](StructureDefinition-jp-media-endoscopy.md)
+* [JP Core Media Pathology Profile](StructureDefinition-jp-media-pathology.md)
 
 ### Logical Definition (CLD)
 
