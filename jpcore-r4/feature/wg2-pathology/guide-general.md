@@ -81,7 +81,7 @@ This publication includes IP covered under the following statements.
 
 * Copyright 2014 – The Radiological Society of North America (RSNA), all rights reserved
 
-* [JP ImagingStudy RadLexPlaybook CodeDev CS](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://playbook.radlex.org/playbook/SearchRadlexAction-CoreDev-CS): [JP_ImagingStudy_Endoscopy](StructureDefinition-jp-imagingstudy-endoscopy.md) and [JP_ImagingStudy_Radiology](StructureDefinition-jp-imagingstudy-radiology.md)
+* [JP ImagingStudy RadLexPlaybook CodeDev CS](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://playbook.radlex.org/playbook/SearchRadlexAction-CoreDev-CS): [JP_ImagingStudy_Endoscopy](StructureDefinition-jp-imagingstudy-endoscopy.md), [JP_ImagingStudy_Pathology](StructureDefinition-jp-imagingstudy-pathology.md) and [JP_ImagingStudy_Radiology](StructureDefinition-jp-imagingstudy-radiology.md)
 
 
 * Copyright FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会NeXEHRS課題研究会FHIR日本実装検討WG

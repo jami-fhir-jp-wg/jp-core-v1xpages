@@ -51,7 +51,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
   "name" : "JP_ImagingStudy_Pathology",
   "title" : "JP Core ImagingStudy Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-13T08:49:13+00:00",
+  "date" : "2026-08-13T13:00:31+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
@@ -265,7 +265,11 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
         "path" : "ImagingStudy.procedureCode",
         "short" : "実施された処置を表すコード【詳細参照】",
         "definition" : "実施された処置を表すコード。",
-        "comment" : "病理では原則使用しない。"
+        "comment" : "病理では原則使用しない。",
+        "binding" : {
+          "strength" : "required",
+          "valueSet" : "http://playbook.radlex.org/playbook/SearchRadlexAction"
+        }
       },
       {
         "id" : "ImagingStudy.location",
