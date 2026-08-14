@@ -52,7 +52,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
   "name" : "JP_ImagingStudy_Pathology",
   "title" : "JP Core ImagingStudy Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-13T23:21:35+00:00",
+  "date" : "2026-08-13T23:54:59+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
@@ -460,7 +460,11 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
         "path" : "ImagingStudy.series.instance.sopClass",
         "short" : "SOPクラスUID【詳細参照】",
         "definition" : "SOPクラスUID。",
-        "comment" : "病理では、主に以下の値が指定される。VL Whole Slide Microscopy Image Storage (VL全スライド顕微鏡画像保存): 1.2.840.10008.5.1.4.1.1.77.1.6"
+        "comment" : "病理では、主に以下の値が指定される。VL Whole Slide Microscopy Image Storage (VL全スライド顕微鏡画像保存): 1.2.840.10008.5.1.4.1.1.77.1.6",
+        "binding" : {
+          "strength" : "extensible",
+          "valueSet" : "http://hl7.org/fhir/uv/imaging-service-request-ig/ValueSet/dicom-sop-classes"
+        }
       },
       {
         "id" : "ImagingStudy.series.instance.number",
