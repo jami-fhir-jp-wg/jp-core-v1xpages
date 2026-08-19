@@ -281,7 +281,7 @@
   <td><i>Status</i></td>
   <td>Active
     
-      ( 2026-08-13 )
+      ( 2026-08-19 )
     </td>
 </tr>
 
@@ -305,6 +305,66 @@
 
 
 <!-- insert intro if present -->
+
+
+
+
+<div style="display:inline-block" markdown="1">
+
+<p>本プロファイルは、Specimenリソースを使用して、病理診断レポートにおいて臓器そのものを表現する検体情報を記録、検索、取得するために、最低限遵守すべき制約と拡張を取り纏めたものである。</p>
+
+<h2 id="背景および想定シナリオ">背景および想定シナリオ</h2>
+
+<p>本プロファイルは、以下のようなユースケースを想定している。</p>
+
+<ul>
+  <li>病理診断レポートで扱う検体情報の保存</li>
+  <li>病理検査依頼に紐づく検体情報の参照</li>
+  <li>患者リソースからの検体情報の参照</li>
+  <li>オーダ側または病理検査側で発番された検体識別番号による検体情報の管理</li>
+</ul>
+
+<h2 id="スコープ">スコープ</h2>
+
+<p>Specimenリソースを使用して表現した病理検査の検体情報には、オーダ側で発番された検体識別番号、病理検査側で発番された検体識別番号、検体の利用可能性、検査材料、検体採取した患者への参照、検体の受付日時、病理検査依頼元への参照、検体採取に関する詳細情報、検体に関する特記事項などが含まれる。</p>
+
+<p>本プロファイルでは、Specimen.subject要素はJP_Patientリソースを参照する。Specimen.request要素は、依頼目的として病理検査依頼元を示すServiceRequestリソースを参照する。</p>
+
+<p>検体採取に関する詳細情報は、Specimen.collection要素に記録する。検体採取した人、検体採取日時、検体採取期間、検体量、採取方法、検体部位を表現するために使用する。</p>
+
+<p>本プロファイルでは、Specimen.parent要素は使用しない。Specimen.processing要素、Specimen.container要素、Specimen.condition要素は未使用とする。また、Specimen.collection.fastingStatus[x]要素は使用しない。</p>
+
+<h2 id="プロファイル定義">プロファイル定義</h2>
+
+<!-- 本ファイル修正不可。-->
+<!-- リソース追加・変更はruby script/markdownlink_creator.mdを実行にて反映される -->
+<!-- Temporary changes to fix formatting for changelog -->
+<style>
+  ul.new-content {
+    padding-left: 25px !important;
+  }
+</style>
+
+<!-- ページ内リンク指定 -->
+
+<!-- ImplementationGuide -->
+
+<!-- StructureDefinition: Profile, DataType -->
+
+<!-- StructureDefinition: Extension -->
+
+<!-- CapabilityStatement -->
+
+<!-- SearchParameter -->
+
+<!-- CodeSystem -->
+
+<!-- ValueSet -->
+
+<!-- Example -->
+
+
+</div>
 
 
 
@@ -469,7 +529,7 @@
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">0</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">*</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a style="opacity: 0.5; opacity: 0.5" href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">検体に関する特記事項を記載</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-specimen-pathologyD-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-specimen-pathologyD'), 'binding', document.getElementById('cbjp-specimen-pathologyD-binding').checked, document.getElementById('ppjp-specimen-pathologyD'));
 document.getElementById('cbjp-specimen-pathologyD-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -635,7 +695,7 @@ filterDesc(document.getElementById('jp-specimen-pathologyD'), 'obligation', docu
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">検体に関する特記事項を記載<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-specimen-pathologyK-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-specimen-pathologyK'), 'binding', document.getElementById('cbjp-specimen-pathologyK-binding').checked, document.getElementById('ppjp-specimen-pathologyK'));
 document.getElementById('cbjp-specimen-pathologyK-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -964,7 +1024,7 @@ filterDesc(document.getElementById('jp-specimen-pathologyK'), 'obligation', docu
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">検体に関する特記事項を記載<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-specimen-pathologyS-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-specimen-pathologyS'), 'binding', document.getElementById('cbjp-specimen-pathologyS-binding').checked, document.getElementById('ppjp-specimen-pathologyS'));
 document.getElementById('cbjp-specimen-pathologyS-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1496,7 +1556,7 @@ Summary
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">0</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">*</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a style="opacity: 0.5; opacity: 0.5" href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">検体に関する特記事項を記載</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-specimen-pathologyDA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-specimen-pathologyDA'), 'binding', document.getElementById('cbjp-specimen-pathologyDA-binding').checked, document.getElementById('ppjp-specimen-pathologyDA'));
 document.getElementById('cbjp-specimen-pathologyDA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1662,7 +1722,7 @@ filterDesc(document.getElementById('jp-specimen-pathologyDA'), 'obligation', doc
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">検体に関する特記事項を記載<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-specimen-pathologyKA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-specimen-pathologyKA'), 'binding', document.getElementById('cbjp-specimen-pathologyKA-binding').checked, document.getElementById('ppjp-specimen-pathologyKA'));
 document.getElementById('cbjp-specimen-pathologyKA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1991,7 +2051,7 @@ filterDesc(document.getElementById('jp-specimen-pathologyKA'), 'obligation', doc
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">検体に関する特記事項を記載<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-specimen-pathologySA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-specimen-pathologySA'), 'binding', document.getElementById('cbjp-specimen-pathologySA-binding').checked, document.getElementById('ppjp-specimen-pathologySA'));
 document.getElementById('cbjp-specimen-pathologySA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -2405,6 +2465,171 @@ Summary
 <!-- insert notes if present -->
 
 
+<!-- <h3>Notes:</h3> -->
+
+
+<div style="display:inline-block" markdown="1">
+
+<h3 id="必須要素">必須要素</h3>
+
+<p>本プロファイルで明示的に必須として定義されたルート要素はない。</p>
+
+<h3 id="extensions定義">Extensions定義</h3>
+
+<p>本プロファイルで追加定義された拡張はない。</p>
+
+<h2 id="利用方法">利用方法</h2>
+
+<h5 id="必須検索パラメータ">必須検索パラメータ</h5>
+
+<p>本プロファイルで必須として定義された検索パラメータはない。</p>
+
+<h5 id="推奨検索パラメータ">推奨検索パラメータ</h5>
+
+<p>本プロファイルで推奨として定義された検索パラメータはない。</p>
+
+<h5 id="追加検索パラメータ">追加検索パラメータ</h5>
+
+<p>本プロファイルで追加定義された検索パラメータはない。</p>
+
+<h4 id="operation一覧">Operation一覧</h4>
+
+<p>本プロファイルで追加定義されたOperationはない。</p>
+
+<h4 id="operation-詳細">Operation 詳細</h4>
+
+<p>本プロファイルで追加定義されたOperationはない。</p>
+
+<h2 id="注意事項">注意事項</h2>
+
+<p>本プロファイルは、病理診断レポートにおいて臓器そのものを表現する
+検体情報を送受信するために使用する。</p>
+
+<ul>
+  <li>identifierには、オーダ側、すなわち依頼元が発番した検体識別番号を指定する。</li>
+  <li>accessionIdentifierには、病理検査側で発番した検体識別番号を指定する。</li>
+  <li>statusには、検体の利用可能性を指定する。</li>
+  <li>typeには、検査材料を指定する。</li>
+  <li>subjectは、検体採取した患者を表すJP_Patientリソースを参照する。</li>
+  <li>receivedTimeには、検体の受付日時を指定する。</li>
+  <li>parentは使用しない。</li>
+  <li>requestには、病理検査依頼元を示すServiceRequestリソースを参照する。</li>
+  <li>collectionには、検体採取に関する詳細情報を指定する。</li>
+  <li>collection.collectorには、検体採取した人を指定する。</li>
+  <li>collection.collected[x]はdateTime型で指定する。</li>
+  <li>collection.durationには、検体採取期間を指定する。</li>
+  <li>collection.quantityには、検体量を指定する。</li>
+  <li>collection.methodには、採取方法を指定する。</li>
+  <li>collection.bodySiteには、検体部位を指定する。</li>
+  <li>collection.fastingStatus[x]は使用しない。</li>
+  <li>processingは使用しない。</li>
+  <li>containerは使用しない。</li>
+  <li>conditionは使用しない。</li>
+  <li>noteには、検体に関する特記事項を記載する。</li>
+</ul>
+
+<h2 id="その他参考文献リンク等">その他、参考文献・リンク等</h2>
+
+<!-- 本ファイル修正不可。-->
+<!-- リソース追加・変更はruby script/markdownlink_creator.mdを実行にて反映される -->
+<!-- Temporary changes to fix formatting for changelog -->
+<style>
+  ul.new-content {
+    padding-left: 25px !important;
+  }
+</style>
+
+<!-- ページ内リンク指定 -->
+
+<!-- ImplementationGuide -->
+
+<!-- StructureDefinition: Profile, DataType -->
+
+<!-- StructureDefinition: Extension -->
+
+<!-- CapabilityStatement -->
+
+<!-- SearchParameter -->
+
+<!-- CodeSystem -->
+
+<!-- ValueSet -->
+
+<!-- Example -->
+
+<!-- 各種規約関連 -->
+
+<!-- 各種規約関連 放射線関連規約のまとめ-->
+
+<!-- 外部定義されたリンク -->
+
+<!-- 
+[JP_MedicationExampleDosageComment_CS]: CodeSystem-jp-medication-example-dosagecomment-cs.html
+[JP_MedicationExampleLine_CS]: CodeSystem-jp-medication-example-line-cs.html
+[JP_MedicationExampleLineComment_CS]: CodeSystem-jp-medication-example-linecomment-cs.html
+[JP_MedicationExampleMethodComment_CS]: CodeSystem-jp-medication-example-methodcomment-cs.html
+[JP_MedicationExampleRateComment_CS]: CodeSystem-jp-medication-example-ratecomment-cs.html
+[JP_MedicationExampleRouteComment_CS]: CodeSystem-jp-medication-example-routecomment-cs.html
+[JP_MedicationExampleSiteComment_CS]: CodeSystem-jp-medication-example-sitecomment-cs.html
+[JP_MedicationExampleUncategorizedComment_CS]: CodeSystem-jp-medication-example-uncategorized-comment-cs.html
+[JP_Microbiology_AntiMicrobialDrug_CS]: CodeSystem-jp-microbiology-anti-microbial-drug-cs.html
+[JP_MicrobiologyCategory_CS]: CodeSystem-jp-microbiology-category-cs.html
+[JP_Microbiology_InfectiousAgent_CS]: CodeSystem-jp-microbiology-infectious-agent-cs.html
+[JP_DocumentCodes_CS]: CodeSystem-jp-documentcodes-cs.html
+[JP_EndoscopyTerminologyCodesJED_CS]: CodeSystem-jp-endoscopyterminology-codes-jed-cs.html
+[JP_MedicationExampleDosageComment_CS]: CodeSystem-jp-medication-example-dosagecomment-cs.html
+[JP_MedicationExampleLine_CS]: CodeSystem-jp-medication-example-line-cs.html
+[JP_MedicationExampleLineComment_CS]: CodeSystem-jp-medication-example-linecomment-cs.html
+[JP_MedicationExampleMethodComment_CS]: CodeSystem-jp-medication-example-methodcomment-cs.html
+[JP_MedicationExampleRateComment_CS]: CodeSystem-jp-medication-example-ratecomment-cs.html
+[JP_MedicationExampleRouteComment_CS]: CodeSystem-jp-medication-example-routecomment-cs.html
+[JP_MedicationExampleSiteComment_CS]: CodeSystem-jp-medication-example-sitecomment-cs.html
+[JP_MedicationExampleUncategorizedComment_CS]: CodeSystem-jp-medication-example-uncategorized-comment-cs.html
+[JP_Microbiology_AntiMicrobialDrug_CS]: CodeSystem-jp-microbiology-anti-microbial-drug-cs.html
+[JP_MicrobiologyCategory_CS]: CodeSystem-jp-microbiology-category-cs.html
+[JP_Microbiology_InfectiousAgent_CS]: CodeSystem-jp-microbiology-infectious-agent-cs.html
+[JP_PhysicalExamCode_CS]: CodeSystem-jp-physicalexamcode-cs.html
+[JP_ProcedureNotPerformedReason_CS]: CodeSystem-jp-procedure-not-performed-reason-cs.html
+[JP_ProcedureOutcome_CS]: CodeSystem-jp-procedure-outcome-cs.html
+[MEDIS_codeSystem_diseaseName_exchangeCodes_Modifiers]: CodeSystem-medis-codesystem-diseasename-exchangecodes-modifiers.html
+
+[JP_Disease_MEDIS_Concept_VS]: ValueSet-jp-condition-disease-code-medis-exchange-vs.html
+[JP_Disease_MEDIS_ManagementID_VS]: ValueSet-jp-condition-disease-code-medis-record-no-vs.html
+[JP_Disease_Claim_VS]: ValueSet-jp-condition-disease-code-receipt-vs.html
+[JP_Modifier_MEDIS_Concept_VS]: ValueSet-jp-condition-disease-modifier-medis-exchange-vs.html
+[JP_Modifier_MEDIS_ManagementID_VS]: ValueSet-jp-condition-disease-modifier-medis-record-no-vs.html
+[JP_Modifier_Disease_Claim_VS]: ValueSet-jp-condition-disease-modifier-receipt-vs.html
+[JP_ConditionSeverity_VS]: ValueSet-jp-condition-severity-vs.html
+[JP_DocumentCodes_Endoscopy_VS]: ValueSet-jp-documentcodes-endoscopy-vs.html
+[JP_MedicalLicenseCertificate_VS]: ValueSet-jp-medicallicensecertificate-vs.html
+[JP_MedicationExampleDosageComment_VS]: ValueSet-jp-medication-example-dosagecomment-vs.html
+[JP_MedicationExampleLine_VS]: ValueSet-jp-medication-example-line-vs.html
+[JP_MedicationExampleLineComment_VS]: ValueSet-jp-medication-example-linecomment-vs.html
+[JP_MedicationExampleMethodComment_VS]: ValueSet-jp-medication-example-methodcomment-vs.html
+[JP_MedicationExampleRateComment_VS]: ValueSet-jp-medication-example-ratecomment-vs.html
+[JP_MedicationExampleRouteComment_VS]: ValueSet-jp-medication-example-routecomment-vs.html
+[JP_MedicationExampleSiteComment_VS]: ValueSet-jp-medication-example-sitecomment-vs.html
+[JP_MedicationExampleUncategorizedComment_VS]: ValueSet-jp-medication-example-uncategorized-comment-vs.html
+[JP_Microbiology_AntiMicrobialDrug_VS]: ValueSet-jp-microbiology-anti-microbial-drug-vs.html
+[JP_MicrobiologyCategory_VS]: ValueSet-jp-microbiology-category-vs.html
+[JP_Microbiology_InfectiousAgent_VS]: ValueSet-jp-microbiology-infectious-agent-vs.html
+[JP_ProcedureBodySite_VS]: ValueSet-jp-procedure-body-site-vs.html
+[JP_ProcedureCodesICHI_VS]: ValueSet-jp-procedure-codes-ichi-vs.html
+[JP_ProcedureCondition_VS]: ValueSet-jp-procedure-condition-vs.html
+[JP_ProcedureDeviceAction_VS]: ValueSet-jp-procedure-device-action-vs.html
+[JP_ProcedureDeviceKind_VS]: ValueSet-jp-procedure-devicekind-vs.html
+[JP_ProcedureFollowUp_VS]: ValueSet-jp-procedure-followup-vs.html
+[JP_ProcedureNotPerformedReason_VS]: ValueSet-jp-procedure-not-performed-reason-vs.html
+[JP_ProcedureOutcome_VS]: ValueSet-jp-procedure-outcome-vs.html
+[JP_ProcedurePerformerRole_VS]: ValueSet-jp-procedure-performer-role-vs.html
+[JP_ProcedureReason_VS]: ValueSet-jp-procedure-reason-vs.html
+[MHLW_valueSet_icd10_2013_jp]: ValueSet-mhlw-valueset-icd10-2013-jp.html
+ -->
+
+
+</div>
+
+
 
 
 </div>
@@ -2426,7 +2651,7 @@ Summary
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.3.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Aug 13, 2026 23:54+0000">2026-08-13</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.3.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Aug 19, 2026 04:30+0000">2026-08-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

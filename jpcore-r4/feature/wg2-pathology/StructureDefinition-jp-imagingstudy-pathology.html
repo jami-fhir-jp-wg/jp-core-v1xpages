@@ -281,7 +281,7 @@
   <td><i>Status</i></td>
   <td>Active
     
-      ( 2026-08-13 )
+      ( 2026-08-19 )
     </td>
 </tr>
 
@@ -305,6 +305,97 @@
 
 
 <!-- insert intro if present -->
+
+
+
+
+<div style="display:inline-block" markdown="1">
+
+<p>本プロファイルは、ImagingStudyリソースを使用して、病理WSIのDICOM画像に関するデータを送受信するために、最低限遵守すべき制約と拡張を取り纏めたものである。</p>
+
+<h2 id="背景および想定シナリオ">背景および想定シナリオ</h2>
+
+<p>本プロファイルは、以下のようなユースケースを想定している。</p>
+<ul>
+  <li>病理WSIのDICOM画像に関する画像検査情報の送受信</li>
+  <li>DICOM画像全体を一意に識別するStudy Instance UIDの記録</li>
+  <li>病理WSIを表すモダリティコードに基づく画像情報の記録</li>
+  <li>JP Core Patientリソースからの対象患者情報の参照</li>
+  <li>JP Core DiagnosticReport Pathologyリソースからの実施理由の参照</li>
+  <li>JP Core Specimen Pathologyリソースからの検体情報の参照</li>
+  <li>DICOM WADO-RS、DICOM WADO-URI、DICOM QIDO-RSなどによる画像リソース位置の記録</li>
+</ul>
+
+<h2 id="スコープ">スコープ</h2>
+
+<p>ImagingStudyリソースは、DICOM画像検査に含まれるstudy、series、および画像インスタンスに関する情報を表現する。<br />
+本プロファイルでは、病理WSIのDICOM画像を対象とし、DICOM画像全体、シリーズ、およびインスタンス単位の情報を扱う。</p>
+
+<p>DICOM画像全体の識別子には、Study Instance UIDの値を指定する。<br />
+画像のステータスには、ImagingStudy.statusで定義される登録済み、利用可能、取消済み、エラーで入力、不明のいずれかを指定する。<br />
+モダリティには、病理WSIを表すDICOMモダリティコードであるSMを指定する。</p>
+
+<p>対象患者は、ImagingStudy.subjectでJP Core Patientリソースを参照する。<br />
+DICOM画像を取得するきっかけとなった情報は、ImagingStudy.encounterでJP Core Encounterリソースを参照する。<br />
+他のシステムから依頼されたオーダ情報は、通常、ImagingStudy.basedOnでServiceRequestリソースを参照する。<br />
+他のシステムと連携していない場合、basedOnの参照は不要である。</p>
+
+<p>DICOM画像のリソースが存在する位置は、ImagingStudy.endpointに記録する。<br />
+endpointには、DICOM WADO-RS、DICOM WADO-URI、DICOM QIDO-RSなどを指定する。<br />
+DICOM画像の実施理由に関する情報は、ImagingStudy.reasonReferenceでJP Core DiagnosticReport Pathologyリソースを参照する。</p>
+
+<p>病理では、ImagingStudy.startedに検体採取日時を指定する。<br />
+referrer、interpreter、procedureCode、reasonCode、noteなどは、病理では原則使用しない。<br />
+procedureReferenceを使用する場合は、JP Core Procedureリソースを参照する。<br />
+locationを使用する場合は、ImagingStudyが実行された場所を表すJP Core Locationリソースを参照する。</p>
+
+<p>series要素は、DICOM画像に含まれるシリーズ単位の情報を表す。<br />
+series.uidにはSeries Instance UIDの値を指定する。<br />
+series.modalityには、病理WSIを表すDICOMモダリティコードであるSMを指定する。<br />
+1シリーズは1つのモダリティで構成され、複数のモダリティは混在しない。</p>
+
+<p>series.specimenでは、このシリーズの検体に関する情報としてJP Core Specimen Pathologyリソースを参照する。<br />
+series.startedには、Series DateおよびSeries Timeに値が存在する場合、その値を指定する。<br />
+series.performerおよびその下位要素は、病理では原則使用しない。</p>
+
+<p>series.instanceは、シリーズに含まれる画像インスタンス単位の情報を表す。<br />
+series.instance.uidには、SOP Instance UIDに値が存在する場合、その値を指定する。<br />
+series.instance.sopClassには、病理で主に使用されるSOPクラスUIDを指定する。<br />
+病理では、VL Whole Slide Microscopy Image Storageの値として1.2.840.10008.5.1.4.1.1.77.1.6が指定される。<br />
+series.instance.numberには、Instance Numberに値が存在する場合、その値を指定する。<br />
+series.instance.titleには、部門システム側で説明を付ける場合、その説明を指定してよい。</p>
+
+<h2 id="プロファイル定義">プロファイル定義</h2>
+
+<!-- 本ファイル修正不可。-->
+<!-- リソース追加・変更はruby script/markdownlink_creator.mdを実行にて反映される -->
+<!-- Temporary changes to fix formatting for changelog -->
+<style>
+  ul.new-content {
+    padding-left: 25px !important;
+  }
+</style>
+
+<!-- ページ内リンク指定 -->
+
+<!-- ImplementationGuide -->
+
+<!-- StructureDefinition: Profile, DataType -->
+
+<!-- StructureDefinition: Extension -->
+
+<!-- CapabilityStatement -->
+
+<!-- SearchParameter -->
+
+<!-- CodeSystem -->
+
+<!-- ValueSet -->
+
+<!-- Example -->
+
+
+</div>
 
 
 
@@ -589,7 +680,7 @@
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">0</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">1</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a style="opacity: 0.5; opacity: 0.5" href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">画像に関する説明【詳細参照】</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-imagingstudy-pathologyD-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-imagingstudy-pathologyD'), 'binding', document.getElementById('cbjp-imagingstudy-pathologyD-binding').checked, document.getElementById('ppjp-imagingstudy-pathologyD'));
 document.getElementById('cbjp-imagingstudy-pathologyD-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -901,7 +992,7 @@ filterDesc(document.getElementById('jp-imagingstudy-pathologyD'), 'obligation', 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">画像に関する説明【詳細参照】</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-imagingstudy-pathologyK-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-imagingstudy-pathologyK'), 'binding', document.getElementById('cbjp-imagingstudy-pathologyK-binding').checked, document.getElementById('ppjp-imagingstudy-pathologyK'));
 document.getElementById('cbjp-imagingstudy-pathologyK-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1276,7 +1367,7 @@ filterDesc(document.getElementById('jp-imagingstudy-pathologyK'), 'obligation', 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">画像に関する説明【詳細参照】</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-imagingstudy-pathologyS-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-imagingstudy-pathologyS'), 'binding', document.getElementById('cbjp-imagingstudy-pathologyS-binding').checked, document.getElementById('ppjp-imagingstudy-pathologyS'));
 document.getElementById('cbjp-imagingstudy-pathologyS-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1910,7 +2001,7 @@ Summary
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">0</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">1</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a style="opacity: 0.5; opacity: 0.5" href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">画像に関する説明【詳細参照】</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-imagingstudy-pathologyDA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-imagingstudy-pathologyDA'), 'binding', document.getElementById('cbjp-imagingstudy-pathologyDA-binding').checked, document.getElementById('ppjp-imagingstudy-pathologyDA'));
 document.getElementById('cbjp-imagingstudy-pathologyDA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -2222,7 +2313,7 @@ filterDesc(document.getElementById('jp-imagingstudy-pathologyDA'), 'obligation',
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">画像に関する説明【詳細参照】</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-imagingstudy-pathologyKA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-imagingstudy-pathologyKA'), 'binding', document.getElementById('cbjp-imagingstudy-pathologyKA-binding').checked, document.getElementById('ppjp-imagingstudy-pathologyKA'));
 document.getElementById('cbjp-imagingstudy-pathologyKA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -2597,7 +2688,7 @@ filterDesc(document.getElementById('jp-imagingstudy-pathologyKA'), 'obligation',
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">画像に関する説明【詳細参照】</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-imagingstudy-pathologySA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-imagingstudy-pathologySA'), 'binding', document.getElementById('cbjp-imagingstudy-pathologySA-binding').checked, document.getElementById('ppjp-imagingstudy-pathologySA'));
 document.getElementById('cbjp-imagingstudy-pathologySA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -2993,6 +3084,256 @@ Summary
 <!-- insert notes if present -->
 
 
+<!-- <h3>Notes:</h3> -->
+
+
+<div style="display:inline-block" markdown="1">
+
+<h3 id="必須要素">必須要素</h3>
+
+<p>次のデータ項目は必須（データが存在しなければならない）である。</p>
+
+<ul>
+  <li>status : DICOM画像のステータス。登録済み、利用可能、取消済み、エラーで入力、不明のいずれかを指定する。</li>
+  <li>subject : DICOM画像の対象患者に関する情報。JP Core Patientリソースを参照する。</li>
+</ul>
+
+<h3 id="extensions定義">Extensions定義</h3>
+
+<p>本プロファイルで追加定義された拡張はない。</p>
+
+<h2 id="利用方法">利用方法</h2>
+
+<h5 id="必須検索パラメータ">必須検索パラメータ</h5>
+
+<p>本プロファイルで必須（<strong>SHALL</strong>）として定義された検索パラメータはない。</p>
+
+<h5 id="推奨検索パラメータ">推奨検索パラメータ</h5>
+
+<p>本プロファイルで推奨（<strong>SHOULD</strong>）として定義された検索パラメータはない。</p>
+
+<h5 id="追加検索パラメータ">追加検索パラメータ</h5>
+
+<p>本プロファイルで追加定義された検索パラメータはない。</p>
+
+<h4 id="operation一覧">Operation一覧</h4>
+
+<p>本プロファイルで追加定義されたOperationはない。</p>
+
+<h2 id="注意事項">注意事項</h2>
+
+<h4 id="identifier">identifier</h4>
+
+<p>DICOM画像全体を一意に識別するためのIDである。
+Study Instance UIDの値を指定する。</p>
+
+<h4 id="modality">modality</h4>
+
+<p>DICOM画像で使用された撮影装置を表す。
+病理WSIを表すモダリティコードである<code class="language-plaintext highlighter-rouge">SM</code>を指定する。
+<code class="language-plaintext highlighter-rouge">SM</code>はSlide Microscopyを表す。
+ValueSetはJP Core DICOM Modality ValueSetを必須Bindingとして参照する。</p>
+
+<h4 id="started">started</h4>
+
+<p>検査開始日時、または撮影装置に患者情報が届いた日時を表す。
+病理では、検体採取日時を指定する。</p>
+
+<h4 id="basedon">basedOn</h4>
+
+<p>他のシステムから依頼されたオーダ情報を表す。
+通常、依頼元となるServiceRequestリソースを参照する。
+他のシステムと連携していない場合は参照不要である。</p>
+
+<h4 id="encounter">encounter</h4>
+
+<p>このDICOM画像を取得するきっかけとなった情報を表す。
+JP Core Encounterリソースを参照する。</p>
+
+<h4 id="referrer">referrer</h4>
+
+<p>依頼医師を表す。
+JP Core PractitionerまたはJP Core PractitionerRoleを参照する。
+病理では原則使用しない。</p>
+
+<h4 id="interpreter">interpreter</h4>
+
+<p>画像を診断した医師を表す。
+通常は病理医を表す。
+JP Core PractitionerまたはJP Core PractitionerRoleを参照する。
+病理では原則使用しない。</p>
+
+<h4 id="endpoint">endpoint</h4>
+
+<p>DICOMのリソースが存在する位置を表す。
+DICOM WADO-RS、DICOM WADO-URI、DICOM QIDO-RSなどを指定する。</p>
+
+<h4 id="procedurereference">procedureReference</h4>
+
+<p>実施された処置に関する情報を表す。
+病理では省略してよい。
+使用する場合はJP Core Procedureを参照する。</p>
+
+<h4 id="procedurecode">procedureCode</h4>
+
+<p>実施された処置を表すコードである。
+病理では原則使用しない。
+ValueSetはJP Core DICOM RadLex Playbook ValueSetを参照する。</p>
+
+<h4 id="location">location</h4>
+
+<p>ImagingStudyが実行された場所を表す。
+画像がスキャンされた場所を示すJP Core Locationリソースがある場合に参照する。</p>
+
+<h4 id="reasoncode">reasonCode</h4>
+
+<p>DICOM画像が依頼された理由を表すコードである。
+病理では原則使用しない。</p>
+
+<h4 id="reasonreference">reasonReference</h4>
+
+<p>DICOM画像の実施理由に関する情報を表す。
+JP Core DiagnosticReport Pathologyリソースを参照する。</p>
+
+<h4 id="note">note</h4>
+
+<p>病理では原則使用しない。</p>
+
+<h4 id="series">series</h4>
+
+<p>DICOM画像に含まれるシリーズ単位の情報を表す。
+シリーズのUIDにはSeries Instance UIDの値を指定する。
+シリーズのモダリティには病理WSIを表す<code class="language-plaintext highlighter-rouge">SM</code>を指定する。
+1シリーズは1つのモダリティで構成される。
+1つのシリーズの中に複数のモダリティは混在しない。</p>
+
+<h4 id="seriesspecimen">series.specimen</h4>
+
+<p>シリーズの検体に関する情報を表す。
+JP Core Specimen Pathologyリソースを参照する。</p>
+
+<h4 id="seriesstarted">series.started</h4>
+
+<p>シリーズの開始日時を表す。
+Series DateおよびSeries Timeに値が入っていれば、その値を指定する。</p>
+
+<h4 id="seriesperformer">series.performer</h4>
+
+<p>シリーズの実施医を表す。
+病理では原則使用しない。</p>
+
+<h4 id="seriesinstance">series.instance</h4>
+
+<p>シリーズに含まれるインスタンス単位の情報を表す。
+インスタンスのUIDにはSOP Instance UIDの値を指定する。
+SOPクラスUIDには、病理では主にVL Whole Slide Microscopy Image Storageを指定する。
+このコード値は<code class="language-plaintext highlighter-rouge">1.2.840.10008.5.1.4.1.1.77.1.6</code>である。
+SOPクラスUIDのValueSetはJP Core DICOM Sop Class ValueSetを拡張可能Bindingとして参照する。
+インスタンス番号に値が入っている場合は、Instance Numberの値を指定する。
+部門システム側で画像に関する説明を付ける場合は、titleに指定してよい。</p>
+
+<h2 id="その他参考文献リンク等">その他、参考文献・リンク等</h2>
+
+<!-- 本ファイル修正不可。-->
+<!-- リソース追加・変更はruby script/markdownlink_creator.mdを実行にて反映される -->
+<!-- Temporary changes to fix formatting for changelog -->
+<style>
+  ul.new-content {
+    padding-left: 25px !important;
+  }
+</style>
+
+<!-- ページ内リンク指定 -->
+
+<!-- ImplementationGuide -->
+
+<!-- StructureDefinition: Profile, DataType -->
+
+<!-- StructureDefinition: Extension -->
+
+<!-- CapabilityStatement -->
+
+<!-- SearchParameter -->
+
+<!-- CodeSystem -->
+
+<!-- ValueSet -->
+
+<!-- Example -->
+
+<!-- 各種規約関連 -->
+
+<!-- 各種規約関連 放射線関連規約のまとめ-->
+
+<!-- 外部定義されたリンク -->
+
+<!-- 
+[JP_MedicationExampleDosageComment_CS]: CodeSystem-jp-medication-example-dosagecomment-cs.html
+[JP_MedicationExampleLine_CS]: CodeSystem-jp-medication-example-line-cs.html
+[JP_MedicationExampleLineComment_CS]: CodeSystem-jp-medication-example-linecomment-cs.html
+[JP_MedicationExampleMethodComment_CS]: CodeSystem-jp-medication-example-methodcomment-cs.html
+[JP_MedicationExampleRateComment_CS]: CodeSystem-jp-medication-example-ratecomment-cs.html
+[JP_MedicationExampleRouteComment_CS]: CodeSystem-jp-medication-example-routecomment-cs.html
+[JP_MedicationExampleSiteComment_CS]: CodeSystem-jp-medication-example-sitecomment-cs.html
+[JP_MedicationExampleUncategorizedComment_CS]: CodeSystem-jp-medication-example-uncategorized-comment-cs.html
+[JP_Microbiology_AntiMicrobialDrug_CS]: CodeSystem-jp-microbiology-anti-microbial-drug-cs.html
+[JP_MicrobiologyCategory_CS]: CodeSystem-jp-microbiology-category-cs.html
+[JP_Microbiology_InfectiousAgent_CS]: CodeSystem-jp-microbiology-infectious-agent-cs.html
+[JP_DocumentCodes_CS]: CodeSystem-jp-documentcodes-cs.html
+[JP_EndoscopyTerminologyCodesJED_CS]: CodeSystem-jp-endoscopyterminology-codes-jed-cs.html
+[JP_MedicationExampleDosageComment_CS]: CodeSystem-jp-medication-example-dosagecomment-cs.html
+[JP_MedicationExampleLine_CS]: CodeSystem-jp-medication-example-line-cs.html
+[JP_MedicationExampleLineComment_CS]: CodeSystem-jp-medication-example-linecomment-cs.html
+[JP_MedicationExampleMethodComment_CS]: CodeSystem-jp-medication-example-methodcomment-cs.html
+[JP_MedicationExampleRateComment_CS]: CodeSystem-jp-medication-example-ratecomment-cs.html
+[JP_MedicationExampleRouteComment_CS]: CodeSystem-jp-medication-example-routecomment-cs.html
+[JP_MedicationExampleSiteComment_CS]: CodeSystem-jp-medication-example-sitecomment-cs.html
+[JP_MedicationExampleUncategorizedComment_CS]: CodeSystem-jp-medication-example-uncategorized-comment-cs.html
+[JP_Microbiology_AntiMicrobialDrug_CS]: CodeSystem-jp-microbiology-anti-microbial-drug-cs.html
+[JP_MicrobiologyCategory_CS]: CodeSystem-jp-microbiology-category-cs.html
+[JP_Microbiology_InfectiousAgent_CS]: CodeSystem-jp-microbiology-infectious-agent-cs.html
+[JP_PhysicalExamCode_CS]: CodeSystem-jp-physicalexamcode-cs.html
+[JP_ProcedureNotPerformedReason_CS]: CodeSystem-jp-procedure-not-performed-reason-cs.html
+[JP_ProcedureOutcome_CS]: CodeSystem-jp-procedure-outcome-cs.html
+[MEDIS_codeSystem_diseaseName_exchangeCodes_Modifiers]: CodeSystem-medis-codesystem-diseasename-exchangecodes-modifiers.html
+
+[JP_Disease_MEDIS_Concept_VS]: ValueSet-jp-condition-disease-code-medis-exchange-vs.html
+[JP_Disease_MEDIS_ManagementID_VS]: ValueSet-jp-condition-disease-code-medis-record-no-vs.html
+[JP_Disease_Claim_VS]: ValueSet-jp-condition-disease-code-receipt-vs.html
+[JP_Modifier_MEDIS_Concept_VS]: ValueSet-jp-condition-disease-modifier-medis-exchange-vs.html
+[JP_Modifier_MEDIS_ManagementID_VS]: ValueSet-jp-condition-disease-modifier-medis-record-no-vs.html
+[JP_Modifier_Disease_Claim_VS]: ValueSet-jp-condition-disease-modifier-receipt-vs.html
+[JP_ConditionSeverity_VS]: ValueSet-jp-condition-severity-vs.html
+[JP_DocumentCodes_Endoscopy_VS]: ValueSet-jp-documentcodes-endoscopy-vs.html
+[JP_MedicalLicenseCertificate_VS]: ValueSet-jp-medicallicensecertificate-vs.html
+[JP_MedicationExampleDosageComment_VS]: ValueSet-jp-medication-example-dosagecomment-vs.html
+[JP_MedicationExampleLine_VS]: ValueSet-jp-medication-example-line-vs.html
+[JP_MedicationExampleLineComment_VS]: ValueSet-jp-medication-example-linecomment-vs.html
+[JP_MedicationExampleMethodComment_VS]: ValueSet-jp-medication-example-methodcomment-vs.html
+[JP_MedicationExampleRateComment_VS]: ValueSet-jp-medication-example-ratecomment-vs.html
+[JP_MedicationExampleRouteComment_VS]: ValueSet-jp-medication-example-routecomment-vs.html
+[JP_MedicationExampleSiteComment_VS]: ValueSet-jp-medication-example-sitecomment-vs.html
+[JP_MedicationExampleUncategorizedComment_VS]: ValueSet-jp-medication-example-uncategorized-comment-vs.html
+[JP_Microbiology_AntiMicrobialDrug_VS]: ValueSet-jp-microbiology-anti-microbial-drug-vs.html
+[JP_MicrobiologyCategory_VS]: ValueSet-jp-microbiology-category-vs.html
+[JP_Microbiology_InfectiousAgent_VS]: ValueSet-jp-microbiology-infectious-agent-vs.html
+[JP_ProcedureBodySite_VS]: ValueSet-jp-procedure-body-site-vs.html
+[JP_ProcedureCodesICHI_VS]: ValueSet-jp-procedure-codes-ichi-vs.html
+[JP_ProcedureCondition_VS]: ValueSet-jp-procedure-condition-vs.html
+[JP_ProcedureDeviceAction_VS]: ValueSet-jp-procedure-device-action-vs.html
+[JP_ProcedureDeviceKind_VS]: ValueSet-jp-procedure-devicekind-vs.html
+[JP_ProcedureFollowUp_VS]: ValueSet-jp-procedure-followup-vs.html
+[JP_ProcedureNotPerformedReason_VS]: ValueSet-jp-procedure-not-performed-reason-vs.html
+[JP_ProcedureOutcome_VS]: ValueSet-jp-procedure-outcome-vs.html
+[JP_ProcedurePerformerRole_VS]: ValueSet-jp-procedure-performer-role-vs.html
+[JP_ProcedureReason_VS]: ValueSet-jp-procedure-reason-vs.html
+[MHLW_valueSet_icd10_2013_jp]: ValueSet-mhlw-valueset-icd10-2013-jp.html
+ -->
+
+
+</div>
+
+
 
 
 </div>
@@ -3014,7 +3355,7 @@ Summary
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.3.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Aug 13, 2026 23:54+0000">2026-08-13</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.3.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Aug 19, 2026 04:30+0000">2026-08-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

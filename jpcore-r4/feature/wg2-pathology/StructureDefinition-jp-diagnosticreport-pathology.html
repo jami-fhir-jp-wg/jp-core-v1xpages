@@ -281,7 +281,7 @@
   <td><i>Status</i></td>
   <td>Active
     
-      ( 2026-08-13 )
+      ( 2026-08-19 )
     </td>
 </tr>
 
@@ -305,6 +305,71 @@
 
 
 <!-- insert intro if present -->
+
+
+
+
+<div style="display:inline-block" markdown="1">
+
+<p>本プロファイルは、DiagnosticReportリソースを使用して、病理分野の診断レポートのデータを送受信するために、最低限遵守すべき制約と拡張を取りまとめたものである。病理にて作成された診断レポートを対象とし、診断レポートの分野、対象患者、依頼情報、検体、関連画像、診断レポート本体などを表現する。</p>
+
+<h2 id="背景および想定シナリオ">背景および想定シナリオ</h2>
+
+<p>本プロファイルは、以下のようなユースケースを想定している。</p>
+
+<ul>
+  <li>他のシステムから依頼されたオーダ情報に基づく病理診断レポートの送受信</li>
+  <li>対象患者に関する病理診断レポートの記録</li>
+  <li>病理検体に関する情報と病理診断レポートの関連付け</li>
+  <li>病理診断レポートに関連するDICOM画像や添付画像の参照</li>
+  <li>PDF形式やxml形式などで作成された診断レポート本体の添付</li>
+</ul>
+
+<h2 id="スコープ">スコープ</h2>
+
+<p>DiagnosticReportリソースを使用して表現した病理診断レポートには、診断レポートのステータス、分野、報告書種別、対象患者、作成日時、確定日時、作成者、検体、関連画像、メディア、要約結論、診断レポート本体などが含まれる。</p>
+
+<p>診断レポートの分野は、category要素で病理を表すコードとして指定する。報告書種別は、code要素で病理分野の報告書を分類するためのコードを指定する。組織診、細胞診、剖検など、病理分野の報告書種別に応じたコードを使用する。</p>
+
+<p>対象患者はsubject要素でJP Core Patientリソースを参照する。依頼元となるオーダ情報が存在する場合は、basedOn要素でJP Core ServiceRequest Commonリソースを参照する。診断レポートを書くきっかけとなった情報は、encounter要素でJP Core Encounterリソースを参照する。</p>
+
+<p>病理診断レポートに関連する検体情報は、specimen要素でJP Core Specimen Pathologyリソースを参照する。DICOM画像に関する情報は、imagingStudy要素でJP Core ImagingStudy Pathologyリソースを参照する。DICOM以外の画像など、レポートに添付されるメディアは、media要素で表現し、media.link要素でJP Core Media Pathologyリソースを参照する。</p>
+
+<p>診断レポートの総合診断に相当する要約結論は、conclusion要素にテキストで可能な限り記載する。病理診断レポートの要約結論をコードで表現できる場合は、conclusionCode要素を使用する。腫瘍の場合はICD-O-3、腫瘍以外の場合はICD-10またはICD-11の病名を設定する。</p>
+
+<p>診断レポート本体はpresentedForm要素に格納する。PDF形式やxml形式などで添付することを想定し、フォーマットは限定しない。result要素はJP Core Observation Commonリソースへの参照として定義されるが、病理では使用しない。</p>
+
+<h2 id="プロファイル定義">プロファイル定義</h2>
+
+<!-- 本ファイル修正不可。-->
+<!-- リソース追加・変更はruby script/markdownlink_creator.mdを実行にて反映される -->
+<!-- Temporary changes to fix formatting for changelog -->
+<style>
+  ul.new-content {
+    padding-left: 25px !important;
+  }
+</style>
+
+<!-- ページ内リンク指定 -->
+
+<!-- ImplementationGuide -->
+
+<!-- StructureDefinition: Profile, DataType -->
+
+<!-- StructureDefinition: Extension -->
+
+<!-- CapabilityStatement -->
+
+<!-- SearchParameter -->
+
+<!-- CodeSystem -->
+
+<!-- ValueSet -->
+
+<!-- Example -->
+
+
+</div>
 
 
 
@@ -504,7 +569,7 @@
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">0</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">*</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a style="opacity: 0.5; opacity: 0.5" href="http://hl7.org/fhir/R4/datatypes.html#Attachment">Attachment</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">診断レポート本体【詳細参照】</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-diagnosticreport-pathologyD-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-diagnosticreport-pathologyD'), 'binding', document.getElementById('cbjp-diagnosticreport-pathologyD-binding').checked, document.getElementById('ppjp-diagnosticreport-pathologyD'));
 document.getElementById('cbjp-diagnosticreport-pathologyD-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -708,7 +773,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Attachment">Attachment</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">診断レポート本体【詳細参照】<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-diagnosticreport-pathologyK-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-diagnosticreport-pathologyK'), 'binding', document.getElementById('cbjp-diagnosticreport-pathologyK-binding').checked, document.getElementById('ppjp-diagnosticreport-pathologyK'));
 document.getElementById('cbjp-diagnosticreport-pathologyK-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1070,7 +1135,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Attachment">Attachment</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">診断レポート本体【詳細参照】<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-diagnosticreport-pathologyS-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-diagnosticreport-pathologyS'), 'binding', document.getElementById('cbjp-diagnosticreport-pathologyS-binding').checked, document.getElementById('ppjp-diagnosticreport-pathologyS'));
 document.getElementById('cbjp-diagnosticreport-pathologyS-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1561,7 +1626,7 @@ Summary
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">0</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">*</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a style="opacity: 0.5; opacity: 0.5" href="http://hl7.org/fhir/R4/datatypes.html#Attachment">Attachment</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">診断レポート本体【詳細参照】</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-diagnosticreport-pathologyDA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-diagnosticreport-pathologyDA'), 'binding', document.getElementById('cbjp-diagnosticreport-pathologyDA-binding').checked, document.getElementById('ppjp-diagnosticreport-pathologyDA'));
 document.getElementById('cbjp-diagnosticreport-pathologyDA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1765,7 +1830,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Attachment">Attachment</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">診断レポート本体【詳細参照】<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-diagnosticreport-pathologyKA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-diagnosticreport-pathologyKA'), 'binding', document.getElementById('cbjp-diagnosticreport-pathologyKA-binding').checked, document.getElementById('ppjp-diagnosticreport-pathologyKA'));
 document.getElementById('cbjp-diagnosticreport-pathologyKA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -2127,7 +2192,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Attachment">Attachment</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">診断レポート本体【詳細参照】<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-diagnosticreport-pathologySA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-diagnosticreport-pathologySA'), 'binding', document.getElementById('cbjp-diagnosticreport-pathologySA-binding').checked, document.getElementById('ppjp-diagnosticreport-pathologySA'));
 document.getElementById('cbjp-diagnosticreport-pathologySA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -2465,6 +2530,196 @@ Summary
 <!-- insert notes if present -->
 
 
+<!-- <h3>Notes:</h3> -->
+
+
+<div style="display:inline-block" markdown="1">
+
+<h3 id="必須要素">必須要素</h3>
+
+<p>次のデータ項目は必須（データが存在しなければならない）、あるいは、データが送信システムに存在する場合はサポートされなければならないことを意味する。（Must Support）。
+DiagnosticReport リソースは、次の要素を持たなければならない。</p>
+<ul>
+  <li>status : 診断レポートのステータス。preliminary、final、appended、amended、correctedのいずれかを指定する。</li>
+  <li>category : 診断レポートの分野を表すコード。JP Core DiagnosticReport Category ValueSetから、Pathologyを表すLP7839-6を指定する。</li>
+  <li>code : 病理分野の診断レポートを分類するためのコード。JP Core DocumentCodeから、適切な病理分野の報告書コードを指定する。</li>
+</ul>
+
+<p>DiagnosticReport リソースは、次の要素をサポートしなければならない。</p>
+<ul>
+  <li>presentedForm : 診断レポート本体。PDF形式やxml形式などで添付する。</li>
+</ul>
+
+<h3 id="extensions定義">Extensions定義</h3>
+
+<p>本プロファイルで追加定義された拡張はない。</p>
+
+<h2 id="利用方法">利用方法</h2>
+
+<h5 id="必須検索パラメータ">必須検索パラメータ</h5>
+
+<p>本プロファイルで必須（<strong>SHALL</strong>）として定義された検索項目はない。</p>
+
+<h5 id="推奨検索パラメータ">推奨検索パラメータ</h5>
+
+<p>本プロファイルで追加定義された推奨検索パラメータはない。</p>
+
+<h5 id="追加検索パラメータ">追加検索パラメータ</h5>
+
+<p>本プロファイルで追加定義された追加検索パラメータはない。</p>
+
+<h4 id="operation一覧">Operation一覧</h4>
+
+<p>本プロファイルで追加定義された操作はない。</p>
+
+<h4 id="operation-詳細">Operation 詳細</h4>
+
+<p>本プロファイルで追加定義された操作はない。</p>
+
+<h3 id="サンプル">サンプル</h3>
+
+<p>本プロファイルで追加定義されたサンプルはない。</p>
+
+<h2 id="注意事項">注意事項</h2>
+
+<p>本プロファイルは、DiagnosticReportリソースに対して、病理分野の診断レポートのデータを送受信するための制約を定める。</p>
+
+<p>identifierには、システムが管理する、施設内で診断レポートを一意に識別するためのIDを指定する。病理では、標本番号（受付番号、病理番号）と版数を指定する。</p>
+
+<p>basedOnは、他のシステムから依頼されたオーダ情報を表す。通常、依頼元となるJP Core ServiceRequest Commonリソースを参照する。他のシステムと連携していない場合は参照不要である。</p>
+
+<p>categoryには、JP Core DiagnosticReport Category ValueSetの中からPathologyを表すLOINC Part CodeであるLP7839-6を指定する。</p>
+
+<p>codeには、JP Core DocumentCodeの中から適切な病理分野の報告書コードを指定する。組織診では11526-1、細胞診では47526-9、剖検では18743-5を指定する。</p>
+
+<p>subjectは、診断レポートの対象患者に関する情報を表す。JP Core Patientリソースを参照する。</p>
+
+<p>encounterは、この診断レポートを書くきっかけとなった情報を表す。JP Core Encounterリソースを参照する。</p>
+
+<p>effective[x]には、診断レポートの作成日時をdateTime型で指定する。</p>
+
+<p>issuedには、レポート確定日時を指定する。statusがfinalになった日時を指定する。</p>
+
+<p>performerは、レポートを確定した医師を表す。JP Core Practitioner、JP Core PractitionerRole、またはJP Core Organizationを参照する。</p>
+
+<p>resultsInterpreterは、この診断レポートの作成者を表す。複数いる場合は列記する。JP Core Practitioner、JP Core PractitionerRole、またはJP Core Organizationを参照する。</p>
+
+<p>specimenは、この診断レポートの検体に関する情報を表す。JP Core Specimen Pathologyリソースを参照する。</p>
+
+<p>resultは、この診断レポートの一部となるObservationに関する情報を表す。病理では未使用である。</p>
+
+<p>imagingStudyは、診断レポートに関連づけられたDICOM画像に関する情報を表す。JP Core ImagingStudy Pathologyリソースを参照する。</p>
+
+<p>mediaは、診断レポートに関連づけられたメディアに関する情報を表す。主に、レポートに添付される画像を指す。media.linkは、JP Core Media Pathologyリソースを参照する。</p>
+
+<p>conclusionには、総合診断に相当する要約結論をテキストで可能な限り記載する。</p>
+
+<p>conclusionCodeには、病理診断レポートの要約結論を表す1つ以上のコードを指定する。腫瘍の場合はICD-O-3、腫瘍以外はICD-10またはICD-11の病名を設定する。ただし、運用上コード指定ができない場合、設定されなくてもよい。</p>
+
+<p>presentedFormには、診断レポート本体をPDF形式やxml形式などで添付する。フォーマットは問わない。</p>
+
+<h2 id="その他参考文献リンク等">その他、参考文献・リンク等</h2>
+
+<!-- 本ファイル修正不可。-->
+<!-- リソース追加・変更はruby script/markdownlink_creator.mdを実行にて反映される -->
+<!-- Temporary changes to fix formatting for changelog -->
+<style>
+  ul.new-content {
+    padding-left: 25px !important;
+  }
+</style>
+
+<!-- ページ内リンク指定 -->
+
+<!-- ImplementationGuide -->
+
+<!-- StructureDefinition: Profile, DataType -->
+
+<!-- StructureDefinition: Extension -->
+
+<!-- CapabilityStatement -->
+
+<!-- SearchParameter -->
+
+<!-- CodeSystem -->
+
+<!-- ValueSet -->
+
+<!-- Example -->
+
+<!-- 各種規約関連 -->
+
+<!-- 各種規約関連 放射線関連規約のまとめ-->
+
+<!-- 外部定義されたリンク -->
+
+<!-- 
+[JP_MedicationExampleDosageComment_CS]: CodeSystem-jp-medication-example-dosagecomment-cs.html
+[JP_MedicationExampleLine_CS]: CodeSystem-jp-medication-example-line-cs.html
+[JP_MedicationExampleLineComment_CS]: CodeSystem-jp-medication-example-linecomment-cs.html
+[JP_MedicationExampleMethodComment_CS]: CodeSystem-jp-medication-example-methodcomment-cs.html
+[JP_MedicationExampleRateComment_CS]: CodeSystem-jp-medication-example-ratecomment-cs.html
+[JP_MedicationExampleRouteComment_CS]: CodeSystem-jp-medication-example-routecomment-cs.html
+[JP_MedicationExampleSiteComment_CS]: CodeSystem-jp-medication-example-sitecomment-cs.html
+[JP_MedicationExampleUncategorizedComment_CS]: CodeSystem-jp-medication-example-uncategorized-comment-cs.html
+[JP_Microbiology_AntiMicrobialDrug_CS]: CodeSystem-jp-microbiology-anti-microbial-drug-cs.html
+[JP_MicrobiologyCategory_CS]: CodeSystem-jp-microbiology-category-cs.html
+[JP_Microbiology_InfectiousAgent_CS]: CodeSystem-jp-microbiology-infectious-agent-cs.html
+[JP_DocumentCodes_CS]: CodeSystem-jp-documentcodes-cs.html
+[JP_EndoscopyTerminologyCodesJED_CS]: CodeSystem-jp-endoscopyterminology-codes-jed-cs.html
+[JP_MedicationExampleDosageComment_CS]: CodeSystem-jp-medication-example-dosagecomment-cs.html
+[JP_MedicationExampleLine_CS]: CodeSystem-jp-medication-example-line-cs.html
+[JP_MedicationExampleLineComment_CS]: CodeSystem-jp-medication-example-linecomment-cs.html
+[JP_MedicationExampleMethodComment_CS]: CodeSystem-jp-medication-example-methodcomment-cs.html
+[JP_MedicationExampleRateComment_CS]: CodeSystem-jp-medication-example-ratecomment-cs.html
+[JP_MedicationExampleRouteComment_CS]: CodeSystem-jp-medication-example-routecomment-cs.html
+[JP_MedicationExampleSiteComment_CS]: CodeSystem-jp-medication-example-sitecomment-cs.html
+[JP_MedicationExampleUncategorizedComment_CS]: CodeSystem-jp-medication-example-uncategorized-comment-cs.html
+[JP_Microbiology_AntiMicrobialDrug_CS]: CodeSystem-jp-microbiology-anti-microbial-drug-cs.html
+[JP_MicrobiologyCategory_CS]: CodeSystem-jp-microbiology-category-cs.html
+[JP_Microbiology_InfectiousAgent_CS]: CodeSystem-jp-microbiology-infectious-agent-cs.html
+[JP_PhysicalExamCode_CS]: CodeSystem-jp-physicalexamcode-cs.html
+[JP_ProcedureNotPerformedReason_CS]: CodeSystem-jp-procedure-not-performed-reason-cs.html
+[JP_ProcedureOutcome_CS]: CodeSystem-jp-procedure-outcome-cs.html
+[MEDIS_codeSystem_diseaseName_exchangeCodes_Modifiers]: CodeSystem-medis-codesystem-diseasename-exchangecodes-modifiers.html
+
+[JP_Disease_MEDIS_Concept_VS]: ValueSet-jp-condition-disease-code-medis-exchange-vs.html
+[JP_Disease_MEDIS_ManagementID_VS]: ValueSet-jp-condition-disease-code-medis-record-no-vs.html
+[JP_Disease_Claim_VS]: ValueSet-jp-condition-disease-code-receipt-vs.html
+[JP_Modifier_MEDIS_Concept_VS]: ValueSet-jp-condition-disease-modifier-medis-exchange-vs.html
+[JP_Modifier_MEDIS_ManagementID_VS]: ValueSet-jp-condition-disease-modifier-medis-record-no-vs.html
+[JP_Modifier_Disease_Claim_VS]: ValueSet-jp-condition-disease-modifier-receipt-vs.html
+[JP_ConditionSeverity_VS]: ValueSet-jp-condition-severity-vs.html
+[JP_DocumentCodes_Endoscopy_VS]: ValueSet-jp-documentcodes-endoscopy-vs.html
+[JP_MedicalLicenseCertificate_VS]: ValueSet-jp-medicallicensecertificate-vs.html
+[JP_MedicationExampleDosageComment_VS]: ValueSet-jp-medication-example-dosagecomment-vs.html
+[JP_MedicationExampleLine_VS]: ValueSet-jp-medication-example-line-vs.html
+[JP_MedicationExampleLineComment_VS]: ValueSet-jp-medication-example-linecomment-vs.html
+[JP_MedicationExampleMethodComment_VS]: ValueSet-jp-medication-example-methodcomment-vs.html
+[JP_MedicationExampleRateComment_VS]: ValueSet-jp-medication-example-ratecomment-vs.html
+[JP_MedicationExampleRouteComment_VS]: ValueSet-jp-medication-example-routecomment-vs.html
+[JP_MedicationExampleSiteComment_VS]: ValueSet-jp-medication-example-sitecomment-vs.html
+[JP_MedicationExampleUncategorizedComment_VS]: ValueSet-jp-medication-example-uncategorized-comment-vs.html
+[JP_Microbiology_AntiMicrobialDrug_VS]: ValueSet-jp-microbiology-anti-microbial-drug-vs.html
+[JP_MicrobiologyCategory_VS]: ValueSet-jp-microbiology-category-vs.html
+[JP_Microbiology_InfectiousAgent_VS]: ValueSet-jp-microbiology-infectious-agent-vs.html
+[JP_ProcedureBodySite_VS]: ValueSet-jp-procedure-body-site-vs.html
+[JP_ProcedureCodesICHI_VS]: ValueSet-jp-procedure-codes-ichi-vs.html
+[JP_ProcedureCondition_VS]: ValueSet-jp-procedure-condition-vs.html
+[JP_ProcedureDeviceAction_VS]: ValueSet-jp-procedure-device-action-vs.html
+[JP_ProcedureDeviceKind_VS]: ValueSet-jp-procedure-devicekind-vs.html
+[JP_ProcedureFollowUp_VS]: ValueSet-jp-procedure-followup-vs.html
+[JP_ProcedureNotPerformedReason_VS]: ValueSet-jp-procedure-not-performed-reason-vs.html
+[JP_ProcedureOutcome_VS]: ValueSet-jp-procedure-outcome-vs.html
+[JP_ProcedurePerformerRole_VS]: ValueSet-jp-procedure-performer-role-vs.html
+[JP_ProcedureReason_VS]: ValueSet-jp-procedure-reason-vs.html
+[MHLW_valueSet_icd10_2013_jp]: ValueSet-mhlw-valueset-icd10-2013-jp.html
+ -->
+
+
+</div>
+
+
 
 
 </div>
@@ -2486,7 +2741,7 @@ Summary
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.3.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Aug 13, 2026 23:54+0000">2026-08-13</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.3.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Aug 19, 2026 04:30+0000">2026-08-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

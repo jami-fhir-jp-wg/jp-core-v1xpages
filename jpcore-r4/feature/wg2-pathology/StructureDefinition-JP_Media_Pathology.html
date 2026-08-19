@@ -281,7 +281,7 @@
   <td><i>Status</i></td>
   <td>Active
     
-      ( 2026-08-13 )
+      ( 2026-08-19 )
     </td>
 </tr>
 
@@ -305,6 +305,65 @@
 
 
 <!-- insert intro if present -->
+
+
+
+
+<div style="display:inline-block" markdown="1">
+
+<p>本プロファイルは、Mediaリソースを使用して、病理で取得または使用される画像に関わるデータを送受信するために、最低限遵守すべき制約と拡張を取り纏めたものである。Mediaリソースに対して本プロファイルに準拠する場合に必須となる要素や、参照先、用語、固定値を定義する。</p>
+
+<h2 id="背景および想定シナリオ">背景および想定シナリオ</h2>
+
+<p>本プロファイルは、以下のようなユースケースを想定している。</p>
+<ul>
+  <li>病理検査で取得または使用される画像情報の記録</li>
+  <li>施設内で管理される画像メディアの識別</li>
+  <li>オーダ情報に基づいて取得された病理画像の参照</li>
+  <li>患者に関する病理画像情報の参照</li>
+</ul>
+
+<h2 id="スコープ">スコープ</h2>
+
+<p>Mediaリソースを使用して表現した病理画像には、施設内で画像を一意に識別するためのID、画像の対象患者、画像の種類、画像を取得した装置、実際のコンテンツまたはメディアソースファイルへの参照などが含まれる。</p>
+
+<p>本プロファイルでは、メディアの種類として画像を扱う。type.coding.codeには、<code class="language-plaintext highlighter-rouge">image</code>を指定する。modalityは、メディアを取得または撮影した装置を表し、JP_DICOMModality_VSから指定する。病理で使用する場合、臓器画像は<code class="language-plaintext highlighter-rouge">XC</code>、顕微鏡画像は<code class="language-plaintext highlighter-rouge">GM</code>を指定する。</p>
+
+<p>対象患者は、JP Core Patientリソースを参照する。オーダ情報を参照する場合は、JP Core ServiceRequest CommonリソースまたはCarePlanリソースを参照する。通常、依頼元となるServiceRequestリソースを参照する。他のシステムと連携していない場合は、参照不要である。</p>
+
+<p>病理では、view、encounter、created[x]、operator、deviceName、frames、durationは原則使用しない。reasonCode、bodySite、deviceは省略してよい。写真ごとに部位が設定されている場合は、bodySiteを指定する。画像の高さおよび幅を使用する場合は、写真のピクセル単位の値を指定する。</p>
+
+<h2 id="プロファイル定義">プロファイル定義</h2>
+
+<!-- 本ファイル修正不可。-->
+<!-- リソース追加・変更はruby script/markdownlink_creator.mdを実行にて反映される -->
+<!-- Temporary changes to fix formatting for changelog -->
+<style>
+  ul.new-content {
+    padding-left: 25px !important;
+  }
+</style>
+
+<!-- ページ内リンク指定 -->
+
+<!-- ImplementationGuide -->
+
+<!-- StructureDefinition: Profile, DataType -->
+
+<!-- StructureDefinition: Extension -->
+
+<!-- CapabilityStatement -->
+
+<!-- SearchParameter -->
+
+<!-- CodeSystem -->
+
+<!-- ValueSet -->
+
+<!-- Example -->
+
+
+</div>
 
 
 
@@ -489,7 +548,7 @@
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">0</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">*</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a style="opacity: 0.5; opacity: 0.5" href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">メディアについてのコメント。</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-media-pathologyD-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-media-pathologyD'), 'binding', document.getElementById('cbjp-media-pathologyD-binding').checked, document.getElementById('ppjp-media-pathologyD'));
 document.getElementById('cbjp-media-pathologyD-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -640,7 +699,7 @@ filterDesc(document.getElementById('jp-media-pathologyD'), 'obligation', documen
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">メディアについてのコメント。<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-media-pathologyK-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-media-pathologyK'), 'binding', document.getElementById('cbjp-media-pathologyK-binding').checked, document.getElementById('ppjp-media-pathologyK'));
 document.getElementById('cbjp-media-pathologyK-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -879,7 +938,7 @@ filterDesc(document.getElementById('jp-media-pathologyK'), 'obligation', documen
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">メディアについてのコメント。<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-media-pathologyS-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-media-pathologyS'), 'binding', document.getElementById('cbjp-media-pathologyS-binding').checked, document.getElementById('ppjp-media-pathologyS'));
 document.getElementById('cbjp-media-pathologyS-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1353,7 +1412,7 @@ Summary
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">0</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">*</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a style="opacity: 0.5; opacity: 0.5" href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">メディアについてのコメント。</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-media-pathologyDA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-media-pathologyDA'), 'binding', document.getElementById('cbjp-media-pathologyDA-binding').checked, document.getElementById('ppjp-media-pathologyDA'));
 document.getElementById('cbjp-media-pathologyDA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1504,7 +1563,7 @@ filterDesc(document.getElementById('jp-media-pathologyDA'), 'obligation', docume
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">メディアについてのコメント。<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-media-pathologyKA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-media-pathologyKA'), 'binding', document.getElementById('cbjp-media-pathologyKA-binding').checked, document.getElementById('ppjp-media-pathologyKA'));
 document.getElementById('cbjp-media-pathologyKA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1743,7 +1802,7 @@ filterDesc(document.getElementById('jp-media-pathologyKA'), 'obligation', docume
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">メディアについてのコメント。<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // ac370fa6-2982-4630-8a2f-602630ca711e
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 86a5ac90-b375-4c47-be3c-e637c552ec7f
 document.getElementById('cbjp-media-pathologySA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('jp-media-pathologySA'), 'binding', document.getElementById('cbjp-media-pathologySA-binding').checked, document.getElementById('ppjp-media-pathologySA'));
 document.getElementById('cbjp-media-pathologySA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -2079,6 +2138,213 @@ Summary
 <!-- insert notes if present -->
 
 
+<!-- <h3>Notes:</h3> -->
+
+
+<div style="display:inline-block" markdown="1">
+
+<h3 id="必須要素">必須要素</h3>
+
+<p>次のデータ項目は必須（データが存在しなければならない）である。</p>
+
+<p>Media リソースは、次の要素を持たなければならない。</p>
+<ul>
+  <li>status : メディアのステータス。<code class="language-plaintext highlighter-rouge">completed</code> を指定する。</li>
+  <li>content : 埋め込まれたメディアの実際のコンテンツ、またはメディアソースファイルへの直接参照。</li>
+</ul>
+
+<h3 id="extensions定義">Extensions定義</h3>
+
+<p>本プロファイルで追加定義された拡張はない。</p>
+
+<h2 id="利用方法">利用方法</h2>
+
+<h5 id="必須検索パラメータ">必須検索パラメータ</h5>
+
+<p>本プロファイルで必須（<strong>SHALL</strong>）として定義された検索項目はない。</p>
+
+<h5 id="推奨検索パラメータ">推奨検索パラメータ</h5>
+
+<p>本プロファイルで推奨（<strong>SHOULD</strong>）として定義された検索項目はない。</p>
+
+<h5 id="追加検索パラメータ">追加検索パラメータ</h5>
+
+<p>本プロファイルで追加定義された検索パラメータはない。</p>
+
+<h4 id="operation一覧">Operation一覧</h4>
+
+<p>本プロファイルで追加定義されたOperationはない。</p>
+
+<h4 id="operation-詳細">Operation 詳細</h4>
+
+<p>本プロファイルで追加定義されたOperationはない。</p>
+
+<h2 id="注意事項">注意事項</h2>
+
+<p>本プロファイルは、病理で取得または使用される画像に関わる情報を表す。
+画像の識別には、identifierを使用する。</p>
+
+<p>basedOnは、通常、依頼元となるServiceRequestリソースを参照する。
+参照先は、JP_ServiceRequest_CommonまたはCarePlanである。
+他のシステムと連携していない場合は参照不要である。</p>
+
+<p>partOfを使用する場合は、参照されるイベントの一部として扱う。
+使用時は、基底のDefinition、Requirement、Commentsの内容を参考にする。</p>
+
+<p>typeを使用する場合は、メディアの種類として<code class="language-plaintext highlighter-rouge">image</code>を使用する。
+type.coding.codeは、<code class="language-plaintext highlighter-rouge">image</code>に固定される。</p>
+
+<p>modalityを使用する場合は、JP_DICOMModality_VSから指定する。
+臓器画像は<code class="language-plaintext highlighter-rouge">XC</code>、顕微鏡画像は<code class="language-plaintext highlighter-rouge">GM</code>を指定する。</p>
+
+<p>viewは、病理では原則使用しない。
+将来的にニーズが出てきた場合に検討する。</p>
+
+<p>subjectは、メディアの対象患者に関する情報を表す。
+参照先は、JP_Patientである。</p>
+
+<p>encounterは、このメディアが生成されるきっかけとなった情報を表す。
+病理では原則使用しない。</p>
+
+<p>created[x]は、このメディアが生成された日時を表す。
+病理では原則使用しない。</p>
+
+<p>issuedは、DiagnosticReportのStatusがFinalになった日時を表す。
+レポート確定日時として扱う。</p>
+
+<p>operatorは、画像を取得した人を表す。
+病理では未使用である。</p>
+
+<p>reasonCodeは、このメディアが生成された理由を表す。
+病理では省略してよい。</p>
+
+<p>bodySiteは、このメディアの対象となる解剖学的部位を表す。
+病理では省略してよい。
+写真毎に部位が設定されている場合は指定する。</p>
+
+<p>deviceNameは、このメディアを生成した装置名を表す。
+病理では原則使用しない。</p>
+
+<p>deviceは、メディアの収集に使用されるデバイスを表す。
+病理では省略してよい。</p>
+
+<p>heightは、画像の高さをピクセル単位で表す。
+使用する場合は、写真の画像の高さを指定する。</p>
+
+<p>widthは、画像の幅をピクセル単位で表す。
+使用する場合は、写真の画像の幅を指定する。</p>
+
+<p>framesは、フレーム数を表す。
+病理では原則使用しない。</p>
+
+<p>durationは、ビデオ映像または音声向けの録画・記録時間を秒単位で表す。
+病理では原則使用しない。</p>
+
+<p>noteは、メディアについてのコメントを表す。</p>
+
+<h2 id="その他参考文献リンク等">その他、参考文献・リンク等</h2>
+
+<p>本プロファイル固有の参考文献・リンク等は定義されていない。
+<!-- 本ファイル修正不可。-->
+<!-- リソース追加・変更はruby script/markdownlink_creator.mdを実行にて反映される -->
+<!-- Temporary changes to fix formatting for changelog --></p>
+<style>
+  ul.new-content {
+    padding-left: 25px !important;
+  }
+</style>
+
+<!-- ページ内リンク指定 -->
+
+<!-- ImplementationGuide -->
+
+<!-- StructureDefinition: Profile, DataType -->
+
+<!-- StructureDefinition: Extension -->
+
+<!-- CapabilityStatement -->
+
+<!-- SearchParameter -->
+
+<!-- CodeSystem -->
+
+<!-- ValueSet -->
+
+<!-- Example -->
+
+<!-- 各種規約関連 -->
+
+<!-- 各種規約関連 放射線関連規約のまとめ-->
+
+<!-- 外部定義されたリンク -->
+
+<!-- 
+[JP_MedicationExampleDosageComment_CS]: CodeSystem-jp-medication-example-dosagecomment-cs.html
+[JP_MedicationExampleLine_CS]: CodeSystem-jp-medication-example-line-cs.html
+[JP_MedicationExampleLineComment_CS]: CodeSystem-jp-medication-example-linecomment-cs.html
+[JP_MedicationExampleMethodComment_CS]: CodeSystem-jp-medication-example-methodcomment-cs.html
+[JP_MedicationExampleRateComment_CS]: CodeSystem-jp-medication-example-ratecomment-cs.html
+[JP_MedicationExampleRouteComment_CS]: CodeSystem-jp-medication-example-routecomment-cs.html
+[JP_MedicationExampleSiteComment_CS]: CodeSystem-jp-medication-example-sitecomment-cs.html
+[JP_MedicationExampleUncategorizedComment_CS]: CodeSystem-jp-medication-example-uncategorized-comment-cs.html
+[JP_Microbiology_AntiMicrobialDrug_CS]: CodeSystem-jp-microbiology-anti-microbial-drug-cs.html
+[JP_MicrobiologyCategory_CS]: CodeSystem-jp-microbiology-category-cs.html
+[JP_Microbiology_InfectiousAgent_CS]: CodeSystem-jp-microbiology-infectious-agent-cs.html
+[JP_DocumentCodes_CS]: CodeSystem-jp-documentcodes-cs.html
+[JP_EndoscopyTerminologyCodesJED_CS]: CodeSystem-jp-endoscopyterminology-codes-jed-cs.html
+[JP_MedicationExampleDosageComment_CS]: CodeSystem-jp-medication-example-dosagecomment-cs.html
+[JP_MedicationExampleLine_CS]: CodeSystem-jp-medication-example-line-cs.html
+[JP_MedicationExampleLineComment_CS]: CodeSystem-jp-medication-example-linecomment-cs.html
+[JP_MedicationExampleMethodComment_CS]: CodeSystem-jp-medication-example-methodcomment-cs.html
+[JP_MedicationExampleRateComment_CS]: CodeSystem-jp-medication-example-ratecomment-cs.html
+[JP_MedicationExampleRouteComment_CS]: CodeSystem-jp-medication-example-routecomment-cs.html
+[JP_MedicationExampleSiteComment_CS]: CodeSystem-jp-medication-example-sitecomment-cs.html
+[JP_MedicationExampleUncategorizedComment_CS]: CodeSystem-jp-medication-example-uncategorized-comment-cs.html
+[JP_Microbiology_AntiMicrobialDrug_CS]: CodeSystem-jp-microbiology-anti-microbial-drug-cs.html
+[JP_MicrobiologyCategory_CS]: CodeSystem-jp-microbiology-category-cs.html
+[JP_Microbiology_InfectiousAgent_CS]: CodeSystem-jp-microbiology-infectious-agent-cs.html
+[JP_PhysicalExamCode_CS]: CodeSystem-jp-physicalexamcode-cs.html
+[JP_ProcedureNotPerformedReason_CS]: CodeSystem-jp-procedure-not-performed-reason-cs.html
+[JP_ProcedureOutcome_CS]: CodeSystem-jp-procedure-outcome-cs.html
+[MEDIS_codeSystem_diseaseName_exchangeCodes_Modifiers]: CodeSystem-medis-codesystem-diseasename-exchangecodes-modifiers.html
+
+[JP_Disease_MEDIS_Concept_VS]: ValueSet-jp-condition-disease-code-medis-exchange-vs.html
+[JP_Disease_MEDIS_ManagementID_VS]: ValueSet-jp-condition-disease-code-medis-record-no-vs.html
+[JP_Disease_Claim_VS]: ValueSet-jp-condition-disease-code-receipt-vs.html
+[JP_Modifier_MEDIS_Concept_VS]: ValueSet-jp-condition-disease-modifier-medis-exchange-vs.html
+[JP_Modifier_MEDIS_ManagementID_VS]: ValueSet-jp-condition-disease-modifier-medis-record-no-vs.html
+[JP_Modifier_Disease_Claim_VS]: ValueSet-jp-condition-disease-modifier-receipt-vs.html
+[JP_ConditionSeverity_VS]: ValueSet-jp-condition-severity-vs.html
+[JP_DocumentCodes_Endoscopy_VS]: ValueSet-jp-documentcodes-endoscopy-vs.html
+[JP_MedicalLicenseCertificate_VS]: ValueSet-jp-medicallicensecertificate-vs.html
+[JP_MedicationExampleDosageComment_VS]: ValueSet-jp-medication-example-dosagecomment-vs.html
+[JP_MedicationExampleLine_VS]: ValueSet-jp-medication-example-line-vs.html
+[JP_MedicationExampleLineComment_VS]: ValueSet-jp-medication-example-linecomment-vs.html
+[JP_MedicationExampleMethodComment_VS]: ValueSet-jp-medication-example-methodcomment-vs.html
+[JP_MedicationExampleRateComment_VS]: ValueSet-jp-medication-example-ratecomment-vs.html
+[JP_MedicationExampleRouteComment_VS]: ValueSet-jp-medication-example-routecomment-vs.html
+[JP_MedicationExampleSiteComment_VS]: ValueSet-jp-medication-example-sitecomment-vs.html
+[JP_MedicationExampleUncategorizedComment_VS]: ValueSet-jp-medication-example-uncategorized-comment-vs.html
+[JP_Microbiology_AntiMicrobialDrug_VS]: ValueSet-jp-microbiology-anti-microbial-drug-vs.html
+[JP_MicrobiologyCategory_VS]: ValueSet-jp-microbiology-category-vs.html
+[JP_Microbiology_InfectiousAgent_VS]: ValueSet-jp-microbiology-infectious-agent-vs.html
+[JP_ProcedureBodySite_VS]: ValueSet-jp-procedure-body-site-vs.html
+[JP_ProcedureCodesICHI_VS]: ValueSet-jp-procedure-codes-ichi-vs.html
+[JP_ProcedureCondition_VS]: ValueSet-jp-procedure-condition-vs.html
+[JP_ProcedureDeviceAction_VS]: ValueSet-jp-procedure-device-action-vs.html
+[JP_ProcedureDeviceKind_VS]: ValueSet-jp-procedure-devicekind-vs.html
+[JP_ProcedureFollowUp_VS]: ValueSet-jp-procedure-followup-vs.html
+[JP_ProcedureNotPerformedReason_VS]: ValueSet-jp-procedure-not-performed-reason-vs.html
+[JP_ProcedureOutcome_VS]: ValueSet-jp-procedure-outcome-vs.html
+[JP_ProcedurePerformerRole_VS]: ValueSet-jp-procedure-performer-role-vs.html
+[JP_ProcedureReason_VS]: ValueSet-jp-procedure-reason-vs.html
+[MHLW_valueSet_icd10_2013_jp]: ValueSet-mhlw-valueset-icd10-2013-jp.html
+ -->
+
+
+</div>
+
+
 
 
 </div>
@@ -2100,7 +2366,7 @@ Summary
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.3.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Aug 13, 2026 23:54+0000">2026-08-13</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="http://jpfhir.jp">FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)</a>.  Package jpfhir.jp.core#1.3.0-dev based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Aug 19, 2026 04:30+0000">2026-08-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

@@ -15,12 +15,67 @@
 * **項目**: *Title*
   * **内容**: JP Core ImagingStudy Pathology Profile
 * **項目**: *Status*
-  * **内容**: Active ( 2026-08-13 )
+  * **内容**: Active ( 2026-08-19 )
 * **項目**: *Copyright*
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
 このプロファイルはImagingStudyリソースに対して、病理WSIのDICOM画像に関するデータを送受信するための制約と拡張を定めたものである。 
+
+本プロファイルは、ImagingStudyリソースを使用して、病理WSIのDICOM画像に関するデータを送受信するために、最低限遵守すべき制約と拡張を取り纏めたものである。
+
+## 背景および想定シナリオ
+
+本プロファイルは、以下のようなユースケースを想定している。
+
+* 病理WSIのDICOM画像に関する画像検査情報の送受信
+* DICOM画像全体を一意に識別するStudy Instance UIDの記録
+* 病理WSIを表すモダリティコードに基づく画像情報の記録
+* JP Core Patientリソースからの対象患者情報の参照
+* JP Core DiagnosticReport Pathologyリソースからの実施理由の参照
+* JP Core Specimen Pathologyリソースからの検体情報の参照
+* DICOM WADO-RS、DICOM WADO-URI、DICOM QIDO-RSなどによる画像リソース位置の記録
+
+## スコープ
+
+ImagingStudyリソースは、DICOM画像検査に含まれるstudy、series、および画像インスタンスに関する情報を表現する。
+ 本プロファイルでは、病理WSIのDICOM画像を対象とし、DICOM画像全体、シリーズ、およびインスタンス単位の情報を扱う。
+
+DICOM画像全体の識別子には、Study Instance UIDの値を指定する。
+ 画像のステータスには、ImagingStudy.statusで定義される登録済み、利用可能、取消済み、エラーで入力、不明のいずれかを指定する。
+ モダリティには、病理WSIを表すDICOMモダリティコードであるSMを指定する。
+
+対象患者は、ImagingStudy.subjectでJP Core Patientリソースを参照する。
+ DICOM画像を取得するきっかけとなった情報は、ImagingStudy.encounterでJP Core Encounterリソースを参照する。
+ 他のシステムから依頼されたオーダ情報は、通常、ImagingStudy.basedOnでServiceRequestリソースを参照する。
+ 他のシステムと連携していない場合、basedOnの参照は不要である。
+
+DICOM画像のリソースが存在する位置は、ImagingStudy.endpointに記録する。
+ endpointには、DICOM WADO-RS、DICOM WADO-URI、DICOM QIDO-RSなどを指定する。
+ DICOM画像の実施理由に関する情報は、ImagingStudy.reasonReferenceでJP Core DiagnosticReport Pathologyリソースを参照する。
+
+病理では、ImagingStudy.startedに検体採取日時を指定する。
+ referrer、interpreter、procedureCode、reasonCode、noteなどは、病理では原則使用しない。
+ procedureReferenceを使用する場合は、JP Core Procedureリソースを参照する。
+ locationを使用する場合は、ImagingStudyが実行された場所を表すJP Core Locationリソースを参照する。
+
+series要素は、DICOM画像に含まれるシリーズ単位の情報を表す。
+ series.uidにはSeries Instance UIDの値を指定する。
+ series.modalityには、病理WSIを表すDICOMモダリティコードであるSMを指定する。
+ 1シリーズは1つのモダリティで構成され、複数のモダリティは混在しない。
+
+series.specimenでは、このシリーズの検体に関する情報としてJP Core Specimen Pathologyリソースを参照する。
+ series.startedには、Series DateおよびSeries Timeに値が存在する場合、その値を指定する。
+ series.performerおよびその下位要素は、病理では原則使用しない。
+
+series.instanceは、シリーズに含まれる画像インスタンス単位の情報を表す。
+ series.instance.uidには、SOP Instance UIDに値が存在する場合、その値を指定する。
+ series.instance.sopClassには、病理で主に使用されるSOPクラスUIDを指定する。
+ 病理では、VL Whole Slide Microscopy Image Storageの値として1.2.840.10008.5.1.4.1.1.77.1.6が指定される。
+ series.instance.numberには、Instance Numberに値が存在する場合、その値を指定する。
+ series.instance.titleには、部門システム側で説明を付ける場合、その説明を指定してよい。
+
+## プロファイル定義
 
 **Usages:**
 
@@ -37,6 +92,115 @@ You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir
 
 Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-pathology.csv), [Excel](StructureDefinition-jp-imagingstudy-pathology.xlsx), [Schematron](StructureDefinition-jp-imagingstudy-pathology.sch) 
 
+### 必須要素
+
+次のデータ項目は必須（データが存在しなければならない）である。
+
+* status : DICOM画像のステータス。登録済み、利用可能、取消済み、エラーで入力、不明のいずれかを指定する。
+* subject : DICOM画像の対象患者に関する情報。JP Core Patientリソースを参照する。
+
+### Extensions定義
+
+本プロファイルで追加定義された拡張はない。
+
+## 利用方法
+
+##### 必須検索パラメータ
+
+本プロファイルで必須（**SHALL**）として定義された検索パラメータはない。
+
+##### 推奨検索パラメータ
+
+本プロファイルで推奨（**SHOULD**）として定義された検索パラメータはない。
+
+##### 追加検索パラメータ
+
+本プロファイルで追加定義された検索パラメータはない。
+
+#### Operation一覧
+
+本プロファイルで追加定義されたOperationはない。
+
+## 注意事項
+
+#### identifier
+
+DICOM画像全体を一意に識別するためのIDである。 Study Instance UIDの値を指定する。
+
+#### modality
+
+DICOM画像で使用された撮影装置を表す。 病理WSIを表すモダリティコードである`SM`を指定する。 `SM`はSlide Microscopyを表す。 ValueSetはJP Core DICOM Modality ValueSetを必須Bindingとして参照する。
+
+#### started
+
+検査開始日時、または撮影装置に患者情報が届いた日時を表す。 病理では、検体採取日時を指定する。
+
+#### basedOn
+
+他のシステムから依頼されたオーダ情報を表す。 通常、依頼元となるServiceRequestリソースを参照する。 他のシステムと連携していない場合は参照不要である。
+
+#### encounter
+
+このDICOM画像を取得するきっかけとなった情報を表す。 JP Core Encounterリソースを参照する。
+
+#### referrer
+
+依頼医師を表す。 JP Core PractitionerまたはJP Core PractitionerRoleを参照する。 病理では原則使用しない。
+
+#### interpreter
+
+画像を診断した医師を表す。 通常は病理医を表す。 JP Core PractitionerまたはJP Core PractitionerRoleを参照する。 病理では原則使用しない。
+
+#### endpoint
+
+DICOMのリソースが存在する位置を表す。 DICOM WADO-RS、DICOM WADO-URI、DICOM QIDO-RSなどを指定する。
+
+#### procedureReference
+
+実施された処置に関する情報を表す。 病理では省略してよい。 使用する場合はJP Core Procedureを参照する。
+
+#### procedureCode
+
+実施された処置を表すコードである。 病理では原則使用しない。 ValueSetはJP Core DICOM RadLex Playbook ValueSetを参照する。
+
+#### location
+
+ImagingStudyが実行された場所を表す。 画像がスキャンされた場所を示すJP Core Locationリソースがある場合に参照する。
+
+#### reasonCode
+
+DICOM画像が依頼された理由を表すコードである。 病理では原則使用しない。
+
+#### reasonReference
+
+DICOM画像の実施理由に関する情報を表す。 JP Core DiagnosticReport Pathologyリソースを参照する。
+
+#### note
+
+病理では原則使用しない。
+
+#### series
+
+DICOM画像に含まれるシリーズ単位の情報を表す。 シリーズのUIDにはSeries Instance UIDの値を指定する。 シリーズのモダリティには病理WSIを表す`SM`を指定する。 1シリーズは1つのモダリティで構成される。 1つのシリーズの中に複数のモダリティは混在しない。
+
+#### series.specimen
+
+シリーズの検体に関する情報を表す。 JP Core Specimen Pathologyリソースを参照する。
+
+#### series.started
+
+シリーズの開始日時を表す。 Series DateおよびSeries Timeに値が入っていれば、その値を指定する。
+
+#### series.performer
+
+シリーズの実施医を表す。 病理では原則使用しない。
+
+#### series.instance
+
+シリーズに含まれるインスタンス単位の情報を表す。 インスタンスのUIDにはSOP Instance UIDの値を指定する。 SOPクラスUIDには、病理では主にVL Whole Slide Microscopy Image Storageを指定する。 このコード値は`1.2.840.10008.5.1.4.1.1.77.1.6`である。 SOPクラスUIDのValueSetはJP Core DICOM Sop Class ValueSetを拡張可能Bindingとして参照する。 インスタンス番号に値が入っている場合は、Instance Numberの値を指定する。 部門システム側で画像に関する説明を付ける場合は、titleに指定してよい。
+
+## その他、参考文献・リンク等
+
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
 [GitHub PullRequest](https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls)にて受け付けている。
@@ -52,7 +216,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-imagingstudy-path
   "name" : "JP_ImagingStudy_Pathology",
   "title" : "JP Core ImagingStudy Pathology Profile",
   "status" : "active",
-  "date" : "2026-08-13T23:54:59+00:00",
+  "date" : "2026-08-19T04:30:44+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
