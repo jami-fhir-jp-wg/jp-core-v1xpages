@@ -22,7 +22,7 @@ Profile: [JP Core Observation VitalSigns Profile](StructureDefinition-jp-observa
 
 **performer**: [Practitioner 愛知 太郎](Practitioner-jp-practitioner-example-male-2.md)
 
-**value**: 400 回
+**value**: 16 回/分(Details: UCUM code/min = '/min')
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
@@ -87,8 +87,10 @@ Profile: [JP Core Observation VitalSigns Profile](StructureDefinition-jp-observa
     }
   ],
   "valueQuantity" : {
-    "value" : 400,
-    "unit" : "回"
+    "value" : 16,
+    "unit" : "回/分",
+    "system" : "http://unitsofmeasure.org",
+    "code" : "/min"
   }
 }
 

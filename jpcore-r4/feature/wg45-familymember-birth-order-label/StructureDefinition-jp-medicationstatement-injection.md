@@ -55,6 +55,7 @@ MedicationStatementリソースをプロファイルに組み込んだ先行事�
 
 **Usages:**
 
+* Refer to this Profile: [JP Core Observation Common Profile](StructureDefinition-jp-observation-common.md)
 * Examples for this Profile: [MedicationStatement/jp-medicationstatement-injection-example-1](MedicationStatement-jp-medicationstatement-injection-example-1.md)
 * CapabilityStatements using this Profile: [JP Core Client CapabilityStatement](CapabilityStatement-jp-client-capabilitystatement.md) and [JP Core Server CapabilityStatement](CapabilityStatement-jp-server-capabilitystatement.md)
 

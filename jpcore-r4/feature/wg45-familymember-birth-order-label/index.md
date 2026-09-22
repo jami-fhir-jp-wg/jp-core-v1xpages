@@ -225,7 +225,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
       ],
       "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
       "packageId" : "hl7.terminology.r4",
-      "version" : "7.2.0"
+      "version" : "7.4.0"
     },
     {
       "id" : "hl7ext",
@@ -607,6 +607,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           },
           {
             "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_BirthOrder_CS"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseOutcomeReceipt_CS"
           }
         ],
@@ -907,6 +920,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSymbol"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_BirthOrder"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -2401,6 +2427,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           },
           {
             "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/ValueSet/JP_BirthOrder_VS"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/ValueSet/JP_Condition_BodySite_VS"
           }
         ],
@@ -2727,45 +2766,6 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://playbook.radlex.org/playbook/SearchRadlexAction-CoreDev-CS"
-          }
-        ],
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension" : [
-          {
-            "url" : "code",
-            "valueString" : "special-url"
-          },
-          {
-            "url" : "value",
-            "valueString" : "http://jpfhir.jp/fhir/core/ValueSet/JP_GenderedSiblingBirthOrder_VS"
-          }
-        ],
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension" : [
-          {
-            "url" : "code",
-            "valueString" : "special-url"
-          },
-          {
-            "url" : "value",
-            "valueString" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_GenderedSiblingBirthOrder_CS"
-          }
-        ],
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension" : [
-          {
-            "url" : "code",
-            "valueString" : "special-url"
-          },
-          {
-            "url" : "value",
-            "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_GenogramBasedSiblingOrder"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -3347,6 +3347,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           },
           {
             "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_BirthOrder_CS"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ConditionDiseaseOutcomeReceipt_CS"
           }
         ],
@@ -3647,6 +3660,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Coverage_InsuredPersonSymbol"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_BirthOrder"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -5141,6 +5167,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           },
           {
             "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/ValueSet/JP_BirthOrder_VS"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/ValueSet/JP_Condition_BodySite_VS"
           }
         ],
@@ -5475,45 +5514,6 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "extension" : [
           {
             "url" : "code",
-            "valueCode" : "special-url"
-          },
-          {
-            "url" : "value",
-            "valueString" : "http://jpfhir.jp/fhir/core/ValueSet/JP_GenderedSiblingBirthOrder_VS"
-          }
-        ],
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension" : [
-          {
-            "url" : "code",
-            "valueCode" : "special-url"
-          },
-          {
-            "url" : "value",
-            "valueString" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_GenderedSiblingBirthOrder_CS"
-          }
-        ],
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension" : [
-          {
-            "url" : "code",
-            "valueCode" : "special-url"
-          },
-          {
-            "url" : "value",
-            "valueString" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_GenogramBasedSiblingOrder"
-          }
-        ],
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension" : [
-          {
-            "url" : "code",
             "valueCode" : "autoload-resources"
           },
           {
@@ -5770,9 +5770,9 @@ JP Core は以下の方々、および各サーブワーキンググループの
           }
         ],
         "reference" : {
-          "reference" : "CodeSystem/jp-birthorderlabel-cs"
+          "reference" : "CodeSystem/jp-birthorder-cs"
         },
-        "name" : "JP Core Birth Order Label CodeSystem",
+        "name" : "JP Core Birth Order CodeSystem",
         "description" : "FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づく呼称（長男、二男、長女、二女など）を表現するためのCodeSystem。これらのコードは患者との続柄そのものではなく、FamilyMemberHistory.relationshipを補足する出生順の呼称を表す。",
         "exampleBoolean" : false
       },
@@ -5784,10 +5784,10 @@ JP Core は以下の方々、および各サーブワーキンググループの
           }
         ],
         "reference" : {
-          "reference" : "ValueSet/jp-birthorderlabel-vs"
+          "reference" : "ValueSet/jp-birthorder-vs"
         },
-        "name" : "JP Core BirthOrderLabel ValueSet",
-        "description" : "同胞内の性別の出生順名称を表す用語のValueSet。JP_BirthOrderLabel_CS を包含。",
+        "name" : "JP Core BirthOrder ValueSet",
+        "description" : "家族内で用いられる出生順に基づく呼称を表す用語のValueSet。JP_BirthOrder_CS を包含。",
         "exampleBoolean" : false
       },
       {
@@ -6554,9 +6554,9 @@ JP Core は以下の方々、および各サーブワーキンググループの
           }
         ],
         "reference" : {
-          "reference" : "StructureDefinition/jp-familymemberhistory-birthorderlabel"
+          "reference" : "StructureDefinition/jp-familymemberhistory-birthorder"
         },
-        "name" : "JP Core FamilyMemberHistory Birth Order Label Extension",
+        "name" : "JP Core FamilyMemberHistory Birth Order Extension",
         "description" : "続柄（relationship）を補足し、家族内で用いられる出生順に基づく呼称（長男、二男、長女、二女など）を表現する。",
         "exampleBoolean" : false
       },

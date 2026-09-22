@@ -13,7 +13,7 @@ Profile: [JP Core DiagnosticReport LabResult Profile](StructureDefinition-jp-dia
 | | |
 | :--- | :--- |
 | Subject | 山田 太郎 Male, DoB: 1970-01-01 ( urn:oid:1.2.392.100495.20.3.51.11311234567#JP_local_patient_identifier_11311234567_NamingSystem#00000010) |
-| When For | 2021-08-25 08:30:00+0900 |
+| When For | 2021-03-04 08:30:00+0900 |
 | Reported | 2021-03-04 11:45:33+0900 |
 | Performer | [健康第一病院](Organization-jp-organization-example-hospital.md) |
 | Identifier | [JP_local_example_identifiersystem_NamingSystem](NamingSystem-jp-example-local-identifiersystem.md)/5234342 |
@@ -24,17 +24,14 @@ Profile: [JP Core DiagnosticReport LabResult Profile](StructureDefinition-jp-dia
   * **Value**: 176 g/L(Details: UCUM codeg/L = 'g/L')
   * **Reference Range**: 135 g/L(Details: UCUM codeg/L = 'g/L')- 180 g/L(Details: UCUM codeg/L = 'g/L')
   * **Flags**: Final
-  * **When For**: 2021-03-04 08:30:00+0900
 * **Code**: [赤血球数](#hcjp-diagnosticreport-labresult-example-1/inner-observation-labresult-2)
   * **Value**: 5.9 10*6/uL(Details: UCUM code10*6/uL = '10*6/uL')
   * **Reference Range**: 4.2 10*6./L(Details: UCUM code10*6/uL = '10*6/uL')- 6 10*6./L(Details: UCUM code10*6/uL = '10*6/uL')
   * **Flags**: Final
-  * **When For**: 2021-03-04 08:30:00+0900
 * **Code**: [ヘマトクリット](#hcjp-diagnosticreport-labresult-example-1/inner-observation-labresult-3)
   * **Value**: 55 %
   * **Reference Range**: 38 % - 52 %
   * **Flags**: Final,High
-  * **When For**: 2021-03-04 08:30:00+0900
 
 -------
 
@@ -380,7 +377,7 @@ Profile: [JP Core Observation LabResult Profile](StructureDefinition-jp-observat
   "encounter" : {
     "reference" : "Encounter/jp-encounter-example-1"
   },
-  "effectiveDateTime" : "2021-08-25T08:30:00+09:00",
+  "effectiveDateTime" : "2021-03-04T08:30:00+09:00",
   "issued" : "2021-03-04T11:45:33+09:00",
   "performer" : [
     {

@@ -422,6 +422,11 @@ GET [base]/Observation?patient=123&category=http://jpfhir.jp/fhir/core/CodeSyste
         }
       },
       {
+        "id" : "Observation.subject",
+        "path" : "Observation.subject",
+        "comment" : "この要素は1..1のcardinalityになるはずと考えられる。この要素が欠損値になる唯一の状況は、対象患者が不明な機器によって観察が行われるケースである。この場合、観察は何らかのコンテキスト・チャネル照合技術を介して患者に照合される必要があり、患者に照合されれば、その時点で本要素を更新する必要がある。"
+      },
+      {
         "id" : "Observation.focus",
         "path" : "Observation.focus",
         "comment" : "通常、心電図検査は対象（患者、または患者のグループ、場所、またはデバイス）について行われる。"

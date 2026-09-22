@@ -25,7 +25,7 @@ Profile: [JP_Specimen_Common](StructureDefinition-jp-specimen-common.md)
 | | | | | | |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | - | **Identifier** | **Description** | **Type** | **Capacity** | **SpecimenQuantity** |
-| * | 48736-15394-75467 | 採血菅 | 採血菅 | 20 mL | 18 mL |
+| * | 48736-15394-75467 | 採血管 | 採血管 | 20 mL | 18 mL |
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
@@ -73,9 +73,9 @@ Profile: [JP_Specimen_Common](StructureDefinition-jp-specimen-common.md)
           "value" : "48736-15394-75467"
         }
       ],
-      "description" : "採血菅",
+      "description" : "採血管",
       "type" : {
-        "text" : "採血菅"
+        "text" : "採血管"
       },
       "capacity" : {
         "value" : 20,

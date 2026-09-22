@@ -1,8 +1,8 @@
 [endpoint-dicom-wadors-example]: Endpoint-endpoint-dicom-wadors-example.html
 [jp-allergyintolerance-example-1]: AllergyIntolerance-jp-allergyintolerance-example-1.html
 [JP_AllergyIntolerance]: StructureDefinition-jp-allergyintolerance.html
-[JP_BirthOrderLabel_CS]: CodeSystem-jp-birthorderlabel-cs.html
-[JP_BirthOrderLabel_VS]: ValueSet-jp-birthorderlabel-vs.html
+[JP_BirthOrder_CS]: CodeSystem-jp-birthorder-cs.html
+[JP_BirthOrder_VS]: ValueSet-jp-birthorder-vs.html
 [jp-client-capabilitystatement]: CapabilityStatement-jp-client-capabilitystatement.html
 [JP_Common_Department]: StructureDefinition-jp-common-department.html
 [JP_Condition_BodySite_VS]: ValueSet-jp-condition-bodysite-vs.html
@@ -57,7 +57,7 @@
 [jp-encounter-example-1]: Encounter-jp-encounter-example-1.html
 [JP_Encounter]: StructureDefinition-jp-encounter.html
 [JP_V3RoleCode_CS]: CodeSystem-jp-v3RoleCode-cs.html
-[JP_FamilyMemberHistory_BirthOrderLabel]: StructureDefinition-jp-familymemberhistory-birthorderlabel.html
+[JP_FamilyMemberHistory_BirthOrder]: StructureDefinition-jp-familymemberhistory-birthorder.html
 [jp-familymemberhistory-example-1]: FamilyMemberHistory-jp-familymemberhistory-example-1.html
 [jp-familymemberhistory-example-2]: FamilyMemberHistory-jp-familymemberhistory-example-2.html
 [jp-familymemberhistory-example-3]: FamilyMemberHistory-jp-familymemberhistory-example-3.html

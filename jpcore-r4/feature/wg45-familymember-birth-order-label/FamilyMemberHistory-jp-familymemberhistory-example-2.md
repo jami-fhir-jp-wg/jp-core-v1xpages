@@ -8,7 +8,7 @@
 
 Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemberhistory.md)
 
-**JP Core FamilyMemberHistory Birth Order Label Extension**: 長男
+**JP Core FamilyMemberHistory Birth Order Extension**: 長男
 
 **status**: Partial
 
@@ -51,11 +51,11 @@ Profile: [JP Core FamilyMemberHistory Profile](StructureDefinition-jp-familymemb
   },
   "extension" : [
     {
-      "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_BirthOrderLabel",
+      "url" : "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_BirthOrder",
       "valueCodeableConcept" : {
         "coding" : [
           {
-            "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_BirthOrderLabel_CS",
+            "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_BirthOrder_CS",
             "code" : "son-1",
             "display" : "first son"
           }

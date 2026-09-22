@@ -14,7 +14,7 @@ Profile: [JP_Specimen_Common](StructureDefinition-jp-specimen-common.md)
 
 **status**: Available
 
-**type**: Whole blood
+**type**: Sputum
 
 **subject**: [山田 太郎 Male, DoB: 1970-01-01 ( urn:oid:1.2.392.100495.20.3.51.11311234567#JP_local_patient_identifier_11311234567_NamingSystem#00000010)](Patient-jp-patient-example-1.md)
 
@@ -25,7 +25,7 @@ Profile: [JP_Specimen_Common](StructureDefinition-jp-specimen-common.md)
 | | | | | | |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | - | **Identifier** | **Description** | **Type** | **Capacity** | **SpecimenQuantity** |
-| * | 48736-15394-75468 | 採血菅 | 採血菅 | 20 mL | 3 mL |
+| * | 48736-15394-75468 | 採痰容器 | 採痰容器 | 20 mL | 3 mL |
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
@@ -57,8 +57,8 @@ Profile: [JP_Specimen_Common](StructureDefinition-jp-specimen-common.md)
     "coding" : [
       {
         "system" : "http://terminology.hl7.org/CodeSystem/v2-0487",
-        "code" : "BLD",
-        "display" : "Whole blood"
+        "code" : "SPT",
+        "display" : "Sputum"
       }
     ]
   },
@@ -73,9 +73,9 @@ Profile: [JP_Specimen_Common](StructureDefinition-jp-specimen-common.md)
           "value" : "48736-15394-75468"
         }
       ],
-      "description" : "採血菅",
+      "description" : "採痰容器",
       "type" : {
-        "text" : "採血菅"
+        "text" : "採痰容器"
       },
       "capacity" : {
         "value" : 20,

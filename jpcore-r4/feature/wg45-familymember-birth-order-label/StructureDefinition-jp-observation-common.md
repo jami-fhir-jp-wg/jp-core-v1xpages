@@ -721,7 +721,8 @@ effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情
               "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationAdministration",
               "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationAdministration_Injection",
               "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationDispenseBase",
-              "http://hl7.org/fhir/StructureDefinition/MedicationStatement",
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationStatement",
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_MedicationStatement_Injection",
               "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Procedure",
               "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Immunization",
               "http://hl7.org/fhir/StructureDefinition/ImagingStudy"
@@ -787,7 +788,7 @@ effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情
         "path" : "Observation.subject",
         "short" : "このObservationの対象となる患者や患者群、機器、場所に関する情報",
         "definition" : "このObservationの対象となる患者や患者群、機器、場所に関する情報",
-        "comment" : "この要素は1..1のcardinalityになるはずと考えられる。この要素が欠損値になる唯一の状況は、対象患者が不明な機器によって観察が行われるケースである。この場合、観察は何らかのコンテキスト・チャネル照合技術を介して患者に照合される必要があり、患者に照合されれば、その時点で本要素を更新する必要がある。",
+        "comment" : "原則subjectを記述すべきだが、対象患者が不明なデバイス観察のケースを考慮し、cardinalityは0..1とする。",
         "type" : [
           {
             "code" : "Reference",
@@ -805,7 +806,7 @@ effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情
         "path" : "Observation.focus",
         "short" : "配偶者、親、胎児、ドナーなど、このObservationのsubject要素が実際の対象でない場合、その実際の対象に関する情報",
         "definition" : "配偶者、親、胎児、ドナーなど、このObservationのsubject要素が実際の対象でない場合、その実際の対象に関する情報",
-        "comment" : "T通常、observationは対象（患者、または患者のグループ、場所、またはデバイス）について行われ、対象とobservationのために直接測定されるものとの区別は、observationコード自体（例：「血糖値」 ）で記述され、この要素を使用して個別に表す必要はない。検体（標本）への参照が必要な場合は、 `specimen`要素を使用する。リソースの代わりにコードが必要な場合は、人体部位には`bodysite`要素を使用するか、標準の拡張機能[focusCode]（extension-observation-focuscode.html）を使用する。"
+        "comment" : "通常、observationは対象（患者、または患者のグループ、場所、またはデバイス）について行われ、対象とobservationのために直接測定されるものとの区別は、observationコード自体（例：「血糖値」 ）で記述され、この要素を使用して個別に表す必要はない。検体（標本）への参照が必要な場合は、 `specimen`要素を使用する。リソースの代わりにコードが必要な場合は、人体部位には`bodysite`要素を使用するか、標準の拡張機能[focusCode]（extension-observation-focuscode.html）を使用する。"
       },
       {
         "id" : "Observation.encounter",
@@ -970,7 +971,7 @@ effectiveDateTimeとeffectivePeriodは、検査に密接に関連する時間情
         "short" : "複合的な結果。例えば、血圧測定値ではそれを構成する収縮期および拡張期の値の組み合わせ",
         "definition" : "複合的な結果。例えば、血圧測定値ではそれを構成する収縮期および拡張期の値の組み合わせ",
         "comment" : "複数のObservation をグループに一緒にまとめる方法については、以下の[Notes]（observation.html＃notes）を参照すること。",
-        "requirements" : "コンポーネントobservation は プライマリobservation としてのobservation リソースの中で同じ属性を共有し、常に単一のobservation の一部として扱われる（つまりそれらは分離可能ではないん）。ただし、プライマリobservationのreference rangeはコンポーネント値に継承されないため、reference rangeは各コンポーネントobservation に適切であれば必要である。"
+        "requirements" : "コンポーネントobservation は プライマリobservation としてのobservation リソースの中で同じ属性を共有し、常に単一のobservation の一部として扱われる（つまりそれらは分離可能ではない）。ただし、プライマリobservationのreference rangeはコンポーネント値に継承されないため、reference rangeは各コンポーネントobservation に適切であれば必要である。"
       }
     ]
   }
