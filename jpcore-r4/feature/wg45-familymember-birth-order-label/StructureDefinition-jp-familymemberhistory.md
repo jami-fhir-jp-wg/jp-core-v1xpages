@@ -326,8 +326,8 @@ GET [base]/FamilyMemberHistory?patient=Patient/123
       {
         "id" : "FamilyMemberHistory",
         "path" : "FamilyMemberHistory",
-        "short" : "Information about patient's relatives, relevant for patient. 患者に関連する家族の情報（家族歴）",
-        "definition" : "Significant health conditions for a person related to the patient relevant in the context of care for the patient.  \n患者の診療に関連する、患者家族の重要な健康状態に関する情報。"
+        "short" : "患者の家族の、患者の診療に関連する情報（家族歴）",
+        "definition" : "患者の家族の、患者の診療に関連する重要な健康状態に関する情報。"
       },
       {
         "id" : "FamilyMemberHistory.extension",
