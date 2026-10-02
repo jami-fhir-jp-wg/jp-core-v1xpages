@@ -1,0 +1,82 @@
+# セキュリティ - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
+
+* [**Table of Contents**](toc.md)
+* **セキュリティ**
+
+## セキュリティ
+
+ここで扱っているTransactionの多くは、患者の医療や健康に関する重要な情報を扱っている。データの扱い方によっては、情報流出リスクを伴い、社会的な信頼を失うことも想定される。すべてのTransactionは、適切なアクセス権限の設定やサービスの公開方法、データの暗号化等を実施した上で、データを保護する必要がある。
+ 本対象は、健康医療データを扱う機関であり、医療福祉施設およびサービス・システム提供事業者の両方に当てはまる。
+
+### 適用範囲
+
+-------
+
+JP Coreは、FHIRを用いた医療情報の交換に関する技術仕様である。本ページでは、次のとおり記載の範囲を区別する。
+
+* **JP Coreが規定する範囲**：FHIRの実装に直接影響する技術的な要件（通信、認証・認可、監査ログ、Narrative、Security Labels）
+* **外部ガイドラインに委ねる範囲**：リスクマネジメント、委託先の選定・管理、物理的安全管理、端末・サーバの運用管理、不正侵入対策、クラウドサービスの選定、法令で定められた電子署名の要件等の、組織的・物理的・運用的な安全管理対策
+
+セキュリティに関する法令やルールは改定が頻繁に行われるため、組織的・物理的・運用的な安全管理対策については、JP Coreでは個別の要件を定めず、次章のガイドラインの最新版に従うことを推奨する。
+
+### 遵守を推奨するガイドライン
+
+-------
+
+医療情報を取り扱う機関および事業者は、次のガイドラインを遵守することが望ましい (**SHOULD**)。ガイドラインは随時改定されるため、検討の際には必ず最新版を参照すること。
+
+* 厚生労働省「[医療情報システムの安全管理に関するガイドライン](https://www.mhlw.go.jp/stf/shingi/0000516275_00006.html)」（本IG公開時点では第7.0版）
+* 経済産業省・総務省「[医療情報を取り扱う情報システム・サービスの提供事業者における安全管理ガイドライン](https://www.meti.go.jp/policy/mono_info_service/healthcare/01gl_20250328.pdf)」（本IG公開時点では第2.0版）
+
+本ページにおける要求レベル（**SHALL**、**SHOULD**、**MAY**）は、JP Coreへの適合性を示すものである。医療機関等には、医療法等の法令によりサイバーセキュリティの確保等の義務が別途課されており、法令上の義務は本ページの要求レベルにかかわらず適用され、本ページの記載より優先される。
+
+### FHIR BASE Securityへの考慮
+
+-------
+
+実装者はFHIR BASEの[FHIR Security](https://hl7.org/fhir/R4/security.html)に規定されている下記の項目について考慮し、要求項目には対応しなければならない (**SHALL**)。
+
+* [Communications](https://hl7.org/fhir/R4/security.html#http)
+* [Authentication](https://hl7.org/fhir/R4/security.html#authentication)
+* [Authorization/Access Control](https://hl7.org/fhir/R4/security.html#authorization/access%20control)
+* [Audit Logging](https://hl7.org/fhir/R4/security.html#audit%20logging)
+* [Digital Signatures](https://hl7.org/fhir/R4/security.html#digital%20signatures)
+* [Security Labels](https://hl7.org/fhir/R4/security-labels.html)
+* [Narrative](https://hl7.org/fhir/R4/security.html#narrative)
+
+### JP Coreにおけるセキュリティ要件
+
+-------
+
+#### 通信
+
+* 患者の医療情報を含むFHIRのやり取りは、TLSにより通信経路を暗号化しなければならない (**SHALL**)
+* オープンなネットワークにおいてVPN等を用いずにTLS接続（HTTPS）でFHIRサーバを公開する場合は、「[医療情報システムの安全管理に関するガイドライン](https://www.mhlw.go.jp/stf/shingi/0000516275_00006.html)」に従い、次の対策を行うことが望ましい (**SHOULD**) 
+* TLSのプロトコルバージョンをTLS1.3以上に限定すること。システム・サービス等の対応が困難な場合はTLS1.2とすることも可能である
+* クライアント証明書を利用したTLSクライアント認証（mutual-TLS）、またはこれと同等以上の安全性を有する端末の識別・認証により、接続する端末を制限すること
+* サーバ・クライアントともに、IPA「[TLS暗号設定ガイドライン](https://www.ipa.go.jp/security/crypto/guideline/ssl_crypt_config.html)」（最新版）の「高セキュリティ型」に準じた設定とすること
+ 
+
+#### 認証・認可
+
+* サーバーは、認証されていないリクエストに対してHTTP 401を返さなければならない (**SHALL**)。認証されているがアクセス権限が不足しているリクエストに対しては、HTTP 403を返すことが望ましい (**SHOULD**)
+* REST APIによる連携では、外部からの攻撃や意図しないアクセスを防止するため、API連携により利用するユーザ・アプリケーション・デバイスの範囲を限定し、責任分界、アクセスポリシーおよびログ管理を明確にした上で、認証・認可の仕組みを設けることが望ましい (**SHOULD**)
+* 認可の方式（OAuth 2.0や[SMART App Launch](https://hl7.org/fhir/smart-app-launch/)等）については、JP Coreでは現時点で規定せず、今後検討する
+
+#### 監査ログ
+
+* 監査証跡ログを採取し、特に個人情報の流出防止の観点より、認証、個人情報へのアクセス、印刷およびデータエクスポートのイベントを注意深く監視し、不正利用等が発生していないかを確認することが望ましい (**SHOULD**)。監査証跡のメッセージについては、「[JAHISヘルスケア分野における監査証跡のメッセージ標準規約](https://www.jahis.jp/standard/detail/id=1189)」（最新版を参照。本IG公開時点ではVer.2.2）を参考にすること
+* 監査証跡をFHIRで表現・交換する場合は、[AuditEvent](https://hl7.org/fhir/R4/auditevent.html)リソースを用いることができる (**MAY**)
+* 監査証跡の時刻の正確性を保つため、タイムサーバーを利用して管理対象のすべてのシステムの時刻を同期することが望ましい (**SHOULD**)。タイムサーバーは国立研究開発法人 情報通信研究機構(NICT)もしくはそこから派生するタイムサーバーを利用することが望ましい (**SHOULD**)
+
+#### Narrative
+
+* Narrative（text要素）を表示するシステムは、スクリプトの実行等を防ぐため、FHIRの規定に従ってXHTMLの内容を検証・サニタイズした上で表示することが望ましい (**SHOULD**)
+
+#### Security Labels
+
+* リソースの機密性や取扱い上の制限を表現する場合は、meta.securityに[Security Labels](https://hl7.org/fhir/R4/security-labels.html)を設定することができる (**MAY**)
+
+本実装ガイドへのご質問・ご指摘については、
+[GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
+[GitHub PullRequest](https://github.com/jami-fhir-jp-wg/jp-core-v1x/pulls)にて受け付けている。
