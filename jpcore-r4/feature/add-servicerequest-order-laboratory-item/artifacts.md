@@ -360,8 +360,8 @@
 | [JP Core Practitioner Example 看護師男性１](Practitioner-jp-practitioner-example-male-2.md) | 看護師男性 |
 | [JP Core Procedure Example 処置（抜糸）](Procedure-jp-procedure-example-1.md) | 前額部に創傷処置を施術しフォローアップとして縫合糸の除去を予定している例 |
 | [JP Core ProcedureRole Example 精神科外来サービス担当](PractitionerRole-jp-practitionerrole-example-1.md) | 精神科外来サービス担当 |
-| [JP Core ServiceRequest Order Laboratory Item Example 個別検査項目（γ-GTP）](ServiceRequest-jp-servicerequest-order-laboratory-item-example-1.md) | 検体検査の個別検査項目（γ-GTP）の例。標準コード（JLAC10）とローカルコードの両方を設定している。 |
-| [JP Core ServiceRequest Order Laboratory Item Example 個別検査項目（クレアチニン）](ServiceRequest-jp-servicerequest-order-laboratory-item-example-2.md) | 検体検査の個別検査項目（クレアチニン）の例。依頼単位を送信せず、個別検査項目を並べて表現するユースケースを想定し、ローカルコードのみを設定している。 |
+| [JP Core ServiceRequest Order Laboratory Item Example 個別検査項目（γ-GTP）](ServiceRequest-jp-servicerequest-order-laboratory-item-example-1.md) | 検体検査の個別検査項目の最低限のサンプル。必須要素（identifier、status、intent、category、code、subject）のみを設定している。検査項目が γ-GTP であることに特別な意味はなく、γ-GTP の記述方法を定めるものではない。 |
+| [JP Core ServiceRequest Order Laboratory Item Example 個別検査項目（クレアチニン）](ServiceRequest-jp-servicerequest-order-laboratory-item-example-2.md) | 検体検査の個別検査項目に項目を付加したサンプル。必須要素に加え、検体検査の依頼で使用する任意要素（緊急度、検査目的、依頼病名、依頼者、検体など）を設定している。すべての要素の設定を求めるものではなく、検査項目がクレアチニンであることにも特別な意味はない。 |
 | [JP Core ServiceRequest with Department Extension Example (Text only)](ServiceRequest-jp-servicerequest-department-example-03.md) | JP_Department拡張を使用したServiceRequestの例。診療科情報をテキストのみで表現する。 |
 | [JP Core Specimen Example 検体材料（喀痰）](Specimen-jp-specimen-example-3.md) | 検体材料（喀痰） |
 | [JP Core Specimen Example 検体材料（尿）](Specimen-jp-specimen-example-1.md) | 検体材料（尿） |

@@ -17930,8 +17930,18 @@ groupIdentifier","",0,1,"","","Y","Identifier {[]} {[]}
 ","サービスリクエストの意図（order 固定）【詳細参照】","この要求が、提案、経過、オリジナル、繰り返しかどうかを示す。","【JP Core仕様】このプロファイルでは order に固定する。
 intent はオーダの種類を表す要素であり、依頼単位と個別検査項目の親子を区別するためには使用しない。","","","","","<valueCode xmlns=""http://hl7.org/fhir"" value=""order""/>","","","",,"required","サービスのリクエストの種類","http://hl7.org/fhir/ValueSet/request-intent|4.0.1","",,,,"ServiceRequest.intent",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 "
-"jp-servicerequest-order-laboratory-item","ServiceRequest.category","ServiceRequest.category","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
-","検査の区分【詳細参照】","検索、分類、表示の目的でサービスを分類するコード（例 「外科的手技」）","【JP Core仕様】検体検査であることを示す区分を設定する。使用するコード表は個別仕様で定めてよい。","Used for filtering what service request are retrieved and displayed.","","","","","","","",,"example","要求されたサービスの分類。","http://hl7.org/fhir/ValueSet/servicerequest-category|4.0.1","",,,,"ServiceRequest.category",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"jp-servicerequest-order-laboratory-item","ServiceRequest.category","ServiceRequest.category","","","",1,*,"","","Y","CodeableConcept {[]} {[]}
+","検査の区分【詳細参照】","検索、分類、表示の目的でサービスを分類するコード（例 「外科的手技」）","【JP Core仕様】このプロファイルでは必須とする。
+検体検査の依頼であることを判別できるよう、laboratory スライスを必ず設定する。施設固有の区分などを追加で設定してもよい。","Used for filtering what service request are retrieved and displayed.","","","","","","","",,"example","要求されたサービスの分類。","http://hl7.org/fhir/ValueSet/servicerequest-category|4.0.1","","pattern:$this}
+","",,"open","ServiceRequest.category",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"jp-servicerequest-order-laboratory-item","ServiceRequest.category:laboratory","ServiceRequest.category","laboratory","","",1,1,"","","Y","CodeableConcept {[]} {[]}
+","検体検査を示す区分（laboratory 固定）【詳細参照】","検体検査の依頼であることを示す区分。","【JP Core仕様】結果として返される Observation（JP_Observation_LabResult）の category と同じコード表（JP Core Simple Observation Category CodeSystem）を使用し、laboratory に固定する。","Used for filtering what service request are retrieved and displayed.","","","","<valueCodeableConcept xmlns=""http://hl7.org/fhir"">
+  <coding>
+    <system value=""http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS""/>
+    <code value=""laboratory""/>
+  </coding>
+</valueCodeableConcept>","","","",,"example","要求されたサービスの分類。","http://hl7.org/fhir/ValueSet/servicerequest-category|4.0.1","",,,,"ServiceRequest.category",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 "
 "jp-servicerequest-order-laboratory-item","ServiceRequest.priority","ServiceRequest.priority","","","",0,1,"","","Y","code {[]} {[]}
 ","緊急度（routine | urgent | asap | stat）【詳細参照】","このサービスリクエストはどの程度早く対処されるべきかを示す。","【JP Core仕様】値セット（RequestPriority）は required であり、値は変更できない。日本の運用との対応は次を目安とする。
@@ -17947,7 +17957,7 @@ intent はオーダの種類を表す要素であり、依頼単位と個別検�
 "jp-servicerequest-order-laboratory-item","ServiceRequest.code","ServiceRequest.code","","service requested
 ","",1,1,"","","Y","CodeableConcept {[]} {[]}
 ","検査項目のコード【詳細参照】","依頼された個別の検査項目を識別するコード。","【JP Core仕様】このプロファイルでは必須とする。
-標準コードとして JLAC10（または JLAC11）を使用する。結果として返される Observation（JP_Observation_LabResult）の code と同じコード体系を使用すると、依頼と結果の突合が容易になる。","","","","","","","","",,"example","指定された個人、組織、または医療サービスによって実施できるテストやサービスのコード。ラボの場合、LOINCが（preferred）[http://build.fhir.org/terminologies.html#preferred]であり、LOINCオーダーコードを使用した値セットが[こちら]（valueset-diagnostic-requests.html）で利用可能です。","http://hl7.org/fhir/ValueSet/procedure-code|4.0.1","",,,,"ServiceRequest.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+標準コードとして JLAC10（または JLAC11）を使用する。結果として返される Observation（JP_Observation_LabResult）の code と同じコード体系を使用すると、依頼と結果の突合が容易になる。","","","","","","","","",,"preferred","MEDIS 臨床検査マスター","http://jpfhir.jp/fhir/core/ValueSet/JP_ObservationLabResultCode_VS","",,,,"ServiceRequest.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 "
 "jp-servicerequest-order-laboratory-item","ServiceRequest.code.id","ServiceRequest.code.id","","","",0,1,"","","","string {[]} {[]}
 ","要素間参照のための一意なID","リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"",""
@@ -17955,8 +17965,8 @@ intent はオーダの種類を表す要素であり、依頼単位と個別検�
 ","実装によって定義される追加コンテンツ","An Extension","","","","","","","","","",,,,,"","value:url}
 ","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"jp-servicerequest-order-laboratory-item","ServiceRequest.code.coding","ServiceRequest.code.coding","","","",0,*,"","","Y","Coding {[]} {[]}
-","検査項目のコード（標準コード、ローカルコード）【詳細参照】","用語システムによって定義されたコードへの参照。 / A reference to a code defined by a terminology system.","【JP Core仕様】標準コードとローカルコードの両方を設定できる。いずれか一方は設定すること。JLAC10 と JLAC11 など複数の標準コードを設定できるよう、上限は設けない。","コードシステム内の代替エンコーディング、および他のコードシステムへの翻訳が可能になります。 / Allows for alternative encodings within a code system, and translations to other code systems.","","","","","","","",,,,,"",,,,"CodeableConcept.coding",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+"jp-servicerequest-order-laboratory-item","ServiceRequest.code.coding","ServiceRequest.code.coding","","","",1,*,"","","Y","Coding {[]} {[]}
+","検査項目のコード（標準コード、ローカルコード）【詳細参照】","用語システムによって定義されたコードへの参照。 / A reference to a code defined by a terminology system.","【JP Core仕様】このプロファイルでは必須とする。標準コードとローカルコードの両方を設定できる。いずれか一方は設定すること。JLAC10 と JLAC11 など複数の標準コードを設定できるよう、上限は設けない。","コードシステム内の代替エンコーディング、および他のコードシステムへの翻訳が可能になります。 / Allows for alternative encodings within a code system, and translations to other code systems.","","","","","","","",,,,,"",,,,"CodeableConcept.coding",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 "
 "jp-servicerequest-order-laboratory-item","ServiceRequest.code.text","ServiceRequest.code.text","","","",1,1,"","","Y","string {[]} {[]}
 ","検査項目の名称","検査項目の表示名。オーダ票や報告書に記載する名称。","【JP Core仕様】このプロファイルでは必須とする。
@@ -18008,17 +18018,18 @@ orderer","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/
 ","リクエストされた場所（参照）","実際に行為が行われるべき好ましい場所（複数可）への参照。例：自宅や介護施設など。","","","","","","","","","",,,,,"",,,,"ServiceRequest.locationReference",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 "
 "jp-servicerequest-order-laboratory-item","ServiceRequest.reasonCode","ServiceRequest.reasonCode","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
-","行為やサービスの説明・理由","このサービスがリクエストされる理由についての説明または根拠をコード化またはテキスト化したもの。しばしば（保険）請求を目的とされる。supportingInfoで参照されるリソースに関連する場合がある。","この要素は照会理由を表し、サービスがどのように実行されるか、あるいは全く実行されないかどうかを決定するために使用される。CTスキャンの例で示したように、データが自由記述の場合は、CodeableConcept.text要素を使用する。","","","","","","","","",,"example","サービス調査の依頼理由を正当化する診断または問題コード。","http://hl7.org/fhir/ValueSet/procedure-reason|4.0.1","",,,,"ServiceRequest.reasonCode",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","検査目的、依頼病名【詳細参照】","検査を依頼する理由。検査目的や依頼病名をコードまたはテキストで表現する。","【JP Core仕様】検査目的は自由記載が多いため、text に設定する。依頼病名は、コード化されている場合は coding に、コード化されていない場合は text に設定する。
+病名を Condition リソースとして参照できる場合は reasonReference を使用する。同じ理由を reasonCode と reasonReference の両方に重複して設定しないこと。","","","","","","","","",,"example","サービス調査の依頼理由を正当化する診断または問題コード。","http://hl7.org/fhir/ValueSet/procedure-reason|4.0.1","",,,,"ServiceRequest.reasonCode",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 "
 "jp-servicerequest-order-laboratory-item","ServiceRequest.reasonReference","ServiceRequest.reasonReference","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common], CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_DiagnosticReport_Common], CanonicalType[http://hl7.org/fhir/StructureDefinition/DocumentReference]]}
-","行為やサービスの説明・理由（参照）","このサービスが要求される理由の正当性を提供する他のリソースを示す。supportingInfoで参照されるリソースに関連する場合がある。","この要素は照会理由を表し、サービスがどのように実行されるか、あるいは全く実行されないかどうかを決定するために使用される。可能な限り具体的にするために、ObservationやConditionリソースへの参照が可能であれば使用されるべきである。また、DiagnosticReport を参照する場合は、DiagnosticReport.conclusion および/または DiagnosticReport.conclusionCode を参照する必要がある。DocumentReference への参照を使用する場合、ターゲット文書は、このサービス要求の関連理由を提供する明確な所見言語を含んでいなければならない。CTスキャンの例に示すように、データが自由記述（符号化されていない）の場合、 ServiceRequest.reasonCodeにCodeableConcept.text要素を使用する。","","","","","","","","",,,,,"",,,,"ServiceRequest.reasonReference",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","依頼病名などへの参照【詳細参照】","検査を依頼する理由となるリソースへの参照。","【JP Core仕様】依頼病名を Condition リソース（JP_Condition）として参照できる場合に使用する。","","","","","","","","",,,,,"",,,,"ServiceRequest.reasonReference",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 "
 "jp-servicerequest-order-laboratory-item","ServiceRequest.insurance","ServiceRequest.insurance","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Coverage], CanonicalType[http://hl7.org/fhir/StructureDefinition/ClaimResponse]]}
 ","関連する保険情報","リクエストされたサービスを提供するために必要な保険プラン、適用範囲拡大、事前承認、および/または事前決定がある。","","","","","","","","","",,,,,"",,,,"ServiceRequest.insurance",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 "
 "jp-servicerequest-order-laboratory-item","ServiceRequest.supportingInfo","ServiceRequest.supportingInfo","","Ask at order entry question
 AOE","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
-","追加の補助的な臨床情報（別名 オーダエントリー時の質問 Ask at Order Entry question; AOEs）","サービスやその解釈に影響を与える可能性のある、患者や検体に関する追加の臨床情報。この情報には、診断、臨床所見、その他の観察が含まれる。検査のオーダでは、一般的に「オーダエントリー時の質問（AOEs）」と呼ばれ ている。これには、オーダを完了するために必要な文脈や裏付けとなる情報を提供するために、実施者が明示的に要求した観察が含まれる。例えば、血液ガス測定のための吸入酸素量の報告などである。","サービスの提供方法に関する情報を表すには、instructions 要素を使用する。","","","","","","","","",,,,,"",,,,"ServiceRequest.supportingInfo",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","追加の補助的な臨床情報（別名 オーダエントリー時の質問 Ask at Order Entry question; AOEs）","サービスやその解釈に影響を与える可能性のある、患者や検体に関する追加の臨床情報。この情報には、診断、臨床所見、その他の観察が含まれる。検査のオーダでは、一般的に「オーダエントリー時の質問（AOEs）」と呼ばれ ている。これには、オーダを完了するために必要な文脈や裏付けとなる情報を提供するために、実施者が明示的に要求した観察が含まれる。例えば、血液ガス測定のための吸入酸素量の報告などである。","【JP Core仕様】検査の実施や結果の解釈に必要な患者情報（身長、体重、採取時の状態など）を、Observation などのリソースへの参照として設定する。","","","","","","","","",,,,,"",,,,"ServiceRequest.supportingInfo",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 "
 "jp-servicerequest-order-laboratory-item","ServiceRequest.specimen","ServiceRequest.specimen","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Specimen_Common]]}
 ","検体【詳細参照】","検査で使用する１つ以上の検体","【JP Core仕様】採取済みの検体に対して依頼する場合に、その検体（JP_Specimen_Common）を参照する。
@@ -18029,7 +18040,7 @@ AOE","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/Structu
 ","体の部位（別名 場所）","行為を実施すべき解剖学的部位。目標とする場所。","【JP Core仕様】検体検査では、JLAC10 の材料コードなど code に検体や部位が含まれることが多いため、通常は使用しない。code から部位が分からない場合にのみ使用する。","Knowing where the procedure is performed is important for tracking if multiple sites are possible.","","","","","","","",,"example","解剖学的位置を記述するコード。左右対称性を含む場合があります。","http://hl7.org/fhir/ValueSet/body-site|4.0.1","",,,,"ServiceRequest.bodySite",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 "
 "jp-servicerequest-order-laboratory-item","ServiceRequest.note","ServiceRequest.note","","","",0,*,"","","","Annotation {[]} {[]}
-","コメント","サービス要求について作成された、その他のメモやコメント。例えば、内部請求のメモなど。","","","","","","","","","",,,,,"",,,,"ServiceRequest.note",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","依頼コメント【詳細参照】","サービス要求について作成された、その他のメモやコメント。例えば、内部請求のメモなど。","【JP Core仕様】検査部門への連絡事項など、他の要素で表現できない依頼コメントをテキストで設定する。","","","","","","","","",,,,,"",,,,"ServiceRequest.note",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 "
 "jp-servicerequest-order-laboratory-item","ServiceRequest.patientInstruction","ServiceRequest.patientInstruction","","","",0,1,"","","Y","string {[]} {[]}
 ","患者、消費者向けの説明","患者または消費者が理解できる言葉で指示。","","","","","","","","","",,,,,"",,,,"ServiceRequest.patientInstruction",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
