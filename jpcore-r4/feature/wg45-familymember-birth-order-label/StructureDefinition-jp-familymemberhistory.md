@@ -74,14 +74,42 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
 
 ### 実装ガイダンス
 
+#### 典型的な例
+
+家族歴を表現する典型的な例を下記に示す。`condition` は必須ではないが、基本的に必要となる要素である。
+
+```
+{
+  "resourceType": "FamilyMemberHistory",
+  "status": "partial",
+  "patient": {
+    "reference": "Patient/jp-patient-example-1",
+    "display": "山田 太郎"
+  },
+  "relationship": {
+    "coding": [{
+      "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+      "code": "MTH",
+      "display": "母親"
+    }]
+  },
+  "condition": [{
+    "code": { "text": "糖尿病" }
+  }]
+}
+
+```
+
 #### 記録単位
 
 `FamilyMemberHistory` は、患者に関連する個人1人につき1リソースとして記録する。
 
 #### 続柄 relationship の記録
 
-患者と対象となる家族構成員との関係は `FamilyMemberHistory.relationship` に記録する。
- `relationship` には、HL7 V3 RoleCode の FamilyMember ValueSet を使用する。
+患者と対象となる家族構成員との関係は `FamilyMemberHistory.relationship` に記録する。`relationship` には、HL7 V3 RoleCode の FamilyMember ValueSet を使用する。`relationship` は**患者からの方向**で記録する。
+
+* 父方／母方の区別は、`FTH`／`MTH`、`PUNCLE`（父方のおじ）／`MUNCLE`（母方のおじ）、`PAUNT`（父方のおば）／`MAUNT`（母方のおば）など方向を内包するコードで表す。
+* JP Core は `v3-RoleCode` の各コードに日本語の designation を付与した CodeSystem [JP_V3RoleCode_CS] を用意している。`display` に日本語を用いる根拠とする。
 
 #### 出生順呼称 BirthOrder の記録
 
