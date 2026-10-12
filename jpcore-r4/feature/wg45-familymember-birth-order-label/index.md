@@ -6620,6 +6620,20 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "List"
+          }
+        ],
+        "reference" : {
+          "reference" : "List/jp-familymemberhistory-example-list-1"
+        },
+        "name" : "JP Core FamilyMemberHistory List Example-1 家族歴一覧",
+        "description" : "家族歴一覧の例：MELASが疑われる患者（山田太郎）の家族構成員（母親、息子、内縁のパートナー、母方のおば）のFamilyMemberHistoryを一覧化したListリソース。",
+        "exampleBoolean" : true
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
             "valueString" : "StructureDefinition:resource"
           }
         ],
@@ -6783,20 +6797,6 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "name" : "JP Core Immunization Profile",
         "description" : "このプロファイルはImmunizationリソースに対して日本での予防接種情報を送受信するための制約と拡張を加えたものである。",
         "exampleBoolean" : false
-      },
-      {
-        "extension" : [
-          {
-            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "List"
-          }
-        ],
-        "reference" : {
-          "reference" : "List/jp-list-example-1"
-        },
-        "name" : "JP Core List Example-1 家族歴一覧",
-        "description" : "家族歴一覧の例：MELASが疑われる患者（山田太郎）の家族構成員（母親、息子、内縁のパートナー、母方のおば）のFamilyMemberHistoryを一覧化したListリソース。",
-        "exampleBoolean" : true
       },
       {
         "extension" : [

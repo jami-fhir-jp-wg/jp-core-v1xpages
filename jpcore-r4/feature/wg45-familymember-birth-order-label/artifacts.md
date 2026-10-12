@@ -302,10 +302,10 @@
 | [JP Core FamilyMemberHistory Example-2 息子（長男）](FamilyMemberHistory-jp-familymemberhistory-example-2.md) | 出生順呼称の例1（子世代）：MELASが疑われる糖尿病患者（山田太郎）の息子（長男）で、花粉症の病歴のみを有し、糖尿病の既往はない。 |
 | [JP Core FamilyMemberHistory Example-3 内縁のパートナー（血縁なし）](FamilyMemberHistory-jp-familymemberhistory-example-3.md) | 血縁関係のない例：鈴木花子という内縁のパートナー、血縁関係がないためMELAS疑いに関する家族歴聴取対象外で、病歴情報（reasonCode、condition）はない。 |
 | [JP Core FamilyMemberHistory Example-4 母方のおば（次女）](FamilyMemberHistory-jp-familymemberhistory-example-4.md) | 出生順呼称の例2（親世代）：MELASが疑われる患者の母方のおばが、家族内で次女と呼称されている例。 |
+| [JP Core FamilyMemberHistory List Example-1 家族歴一覧](List-jp-familymemberhistory-example-list-1.md) | 家族歴一覧の例：MELASが疑われる患者（山田太郎）の家族構成員（母親、息子、内縁のパートナー、母方のおば）のFamilyMemberHistoryを一覧化したListリソース。 |
 | [JP Core ImagingStudy Endoscopy Example 内視鏡画像検査](ImagingStudy-jp-imagingstudy-endoscopy-example-1.md) | 内視鏡画像検査 |
 | [JP Core ImagingStudy Radiology Example 放射線画像検査](ImagingStudy-jp-imagingstudy-radiology-example-1.md) | 放射線画像検査 |
 | [JP Core Immunization Example 肺炎球菌ワクチン接種](Immunization-jp-immunization-example-1.md) | 肺炎球菌ワクチン接種 YJコードによるワクチン記述 |
-| [JP Core List Example-1 家族歴一覧](List-jp-list-example-1.md) | 家族歴一覧の例：MELASが疑われる患者（山田太郎）の家族構成員（母親、息子、内縁のパートナー、母方のおば）のFamilyMemberHistoryを一覧化したListリソース。 |
 | [JP Core Location Example 手術室](Location-jp-location-example-ope.md) | 手術室 |
 | [JP Core Location Example 病棟](Location-jp-location-example-ward.md) | 病棟 |
 | [JP Core Location Example 診察室](Location-jp-location-example-examinationroom.md) | 診察室 |

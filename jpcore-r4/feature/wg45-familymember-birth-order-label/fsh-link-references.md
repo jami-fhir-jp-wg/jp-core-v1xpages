@@ -62,6 +62,7 @@
 [jp-familymemberhistory-example-2]: FamilyMemberHistory-jp-familymemberhistory-example-2.html
 [jp-familymemberhistory-example-3]: FamilyMemberHistory-jp-familymemberhistory-example-3.html
 [jp-familymemberhistory-example-4]: FamilyMemberHistory-jp-familymemberhistory-example-4.html
+[jp-familymemberhistory-example-list-1]: List-jp-familymemberhistory-example-list-1.html
 [JP_FamilyMemberHistory]: StructureDefinition-jp-familymemberhistory.html
 [JP_HumanName]: StructureDefinition-jp-humanname.html
 [jp-imagingstudy-endoscopy-example-1]: ImagingStudy-jp-imagingstudy-endoscopy-example-1.html
@@ -74,7 +75,6 @@
 [jp-immunization-example-1]: Immunization-jp-immunization-example-1.html
 [JP_Immunization_ManufacturedDate]: StructureDefinition-jp-immunization-manufactureddate.html
 [JP_Immunization]: StructureDefinition-jp-immunization.html
-[jp-list-example-1]: List-jp-list-example-1.html
 [jp-location-example-ope]: Location-jp-location-example-ope.html
 [jp-location-example-ward]: Location-jp-location-example-ward.html
 [jp-location-example-examinationroom]: Location-jp-location-example-examinationroom.html

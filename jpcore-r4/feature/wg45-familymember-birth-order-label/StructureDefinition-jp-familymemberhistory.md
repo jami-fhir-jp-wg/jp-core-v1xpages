@@ -246,7 +246,7 @@ GET [base]/FamilyMemberHistory?patient=Patient/123
 * [**息子（長男）**](FamilyMemberHistory-jp-familymemberhistory-example-2.md)
 * [**内縁のパートナー**](FamilyMemberHistory-jp-familymemberhistory-example-3.md)
 * [**母方のおば（次女）**](FamilyMemberHistory-jp-familymemberhistory-example-4.md)
-* [**家族歴一覧**](List-jp-list-example-1.md)
+* [**家族歴一覧**](List-jp-familymemberhistory-example-list-1.md)
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
