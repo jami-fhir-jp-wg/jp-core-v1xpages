@@ -305,6 +305,7 @@
 | [JP Core ImagingStudy Endoscopy Example 内視鏡画像検査](ImagingStudy-jp-imagingstudy-endoscopy-example-1.md) | 内視鏡画像検査 |
 | [JP Core ImagingStudy Radiology Example 放射線画像検査](ImagingStudy-jp-imagingstudy-radiology-example-1.md) | 放射線画像検査 |
 | [JP Core Immunization Example 肺炎球菌ワクチン接種](Immunization-jp-immunization-example-1.md) | 肺炎球菌ワクチン接種 YJコードによるワクチン記述 |
+| [JP Core List Example-1 家族歴一覧](List-jp-list-example-1.md) | 家族歴一覧の例：MELASが疑われる患者（山田太郎）の家族構成員（母親、息子、内縁のパートナー、母方のおば）のFamilyMemberHistoryを一覧化したListリソース。 |
 | [JP Core Location Example 手術室](Location-jp-location-example-ope.md) | 手術室 |
 | [JP Core Location Example 病棟](Location-jp-location-example-ward.md) | 病棟 |
 | [JP Core Location Example 診察室](Location-jp-location-example-examinationroom.md) | 診察室 |
@@ -370,7 +371,6 @@
 | [JP Core Specimen Example 検体材料（喀痰）](Specimen-jp-specimen-example-3.md) | 検体材料（喀痰） |
 | [JP Core Specimen Example 検体材料（尿）](Specimen-jp-specimen-example-1.md) | 検体材料（尿） |
 | [JP Core Specimen Example 検体材料（血液）](Specimen-jp-specimen-example-2.md) | 検体材料（血液） |
-| [jp-familymemberhistory-example-list](List-jp-familymemberhistory-example-list.md) |  |
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および

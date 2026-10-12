@@ -74,6 +74,7 @@
 [jp-immunization-example-1]: Immunization-jp-immunization-example-1.html
 [JP_Immunization_ManufacturedDate]: StructureDefinition-jp-immunization-manufactureddate.html
 [JP_Immunization]: StructureDefinition-jp-immunization.html
+[jp-list-example-1]: List-jp-list-example-1.html
 [jp-location-example-ope]: Location-jp-location-example-ope.html
 [jp-location-example-ward]: Location-jp-location-example-ward.html
 [jp-location-example-examinationroom]: Location-jp-location-example-examinationroom.html
@@ -244,7 +245,6 @@
 [jp-department-ssmix-namingsystem]: NamingSystem-jp-department-ssmix-namingsystem.html
 [jp-endoscopyterminology-codes-jed-ns]: NamingSystem-jp-endoscopyterminology-codes-jed-ns.html
 [jp-example-local-identifiersystem]: NamingSystem-jp-example-local-identifiersystem.html
-[jp-familymemberhistory-example-list]: List-jp-familymemberhistory-example-list.html
 [jp-IdSystem-prescriptionDocumentID-namingsystem]: NamingSystem-jp-IdSystem-prescriptionDocumentID-namingsystem.html
 [jp-insurance-memberID-identifier]: NamingSystem-jp-insurance-memberID-identifier.html
 [jp-insured-person-number-namingsystem]: NamingSystem-jp-insured-person-number-namingsystem.html

@@ -1,10 +1,10 @@
-# jp-familymemberhistory-example-list - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
+# JP Core List Example-1 家族歴一覧 - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **jp-familymemberhistory-example-list**
+* **JP Core List Example-1 家族歴一覧**
 
-## Example List: jp-familymemberhistory-example-list
+## Example List: JP Core List Example-1 家族歴一覧
 
 | | | |
 | :--- | :--- | :--- |
@@ -25,7 +25,7 @@
 ```json
 {
   "resourceType" : "List",
-  "id" : "jp-familymemberhistory-example-list",
+  "id" : "jp-list-example-1",
   "status" : "current",
   "mode" : "snapshot",
   "code" : {
