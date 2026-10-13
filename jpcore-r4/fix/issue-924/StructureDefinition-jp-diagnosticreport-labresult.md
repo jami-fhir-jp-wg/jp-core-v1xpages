@@ -136,7 +136,7 @@ GET [base]/DiagnosticReport?patient=123&category=http://loinc.org|LP29693-6&base
 ```
 
 
-1. 臨床での検索：subject = Patient（対象患者）、category(対象レポートカテゴリ)、date(レポート作成日)を指定した検索をサポートすることが望ましい。（**SHOULD**）
+1. 臨床での検索：subject = Patient（対象患者）、category(対象レポートカテゴリ)、date(検体採取日)を指定した検索をサポートすることが望ましい。（**SHOULD**）
 patient,category,dateの各検索パラメータに一致するObservationリソースを含むBundleを取得することができる。
 
 ```
@@ -354,7 +354,9 @@ GET [base]/DiagnosticReport?patient=123&category=http://loinc.org|LP29693-6&date
       {
         "id" : "DiagnosticReport.effective[x]",
         "path" : "DiagnosticReport.effective[x]",
-        "comment" : "診断手順が患者に対して実行された場合、これは実施された時刻。対象が検体である場合は、検体採取時間から診断関連時刻を導き出すことができるが、検体情報が常に入手できるとは限らず、検体と診断関連時刻の正確な関係は必ずしも自明ではない。  \n【JP Core仕様】検体採取時間"
+        "short" : "検体採取日時（effectivePeriod は未使用）",
+        "definition" : "検体採取日時（effectivePeriod は未使用）",
+        "comment" : "診断手順が患者に対して実行された場合、これは実施された時刻。対象が検体である場合は、検体採取時間から診断関連時刻を導き出すことができるが、検体情報が常に入手できるとは限らず、検体と診断関連時刻の正確な関係は必ずしも自明ではない。  \n【JP Core仕様】検体採取日時"
       },
       {
         "id" : "DiagnosticReport.issued",
