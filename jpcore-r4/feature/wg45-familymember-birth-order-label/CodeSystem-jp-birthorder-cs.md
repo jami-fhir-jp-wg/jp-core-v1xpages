@@ -42,7 +42,7 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
   "title" : "JP Core Birth Order CodeSystem",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-10-21T14:48:12+00:00",
+  "date" : "2026-10-21T16:06:49+00:00",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
@@ -79,13 +79,13 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
     {
       "code" : "category",
       "uri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_BirthOrder_CS#category",
-      "description" : "出生順呼称の区分。",
+      "description" : "出生順呼称の系列を分類する。son は長男・二男...の系列、daughter は長女・二女...の系列を示す。",
       "type" : "code"
     },
     {
       "code" : "order",
       "uri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_BirthOrder_CS#order",
-      "description" : "区分内での順位。",
+      "description" : "系列内での順位（1を最年長とする）。",
       "type" : "integer"
     }
   ],
@@ -520,7 +520,7 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
     {
       "code" : "unknown",
       "display" : "unknown",
-      "definition" : "詳細不明(text要素に詳細を記載)",
+      "definition" : "詳細不明（text要素に詳細を記載）",
       "designation" : [
         {
           "language" : "ja",
