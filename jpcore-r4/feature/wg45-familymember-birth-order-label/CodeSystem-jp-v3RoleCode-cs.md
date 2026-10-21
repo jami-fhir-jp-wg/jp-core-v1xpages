@@ -7,7 +7,7 @@
 ## CodeSystem: JP Core FamilyMember CodeSystem 
 
 * **項目**: *定義URL*
-  * **内容**: http://jpfhir.jp/fhir/Common/CodeSystem/JP_V3RoleCode_CS
+  * **内容**: http://jpfhir.jp/fhir/core/CodeSystem/JP_V3RoleCode_CS
 * **項目**: *Version*
   * **内容**: 1.3.0-dev
 * **項目**: *Name*
@@ -38,7 +38,7 @@ http://terminology.hl7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の�
 {
   "resourceType" : "CodeSystem",
   "id" : "jp-v3RoleCode-cs",
-  "url" : "http://jpfhir.jp/fhir/Common/CodeSystem/JP_V3RoleCode_CS",
+  "url" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_V3RoleCode_CS",
   "version" : "1.3.0-dev",
   "name" : "JP_V3RoleCode_CS",
   "title" : "JP Core FamilyMember CodeSystem",
@@ -75,7 +75,7 @@ http://terminology.hl7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の�
   ],
   "copyright" : "（一社）日本医療情報学会. CC BY-ND 4.0",
   "content" : "supplement",
-  "supplements" : "http://terminology.hl7.org/Codesystem/v3-RoleCode",
+  "supplements" : "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
   "concept" : [
     {
       "code" : "FAMMEMB",
