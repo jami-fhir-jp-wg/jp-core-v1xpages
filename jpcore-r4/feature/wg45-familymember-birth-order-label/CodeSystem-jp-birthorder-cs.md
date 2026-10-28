@@ -15,12 +15,12 @@
 * **項目**: *Title*
   * **内容**: JP Core Birth Order CodeSystem
 * **項目**: *Status*
-  * **内容**: Active ( 2026-10-21 )
+  * **内容**: Active ( 2026-10-29 )
 * **項目**: *Copyright*
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
-FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づく呼称（長男、二男、長女、二女など）を表現するためのCodeSystem。これらのコードは患者との続柄そのものではなく、FamilyMemberHistory.relationshipを補足する出生順の呼称を表す。 
+FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づく呼称（長男、次男、長女、次女など）を表現するためのCodeSystem。これらのコードは患者との続柄そのものではなく、FamilyMemberHistory.relationshipを補足する出生順の呼称を表す。各コードには機械処理用のプロパティ（category：呼称系列、order：系列内順位）を付与しており、プログラムによる判定・集計に利用できる。 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
@@ -42,7 +42,7 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
   "title" : "JP Core Birth Order CodeSystem",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-10-21T17:00:04+00:00",
+  "date" : "2026-10-29",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
@@ -59,7 +59,7 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
       ]
     }
   ],
-  "description" : "FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づく呼称（長男、二男、長女、二女など）を表現するためのCodeSystem。これらのコードは患者との続柄そのものではなく、FamilyMemberHistory.relationshipを補足する出生順の呼称を表す。",
+  "description" : "FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づく呼称（長男、次男、長女、次女など）を表現するためのCodeSystem。これらのコードは患者との続柄そのものではなく、FamilyMemberHistory.relationshipを補足する出生順の呼称を表す。各コードには機械処理用のプロパティ（category：呼称系列、order：系列内順位）を付与しており、プログラムによる判定・集計に利用できる。",
   "jurisdiction" : [
     {
       "coding" : [
@@ -79,7 +79,7 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
     {
       "code" : "category",
       "uri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_BirthOrder_CS#category",
-      "description" : "出生順呼称の系列を分類する。son は長男・二男...の系列、daughter は長女・二女...の系列を示す。",
+      "description" : "son は男子に用いる呼称系列（長男・次男…）、daughter は女子に用いる呼称系列（長女・次女…）を表す。",
       "type" : "code"
     },
     {
@@ -120,11 +120,16 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
       "designation" : [
         {
           "language" : "ja",
-          "value" : "二男"
+          "value" : "次男"
         },
         {
           "language" : "ja",
-          "value" : "次男"
+          "use" : {
+            "system" : "http://snomed.info/sct",
+            "code" : "900000000000013009",
+            "display" : "Synonym"
+          },
+          "value" : "二男"
         }
       ],
       "property" : [
@@ -328,11 +333,16 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
       "designation" : [
         {
           "language" : "ja",
-          "value" : "二女"
+          "value" : "次女"
         },
         {
           "language" : "ja",
-          "value" : "次女"
+          "use" : {
+            "system" : "http://snomed.info/sct",
+            "code" : "900000000000013009",
+            "display" : "Synonym"
+          },
+          "value" : "二女"
         }
       ],
       "property" : [

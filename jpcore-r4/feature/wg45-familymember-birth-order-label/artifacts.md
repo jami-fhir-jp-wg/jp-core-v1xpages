@@ -129,7 +129,7 @@
 | [JP Core Disease Outcome Extension](StructureDefinition-jp-condition-disease-outcome.md) | 病名の転帰を格納するための拡張 |
 | [JP Core Disease Postfix Modifier Extension](StructureDefinition-jp-condition-disease-postfix-modifier.md) | 病名の後置修飾語を格納するための拡張 |
 | [JP Core Disease Prefix Modifier Extension](StructureDefinition-jp-condition-disease-prefix-modifier.md) | 病名の前置修飾語を格納するための拡張 |
-| [JP Core FamilyMemberHistory Birth Order Extension](StructureDefinition-jp-familymemberhistory-birthorder.md) | 続柄（relationship）を補足し、家族内で用いられる出生順に基づく呼称（長男、二男、長女、二女など）を表現する。 |
+| [JP Core FamilyMemberHistory Birth Order Extension](StructureDefinition-jp-familymemberhistory-birthorder.md) | 続柄（relationship）を補足し、家族内で用いられる出生順に基づく呼称（長男、次男、長女、次女など）を表現する。 |
 | [JP Core Immunization CertificatedDate Extension](StructureDefinition-jp-immunization-certificateddate.md) | 検定年月日 |
 | [JP Core Immunization DueDateOfNextDose Extension](StructureDefinition-jp-immunization-duedateofnextdose.md) | 次回接種予定日 |
 | [JP Core Immunization ManufacturedDate Extension](StructureDefinition-jp-immunization-manufactureddate.md) | 製造年月日 |
@@ -205,7 +205,7 @@
 
 | | |
 | :--- | :--- |
-| [JP Core Birth Order CodeSystem](CodeSystem-jp-birthorder-cs.md) | FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づく呼称（長男、二男、長女、二女など）を表現するためのCodeSystem。これらのコードは患者との続柄そのものではなく、FamilyMemberHistory.relationshipを補足する出生順の呼称を表す。 |
+| [JP Core Birth Order CodeSystem](CodeSystem-jp-birthorder-cs.md) | FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づく呼称（長男、次男、長女、次女など）を表現するためのCodeSystem。これらのコードは患者との続柄そのものではなく、FamilyMemberHistory.relationshipを補足する出生順の呼称を表す。各コードには機械処理用のプロパティ（category：呼称系列、order：系列内順位）を付与しており、プログラムによる判定・集計に利用できる。 |
 | [JP Core Condition Disease Outcome HL7 Table 0241 - Patient Outcome CodeSystem](CodeSystem-jp-condition-disease-outcome-hl70241-cs.md) | HL7表0241-Patient Outcome コードシステム |
 | [JP Core Condition Disease Outcome Receipt CodeSystem](CodeSystem-jp-condition-disease-outcome-receipt-cs.md) | レセプト電算システム 転帰区分 コードシステム |
 | [JP Core Dental BodySite CodeSystem](CodeSystem-jp-dental-bodysite-cs.md) | JP Coreにて定義した歯科のObservationリソースに関する身体部位コード |

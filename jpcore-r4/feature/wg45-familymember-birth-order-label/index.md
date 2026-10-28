@@ -225,7 +225,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
       ],
       "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
       "packageId" : "hl7.terminology.r4",
-      "version" : "7.4.0"
+      "version" : "7.5.0"
     },
     {
       "id" : "hl7ext",
@@ -237,7 +237,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
       ],
       "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
       "packageId" : "hl7.fhir.uv.extensions.r4",
-      "version" : "5.3.0"
+      "version" : "5.4.0"
     },
     {
       "id" : "jpfhir_terminology",
@@ -5773,7 +5773,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "CodeSystem/jp-birthorder-cs"
         },
         "name" : "JP Core Birth Order CodeSystem",
-        "description" : "FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づく呼称（長男、二男、長女、二女など）を表現するためのCodeSystem。これらのコードは患者との続柄そのものではなく、FamilyMemberHistory.relationshipを補足する出生順の呼称を表す。",
+        "description" : "FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づく呼称（長男、次男、長女、次女など）を表現するためのCodeSystem。これらのコードは患者との続柄そのものではなく、FamilyMemberHistory.relationshipを補足する出生順の呼称を表す。各コードには機械処理用のプロパティ（category：呼称系列、order：系列内順位）を付与しており、プログラムによる判定・集計に利用できる。",
         "exampleBoolean" : false
       },
       {
@@ -6557,7 +6557,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
           "reference" : "StructureDefinition/jp-familymemberhistory-birthorder"
         },
         "name" : "JP Core FamilyMemberHistory Birth Order Extension",
-        "description" : "続柄（relationship）を補足し、家族内で用いられる出生順に基づく呼称（長男、二男、長女、二女など）を表現する。",
+        "description" : "続柄（relationship）を補足し、家族内で用いられる出生順に基づく呼称（長男、次男、長女、次女など）を表現する。",
         "exampleBoolean" : false
       },
       {

@@ -19,7 +19,7 @@
 * **項目**: *Copyright*
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
-続柄（relationship）を補足し、家族内で用いられる出生順に基づく呼称（長男、二男、長女、二女など）を表現する。
+続柄（relationship）を補足し、家族内で用いられる出生順に基づく呼称（長男、次男、長女、次女など）を表現する。
 
 **Context of Use**
 
@@ -72,7 +72,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
       ]
     }
   ],
-  "description" : "続柄（relationship）を補足し、家族内で用いられる出生順に基づく呼称（長男、二男、長女、二女など）を表現する。",
+  "description" : "続柄（relationship）を補足し、家族内で用いられる出生順に基づく呼称（長男、次男、長女、次女など）を表現する。",
   "jurisdiction" : [
     {
       "coding" : [
@@ -110,7 +110,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
         "id" : "Extension",
         "path" : "Extension",
         "short" : "出生順（呼称）",
-        "definition" : "FamilyMemberHistoryにおいて、対象となる家族構成員について、家族内で用いられる出生順に基づく呼称を表現する。これは、患者との続柄そのものを置き換えるものではなく、FamilyMemberHistory.relationshipで表現される続柄を補足する情報である。日常の臨床では家族の氏名まで聴取されずに、長女、二男などの呼称で記述され、関係者全員の生年月日や年齢も聴取できない場合が多いことを想定している。"
+        "definition" : "FamilyMemberHistoryにおいて、対象となる家族構成員について、家族内で用いられる出生順に基づく呼称を表現する。これは、患者との続柄そのものを置き換えるものではなく、FamilyMemberHistory.relationshipで表現される続柄を補足する情報である。日常の臨床では家族の氏名まで聴取されずに、長女、次男などの呼称で記述され、関係者全員の生年月日や年齢も聴取できない場合が多いことを想定している。"
       },
       {
         "id" : "Extension.extension",
@@ -126,7 +126,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
         "id" : "Extension.value[x]",
         "path" : "Extension.value[x]",
         "short" : "出生順呼称（CodeableConcept）",
-        "definition" : "出生順の呼称（長男、長女、二男、二女）を表す。国際化対応の対応のため、designation により対象者の出身国の用語を追加定義できる。",
+        "definition" : "出生順の呼称（長男、長女、次男、次女）を表す。国際化対応の対応のため、designation により対象者の出身国の用語を追加定義できる。",
         "type" : [
           {
             "code" : "CodeableConcept"

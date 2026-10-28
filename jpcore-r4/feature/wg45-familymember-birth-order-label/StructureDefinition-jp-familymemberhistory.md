@@ -30,7 +30,7 @@
 
 * 患者の遺伝性リスクの把握を目的とした、患者に関連する家族の疾患情報の記録・更新
 * 看護・介護・福祉における療養支援やケア計画のための家族関係の把握
-* 家族の氏名や生年月日が判明しない状況での、家族の兄弟姉妹内の出生順呼称（長男、長女、二男、二女など）による補足
+* 家族の氏名や生年月日が判明しない状況での、家族の兄弟姉妹内の出生順呼称（長男、長女、次男、次女など）による補足
 * 複数の FamilyMemberHistory を List リソースに集約した、患者の家族歴全体の参照
 
 ## スコープ
@@ -113,7 +113,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
 
 #### 出生順呼称 BirthOrder の記録
 
-家族内で用いられる「長男」「二男」「長女」「二女」などの出生順に基づく呼称は、`BirthOrder` 拡張で記録する。
+家族内で用いられる「長男」「次男」「長女」「次女」などの出生順に基づく呼称は、`BirthOrder` 拡張で記録する。
 
 出生順呼称は、患者との続柄 `relationship` そのものを置き換えるものではない。続柄 `relationship` に併記し、対象となる家族構成員の兄弟姉妹内の出生順に基づく呼称を補足情報として記録する。
 
@@ -256,7 +256,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
 JP Core FamilyMemberHistoryプロファイルで使用される拡張は次の通りである。
 
 * 拡張: 出生順呼称
-  * 説明: FamilyMemberHistory.relationshipで表現される続柄を補足し、家族内で用いられる出生順に基づく呼称（長男、二男、長女、二女など）を表現する。
+  * 説明: FamilyMemberHistory.relationshipで表現される続柄を補足し、家族内で用いられる出生順に基づく呼称（長男、次男、長女、次女など）を表現する。
   * URL: http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_FamilyMemberHistory_BirthOrder
   * 値の型: CodeableConcept
   * Binding: JP_BirthOrder_VS(preferred)
