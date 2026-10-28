@@ -124,11 +124,6 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
         },
         {
           "language" : "ja",
-          "use" : {
-            "system" : "http://snomed.info/sct",
-            "code" : "900000000000013009",
-            "display" : "Synonym"
-          },
           "value" : "二男"
         }
       ],
@@ -337,11 +332,6 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
         },
         {
           "language" : "ja",
-          "use" : {
-            "system" : "http://snomed.info/sct",
-            "code" : "900000000000013009",
-            "display" : "Synonym"
-          },
           "value" : "二女"
         }
       ],

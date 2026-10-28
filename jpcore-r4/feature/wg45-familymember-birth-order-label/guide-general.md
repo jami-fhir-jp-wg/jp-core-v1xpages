@@ -227,7 +227,7 @@ This publication includes IP covered under the following statements.
 
 * This material contains content that is copyright of SNOMED International. Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact [https://www.snomed.org/get-snomed](https://www.snomed.org/get-snomed) or [info@snomed.org](mailto:info@snomed.org).
 
-* [SNOMED Clinical Terms&reg; (SNOMED CT&reg;)](http://hl7.org/fhir/R4/codesystem-snomedct.html): [ImagingStudy/jp-imagingstudy-radiology-example-1](ImagingStudy-jp-imagingstudy-radiology-example-1.md), [JP_BirthOrder_CS](CodeSystem-jp-birthorder-cs.md), [JP_ImagingStudy_Radiology](StructureDefinition-jp-imagingstudy-radiology.md) and [JP_Specimen_Common](StructureDefinition-jp-specimen-common.md)
+* [SNOMED Clinical Terms&reg; (SNOMED CT&reg;)](http://hl7.org/fhir/R4/codesystem-snomedct.html): [ImagingStudy/jp-imagingstudy-radiology-example-1](ImagingStudy-jp-imagingstudy-radiology-example-1.md), [JP_ImagingStudy_Radiology](StructureDefinition-jp-imagingstudy-radiology.md) and [JP_Specimen_Common](StructureDefinition-jp-specimen-common.md)
 
 
 * This material derives from the HL7 Terminology (THO). THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: [https://terminology.hl7.org/license.html](https://terminology.hl7.org/license.html)
