@@ -117,6 +117,7 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
     {
       "code" : "son-2",
       "display" : "second son",
+      "definition" : "「次男」「二男」のいずれも使用可能である（戸籍の続柄欄では「二男」を使用）。",
       "designation" : [
         {
           "language" : "ja",
@@ -325,6 +326,7 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
     {
       "code" : "daughter-2",
       "display" : "second daughter",
+      "definition" : "「次女」「二女」のいずれも使用可能である（戸籍の続柄欄では「二女」を使用）。",
       "designation" : [
         {
           "language" : "ja",
