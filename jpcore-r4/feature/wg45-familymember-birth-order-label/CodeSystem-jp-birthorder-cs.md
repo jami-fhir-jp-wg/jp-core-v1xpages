@@ -121,11 +121,11 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
       "designation" : [
         {
           "language" : "ja",
-          "value" : "次男"
+          "value" : "二男"
         },
         {
           "language" : "ja",
-          "value" : "二男"
+          "value" : "次男"
         }
       ],
       "property" : [
@@ -330,11 +330,11 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
       "designation" : [
         {
           "language" : "ja",
-          "value" : "次女"
+          "value" : "二女"
         },
         {
           "language" : "ja",
-          "value" : "二女"
+          "value" : "次女"
         }
       ],
       "property" : [
