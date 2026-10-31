@@ -15,12 +15,15 @@
 * **項目**: *Title*
   * **内容**: JP Core Birth Order CodeSystem
 * **項目**: *Status*
-  * **内容**: Active ( 2026-10-29 )
+  * **内容**: Active ( 2026-11-01 )
 * **項目**: *Copyright*
   * **内容**: Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会
 
  
-FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づく呼称（長男、次男、長女、次女など）を表現するためのCodeSystem。これらのコードは患者との続柄そのものではなく、FamilyMemberHistory.relationshipを補足する出生順の呼称を表す。各コードには機械処理用のプロパティ（category：呼称系列、order：系列内順位）を付与しており、プログラムによる判定・集計に利用できる。 
+JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する家族内の出生順呼称コード 
+
+ 
+本コードシステムは、患者との続柄そのものを表すのではなく、FamilyMemberHistory.relationship を補足する情報として、家族内で用いられる出生順に基づく呼称を表現するために定義した。各コードには機械処理用のプロパティ（category：呼称系列、order：系列内順位）を付与しており、プログラムによる判定・集計に利用できる。 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
@@ -42,7 +45,7 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
   "title" : "JP Core Birth Order CodeSystem",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-10-29",
+  "date" : "2026-11-01",
   "publisher" : "FHIR Japanese implementation research working group in Japan Association of Medical Informatics (JAMI)",
   "contact" : [
     {
@@ -59,7 +62,7 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
       ]
     }
   ],
-  "description" : "FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づく呼称（長男、次男、長女、次女など）を表現するためのCodeSystem。これらのコードは患者との続柄そのものではなく、FamilyMemberHistory.relationshipを補足する出生順の呼称を表す。各コードには機械処理用のプロパティ（category：呼称系列、order：系列内順位）を付与しており、プログラムによる判定・集計に利用できる。",
+  "description" : "JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する家族内の出生順呼称コード",
   "jurisdiction" : [
     {
       "coding" : [
@@ -71,6 +74,7 @@ FamilyMemberHistoryにおいて、家族内で用いられる出生順に基づ�
       ]
     }
   ],
+  "purpose" : "本コードシステムは、患者との続柄そのものを表すのではなく、FamilyMemberHistory.relationship を補足する情報として、家族内で用いられる出生順に基づく呼称を表現するために定義した。各コードには機械処理用のプロパティ（category：呼称系列、order：系列内順位）を付与しており、プログラムによる判定・集計に利用できる。",
   "copyright" : "Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会",
   "caseSensitive" : true,
   "content" : "complete",
