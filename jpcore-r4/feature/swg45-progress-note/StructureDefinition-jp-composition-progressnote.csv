@@ -1,0 +1,1000 @@
+"Id","Path","Slice Name","Alias(s)","Label","Min","Max","Must Support?","Is Modifier?","Is Summary?","Type(s)","Short","Definition","Comments","Requirements","Default Value","Meaning When Missing","Fixed Value","Pattern","Example","Minimum Value","Maximum Value","Maximum Length","Binding Strength","Binding Description","Binding Value Set","Code","Slicing Discriminator","Slicing Description","Slicing Ordered","Slicing Rules","Base Path","Base Min","Base Max","Condition(s)","Constraint(s)","Mapping: Workflow Pattern","Mapping: RIM Mapping","Mapping: CDA (R2)","Mapping: FHIR DocumentReference","Mapping: FiveWs Pattern Mapping"
+"Composition","Composition","","","",0,*,"","","","null {[]} {[]}
+","SOAP形式の経過記録等に関する詳細な情報","SOAP形式の経過記録等に関する詳細な情報","この仕様書の焦点は患者固有の臨床陳述にあるが、この資源は研究プロトコルの設計、医療請求書など、必ずしも患者固有の臨床的でない活動にも適用できます。","","","","","","","","",,,,,"",,,,"Composition",0,*,"","dom-2:もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen). {contained.contained.empty()}
+dom-3:もしリソースが他のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含まれるリソースに参照されるべきです。 {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:もしリソースが別のリソースの中に含まれる場合、meta.versionIdまたはmeta.lastUpdatedを持つべきではありません。 {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。 {contained.meta.security.empty()}dom-6:資源は堅牢な管理のために物語を持つべきである。 {text.`div`.exists()}","Event","Entity. Role, or Act","Document[classCode=""DOC"" and moodCode=""EVN"" and isNormalAct()]","ClinicalDocument","when described by DocumentReference"
+"Composition.id","Composition.id","","","",0,1,"","","Y","id {[]} {[]}
+","このアーティファクトの論理ID","リソースのURLで使用される論理ID。一度割り当てられたら、この値は変更されません。","リソースにIDがないのは、作成操作を使用してサーバーに送信されているときだけです。","","","","","","","","",,,,,"",,,,"Resource.id",0,1,"",""
+"Composition.meta","Composition.meta","","","",0,1,"","","Y","Meta {[]} {[]}
+","リソースに関するMetadata","リソースに関するMetadata。これはインフラストラクチャによって維持されるコンテンツです。 コンテンツの変更は、リソースのバージョン変更と常に関連しているわけではありません。","","","","","","","","","",,,,,"",,,,"Resource.meta",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Composition.implicitRules","Composition.implicitRules","","","",0,1,"","Y","Y","uri {[]} {[]}
+","このコンテンツが作成されたルールセット","リソース構築時に遵守された一連のルールを指すものであり、コンテンツを処理する際に理解する必要があります。しばしば、特別なルールを定義する実装ガイドとその他のプロファイルなどを含むものです。","このルールセットを主張することで、取引先の限られた集団にしか内容を理解させることができず、長期的にはデータの有用性が制限されます。しかしながら、現存するヘルスエコシステムは高度に分断化しており、一般的に計算可能な形式でデータを定義、収集、交換する準備が整っていません。できる限り、実装者および/または仕様ライターはこの要素の使用を避けるべきです。使用する場合、URLは、そのナラティブとともに他のプロファイル、値セットなどを含む実装ガイドを定義する参照となります。","","","","","","","","",,,,,"",,,,"Resource.implicitRules",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Composition.language","Composition.language","","","",0,1,"","","","code {[]} {[]}
+","「リソースコンテンツの言語」","リソースが書かれている基本言語。","言語はインデックスとアクセシビリティをサポートするために提供されます（通常、テキスト読み上げなどのサービスは言語タグを使用します）。物語のHTML言語タグは、物語に適用されます。リソース上の言語タグは、リソース内のデータから生成される他のプレゼンテーションの言語を指定するために使用できます。すべてのコンテンツが基本言語である必要はありません。Resource.languageは自動的に物語に適用されたと想定してはいけません。言語が指定されている場合、HTMLのdiv要素にも指定する必要があります（xml：langとhtml lang属性の関係に関する情報はHTML5の規則を参照）。","","","","","","","","",,"preferred","「人間の言語。」","http://hl7.org/fhir/ValueSet/languages|4.0.1","",,,,"Resource.language",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Composition.text","Composition.text","","narrative
+htmlxhtmldisplay","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のためのリソースのテキスト要約","リソースの要約を含む人が読めるナビゲーションであり、リソースの内容を人に表現するために使用できます。ナビゲーションはすべての構造化されたデータをエンコードする必要はありませんが、人間がナビゲーションを読むだけで「臨床的に安全」であるために十分な詳細を含む必要があります。リソース定義には、臨床的な安全性を確保するためにナビゲーションで表現する必要があるコンテンツが定義される場合があります。","含まれるリソースには説明がありません。含まれないリソースには説明が必要です。場合によっては、リソースが少量のデータしか含まず、テキストだけで表現されることがあります（minOccurs = 1要素がすべて満たされている限り）。これは、情報が「テキストの塊」としてキャプチャされるレガシーシステムからのデータや、テキストが生またはナレーションされて符号化された情報が後で追加される場合に必要な場合があります。","","","","","","","","",,,,,"",,,,"DomainResource.text",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Act.text?"
+"Composition.contained","Composition.contained","","inline resources
+anonymous resourcescontained resources","",0,*,"","","","Resource {[]} {[]}
+","「含まれている、インラインのリソース」","これらのリソースは、それらを含むリソースから独立した存在を持ちません。それらは独立して識別することはできず、独自の独立したトランザクション範囲を持つこともできません。","コンテンツが適切に識別できる場合には、これを行うべきではありません。識別が失われると、再び復元することは非常に困難であり（文脈に依存します）、メタ要素にプロファイルとタグを持つことができますが、セキュリティのラベルを持っていてはいけません。","","","","","","","","",,,,,"",,,,"DomainResource.contained",0,*,"","","N/A"
+"Composition.extension","Composition.extension","","","",0,*,"","","","Extension {[]} {[]}
+","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
+","",,"open","DomainResource.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}"
+"Composition.extension:versionNumber","Composition.extension","versionNumber","","",0,1,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/composition-clinicaldocument-versionNumber|5.4.0]]} {[]}
+","Version-specific identifier for composition","Version specific identifier for the composition, assigned when each version is created/updated. Note: this extension is only used before R5 because Composition has a version element which should be used instead.","While each resource, including the composition itself, has its own version identifier, this is a formal identifier for the logical version of the composition as a whole. It would remain constant if the resources were moved to a new server, and all got new individual resource versions, for example.","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
+","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.extension:department","Composition.extension","department","","",0,1,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Common_Department]]} {[]}
+","診療科情報","そのリソースに関連する診療科を表す拡張。診療科コード（valueCodeableConcept）または診療科組織への参照（valueReference）のいずれかを使用できる。","診療科情報は以下の2つの方法で表現できる：
+1. valueCodeableConcept: SS-MIX2診療科コードなどのコード化された診療科情報
+2. valueReference: JP_Organization_Departmentプロファイルを使用した診療科組織への参照
+
+用途に応じて適切な表現方法を選択すること。診療科名称の統一が困難な場合は、CodeableConceptのtext要素を使用してテキストベースで診療科名を記録することも可能。
+
+【適用コンテキストについて】本拡張の適用コンテキスト（^context）は意図的に `Resource`（全リソース）を指定し、広い範囲での参照を前提としている。これは、日本の医療制度上、診療科という項目の必要性が高く、診療・検査・処方・予約・実施組織など多様なリソースが診療科情報を保持しうること、また多くの医療情報システムのデータベーステーブルに診療科コードが項目として記載されていることによる。適用先リソース型を限定列挙すると将来の利用箇所を制約しかねないため、汎用拡張として全リソースで利用可能とすることを優先している。なお、コンテキストが広いことにより IPS validator 等で「コンテキストが広すぎる」旨の警告（情報レベル）が出る場合があるが、上記の設計意図に基づく許容事項である。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.extension:eventDateTime","Composition.extension","eventDateTime","","",0,1,"","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_EventDateTime]]} {[]}
+","記録/記事のイベント日時","記録/記事のイベント日時を格納するための拡張","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.modifierExtension","Composition.modifierExtension","","extensions
+user content","",0,*,"","Y","","Extension {[]} {[]}
+","無視できない拡張機能","リソースの基本的な定義に含まれない、要素の理解や、それを含む要素の子孫の理解を修正する追加情報を表すためにも使用されることがあります。通常、修飾要素は否定や修飾を提供します。拡張機能の使用を安全で管理しやすくするために、拡張機能の定義と使用に対して厳格な統治が適用されます。実装者は拡張機能を定義することが許可されていますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張をチェックする必要があります。修飾子拡張は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味も変更できません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.identifier","Composition.identifier","","","",0,1,"","","Y","Identifier {[]} {[]}
+","「作成物に対するバージョン非依存のidentifier」","作曲のバージョンに依存しないidentifier。このidentifierは、作曲が時間の経過とともに変更されても一定のままです。","ClinicalDocument/setId in CDA に類似したもの。これらがどのように関連するかについては、リソース定義の議論を参照してください。","","","","","","","","",,,,,"",,,,"Composition.identifier",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.identifier","Document.id / Document.setId",".setId","DocumentReference.masterIdentifier","FiveWs.identifier"
+"Composition.status","Composition.status","","","",1,1,"","Y","Y","code {[]} {[]}
+","初期 | 最終 | 修正済み | エラー入力済み","この作文のワークフロー/臨床ステータス。そのステータスは文書の臨床的立場の指標です。","もし作成物が取り下げられた場合、そのシリーズ内の作成物/文書やデータは、明らかに信用できないと指定されることなく、ユーザーに表示されることは決してないべきです。""entered-in-error""フラグは、この要素が他の要素の修飾子としてラベル付けされる理由です。
+
+一部のレポート作業フローでは、最終文書の元のナラティブを変更しないで、新しいナラティブのみを追加する必要があります。作成リソースには、このビジネスルールが有効かどうかを明示的に示す明確なステータスがありません。必要に応じて、拡張機能で処理されます。","Need to be able to mark interim, amended, or withdrawn compositions or documents.","","","","","","","",,"required","作成物のワークフロー/臨床的状況。","http://hl7.org/fhir/ValueSet/composition-status|4.0.1","",,,,"Composition.status",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.status","interim: .completionCode=""IN"" & ./statusCode[isNormalDatatype()]=""active"";  final: .completionCode=""AU"" &&  ./statusCode[isNormalDatatype()]=""complete"" and not(./inboundRelationship[typeCode=""SUBJ"" and isNormalActRelationship()]/source[subsumesCode(""ActClass#CACT"") and moodCode=""EVN"" and domainMember(""ReviseComposition"", code) and isNormalAct()]);  amended: .completionCode=""AU"" &&  ./statusCode[isNormalDatatype()]=""complete"" and ./inboundRelationship[typeCode=""SUBJ"" and isNormalActRelationship()]/source[subsumesCode(""ActClass#CACT"") and moodCode=""EVN"" and domainMember(""ReviseComposition"", code) and isNormalAct() and statusCode=""completed""];  withdrawn : .completionCode=NI &&  ./statusCode[isNormalDatatype()]=""obsolete""","n/a","DocumentReference.status","FiveWs.status"
+"Composition.type","Composition.type","","","",1,1,"Y","","Y","CodeableConcept {[]} {[]}
+","記録種別","記録の種別を表すコード。","構成タイプについては、LOINCは普及しており、HL7によって強く支持されています。多くの実装ガイドでは、特定のLOINCコードを必要とするか、LOINCを拡張バインディングとして使用します。","Key metadata element describing the composition, used in searching/filtering.","","","","","","","",,"preferred","","http://jpfhir.jp/fhir/core/ValueSet/JP_Composiiton_ProgressNote_Type_VS","",,,,"Composition.type",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.code","./code",".code","DocumentReference.type","FiveWs.class"
+"Composition.type.id","Composition.type.id","","","",0,1,"","","","string {[]} {[]}
+","要素間参照のための一意のID / Unique id for inter-element referencing","リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.type.extension","Composition.type.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装で定義された追加のコンテンツ / Additional content defined by implementations","要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
+","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+"Composition.type.coding","Composition.type.coding","","","",0,*,"","","Y","Coding {[]} {[]}
+","用語システムによって定義されたコード / Code defined by a terminology system","用語システムによって定義されたコードへの参照。 / A reference to a code defined by a terminology system.","コードは、列挙されたCTなどの非常に正式な定義まで、列挙またはコードリストで非常にさりげなく定義される場合があります。詳細については、HL7 V3コアプリンシップを参照してください。コーディングの順序付けは未定義であり、意味を推測するために使用されません。一般に、せいぜい、コーディング値の1つのみがuserselected = trueとしてラベル付けされます。 / Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true.","コードシステム内の代替エンコーディング、および他のコードシステムへの翻訳が可能になります。 / Allows for alternative encodings within a code system, and translations to other code systems.","","","","","","","",,,,,"",,,,"CodeableConcept.coding",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","union(., ./translation)"
+"Composition.type.coding.id","Composition.type.coding.id","","","",0,1,"","","","string {[]} {[]}
+","要素間参照のための一意のID / Unique id for inter-element referencing","リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.type.coding.extension","Composition.type.coding.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装で定義された追加のコンテンツ / Additional content defined by implementations","要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
+","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+"Composition.type.coding.system","Composition.type.coding.system","","","",0,1,"","","Y","uri {[]} {[]}
+","用語システムのアイデンティティ / Identity of the terminology system","コード内のシンボルの意味を定義するコードシステムの識別。 / The identification of the code system that defines the meaning of the symbol in the code.","uriは、oid（urn：oid：...）またはuuid（urn：uuid：...）である場合があります。OIDとUUIDは、HL7 OIDレジストリへの参照となります。それ以外の場合、URIは、FHIRの特別なURIを定義したHL7のリストから来るか、システムを明確かつ明確に確立する定義を参照する必要があります。 / The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should reference to some definition that establishes the system clearly and unambiguously.","シンボルの定義のソースについて明確である必要があります。 / Need to be unambiguous about the source of the definition of the symbol.","","","","","","","",,,,,"",,,,"Coding.system",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","./codeSystem"
+"Composition.type.coding.version","Composition.type.coding.version","","","",0,1,"","","Y","string {[]} {[]}
+","システムのバージョン - 関連する場合 / Version of the system - if relevant","このコードを選択するときに使用されたコードシステムのバージョン。コードの意味がバージョン全体で一貫しているため、適切にメンテナンスしたコードシステムでは報告されたバージョンを必要としないことに注意してください。ただし、これは一貫して保証することはできず、意味が一貫していることが保証されていない場合、バージョンを交換する必要があります。 / The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured, and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged.","用語がコードシステムバージョンを識別するために使用する文字列を明確に定義していない場合、推奨は、そのバージョンがバージョンの日付として公式に公開された日付（FHIR日付形式で表現）を使用することです。 / Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.","","","","","","","","",,,,,"",,,,"Coding.version",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","./codeSystemVersion"
+"Composition.type.coding.code","Composition.type.coding.code","","","",1,1,"","","Y","code {[]} {[]}
+","システムによって定義された構文のシンボル / Symbol in syntax defined by the system","システムによって定義された構文のシンボル。シンボルは、定義されたコードまたはコーディングシステムによって定義された構文の式（例：調整後）である場合があります。 / A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination).","","システム内の特定のコードを参照する必要があります。 / Need to refer to a particular code in the system.","","","","","","","",,,,,"",,,,"Coding.code",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","./code"
+"Composition.type.coding.display","Composition.type.coding.display","","","",0,1,"","","Y","string {[]} {[]}
+","システムによって定義された表現 / Representation defined by the system","システムのルールに従って、システム内のコードの意味の表現。 / A representation of the meaning of the code in the system, following the rules of the system.","","システムを知らない読者のために、コードの人間の読み取り可能な意味を持ち込むことができる必要があります。 / Need to be able to carry a human-readable meaning of the code for readers that do not know  the system.","","","","","","","",,,,,"",,,,"Coding.display",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","CV.displayName"
+"Composition.type.coding.userSelected","Composition.type.coding.userSelected","","","",0,1,"","","Y","boolean {[]} {[]}
+","このコーディングがユーザーによって直接選択された場合 / If this coding was chosen directly by the user","このコーディングがユーザーによって直接選択されたことを示します。利用可能なアイテムのピックリスト（コードまたはディスプレイ）。 / Indicates that this coding was chosen by a user directly - e.g. off a pick list of available items (codes or displays).","一連の代替案の中で、直接選択されたコードが新しい翻訳の最も適切な出発点です。この要素の使用とその結果をより完全に明確にするためには、「直接選択された」ことについては曖昧さがあり、取引パートナー契約が必要になる場合があります。 / Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely.","これは、臨床安全基準として特定されています - この正確なシステム/コードペアは、いくつかのルールまたは言語処理に基づいてシステムによって推測されるのではなく、明示的に選択されたことです。 / This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.","","","","","","","",,,,,"",,,,"Coding.userSelected",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","CD.codingRationale"
+"Composition.type.text","Composition.type.text","","","",0,1,"","","Y","string {[]} {[]}
+","コンセプトの単純なテキスト表現 / Plain text representation of the concept","データを入力したユーザー、および/またはユーザーの意図された意味を表すユーザーによって見られる/選択/発言された概念の人間の言語表現。 / A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.","多くの場合、テキストはコーディングの1つの表示名と同じです。 / Very often the text is the same as a displayName of one of the codings.","用語からのコードは、それらを使用する人間のすべてのニュアンスを使用して、常に正しい意味をキャプチャするとは限りません。または、適切なコードがまったくない場合があります。これらの場合、テキストはソースの完全な意味をキャプチャするために使用されます。 / The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.","","","","","","","",,,,,"",,,,"CodeableConcept.text",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","./originalText[mediaType/code=""text/plain""]/data"
+"Composition.category","Composition.category","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
+","""作成物のカテゴリー分類""","作文のタイプの分類 - インデックスや検索に役立ちます。これは、作文タイプで指定されたコードから暗示されるか、派生することができます。","これは[XDS/MHD](http://wiki.ihe.net/index.php?title=Mobile_access_to_Health_Documents_(MHD))のMetadataフィールドです。","Helps humans to assess whether the composition is of interest when viewing an index of compositions or documents.","","","","","","","",,"example","マクロレベルで高度な臨床書類","http://hl7.org/fhir/ValueSet/document-classcodes|4.0.1","",,,,"Composition.category",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.subject",".outboundRelationship[typeCode=""COMP].target[classCode=""LIST"", moodCode=""EVN""].code","n/a","DocumenttReference.category","FiveWs.class"
+"Composition.subject","Composition.subject","","","",1,1,"Y","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","記録の対象患者","記録の対象となった患者","臨床文書においては、通常患者が該当します。","Essential metadata for searching for the composition. Identifies who and/or what the composition/document is about.","","","","","","","",,,,,"",,,,"Composition.subject",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""SBJ""].role[typeCode=""PAT""]",".recordTarget","DocumentReference.subject","FiveWs.subject[x]","FiveWs.subject"
+"Composition.encounter","Composition.encounter","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Encounter|4.0.1]]}
+","""作品の文脈""","この文書が関連する臨床面談やケアのタイプを説明します。","","Provides context for the composition and supports searching.","","","","","","","",,,,,"",,,,"Composition.encounter",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.context","unique(highest(./outboundRelationship[typeCode=""SUBJ"" and isNormalActRelationship()], priorityNumber)/target[moodCode=""EVN"" and classCode=(""ENC"", ""PCPR"") and isNormalAct])",".componentOf.encompassingEncounter","DocumentReference.context.encounter","FiveWs.context"
+"Composition.date","Composition.date","","","",1,1,"Y","","Y","dateTime {[]} {[]}
+","記録の作成日時","記録を作成した日時","作成物の最終更新日は文書の日付よりも後になっている場合がありますが、変更されていない場合があります。","dateTime is used for tracking, organizing versions and searching. Note that this is the time of *authoring*. When packaged in a document, [Bundle.timestamp](http://hl7.org/fhir/R4/bundle-definitions.html#Bundle.timestamp) is the date of packaging.","","","","","","","",,,,,"",,,,"Composition.date",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.occurrence[x]",".effectiveTime[type=""TS""]",".effectiveTime","DocumentReference.content.attachment.date, DocumentReference.created","FiveWs.done[x]"
+"Composition.author","Composition.author","","","",1,*,"Y","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","記録の作成者","記録を作成した人物","","Identifies who is responsible for the content.","","","","","","","",,,,,"",,,,"Composition.author",1,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Event.performer",".participation[typeCode=""AUT""].role[classCode=""ASSIGNED""]",".author.assignedAuthor","DocumentReference.agent","FiveWs.author"
+"Composition.title","Composition.title","","","",1,1,"","","Y","string {[]} {[]}
+","記録の人間向けのタイトル","記録の人間向けのタイトル","多くの構成物において、タイトルはテキストや構成型の表示名と同じです（例：「診察」「進行ノート」など）。 CDAではタイトルを必須としていませんが、タイトルを省略することが有用であるという事例はないため、ここでは必須です。この要件に関するフィードバックは、試用期間中に歓迎されます。","","","","","","","","",,,,,"",,,,"Composition.title",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./title",".title","DocumentReference.description, DocumentReference.content.attachment.title"
+"Composition.confidentiality","Composition.confidentiality","","","",0,1,"","","Y","code {[]} {[]}
+","アフィニティー・ドメインによって定義される","作成物の機密度レベルを指定するコード。","この要素の正確な使用方法、執行方法および高度に機密性の高い文書に関連する問題は、基本仕様の範囲外にあり、実装プロファイル（セキュリティセクションを参照）に委任されています。この要素は修飾子としてラベル付けされています。なぜなら、高度に機密性の高い文書を無視するような扱いを受けてはならないからです。","","","","","","","","",,"required","作成物の機密レベルを指定するコード。","http://terminology.hl7.org/ValueSet/v3-ConfidentialityClassification|2014-03-26","",,,,"Composition.confidentiality",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".confidentialityCode",".confidentialityCode","DocumentReference.securityLabel"
+"Composition.attester","Composition.attester","","","",0,*,"","","","BackboneElement {[]} {[]}
+","作成物の正確さを証明します。","構成物/文書の正確さを証明した参加者","各承認者を一度だけリストに挙げてください。","Identifies responsibility for the accuracy of the composition content.","","","","","","","",,,,,"",,,,"Composition.attester",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""AUTHEN""].role[classCode=""ASSIGNED""]",".authenticator/.legalAuthenticator","DocumentReference.authenticator"
+"Composition.attester.id","Composition.attester.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.attester.extension","Composition.attester.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.attester.modifierExtension","Composition.attester.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.attester.mode","Composition.attester.mode","","","",1,1,"","","","code {[]} {[]}
+","個人的 | 専門的 | 法的 | 公式的","正式証明書発行者が提供する承認の種類。","","Indicates the level of authority of the attestation.","","","","","","","",,"required","個人が作成物を認証する方法","http://hl7.org/fhir/ValueSet/composition-attestation-mode|4.0.1","",,,,"Composition.attester.mode",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","unique(./modeCode)","implied by .authenticator/.legalAuthenticator"
+"Composition.attester.time","Composition.attester.time","","","",0,1,"","","","dateTime {[]} {[]}
+","作文が証明されたとき","作文が当事者によって証明されたとき。","","Identifies when the information in the composition was deemed accurate.  (Things may have changed since then.).","","","","","","","",,,,,"",,,,"Composition.attester.time",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./time[type=""TS"" and isNormalDatatype()]",".authenticator.time"
+"Composition.attester.party","Composition.attester.party","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","「誰が構成を証明しましたか？」","「誰が特定の方法で構成を証明したのですか？」","","Identifies who has taken on the responsibility for accuracy of the composition content.","","","","","","","",,,,,"",,,,"Composition.attester.party",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./role[classCode=""ASSIGNED"" and isNormalRole]/player[determinerCode=""INST"" and classCode=(""DEV"", ""PSN"") and isNormalEntity()] or ./role[classCode=""ASSIGNED"" and isNormalRole and not(player)]/scoper[determinerCode=""INST"" and classCode=""ORG"" and isNormalEntity()]",".authenticator.assignedEnttty","FiveWs.witness"
+"Composition.custodian","Composition.custodian","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","組成を維持する組織","構成/文書情報を維持し、アクセス可能にする責任を持つ組織またはグループを特定します。","これは文書が構成から派生している場合に便利であり、文書の最新バージョンを取得する方法についてのガイダンスを提供します。これは時にはオプションであり、作成システムによっては知られていない場合があるため、文脈から推測することができます。ただし、派生文書を扱う際にはこの情報を確認することが重要であるため、管理者を提供することが推奨されます。","Identifies where to go to find the current version, where to report issues, etc.","","","","","","","",,,,,"",,,,"Composition.custodian",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""RCV""].role[classCode=""CUST""].scoper[classCode=""ORG"" and determinerCode=""INST""]",".custodian.assignedCustodian","DocumentReference.custodian"
+"Composition.relatesTo","Composition.relatesTo","","","",0,*,"","","","BackboneElement {[]} {[]}
+","他の作品や文書との関係性","この作成物が既存の他の作成物や文書と持つ関係。","ドキュメントとは、バージョン固有の構成物である。","","","","","","","","",,,,,"",,,,"Composition.relatesTo",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship",".relatedDocument","DocumentReference.relatesTo"
+"Composition.relatesTo.id","Composition.relatesTo.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.relatesTo.extension","Composition.relatesTo.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.relatesTo.modifierExtension","Composition.relatesTo.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.relatesTo.code","Composition.relatesTo.code","","","",1,1,"","","","code {[]} {[]}
+","""replaces | transforms | signs | appends"" の日本語訳は次の通りです。
+
+- replaces（置き換える）
+- transforms（変換する）
+- signs（署名する）
+- appends（追加する）","この作品が他の作品や文書とどのような関係を持っているか。","もしこの文書が別の文書を付録として添付している場合、参照された文書にアクセスしなければ、この文書は完全に理解できません。","","","","","","","","",,"required","文書間の関係のタイプ","http://hl7.org/fhir/ValueSet/document-relationship-type|4.0.1","",,,,"Composition.relatesTo.code",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship.typeCode",".relatedDocument.typeCode","DocumentReference.relatesTo.code"
+"Composition.relatesTo.target[x]","Composition.relatesTo.target[x]","","","",1,1,"","","","Identifier {[]} {[]}
+Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Composition|4.0.1]]}","関係のターゲット","この関係のターゲット構成/文書。","","","","","","","","","",,,,,"",,,,"Composition.relatesTo.target[x]",1,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".target[classCode=""DOC"", moodCode=""EVN""].id",".relatedDocument.id","DocumentReference.relatesTo.target"
+"Composition.event","Composition.event","","","",0,*,"","","Y","BackboneElement {[]} {[]}
+","記録されている臨床サービス","大腸内視鏡検査や虫垂切除などの臨床サービスが記録されること。","イベントは、タイプ要素に一貫性が必要ですが、必要に応じてさらなる情報を提供することができます。","Provides context for the composition and creates a linkage between a resource describing an event and the composition created describing the event.","","","","","","","",,,,,"",,,,"Composition.event",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","outboundRelationship[typeCode=""SUBJ""].target[classCode<'ACT']",".documentationOf.serviceEvent","DocumentReference.event"
+"Composition.event.id","Composition.event.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.event.extension","Composition.event.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.event.modifierExtension","Composition.event.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.event.code","Composition.event.code","","","",0,*,"","","Y","CodeableConcept {[]} {[]}
+","""ドキュメント化されるイベントに適用されるコード""","このコードリストは、大腸内視鏡検査や虫垂切除術などの主要な臨床行為を文書化するものです。場合によっては、種類コードに本質的にイベントが含まれており、文書化されているプロシジャー（処置等）が必ずしも「歴史および身体検査報告書」のような「歴史および身体検査」行為である必要はありません。","イベントは、単なる「プロシジャー（処置等）報告書」であり、プロシジャー（処置等）が「大腸内視鏡検査」である場合など、typeCodeに内在する行為をより専門的にすることができます。1つ以上のイベントコードが含まれている場合、これらはclassCode、practiceSettingCode、またはtypeCodeに内在する値と衝突してはならず、そうすると曖昧な状況が生じます。このコードの簡単なリストは、特定の種類のクエリのキーワードとして使用するために提供されています。","","","","","","","","",,"example","このコードリストは、記録されている主要な臨床行為を表します。","http://terminology.hl7.org/ValueSet/v3-ActCode","",,,,"Composition.event.code",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".code",".code","DocumentReference.event.code"
+"Composition.event.period","Composition.event.period","","","",0,1,"","","Y","Period {[]} {[]}
+","文書に含まれる期間","文書でカバーされている期間。この期間において、文書が完全な表現であることを主張するものではありませんが、この期間のイベントを文書化していることだけを示しています。","","","","","","","","","",,,,,"",,,,"Composition.event.period",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".effectiveTime",".effectiveTime","DocumentReference.event.period"
+"Composition.event.detail","Composition.event.detail","","","",0,*,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","記録されているイベント","ドキュメンテーションされているイベントの説明や参照。例えば、このように大腸内視鏡検査や虫垂切除手術をドキュメンテーションするために使用することができます。","","","","","","","","","",,,,,"",,,,"Composition.event.detail",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=""SUBJ""].target","n/a"
+"Composition.section","Composition.section","","","",0,*,"","","","BackboneElement {[]} {[]}
+","セクション","セクション","","","","","","","","","",,,,,"","value:code}
+","",,"open","Composition.section",0,*,"","cmp-1:セクションには、テキスト、エントリー、またはサブセクションのいずれかが少なくとも1つ必要です。 {text.exists() or entry.exists() or section.exists()}
+cmp-2:セクションが空の場合、emptyReasonを持つことはできません。 {emptyReason.empty() or entry.empty()}ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.structuredBody.component.section"
+"Composition.section.id","Composition.section.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.section.extension","Composition.section.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.section.modifierExtension","Composition.section.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.section.title","Composition.section.title","","header
+labelcaption","",1,1,"Y","","","string {[]} {[]}
+","セクションのラベル（例：目次用）","この特定のセクションのラベル。これは文書のレンダリングされたコンテンツの一部となり、目次を作成するためにしばしば使用されます。","タイトルは人間の読者のためのセクションを識別します。タイトルは、セクションの対象となるリソースのナラティブに一貫性が必要です。通常、セクションにはタイトルが必要ですが、一部の文書では不要または不適切です。これは、サブセクションに独自の区別的なタイトルがあるセクション、または単一のセクションしか持たない文書の場合です。ほとんどの実装ガイドでは、セクションタイトルを必須要素にすることがあります。","Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized.","","","","","","","",,,,,"",,,,"Composition.section.title",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./title",".title"
+"Composition.section.code","Composition.section.code","","","",1,1,"Y","","","CodeableConcept {[]} {[]}
+","セクションの分類（推奨）","セクションに含まれるコンテンツの種類を識別するコードです。これはセクションタイトルと一致する必要があります。","そのコードは、文書の自動処理用のセクションを識別します。文書の構造を制御するためにプロファイルを使用する場合、これは特に関連しています。
+もしセクションにサブセクションではなくコンテンツが含まれている場合、セクションコードは、セクションコードの注釈にあるリソースの意味や解釈を変更しません。","Provides computable standardized labels to topics within the document.","","","","","","","",,"example","作品/文書の一部の分類。","http://hl7.org/fhir/ValueSet/doc-section-codes|4.0.1","",,,,"Composition.section.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./code",".code"
+"Composition.section.author","Composition.section.author","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","誰または何がこの部分を著したか","「このセクションの情報の責任者を識別することであり、入力した人ではない」という意味です。","","Identifies who is responsible for the content.","","","","","","","",,,,,"",,,,"Composition.section.author",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""AUT""].role[classCode=""ASSIGNED""]",".author.assignedAuthor","FiveWs.author"
+"Composition.section.focus","Composition.section.focus","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションの記述対象が、Compositionの主題と異なる場合に、その対象としている主題。","セクションの実際のフォーカスは、作成物の主題ではなく、代わりに(患者の主題の場合)配偶者、親、胎児、あるいはドナーなどの何かまたは誰かを表すときのことです。フォーカスが指定されていない場合、フォーカスは親セクションのフォーカス、または作成物自体の主題になるものと仮定されます。フォーカスを持つセクションには、論理的な主体（患者、主題、フォーカスなど）がセクションのフォーカスに一致するリソースしか含まれません。または論理的な主体（少数のリソース）が存在しない場合にも含まれます。","通常、文書のセクションは、その文書の対象である患者、または患者グループ、場所、機器などに関するものです。一部の文書においては、いくつかのセクションには関連するエンティティに関するデータが実際に含まれています。典型的な例は、母親に関する新生児退院の要約のセクションや、各家族メンバーについてのセクションを含む家族歴の文書などがありますが、その他の例もあります。","","","","","","","","",,,,,"",,,,"Composition.section.focus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".subject? (CDA did not differentiate between subject and focus)"
+"Composition.section.text","Composition.section.text","","","",0,0,"","","","Narrative {[]} {[]}
+","人間の解釈のために、節のテキストの要約","人が理解しやすい物語形式で、セクションの確認されたコンテンツを含み、人間がリソースのコンテンツを表現するために使用されます。この物語には、すべての構造化データをエンコードする必要はありませんが、人間が物語を読んで十分に「臨床的に安全」であるために、十分な詳細を含む必要があります。","文書プロファイルは、臨床的安全性を確保するために、物語に表現すべき内容を定義することができます。","","","","","","","","",,,,,"",,,,"Composition.section.text",0,1,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".text",".text"
+"Composition.section.mode","Composition.section.mode","","","",0,1,"","","","code {[]} {[]}
+","working | snapshot | changes","エントリーリストの作成方法 – それが継続的に維持されるのに適した作業リスト(working)であるか、別のソースからのアイテムのリストのスナップショット(snapshot)を表すか、またはアイテムが追加、変更、削除されることができる作成済みのリスト(changes)であるかを示す。","「変更リストが完全なリストと誤解されることを防ぐため、この要素は修飾子としてラベル付けされます。」","Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.","","","","","","","",,"required","このセクションに適用される処理モード。 (Kono sekushon ni tekiyō sareru shori mōdo.)","http://hl7.org/fhir/ValueSet/list-mode|4.0.1","",,,,"Composition.section.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outBoundRelationship[typeCode=COMP].target[classCode=OBS""].value","n/a","FiveWs.class"
+"Composition.section.orderedBy","Composition.section.orderedBy","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションエントリーの順序","セクションエントリー内のアイテムに適用される順序を指定します。","アプリケーションは提供された順序で順序付きリストを描画する必要がありますが、ユーザーが自分の好みに基づいて再順序付けすることもできます。順序が指定されていない場合、順序は不明ですが、それでも何らかの順序がある可能性があります。","Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.","","","","","","","",,"preferred","「エントリーに含まれるアイテムにはどのような順序が適用されますか？」","http://hl7.org/fhir/ValueSet/list-order|4.0.1","",,,,"Composition.section.orderedBy",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].sequenceNumber > 1","n/a"
+"Composition.section.entry","Composition.section.entry","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションを支持するデータに対する参照","""このセクションの物語の出典となる実際のリソースへの言及。""","もしリストにエントリーがなければ、空の理由を提供する必要があります。","","","","","","","","",,,,,"",,,,"Composition.section.entry",0,*,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]",".entry"
+"Composition.section.emptyReason","Composition.section.emptyReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションが空である理由","""セクションが空の場合、セクションが空である理由。空のセクションには通常、空の理由を説明するテキストがあります。""","空白セクションの多様な理由は、その解釈に重要な意味を持ちます。このコードは、セクション全体の内容が抑制されている場合に使用するものであり、単一のアイテムが省略されている場合には、実装者はテキストノートまたはエントリにフラグを使用することを検討することができます。","Allows capturing things like ""none exist"" or ""not asked"" which can be important for most lists.","","","","","","","",,"preferred","もしセクションが空っぽなら、なぜ空っぽなのか。","http://hl7.org/fhir/ValueSet/list-empty-reason|4.0.1","",,,,"Composition.section.emptyReason",0,1,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=SUBJ,code<ListEmptyReason].value[type=CD]","n/a"
+"Composition.section.section","Composition.section.section","","","",0,*,"","","","BackboneElement {[]} {[]}
+","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
+"Composition.section.section.id","Composition.section.section.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.section.section.extension","Composition.section.section.extension","","","",0,*,"","","","Extension {[]} {[]}
+","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
+","",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}"
+"Composition.section.section.extension:eventDateTime","Composition.section.section.extension","eventDateTime","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_EventDateTime]]} {[]}
+","記録/記事のイベント日時","記録/記事のイベント日時を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section.section.extension:itemSequence","Composition.section.section.extension","itemSequence","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_ItemSequence]]} {[]}
+","記事の記録順序","記事の記録順序を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section.section.extension:thumbnailImage","Composition.section.section.extension","thumbnailImage","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_ThumbnailImage]]} {[]}
+","記事のサムネイル画像","記事のサムネイル画像を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section.section.modifierExtension","Composition.section.section.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.section.section.title","Composition.section.section.title","","header
+labelcaption","",0,1,"","","","string {[]} {[]}
+","セクションのラベル（例：目次用）","この特定のセクションのラベル。これは文書のレンダリングされたコンテンツの一部となり、目次を作成するためにしばしば使用されます。","タイトルは人間の読者のためのセクションを識別します。タイトルは、セクションの対象となるリソースのナラティブに一貫性が必要です。通常、セクションにはタイトルが必要ですが、一部の文書では不要または不適切です。これは、サブセクションに独自の区別的なタイトルがあるセクション、または単一のセクションしか持たない文書の場合です。ほとんどの実装ガイドでは、セクションタイトルを必須要素にすることがあります。","Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized.","","","","","","","",,,,,"",,,,"Composition.section.title",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./title",".title"
+"Composition.section.section.code","Composition.section.section.code","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションの分類（推奨）","セクションに含まれるコンテンツの種類を識別するコードです。これはセクションタイトルと一致する必要があります。","そのコードは、文書の自動処理用のセクションを識別します。文書の構造を制御するためにプロファイルを使用する場合、これは特に関連しています。
+もしセクションにサブセクションではなくコンテンツが含まれている場合、セクションコードは、セクションコードの注釈にあるリソースの意味や解釈を変更しません。","Provides computable standardized labels to topics within the document.","","","","","","","",,"example","作品/文書の一部の分類。","http://hl7.org/fhir/ValueSet/doc-section-codes|4.0.1","",,,,"Composition.section.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./code",".code"
+"Composition.section.section.author","Composition.section.section.author","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","誰または何がこの部分を著したか","「このセクションの情報の責任者を識別することであり、入力した人ではない」という意味です。","","Identifies who is responsible for the content.","","","","","","","",,,,,"",,,,"Composition.section.author",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""AUT""].role[classCode=""ASSIGNED""]",".author.assignedAuthor","FiveWs.author"
+"Composition.section.section.focus","Composition.section.section.focus","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションの記述対象が、Compositionの主題と異なる場合に、その対象としている主題。","セクションの実際のフォーカスは、作成物の主題ではなく、代わりに(患者の主題の場合)配偶者、親、胎児、あるいはドナーなどの何かまたは誰かを表すときのことです。フォーカスが指定されていない場合、フォーカスは親セクションのフォーカス、または作成物自体の主題になるものと仮定されます。フォーカスを持つセクションには、論理的な主体（患者、主題、フォーカスなど）がセクションのフォーカスに一致するリソースしか含まれません。または論理的な主体（少数のリソース）が存在しない場合にも含まれます。","通常、文書のセクションは、その文書の対象である患者、または患者グループ、場所、機器などに関するものです。一部の文書においては、いくつかのセクションには関連するエンティティに関するデータが実際に含まれています。典型的な例は、母親に関する新生児退院の要約のセクションや、各家族メンバーについてのセクションを含む家族歴の文書などがありますが、その他の例もあります。","","","","","","","","",,,,,"",,,,"Composition.section.focus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".subject? (CDA did not differentiate between subject and focus)"
+"Composition.section.section.text","Composition.section.section.text","","","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のために、節のテキストの要約","人が理解しやすい物語形式で、セクションの確認されたコンテンツを含み、人間がリソースのコンテンツを表現するために使用されます。この物語には、すべての構造化データをエンコードする必要はありませんが、人間が物語を読んで十分に「臨床的に安全」であるために、十分な詳細を含む必要があります。","文書プロファイルは、臨床的安全性を確保するために、物語に表現すべき内容を定義することができます。","","","","","","","","",,,,,"",,,,"Composition.section.text",0,1,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".text",".text"
+"Composition.section.section.mode","Composition.section.section.mode","","","",0,1,"","","","code {[]} {[]}
+","working | snapshot | changes","エントリーリストの作成方法 – それが継続的に維持されるのに適した作業リスト(working)であるか、別のソースからのアイテムのリストのスナップショット(snapshot)を表すか、またはアイテムが追加、変更、削除されることができる作成済みのリスト(changes)であるかを示す。","「変更リストが完全なリストと誤解されることを防ぐため、この要素は修飾子としてラベル付けされます。」","Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.","","","","","","","",,"required","このセクションに適用される処理モード。 (Kono sekushon ni tekiyō sareru shori mōdo.)","http://hl7.org/fhir/ValueSet/list-mode|4.0.1","",,,,"Composition.section.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outBoundRelationship[typeCode=COMP].target[classCode=OBS""].value","n/a","FiveWs.class"
+"Composition.section.section.orderedBy","Composition.section.section.orderedBy","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションエントリーの順序","セクションエントリー内のアイテムに適用される順序を指定します。","アプリケーションは提供された順序で順序付きリストを描画する必要がありますが、ユーザーが自分の好みに基づいて再順序付けすることもできます。順序が指定されていない場合、順序は不明ですが、それでも何らかの順序がある可能性があります。","Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.","","","","","","","",,"preferred","「エントリーに含まれるアイテムにはどのような順序が適用されますか？」","http://hl7.org/fhir/ValueSet/list-order|4.0.1","",,,,"Composition.section.orderedBy",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].sequenceNumber > 1","n/a"
+"Composition.section.section.entry","Composition.section.section.entry","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションを支持するデータに対する参照","""このセクションの物語の出典となる実際のリソースへの言及。""","もしリストにエントリーがなければ、空の理由を提供する必要があります。","","","","","","","","",,,,,"",,,,"Composition.section.entry",0,*,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]",".entry"
+"Composition.section.section.emptyReason","Composition.section.section.emptyReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションが空である理由","""セクションが空の場合、セクションが空である理由。空のセクションには通常、空の理由を説明するテキストがあります。""","空白セクションの多様な理由は、その解釈に重要な意味を持ちます。このコードは、セクション全体の内容が抑制されている場合に使用するものであり、単一のアイテムが省略されている場合には、実装者はテキストノートまたはエントリにフラグを使用することを検討することができます。","Allows capturing things like ""none exist"" or ""not asked"" which can be important for most lists.","","","","","","","",,"preferred","もしセクションが空っぽなら、なぜ空っぽなのか。","http://hl7.org/fhir/ValueSet/list-empty-reason|4.0.1","",,,,"Composition.section.emptyReason",0,1,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=SUBJ,code<ListEmptyReason].value[type=CD]","n/a"
+"Composition.section.section.section","Composition.section.section.section","","","",0,*,"","","","null {[]} {[]}
+","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
+"Composition.section:problems","Composition.section","problems","","Problems Section",0,1,"Y","","","BackboneElement {[]} {[]}
+","Problems Section","作品を構成するセクションの根源。","","","","","","","","","",,,,,"",,,,"Composition.section",0,*,"","cmp-1:セクションには、テキスト、エントリー、またはサブセクションのいずれかが少なくとも1つ必要です。 {text.exists() or entry.exists() or section.exists()}
+cmp-2:セクションが空の場合、emptyReasonを持つことはできません。 {emptyReason.empty() or entry.empty()}ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.structuredBody.component.section"
+"Composition.section:problems.id","Composition.section.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.section:problems.extension","Composition.section.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.section:problems.modifierExtension","Composition.section.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.section:problems.title","Composition.section.title","","header
+labelcaption","",0,1,"","","","string {[]} {[]}
+","セクションのラベル（例：目次用）","この特定のセクションのラベル。これは文書のレンダリングされたコンテンツの一部となり、目次を作成するためにしばしば使用されます。","タイトルは人間の読者のためのセクションを識別します。タイトルは、セクションの対象となるリソースのナラティブに一貫性が必要です。通常、セクションにはタイトルが必要ですが、一部の文書では不要または不適切です。これは、サブセクションに独自の区別的なタイトルがあるセクション、または単一のセクションしか持たない文書の場合です。ほとんどの実装ガイドでは、セクションタイトルを必須要素にすることがあります。","Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized.","","","","","","","",,,,,"",,,,"Composition.section.title",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./title",".title"
+"Composition.section:problems.code","Composition.section.code","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションの分類（推奨）","セクションに含まれるコンテンツの種類を識別するコードです。これはセクションタイトルと一致する必要があります。","そのコードは、文書の自動処理用のセクションを識別します。文書の構造を制御するためにプロファイルを使用する場合、これは特に関連しています。
+もしセクションにサブセクションではなくコンテンツが含まれている場合、セクションコードは、セクションコードの注釈にあるリソースの意味や解釈を変更しません。","Provides computable standardized labels to topics within the document.","","","","<valueCodeableConcept xmlns=""http://hl7.org/fhir"">
+  <coding>
+    <system value=""http://loinc.org""/>
+    <code value=""11450-4""/>
+  </coding>
+</valueCodeableConcept>","","","",,"example","作品/文書の一部の分類。","http://hl7.org/fhir/ValueSet/doc-section-codes|4.0.1","",,,,"Composition.section.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./code",".code"
+"Composition.section:problems.author","Composition.section.author","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","誰または何がこの部分を著したか","「このセクションの情報の責任者を識別することであり、入力した人ではない」という意味です。","","Identifies who is responsible for the content.","","","","","","","",,,,,"",,,,"Composition.section.author",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""AUT""].role[classCode=""ASSIGNED""]",".author.assignedAuthor","FiveWs.author"
+"Composition.section:problems.focus","Composition.section.focus","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションの記述対象が、Compositionの主題と異なる場合に、その対象としている主題。","セクションの実際のフォーカスは、作成物の主題ではなく、代わりに(患者の主題の場合)配偶者、親、胎児、あるいはドナーなどの何かまたは誰かを表すときのことです。フォーカスが指定されていない場合、フォーカスは親セクションのフォーカス、または作成物自体の主題になるものと仮定されます。フォーカスを持つセクションには、論理的な主体（患者、主題、フォーカスなど）がセクションのフォーカスに一致するリソースしか含まれません。または論理的な主体（少数のリソース）が存在しない場合にも含まれます。","通常、文書のセクションは、その文書の対象である患者、または患者グループ、場所、機器などに関するものです。一部の文書においては、いくつかのセクションには関連するエンティティに関するデータが実際に含まれています。典型的な例は、母親に関する新生児退院の要約のセクションや、各家族メンバーについてのセクションを含む家族歴の文書などがありますが、その他の例もあります。","","","","","","","","",,,,,"",,,,"Composition.section.focus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".subject? (CDA did not differentiate between subject and focus)"
+"Composition.section:problems.text","Composition.section.text","","","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のために、節のテキストの要約","人が理解しやすい物語形式で、セクションの確認されたコンテンツを含み、人間がリソースのコンテンツを表現するために使用されます。この物語には、すべての構造化データをエンコードする必要はありませんが、人間が物語を読んで十分に「臨床的に安全」であるために、十分な詳細を含む必要があります。","文書プロファイルは、臨床的安全性を確保するために、物語に表現すべき内容を定義することができます。","","","","","","","","",,,,,"",,,,"Composition.section.text",0,1,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".text",".text"
+"Composition.section:problems.mode","Composition.section.mode","","","",0,1,"","","","code {[]} {[]}
+","working | snapshot | changes","エントリーリストの作成方法 – それが継続的に維持されるのに適した作業リスト(working)であるか、別のソースからのアイテムのリストのスナップショット(snapshot)を表すか、またはアイテムが追加、変更、削除されることができる作成済みのリスト(changes)であるかを示す。","「変更リストが完全なリストと誤解されることを防ぐため、この要素は修飾子としてラベル付けされます。」","Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.","","","","","","","",,"required","このセクションに適用される処理モード。 (Kono sekushon ni tekiyō sareru shori mōdo.)","http://hl7.org/fhir/ValueSet/list-mode|4.0.1","",,,,"Composition.section.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outBoundRelationship[typeCode=COMP].target[classCode=OBS""].value","n/a","FiveWs.class"
+"Composition.section:problems.orderedBy","Composition.section.orderedBy","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションエントリーの順序","セクションエントリー内のアイテムに適用される順序を指定します。","アプリケーションは提供された順序で順序付きリストを描画する必要がありますが、ユーザーが自分の好みに基づいて再順序付けすることもできます。順序が指定されていない場合、順序は不明ですが、それでも何らかの順序がある可能性があります。","Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.","","","","","","","",,"preferred","「エントリーに含まれるアイテムにはどのような順序が適用されますか？」","http://hl7.org/fhir/ValueSet/list-order|4.0.1","",,,,"Composition.section.orderedBy",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].sequenceNumber > 1","n/a"
+"Composition.section:problems.entry","Composition.section.entry","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Condition]]}
+","このセクションを支持するデータに対する参照","""このセクションの物語の出典となる実際のリソースへの言及。""","もしリストにエントリーがなければ、空の理由を提供する必要があります。","","","","","","","","",,,,,"",,,,"Composition.section.entry",0,*,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]",".entry"
+"Composition.section:problems.emptyReason","Composition.section.emptyReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションが空である理由","""セクションが空の場合、セクションが空である理由。空のセクションには通常、空の理由を説明するテキストがあります。""","空白セクションの多様な理由は、その解釈に重要な意味を持ちます。このコードは、セクション全体の内容が抑制されている場合に使用するものであり、単一のアイテムが省略されている場合には、実装者はテキストノートまたはエントリにフラグを使用することを検討することができます。","Allows capturing things like ""none exist"" or ""not asked"" which can be important for most lists.","","","","","","","",,"preferred","もしセクションが空っぽなら、なぜ空っぽなのか。","http://hl7.org/fhir/ValueSet/list-empty-reason|4.0.1","",,,,"Composition.section.emptyReason",0,1,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=SUBJ,code<ListEmptyReason].value[type=CD]","n/a"
+"Composition.section:problems.section","Composition.section.section","","","",0,*,"","","","BackboneElement {[]} {[]}
+","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
+"Composition.section:problems.section.id","Composition.section.section.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.section:problems.section.extension","Composition.section.section.extension","","","",0,*,"","","","Extension {[]} {[]}
+","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
+","",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}"
+"Composition.section:problems.section.extension:eventDateTime","Composition.section.section.extension","eventDateTime","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_EventDateTime]]} {[]}
+","記録/記事のイベント日時","記録/記事のイベント日時を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:problems.section.extension:itemSequence","Composition.section.section.extension","itemSequence","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_ItemSequence]]} {[]}
+","記事の記録順序","記事の記録順序を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:problems.section.extension:thumbnailImage","Composition.section.section.extension","thumbnailImage","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_ThumbnailImage]]} {[]}
+","記事のサムネイル画像","記事のサムネイル画像を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:problems.section.modifierExtension","Composition.section.section.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.section:problems.section.title","Composition.section.section.title","","header
+labelcaption","",0,1,"","","","string {[]} {[]}
+","セクションのラベル（例：目次用）","この特定のセクションのラベル。これは文書のレンダリングされたコンテンツの一部となり、目次を作成するためにしばしば使用されます。","タイトルは人間の読者のためのセクションを識別します。タイトルは、セクションの対象となるリソースのナラティブに一貫性が必要です。通常、セクションにはタイトルが必要ですが、一部の文書では不要または不適切です。これは、サブセクションに独自の区別的なタイトルがあるセクション、または単一のセクションしか持たない文書の場合です。ほとんどの実装ガイドでは、セクションタイトルを必須要素にすることがあります。","Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized.","","","","","","","",,,,,"",,,,"Composition.section.title",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./title",".title"
+"Composition.section:problems.section.code","Composition.section.section.code","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションの分類（推奨）","セクションに含まれるコンテンツの種類を識別するコードです。これはセクションタイトルと一致する必要があります。","そのコードは、文書の自動処理用のセクションを識別します。文書の構造を制御するためにプロファイルを使用する場合、これは特に関連しています。
+もしセクションにサブセクションではなくコンテンツが含まれている場合、セクションコードは、セクションコードの注釈にあるリソースの意味や解釈を変更しません。","Provides computable standardized labels to topics within the document.","","","","","","","",,"example","作品/文書の一部の分類。","http://hl7.org/fhir/ValueSet/doc-section-codes|4.0.1","",,,,"Composition.section.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./code",".code"
+"Composition.section:problems.section.author","Composition.section.section.author","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","誰または何がこの部分を著したか","「このセクションの情報の責任者を識別することであり、入力した人ではない」という意味です。","","Identifies who is responsible for the content.","","","","","","","",,,,,"",,,,"Composition.section.author",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""AUT""].role[classCode=""ASSIGNED""]",".author.assignedAuthor","FiveWs.author"
+"Composition.section:problems.section.focus","Composition.section.section.focus","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションの記述対象が、Compositionの主題と異なる場合に、その対象としている主題。","セクションの実際のフォーカスは、作成物の主題ではなく、代わりに(患者の主題の場合)配偶者、親、胎児、あるいはドナーなどの何かまたは誰かを表すときのことです。フォーカスが指定されていない場合、フォーカスは親セクションのフォーカス、または作成物自体の主題になるものと仮定されます。フォーカスを持つセクションには、論理的な主体（患者、主題、フォーカスなど）がセクションのフォーカスに一致するリソースしか含まれません。または論理的な主体（少数のリソース）が存在しない場合にも含まれます。","通常、文書のセクションは、その文書の対象である患者、または患者グループ、場所、機器などに関するものです。一部の文書においては、いくつかのセクションには関連するエンティティに関するデータが実際に含まれています。典型的な例は、母親に関する新生児退院の要約のセクションや、各家族メンバーについてのセクションを含む家族歴の文書などがありますが、その他の例もあります。","","","","","","","","",,,,,"",,,,"Composition.section.focus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".subject? (CDA did not differentiate between subject and focus)"
+"Composition.section:problems.section.text","Composition.section.section.text","","","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のために、節のテキストの要約","人が理解しやすい物語形式で、セクションの確認されたコンテンツを含み、人間がリソースのコンテンツを表現するために使用されます。この物語には、すべての構造化データをエンコードする必要はありませんが、人間が物語を読んで十分に「臨床的に安全」であるために、十分な詳細を含む必要があります。","文書プロファイルは、臨床的安全性を確保するために、物語に表現すべき内容を定義することができます。","","","","","","","","",,,,,"",,,,"Composition.section.text",0,1,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".text",".text"
+"Composition.section:problems.section.mode","Composition.section.section.mode","","","",0,1,"","","","code {[]} {[]}
+","working | snapshot | changes","エントリーリストの作成方法 – それが継続的に維持されるのに適した作業リスト(working)であるか、別のソースからのアイテムのリストのスナップショット(snapshot)を表すか、またはアイテムが追加、変更、削除されることができる作成済みのリスト(changes)であるかを示す。","「変更リストが完全なリストと誤解されることを防ぐため、この要素は修飾子としてラベル付けされます。」","Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.","","","","","","","",,"required","このセクションに適用される処理モード。 (Kono sekushon ni tekiyō sareru shori mōdo.)","http://hl7.org/fhir/ValueSet/list-mode|4.0.1","",,,,"Composition.section.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outBoundRelationship[typeCode=COMP].target[classCode=OBS""].value","n/a","FiveWs.class"
+"Composition.section:problems.section.orderedBy","Composition.section.section.orderedBy","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションエントリーの順序","セクションエントリー内のアイテムに適用される順序を指定します。","アプリケーションは提供された順序で順序付きリストを描画する必要がありますが、ユーザーが自分の好みに基づいて再順序付けすることもできます。順序が指定されていない場合、順序は不明ですが、それでも何らかの順序がある可能性があります。","Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.","","","","","","","",,"preferred","「エントリーに含まれるアイテムにはどのような順序が適用されますか？」","http://hl7.org/fhir/ValueSet/list-order|4.0.1","",,,,"Composition.section.orderedBy",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].sequenceNumber > 1","n/a"
+"Composition.section:problems.section.entry","Composition.section.section.entry","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションを支持するデータに対する参照","""このセクションの物語の出典となる実際のリソースへの言及。""","もしリストにエントリーがなければ、空の理由を提供する必要があります。","","","","","","","","",,,,,"",,,,"Composition.section.entry",0,*,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]",".entry"
+"Composition.section:problems.section.emptyReason","Composition.section.section.emptyReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションが空である理由","""セクションが空の場合、セクションが空である理由。空のセクションには通常、空の理由を説明するテキストがあります。""","空白セクションの多様な理由は、その解釈に重要な意味を持ちます。このコードは、セクション全体の内容が抑制されている場合に使用するものであり、単一のアイテムが省略されている場合には、実装者はテキストノートまたはエントリにフラグを使用することを検討することができます。","Allows capturing things like ""none exist"" or ""not asked"" which can be important for most lists.","","","","","","","",,"preferred","もしセクションが空っぽなら、なぜ空っぽなのか。","http://hl7.org/fhir/ValueSet/list-empty-reason|4.0.1","",,,,"Composition.section.emptyReason",0,1,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=SUBJ,code<ListEmptyReason].value[type=CD]","n/a"
+"Composition.section:problems.section.section","Composition.section.section.section","","","",0,*,"","","","null {[]} {[]}
+","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
+"Composition.section:subjective","Composition.section","subjective","","Subjective Section",0,1,"Y","","","BackboneElement {[]} {[]}
+","Subjective Section","作品を構成するセクションの根源。","","","","","","","","","",,,,,"",,,,"Composition.section",0,*,"","cmp-1:セクションには、テキスト、エントリー、またはサブセクションのいずれかが少なくとも1つ必要です。 {text.exists() or entry.exists() or section.exists()}
+cmp-2:セクションが空の場合、emptyReasonを持つことはできません。 {emptyReason.empty() or entry.empty()}ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.structuredBody.component.section"
+"Composition.section:subjective.id","Composition.section.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.section:subjective.extension","Composition.section.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.section:subjective.modifierExtension","Composition.section.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.section:subjective.title","Composition.section.title","","header
+labelcaption","",0,1,"","","","string {[]} {[]}
+","セクションのラベル（例：目次用）","この特定のセクションのラベル。これは文書のレンダリングされたコンテンツの一部となり、目次を作成するためにしばしば使用されます。","タイトルは人間の読者のためのセクションを識別します。タイトルは、セクションの対象となるリソースのナラティブに一貫性が必要です。通常、セクションにはタイトルが必要ですが、一部の文書では不要または不適切です。これは、サブセクションに独自の区別的なタイトルがあるセクション、または単一のセクションしか持たない文書の場合です。ほとんどの実装ガイドでは、セクションタイトルを必須要素にすることがあります。","Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized.","","","","","","","",,,,,"",,,,"Composition.section.title",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./title",".title"
+"Composition.section:subjective.code","Composition.section.code","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションの分類（推奨）","セクションに含まれるコンテンツの種類を識別するコードです。これはセクションタイトルと一致する必要があります。","そのコードは、文書の自動処理用のセクションを識別します。文書の構造を制御するためにプロファイルを使用する場合、これは特に関連しています。
+もしセクションにサブセクションではなくコンテンツが含まれている場合、セクションコードは、セクションコードの注釈にあるリソースの意味や解釈を変更しません。","Provides computable standardized labels to topics within the document.","","","","<valueCodeableConcept xmlns=""http://hl7.org/fhir"">
+  <coding>
+    <system value=""http://loinc.org""/>
+    <code value=""61150-9""/>
+  </coding>
+</valueCodeableConcept>","","","",,"example","作品/文書の一部の分類。","http://hl7.org/fhir/ValueSet/doc-section-codes|4.0.1","",,,,"Composition.section.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./code",".code"
+"Composition.section:subjective.author","Composition.section.author","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","誰または何がこの部分を著したか","「このセクションの情報の責任者を識別することであり、入力した人ではない」という意味です。","","Identifies who is responsible for the content.","","","","","","","",,,,,"",,,,"Composition.section.author",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""AUT""].role[classCode=""ASSIGNED""]",".author.assignedAuthor","FiveWs.author"
+"Composition.section:subjective.focus","Composition.section.focus","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションの記述対象が、Compositionの主題と異なる場合に、その対象としている主題。","セクションの実際のフォーカスは、作成物の主題ではなく、代わりに(患者の主題の場合)配偶者、親、胎児、あるいはドナーなどの何かまたは誰かを表すときのことです。フォーカスが指定されていない場合、フォーカスは親セクションのフォーカス、または作成物自体の主題になるものと仮定されます。フォーカスを持つセクションには、論理的な主体（患者、主題、フォーカスなど）がセクションのフォーカスに一致するリソースしか含まれません。または論理的な主体（少数のリソース）が存在しない場合にも含まれます。","通常、文書のセクションは、その文書の対象である患者、または患者グループ、場所、機器などに関するものです。一部の文書においては、いくつかのセクションには関連するエンティティに関するデータが実際に含まれています。典型的な例は、母親に関する新生児退院の要約のセクションや、各家族メンバーについてのセクションを含む家族歴の文書などがありますが、その他の例もあります。","","","","","","","","",,,,,"",,,,"Composition.section.focus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".subject? (CDA did not differentiate between subject and focus)"
+"Composition.section:subjective.text","Composition.section.text","","","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のために、節のテキストの要約","人が理解しやすい物語形式で、セクションの確認されたコンテンツを含み、人間がリソースのコンテンツを表現するために使用されます。この物語には、すべての構造化データをエンコードする必要はありませんが、人間が物語を読んで十分に「臨床的に安全」であるために、十分な詳細を含む必要があります。","文書プロファイルは、臨床的安全性を確保するために、物語に表現すべき内容を定義することができます。","","","","","","","","",,,,,"",,,,"Composition.section.text",0,1,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".text",".text"
+"Composition.section:subjective.mode","Composition.section.mode","","","",0,1,"","","","code {[]} {[]}
+","working | snapshot | changes","エントリーリストの作成方法 – それが継続的に維持されるのに適した作業リスト(working)であるか、別のソースからのアイテムのリストのスナップショット(snapshot)を表すか、またはアイテムが追加、変更、削除されることができる作成済みのリスト(changes)であるかを示す。","「変更リストが完全なリストと誤解されることを防ぐため、この要素は修飾子としてラベル付けされます。」","Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.","","","","","","","",,"required","このセクションに適用される処理モード。 (Kono sekushon ni tekiyō sareru shori mōdo.)","http://hl7.org/fhir/ValueSet/list-mode|4.0.1","",,,,"Composition.section.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outBoundRelationship[typeCode=COMP].target[classCode=OBS""].value","n/a","FiveWs.class"
+"Composition.section:subjective.orderedBy","Composition.section.orderedBy","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションエントリーの順序","セクションエントリー内のアイテムに適用される順序を指定します。","アプリケーションは提供された順序で順序付きリストを描画する必要がありますが、ユーザーが自分の好みに基づいて再順序付けすることもできます。順序が指定されていない場合、順序は不明ですが、それでも何らかの順序がある可能性があります。","Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.","","","","","","","",,"preferred","「エントリーに含まれるアイテムにはどのような順序が適用されますか？」","http://hl7.org/fhir/ValueSet/list-order|4.0.1","",,,,"Composition.section.orderedBy",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].sequenceNumber > 1","n/a"
+"Composition.section:subjective.entry","Composition.section.entry","","","",0,0,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションを支持するデータに対する参照","""このセクションの物語の出典となる実際のリソースへの言及。""","もしリストにエントリーがなければ、空の理由を提供する必要があります。","","","","","","","","",,,,,"",,,,"Composition.section.entry",0,*,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]",".entry"
+"Composition.section:subjective.emptyReason","Composition.section.emptyReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションが空である理由","""セクションが空の場合、セクションが空である理由。空のセクションには通常、空の理由を説明するテキストがあります。""","空白セクションの多様な理由は、その解釈に重要な意味を持ちます。このコードは、セクション全体の内容が抑制されている場合に使用するものであり、単一のアイテムが省略されている場合には、実装者はテキストノートまたはエントリにフラグを使用することを検討することができます。","Allows capturing things like ""none exist"" or ""not asked"" which can be important for most lists.","","","","","","","",,"preferred","もしセクションが空っぽなら、なぜ空っぽなのか。","http://hl7.org/fhir/ValueSet/list-empty-reason|4.0.1","",,,,"Composition.section.emptyReason",0,1,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=SUBJ,code<ListEmptyReason].value[type=CD]","n/a"
+"Composition.section:subjective.section","Composition.section.section","","","",0,*,"","","","BackboneElement {[]} {[]}
+","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
+"Composition.section:subjective.section.id","Composition.section.section.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.section:subjective.section.extension","Composition.section.section.extension","","","",0,*,"","","","Extension {[]} {[]}
+","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
+","",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}"
+"Composition.section:subjective.section.extension:eventDateTime","Composition.section.section.extension","eventDateTime","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_EventDateTime]]} {[]}
+","記録/記事のイベント日時","記録/記事のイベント日時を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:subjective.section.extension:itemSequence","Composition.section.section.extension","itemSequence","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_ItemSequence]]} {[]}
+","記事の記録順序","記事の記録順序を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:subjective.section.extension:thumbnailImage","Composition.section.section.extension","thumbnailImage","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_ThumbnailImage]]} {[]}
+","記事のサムネイル画像","記事のサムネイル画像を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:subjective.section.modifierExtension","Composition.section.section.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.section:subjective.section.title","Composition.section.section.title","","header
+labelcaption","",0,1,"","","","string {[]} {[]}
+","セクションのラベル（例：目次用）","この特定のセクションのラベル。これは文書のレンダリングされたコンテンツの一部となり、目次を作成するためにしばしば使用されます。","タイトルは人間の読者のためのセクションを識別します。タイトルは、セクションの対象となるリソースのナラティブに一貫性が必要です。通常、セクションにはタイトルが必要ですが、一部の文書では不要または不適切です。これは、サブセクションに独自の区別的なタイトルがあるセクション、または単一のセクションしか持たない文書の場合です。ほとんどの実装ガイドでは、セクションタイトルを必須要素にすることがあります。","Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized.","","","","","","","",,,,,"",,,,"Composition.section.title",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./title",".title"
+"Composition.section:subjective.section.code","Composition.section.section.code","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションの分類（推奨）","セクションに含まれるコンテンツの種類を識別するコードです。これはセクションタイトルと一致する必要があります。","そのコードは、文書の自動処理用のセクションを識別します。文書の構造を制御するためにプロファイルを使用する場合、これは特に関連しています。
+もしセクションにサブセクションではなくコンテンツが含まれている場合、セクションコードは、セクションコードの注釈にあるリソースの意味や解釈を変更しません。","Provides computable standardized labels to topics within the document.","","","","","","","",,"example","作品/文書の一部の分類。","http://hl7.org/fhir/ValueSet/doc-section-codes|4.0.1","",,,,"Composition.section.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./code",".code"
+"Composition.section:subjective.section.author","Composition.section.section.author","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","誰または何がこの部分を著したか","「このセクションの情報の責任者を識別することであり、入力した人ではない」という意味です。","","Identifies who is responsible for the content.","","","","","","","",,,,,"",,,,"Composition.section.author",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""AUT""].role[classCode=""ASSIGNED""]",".author.assignedAuthor","FiveWs.author"
+"Composition.section:subjective.section.focus","Composition.section.section.focus","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションの記述対象が、Compositionの主題と異なる場合に、その対象としている主題。","セクションの実際のフォーカスは、作成物の主題ではなく、代わりに(患者の主題の場合)配偶者、親、胎児、あるいはドナーなどの何かまたは誰かを表すときのことです。フォーカスが指定されていない場合、フォーカスは親セクションのフォーカス、または作成物自体の主題になるものと仮定されます。フォーカスを持つセクションには、論理的な主体（患者、主題、フォーカスなど）がセクションのフォーカスに一致するリソースしか含まれません。または論理的な主体（少数のリソース）が存在しない場合にも含まれます。","通常、文書のセクションは、その文書の対象である患者、または患者グループ、場所、機器などに関するものです。一部の文書においては、いくつかのセクションには関連するエンティティに関するデータが実際に含まれています。典型的な例は、母親に関する新生児退院の要約のセクションや、各家族メンバーについてのセクションを含む家族歴の文書などがありますが、その他の例もあります。","","","","","","","","",,,,,"",,,,"Composition.section.focus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".subject? (CDA did not differentiate between subject and focus)"
+"Composition.section:subjective.section.text","Composition.section.section.text","","","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のために、節のテキストの要約","人が理解しやすい物語形式で、セクションの確認されたコンテンツを含み、人間がリソースのコンテンツを表現するために使用されます。この物語には、すべての構造化データをエンコードする必要はありませんが、人間が物語を読んで十分に「臨床的に安全」であるために、十分な詳細を含む必要があります。","文書プロファイルは、臨床的安全性を確保するために、物語に表現すべき内容を定義することができます。","","","","","","","","",,,,,"",,,,"Composition.section.text",0,1,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".text",".text"
+"Composition.section:subjective.section.mode","Composition.section.section.mode","","","",0,1,"","","","code {[]} {[]}
+","working | snapshot | changes","エントリーリストの作成方法 – それが継続的に維持されるのに適した作業リスト(working)であるか、別のソースからのアイテムのリストのスナップショット(snapshot)を表すか、またはアイテムが追加、変更、削除されることができる作成済みのリスト(changes)であるかを示す。","「変更リストが完全なリストと誤解されることを防ぐため、この要素は修飾子としてラベル付けされます。」","Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.","","","","","","","",,"required","このセクションに適用される処理モード。 (Kono sekushon ni tekiyō sareru shori mōdo.)","http://hl7.org/fhir/ValueSet/list-mode|4.0.1","",,,,"Composition.section.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outBoundRelationship[typeCode=COMP].target[classCode=OBS""].value","n/a","FiveWs.class"
+"Composition.section:subjective.section.orderedBy","Composition.section.section.orderedBy","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションエントリーの順序","セクションエントリー内のアイテムに適用される順序を指定します。","アプリケーションは提供された順序で順序付きリストを描画する必要がありますが、ユーザーが自分の好みに基づいて再順序付けすることもできます。順序が指定されていない場合、順序は不明ですが、それでも何らかの順序がある可能性があります。","Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.","","","","","","","",,"preferred","「エントリーに含まれるアイテムにはどのような順序が適用されますか？」","http://hl7.org/fhir/ValueSet/list-order|4.0.1","",,,,"Composition.section.orderedBy",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].sequenceNumber > 1","n/a"
+"Composition.section:subjective.section.entry","Composition.section.section.entry","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションを支持するデータに対する参照","""このセクションの物語の出典となる実際のリソースへの言及。""","もしリストにエントリーがなければ、空の理由を提供する必要があります。","","","","","","","","",,,,,"",,,,"Composition.section.entry",0,*,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]",".entry"
+"Composition.section:subjective.section.emptyReason","Composition.section.section.emptyReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションが空である理由","""セクションが空の場合、セクションが空である理由。空のセクションには通常、空の理由を説明するテキストがあります。""","空白セクションの多様な理由は、その解釈に重要な意味を持ちます。このコードは、セクション全体の内容が抑制されている場合に使用するものであり、単一のアイテムが省略されている場合には、実装者はテキストノートまたはエントリにフラグを使用することを検討することができます。","Allows capturing things like ""none exist"" or ""not asked"" which can be important for most lists.","","","","","","","",,"preferred","もしセクションが空っぽなら、なぜ空っぽなのか。","http://hl7.org/fhir/ValueSet/list-empty-reason|4.0.1","",,,,"Composition.section.emptyReason",0,1,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=SUBJ,code<ListEmptyReason].value[type=CD]","n/a"
+"Composition.section:subjective.section.section","Composition.section.section.section","","","",0,*,"","","","null {[]} {[]}
+","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
+"Composition.section:objective","Composition.section","objective","","Objective Section",0,1,"Y","","","BackboneElement {[]} {[]}
+","Objective Section","作品を構成するセクションの根源。","","","","","","","","","",,,,,"",,,,"Composition.section",0,*,"","cmp-1:セクションには、テキスト、エントリー、またはサブセクションのいずれかが少なくとも1つ必要です。 {text.exists() or entry.exists() or section.exists()}
+cmp-2:セクションが空の場合、emptyReasonを持つことはできません。 {emptyReason.empty() or entry.empty()}ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.structuredBody.component.section"
+"Composition.section:objective.id","Composition.section.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.section:objective.extension","Composition.section.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.section:objective.modifierExtension","Composition.section.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.section:objective.title","Composition.section.title","","header
+labelcaption","",0,1,"","","","string {[]} {[]}
+","セクションのラベル（例：目次用）","この特定のセクションのラベル。これは文書のレンダリングされたコンテンツの一部となり、目次を作成するためにしばしば使用されます。","タイトルは人間の読者のためのセクションを識別します。タイトルは、セクションの対象となるリソースのナラティブに一貫性が必要です。通常、セクションにはタイトルが必要ですが、一部の文書では不要または不適切です。これは、サブセクションに独自の区別的なタイトルがあるセクション、または単一のセクションしか持たない文書の場合です。ほとんどの実装ガイドでは、セクションタイトルを必須要素にすることがあります。","Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized.","","","","","","","",,,,,"",,,,"Composition.section.title",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./title",".title"
+"Composition.section:objective.code","Composition.section.code","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションの分類（推奨）","セクションに含まれるコンテンツの種類を識別するコードです。これはセクションタイトルと一致する必要があります。","そのコードは、文書の自動処理用のセクションを識別します。文書の構造を制御するためにプロファイルを使用する場合、これは特に関連しています。
+もしセクションにサブセクションではなくコンテンツが含まれている場合、セクションコードは、セクションコードの注釈にあるリソースの意味や解釈を変更しません。","Provides computable standardized labels to topics within the document.","","","","<valueCodeableConcept xmlns=""http://hl7.org/fhir"">
+  <coding>
+    <system value=""http://loinc.org""/>
+    <code value=""61149-1""/>
+  </coding>
+</valueCodeableConcept>","","","",,"example","作品/文書の一部の分類。","http://hl7.org/fhir/ValueSet/doc-section-codes|4.0.1","",,,,"Composition.section.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./code",".code"
+"Composition.section:objective.author","Composition.section.author","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","誰または何がこの部分を著したか","「このセクションの情報の責任者を識別することであり、入力した人ではない」という意味です。","","Identifies who is responsible for the content.","","","","","","","",,,,,"",,,,"Composition.section.author",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""AUT""].role[classCode=""ASSIGNED""]",".author.assignedAuthor","FiveWs.author"
+"Composition.section:objective.focus","Composition.section.focus","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションの記述対象が、Compositionの主題と異なる場合に、その対象としている主題。","セクションの実際のフォーカスは、作成物の主題ではなく、代わりに(患者の主題の場合)配偶者、親、胎児、あるいはドナーなどの何かまたは誰かを表すときのことです。フォーカスが指定されていない場合、フォーカスは親セクションのフォーカス、または作成物自体の主題になるものと仮定されます。フォーカスを持つセクションには、論理的な主体（患者、主題、フォーカスなど）がセクションのフォーカスに一致するリソースしか含まれません。または論理的な主体（少数のリソース）が存在しない場合にも含まれます。","通常、文書のセクションは、その文書の対象である患者、または患者グループ、場所、機器などに関するものです。一部の文書においては、いくつかのセクションには関連するエンティティに関するデータが実際に含まれています。典型的な例は、母親に関する新生児退院の要約のセクションや、各家族メンバーについてのセクションを含む家族歴の文書などがありますが、その他の例もあります。","","","","","","","","",,,,,"",,,,"Composition.section.focus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".subject? (CDA did not differentiate between subject and focus)"
+"Composition.section:objective.text","Composition.section.text","","","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のために、節のテキストの要約","人が理解しやすい物語形式で、セクションの確認されたコンテンツを含み、人間がリソースのコンテンツを表現するために使用されます。この物語には、すべての構造化データをエンコードする必要はありませんが、人間が物語を読んで十分に「臨床的に安全」であるために、十分な詳細を含む必要があります。","文書プロファイルは、臨床的安全性を確保するために、物語に表現すべき内容を定義することができます。","","","","","","","","",,,,,"",,,,"Composition.section.text",0,1,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".text",".text"
+"Composition.section:objective.mode","Composition.section.mode","","","",0,1,"","","","code {[]} {[]}
+","working | snapshot | changes","エントリーリストの作成方法 – それが継続的に維持されるのに適した作業リスト(working)であるか、別のソースからのアイテムのリストのスナップショット(snapshot)を表すか、またはアイテムが追加、変更、削除されることができる作成済みのリスト(changes)であるかを示す。","「変更リストが完全なリストと誤解されることを防ぐため、この要素は修飾子としてラベル付けされます。」","Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.","","","","","","","",,"required","このセクションに適用される処理モード。 (Kono sekushon ni tekiyō sareru shori mōdo.)","http://hl7.org/fhir/ValueSet/list-mode|4.0.1","",,,,"Composition.section.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outBoundRelationship[typeCode=COMP].target[classCode=OBS""].value","n/a","FiveWs.class"
+"Composition.section:objective.orderedBy","Composition.section.orderedBy","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションエントリーの順序","セクションエントリー内のアイテムに適用される順序を指定します。","アプリケーションは提供された順序で順序付きリストを描画する必要がありますが、ユーザーが自分の好みに基づいて再順序付けすることもできます。順序が指定されていない場合、順序は不明ですが、それでも何らかの順序がある可能性があります。","Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.","","","","","","","",,"preferred","「エントリーに含まれるアイテムにはどのような順序が適用されますか？」","http://hl7.org/fhir/ValueSet/list-order|4.0.1","",,,,"Composition.section.orderedBy",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].sequenceNumber > 1","n/a"
+"Composition.section:objective.entry","Composition.section.entry","","","",0,0,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションを支持するデータに対する参照","""このセクションの物語の出典となる実際のリソースへの言及。""","もしリストにエントリーがなければ、空の理由を提供する必要があります。","","","","","","","","",,,,,"",,,,"Composition.section.entry",0,*,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]",".entry"
+"Composition.section:objective.emptyReason","Composition.section.emptyReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションが空である理由","""セクションが空の場合、セクションが空である理由。空のセクションには通常、空の理由を説明するテキストがあります。""","空白セクションの多様な理由は、その解釈に重要な意味を持ちます。このコードは、セクション全体の内容が抑制されている場合に使用するものであり、単一のアイテムが省略されている場合には、実装者はテキストノートまたはエントリにフラグを使用することを検討することができます。","Allows capturing things like ""none exist"" or ""not asked"" which can be important for most lists.","","","","","","","",,"preferred","もしセクションが空っぽなら、なぜ空っぽなのか。","http://hl7.org/fhir/ValueSet/list-empty-reason|4.0.1","",,,,"Composition.section.emptyReason",0,1,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=SUBJ,code<ListEmptyReason].value[type=CD]","n/a"
+"Composition.section:objective.section","Composition.section.section","","","",0,*,"","","","BackboneElement {[]} {[]}
+","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
+"Composition.section:objective.section.id","Composition.section.section.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.section:objective.section.extension","Composition.section.section.extension","","","",0,*,"","","","Extension {[]} {[]}
+","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
+","",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}"
+"Composition.section:objective.section.extension:eventDateTime","Composition.section.section.extension","eventDateTime","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_EventDateTime]]} {[]}
+","記録/記事のイベント日時","記録/記事のイベント日時を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:objective.section.extension:itemSequence","Composition.section.section.extension","itemSequence","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_ItemSequence]]} {[]}
+","記事の記録順序","記事の記録順序を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:objective.section.extension:thumbnailImage","Composition.section.section.extension","thumbnailImage","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_ThumbnailImage]]} {[]}
+","記事のサムネイル画像","記事のサムネイル画像を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:objective.section.modifierExtension","Composition.section.section.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.section:objective.section.title","Composition.section.section.title","","header
+labelcaption","",0,1,"","","","string {[]} {[]}
+","セクションのラベル（例：目次用）","この特定のセクションのラベル。これは文書のレンダリングされたコンテンツの一部となり、目次を作成するためにしばしば使用されます。","タイトルは人間の読者のためのセクションを識別します。タイトルは、セクションの対象となるリソースのナラティブに一貫性が必要です。通常、セクションにはタイトルが必要ですが、一部の文書では不要または不適切です。これは、サブセクションに独自の区別的なタイトルがあるセクション、または単一のセクションしか持たない文書の場合です。ほとんどの実装ガイドでは、セクションタイトルを必須要素にすることがあります。","Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized.","","","","","","","",,,,,"",,,,"Composition.section.title",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./title",".title"
+"Composition.section:objective.section.code","Composition.section.section.code","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションの分類（推奨）","セクションに含まれるコンテンツの種類を識別するコードです。これはセクションタイトルと一致する必要があります。","そのコードは、文書の自動処理用のセクションを識別します。文書の構造を制御するためにプロファイルを使用する場合、これは特に関連しています。
+もしセクションにサブセクションではなくコンテンツが含まれている場合、セクションコードは、セクションコードの注釈にあるリソースの意味や解釈を変更しません。","Provides computable standardized labels to topics within the document.","","","","","","","",,"example","作品/文書の一部の分類。","http://hl7.org/fhir/ValueSet/doc-section-codes|4.0.1","",,,,"Composition.section.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./code",".code"
+"Composition.section:objective.section.author","Composition.section.section.author","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","誰または何がこの部分を著したか","「このセクションの情報の責任者を識別することであり、入力した人ではない」という意味です。","","Identifies who is responsible for the content.","","","","","","","",,,,,"",,,,"Composition.section.author",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""AUT""].role[classCode=""ASSIGNED""]",".author.assignedAuthor","FiveWs.author"
+"Composition.section:objective.section.focus","Composition.section.section.focus","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションの記述対象が、Compositionの主題と異なる場合に、その対象としている主題。","セクションの実際のフォーカスは、作成物の主題ではなく、代わりに(患者の主題の場合)配偶者、親、胎児、あるいはドナーなどの何かまたは誰かを表すときのことです。フォーカスが指定されていない場合、フォーカスは親セクションのフォーカス、または作成物自体の主題になるものと仮定されます。フォーカスを持つセクションには、論理的な主体（患者、主題、フォーカスなど）がセクションのフォーカスに一致するリソースしか含まれません。または論理的な主体（少数のリソース）が存在しない場合にも含まれます。","通常、文書のセクションは、その文書の対象である患者、または患者グループ、場所、機器などに関するものです。一部の文書においては、いくつかのセクションには関連するエンティティに関するデータが実際に含まれています。典型的な例は、母親に関する新生児退院の要約のセクションや、各家族メンバーについてのセクションを含む家族歴の文書などがありますが、その他の例もあります。","","","","","","","","",,,,,"",,,,"Composition.section.focus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".subject? (CDA did not differentiate between subject and focus)"
+"Composition.section:objective.section.text","Composition.section.section.text","","","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のために、節のテキストの要約","人が理解しやすい物語形式で、セクションの確認されたコンテンツを含み、人間がリソースのコンテンツを表現するために使用されます。この物語には、すべての構造化データをエンコードする必要はありませんが、人間が物語を読んで十分に「臨床的に安全」であるために、十分な詳細を含む必要があります。","文書プロファイルは、臨床的安全性を確保するために、物語に表現すべき内容を定義することができます。","","","","","","","","",,,,,"",,,,"Composition.section.text",0,1,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".text",".text"
+"Composition.section:objective.section.mode","Composition.section.section.mode","","","",0,1,"","","","code {[]} {[]}
+","working | snapshot | changes","エントリーリストの作成方法 – それが継続的に維持されるのに適した作業リスト(working)であるか、別のソースからのアイテムのリストのスナップショット(snapshot)を表すか、またはアイテムが追加、変更、削除されることができる作成済みのリスト(changes)であるかを示す。","「変更リストが完全なリストと誤解されることを防ぐため、この要素は修飾子としてラベル付けされます。」","Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.","","","","","","","",,"required","このセクションに適用される処理モード。 (Kono sekushon ni tekiyō sareru shori mōdo.)","http://hl7.org/fhir/ValueSet/list-mode|4.0.1","",,,,"Composition.section.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outBoundRelationship[typeCode=COMP].target[classCode=OBS""].value","n/a","FiveWs.class"
+"Composition.section:objective.section.orderedBy","Composition.section.section.orderedBy","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションエントリーの順序","セクションエントリー内のアイテムに適用される順序を指定します。","アプリケーションは提供された順序で順序付きリストを描画する必要がありますが、ユーザーが自分の好みに基づいて再順序付けすることもできます。順序が指定されていない場合、順序は不明ですが、それでも何らかの順序がある可能性があります。","Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.","","","","","","","",,"preferred","「エントリーに含まれるアイテムにはどのような順序が適用されますか？」","http://hl7.org/fhir/ValueSet/list-order|4.0.1","",,,,"Composition.section.orderedBy",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].sequenceNumber > 1","n/a"
+"Composition.section:objective.section.entry","Composition.section.section.entry","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションを支持するデータに対する参照","""このセクションの物語の出典となる実際のリソースへの言及。""","もしリストにエントリーがなければ、空の理由を提供する必要があります。","","","","","","","","",,,,,"",,,,"Composition.section.entry",0,*,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]",".entry"
+"Composition.section:objective.section.emptyReason","Composition.section.section.emptyReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションが空である理由","""セクションが空の場合、セクションが空である理由。空のセクションには通常、空の理由を説明するテキストがあります。""","空白セクションの多様な理由は、その解釈に重要な意味を持ちます。このコードは、セクション全体の内容が抑制されている場合に使用するものであり、単一のアイテムが省略されている場合には、実装者はテキストノートまたはエントリにフラグを使用することを検討することができます。","Allows capturing things like ""none exist"" or ""not asked"" which can be important for most lists.","","","","","","","",,"preferred","もしセクションが空っぽなら、なぜ空っぽなのか。","http://hl7.org/fhir/ValueSet/list-empty-reason|4.0.1","",,,,"Composition.section.emptyReason",0,1,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=SUBJ,code<ListEmptyReason].value[type=CD]","n/a"
+"Composition.section:objective.section.section","Composition.section.section.section","","","",0,*,"","","","null {[]} {[]}
+","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
+"Composition.section:assessment","Composition.section","assessment","","Assessment Section",0,1,"Y","","","BackboneElement {[]} {[]}
+","Assessment Section","作品を構成するセクションの根源。","","","","","","","","","",,,,,"",,,,"Composition.section",0,*,"","cmp-1:セクションには、テキスト、エントリー、またはサブセクションのいずれかが少なくとも1つ必要です。 {text.exists() or entry.exists() or section.exists()}
+cmp-2:セクションが空の場合、emptyReasonを持つことはできません。 {emptyReason.empty() or entry.empty()}ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.structuredBody.component.section"
+"Composition.section:assessment.id","Composition.section.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.section:assessment.extension","Composition.section.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.section:assessment.modifierExtension","Composition.section.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.section:assessment.title","Composition.section.title","","header
+labelcaption","",0,1,"","","","string {[]} {[]}
+","セクションのラベル（例：目次用）","この特定のセクションのラベル。これは文書のレンダリングされたコンテンツの一部となり、目次を作成するためにしばしば使用されます。","タイトルは人間の読者のためのセクションを識別します。タイトルは、セクションの対象となるリソースのナラティブに一貫性が必要です。通常、セクションにはタイトルが必要ですが、一部の文書では不要または不適切です。これは、サブセクションに独自の区別的なタイトルがあるセクション、または単一のセクションしか持たない文書の場合です。ほとんどの実装ガイドでは、セクションタイトルを必須要素にすることがあります。","Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized.","","","","","","","",,,,,"",,,,"Composition.section.title",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./title",".title"
+"Composition.section:assessment.code","Composition.section.code","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションの分類（推奨）","セクションに含まれるコンテンツの種類を識別するコードです。これはセクションタイトルと一致する必要があります。","そのコードは、文書の自動処理用のセクションを識別します。文書の構造を制御するためにプロファイルを使用する場合、これは特に関連しています。
+もしセクションにサブセクションではなくコンテンツが含まれている場合、セクションコードは、セクションコードの注釈にあるリソースの意味や解釈を変更しません。","Provides computable standardized labels to topics within the document.","","","","<valueCodeableConcept xmlns=""http://hl7.org/fhir"">
+  <coding>
+    <system value=""http://loinc.org""/>
+    <code value=""51848-0""/>
+  </coding>
+</valueCodeableConcept>","","","",,"example","作品/文書の一部の分類。","http://hl7.org/fhir/ValueSet/doc-section-codes|4.0.1","",,,,"Composition.section.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./code",".code"
+"Composition.section:assessment.author","Composition.section.author","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","誰または何がこの部分を著したか","「このセクションの情報の責任者を識別することであり、入力した人ではない」という意味です。","","Identifies who is responsible for the content.","","","","","","","",,,,,"",,,,"Composition.section.author",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""AUT""].role[classCode=""ASSIGNED""]",".author.assignedAuthor","FiveWs.author"
+"Composition.section:assessment.focus","Composition.section.focus","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションの記述対象が、Compositionの主題と異なる場合に、その対象としている主題。","セクションの実際のフォーカスは、作成物の主題ではなく、代わりに(患者の主題の場合)配偶者、親、胎児、あるいはドナーなどの何かまたは誰かを表すときのことです。フォーカスが指定されていない場合、フォーカスは親セクションのフォーカス、または作成物自体の主題になるものと仮定されます。フォーカスを持つセクションには、論理的な主体（患者、主題、フォーカスなど）がセクションのフォーカスに一致するリソースしか含まれません。または論理的な主体（少数のリソース）が存在しない場合にも含まれます。","通常、文書のセクションは、その文書の対象である患者、または患者グループ、場所、機器などに関するものです。一部の文書においては、いくつかのセクションには関連するエンティティに関するデータが実際に含まれています。典型的な例は、母親に関する新生児退院の要約のセクションや、各家族メンバーについてのセクションを含む家族歴の文書などがありますが、その他の例もあります。","","","","","","","","",,,,,"",,,,"Composition.section.focus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".subject? (CDA did not differentiate between subject and focus)"
+"Composition.section:assessment.text","Composition.section.text","","","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のために、節のテキストの要約","人が理解しやすい物語形式で、セクションの確認されたコンテンツを含み、人間がリソースのコンテンツを表現するために使用されます。この物語には、すべての構造化データをエンコードする必要はありませんが、人間が物語を読んで十分に「臨床的に安全」であるために、十分な詳細を含む必要があります。","文書プロファイルは、臨床的安全性を確保するために、物語に表現すべき内容を定義することができます。","","","","","","","","",,,,,"",,,,"Composition.section.text",0,1,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".text",".text"
+"Composition.section:assessment.mode","Composition.section.mode","","","",0,1,"","","","code {[]} {[]}
+","working | snapshot | changes","エントリーリストの作成方法 – それが継続的に維持されるのに適した作業リスト(working)であるか、別のソースからのアイテムのリストのスナップショット(snapshot)を表すか、またはアイテムが追加、変更、削除されることができる作成済みのリスト(changes)であるかを示す。","「変更リストが完全なリストと誤解されることを防ぐため、この要素は修飾子としてラベル付けされます。」","Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.","","","","","","","",,"required","このセクションに適用される処理モード。 (Kono sekushon ni tekiyō sareru shori mōdo.)","http://hl7.org/fhir/ValueSet/list-mode|4.0.1","",,,,"Composition.section.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outBoundRelationship[typeCode=COMP].target[classCode=OBS""].value","n/a","FiveWs.class"
+"Composition.section:assessment.orderedBy","Composition.section.orderedBy","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションエントリーの順序","セクションエントリー内のアイテムに適用される順序を指定します。","アプリケーションは提供された順序で順序付きリストを描画する必要がありますが、ユーザーが自分の好みに基づいて再順序付けすることもできます。順序が指定されていない場合、順序は不明ですが、それでも何らかの順序がある可能性があります。","Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.","","","","","","","",,"preferred","「エントリーに含まれるアイテムにはどのような順序が適用されますか？」","http://hl7.org/fhir/ValueSet/list-order|4.0.1","",,,,"Composition.section.orderedBy",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].sequenceNumber > 1","n/a"
+"Composition.section:assessment.entry","Composition.section.entry","","","",0,0,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションを支持するデータに対する参照","""このセクションの物語の出典となる実際のリソースへの言及。""","もしリストにエントリーがなければ、空の理由を提供する必要があります。","","","","","","","","",,,,,"",,,,"Composition.section.entry",0,*,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]",".entry"
+"Composition.section:assessment.emptyReason","Composition.section.emptyReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションが空である理由","""セクションが空の場合、セクションが空である理由。空のセクションには通常、空の理由を説明するテキストがあります。""","空白セクションの多様な理由は、その解釈に重要な意味を持ちます。このコードは、セクション全体の内容が抑制されている場合に使用するものであり、単一のアイテムが省略されている場合には、実装者はテキストノートまたはエントリにフラグを使用することを検討することができます。","Allows capturing things like ""none exist"" or ""not asked"" which can be important for most lists.","","","","","","","",,"preferred","もしセクションが空っぽなら、なぜ空っぽなのか。","http://hl7.org/fhir/ValueSet/list-empty-reason|4.0.1","",,,,"Composition.section.emptyReason",0,1,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=SUBJ,code<ListEmptyReason].value[type=CD]","n/a"
+"Composition.section:assessment.section","Composition.section.section","","","",0,*,"","","","BackboneElement {[]} {[]}
+","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
+"Composition.section:assessment.section.id","Composition.section.section.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.section:assessment.section.extension","Composition.section.section.extension","","","",0,*,"","","","Extension {[]} {[]}
+","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
+","",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}"
+"Composition.section:assessment.section.extension:eventDateTime","Composition.section.section.extension","eventDateTime","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_EventDateTime]]} {[]}
+","記録/記事のイベント日時","記録/記事のイベント日時を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:assessment.section.extension:itemSequence","Composition.section.section.extension","itemSequence","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_ItemSequence]]} {[]}
+","記事の記録順序","記事の記録順序を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:assessment.section.extension:thumbnailImage","Composition.section.section.extension","thumbnailImage","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_ThumbnailImage]]} {[]}
+","記事のサムネイル画像","記事のサムネイル画像を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:assessment.section.modifierExtension","Composition.section.section.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.section:assessment.section.title","Composition.section.section.title","","header
+labelcaption","",0,1,"","","","string {[]} {[]}
+","セクションのラベル（例：目次用）","この特定のセクションのラベル。これは文書のレンダリングされたコンテンツの一部となり、目次を作成するためにしばしば使用されます。","タイトルは人間の読者のためのセクションを識別します。タイトルは、セクションの対象となるリソースのナラティブに一貫性が必要です。通常、セクションにはタイトルが必要ですが、一部の文書では不要または不適切です。これは、サブセクションに独自の区別的なタイトルがあるセクション、または単一のセクションしか持たない文書の場合です。ほとんどの実装ガイドでは、セクションタイトルを必須要素にすることがあります。","Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized.","","","","","","","",,,,,"",,,,"Composition.section.title",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./title",".title"
+"Composition.section:assessment.section.code","Composition.section.section.code","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションの分類（推奨）","セクションに含まれるコンテンツの種類を識別するコードです。これはセクションタイトルと一致する必要があります。","そのコードは、文書の自動処理用のセクションを識別します。文書の構造を制御するためにプロファイルを使用する場合、これは特に関連しています。
+もしセクションにサブセクションではなくコンテンツが含まれている場合、セクションコードは、セクションコードの注釈にあるリソースの意味や解釈を変更しません。","Provides computable standardized labels to topics within the document.","","","","","","","",,"example","作品/文書の一部の分類。","http://hl7.org/fhir/ValueSet/doc-section-codes|4.0.1","",,,,"Composition.section.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./code",".code"
+"Composition.section:assessment.section.author","Composition.section.section.author","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","誰または何がこの部分を著したか","「このセクションの情報の責任者を識別することであり、入力した人ではない」という意味です。","","Identifies who is responsible for the content.","","","","","","","",,,,,"",,,,"Composition.section.author",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""AUT""].role[classCode=""ASSIGNED""]",".author.assignedAuthor","FiveWs.author"
+"Composition.section:assessment.section.focus","Composition.section.section.focus","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションの記述対象が、Compositionの主題と異なる場合に、その対象としている主題。","セクションの実際のフォーカスは、作成物の主題ではなく、代わりに(患者の主題の場合)配偶者、親、胎児、あるいはドナーなどの何かまたは誰かを表すときのことです。フォーカスが指定されていない場合、フォーカスは親セクションのフォーカス、または作成物自体の主題になるものと仮定されます。フォーカスを持つセクションには、論理的な主体（患者、主題、フォーカスなど）がセクションのフォーカスに一致するリソースしか含まれません。または論理的な主体（少数のリソース）が存在しない場合にも含まれます。","通常、文書のセクションは、その文書の対象である患者、または患者グループ、場所、機器などに関するものです。一部の文書においては、いくつかのセクションには関連するエンティティに関するデータが実際に含まれています。典型的な例は、母親に関する新生児退院の要約のセクションや、各家族メンバーについてのセクションを含む家族歴の文書などがありますが、その他の例もあります。","","","","","","","","",,,,,"",,,,"Composition.section.focus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".subject? (CDA did not differentiate between subject and focus)"
+"Composition.section:assessment.section.text","Composition.section.section.text","","","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のために、節のテキストの要約","人が理解しやすい物語形式で、セクションの確認されたコンテンツを含み、人間がリソースのコンテンツを表現するために使用されます。この物語には、すべての構造化データをエンコードする必要はありませんが、人間が物語を読んで十分に「臨床的に安全」であるために、十分な詳細を含む必要があります。","文書プロファイルは、臨床的安全性を確保するために、物語に表現すべき内容を定義することができます。","","","","","","","","",,,,,"",,,,"Composition.section.text",0,1,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".text",".text"
+"Composition.section:assessment.section.mode","Composition.section.section.mode","","","",0,1,"","","","code {[]} {[]}
+","working | snapshot | changes","エントリーリストの作成方法 – それが継続的に維持されるのに適した作業リスト(working)であるか、別のソースからのアイテムのリストのスナップショット(snapshot)を表すか、またはアイテムが追加、変更、削除されることができる作成済みのリスト(changes)であるかを示す。","「変更リストが完全なリストと誤解されることを防ぐため、この要素は修飾子としてラベル付けされます。」","Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.","","","","","","","",,"required","このセクションに適用される処理モード。 (Kono sekushon ni tekiyō sareru shori mōdo.)","http://hl7.org/fhir/ValueSet/list-mode|4.0.1","",,,,"Composition.section.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outBoundRelationship[typeCode=COMP].target[classCode=OBS""].value","n/a","FiveWs.class"
+"Composition.section:assessment.section.orderedBy","Composition.section.section.orderedBy","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションエントリーの順序","セクションエントリー内のアイテムに適用される順序を指定します。","アプリケーションは提供された順序で順序付きリストを描画する必要がありますが、ユーザーが自分の好みに基づいて再順序付けすることもできます。順序が指定されていない場合、順序は不明ですが、それでも何らかの順序がある可能性があります。","Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.","","","","","","","",,"preferred","「エントリーに含まれるアイテムにはどのような順序が適用されますか？」","http://hl7.org/fhir/ValueSet/list-order|4.0.1","",,,,"Composition.section.orderedBy",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].sequenceNumber > 1","n/a"
+"Composition.section:assessment.section.entry","Composition.section.section.entry","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションを支持するデータに対する参照","""このセクションの物語の出典となる実際のリソースへの言及。""","もしリストにエントリーがなければ、空の理由を提供する必要があります。","","","","","","","","",,,,,"",,,,"Composition.section.entry",0,*,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]",".entry"
+"Composition.section:assessment.section.emptyReason","Composition.section.section.emptyReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションが空である理由","""セクションが空の場合、セクションが空である理由。空のセクションには通常、空の理由を説明するテキストがあります。""","空白セクションの多様な理由は、その解釈に重要な意味を持ちます。このコードは、セクション全体の内容が抑制されている場合に使用するものであり、単一のアイテムが省略されている場合には、実装者はテキストノートまたはエントリにフラグを使用することを検討することができます。","Allows capturing things like ""none exist"" or ""not asked"" which can be important for most lists.","","","","","","","",,"preferred","もしセクションが空っぽなら、なぜ空っぽなのか。","http://hl7.org/fhir/ValueSet/list-empty-reason|4.0.1","",,,,"Composition.section.emptyReason",0,1,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=SUBJ,code<ListEmptyReason].value[type=CD]","n/a"
+"Composition.section:assessment.section.section","Composition.section.section.section","","","",0,*,"","","","null {[]} {[]}
+","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
+"Composition.section:plan","Composition.section","plan","","Plan Section",0,1,"Y","","","BackboneElement {[]} {[]}
+","Plan Section","作品を構成するセクションの根源。","","","","","","","","","",,,,,"",,,,"Composition.section",0,*,"","cmp-1:セクションには、テキスト、エントリー、またはサブセクションのいずれかが少なくとも1つ必要です。 {text.exists() or entry.exists() or section.exists()}
+cmp-2:セクションが空の場合、emptyReasonを持つことはできません。 {emptyReason.empty() or entry.empty()}ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.structuredBody.component.section"
+"Composition.section:plan.id","Composition.section.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.section:plan.extension","Composition.section.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.section:plan.modifierExtension","Composition.section.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.section:plan.title","Composition.section.title","","header
+labelcaption","",0,1,"","","","string {[]} {[]}
+","セクションのラベル（例：目次用）","この特定のセクションのラベル。これは文書のレンダリングされたコンテンツの一部となり、目次を作成するためにしばしば使用されます。","タイトルは人間の読者のためのセクションを識別します。タイトルは、セクションの対象となるリソースのナラティブに一貫性が必要です。通常、セクションにはタイトルが必要ですが、一部の文書では不要または不適切です。これは、サブセクションに独自の区別的なタイトルがあるセクション、または単一のセクションしか持たない文書の場合です。ほとんどの実装ガイドでは、セクションタイトルを必須要素にすることがあります。","Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized.","","","","","","","",,,,,"",,,,"Composition.section.title",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./title",".title"
+"Composition.section:plan.code","Composition.section.code","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションの分類（推奨）","セクションに含まれるコンテンツの種類を識別するコードです。これはセクションタイトルと一致する必要があります。","そのコードは、文書の自動処理用のセクションを識別します。文書の構造を制御するためにプロファイルを使用する場合、これは特に関連しています。
+もしセクションにサブセクションではなくコンテンツが含まれている場合、セクションコードは、セクションコードの注釈にあるリソースの意味や解釈を変更しません。","Provides computable standardized labels to topics within the document.","","","","<valueCodeableConcept xmlns=""http://hl7.org/fhir"">
+  <coding>
+    <system value=""http://loinc.org""/>
+    <code value=""18776-5""/>
+  </coding>
+</valueCodeableConcept>","","","",,"example","作品/文書の一部の分類。","http://hl7.org/fhir/ValueSet/doc-section-codes|4.0.1","",,,,"Composition.section.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./code",".code"
+"Composition.section:plan.author","Composition.section.author","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","誰または何がこの部分を著したか","「このセクションの情報の責任者を識別することであり、入力した人ではない」という意味です。","","Identifies who is responsible for the content.","","","","","","","",,,,,"",,,,"Composition.section.author",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""AUT""].role[classCode=""ASSIGNED""]",".author.assignedAuthor","FiveWs.author"
+"Composition.section:plan.focus","Composition.section.focus","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションの記述対象が、Compositionの主題と異なる場合に、その対象としている主題。","セクションの実際のフォーカスは、作成物の主題ではなく、代わりに(患者の主題の場合)配偶者、親、胎児、あるいはドナーなどの何かまたは誰かを表すときのことです。フォーカスが指定されていない場合、フォーカスは親セクションのフォーカス、または作成物自体の主題になるものと仮定されます。フォーカスを持つセクションには、論理的な主体（患者、主題、フォーカスなど）がセクションのフォーカスに一致するリソースしか含まれません。または論理的な主体（少数のリソース）が存在しない場合にも含まれます。","通常、文書のセクションは、その文書の対象である患者、または患者グループ、場所、機器などに関するものです。一部の文書においては、いくつかのセクションには関連するエンティティに関するデータが実際に含まれています。典型的な例は、母親に関する新生児退院の要約のセクションや、各家族メンバーについてのセクションを含む家族歴の文書などがありますが、その他の例もあります。","","","","","","","","",,,,,"",,,,"Composition.section.focus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".subject? (CDA did not differentiate between subject and focus)"
+"Composition.section:plan.text","Composition.section.text","","","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のために、節のテキストの要約","人が理解しやすい物語形式で、セクションの確認されたコンテンツを含み、人間がリソースのコンテンツを表現するために使用されます。この物語には、すべての構造化データをエンコードする必要はありませんが、人間が物語を読んで十分に「臨床的に安全」であるために、十分な詳細を含む必要があります。","文書プロファイルは、臨床的安全性を確保するために、物語に表現すべき内容を定義することができます。","","","","","","","","",,,,,"",,,,"Composition.section.text",0,1,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".text",".text"
+"Composition.section:plan.mode","Composition.section.mode","","","",0,1,"","","","code {[]} {[]}
+","working | snapshot | changes","エントリーリストの作成方法 – それが継続的に維持されるのに適した作業リスト(working)であるか、別のソースからのアイテムのリストのスナップショット(snapshot)を表すか、またはアイテムが追加、変更、削除されることができる作成済みのリスト(changes)であるかを示す。","「変更リストが完全なリストと誤解されることを防ぐため、この要素は修飾子としてラベル付けされます。」","Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.","","","","","","","",,"required","このセクションに適用される処理モード。 (Kono sekushon ni tekiyō sareru shori mōdo.)","http://hl7.org/fhir/ValueSet/list-mode|4.0.1","",,,,"Composition.section.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outBoundRelationship[typeCode=COMP].target[classCode=OBS""].value","n/a","FiveWs.class"
+"Composition.section:plan.orderedBy","Composition.section.orderedBy","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションエントリーの順序","セクションエントリー内のアイテムに適用される順序を指定します。","アプリケーションは提供された順序で順序付きリストを描画する必要がありますが、ユーザーが自分の好みに基づいて再順序付けすることもできます。順序が指定されていない場合、順序は不明ですが、それでも何らかの順序がある可能性があります。","Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.","","","","","","","",,"preferred","「エントリーに含まれるアイテムにはどのような順序が適用されますか？」","http://hl7.org/fhir/ValueSet/list-order|4.0.1","",,,,"Composition.section.orderedBy",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].sequenceNumber > 1","n/a"
+"Composition.section:plan.entry","Composition.section.entry","","","",0,0,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションを支持するデータに対する参照","""このセクションの物語の出典となる実際のリソースへの言及。""","もしリストにエントリーがなければ、空の理由を提供する必要があります。","","","","","","","","",,,,,"",,,,"Composition.section.entry",0,*,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]",".entry"
+"Composition.section:plan.emptyReason","Composition.section.emptyReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションが空である理由","""セクションが空の場合、セクションが空である理由。空のセクションには通常、空の理由を説明するテキストがあります。""","空白セクションの多様な理由は、その解釈に重要な意味を持ちます。このコードは、セクション全体の内容が抑制されている場合に使用するものであり、単一のアイテムが省略されている場合には、実装者はテキストノートまたはエントリにフラグを使用することを検討することができます。","Allows capturing things like ""none exist"" or ""not asked"" which can be important for most lists.","","","","","","","",,"preferred","もしセクションが空っぽなら、なぜ空っぽなのか。","http://hl7.org/fhir/ValueSet/list-empty-reason|4.0.1","",,,,"Composition.section.emptyReason",0,1,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=SUBJ,code<ListEmptyReason].value[type=CD]","n/a"
+"Composition.section:plan.section","Composition.section.section","","","",0,*,"","","","BackboneElement {[]} {[]}
+","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
+"Composition.section:plan.section.id","Composition.section.section.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.section:plan.section.extension","Composition.section.section.extension","","","",0,*,"","","","Extension {[]} {[]}
+","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
+","",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}"
+"Composition.section:plan.section.extension:eventDateTime","Composition.section.section.extension","eventDateTime","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_EventDateTime]]} {[]}
+","記録/記事のイベント日時","記録/記事のイベント日時を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:plan.section.extension:itemSequence","Composition.section.section.extension","itemSequence","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_ItemSequence]]} {[]}
+","記事の記録順序","記事の記録順序を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:plan.section.extension:thumbnailImage","Composition.section.section.extension","thumbnailImage","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_ThumbnailImage]]} {[]}
+","記事のサムネイル画像","記事のサムネイル画像を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:plan.section.modifierExtension","Composition.section.section.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.section:plan.section.title","Composition.section.section.title","","header
+labelcaption","",0,1,"","","","string {[]} {[]}
+","セクションのラベル（例：目次用）","この特定のセクションのラベル。これは文書のレンダリングされたコンテンツの一部となり、目次を作成するためにしばしば使用されます。","タイトルは人間の読者のためのセクションを識別します。タイトルは、セクションの対象となるリソースのナラティブに一貫性が必要です。通常、セクションにはタイトルが必要ですが、一部の文書では不要または不適切です。これは、サブセクションに独自の区別的なタイトルがあるセクション、または単一のセクションしか持たない文書の場合です。ほとんどの実装ガイドでは、セクションタイトルを必須要素にすることがあります。","Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized.","","","","","","","",,,,,"",,,,"Composition.section.title",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./title",".title"
+"Composition.section:plan.section.code","Composition.section.section.code","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションの分類（推奨）","セクションに含まれるコンテンツの種類を識別するコードです。これはセクションタイトルと一致する必要があります。","そのコードは、文書の自動処理用のセクションを識別します。文書の構造を制御するためにプロファイルを使用する場合、これは特に関連しています。
+もしセクションにサブセクションではなくコンテンツが含まれている場合、セクションコードは、セクションコードの注釈にあるリソースの意味や解釈を変更しません。","Provides computable standardized labels to topics within the document.","","","","","","","",,"example","作品/文書の一部の分類。","http://hl7.org/fhir/ValueSet/doc-section-codes|4.0.1","",,,,"Composition.section.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./code",".code"
+"Composition.section:plan.section.author","Composition.section.section.author","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","誰または何がこの部分を著したか","「このセクションの情報の責任者を識別することであり、入力した人ではない」という意味です。","","Identifies who is responsible for the content.","","","","","","","",,,,,"",,,,"Composition.section.author",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""AUT""].role[classCode=""ASSIGNED""]",".author.assignedAuthor","FiveWs.author"
+"Composition.section:plan.section.focus","Composition.section.section.focus","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションの記述対象が、Compositionの主題と異なる場合に、その対象としている主題。","セクションの実際のフォーカスは、作成物の主題ではなく、代わりに(患者の主題の場合)配偶者、親、胎児、あるいはドナーなどの何かまたは誰かを表すときのことです。フォーカスが指定されていない場合、フォーカスは親セクションのフォーカス、または作成物自体の主題になるものと仮定されます。フォーカスを持つセクションには、論理的な主体（患者、主題、フォーカスなど）がセクションのフォーカスに一致するリソースしか含まれません。または論理的な主体（少数のリソース）が存在しない場合にも含まれます。","通常、文書のセクションは、その文書の対象である患者、または患者グループ、場所、機器などに関するものです。一部の文書においては、いくつかのセクションには関連するエンティティに関するデータが実際に含まれています。典型的な例は、母親に関する新生児退院の要約のセクションや、各家族メンバーについてのセクションを含む家族歴の文書などがありますが、その他の例もあります。","","","","","","","","",,,,,"",,,,"Composition.section.focus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".subject? (CDA did not differentiate between subject and focus)"
+"Composition.section:plan.section.text","Composition.section.section.text","","","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のために、節のテキストの要約","人が理解しやすい物語形式で、セクションの確認されたコンテンツを含み、人間がリソースのコンテンツを表現するために使用されます。この物語には、すべての構造化データをエンコードする必要はありませんが、人間が物語を読んで十分に「臨床的に安全」であるために、十分な詳細を含む必要があります。","文書プロファイルは、臨床的安全性を確保するために、物語に表現すべき内容を定義することができます。","","","","","","","","",,,,,"",,,,"Composition.section.text",0,1,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".text",".text"
+"Composition.section:plan.section.mode","Composition.section.section.mode","","","",0,1,"","","","code {[]} {[]}
+","working | snapshot | changes","エントリーリストの作成方法 – それが継続的に維持されるのに適した作業リスト(working)であるか、別のソースからのアイテムのリストのスナップショット(snapshot)を表すか、またはアイテムが追加、変更、削除されることができる作成済みのリスト(changes)であるかを示す。","「変更リストが完全なリストと誤解されることを防ぐため、この要素は修飾子としてラベル付けされます。」","Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.","","","","","","","",,"required","このセクションに適用される処理モード。 (Kono sekushon ni tekiyō sareru shori mōdo.)","http://hl7.org/fhir/ValueSet/list-mode|4.0.1","",,,,"Composition.section.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outBoundRelationship[typeCode=COMP].target[classCode=OBS""].value","n/a","FiveWs.class"
+"Composition.section:plan.section.orderedBy","Composition.section.section.orderedBy","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションエントリーの順序","セクションエントリー内のアイテムに適用される順序を指定します。","アプリケーションは提供された順序で順序付きリストを描画する必要がありますが、ユーザーが自分の好みに基づいて再順序付けすることもできます。順序が指定されていない場合、順序は不明ですが、それでも何らかの順序がある可能性があります。","Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.","","","","","","","",,"preferred","「エントリーに含まれるアイテムにはどのような順序が適用されますか？」","http://hl7.org/fhir/ValueSet/list-order|4.0.1","",,,,"Composition.section.orderedBy",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].sequenceNumber > 1","n/a"
+"Composition.section:plan.section.entry","Composition.section.section.entry","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションを支持するデータに対する参照","""このセクションの物語の出典となる実際のリソースへの言及。""","もしリストにエントリーがなければ、空の理由を提供する必要があります。","","","","","","","","",,,,,"",,,,"Composition.section.entry",0,*,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]",".entry"
+"Composition.section:plan.section.emptyReason","Composition.section.section.emptyReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションが空である理由","""セクションが空の場合、セクションが空である理由。空のセクションには通常、空の理由を説明するテキストがあります。""","空白セクションの多様な理由は、その解釈に重要な意味を持ちます。このコードは、セクション全体の内容が抑制されている場合に使用するものであり、単一のアイテムが省略されている場合には、実装者はテキストノートまたはエントリにフラグを使用することを検討することができます。","Allows capturing things like ""none exist"" or ""not asked"" which can be important for most lists.","","","","","","","",,"preferred","もしセクションが空っぽなら、なぜ空っぽなのか。","http://hl7.org/fhir/ValueSet/list-empty-reason|4.0.1","",,,,"Composition.section.emptyReason",0,1,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=SUBJ,code<ListEmptyReason].value[type=CD]","n/a"
+"Composition.section:plan.section.section","Composition.section.section.section","","","",0,*,"","","","null {[]} {[]}
+","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
+"Composition.section:additional","Composition.section","additional","","Additional Documentation Section",0,1,"Y","","","BackboneElement {[]} {[]}
+","Additional Documentation Section","作品を構成するセクションの根源。","","","","","","","","","",,,,,"",,,,"Composition.section",0,*,"","cmp-1:セクションには、テキスト、エントリー、またはサブセクションのいずれかが少なくとも1つ必要です。 {text.exists() or entry.exists() or section.exists()}
+cmp-2:セクションが空の場合、emptyReasonを持つことはできません。 {emptyReason.empty() or entry.empty()}ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.structuredBody.component.section"
+"Composition.section:additional.id","Composition.section.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.section:additional.extension","Composition.section.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.section:additional.modifierExtension","Composition.section.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.section:additional.title","Composition.section.title","","header
+labelcaption","",0,1,"","","","string {[]} {[]}
+","セクションのラベル（例：目次用）","この特定のセクションのラベル。これは文書のレンダリングされたコンテンツの一部となり、目次を作成するためにしばしば使用されます。","タイトルは人間の読者のためのセクションを識別します。タイトルは、セクションの対象となるリソースのナラティブに一貫性が必要です。通常、セクションにはタイトルが必要ですが、一部の文書では不要または不適切です。これは、サブセクションに独自の区別的なタイトルがあるセクション、または単一のセクションしか持たない文書の場合です。ほとんどの実装ガイドでは、セクションタイトルを必須要素にすることがあります。","Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized.","","","","","","","",,,,,"",,,,"Composition.section.title",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./title",".title"
+"Composition.section:additional.code","Composition.section.code","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションの分類（推奨）","セクションに含まれるコンテンツの種類を識別するコードです。これはセクションタイトルと一致する必要があります。","そのコードは、文書の自動処理用のセクションを識別します。文書の構造を制御するためにプロファイルを使用する場合、これは特に関連しています。
+もしセクションにサブセクションではなくコンテンツが含まれている場合、セクションコードは、セクションコードの注釈にあるリソースの意味や解釈を変更しません。","Provides computable standardized labels to topics within the document.","","","","<valueCodeableConcept xmlns=""http://hl7.org/fhir"">
+  <coding>
+    <system value=""http://loinc.org""/>
+    <code value=""77599-9""/>
+  </coding>
+</valueCodeableConcept>","","","",,"example","作品/文書の一部の分類。","http://hl7.org/fhir/ValueSet/doc-section-codes|4.0.1","",,,,"Composition.section.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./code",".code"
+"Composition.section:additional.author","Composition.section.author","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","誰または何がこの部分を著したか","「このセクションの情報の責任者を識別することであり、入力した人ではない」という意味です。","","Identifies who is responsible for the content.","","","","","","","",,,,,"",,,,"Composition.section.author",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""AUT""].role[classCode=""ASSIGNED""]",".author.assignedAuthor","FiveWs.author"
+"Composition.section:additional.focus","Composition.section.focus","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションの記述対象が、Compositionの主題と異なる場合に、その対象としている主題。","セクションの実際のフォーカスは、作成物の主題ではなく、代わりに(患者の主題の場合)配偶者、親、胎児、あるいはドナーなどの何かまたは誰かを表すときのことです。フォーカスが指定されていない場合、フォーカスは親セクションのフォーカス、または作成物自体の主題になるものと仮定されます。フォーカスを持つセクションには、論理的な主体（患者、主題、フォーカスなど）がセクションのフォーカスに一致するリソースしか含まれません。または論理的な主体（少数のリソース）が存在しない場合にも含まれます。","通常、文書のセクションは、その文書の対象である患者、または患者グループ、場所、機器などに関するものです。一部の文書においては、いくつかのセクションには関連するエンティティに関するデータが実際に含まれています。典型的な例は、母親に関する新生児退院の要約のセクションや、各家族メンバーについてのセクションを含む家族歴の文書などがありますが、その他の例もあります。","","","","","","","","",,,,,"",,,,"Composition.section.focus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".subject? (CDA did not differentiate between subject and focus)"
+"Composition.section:additional.text","Composition.section.text","","","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のために、節のテキストの要約","人が理解しやすい物語形式で、セクションの確認されたコンテンツを含み、人間がリソースのコンテンツを表現するために使用されます。この物語には、すべての構造化データをエンコードする必要はありませんが、人間が物語を読んで十分に「臨床的に安全」であるために、十分な詳細を含む必要があります。","文書プロファイルは、臨床的安全性を確保するために、物語に表現すべき内容を定義することができます。","","","","","","","","",,,,,"",,,,"Composition.section.text",0,1,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".text",".text"
+"Composition.section:additional.mode","Composition.section.mode","","","",0,1,"","","","code {[]} {[]}
+","working | snapshot | changes","エントリーリストの作成方法 – それが継続的に維持されるのに適した作業リスト(working)であるか、別のソースからのアイテムのリストのスナップショット(snapshot)を表すか、またはアイテムが追加、変更、削除されることができる作成済みのリスト(changes)であるかを示す。","「変更リストが完全なリストと誤解されることを防ぐため、この要素は修飾子としてラベル付けされます。」","Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.","","","","","","","",,"required","このセクションに適用される処理モード。 (Kono sekushon ni tekiyō sareru shori mōdo.)","http://hl7.org/fhir/ValueSet/list-mode|4.0.1","",,,,"Composition.section.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outBoundRelationship[typeCode=COMP].target[classCode=OBS""].value","n/a","FiveWs.class"
+"Composition.section:additional.orderedBy","Composition.section.orderedBy","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションエントリーの順序","セクションエントリー内のアイテムに適用される順序を指定します。","アプリケーションは提供された順序で順序付きリストを描画する必要がありますが、ユーザーが自分の好みに基づいて再順序付けすることもできます。順序が指定されていない場合、順序は不明ですが、それでも何らかの順序がある可能性があります。","Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.","","","","","","","",,"preferred","「エントリーに含まれるアイテムにはどのような順序が適用されますか？」","http://hl7.org/fhir/ValueSet/list-order|4.0.1","",,,,"Composition.section.orderedBy",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].sequenceNumber > 1","n/a"
+"Composition.section:additional.entry","Composition.section.entry","","","",0,0,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションを支持するデータに対する参照","""このセクションの物語の出典となる実際のリソースへの言及。""","もしリストにエントリーがなければ、空の理由を提供する必要があります。","","","","","","","","",,,,,"",,,,"Composition.section.entry",0,*,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]",".entry"
+"Composition.section:additional.emptyReason","Composition.section.emptyReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションが空である理由","""セクションが空の場合、セクションが空である理由。空のセクションには通常、空の理由を説明するテキストがあります。""","空白セクションの多様な理由は、その解釈に重要な意味を持ちます。このコードは、セクション全体の内容が抑制されている場合に使用するものであり、単一のアイテムが省略されている場合には、実装者はテキストノートまたはエントリにフラグを使用することを検討することができます。","Allows capturing things like ""none exist"" or ""not asked"" which can be important for most lists.","","","","","","","",,"preferred","もしセクションが空っぽなら、なぜ空っぽなのか。","http://hl7.org/fhir/ValueSet/list-empty-reason|4.0.1","",,,,"Composition.section.emptyReason",0,1,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=SUBJ,code<ListEmptyReason].value[type=CD]","n/a"
+"Composition.section:additional.section","Composition.section.section","","","",0,*,"","","","BackboneElement {[]} {[]}
+","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
+"Composition.section:additional.section.id","Composition.section.section.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Composition.section:additional.section.extension","Composition.section.section.extension","","","",0,*,"","","","Extension {[]} {[]}
+","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
+","",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}"
+"Composition.section:additional.section.extension:eventDateTime","Composition.section.section.extension","eventDateTime","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_EventDateTime]]} {[]}
+","記録/記事のイベント日時","記録/記事のイベント日時を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:additional.section.extension:itemSequence","Composition.section.section.extension","itemSequence","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_ItemSequence]]} {[]}
+","記事の記録順序","記事の記録順序を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:additional.section.extension:thumbnailImage","Composition.section.section.extension","thumbnailImage","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_ThumbnailImage]]} {[]}
+","記事のサムネイル画像","記事のサムネイル画像を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Composition.section:additional.section.modifierExtension","Composition.section.section.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Composition.section:additional.section.title","Composition.section.section.title","","header
+labelcaption","",0,1,"","","","string {[]} {[]}
+","セクションのラベル（例：目次用）","この特定のセクションのラベル。これは文書のレンダリングされたコンテンツの一部となり、目次を作成するためにしばしば使用されます。","タイトルは人間の読者のためのセクションを識別します。タイトルは、セクションの対象となるリソースのナラティブに一貫性が必要です。通常、セクションにはタイトルが必要ですが、一部の文書では不要または不適切です。これは、サブセクションに独自の区別的なタイトルがあるセクション、または単一のセクションしか持たない文書の場合です。ほとんどの実装ガイドでは、セクションタイトルを必須要素にすることがあります。","Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized.","","","","","","","",,,,,"",,,,"Composition.section.title",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./title",".title"
+"Composition.section:additional.section.code","Composition.section.section.code","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションの分類（推奨）","セクションに含まれるコンテンツの種類を識別するコードです。これはセクションタイトルと一致する必要があります。","そのコードは、文書の自動処理用のセクションを識別します。文書の構造を制御するためにプロファイルを使用する場合、これは特に関連しています。
+もしセクションにサブセクションではなくコンテンツが含まれている場合、セクションコードは、セクションコードの注釈にあるリソースの意味や解釈を変更しません。","Provides computable standardized labels to topics within the document.","","","","","","","",,"example","作品/文書の一部の分類。","http://hl7.org/fhir/ValueSet/doc-section-codes|4.0.1","",,,,"Composition.section.code",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./code",".code"
+"Composition.section:additional.section.author","Composition.section.section.author","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Device|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1], CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","誰または何がこの部分を著したか","「このセクションの情報の責任者を識別することであり、入力した人ではない」という意味です。","","Identifies who is responsible for the content.","","","","","","","",,,,,"",,,,"Composition.section.author",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".participation[typeCode=""AUT""].role[classCode=""ASSIGNED""]",".author.assignedAuthor","FiveWs.author"
+"Composition.section:additional.section.focus","Composition.section.section.focus","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションの記述対象が、Compositionの主題と異なる場合に、その対象としている主題。","セクションの実際のフォーカスは、作成物の主題ではなく、代わりに(患者の主題の場合)配偶者、親、胎児、あるいはドナーなどの何かまたは誰かを表すときのことです。フォーカスが指定されていない場合、フォーカスは親セクションのフォーカス、または作成物自体の主題になるものと仮定されます。フォーカスを持つセクションには、論理的な主体（患者、主題、フォーカスなど）がセクションのフォーカスに一致するリソースしか含まれません。または論理的な主体（少数のリソース）が存在しない場合にも含まれます。","通常、文書のセクションは、その文書の対象である患者、または患者グループ、場所、機器などに関するものです。一部の文書においては、いくつかのセクションには関連するエンティティに関するデータが実際に含まれています。典型的な例は、母親に関する新生児退院の要約のセクションや、各家族メンバーについてのセクションを含む家族歴の文書などがありますが、その他の例もあります。","","","","","","","","",,,,,"",,,,"Composition.section.focus",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".subject? (CDA did not differentiate between subject and focus)"
+"Composition.section:additional.section.text","Composition.section.section.text","","","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のために、節のテキストの要約","人が理解しやすい物語形式で、セクションの確認されたコンテンツを含み、人間がリソースのコンテンツを表現するために使用されます。この物語には、すべての構造化データをエンコードする必要はありませんが、人間が物語を読んで十分に「臨床的に安全」であるために、十分な詳細を含む必要があります。","文書プロファイルは、臨床的安全性を確保するために、物語に表現すべき内容を定義することができます。","","","","","","","","",,,,,"",,,,"Composition.section.text",0,1,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".text",".text"
+"Composition.section:additional.section.mode","Composition.section.section.mode","","","",0,1,"","","","code {[]} {[]}
+","working | snapshot | changes","エントリーリストの作成方法 – それが継続的に維持されるのに適した作業リスト(working)であるか、別のソースからのアイテムのリストのスナップショット(snapshot)を表すか、またはアイテムが追加、変更、削除されることができる作成済みのリスト(changes)であるかを示す。","「変更リストが完全なリストと誤解されることを防ぐため、この要素は修飾子としてラベル付けされます。」","Sections are used in various ways, and it must be known in what way it is safe to use the entries in them.","","","","","","","",,"required","このセクションに適用される処理モード。 (Kono sekushon ni tekiyō sareru shori mōdo.)","http://hl7.org/fhir/ValueSet/list-mode|4.0.1","",,,,"Composition.section.mode",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outBoundRelationship[typeCode=COMP].target[classCode=OBS""].value","n/a","FiveWs.class"
+"Composition.section:additional.section.orderedBy","Composition.section.section.orderedBy","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションエントリーの順序","セクションエントリー内のアイテムに適用される順序を指定します。","アプリケーションは提供された順序で順序付きリストを描画する必要がありますが、ユーザーが自分の好みに基づいて再順序付けすることもできます。順序が指定されていない場合、順序は不明ですが、それでも何らかの順序がある可能性があります。","Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.","","","","","","","",,"preferred","「エントリーに含まれるアイテムにはどのような順序が適用されますか？」","http://hl7.org/fhir/ValueSet/list-order|4.0.1","",,,,"Composition.section.orderedBy",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP].sequenceNumber > 1","n/a"
+"Composition.section:additional.section.entry","Composition.section.section.entry","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Resource|4.0.1]]}
+","このセクションを支持するデータに対する参照","""このセクションの物語の出典となる実際のリソースへの言及。""","もしリストにエントリーがなければ、空の理由を提供する必要があります。","","","","","","","","",,,,,"",,,,"Composition.section.entry",0,*,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]",".entry"
+"Composition.section:additional.section.emptyReason","Composition.section.section.emptyReason","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","セクションが空である理由","""セクションが空の場合、セクションが空である理由。空のセクションには通常、空の理由を説明するテキストがあります。""","空白セクションの多様な理由は、その解釈に重要な意味を持ちます。このコードは、セクション全体の内容が抑制されている場合に使用するものであり、単一のアイテムが省略されている場合には、実装者はテキストノートまたはエントリにフラグを使用することを検討することができます。","Allows capturing things like ""none exist"" or ""not asked"" which can be important for most lists.","","","","","","","",,"preferred","もしセクションが空っぽなら、なぜ空っぽなのか。","http://hl7.org/fhir/ValueSet/list-empty-reason|4.0.1","",,,,"Composition.section.emptyReason",0,1,"cmp-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".inboundRelationship[typeCode=SUBJ,code<ListEmptyReason].value[type=CD]","n/a"
+"Composition.section:additional.section.section","Composition.section.section.section","","","",0,*,"","","","null {[]} {[]}
+","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
