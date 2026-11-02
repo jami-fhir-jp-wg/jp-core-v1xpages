@@ -92,7 +92,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-composition-progr
 
 本プロファイルで追加された制約は以下の通りである。
 
-* type : ValueSet [JP_Composition_ProgressNoteType_VS] を使用する。経過記録の場合、LOINCコード「11506-3」(Progress note)となる。
+* type : ValueSet「[JP_Composition_ProgressNote_Type_VS](ValueSet-jp-composition-progressnote-type-vs.md)」 を使用する。経過記録の場合、LOINCコード「11506-3」(Progress note)となる。
 * subject : 本プロファイルでは必須とする
 * section : 上記「使用するセクション」で定義されたセクションに限定する
 
@@ -108,11 +108,11 @@ Other representations of profile: [CSV](StructureDefinition-jp-composition-progr
 * 入力日時（date要素を使用）：記録全体を入力した日時
 * 入力者（author要素を使用）：記録全体を入力した医療従事者
 * タイトル（title要素を使用）：記録全体のタイトル
-* 記事順序（拡張「[JP_Compoisition_ItemSequence]」を使用）：同一セクション内での記事の記録順序
-* 記事入力日時（拡張「[JP_Compoisition_DataEnterDateTime]」を使用）：記事を入力した日時。記事の入力日時は通常date要素と同じになるが、確定後の追記によりdate要素と異なる場合に使用する。
+* 記事順序（拡張「[JP_Composition_ItemSequence](StructureDefinition-jp-composition-itemsequence.md)」を使用）：同一セクション内での記事の記録順序
+* 記事入力日時（拡張「[JP_Composition_DataEnterDateTime](StructureDefinition-jp-composition-dataenterdatetime.md)」を使用）：記事を入力した日時。記事の入力日時は通常date要素と同じになるが、確定後の追記によりdate要素と異なる場合に使用する。
 * 記事入力者（section.section.authorを使用）：記事を入力した医療従事者
 * 記事テキスト（section.section.textを使用）：記事のテキスト
-* サムネイル画像（拡張「[JP_Compoisition_ThumnailImage]」を使用）：添付ファイルや添付画像のサムネイル画像
+* サムネイル画像（拡張「[JP_Composition_ThumbnailImage](StructureDefinition-jp-composition-thumnailimage.md)」を使用）：添付ファイルや添付画像のサムネイル画像
 
 ## 利用方法
 
@@ -245,7 +245,7 @@ GET [base]/Compoisition?patient=Patient/123
 
 ### 記録の種別について
 
-記録の種別はtype要素を使用してCodeableConcept型で記述する。使用するコードは、ValueSet「[JP_Composition_ProgressNoteType_VS]」を推奨するが、このValueSetにない場合には、それ以外のLOINCコードやローカルコードを使用してもよい。
+記録の種別はtype要素を使用してCodeableConcept型で記述する。使用するコードは、ValueSet「[JP_Composition_ProgressNote_Type_VS](ValueSet-jp-composition-progressnote-type-vs.md)」を推奨するが、このValueSetにない場合には、それ以外のLOINCコードやローカルコードを使用してもよい。
 
 category要素には、type要素と同じ値を指定することを推奨するが、多重度が「0..*」であるため、検索時に有用と思われるそれ以外の分類コードを追加指定してもよい。
 
@@ -347,7 +347,7 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
 
 ### イベント日時の記述方法について
 
-イベント日時は、記録/記事が書かれた対象の日時のことで、通常date要素と同じ値になるはずだが、いわゆる事後入力によりdate要素と異なる値になる場合には、拡張「[JP_Composition_EventDateTime](StructureDefinition-jp-composition-eventdatetime.md)」を使用してdateTime型で記述する。
+イベント日時は、記録/記事が書かれた対象の日時のことで、通常date要素と同じ値になるはずであるが、いわゆる事後入力によりdate要素と異なる値になる場合には、拡張「[JP_Composition_EventDateTime](StructureDefinition-jp-composition-eventdatetime.md)」を使用してdateTime型で記述する。
 
 イベント日時が「2026-08-19 11:00:00」の場合のインスタンス例を示す。
 
@@ -396,7 +396,7 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
 
 ### 記事順序の記述方法について
 
-同一のSOAP種別に複数の記事があるとサブセクション(section.section)が複数並ぶことになるが、その並び順を明示したい場合、「[JP_Compoisition_ItemSequence]」拡張を使用して、同一セクション内での記事の記録順序をinteger型で記述する。
+同一のSOAP種別に複数の記事があるとサブセクション(section.section)が複数並ぶことになるが、その並び順を明示したい場合、「[JP_Composition_ItemSequence](StructureDefinition-jp-composition-itemsequence.md)」拡張を使用して、同一SOAP種別内での記事の記録順序をinteger型で記述する。
 
 記事順序を明示した場合のインスタンス例を示す。
 
@@ -444,7 +444,7 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
 
 ### 記事入力日時の記述方法について
 
-記事の入力日時は通常date要素と同じ値になるが、確定の追記によりdate要素と異なる場合がある。その場合、「JP_Compoisition_DataEnterDateTime」拡張を使用して、dateTime型で記述する。
+記事ごとの入力日時は通常date要素と同じ値になるが、確定後の追記によりdate要素と異なる値となる場合がある。その場合、「[JP_Composition_DataEnterDateTime](StructureDefinition-jp-composition-dataenterdatetime.md)」拡張を使用して、dateTime型で記述する。
 
 下記はO欄の一部の記事のみ入力日時が異なる場合のインスタンス例を示す。
 
@@ -494,7 +494,7 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
 
 ### 記事入力者の記述方法について
 
-記事の入力者は通常記録全体の入力者であるauthor要素の値と同じになるが、確定後の追記で異なる医療従事者が入力した場合は異なる値になる。そのような場合、サブセクションのauthor要素を使用して記事ごとの入力者を記述する。
+記事ごとの入力者は通常記録全体の入力者であるauthor要素の値と同じになるが、確定後の追記で異なる医療従事者が入力した場合は異なる値になる。そのような場合、サブセクションのauthor要素を使用して記事ごとの入力者を記述する。
 
 インスタンス例については、前節の記事入力日時を参照のこと。
 
@@ -502,7 +502,7 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
 
 記事に張り付けた添付ファイルや添付画像は、DocumentReferenceリソースを使用して記述し、サブセクションのentry要素から参照することとする。DocumentReferenceでの記述方法は本プロファイルでは規定しない。
 
-また、添付ファイルや添付画像のサムネイル画像を記述するには、「[JP_Compoisition_ThumnailImage]」拡張を使用して、Attachment型で記述する。画像データはdata要素にBase64でエンコードしたテキストとしてセットし、そのMIMEタイプをcontentType要素にセットする。
+また、添付ファイルや添付画像のサムネイル画像を記述するには、「[JP_Composition_ThumbnailImage](StructureDefinition-jp-composition-thumnailimage.md)」拡張を使用して、Attachment型で記述する。画像データはdata要素にBase64でエンコードしたテキストとしてセットし、そのMIMEタイプをcontentType要素にセットする。
 
 添付画像本体とサムネイル画像のインスタンス例を示す。（サムネイル画像の画像データは先頭部分のみ）
 
@@ -640,6 +640,8 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "id" : "Composition.extension:versionNumber",
         "path" : "Composition.extension",
         "sliceName" : "versionNumber",
+        "short" : "記録の版数",
+        "definition" : "記録の版数。形式は実装依存とし、本プロファイルでは規定しない。",
         "min" : 0,
         "max" : "1",
         "type" : [
@@ -684,13 +686,18 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
       {
         "id" : "Composition.type",
         "path" : "Composition.type",
-        "short" : "記録種別",
+        "short" : "記録の種別",
         "definition" : "記録の種別を表すコード。",
         "mustSupport" : true,
         "binding" : {
           "strength" : "preferred",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_Composiiton_ProgressNote_Type_VS"
         }
+      },
+      {
+        "id" : "Composition.type.coding.system",
+        "path" : "Composition.type.coding.system",
+        "min" : 1
       },
       {
         "id" : "Composition.type.coding.code",
@@ -751,6 +758,21 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "path" : "Composition.section.code",
         "min" : 1,
         "mustSupport" : true
+      },
+      {
+        "id" : "Composition.section.code.coding",
+        "path" : "Composition.section.code.coding",
+        "min" : 1
+      },
+      {
+        "id" : "Composition.section.code.coding.system",
+        "path" : "Composition.section.code.coding.system",
+        "min" : 1
+      },
+      {
+        "id" : "Composition.section.code.coding.code",
+        "path" : "Composition.section.code.coding.code",
+        "min" : 1
       },
       {
         "id" : "Composition.section.text",
@@ -860,6 +882,11 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         ]
       },
       {
+        "id" : "Composition.section:problems.section",
+        "path" : "Composition.section.section",
+        "max" : "0"
+      },
+      {
         "id" : "Composition.section:problems.section.extension:eventDateTime",
         "path" : "Composition.section.section.extension",
         "sliceName" : "eventDateTime",
@@ -933,6 +960,11 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "id" : "Composition.section:subjective.entry",
         "path" : "Composition.section.entry",
         "max" : "0"
+      },
+      {
+        "id" : "Composition.section:subjective.section",
+        "path" : "Composition.section.section",
+        "min" : 1
       },
       {
         "id" : "Composition.section:subjective.section.extension:eventDateTime",
@@ -1010,6 +1042,11 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "max" : "0"
       },
       {
+        "id" : "Composition.section:objective.section",
+        "path" : "Composition.section.section",
+        "min" : 1
+      },
+      {
         "id" : "Composition.section:objective.section.extension:eventDateTime",
         "path" : "Composition.section.section.extension",
         "sliceName" : "eventDateTime",
@@ -1083,6 +1120,11 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "id" : "Composition.section:assessment.entry",
         "path" : "Composition.section.entry",
         "max" : "0"
+      },
+      {
+        "id" : "Composition.section:assessment.section",
+        "path" : "Composition.section.section",
+        "min" : 1
       },
       {
         "id" : "Composition.section:assessment.section.extension:eventDateTime",
@@ -1160,6 +1202,11 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "max" : "0"
       },
       {
+        "id" : "Composition.section:plan.section",
+        "path" : "Composition.section.section",
+        "min" : 1
+      },
+      {
         "id" : "Composition.section:plan.section.extension:eventDateTime",
         "path" : "Composition.section.section.extension",
         "sliceName" : "eventDateTime",
@@ -1233,6 +1280,11 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "id" : "Composition.section:additional.entry",
         "path" : "Composition.section.entry",
         "max" : "0"
+      },
+      {
+        "id" : "Composition.section:additional.section",
+        "path" : "Composition.section.section",
+        "min" : 1
       },
       {
         "id" : "Composition.section:additional.section.extension:eventDateTime",
