@@ -78,123 +78,291 @@ JP Coreにて定義したオーダ種別コード
   "concept" : [
     {
       "code" : "consultation",
-      "display" : "コンサルテーション"
+      "display" : "コンサルテーション",
+      "designation" : [
+        {
+          "language" : "ja",
+          "value" : "コンサルテーション"
+        }
+      ]
     },
     {
       "code" : "counselling",
-      "display" : "カウンセリング"
+      "display" : "カウンセリング",
+      "designation" : [
+        {
+          "language" : "ja",
+          "value" : "カウンセリング"
+        }
+      ]
     },
     {
       "code" : "drug",
       "display" : "薬剤",
+      "designation" : [
+        {
+          "language" : "ja",
+          "value" : "薬剤"
+        }
+      ],
       "concept" : [
         {
           "code" : "injection",
-          "display" : "注射"
+          "display" : "注射",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "注射"
+            }
+          ]
         },
         {
           "code" : "prescription",
-          "display" : "処方"
+          "display" : "処方",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "処方"
+            }
+          ]
         }
       ]
     },
     {
       "code" : "education",
       "display" : "教育",
+      "designation" : [
+        {
+          "language" : "ja",
+          "value" : "教育"
+        }
+      ],
       "concept" : [
         {
           "code" : "medication-counselling",
-          "display" : "服薬指導"
+          "display" : "服薬指導",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "服薬指導"
+            }
+          ]
         },
         {
           "code" : "nutritionist-education",
-          "display" : "栄養指導"
+          "display" : "栄養指導",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "栄養指導"
+            }
+          ]
         }
       ]
     },
     {
       "code" : "imaging",
       "display" : "画像",
+      "designation" : [
+        {
+          "language" : "ja",
+          "value" : "画像"
+        }
+      ],
       "concept" : [
         {
           "code" : "radiology",
-          "display" : "放射線検査"
+          "display" : "放射線検査",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "放射線検査"
+            }
+          ]
         },
         {
           "code" : "RI",
-          "display" : "核医学検査"
+          "display" : "核医学検査",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "核医学検査"
+            }
+          ]
         }
       ]
     },
     {
       "code" : "laboratory",
       "display" : "検体検査",
+      "designation" : [
+        {
+          "language" : "ja",
+          "value" : "検体検査"
+        }
+      ],
       "concept" : [
         {
           "code" : "labratory-test",
-          "display" : "検体検査"
+          "display" : "検体検査",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "検体検査"
+            }
+          ]
         },
         {
           "code" : "microbiology",
-          "display" : "微生物学的検査"
+          "display" : "微生物学的検査",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "微生物学的検査"
+            }
+          ]
         },
         {
           "code" : "pathological-test",
-          "display" : "病理検査"
+          "display" : "病理検査",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "病理検査"
+            }
+          ]
         },
         {
           "code" : "physiological-test",
-          "display" : "生理検査"
+          "display" : "生理検査",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "生理検査"
+            }
+          ]
         }
       ]
     },
     {
       "code" : "nutrition",
-      "display" : "食事"
+      "display" : "食事",
+      "designation" : [
+        {
+          "language" : "ja",
+          "value" : "食事"
+        }
+      ]
     },
     {
       "code" : "procedure",
       "display" : "処置",
+      "designation" : [
+        {
+          "language" : "ja",
+          "value" : "処置"
+        }
+      ],
       "concept" : [
         {
           "code" : "anesthesia",
-          "display" : "麻酔"
+          "display" : "麻酔",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "麻酔"
+            }
+          ]
         },
         {
           "code" : "conditional-order",
-          "display" : "条件付き指示"
+          "display" : "条件付き指示",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "条件付き指示"
+            }
+          ]
         },
         {
           "code" : "dental-procedure",
-          "display" : "歯科処置"
+          "display" : "歯科処置",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "歯科処置"
+            }
+          ]
         },
         {
           "code" : "dialysis",
-          "display" : "透析"
+          "display" : "透析",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "透析"
+            }
+          ]
         },
         {
           "code" : "endoscopy",
-          "display" : "内視鏡検査"
+          "display" : "内視鏡検査",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "内視鏡検査"
+            }
+          ]
         },
         {
           "code" : "general-procedure",
-          "display" : "処置"
+          "display" : "処置",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "処置"
+            }
+          ]
         },
         {
           "code" : "radiotherapy",
-          "display" : "放射線治療"
+          "display" : "放射線治療",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "放射線治療"
+            }
+          ]
         },
         {
           "code" : "rehab",
-          "display" : "リハビリテーション"
+          "display" : "リハビリテーション",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "リハビリテーション"
+            }
+          ]
         },
         {
           "code" : "surgery",
-          "display" : "手術"
+          "display" : "手術",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "手術"
+            }
+          ]
         },
         {
           "code" : "transfusion",
-          "display" : "輸血"
+          "display" : "輸血",
+          "designation" : [
+            {
+              "language" : "ja",
+              "value" : "輸血"
+            }
+          ]
         }
       ]
     }

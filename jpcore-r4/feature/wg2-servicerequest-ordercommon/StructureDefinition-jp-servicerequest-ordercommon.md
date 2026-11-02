@@ -73,8 +73,8 @@ Other representations of profile: [CSV](StructureDefinition-jp-servicerequest-or
 
 本プロファイルでは、オーダ情報の共通的な属性として、以下の項目の記述方法を定義する。
 
-* 依頼科（拡張「JP_Common_Department」を使用）
-* 入外区分（拡張「JP_ServiceRequest_OrderType」を使用）
+* 依頼科（拡張「[JP_Common_Department](StructureDefinition-jp-common-department.md)」を使用）
+* 入外区分（拡張「[JP_ServiceRequest_OrderType](StructureDefinition-jp-servicerequest-ordertype.md)」を使用）
 * オーダID（identifier要素の追加インスタンスを使用）
 * オーダ種別（category要素を使用）
 * 優先度（priority要素を使用）
@@ -204,7 +204,7 @@ ServiceRequestリソース単体でオーダ情報を完全な形で記述する
 
 ### 依頼科の記述方法について
 
-依頼科（オーダを依頼した診療科）は、ServiceRequestリソースの標準的な要素では記述が難しいため、JP_Common_Department拡張を使用してCodeableConcept型で記述する。使用する標準コードはSS-MIX2診療科コードを推奨する。
+依頼科（オーダを依頼した診療科）は、ServiceRequestリソースの標準的な要素では記述が難しいため、「[JP_Common_Department](StructureDefinition-jp-common-department.md)」拡張を使用してCodeableConcept型で記述する。使用する標準コードはSS-MIX2診療科コードを推奨する。
 
 依頼科が「内科」のインスタンス例を示す。
 
@@ -232,7 +232,7 @@ ServiceRequestリソース単体でオーダ情報を完全な形で記述する
 
 ### オーダ入外区分の記述方法について
 
-オーダの入外区分は、ServiceRequestリソースの標準的な要素では記述が難しいため、JP_ServiceRequest_OrderType拡張を使用してCodeableConcept型で記述する。使用する標準コードはHL7表0482を推奨する。
+オーダの入外区分は、ServiceRequestリソースの標準的な要素では記述が難しいため、「[JP_ServiceRequest_OrderType](StructureDefinition-jp-servicerequest-ordertype.md)」拡張を使用してCodeableConcept型で記述する。使用する標準コードはHL7表0482を推奨する。
 
 入外区分が「外来」のインスタンス例を示す。
 
@@ -260,7 +260,7 @@ ServiceRequestリソース単体でオーダ情報を完全な形で記述する
 
 ### オーダIDの記述方法について
 
-オーダIDは、発行したオーダに対してオーダエントリシステムにより採番された一意の文字列である。本プロファイルでは、identifier要素の追加インスタンスとしてIdentifier型で記述する。system値には固定値「http://jpfhir.jp/fhir/core/IdSystem/orderID」を指定する。
+オーダIDは、発行したオーダに対してオーダエントリシステムにより採番された一意の文字列である。本プロファイルでは、identifier要素の追加インスタンスとしてIdentifier型で記述する。Identifier.typeには固定値「PLAC」 (Placer Identifier)を指定する
 
 オーダIDが「202612270000301」のインスタンス例を示す。
 
@@ -273,7 +273,16 @@ ServiceRequestリソース単体でオーダ情報を完全な形で記述する
       "system": "http://myhospital.com/IdSystem/ServiceRequest",
       "value": "00000020.20261227.162128.Z999.2.16.XA0.1"
     }, {
-      "system": "http://jpfhir.jp/fhir/core/IdSystem/orderID",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "PLAC",
+            "display": "Placer Identifier"
+          }
+        ]
+      },
+      "system": "http://myhospital.com/IDSystem/OrderID",
       "value": "202612270000301"
     }
   ]
@@ -283,7 +292,7 @@ ServiceRequestリソース単体でオーダ情報を完全な形で記述する
 
 ### オーダ種別の記述方法について
 
-オーダ種別は、検体検査、放射線検査、生理機能検査、などのオーダの大まかな分類を示す種別であり、本プロファイルでは、category要素を使用してCodeableConcept型で記述する。コード表は「JP_ServiceRequest_OrderCategory_CS」を使用し、system値には固定値「http://jpfhir.jp/fhir/core/CodeSystem/JP_ServiceRequest_OrderCategory」を指定する。
+オーダ種別は、検体検査、放射線検査、生理機能検査、などのオーダの大まかな分類を示す種別であり、本プロファイルでは、category要素を使用してCodeableConcept型で記述する。コード表は「[JP_ServiceRequest_OrderCategory_CS]」を使用し、system値には固定値「http://jpfhir.jp/fhir/core/CodeSystem/JP_ServiceRequest_OrderCategory」を指定する。
 
 オーダIDが「202612270000301」のインスタンス例を示す。
 
@@ -603,7 +612,7 @@ ServiceRequestリソース単体でオーダ情報を完全な形で記述する
           "discriminator" : [
             {
               "type" : "value",
-              "path" : "system"
+              "path" : "type.coding.code"
             }
           ],
           "rules" : "open"
@@ -621,10 +630,26 @@ ServiceRequestリソース単体でオーダ情報を完全な形で記述する
         "max" : "1"
       },
       {
-        "id" : "ServiceRequest.identifier:orderID.system",
-        "path" : "ServiceRequest.identifier.system",
+        "id" : "ServiceRequest.identifier:orderID.type",
+        "path" : "ServiceRequest.identifier.type",
+        "min" : 1
+      },
+      {
+        "id" : "ServiceRequest.identifier:orderID.type.coding",
+        "path" : "ServiceRequest.identifier.type.coding",
+        "min" : 1
+      },
+      {
+        "id" : "ServiceRequest.identifier:orderID.type.coding.system",
+        "path" : "ServiceRequest.identifier.type.coding.system",
         "min" : 1,
-        "fixedUri" : "http://jpfhir.jp/fhir/core/IdSystem/orderID"
+        "fixedUri" : "http://terminology.hl7.org/CodeSystem/v2-0203"
+      },
+      {
+        "id" : "ServiceRequest.identifier:orderID.type.coding.code",
+        "path" : "ServiceRequest.identifier.type.coding.code",
+        "min" : 1,
+        "fixedCode" : "PLAC"
       },
       {
         "id" : "ServiceRequest.intent",
@@ -661,6 +686,12 @@ ServiceRequestリソース単体でオーダ情報を完全な形で記述する
           "strength" : "required",
           "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_ServiceRequest_OrderCategory_VS"
         }
+      },
+      {
+        "id" : "ServiceRequest.category:first.coding.system",
+        "path" : "ServiceRequest.category.coding.system",
+        "min" : 1,
+        "patternUri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_ServiceRequest_OrderCategory_CS"
       },
       {
         "id" : "ServiceRequest.category:first.coding.code",
@@ -702,6 +733,12 @@ ServiceRequestリソース単体でオーダ情報を完全な形で記述する
         "path" : "ServiceRequest.reasonReference",
         "short" : "行為やサービスの説明・理由（参照）（【JP Core】依頼病名Condition）",
         "definition" : "このサービスが要求される理由の正当性を提供する他のリソースを示す。supportingInfoで参照されるリソースに関連する場合がある。\n\n【JP Core】本プロファイルではConditionリソースとして表された「依頼病名」を参照できる。"
+      },
+      {
+        "id" : "ServiceRequest.insurance",
+        "path" : "ServiceRequest.insurance",
+        "short" : "関連する保険情報（【JP Core】適用保険）",
+        "definition" : "リクエストされたサービスを提供するために必要な保険プラン、適用範囲拡大、事前承認、および/または事前決定がある。\n\n【JP Core】本プロファイルではCoverageリソースとして表された「適用保険」を参照する。"
       },
       {
         "id" : "ServiceRequest.note",
