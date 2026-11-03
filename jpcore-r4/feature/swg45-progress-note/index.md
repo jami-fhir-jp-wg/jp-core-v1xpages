@@ -110,7 +110,7 @@ JP Core FHIR コンテンツ: JP Core で利用する FHIR の詳細について
  
 * [JP Core Procedure （処置）プロファイル](StructureDefinition-jp-procedure.md)
 * [JP Core FamilyMemberHistory（家族歴）プロファイル](StructureDefinition-jp-familymemberhistory.md)
-* [JP Core ProgressNote （経過記録）プロファイル](StructureDefinition-jp-composition-progressnote.md)
+* [JP Core Composition ProgressNote （経過記録）プロファイル](StructureDefinition-jp-composition-progressnote.md)
  
 * [Workflowグループ](group-workflow.md) 
 * ServiceRequest (サービスリクエスト) 
