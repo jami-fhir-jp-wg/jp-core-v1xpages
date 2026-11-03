@@ -176,7 +176,7 @@
 
 | | |
 | :--- | :--- |
-| [JP Core Composition Progress Note TYpe ValueSet](ValueSet-jp-composition-progressnote-type-vs.md) | SOAP形式の記録種別を示す値セット |
+| [JP Core Composition Progress Note Type ValueSet](ValueSet-jp-composition-progressnote-type-vs.md) | SOAP形式の記録種別を示す値セット |
 | [JP Core Condition BodySite ValueSet](ValueSet-jp-condition-bodysite-vs.md) | 病名・状態の対象となる身体部位のコード |
 | [JP Core Condition Disease Outcome Receipt System ValueSet](ValueSet-jp-condition-disease-outcome-receipt-vs.md) | レセプト電算システムの病名転帰区分を示す値セット |
 | [JP Core DICOM Modality ValueSet](ValueSet-jp-dicommodality-vs.md) | 放射線モダリテに対する 値セット |

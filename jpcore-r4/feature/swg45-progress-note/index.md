@@ -5921,7 +5921,7 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "reference" : {
           "reference" : "ValueSet/jp-composition-progressnote-type-vs"
         },
-        "name" : "JP Core Composition Progress Note TYpe ValueSet",
+        "name" : "JP Core Composition Progress Note Type ValueSet",
         "description" : "SOAP形式の記録種別を示す値セット",
         "exampleBoolean" : false
       },

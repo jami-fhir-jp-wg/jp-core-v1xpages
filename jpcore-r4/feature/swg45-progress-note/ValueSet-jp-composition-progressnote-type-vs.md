@@ -1,10 +1,10 @@
-# JP Core Composition Progress Note TYpe ValueSet - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
+# JP Core Composition Progress Note Type ValueSet - HL7 FHIR JP Core ImplementationGuide v1.3.0-dev
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **JP Core Composition Progress Note TYpe ValueSet**
+* **JP Core Composition Progress Note Type ValueSet**
 
-## ValueSet: JP Core Composition Progress Note TYpe ValueSet 
+## ValueSet: JP Core Composition Progress Note Type ValueSet 
 
 * **項目**: *定義URL*
   * **内容**: http://jpfhir.jp/fhir/core/ValueSet/JP_Composiiton_ProgressNote_Type_VS
@@ -13,7 +13,7 @@
 * **項目**: *Name*
   * **内容**: JP_Composition_ProgressNote_Type_VS
 * **項目**: *Title*
-  * **内容**: JP Core Composition Progress Note TYpe ValueSet
+  * **内容**: JP Core Composition Progress Note Type ValueSet
 * **項目**: *Status*
   * **内容**: Active ( 2026-11-01 )
 * **項目**: *Copyright*
@@ -60,7 +60,7 @@ No Expansion for this valueset (not supported by Publication Tooling)
   "url" : "http://jpfhir.jp/fhir/core/ValueSet/JP_Composiiton_ProgressNote_Type_VS",
   "version" : "1.3.0-dev",
   "name" : "JP_Composition_ProgressNote_Type_VS",
-  "title" : "JP Core Composition Progress Note TYpe ValueSet",
+  "title" : "JP Core Composition Progress Note Type ValueSet",
   "status" : "active",
   "experimental" : false,
   "date" : "2026-11-01",
