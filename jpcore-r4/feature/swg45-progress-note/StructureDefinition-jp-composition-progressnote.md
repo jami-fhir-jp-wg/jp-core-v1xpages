@@ -27,7 +27,7 @@
 JP_Composition_ProgressNoteプロファイル（以下、「本プロファイル」）のスコープは以下のとおりとする。
 
 * SOAP形式で記述された記録全般を対象とする。電子カルテで医師が入力した経過記録が中心になるが、SOAP形式であれば経過記録であるかどうかや記載者が医師であるかどうかは問わない。
-* FADR形式の看護記録や構造を持たない一般的な記録については、別にプロファイルを定義することとし、本プロファイルの対象としない。
+* DAR形式の看護記録や構造を持たない一般的な記録については、別にプロファイルを定義することとし、本プロファイルの対象としない。
 
 ## 想定シナリオ
 
@@ -880,6 +880,11 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
             "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Condition"]
           }
         ]
+      },
+      {
+        "id" : "Composition.section:problems.entry.display",
+        "path" : "Composition.section.entry.display",
+        "mustSupport" : true
       },
       {
         "id" : "Composition.section:problems.section",
