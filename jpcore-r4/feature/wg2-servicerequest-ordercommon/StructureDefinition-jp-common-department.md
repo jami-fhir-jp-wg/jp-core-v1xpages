@@ -51,7 +51,7 @@
 **Usages:**
 
 * Use this Extension: [JP Core ServiceRequest Order Common Profile](StructureDefinition-jp-servicerequest-ordercommon.md)
-* Examples for this Extension: [MedicationRequest/jp-medicationrequest-department-example-01](MedicationRequest-jp-medicationrequest-department-example-01.md), [MedicationRequest/jp-medicationrequest-department-example-02](MedicationRequest-jp-medicationrequest-department-example-02.md) and [ServiceRequest/jp-servicerequest-department-example-03](ServiceRequest-jp-servicerequest-department-example-03.md)
+* Examples for this Extension: [MedicationRequest/jp-medicationrequest-department-example-01](MedicationRequest-jp-medicationrequest-department-example-01.md), [MedicationRequest/jp-medicationrequest-department-example-02](MedicationRequest-jp-medicationrequest-department-example-02.md), [ServiceRequest/jp-servicerequest-department-example-03](ServiceRequest-jp-servicerequest-department-example-03.md) and [ServiceRequest/jp-servicerequest-orderrequesting-example-1](ServiceRequest-jp-servicerequest-orderrequesting-example-1.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-common-department)
 

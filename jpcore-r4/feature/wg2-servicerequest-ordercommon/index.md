@@ -114,7 +114,9 @@ JP Core FHIR コンテンツ: JP Core で利用する FHIR の詳細について
 * [Workflowグループ](group-workflow.md) 
 * ServiceRequest (サービスリクエスト) 
 * [JP Core ServiceRequest Common (共通) プロファイル](StructureDefinition-jp-servicerequest-common.md)
-* [JP Core ServiceRequest Order Common (オーダ共通) プロファイル](StructureDefinition-jp-servicerequest-ordercommon.md)
+* [JP Core ServiceRequest Order Common (オーダ共通) プロファイル](StructureDefinition-jp-servicerequest-ordercommon.md) 
+* [JP Core ServiceRequest Order Requesting (オーダヘッダ) プロファイル](StructureDefinition-jp-servicerequest-orderrequesting.md)
+ 
  
  
 
@@ -2416,6 +2418,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ServiceRequest_OrderCommon"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ServiceRequest_OrderRequesting"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -5169,6 +5184,19 @@ JP Core は以下の方々、および各サーブワーキンググループの
           {
             "url" : "value",
             "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ServiceRequest_OrderCommon"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ServiceRequest_OrderRequesting"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -8938,6 +8966,34 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "name" : "JP Core ServiceRequest Order Common Profile",
         "description" : "本プロファイルは、オーダエントリシステムで作成されるオーダ情報の共通的な属性を記述するためにFHIR ServiceRequestリソースを使用するにあたっての、最低限の制約を記述したものである。",
         "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/jp-servicerequest-orderrequesting"
+        },
+        "name" : "JP Core ServiceRequest Order Requesting Profile",
+        "description" : "本プロファイルは、オーダエントリシステムで作成されるオーダのヘッダー情報を記述するためにFHIR ServiceRequestリソースを使用するにあたっての、最低限の制約を記述したものである。",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ServiceRequest"
+          }
+        ],
+        "reference" : {
+          "reference" : "ServiceRequest/jp-servicerequest-orderrequesting-example-1"
+        },
+        "name" : "JP Core ServiceRequest Order Requesting 胸部ＣＴ検査",
+        "description" : "胸部ＣＴ検査オーダ",
+        "exampleCanonical" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_ServiceRequest_OrderCommon"
       },
       {
         "extension" : [

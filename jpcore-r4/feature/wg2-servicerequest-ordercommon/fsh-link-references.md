@@ -226,6 +226,8 @@
 [JP_ServiceRequest_OrderCategory_CS]: CodeSystem-jp-servicerequest-ordercategory-cs.html
 [JP_ServiceRequest_OrderCategory_VS]: ValueSet-jp-servicerequest-ordercategory-vs.html
 [JP_ServiceRequest_OrderCommon]: StructureDefinition-jp-servicerequest-ordercommon.html
+[JP_ServiceRequest_OrderRequesting]: StructureDefinition-jp-servicerequest-orderrequesting.html
+[jp-servicerequest-orderrequesting-example-1]: ServiceRequest-jp-servicerequest-orderrequesting-example-1.html
 [JP_ServiceRequest_OrderType]: StructureDefinition-jp-servicerequest-ordertype.html
 [jp-servicerequest-department-example-03]: ServiceRequest-jp-servicerequest-department-example-03.html
 [jp-specimen-example-3]: Specimen-jp-specimen-example-3.html

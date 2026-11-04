@@ -30,6 +30,7 @@ JP_ServiceRequest_OrderCommonにおいてオーダの入外区分を記述でき
 **Usages:**
 
 * Use this Extension: [JP Core ServiceRequest Order Common Profile](StructureDefinition-jp-servicerequest-ordercommon.md)
+* Examples for this Extension: [ServiceRequest/jp-servicerequest-orderrequesting-example-1](ServiceRequest-jp-servicerequest-orderrequesting-example-1.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-servicerequest-ordertype)
 

@@ -34,7 +34,8 @@ JP_ServiceRequest_OrderCommonプロファイル（以下、「本プロファイ
 
 **Usages:**
 
-* This Profile is not used by any profiles in this Implementation Guide
+* Derived from this Profile: [JP Core ServiceRequest Order Requesting Profile](StructureDefinition-jp-servicerequest-orderrequesting.md)
+* Examples for this Profile: [ServiceRequest/jp-servicerequest-orderrequesting-example-1](ServiceRequest-jp-servicerequest-orderrequesting-example-1.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/jpfhir.jp.core|current/StructureDefinition/jp-servicerequest-ordercommon)
 

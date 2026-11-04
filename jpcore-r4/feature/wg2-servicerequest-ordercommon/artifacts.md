@@ -87,6 +87,7 @@
 | [JP Core Procedure Profile](StructureDefinition-jp-procedure.md) | このプロファイルはProcedureリソースに対して、患者に対する医療的な処置のデータを送受信するための共通の制約と拡張を定めたものである。 |
 | [JP Core ServiceRequest Common Profile](StructureDefinition-jp-servicerequest-common.md) | 本プロファイル説明は、患者に対し立案・実施されるリクエストの記録で、行為や診断、もしくは他のサービスのために用いられるFHIR ServiceRequestリソースを使用するにあたっての、最低限の制約を記述したものである。 |
 | [JP Core ServiceRequest Order Common Profile](StructureDefinition-jp-servicerequest-ordercommon.md) | 本プロファイルは、オーダエントリシステムで作成されるオーダ情報の共通的な属性を記述するためにFHIR ServiceRequestリソースを使用するにあたっての、最低限の制約を記述したものである。 |
+| [JP Core ServiceRequest Order Requesting Profile](StructureDefinition-jp-servicerequest-orderrequesting.md) | 本プロファイルは、オーダエントリシステムで作成されるオーダのヘッダー情報を記述するためにFHIR ServiceRequestリソースを使用するにあたっての、最低限の制約を記述したものである。 |
 | [JP Core media Endoscopy Profile](StructureDefinition-jp-media-endoscopy.md) | このプロファイルはMediaリソースに対して、主に内視鏡検査で取得または使用される画像、映像、音声に関わるデータを送受信するための制約と拡張を定めたものである。 |
 | [JP_Binary](StructureDefinition-jp-binary.md) | JP_Binary 暫定プロファイル |
 | [JP_CarePlan](StructureDefinition-jp-careplan.md) | JP_CarePlan 暫定プロファイル |
@@ -363,6 +364,7 @@
 | [JP Core Practitioner Example 看護師男性１](Practitioner-jp-practitioner-example-male-2.md) | 看護師男性 |
 | [JP Core Procedure Example 処置（抜糸）](Procedure-jp-procedure-example-1.md) | 前額部に創傷処置を施術しフォローアップとして縫合糸の除去を予定している例 |
 | [JP Core ProcedureRole Example 精神科外来サービス担当](PractitionerRole-jp-practitionerrole-example-1.md) | 精神科外来サービス担当 |
+| [JP Core ServiceRequest Order Requesting 胸部ＣＴ検査](ServiceRequest-jp-servicerequest-orderrequesting-example-1.md) | 胸部ＣＴ検査オーダ |
 | [JP Core ServiceRequest with Department Extension Example (Text only)](ServiceRequest-jp-servicerequest-department-example-03.md) | JP_Department拡張を使用したServiceRequestの例。診療科情報をテキストのみで表現する。 |
 | [JP Core Specimen Example 検体材料（喀痰）](Specimen-jp-specimen-example-3.md) | 検体材料（喀痰） |
 | [JP Core Specimen Example 検体材料（尿）](Specimen-jp-specimen-example-1.md) | 検体材料（尿） |
