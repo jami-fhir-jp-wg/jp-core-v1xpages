@@ -9,8 +9,15 @@
 ### Profiles
 
 * ServiceRequest （オーダ） 
-* なし
+* [JP Core ServiceRequest Common (共通) プロファイル](StructureDefinition-jp-servicerequest-common.md)
+* [JP Core ServiceRequest Order Common (オーダ共通) プロファイル](StructureDefinition-jp-servicerequest-ordercommon.md) 
+* [JP Core ServiceRequest Order Requesting (オーダヘッダ) プロファイル](StructureDefinition-jp-servicerequest-orderrequesting.md)
  
+ 
+
+### Extensions
+
+なし
 
 本実装ガイドへのご質問・ご指摘については、
 [GitHub Issue](https://github.com/jami-fhir-jp-wg/jp-core-v1x/issues)および
