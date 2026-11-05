@@ -24,6 +24,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
 
  
 本コードシステムは、患者との続柄そのものを表すのではなく、FamilyMemberHistory.relationship を補足する情報として、家族内で用いられる出生順に基づく呼称を表現するために定義した。各コードには機械処理用のプロパティ（category：呼称系列、order：系列内順位）を付与しており、プログラムによる判定・集計に利用できる。 
+十一男・十一女以降が必要となった場合は、既定で第10位まで収載している son-1〜son-10、daughter-1〜daughter-10 と同一の命名規則（son-／daughter-）に従って本CodeSystemへconceptを追加して表現すること。追加するconceptの display および designation も、既存concept（例：長男／first son）と一貫した表記規則に従って付与すること。 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
@@ -74,7 +75,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       ]
     }
   ],
-  "purpose" : "本コードシステムは、患者との続柄そのものを表すのではなく、FamilyMemberHistory.relationship を補足する情報として、家族内で用いられる出生順に基づく呼称を表現するために定義した。各コードには機械処理用のプロパティ（category：呼称系列、order：系列内順位）を付与しており、プログラムによる判定・集計に利用できる。",
+  "purpose" : "本コードシステムは、患者との続柄そのものを表すのではなく、FamilyMemberHistory.relationship を補足する情報として、家族内で用いられる出生順に基づく呼称を表現するために定義した。各コードには機械処理用のプロパティ（category：呼称系列、order：系列内順位）を付与しており、プログラムによる判定・集計に利用できる。\n\n十一男・十一女以降が必要となった場合は、既定で第10位まで収載している son-1〜son-10、daughter-1〜daughter-10 と同一の命名規則（son-<順位>／daughter-<順位>）に従って本CodeSystemへconceptを追加して表現すること。追加するconceptの display および designation も、既存concept（例：長男／first son）と一貫した表記規則に従って付与すること。",
   "copyright" : "Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会",
   "caseSensitive" : true,
   "content" : "complete",
@@ -515,7 +516,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
     {
       "code" : "other",
       "display" : "other",
-      "definition" : "その他（十男・十女以上の出生順、性の多様性、その他の場合はtext要素に詳細を記載）",
+      "definition" : "その他（性の多様性、その他の場合はtext要素に詳細を記載）",
       "designation" : [
         {
           "language" : "ja",
