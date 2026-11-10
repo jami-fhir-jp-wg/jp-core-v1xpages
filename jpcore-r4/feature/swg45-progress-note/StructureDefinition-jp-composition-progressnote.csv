@@ -1,7 +1,17 @@
 "Id","Path","Slice Name","Alias(s)","Label","Min","Max","Must Support?","Is Modifier?","Is Summary?","Type(s)","Short","Definition","Comments","Requirements","Default Value","Meaning When Missing","Fixed Value","Pattern","Example","Minimum Value","Maximum Value","Maximum Length","Binding Strength","Binding Description","Binding Value Set","Code","Slicing Discriminator","Slicing Description","Slicing Ordered","Slicing Rules","Base Path","Base Min","Base Max","Condition(s)","Constraint(s)","Mapping: Workflow Pattern","Mapping: RIM Mapping","Mapping: CDA (R2)","Mapping: FHIR DocumentReference","Mapping: FiveWs Pattern Mapping"
 "Composition","Composition","","","",0,*,"","","","null {[]} {[]}
 ","SOAP形式の経過記録等に関する詳細な情報","SOAP形式の経過記録等に関する詳細な情報","この仕様書の焦点は患者固有の臨床陳述にあるが、この資源は研究プロトコルの設計、医療請求書など、必ずしも患者固有の臨床的でない活動にも適用できます。","","","","","","","","",,,,,"",,,,"Composition",0,*,"","dom-2:もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen). {contained.contained.empty()}
-dom-3:もしリソースが他のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含まれるリソースに参照されるべきです。 {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:もしリソースが別のリソースの中に含まれる場合、meta.versionIdまたはmeta.lastUpdatedを持つべきではありません。 {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。 {contained.meta.security.empty()}dom-6:資源は堅牢な管理のために物語を持つべきである。 {text.`div`.exists()}","Event","Entity. Role, or Act","Document[classCode=""DOC"" and moodCode=""EVN"" and isNormalAct()]","ClinicalDocument","when described by DocumentReference"
+dom-3:もしリソースが他のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含まれるリソースに参照されるべきです。 {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:もしリソースが別のリソースの中に含まれる場合、meta.versionIdまたはmeta.lastUpdatedを持つべきではありません。 {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。 {contained.meta.security.empty()}dom-6:資源は堅牢な管理のために物語を持つべきである。 {text.`div`.exists()}unique-article-section:同一記事グループ内に同じ種類のセクションを複数含めてはならない {section.select(
+  iif(
+    extension('http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo').exists(),
+    extension('http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo').value.ofType(integer).toString(),
+    '1'
+  )
+  & '|'
+  & code.coding.code
+).isDistinct()}consistent-article-group-extension:記事グループ番号は対象セクションすべてに指定するか、すべて省略する {section.extension('http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo').empty()
+or
+section.all(extension('http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo').exists())}","Event","Entity. Role, or Act","Document[classCode=""DOC"" and moodCode=""EVN"" and isNormalAct()]","ClinicalDocument","when described by DocumentReference"
 "Composition.id","Composition.id","","","",0,1,"","","Y","id {[]} {[]}
 ","このアーティファクトの論理ID","リソースのURLで使用される論理ID。一度割り当てられたら、この値は変更されません。","リソースにIDがないのは、作成操作を使用してサーバーに送信されているときだけです。","","","","","","","","",,,,,"",,,,"Resource.id",0,1,"",""
 "Composition.meta","Composition.meta","","","",0,1,"","","Y","Meta {[]} {[]}
@@ -196,10 +206,14 @@ ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではあ
 cmp-2:セクションが空の場合、emptyReasonを持つことはできません。 {emptyReason.empty() or entry.empty()}ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.structuredBody.component.section"
 "Composition.section.id","Composition.section.id","","","",0,1,"","","","string {[]} {[]}
 ","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
-"Composition.section.extension","Composition.section.extension","","extensions
-user content","",0,*,"","","","Extension {[]} {[]}
-","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
-ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.section.extension","Composition.section.extension","","","",0,*,"","","","Extension {[]} {[]}
+","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
+","",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}"
+"Composition.section.extension:groupNo","Composition.section.extension","groupNo","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo]]} {[]}
+","記事グループの連番を格納するための拡張","記事グループの連番を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Composition.section.modifierExtension","Composition.section.modifierExtension","","extensions
 user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
 ","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
@@ -337,15 +351,20 @@ labelcaption","",0,1,"","","","string {[]} {[]}
 ","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
 ","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
-"Composition.section:problems","Composition.section","problems","","Problems Section",0,1,"Y","","","BackboneElement {[]} {[]}
+"Composition.section:problems","Composition.section","problems","","Problems Section",0,*,"Y","","","BackboneElement {[]} {[]}
 ","Problems Section","作品を構成するセクションの根源。","","","","","","","","","",,,,,"",,,,"Composition.section",0,*,"","cmp-1:セクションには、テキスト、エントリー、またはサブセクションのいずれかが少なくとも1つ必要です。 {text.exists() or entry.exists() or section.exists()}
 cmp-2:セクションが空の場合、emptyReasonを持つことはできません。 {emptyReason.empty() or entry.empty()}ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.structuredBody.component.section"
 "Composition.section:problems.id","Composition.section.id","","","",0,1,"","","","string {[]} {[]}
 ","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
 "Composition.section:problems.extension","Composition.section.extension","","extensions
 user content","",0,*,"","","","Extension {[]} {[]}
-","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"","value:url}
+","",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.section:problems.extension:groupNo","Composition.section.extension","groupNo","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo]]} {[]}
+","記事グループの連番を格納するための拡張","記事グループの連番を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Composition.section:problems.modifierExtension","Composition.section.modifierExtension","","extensions
 user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
 ","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
@@ -488,15 +507,20 @@ labelcaption","",0,1,"","","","string {[]} {[]}
 "Composition.section:problems.section.section","Composition.section.section.section","","","",0,*,"","","","","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
 ","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
-"Composition.section:subjective","Composition.section","subjective","","Subjective Section",0,1,"Y","","","BackboneElement {[]} {[]}
+"Composition.section:subjective","Composition.section","subjective","","Subjective Section",0,*,"Y","","","BackboneElement {[]} {[]}
 ","Subjective Section","作品を構成するセクションの根源。","","","","","","","","","",,,,,"",,,,"Composition.section",0,*,"","cmp-1:セクションには、テキスト、エントリー、またはサブセクションのいずれかが少なくとも1つ必要です。 {text.exists() or entry.exists() or section.exists()}
 cmp-2:セクションが空の場合、emptyReasonを持つことはできません。 {emptyReason.empty() or entry.empty()}ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.structuredBody.component.section"
 "Composition.section:subjective.id","Composition.section.id","","","",0,1,"","","","string {[]} {[]}
 ","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
 "Composition.section:subjective.extension","Composition.section.extension","","extensions
 user content","",0,*,"","","","Extension {[]} {[]}
-","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"","value:url}
+","",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.section:subjective.extension:groupNo","Composition.section.extension","groupNo","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo]]} {[]}
+","記事グループの連番を格納するための拡張","記事グループの連番を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Composition.section:subjective.modifierExtension","Composition.section.modifierExtension","","extensions
 user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
 ","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
@@ -604,15 +628,20 @@ labelcaption","",0,1,"","","","string {[]} {[]}
 ","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
 ","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
-"Composition.section:objective","Composition.section","objective","","Objective Section",0,1,"Y","","","BackboneElement {[]} {[]}
+"Composition.section:objective","Composition.section","objective","","Objective Section",0,*,"Y","","","BackboneElement {[]} {[]}
 ","Objective Section","作品を構成するセクションの根源。","","","","","","","","","",,,,,"",,,,"Composition.section",0,*,"","cmp-1:セクションには、テキスト、エントリー、またはサブセクションのいずれかが少なくとも1つ必要です。 {text.exists() or entry.exists() or section.exists()}
 cmp-2:セクションが空の場合、emptyReasonを持つことはできません。 {emptyReason.empty() or entry.empty()}ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.structuredBody.component.section"
 "Composition.section:objective.id","Composition.section.id","","","",0,1,"","","","string {[]} {[]}
 ","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
 "Composition.section:objective.extension","Composition.section.extension","","extensions
 user content","",0,*,"","","","Extension {[]} {[]}
-","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"","value:url}
+","",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.section:objective.extension:groupNo","Composition.section.extension","groupNo","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo]]} {[]}
+","記事グループの連番を格納するための拡張","記事グループの連番を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Composition.section:objective.modifierExtension","Composition.section.modifierExtension","","extensions
 user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
 ","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
@@ -720,15 +749,20 @@ labelcaption","",0,1,"","","","string {[]} {[]}
 ","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
 ","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
-"Composition.section:assessment","Composition.section","assessment","","Assessment Section",0,1,"Y","","","BackboneElement {[]} {[]}
+"Composition.section:assessment","Composition.section","assessment","","Assessment Section",0,*,"Y","","","BackboneElement {[]} {[]}
 ","Assessment Section","作品を構成するセクションの根源。","","","","","","","","","",,,,,"",,,,"Composition.section",0,*,"","cmp-1:セクションには、テキスト、エントリー、またはサブセクションのいずれかが少なくとも1つ必要です。 {text.exists() or entry.exists() or section.exists()}
 cmp-2:セクションが空の場合、emptyReasonを持つことはできません。 {emptyReason.empty() or entry.empty()}ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.structuredBody.component.section"
 "Composition.section:assessment.id","Composition.section.id","","","",0,1,"","","","string {[]} {[]}
 ","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
 "Composition.section:assessment.extension","Composition.section.extension","","extensions
 user content","",0,*,"","","","Extension {[]} {[]}
-","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"","value:url}
+","",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.section:assessment.extension:groupNo","Composition.section.extension","groupNo","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo]]} {[]}
+","記事グループの連番を格納するための拡張","記事グループの連番を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Composition.section:assessment.modifierExtension","Composition.section.modifierExtension","","extensions
 user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
 ","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
@@ -836,15 +870,20 @@ labelcaption","",0,1,"","","","string {[]} {[]}
 ","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
 ","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
-"Composition.section:plan","Composition.section","plan","","Plan Section",0,1,"Y","","","BackboneElement {[]} {[]}
+"Composition.section:plan","Composition.section","plan","","Plan Section",0,*,"Y","","","BackboneElement {[]} {[]}
 ","Plan Section","作品を構成するセクションの根源。","","","","","","","","","",,,,,"",,,,"Composition.section",0,*,"","cmp-1:セクションには、テキスト、エントリー、またはサブセクションのいずれかが少なくとも1つ必要です。 {text.exists() or entry.exists() or section.exists()}
 cmp-2:セクションが空の場合、emptyReasonを持つことはできません。 {emptyReason.empty() or entry.empty()}ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.structuredBody.component.section"
 "Composition.section:plan.id","Composition.section.id","","","",0,1,"","","","string {[]} {[]}
 ","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
 "Composition.section:plan.extension","Composition.section.extension","","extensions
 user content","",0,*,"","","","Extension {[]} {[]}
-","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"","value:url}
+","",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.section:plan.extension:groupNo","Composition.section.extension","groupNo","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo]]} {[]}
+","記事グループの連番を格納するための拡張","記事グループの連番を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Composition.section:plan.modifierExtension","Composition.section.modifierExtension","","extensions
 user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
 ","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
@@ -952,15 +991,20 @@ labelcaption","",0,1,"","","","string {[]} {[]}
 ","ネストされたセクション","このセクション内の入れ子のサブセクション。","ネスティングされたセクションは、主に人間の読者がドキュメントの特定の部分に移動するのを助けるために使用されます。","","","","","","","","",,,,,"",,,,"Composition.section.section",0,*,"cmp-1
 ","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.section"
-"Composition.section:additional","Composition.section","additional","","Additional Documentation Section",0,1,"Y","","","BackboneElement {[]} {[]}
+"Composition.section:additional","Composition.section","additional","","Additional Documentation Section",0,*,"Y","","","BackboneElement {[]} {[]}
 ","Additional Documentation Section","作品を構成するセクションの根源。","","","","","","","","","",,,,,"",,,,"Composition.section",0,*,"","cmp-1:セクションには、テキスト、エントリー、またはサブセクションのいずれかが少なくとも1つ必要です。 {text.exists() or entry.exists() or section.exists()}
 cmp-2:セクションが空の場合、emptyReasonを持つことはできません。 {emptyReason.empty() or entry.empty()}ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}","./outboundRelationship[typeCode=""COMP"" and isNormalActRelationship()]/target[moodCode=""EVN"" and classCode=""DOCSECT"" and isNormalAct]",".component.structuredBody.component.section"
 "Composition.section:additional.id","Composition.section.id","","","",0,1,"","","","string {[]} {[]}
 ","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
 "Composition.section:additional.extension","Composition.section.extension","","extensions
 user content","",0,*,"","","","Extension {[]} {[]}
-","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"","value:url}
+","",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
 ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Composition.section:additional.extension:groupNo","Composition.section.extension","groupNo","","",0,1,"Y","","","Extension {[CanonicalType[http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo]]} {[]}
+","記事グループの連番を格納するための拡張","記事グループの連番を格納するための拡張","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
+","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Composition.section:additional.modifierExtension","Composition.section.modifierExtension","","extensions
 user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
 ","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。

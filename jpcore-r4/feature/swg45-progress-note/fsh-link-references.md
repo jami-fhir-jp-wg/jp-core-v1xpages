@@ -5,6 +5,7 @@
 [JP_Common_Department]: StructureDefinition-jp-common-department.html
 [JP_Composition_DataEnterDateTime]: StructureDefinition-jp-composition-dataenterdatetime.html
 [JP_Composition_EventDateTime]: StructureDefinition-jp-composition-eventdatetime.html
+[JP_Composition_GroupNo]: StructureDefinition-jp-composition-groupno.html
 [JP_Composition_ItemSequence]: StructureDefinition-jp-composition-itemsequence.html
 [JP_Composition_ProgressNote_Type_VS]: ValueSet-jp-composition-progressnote-type-vs.html
 [jp-composition-progressnote-example-1]: Composition-jp-composition-progressnote-example-1.html

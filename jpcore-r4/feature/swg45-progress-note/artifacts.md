@@ -126,6 +126,7 @@
 | [JP Core Common Department Extension](StructureDefinition-jp-common-department.md) | 診療科情報を格納するための汎用的な拡張。様々なリソースで診療科情報を表現する際に使用できる。診療科コード（CodeableConcept）または診療科組織への参照（Reference）のいずれかを指定する。 |
 | [JP Core Composition Data Enter Date Time Extension](StructureDefinition-jp-composition-dataenterdatetime.md) | 記事の入力日時を格納するための拡張 |
 | [JP Core Composition Event Date Time Extension](StructureDefinition-jp-composition-eventdatetime.md) | 記録/記事のイベント日時を格納するための拡張 |
+| [JP Core Composition Group No Extension](StructureDefinition-jp-composition-groupno.md) | 記事グループの連番を格納するための拡張 |
 | [JP Core Composition Item Sequence Extension](StructureDefinition-jp-composition-itemsequence.md) | 記事の記録順序を格納するための拡張 |
 | [JP Core Composition Thumbnail Image Extension](StructureDefinition-jp-composition-thumbnailimage.md) | 記事のサムネイル画像を格納するための拡張 |
 | [JP Core Coverage InsuredPersonNumber Extension](StructureDefinition-jp-coverage-insuredpersonnumber.md) | 健康保険における被保険者証番号を示す拡張 |

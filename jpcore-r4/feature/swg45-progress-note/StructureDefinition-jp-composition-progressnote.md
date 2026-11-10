@@ -71,6 +71,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-composition-progr
 | | | | |
 | :--- | :--- | :--- | :--- |
 | イベント日時 | 記録/記事が書かれた対象の日時《リソース直下ないしsection.section配下》 | [JP_Common_Department](StructureDefinition-jp-common-department.md) | CodeableConcept |
+| 記事グループNo | 記事グループの連番《section配下》 | [JP_Common_GroupNo] | integer |
 | 記事順序 | 記事ごとの記載順序《section.section配下》 | [JP_Composition_ItemSequence](StructureDefinition-jp-composition-itemsequence.md) | integer |
 | 記事入力日時 | 記事ごとの入力日時《section.section配下》 | [JP_Composition_DataEnterDateTime](StructureDefinition-jp-composition-dataenterdatetime.md) | dateTime |
 | サムネイル画像 | 添付ファイルや添付画像のサムネイル画像《section.section配下》 | [JP_Composition_ThumbnailImage](StructureDefinition-jp-composition-thumnailimage.md) | Attachment |
@@ -108,6 +109,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-composition-progr
 * 入力日時（date要素を使用）：記録全体を入力した日時
 * 入力者（author要素を使用）：記録全体を入力した医療従事者
 * タイトル（title要素を使用）：記録全体のタイトル
+* 記事グループNo（拡張「[JP_Composition_GroupNo](StructureDefinition-jp-composition-groupno.md)」を使用）：記事グループをまとめる連番
 * 記事順序（拡張「[JP_Composition_ItemSequence](StructureDefinition-jp-composition-itemsequence.md)」を使用）：同一セクション内での記事の記録順序
 * 記事入力日時（拡張「[JP_Composition_DataEnterDateTime](StructureDefinition-jp-composition-dataenterdatetime.md)」を使用）：記事を入力した日時。記事の入力日時は通常date要素と同じになるが、確定後の追記によりdate要素と異なる場合に使用する。
 * 記事入力者（section.section.authorを使用）：記事を入力した医療従事者
@@ -278,7 +280,9 @@ category要素には、type要素と同じ値を指定することを推奨す�
 
 ### 記事テキストの記述方法について
 
-C-CDA on FHIRのProgress Noteでは、セクションごとのインスタンスは最大１個に制限されている一方、日本の電子カルテシステムの実装では複数の記事が記載できる場合がある。そこで、本プロファイルでは、常にサブセクション（section.section要素）を使用して記事を記述することとする。記事テキストは、サブセクションのtext.div要素にXHTML形式で記述する。
+C-CDA on FHIRのProgress Noteでは、セクションごとのインスタンスは最大１個に制限されている一方、日本の電子カルテシステムの実装では複数の記事が記載できる場合がある。そこで、本プロファイルでは、セクションごとのインスタンスは最大１個に制限しつつ、常にサブセクション（section.section要素）を使用して記事を記述し、サブセクションを複数許すことで複数の記事を記述できるようにする。（後述するように、複数の記事グループがある場合は例外とする。）
+
+なお、記事テキストは、サブセクションのtext.div要素にXHTML形式で記述する。
 
 O欄に複数の記事を記載した場合のインスタンス例を示す。
 
@@ -532,6 +536,96 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
 
 ```
 
+### 複数の記事グループの記述方法について
+
+本プロファイルでは、１つの記録の中に対象プロブレムおよびSOAP形式の記事のセット（以下、「記事グループ」と呼ぶ）が複数存在する場合に対応する。そのような場合には、記事グループごとに１から始まる連番を振り、各セクションについて「[JP_Composition_GroupNo](StructureDefinition-jp-composition-groupno.md)」拡張を使用してその連番を記述することで、どの記事グループに属するかを識別できるようにする。記事グループが１つしかない場合はこの拡張は省略することができる。
+
+なお、トップレベルのセクションのインスタンスは、記事グループ、セクションコードごとに最大１個までに制限されることに注意する。
+
+記事グループが２つあるインスタンス例を示す。
+
+```
+  "section": [ {
+    "extension": [ {
+      "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo",
+      "valueInteger": 1
+    } ],
+    "title": "Problems Section",
+    "code": {
+      "coding": [ {
+        "system": "http://loinc.org",
+        "code": "11450-4",
+        "display": "Problems Section"
+      } ]
+    },
+    "entry": [ {
+      "reference": "Condition/00000040.-3.0",
+      "display": "D#0　全体に関係 (医師)"
+    } ]
+  }, {
+    "extension": [ {
+      "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo",
+      "valueInteger": 1
+    } ],
+    "title": "Objective Section",
+    "code": {
+      "coding": [ {
+        "system": "http://loinc.org",
+        "code": "61149-1",
+        "display": "Objective Section"
+      } ]
+    },
+    "section": [ {
+      "text": {
+        "status": "additional",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>臥床がちに過ごす。顔色不良。バイタルは著変無し。本日心内受診予定であったが、混んでいたため、明日に変更となる。</p></div>"
+      }
+    } ]
+  },{
+    "extension": [ {
+      "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo",
+      "valueInteger": 2
+    } ],
+    "title": "Problems Section",
+    "code": {
+      "coding": [ {
+        "system": "http://loinc.org",
+        "code": "11450-4",
+        "display": "Problems Section"
+      } ]
+    },
+    "entry": [ {
+      "reference": "Condition/00000040.3.0",
+      "display": "D#1　ＲＳウイルス肺炎"
+    } ]
+  },{
+    "extension": [ {
+      "url": "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo",
+      "valueInteger": 2
+    } ],
+    "title": "Objective Section",
+    "code": {
+      "coding": [ {
+        "system": "http://loinc.org",
+        "code": "61149-1",
+        "display": "Objective Section"
+      } ]
+    },
+    "section": [ {
+      "text": {
+        "status": "additional",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>ﾊﾟｯﾁﾃｽﾄ施行する。25日判定とする。掻痒感出現時は伝えるように話す。</p></div>"
+      }
+    }, {
+      "text": {
+        "status": "additional",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>尿混濁あるため〇〇Ｄｒよりﾊﾟﾝｽﾎﾟﾘﾝの処方あり。</p></div>"
+      }
+    } ]
+  } ]
+
+```
+
 ## その他、参考文献・リンク等
 
 1. C-CDA on FHIR Progress Note[https://hl7.org/fhir/us/ccda/StructureDefinition-Progress-Note.html](https://hl7.org/fhir/us/ccda/StructureDefinition-Progress-Note.html)
@@ -621,7 +715,23 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "id" : "Composition",
         "path" : "Composition",
         "short" : "SOAP形式の経過記録等に関する詳細な情報",
-        "definition" : "SOAP形式の経過記録等に関する詳細な情報"
+        "definition" : "SOAP形式の経過記録等に関する詳細な情報",
+        "constraint" : [
+          {
+            "key" : "unique-article-section",
+            "severity" : "error",
+            "human" : "同一記事グループ内に同じ種類のセクションを複数含めてはならない",
+            "expression" : "section.select(\n  iif(\n    extension('http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo').exists(),\n    extension('http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo').value.ofType(integer).toString(),\n    '1'\n  )\n  & '|'\n  & code.coding.code\n).isDistinct()",
+            "source" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Composition_ProgressNote"
+          },
+          {
+            "key" : "consistent-article-group-extension",
+            "severity" : "error",
+            "human" : "記事グループ番号は対象セクションすべてに指定するか、すべて省略する",
+            "expression" : "section.extension('http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo').empty()\nor\nsection.all(extension('http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo').exists())",
+            "source" : "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Composition_ProgressNote"
+          }
+        ]
       },
       {
         "id" : "Composition.extension",
@@ -748,6 +858,35 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "definition" : "セクション"
       },
       {
+        "id" : "Composition.section.extension",
+        "path" : "Composition.section.extension",
+        "slicing" : {
+          "discriminator" : [
+            {
+              "type" : "value",
+              "path" : "url"
+            }
+          ],
+          "rules" : "open"
+        }
+      },
+      {
+        "id" : "Composition.section.extension:groupNo",
+        "path" : "Composition.section.extension",
+        "sliceName" : "groupNo",
+        "min" : 0,
+        "max" : "1",
+        "type" : [
+          {
+            "code" : "Extension",
+            "profile" : [
+              "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo"
+            ]
+          }
+        ],
+        "mustSupport" : true
+      },
+      {
         "id" : "Composition.section.title",
         "path" : "Composition.section.title",
         "min" : 1,
@@ -856,7 +995,23 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "label" : "Problems Section",
         "short" : "Problems Section",
         "min" : 0,
+        "max" : "*",
+        "mustSupport" : true
+      },
+      {
+        "id" : "Composition.section:problems.extension:groupNo",
+        "path" : "Composition.section.extension",
+        "sliceName" : "groupNo",
+        "min" : 0,
         "max" : "1",
+        "type" : [
+          {
+            "code" : "Extension",
+            "profile" : [
+              "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo"
+            ]
+          }
+        ],
         "mustSupport" : true
       },
       {
@@ -946,7 +1101,23 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "label" : "Subjective Section",
         "short" : "Subjective Section",
         "min" : 0,
+        "max" : "*",
+        "mustSupport" : true
+      },
+      {
+        "id" : "Composition.section:subjective.extension:groupNo",
+        "path" : "Composition.section.extension",
+        "sliceName" : "groupNo",
+        "min" : 0,
         "max" : "1",
+        "type" : [
+          {
+            "code" : "Extension",
+            "profile" : [
+              "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo"
+            ]
+          }
+        ],
         "mustSupport" : true
       },
       {
@@ -1031,7 +1202,23 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "label" : "Objective Section",
         "short" : "Objective Section",
         "min" : 0,
+        "max" : "*",
+        "mustSupport" : true
+      },
+      {
+        "id" : "Composition.section:objective.extension:groupNo",
+        "path" : "Composition.section.extension",
+        "sliceName" : "groupNo",
+        "min" : 0,
         "max" : "1",
+        "type" : [
+          {
+            "code" : "Extension",
+            "profile" : [
+              "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo"
+            ]
+          }
+        ],
         "mustSupport" : true
       },
       {
@@ -1116,7 +1303,23 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "label" : "Assessment Section",
         "short" : "Assessment Section",
         "min" : 0,
+        "max" : "*",
+        "mustSupport" : true
+      },
+      {
+        "id" : "Composition.section:assessment.extension:groupNo",
+        "path" : "Composition.section.extension",
+        "sliceName" : "groupNo",
+        "min" : 0,
         "max" : "1",
+        "type" : [
+          {
+            "code" : "Extension",
+            "profile" : [
+              "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo"
+            ]
+          }
+        ],
         "mustSupport" : true
       },
       {
@@ -1201,7 +1404,23 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "label" : "Plan Section",
         "short" : "Plan Section",
         "min" : 0,
+        "max" : "*",
+        "mustSupport" : true
+      },
+      {
+        "id" : "Composition.section:plan.extension:groupNo",
+        "path" : "Composition.section.extension",
+        "sliceName" : "groupNo",
+        "min" : 0,
         "max" : "1",
+        "type" : [
+          {
+            "code" : "Extension",
+            "profile" : [
+              "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo"
+            ]
+          }
+        ],
         "mustSupport" : true
       },
       {
@@ -1286,7 +1505,23 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "label" : "Additional Documentation Section",
         "short" : "Additional Documentation Section",
         "min" : 0,
+        "max" : "*",
+        "mustSupport" : true
+      },
+      {
+        "id" : "Composition.section:additional.extension:groupNo",
+        "path" : "Composition.section.extension",
+        "sliceName" : "groupNo",
+        "min" : 0,
         "max" : "1",
+        "type" : [
+          {
+            "code" : "Extension",
+            "profile" : [
+              "http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo"
+            ]
+          }
+        ],
         "mustSupport" : true
       },
       {

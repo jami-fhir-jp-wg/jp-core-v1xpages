@@ -41,18 +41,25 @@
   <sch:pattern>
     <sch:title>f:Composition/f:section</sch:title>
     <sch:rule context="f:Composition/f:section">
+      <sch:assert test="count(f:extension[@url = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo']) &lt;= 1">extension with URL = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo': maximum cardinality of 'extension' is 1</sch:assert>
       <sch:assert test="count(f:title) &gt;= 1">title: minimum cardinality of 'title' is 1</sch:assert>
       <sch:assert test="count(f:code) &gt;= 1">code: minimum cardinality of 'code' is 1</sch:assert>
       <sch:assert test="count(f:text) &lt;= 0">text: maximum cardinality of 'text' is 0</sch:assert>
+      <sch:assert test="count(f:extension[@url = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo']) &lt;= 1">extension with URL = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo': maximum cardinality of 'extension' is 1</sch:assert>
       <sch:assert test="count(f:section) &lt;= 0">section: maximum cardinality of 'section' is 0</sch:assert>
+      <sch:assert test="count(f:extension[@url = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo']) &lt;= 1">extension with URL = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo': maximum cardinality of 'extension' is 1</sch:assert>
       <sch:assert test="count(f:entry) &lt;= 0">entry: maximum cardinality of 'entry' is 0</sch:assert>
       <sch:assert test="count(f:section) &gt;= 1">section: minimum cardinality of 'section' is 1</sch:assert>
+      <sch:assert test="count(f:extension[@url = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo']) &lt;= 1">extension with URL = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo': maximum cardinality of 'extension' is 1</sch:assert>
       <sch:assert test="count(f:entry) &lt;= 0">entry: maximum cardinality of 'entry' is 0</sch:assert>
       <sch:assert test="count(f:section) &gt;= 1">section: minimum cardinality of 'section' is 1</sch:assert>
+      <sch:assert test="count(f:extension[@url = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo']) &lt;= 1">extension with URL = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo': maximum cardinality of 'extension' is 1</sch:assert>
       <sch:assert test="count(f:entry) &lt;= 0">entry: maximum cardinality of 'entry' is 0</sch:assert>
       <sch:assert test="count(f:section) &gt;= 1">section: minimum cardinality of 'section' is 1</sch:assert>
+      <sch:assert test="count(f:extension[@url = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo']) &lt;= 1">extension with URL = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo': maximum cardinality of 'extension' is 1</sch:assert>
       <sch:assert test="count(f:entry) &lt;= 0">entry: maximum cardinality of 'entry' is 0</sch:assert>
       <sch:assert test="count(f:section) &gt;= 1">section: minimum cardinality of 'section' is 1</sch:assert>
+      <sch:assert test="count(f:extension[@url = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo']) &lt;= 1">extension with URL = 'http://jpfhir.jp/fhir/core/Extension/StructureDefinition/JP_Composition_GroupNo': maximum cardinality of 'extension' is 1</sch:assert>
       <sch:assert test="count(f:entry) &lt;= 0">entry: maximum cardinality of 'entry' is 0</sch:assert>
       <sch:assert test="count(f:section) &gt;= 1">section: minimum cardinality of 'section' is 1</sch:assert>
     </sch:rule>

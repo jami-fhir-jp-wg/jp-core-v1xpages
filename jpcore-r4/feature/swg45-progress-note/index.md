@@ -5905,6 +5905,20 @@ JP Core は以下の方々、および各サーブワーキンググループの
           }
         ],
         "reference" : {
+          "reference" : "StructureDefinition/jp-composition-groupno"
+        },
+        "name" : "JP Core Composition Group No Extension",
+        "description" : "記事グループの連番を格納するための拡張",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
           "reference" : "StructureDefinition/jp-composition-itemsequence"
         },
         "name" : "JP Core Composition Item Sequence Extension",
