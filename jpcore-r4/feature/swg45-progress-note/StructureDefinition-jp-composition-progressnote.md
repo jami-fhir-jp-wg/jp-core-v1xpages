@@ -1032,7 +1032,9 @@ O欄に複数の記事を記載した場合のインスタンス例を示す。
         "type" : [
           {
             "code" : "Reference",
-            "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Condition"]
+            "targetProfile" : [
+              "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Condition"
+            ]
           }
         ]
       },
