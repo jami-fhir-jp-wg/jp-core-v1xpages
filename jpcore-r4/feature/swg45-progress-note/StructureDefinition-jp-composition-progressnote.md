@@ -71,7 +71,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-composition-progr
 | | | | |
 | :--- | :--- | :--- | :--- |
 | イベント日時 | 記録/記事が書かれた対象の日時《リソース直下ないしsection.section配下》 | [JP_Common_Department](StructureDefinition-jp-common-department.md) | CodeableConcept |
-| 記事グループNo | 記事グループの連番《section配下》 | [JP_Common_GroupNo] | integer |
+| 記事グループNo | 記事グループの連番《section配下》 | [JP_Composition_GroupNo](StructureDefinition-jp-composition-groupno.md) | integer |
 | 記事順序 | 記事ごとの記載順序《section.section配下》 | [JP_Composition_ItemSequence](StructureDefinition-jp-composition-itemsequence.md) | integer |
 | 記事入力日時 | 記事ごとの入力日時《section.section配下》 | [JP_Composition_DataEnterDateTime](StructureDefinition-jp-composition-dataenterdatetime.md) | dateTime |
 | サムネイル画像 | 添付ファイルや添付画像のサムネイル画像《section.section配下》 | [JP_Composition_ThumbnailImage](StructureDefinition-jp-composition-thumnailimage.md) | Attachment |
