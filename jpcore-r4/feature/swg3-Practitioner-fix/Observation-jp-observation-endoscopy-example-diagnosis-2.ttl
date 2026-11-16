@@ -1,0 +1,96 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://jpfhir.jp/fhir/core/Observation/jp-observation-endoscopy-example-diagnosis-2> a fhir:Observation ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "jp-observation-endoscopy-example-diagnosis-2"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Endoscopy"^^xsd:anyURI ;
+       fhir:l <http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Endoscopy>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Observation jp-observation-endoscopy-example-diagnosis-2</b></p><a name=\"jp-observation-endoscopy-example-diagnosis-2\"> </a><a name=\"hcjp-observation-endoscopy-example-diagnosis-2\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-jp-observation-endoscopy.html\">JP Core Observation Endoscopy Profile</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS procedure}\">Procedure</span>, <span title=\"Codes:{http://loinc.org LP7796-8}\">内視鏡</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 19811-9}\">内視鏡診断</span></p><p><b>subject</b>: <a href=\"Patient-jp-patient-example-1.html\">山田 太郎</a></p><p><b>encounter</b>: <a href=\"Encounter-jp-encounter-example-1.html\">Encounter: status = finished; class = 外来 (ActCode#AMB); period = 2022-05-08 13:08:24+0900 --&gt; 2022-05-08 13:23:24+0900</a></p><p><b>effective</b>: 2024-06-30 10:24:30+0900</p><p><b>performer</b>: <a href=\"Practitioner-jp-practitioner-example-male-1.html\">Practitioner 大阪 一郎</a></p><p><b>value</b>: <span title=\"Codes:{urn:oid:1.2.392.200270.4.1000.1 Z2L30401}\">[鋸歯状病変] HP</span></p><p><b>hasMember</b>: </p><ul><li><a href=\"Observation-jp-observation-endoscopy-example-findings-2a.html\">大きさ　長径５（ｍｍ）</a></li><li><a href=\"Observation-jp-observation-endoscopy-example-findings-2b.html\">[大腸 肉眼型1] IIa</a></li></ul></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS"^^xsd:anyURI ;
+         fhir:l <http://jpfhir.jp/fhir/core/CodeSystem/JP_SimpleObservationCategory_CS>
+       ] ;
+       fhir:code [ fhir:v "procedure" ] ;
+       fhir:display [ fhir:v "Procedure" ]
+     ] )
+  ] [
+     fhir:coding ( [
+       a loinc:LP7796-8 ;
+       fhir:system [
+         fhir:v "http://loinc.org"^^xsd:anyURI ;
+         fhir:l <http://loinc.org>
+       ] ;
+       fhir:code [ fhir:v "LP7796-8" ] ;
+       fhir:display [ fhir:v "内視鏡" ]
+     ] )
+  ] ) ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:19811-9 ;
+       fhir:system [
+         fhir:v "http://loinc.org"^^xsd:anyURI ;
+         fhir:l <http://loinc.org>
+       ] ;
+       fhir:code [ fhir:v "19811-9" ] ;
+       fhir:display [ fhir:v "Diagnosis Endoscopy Procedure Narrative" ]
+     ] ) ;
+     fhir:text [ fhir:v "内視鏡診断" ]
+  ] ; # 
+  fhir:subject [
+     fhir:l <http://jpfhir.jp/fhir/core/Patient/jp-patient-example-1> ;
+     fhir:reference [ fhir:v "Patient/jp-patient-example-1" ] ;
+     fhir:display [ fhir:v "山田 太郎" ]
+  ] ; # 
+  fhir:encounter [
+     fhir:l <http://jpfhir.jp/fhir/core/Encounter/jp-encounter-example-1> ;
+     fhir:reference [ fhir:v "Encounter/jp-encounter-example-1" ]
+  ] ; # 
+  fhir:effective [
+     a fhir:DateTime ;
+     fhir:v "2024-06-30T10:24:30+09:00"^^xsd:dateTime
+  ] ; # 
+  fhir:performer ( [
+     fhir:l <http://jpfhir.jp/fhir/core/Practitioner/jp-practitioner-example-male-1> ;
+     fhir:reference [ fhir:v "Practitioner/jp-practitioner-example-male-1" ]
+  ] ) ; # 
+  fhir:value [
+     a fhir:CodeableConcept ;
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "urn:oid:1.2.392.200270.4.1000.1"^^xsd:anyURI ;
+         fhir:l <urn:oid:1.2.392.200270.4.1000.1>
+       ] ;
+       fhir:code [ fhir:v "Z2L30401" ] ;
+       fhir:display [ fhir:v "[鋸歯状病変] HP" ]
+     ] ) ;
+     fhir:text [ fhir:v "[鋸歯状病変] HP" ]
+  ] ; # 
+  fhir:hasMember ( [
+     fhir:l <http://jpfhir.jp/fhir/core/Observation/jp-observation-endoscopy-example-findings-2a> ;
+     fhir:reference [ fhir:v "Observation/jp-observation-endoscopy-example-findings-2a" ] ;
+     fhir:display [ fhir:v "大きさ　長径５（ｍｍ）" ]
+  ] [
+     fhir:l <http://jpfhir.jp/fhir/core/Observation/jp-observation-endoscopy-example-findings-2b> ;
+     fhir:reference [ fhir:v "Observation/jp-observation-endoscopy-example-findings-2b" ] ;
+     fhir:display [ fhir:v "[大腸 肉眼型1] IIa" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

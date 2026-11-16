@@ -1,0 +1,146 @@
+"Id","Path","Slice Name","Alias(s)","Label","Min","Max","Must Support?","Is Modifier?","Is Summary?","Type(s)","Short","Definition","Comments","Requirements","Default Value","Meaning When Missing","Fixed Value","Pattern","Example","Minimum Value","Maximum Value","Maximum Length","Binding Strength","Binding Description","Binding Value Set","Code","Slicing Discriminator","Slicing Description","Slicing Ordered","Slicing Rules","Base Path","Base Min","Base Max","Condition(s)","Constraint(s)","Mapping: HL7 v2 Mapping","Mapping: RIM Mapping","Mapping: ServD","Mapping: FiveWs Pattern Mapping"
+"Organization","Organization","","","",0,*,"","","","null {[]} {[]}
+","診療科を表す組織情報","医療機関内の診療科、部門を表すOrganization。病院、診療所などの医療機関に所属する診療科や部署を表現する。","診療科は医療機関（Organization）の一部として、partOf要素を使用して親組織を参照することが推奨される。診療科の種別はtype要素でdept（部門）を指定する。","","","","","","","","",,,,,"",,,,"Organization",0,*,"","dom-2:もしリソースが他のリソースに含まれている場合、そのリソースにはネストされたリソースを含めてはなりません (moshi risōsu ga hoka no risōsu ni fukumarete iru baai, sono risōsu ni wa nesuto sareta risōsu o fukumete wa narimasen). {contained.contained.empty()}
+dom-3:もしリソースが他のリソースに含まれている場合、それはリソースの他の場所から参照されるか、含まれるリソースに参照されるべきです。 {contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()}dom-4:もしリソースが別のリソースの中に含まれる場合、meta.versionIdまたはmeta.lastUpdatedを持つべきではありません。 {contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()}dom-5:もしリソースが他のリソースに含まれている場合、セキュリティラベルを持つべきではありません。 {contained.meta.security.empty()}dom-6:資源は堅牢な管理のために物語を持つべきである。 {text.`div`.exists()}org-1:組織は少なくとも名前またはidentifierを持つ必要があり、おそらく1つ以上のものもあるかもしれません {(identifier.count() + name.count()) > 0}","(also see master files messages)","Entity. Role, or Act","Organization(classCode=ORG, determinerCode=INST)","Organization"
+"Organization.id","Organization.id","","","",0,1,"","","Y","id {[]} {[]}
+","このアーティファクトの論理ID","リソースのURLで使用される論理ID。一度割り当てられたら、この値は変更されません。","リソースにIDがないのは、作成操作を使用してサーバーに送信されているときだけです。","","","","","","","","",,,,,"",,,,"Resource.id",0,1,"",""
+"Organization.meta","Organization.meta","","","",0,1,"","","Y","Meta {[]} {[]}
+","リソースに関するMetadata","リソースに関するMetadata。これはインフラストラクチャによって維持されるコンテンツです。 コンテンツの変更は、リソースのバージョン変更と常に関連しているわけではありません。","","","","","","","","","",,,,,"",,,,"Resource.meta",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Organization.implicitRules","Organization.implicitRules","","","",0,1,"","Y","Y","uri {[]} {[]}
+","このコンテンツが作成されたルールセット","リソース構築時に遵守された一連のルールを指すものであり、コンテンツを処理する際に理解する必要があります。しばしば、特別なルールを定義する実装ガイドとその他のプロファイルなどを含むものです。","このルールセットを主張することで、取引先の限られた集団にしか内容を理解させることができず、長期的にはデータの有用性が制限されます。しかしながら、現存するヘルスエコシステムは高度に分断化しており、一般的に計算可能な形式でデータを定義、収集、交換する準備が整っていません。できる限り、実装者および/または仕様ライターはこの要素の使用を避けるべきです。使用する場合、URLは、そのナラティブとともに他のプロファイル、値セットなどを含む実装ガイドを定義する参照となります。","","","","","","","","",,,,,"",,,,"Resource.implicitRules",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Organization.language","Organization.language","","","",0,1,"","","","code {[]} {[]}
+","リソースコンテンツの言語","リソースが書かれている基本言語。","言語はインデックスとアクセシビリティをサポートするために提供されます（通常、テキスト読み上げなどのサービスは言語タグを使用します）。物語のHTML言語タグは、物語に適用されます。リソース上の言語タグは、リソース内のデータから生成される他のプレゼンテーションの言語を指定するために使用できます。すべてのコンテンツが基本言語である必要はありません。Resource.languageは自動的に物語に適用されたと想定してはいけません。言語が指定されている場合、HTMLのdiv要素にも指定する必要があります（xml：langとhtml lang属性の関係に関する情報はHTML5の規則を参照）。","","","","","","","","",,"preferred","人間の言語。","http://hl7.org/fhir/ValueSet/languages|4.0.1","",,,,"Resource.language",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+"
+"Organization.text","Organization.text","","narrative
+htmlxhtmldisplay","",0,1,"","","","Narrative {[]} {[]}
+","人間の解釈のためのリソースのテキスト要約","リソースの要約を含む人が読めるナビゲーションであり、リソースの内容を人に表現するために使用できます。ナビゲーションはすべての構造化されたデータをエンコードする必要はありませんが、人間がナビゲーションを読むだけで「臨床的に安全」であるために十分な詳細を含む必要があります。リソース定義には、臨床的な安全性を確保するためにナビゲーションで表現する必要があるコンテンツが定義される場合があります。","含まれるリソースには説明がありません。含まれないリソースには説明が必要です。場合によっては、リソースが少量のデータしか含まず、テキストだけで表現されることがあります（minOccurs = 1要素がすべて満たされている限り）。これは、情報が「テキストの塊」としてキャプチャされるレガシーシステムからのデータや、テキストが生またはナレーションされて符号化された情報が後で追加される場合に必要な場合があります。","","","","","","","","",,,,,"",,,,"DomainResource.text",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","Act.text?"
+"Organization.contained","Organization.contained","","inline resources
+anonymous resourcescontained resources","",0,*,"","","","Resource {[]} {[]}
+","含まれている、インラインのリソース","これらのリソースは、それらを含むリソースから独立した存在を持ちません。それらは独立して識別することはできず、独自の独立したトランザクション範囲を持つこともできません。","コンテンツが適切に識別できる場合には、これを行うべきではありません。識別が失われると、再び復元することは非常に困難であり（文脈に依存します）、メタ要素にプロファイルとタグを持つことができますが、セキュリティのラベルを持っていてはいけません。","","","","","","","","",,,,,"",,,,"DomainResource.contained",0,*,"","","N/A"
+"Organization.extension","Organization.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","リソースの基本的な定義の一部ではない追加情報を表すために使用することができます。拡張機能の使用を安全かつ管理可能にするために、定義と使用の一定のガバナンスが適用されます。実装者はどんな拡張機能でも定義できますが、拡張機能の定義の一部として満たす必要がある要件があります","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Organization.modifierExtension","Organization.modifierExtension","","extensions
+user content","",0,*,"","Y","","Extension {[]} {[]}
+","無視できない拡張機能","リソースの基本的な定義に含まれない、要素の理解や、それを含む要素の子孫の理解を修正する追加情報を表すためにも使用されることがあります。通常、修飾要素は否定や修飾を提供します。拡張機能の使用を安全で管理しやすくするために、拡張機能の定義と使用に対して厳格な統治が適用されます。実装者は拡張機能を定義することが許可されていますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張をチェックする必要があります。修飾子拡張は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味も変更できません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"DomainResource.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Organization.identifier","Organization.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
+","診療科の識別子 【詳細参照】","診療科を識別するための識別子。","診療科の識別子は以下の2つのパターンで指定できる。
+1. 医療機関固有の診療科コード（ローカルコード）
+   - system: http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationRequestDepartment/{医療機関識別OID番号}
+   - 医療機関識別OID番号は、医療機関コード（10桁）の先頭に1をつけた11桁とする
+   - 例：医療機関コード「1312345670」の場合「http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationRequestDepartment/11312345670」
+2. SS-MIX2標準診療科コード（ssmixDepartmentCodeスライス）
+   - system: http://jami.jp/SS-MIX2/CodeSystem/ClinicalDepartment
+   - SS-MIX2で定義された診療科コードを使用","Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.","","","","","","","",,,,,"","value:system}
+","",,"open","Organization.identifier",0,*,"org-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+jp-org-dept-identifier-local-system:ローカル診療科コードのsystemは 'http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationRequestDepartment/[1+施設番号10桁]'でなければならない。 {system.all(substring(0,43)!='http://jpfhir.jp/fhir/core/mhlw/CodeSystem/MedicationRequestDepartment/' or substring(43).matches('^1(0[1-9]|[1-3][0-9]|4[0-7])([0-9])([0-9]{7})$'))}","XON.10 / XON.3",".scopes[Role](classCode=IDENT)","./Identifiers","FiveWs.identifier"
+"Organization.identifier:ssmixDepartmentCode","Organization.identifier","ssmixDepartmentCode","","",0,1,"","","Y","Identifier {[]} {[]}
+","SS-MIX2標準診療科コード","SS-MIX2で定義された標準診療科コード。","SS-MIX2に準拠した診療科コードを指定する場合に使用する。","Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.","","","","","","","",,,,,"",,,,"Organization.identifier",0,*,"org-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","XON.10 / XON.3",".scopes[Role](classCode=IDENT)","./Identifiers","FiveWs.identifier"
+"Organization.identifier:ssmixDepartmentCode.id","Organization.identifier.id","","","",0,1,"","","","string {[]} {[]}
+","要素間参照のための一意のID / Unique id for inter-element referencing","リソース内の要素の一意のID（内部参照用）。これは、スペースを含まない文字列値である場合があります。 / Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Organization.identifier:ssmixDepartmentCode.extension","Organization.identifier.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装で定義された追加のコンテンツ / Additional content defined by implementations","要素の基本的な定義の一部ではない追加情報を表すために使用できます。拡張機能を安全で管理しやすくするために、拡張機能の定義と使用に適用される厳格なガバナンスセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たされる一連の要件があります。 / May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","拡張機能を使用または定義する機関や管轄権に関係なく、アプリケーション、プロジェクト、または標準による拡張機能の使用に関連するスティグマはありません。拡張機能の使用は、FHIR仕様がすべての人にコアレベルのシンプルさを保持できるようにするものです。 / There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
+","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:両方ではなく、拡張または値[x]が必要です / Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+"Organization.identifier:ssmixDepartmentCode.use","Organization.identifier.use","","","",0,1,"","Y","Y","code {[]} {[]}
+","通常|公式|一時的|セカンダリ|古い（知られている場合） / usual | official | temp | secondary | old (If known)","このidentifierの目的。 / The purpose of this identifier.","アプリケーションは、identifierが一時的なものであると明示的に言っていない限り、永続的であると想定できます。 / Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.","特定の使用のコンテキストが一連のidentifierの中から選択される適切なidentifierを許可します。 / Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.","","","","","","","",,"required","既知の場合、このidentifierの目的を識別します。 / Identifies the purpose for this identifier, if known .","http://hl7.org/fhir/ValueSet/identifier-use|4.0.1","",,,,"Identifier.use",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","N/A","Role.code or implied by context"
+"Organization.identifier:ssmixDepartmentCode.type","Organization.identifier.type","","","",0,1,"","","Y","CodeableConcept {[]} {[]}
+","identifierの説明 / Description of identifier","特定の目的に使用するidentifierを決定するために使用できるidentifierのコード化されたタイプ。 / A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.","この要素は、identifierの一般的なカテゴリのみを扱います。identifier。システムに対応するコードに使用しないでください。一部のidentifierは、一般的な使用法により複数のカテゴリに分類される場合があります。システムがわかっている場合、タイプは常にシステム定義の一部であるため、タイプは不要です。ただし、システムが不明なidentifierを処理する必要があることがよくあります。多くの異なるシステムが同じタイプを持っているため、タイプとシステムの間に1：1の関係はありません。 / This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type.","identifierシステムが不明な場合、ユーザーはidentifierを使用できます。 / Allows users to make use of identifiers when the identifier system is not known.","","","","","","","",,"extensible","特定の目的に使用するidentifierを決定するために使用できるidentifierのコード化されたタイプ。 / A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.","http://hl7.org/fhir/ValueSet/identifier-type|4.0.1","",,,,"Identifier.type",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","CX.5","Role.code or implied by context"
+"Organization.identifier:ssmixDepartmentCode.system","Organization.identifier.system","","","",1,1,"","","Y","uri {[]} {[]}
+","SS-MIX2診療科コード体系のURI","SS-MIX2で定義された診療科コード体系を示すURI。","identifier。システムは常にケースに敏感です。 / Identifier.system is always case sensitive.","identifierのセットがたくさんあります。2つのidentifierを一致させるには、どのセットを扱っているかを知る必要があります。システムは、特定の一意のidentifierセットを識別します。 / There are many sets  of identifiers.  To perform matching of two identifiers, we need to know what set we're dealing with. The system identifies a particular set of unique identifiers.","","","<valueUri xmlns=""http://hl7.org/fhir"" value=""http://jami.jp/SS-MIX2/CodeSystem/ClinicalDepartment""/>","","","","",,,,,"",,,,"Identifier.system",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","CX.4 / EI-2-4","II.root or Role.id.root","./IdentifierType"
+"Organization.identifier:ssmixDepartmentCode.value","Organization.identifier.value","","","",1,1,"","","Y","string {[]} {[]}
+","SS-MIX2診療科コードの値","SS-MIX2で定義された診療科コードの値。","SS-MIX2標準診療科コードの値を設定する（例：01=内科、02=精神科など）。","","","","","","","","",,,,,"",,,,"Identifier.value",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","CX.1 / EI.1","II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)","./Value"
+"Organization.identifier:ssmixDepartmentCode.period","Organization.identifier.period","","","",0,1,"","","Y","Period {[]} {[]}
+","IDが使用に有効だった時間期間 / Time period when id is/was valid for use","identifierが使用される/有効な期間。 / Time period during which identifier is/was valid for use.","","","","","","","","","",,,,,"",,,,"Identifier.period",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","CX.7 + CX.8","Role.effectiveTime or implied by context","./StartDate and ./EndDate"
+"Organization.identifier:ssmixDepartmentCode.assigner","Organization.identifier.assigner","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Organization|4.0.1]]}
+","IDを発行した組織（単なるテキストである可能性があります） / Organization that issued id (may be just text)","identifierを発行/管理する組織。 / Organization that issued/manages the identifier.","identifierは、.reference要素を省略し、割り当て組織に関する名前またはその他のテキスト情報を反映した.display要素のみを含む場合があります。 / The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.","","","","","","","","",,,,,"",,,,"Identifier.assigner",0,1,"","ele-1:すべてのFHIR要素には、@valueまたは子要素が必要です / All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","CX.4 / (CX.4,CX.9,CX.10)","II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper","./IdentifierIssuingAuthority"
+"Organization.active","Organization.active","","","",0,1,"","Y","Y","boolean {[]} {[]}
+","その組織の記録がまだ活発に使用されているかどうか","その組織の記録がまだ活用されているかどうか。","このアクティブなフラグは、組織を一時的に閉鎖したり、建設中のマークとして使用するために意図されていません。代わりに、組織内の場所に中断ステータスを設定する必要があります。中断の理由の詳細が必要な場合は、この要素の拡張機能を使用する必要があります。
+
+この要素は修飾子としてラベル付けされています。これは、リソースが誤って作成されたことを示すために使用できるためです。","Need a flag to indicate a record is no longer to be used and should generally be hidden for the user in the UI.","","This resource is generally assumed to be active if no value is provided for the active element","","","","","",,,,,"",,,,"Organization.active",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","No equivalent in HL7 v2",".status","./Status (however this concept in ServD more covers why the organization is active or not, could be delisted, deregistered, not operational yet) this could alternatively be derived from ./StartDate and ./EndDate and given a context date.","FiveWs.status"
+"Organization.type","Organization.type","","","",1,*,"","","Y","CodeableConcept {[]} {[]}
+","組織の種類","これがどのような組織であるか。","組織には、法人、区、部門、クリニカルチーム、政府省庁などがあります。 コードは一般的に組織のタイプの分類子であることに注意してください。 多くのアプリケーションでは、コードが特定の組織（例えば、区）を識別するために使用されます。同じタイプの他の組織と区別するためのidentifierであることに注意してください。
+
+複数のタイプが適切かどうかを考慮するときは、子組織を概念のより適切な使用として評価する必要があります。異なるタイプはおそらく組織の異なるサブエリアにあります。これは、宗教的、学術的、医療センターなど、直交的な値を持つタイプ値がある場合に最もよく使用されます。
+
+このオプションをシングルカーディナリティにプロファイルするものがいくつかの管轄権に存在することを期待しています。","Need to be able to track the kind of organization that this is - different organization types have different uses.","","","","","","","",,"example","組織を分類するために使用されます。","http://hl7.org/fhir/ValueSet/organization-type|4.0.1","","value:$this}
+","",,"open","Organization.type",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","No equivalent in v2",".code","n/a","FiveWs.class"
+"Organization.type:departmentType","Organization.type","departmentType","","",1,1,"","","Y","CodeableConcept {[]} {[]}
+","診療科・部門を示す組織タイプ","この組織が診療科・部門であることを示すコード。固定値でdept（部門）を設定する。","組織には、法人、区、部門、クリニカルチーム、政府省庁などがあります。 コードは一般的に組織のタイプの分類子であることに注意してください。 多くのアプリケーションでは、コードが特定の組織（例えば、区）を識別するために使用されます。同じタイプの他の組織と区別するためのidentifierであることに注意してください。
+
+複数のタイプが適切かどうかを考慮するときは、子組織を概念のより適切な使用として評価する必要があります。異なるタイプはおそらく組織の異なるサブエリアにあります。これは、宗教的、学術的、医療センターなど、直交的な値を持つタイプ値がある場合に最もよく使用されます。
+
+このオプションをシングルカーディナリティにプロファイルするものがいくつかの管轄権に存在することを期待しています。","Need to be able to track the kind of organization that this is - different organization types have different uses.","","","","<valueCodeableConcept xmlns=""http://hl7.org/fhir"">
+  <coding>
+    <system value=""http://terminology.hl7.org/CodeSystem/organization-type""/>
+    <code value=""dept""/>
+  </coding>
+</valueCodeableConcept>","","","",,"required","","http://hl7.org/fhir/ValueSet/organization-type","",,,,"Organization.type",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","No equivalent in v2",".code","n/a","FiveWs.class"
+"Organization.name","Organization.name","","","",0,1,"","","Y","string {[]} {[]}
+","組織で使用される名前","組織に関連する名前。","もし団体の名前が変更された場合、検索によってまだ見つけられるように、旧名をエイリアス欄に入れることを検討してください。","Need to use the name as the label of the organization.","","","","","","","",,,,,"",,,,"Organization.name",0,1,"org-1
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","XON.1",".name",".PreferredName/Name"
+"Organization.alias","Organization.alias","","","",0,*,"","","","string {[]} {[]}
+","組織が以前に知られていた、または今でも知られている代替名のリスト。","その団体が過去に知られていた、または今でも知られている別名のリスト。","エイリアス/履歴上の名前に関連付けられた日付はありません。これは、名前がいつ使用されたかを追跡するためではなく、古い名前でも組織を特定できるように検索を支援するためのものです。","Over time locations and organizations go through many changes and can be known by different names.
+
+For searching knowing previous names that the organization was known by can be very useful.","","","","","","","",,,,,"",,,,"Organization.alias",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".name"
+"Organization.telecom","Organization.telecom","","","",0,*,"","","","ContactPoint {[]} {[]}
+","組織の連絡先詳細","組織の連絡先詳細。","‘home’という利用コードは使用しないでください。これらの連絡先は、組織に雇用または代表されている人々の連絡先ではなく、組織自体の公式連絡先であることに注意してください。","Human contact for the organization.","","","","","","","",,,,,"",,,,"Organization.telecom",0,*,"org-3
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+org-3:組織のテレコムは、家庭で使用することはできません。 {where(use = 'home').empty()}","ORC-22?",".telecom","./ContactPoints"
+"Organization.address","Organization.address","","","",0,*,"","","","Address {[]} {[]}
+","組織の住所","組織の住所。","組織は複数の住所を持つ場合があり、異なる用途や有効期間があります。使用コード 'home' は使用しないでください。","May need to keep track of the organization's addresses for contacting, billing or reporting requirements.","","","","","","","",,,,,"",,,,"Organization.address",0,*,"org-2
+","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+org-2:組織の住所は「家」として使用することはできません。 {where(use = 'home').empty()}","ORC-23?",".address","./PrimaryAddress and ./OtherAddresses"
+"Organization.partOf","Organization.partOf","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://jpfhir.jp/fhir/core/StructureDefinition/JP_Organization]]}
+","所属する医療機関","この診療科が所属する上位組織（医療機関）への参照","診療科は通常、医療機関に所属するため、partOf要素で親組織を参照することが推奨される。","Need to be able to track the hierarchy of organizations within an organization.","","","","","","","",,,,,"",,,,"Organization.partOf",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","No equivalent in HL7 v2",".playedBy[classCode=Part].scoper","n/a"
+"Organization.contact","Organization.contact","","","",0,*,"","","","BackboneElement {[]} {[]}
+","特定の目的のための組織への連絡","特定の目的のための組織への連絡。","同じ目的の複数の連絡先が提供される場合、優先的に使用する連絡先を特定するために使用できる標準拡張があります。","Need to keep track of assigned contact points within bigger organization.","","","","","","","",,,,,"",,,,"Organization.contact",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+",".contactParty"
+"Organization.contact.id","Organization.contact.id","","","",0,1,"","","","string {[]} {[]}
+","エレメント相互参照のためのユニークID","リソース内の要素の固有ID（内部参照用）。これは、スペースを含まない任意の文字列値である可能性があります。","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Organization.contact.extension","Organization.contact.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","実装によって定義される追加コンテンツ","要素の基本的な定義に含まれない追加情報を表すために使用されることがあります。拡張機能の使用を安全かつ管理しやすくするために、定義および使用に適用される厳格なガバナンスのセットがあります。実装者は拡張機能を定義できますが、拡張機能の定義の一部として満たす必要のある要件のセットがあります。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","n/a"
+"Organization.contact.modifierExtension","Organization.contact.modifierExtension","","extensions
+user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
+","認識されなくても無視できない拡張機能","基本的な要素の定義に含まれない追加情報を表すために使用されることがあり、それによって、その要素自体または取り込んでいる要素の子孫の理解を修正する。修飾子要素は通常、否定または修飾を提供します。拡張機能の安全で管理しやすい使用を実現するために、定義および使用に厳しいガバナンスセットが適用されています。どの実装者でも拡張機能を定義できますが、拡張機能の定義の一部として満たす必要がある要件があります。リソースを処理するアプリケーションは、修飾子拡張子をチェックする必要があります。
+
+修飾子拡張機能は、リソースまたはドメインリソースの任意の要素の意味を変更してはなりません（修飾子拡張自体の意味を変更することもできません）。","どのようなアプリケーション、プロジェクト、または標準が拡張機能を使用しているかに関わらず、拡張機能の使用には決して汚名が付くわけではありません - それらを使用または定義する機関または管轄区域に関係なく。拡張機能の使用こそが、FHIR仕様を誰にとっても簡単なコアレベルで維持することを可能にします。","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+ext-1:extensionまたはvalue[x]のいずれかが必要です。両方ではありません。 {extension.exists() != value.exists()}","N/A"
+"Organization.contact.purpose","Organization.contact.purpose","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","接触の種類","連絡先に到達できる目的を示しています。","","Need to distinguish between multiple contact persons.","","","","","","","",,"extensible","「連絡を取りたい目的のための連絡先」となります。","http://hl7.org/fhir/ValueSet/contactentity-type|4.0.1","",,,,"Organization.contact.purpose",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","./type"
+"Organization.contact.name","Organization.contact.name","","","",0,1,"","","","HumanName {[]} {[]}
+","コンタクトに関連する名前","連絡関係にある名前","","Need to be able to track the person by name.","","","","","","","",,,,,"",,,,"Organization.contact.name",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","PID-5, PID-9","./name"
+"Organization.contact.telecom","Organization.contact.telecom","","","",0,*,"","","","ContactPoint {[]} {[]}
+","連絡先詳細（電話、メールなど）連絡先のため","当該のパーティーと連絡を取るための連絡先情報（例：電話番号やメールアドレス）","","People have (primary) ways to contact them in some way such as phone, email.","","","","","","","",,,,,"",,,,"Organization.contact.telecom",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","PID-13, PID-14","./telecom"
+"Organization.contact.address","Organization.contact.address","","","",0,1,"","","","Address {[]} {[]}
+","連絡のための訪問先または郵送先の住所","連絡先の訪問または郵便送付先","","May need to keep track of a contact party's address for contacting, billing or reporting requirements.","","","","","","","",,,,,"",,,,"Organization.contact.address",0,1,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","PID-11","./addr"
+"Organization.endpoint","Organization.endpoint","","","",0,*,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Endpoint|4.0.1]]}
+","「組織が運営するサービスへのアクセスを提供する技術エンドポイント」という意味です。","組織が運営するサービスへのアクセスを提供する技術的なエンドポイント。","","Organizations have multiple systems that provide various services and need to be able to define the technical connection details for how to connect to them, and for what purpose.","","","","","","","",,,,,"",,,,"Organization.endpoint",0,*,"","ele-1:すべてのFHIR要素は、@valueまたはchildrenを持っている必要があります。 {hasValue() or (children().count() > id.count())}
+","n/a"
