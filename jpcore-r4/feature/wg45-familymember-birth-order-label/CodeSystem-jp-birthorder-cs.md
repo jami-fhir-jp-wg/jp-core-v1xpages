@@ -23,8 +23,10 @@
 JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する家族内の出生順呼称コード 
 
  
-本コードシステムは、患者との続柄そのものを表すのではなく、FamilyMemberHistory.relationship を補足する情報として、家族内で用いられる出生順に基づく呼称を表現するために定義した。各コードには機械処理用のプロパティ（category：呼称系列、order：系列内順位）を付与しており、プログラムによる判定・集計に利用できる。 
+本コードシステムは、患者との続柄そのものを表すのではなく、FamilyMemberHistory.relationship を補足する情報として、家族内で用いられる出生順に基づく呼称を表現するために定義した。 
+各コードには機械処理用のプロパティ（category：呼称系列、order：系列内順位）を付与しており、プログラムによる判定・集計に利用できる。 
 十一男・十一女以降が必要となった場合は、既定で第10位まで収載している son-1〜son-10、daughter-1〜daughter-10 と同一の命名規則（son-／daughter-）に従って本CodeSystemへconceptを追加して表現すること。追加するconceptの display および designation も、既存concept（例：長男／first son）と一貫した表記規則に従って付与すること。 
+対応する個別conceptが追加されるまでの間は、暫定的に nec を使用し、申告された呼称を CodeableConcept.text に記載することが望ましい。個別conceptの公開後は、新規記録において当該コードを使用すること。 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
@@ -75,7 +77,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       ]
     }
   ],
-  "purpose" : "本コードシステムは、患者との続柄そのものを表すのではなく、FamilyMemberHistory.relationship を補足する情報として、家族内で用いられる出生順に基づく呼称を表現するために定義した。各コードには機械処理用のプロパティ（category：呼称系列、order：系列内順位）を付与しており、プログラムによる判定・集計に利用できる。\n\n十一男・十一女以降が必要となった場合は、既定で第10位まで収載している son-1〜son-10、daughter-1〜daughter-10 と同一の命名規則（son-<順位>／daughter-<順位>）に従って本CodeSystemへconceptを追加して表現すること。追加するconceptの display および designation も、既存concept（例：長男／first son）と一貫した表記規則に従って付与すること。",
+  "purpose" : "本コードシステムは、患者との続柄そのものを表すのではなく、FamilyMemberHistory.relationship を補足する情報として、家族内で用いられる出生順に基づく呼称を表現するために定義した。\n\n各コードには機械処理用のプロパティ（category：呼称系列、order：系列内順位）を付与しており、プログラムによる判定・集計に利用できる。\n\n十一男・十一女以降が必要となった場合は、既定で第10位まで収載している son-1〜son-10、daughter-1〜daughter-10 と同一の命名規則（son-<順位>／daughter-<順位>）に従って本CodeSystemへconceptを追加して表現すること。追加するconceptの display および designation も、既存concept（例：長男／first son）と一貫した表記規則に従って付与すること。\n\n対応する個別conceptが追加されるまでの間は、暫定的に nec を使用し、申告された呼称を CodeableConcept.text に記載することが望ましい。個別conceptの公開後は、新規記録において当該コードを使用すること。",
   "copyright" : "Copyright Japan FHIR Implementation Infrastructure Study Group in Japan Association of Medical Informatics (JAMI) 一般社団法人日本医療情報学会FHIR国内実装基盤研究会",
   "caseSensitive" : true,
   "content" : "complete",
@@ -85,7 +87,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "code" : "category",
       "uri" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_BirthOrder_CS#category",
       "description" : "son は男子に用いる呼称系列（長男・次男…）、daughter は女子に用いる呼称系列（長女・次女…）を表す。",
-      "type" : "code"
+      "type" : "string"
     },
     {
       "code" : "order",
@@ -111,7 +113,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "son"
+          "valueString" : "son"
         },
         {
           "code" : "order",
@@ -136,7 +138,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "son"
+          "valueString" : "son"
         },
         {
           "code" : "order",
@@ -156,7 +158,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "son"
+          "valueString" : "son"
         },
         {
           "code" : "order",
@@ -176,7 +178,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "son"
+          "valueString" : "son"
         },
         {
           "code" : "order",
@@ -196,7 +198,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "son"
+          "valueString" : "son"
         },
         {
           "code" : "order",
@@ -216,7 +218,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "son"
+          "valueString" : "son"
         },
         {
           "code" : "order",
@@ -236,7 +238,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "son"
+          "valueString" : "son"
         },
         {
           "code" : "order",
@@ -256,7 +258,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "son"
+          "valueString" : "son"
         },
         {
           "code" : "order",
@@ -276,7 +278,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "son"
+          "valueString" : "son"
         },
         {
           "code" : "order",
@@ -296,7 +298,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "son"
+          "valueString" : "son"
         },
         {
           "code" : "order",
@@ -320,7 +322,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "daughter"
+          "valueString" : "daughter"
         },
         {
           "code" : "order",
@@ -345,7 +347,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "daughter"
+          "valueString" : "daughter"
         },
         {
           "code" : "order",
@@ -365,7 +367,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "daughter"
+          "valueString" : "daughter"
         },
         {
           "code" : "order",
@@ -385,7 +387,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "daughter"
+          "valueString" : "daughter"
         },
         {
           "code" : "order",
@@ -405,7 +407,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "daughter"
+          "valueString" : "daughter"
         },
         {
           "code" : "order",
@@ -425,7 +427,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "daughter"
+          "valueString" : "daughter"
         },
         {
           "code" : "order",
@@ -445,7 +447,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "daughter"
+          "valueString" : "daughter"
         },
         {
           "code" : "order",
@@ -465,7 +467,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "daughter"
+          "valueString" : "daughter"
         },
         {
           "code" : "order",
@@ -485,7 +487,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "daughter"
+          "valueString" : "daughter"
         },
         {
           "code" : "order",
@@ -505,7 +507,7 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       "property" : [
         {
           "code" : "category",
-          "valueCode" : "daughter"
+          "valueString" : "daughter"
         },
         {
           "code" : "order",
@@ -514,24 +516,24 @@ JP Coreにて定義した家族歴のFamilyMemberHistoryリソースに関する
       ]
     },
     {
-      "code" : "other",
-      "display" : "other",
-      "definition" : "その他（性の多様性、その他の場合はtext要素に詳細を記載）",
+      "code" : "nec",
+      "display" : "not elsewhere classified",
+      "definition" : "出生順の呼称はあるが、本CodeSystemの個別コードでは表現できない場合。例えば、十一男・十一女以降の個別コードが未収載の場合に用いる。申告された呼称はCodeableConcept.textに記載することが望ましい。",
       "designation" : [
         {
           "language" : "ja",
-          "value" : "その他"
+          "value" : "分類不能"
         }
       ]
     },
     {
-      "code" : "unknown",
-      "display" : "unknown",
-      "definition" : "詳細不明（text要素に詳細を記載）",
+      "code" : "nos",
+      "display" : "not otherwise specified",
+      "definition" : "出生順の呼称が、特定されていない場合。",
       "designation" : [
         {
           "language" : "ja",
-          "value" : "不明"
+          "value" : "詳細不明"
         }
       ]
     }
