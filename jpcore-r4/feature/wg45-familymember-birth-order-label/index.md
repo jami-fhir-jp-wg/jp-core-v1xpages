@@ -6550,6 +6550,20 @@ JP Core は以下の方々、および各サーブワーキンググループの
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/jp-familymember-vs"
+        },
+        "name" : "JP Core FamilyMember ValueSet",
+        "description" : "HL7 FamilyMember ValueSetに日本語Supplementを適用する。",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
             "valueString" : "StructureDefinition:extension"
           }
         ],

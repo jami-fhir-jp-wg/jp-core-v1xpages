@@ -109,7 +109,7 @@ Other representations of profile: [CSV](StructureDefinition-jp-familymemberhisto
 患者と対象となる家族構成員との関係は `FamilyMemberHistory.relationship` に記録する。`relationship` には、HL7 V3 RoleCode の FamilyMember ValueSet を使用する。`relationship` は**患者からの方向**で記録する。
 
 * 父方／母方の区別は、`FTH`／`MTH`、`PUNCLE`（父方のおじ）／`MUNCLE`（母方のおじ）、`PAUNT`（父方のおば）／`MAUNT`（母方のおば）など方向を内包するコードで表す。
-* JP Core は `v3-RoleCode` の各コードに日本語の designation を付与した CodeSystem [JP_V3RoleCode_CS] を用意している。`display` に日本語を用いる根拠とする。
+* JP Core は `v3-RoleCode` の各コードに日本語の designation を付与した CodeSystem [JP_V3RoleCode_CS](CodeSystem-jp-v3RoleCode-cs.md) を用意している。`display` に日本語を用いる根拠とする。
 
 #### 出生順呼称 BirthOrder の記録
 
@@ -474,6 +474,14 @@ GET [base]/FamilyMemberHistory?patient=Patient/123
             "targetProfile" : ["http://jpfhir.jp/fhir/core/StructureDefinition/JP_Patient"]
           }
         ]
+      },
+      {
+        "id" : "FamilyMemberHistory.relationship",
+        "path" : "FamilyMemberHistory.relationship",
+        "binding" : {
+          "strength" : "example",
+          "valueSet" : "http://jpfhir.jp/fhir/core/ValueSet/JP_FamilyMember_VS"
+        }
       },
       {
         "id" : "FamilyMemberHistory.reasonReference",

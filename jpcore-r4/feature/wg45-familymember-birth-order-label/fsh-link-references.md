@@ -57,6 +57,7 @@
 [jp-encounter-example-1]: Encounter-jp-encounter-example-1.html
 [JP_Encounter]: StructureDefinition-jp-encounter.html
 [JP_V3RoleCode_CS]: CodeSystem-jp-v3RoleCode-cs.html
+[JP_FamilyMember_VS]: ValueSet-jp-familymember-vs.html
 [JP_FamilyMemberHistory_BirthOrder]: StructureDefinition-jp-familymemberhistory-birthorder.html
 [jp-familymemberhistory-example-1]: FamilyMemberHistory-jp-familymemberhistory-example-1.html
 [jp-familymemberhistory-example-2]: FamilyMemberHistory-jp-familymemberhistory-example-2.html

@@ -186,6 +186,7 @@
 | [JP Core Dental SimplePresentTeethObservation ValueSet](ValueSet-jp-dental-simple-presentteeth-observation-vs.md) | JP Coreにて定義した歯科のObservationリソースに関する現存歯の観察結果コード（簡易版） |
 | [JP Core Dental SurfaceBodyStructure ValueSet](ValueSet-jp-dental-surfacebodystructure-vs.md) | JP Coreにて定義した歯科のObservationリソースに関する歯面に関連する詳細部位構造コード |
 | [JP Core Dental TeethObservation ValueSet](ValueSet-jp-dental-teethobservation-vs.md) | JP Coreにて定義した歯科のObservationリソースに関する歯面の詳細部位構造コード |
+| [JP Core FamilyMember ValueSet](ValueSet-jp-familymember-vs.md) | HL7 FamilyMember ValueSetに日本語Supplementを適用する。 |
 | [JP Core ImagingStudy Radiology BodySite ValueSet](ValueSet-jp-imagingstudy-radiology-bodysite-vs.md) | 放射線検査画像の対象となる身体部位のコード |
 | [JP Core Medication Substitution Prohibition Reason ValueSet](ValueSet-jp-medication-substitution-prohibition-reason-vs.md) | 後発医薬品への変更不可理由を示す値セット。令和6年保険改訂（2024年10月施行）により導入された長期収載医薬品の変更不可理由区分（医療上の必要性・患者希望）を含む。MedicationRequest.substitution.reason および MedicationDispense.substitution.reason に使用する。 |
 | [JP Core Observation BodySite ValueSet](ValueSet-jp-observation-bodysite-vs.md) | 検査の対象となる身体部位のコード |
