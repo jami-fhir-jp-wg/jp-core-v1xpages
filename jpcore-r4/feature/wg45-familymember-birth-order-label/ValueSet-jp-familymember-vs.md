@@ -30,7 +30,7 @@ HL7 FamilyMember ValueSetに日本語Supplementを適用する。
 
 This ValueSet requires the Code system Supplements [JP Core FamilyMember CodeSystem](CodeSystem-jp-v3RoleCode-cs.md).
 
-* Import all the codes that are contained in the intersection of [FamilyMember](http://terminology.hl7.org/7.5.0/ValueSet-v3-FamilyMember.html)
+* Include all codes defined in [`http://terminology.hl7.org/CodeSystem/v3-RoleCode`](http://terminology.hl7.org/7.5.0/CodeSystem-v3-RoleCode.html)version 📦4.0.0, where the codes are contained in [FamilyMember](http://terminology.hl7.org/7.5.0/ValueSet-v3-FamilyMember.html)
 
  
 
@@ -106,6 +106,7 @@ No Expansion for this valueset (not supported by Publication Tooling)
   "compose" : {
     "include" : [
       {
+        "system" : "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
         "valueSet" : ["http://terminology.hl7.org/ValueSet/v3-FamilyMember"]
       }
     ]
