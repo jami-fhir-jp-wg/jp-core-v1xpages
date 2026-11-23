@@ -28,7 +28,9 @@ HL7 FamilyMember ValueSetに日本語Supplementを適用する。
 
 ### Logical Definition (CLD)
 
-* Include all codes defined in [`http://jpfhir.jp/fhir/core/CodeSystem/JP_V3RoleCode_CS`](CodeSystem-jp-v3RoleCode-cs.md)version 📦1.3.0-dev
+This ValueSet requires the Code system Supplements [JP Core FamilyMember CodeSystem](CodeSystem-jp-v3RoleCode-cs.md).
+
+* Include all codes defined in [`http://terminology.hl7.org/CodeSystem/v3-RoleCode`](http://terminology.hl7.org/7.5.0/CodeSystem-v3-RoleCode.html)version 📦4.0.0, where the codes are contained in [FamilyMember](http://terminology.hl7.org/7.5.0/ValueSet-v3-FamilyMember.html)
 
  
 
@@ -59,6 +61,12 @@ No Expansion for this valueset (not supported by Publication Tooling)
 {
   "resourceType" : "ValueSet",
   "id" : "jp-familymember-vs",
+  "extension" : [
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/valueset-supplement",
+      "valueCanonical" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_V3RoleCode_CS"
+    }
+  ],
   "url" : "http://jpfhir.jp/fhir/core/ValueSet/JP_FamilyMember_VS",
   "version" : "1.3.0-dev",
   "name" : "JP_FamilyMember_VS",
@@ -98,7 +106,8 @@ No Expansion for this valueset (not supported by Publication Tooling)
   "compose" : {
     "include" : [
       {
-        "system" : "http://jpfhir.jp/fhir/core/CodeSystem/JP_V3RoleCode_CS"
+        "system" : "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+        "valueSet" : ["http://terminology.hl7.org/ValueSet/v3-FamilyMember"]
       }
     ]
   }

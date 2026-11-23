@@ -261,7 +261,7 @@ This publication includes IP covered under the following statements.
 * [ObservationInterpretation](http://terminology.hl7.org/7.5.0/CodeSystem-v3-ObservationInterpretation.html): [DiagnosticReport/jp-diagnosticreport-labresult-example-1](DiagnosticReport-jp-diagnosticreport-labresult-example-1.md), [DiagnosticReport/jp-diagnosticreport-microbiology-example-1](DiagnosticReport-jp-diagnosticreport-microbiology-example-1.md) and [Observation/jp-observation-labresult-example-1](Observation-jp-observation-labresult-example-1.md)
 * [Race](http://terminology.hl7.org/7.5.0/CodeSystem-v3-Race.html): [JP_Patient_Race](StructureDefinition-jp-patient-race.md) and [Patient/jp-patient-example-1](Patient-jp-patient-example-1.md)
 * [Religious Affiliation](http://terminology.hl7.org/7.5.0/CodeSystem-v3-ReligiousAffiliation.html): [Patient/jp-patient-example-1](Patient-jp-patient-example-1.md)
-* [RoleCode](http://terminology.hl7.org/7.5.0/CodeSystem-v3-RoleCode.html): [09A病棟 021病室 4ベッド](Location-jp-location-example-ward.md), [FamilyMemberHistory/jp-familymemberhistory-example-1](FamilyMemberHistory-jp-familymemberhistory-example-1.md)...Show 6 more,[FamilyMemberHistory/jp-familymemberhistory-example-2](FamilyMemberHistory-jp-familymemberhistory-example-2.md),[FamilyMemberHistory/jp-familymemberhistory-example-4](FamilyMemberHistory-jp-familymemberhistory-example-4.md),[JP_V3RoleCode_CS](CodeSystem-jp-v3RoleCode-cs.md),[南ウィング 神経放射線科 手術室1](Location-jp-location-example-ope.md),[外来101診察室](Location-jp-location-example-examinationroom.md)and[鈴木 花子](FamilyMemberHistory-jp-familymemberhistory-example-3.md)
+* [RoleCode](http://terminology.hl7.org/7.5.0/CodeSystem-v3-RoleCode.html): [09A病棟 021病室 4ベッド](Location-jp-location-example-ward.md), [FamilyMemberHistory/jp-familymemberhistory-example-1](FamilyMemberHistory-jp-familymemberhistory-example-1.md)...Show 8 more,[FamilyMemberHistory/jp-familymemberhistory-example-2](FamilyMemberHistory-jp-familymemberhistory-example-2.md),[FamilyMemberHistory/jp-familymemberhistory-example-4](FamilyMemberHistory-jp-familymemberhistory-example-4.md),[JP_FamilyMemberHistory](StructureDefinition-jp-familymemberhistory.md),[JP_FamilyMember_VS](ValueSet-jp-familymember-vs.md),[JP_V3RoleCode_CS](CodeSystem-jp-v3RoleCode-cs.md),[南ウィング 神経放射線科 手術室1](Location-jp-location-example-ope.md),[外来101診察室](Location-jp-location-example-examinationroom.md)and[鈴木 花子](FamilyMemberHistory-jp-familymemberhistory-example-3.md)
 * [Substance Admin Substitution](http://terminology.hl7.org/7.5.0/CodeSystem-v3-substanceAdminSubstitution.html): [MedicationDispense/jp-medicationdispense-example-1](MedicationDispense-jp-medicationdispense-example-1.md)
 
 
@@ -279,11 +279,6 @@ This publication includes IP covered under the following statements.
 
 * [JP Core Procedure Codes Dental CodeSystem](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/core/CodeSystem/JP_ProcedureCodesDental_CS): [JP_Procedure](StructureDefinition-jp-procedure.md)
 * [JP Core Procedure Codes Medical CodeSystem](https://simplifier.net/resolve?scope=jpfhir-terminology@1.4.0&canonical=http://jpfhir.jp/fhir/core/CodeSystem/JP_ProcedureCodesMedical_CS): [JP_Procedure](StructureDefinition-jp-procedure.md) and [Procedure/jp-procedure-example-1](Procedure-jp-procedure-example-1.md)
-
-
-* （一社）日本医療情報学会. CC BY-ND 4.0
-
-* [JP Core FamilyMember CodeSystem](CodeSystem-jp-v3RoleCode-cs.md): [JP_FamilyMemberHistory](StructureDefinition-jp-familymemberhistory.md) and [JP_FamilyMember_VS](ValueSet-jp-familymember-vs.md)
 
 
 **IP Statements に関する注意事項** 本 IP Statement は IG Publisher にて機械的に出力されたものである。SNOMED については JP Core としては利用しておらず、FHIR BASE の定義による影響を受けていることに注意すること。 Note that this IP Statement is mechanically output by IG Publisher, and that SNOMED is not used as JP Core, but is affected by the definition of FHIR BASE.

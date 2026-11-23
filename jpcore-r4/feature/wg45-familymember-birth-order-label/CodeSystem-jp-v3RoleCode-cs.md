@@ -24,7 +24,7 @@ http://terminology.hl7.org/Codesystem/v3-RoleCode where concept is-a FAMMEB の�
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* This CodeSystem Supplement is not used here; it may be used elsewhere (e.g. specifications and/or implementations that use this content)
+* [JP_FamilyMember_VS](ValueSet-jp-familymember-vs.md)
 
 !!このコードシステム は次のコードに displays を定義します:
 
